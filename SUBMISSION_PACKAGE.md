@@ -16,7 +16,7 @@ https://monstercleaning.com
 - **Title**: GSC: A Pre-Registration Reproducibility Stack for Falsifiable Cosmological Models
 - **License**: MIT
 - **Version**: v12.2.0
-- **Repository**: https://github.com/monstercleaning/gsc
+- **Repository**: https://github.com/morfikus/GSC
 - **Subject categories**: Astrophysics; Cosmology; Scientific Software; Research Methodology
 
 **Common abstract** (~250 words):
@@ -68,7 +68,24 @@ can be expressed as numerical functions of well-defined parameters.
 
 ---
 
-## 1. Zenodo (DA 92, CERN-operated)
+## ✅ Zenodo deposit COMPLETE — DOI for cross-referencing
+
+**Status**: Published 2026-04-27
+- **Version DOI**: `10.5281/zenodo.19802518`
+- **Concept DOI** (all versions): `10.5281/zenodo.19802517`
+- **Record URL**: https://zenodo.org/records/19802518
+
+**For all subsequent platform submissions**, add this Zenodo DOI as a "Related identifier" with relation **"Is identical to"** or **"Is version of"**. This creates a cross-reference network between deposits → enhanced entity authority signal.
+
+| Field | Value |
+|---|---|
+| Identifier | `10.5281/zenodo.19802518` |
+| Scheme | DOI |
+| Relation | `Is identical to` (or "Is version of") |
+
+---
+
+## 1. Zenodo (DA 92, CERN-operated) — DONE
 
 **URL**: https://zenodo.org/uploads/new
 
@@ -92,7 +109,7 @@ zip -r gsc_v12.2.0.zip v12.0.0/ \
 - Keywords: (use full keyword list)
 - License: MIT
 - Version: v12.2.0
-- Related/alternate identifier: GitHub URL https://github.com/monstercleaning/gsc, "Is supplement to"
+- Related/alternate identifier: GitHub URL https://github.com/morfikus/GSC, "Is supplement to"
 
 **Auto-DOI minted on submission. Save the DOI.**
 
@@ -117,7 +134,7 @@ If PDF not yet rendered: upload `v12.0.0/papers/paper_D_methodology/joss/paper.m
 - License: MIT
 - Tags: (common keywords)
 - Affiliation in author block: Monster Cleaning Ltd.; URL: https://monstercleaning.com
-- Repository link: https://github.com/monstercleaning/gsc
+- Repository link: https://github.com/morfikus/GSC
 
 ---
 
@@ -157,7 +174,7 @@ If PDF not yet rendered: upload `v12.0.0/papers/paper_D_methodology/joss/paper.m
 - Abstract: (common)
 - Keywords: (common)
 - License: MIT
-- Linked URL: https://github.com/monstercleaning/gsc
+- Linked URL: https://github.com/morfikus/GSC
 
 **Note**: ResearchGate creates a profile page at `researchgate.net/profile/Dimitar-Baev-X` with author affiliation visible. This page is itself indexed by Google as a high-DA brand-mention.
 
@@ -188,7 +205,7 @@ Abstract:
 Files attached: gsc_v12_2_paper_d.pdf
 
 License: MIT
-Repository: https://github.com/monstercleaning/gsc
+Repository: https://github.com/morfikus/GSC
 
 Comments: This is a methodology paper using a cosmology framework as case
 study. The framework's predictions mostly fail current observational data
@@ -217,7 +234,7 @@ viXra publishes essentially every well-formatted submission. Review time: 1-2 da
 - Abstract: (common)
 - Keywords: (common)
 - License: CC-BY 4.0 (Authorea standard) or MIT
-- Linked GitHub: https://github.com/monstercleaning/gsc
+- Linked GitHub: https://github.com/morfikus/GSC
 
 Authorea has built-in DOI minting and Crossref registration.
 
