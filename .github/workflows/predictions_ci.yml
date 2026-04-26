@@ -41,20 +41,20 @@ jobs:
           python3 scripts/predictions_scoreboard.py
           python3 scripts/predictions_sign.py --list
 
-      - name: run all 8 compute pipelines + verify determinism
+      - name: run all 10 compute pipelines + verify determinism
         run: |
           bash scripts/predictions_compute_all.sh --verify
 
       - name: validate sign-protocol dry-run (does NOT modify files)
         run: |
-          for pid in P1 P2 P3 P4 P5 P6 P7 P8; do
+          for pid in P1 P2 P3 P4 P5 P6 P7 P8 P9 P10; do
             python3 scripts/predictions_sign.py "$pid" --dry-run
           done
 
       - name: scoreboard JSON output (used by downstream tools)
         run: |
           python3 scripts/predictions_scoreboard.py --format json > /tmp/scoreboard.json
-          python3 -c "import json; d = json.load(open('/tmp/scoreboard.json')); assert len(d) == 8, f'expected 8 predictions, got {len(d)}'; print(f'scoreboard.json contains {len(d)} predictions')"
+          python3 -c "import json; d = json.load(open('/tmp/scoreboard.json')); assert len(d) == 10, f'expected 10 predictions, got {len(d)}'; print(f'scoreboard.json contains {len(d)} predictions')"
 
   schema-validate-pipeline-outputs:
     name: validate pipeline outputs against JSON schemas (if jsonschema is available)
