@@ -1,0 +1,82 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp. The signing record (signature_timestamp in prediction.md) supplies the temporal anchor; the SHA-256 of this file is a function only of the registered inputs.",
+  "lcdm_baseline_reference": {
+    "implementation": "gsc/early_time/rd.py",
+    "method": "Eisenstein\u2013Hu (1998) fitting formula",
+    "r_d_mpc": 150.914173
+  },
+  "physics_status": "leading-order \u03c3-metrology shift implemented; second-order \u03c3-modified recombination pending (M201)",
+  "prediction_id": "P1",
+  "schema": "predictions_p1_pipeline_output_v1",
+  "sub_predictions": [
+    {
+      "ansatz": "powerlaw",
+      "ansatz_parameters": {
+        "p": 0.001
+      },
+      "cosmology_inputs": {
+        "N_eff": 3.046,
+        "Tcmb_K": 2.7255,
+        "h": 0.6736,
+        "omega_b_h2": 0.02237,
+        "omega_m_h2": 0.143
+      },
+      "delta_rs_relative": 0.006953301,
+      "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
+      "r_s_gsc_predicted_mpc": 151.963525,
+      "r_s_lcdm_baseline_mpc": 150.914173,
+      "shift_factor": 1.006953301,
+      "sigma_ratio_today_over_drag": 0.993094713,
+      "z_drag": 1020.7158
+    },
+    {
+      "ansatz": "transition",
+      "ansatz_parameters": {
+        "dz": 0.5,
+        "p_high": 0.005,
+        "p_low": 0.001,
+        "z_t": 1.0
+      },
+      "cosmology_inputs": {
+        "N_eff": 3.046,
+        "Tcmb_K": 2.7255,
+        "h": 0.6736,
+        "omega_b_h2": 0.02237,
+        "omega_m_h2": 0.143
+      },
+      "delta_rs_relative": 0.035253364,
+      "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
+      "r_s_gsc_predicted_mpc": 156.234405,
+      "r_s_lcdm_baseline_mpc": 150.914173,
+      "shift_factor": 1.035253364,
+      "sigma_ratio_today_over_drag": 0.965947114,
+      "z_drag": 1020.7158
+    },
+    {
+      "ansatz": "rg_profile",
+      "ansatz_parameters": {
+        "alpha": 0.5,
+        "p_eff": 0.001,
+        "sigma_star_z": 1000000.0
+      },
+      "cosmology_inputs": {
+        "N_eff": 3.046,
+        "Tcmb_K": 2.7255,
+        "h": 0.6736,
+        "omega_b_h2": 0.02237,
+        "omega_m_h2": 0.143
+      },
+      "delta_rs_relative": 0.006953826,
+      "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
+      "r_s_gsc_predicted_mpc": 151.963604,
+      "r_s_lcdm_baseline_mpc": 150.914173,
+      "shift_factor": 1.006953826,
+      "sigma_ratio_today_over_drag": 0.993094196,
+      "z_drag": 1020.7158
+    }
+  ],
+  "tier": "T2",
+  "title": "BAO standard-ruler shift in DESI Year-3",
+  "tool": "predictions_compute_P1",
+  "tool_version": "v0.2-leading-order-metrology"
+}

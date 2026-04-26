@@ -1,0 +1,39 @@
+{
+  "title": "GSC: A Pre-Registration Reproducibility Stack for Falsifiable Cosmological Models",
+  "description": "<p>An open-source pre-registration reproducibility stack demonstrated on a scale-covariant cosmology framework. The stack combines deterministic computational pipelines, cryptographically-signed numerical predictions, and a layered four-tier claim hierarchy (kinematic frame, phenomenological fit, RG ansatz, speculative extensions) to make speculative model-building falsifiable in operational practice. Ten worked predictions (P1-P10) cover BAO standard-ruler shifts, 21cm Cosmic-Dawn signals, neutron-lifetime experiments, CMB cosmic birefringence, strong-CP θ-bounds, Kibble-Zurek defect spectra, gravitational-wave-memory atomic-clock signatures, redshift drift, proton-electron mass-ratio constancy, and TeV blazar dispersion. Developed and audited via multi-LLM iterative hostile-review cycles (Gemini, Claude, ChatGPT). After two AI hostile-audit sprints, the framework's predictions mostly fail current data — which is itself the value proposition: pre-registration discipline catches errors before submission, retracts them explicitly, and updates the framework status transparently.</p><p>Author affiliation: Monster Cleaning Ltd. — <a href=\"https://monstercleaning.com\">https://monstercleaning.com</a></p>",
+  "creators": [
+    {
+      "name": "Baev, Dimitar",
+      "affiliation": "Monster Cleaning Ltd. (https://monstercleaning.com)",
+      "orcid": "0009-0009-7812-9203"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "upload_type": "software",
+  "keywords": [
+    "cosmology",
+    "scale-covariant",
+    "renormalization group",
+    "dark energy",
+    "reproducibility",
+    "pre-registration",
+    "falsification",
+    "AI-assisted research",
+    "multi-LLM peer review",
+    "open science",
+    "scientific software"
+  ],
+  "communities": [
+    {
+      "identifier": "open-science"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/monstercleaning/gsc",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "$id": "phase3_sigmatensor_lowz_scan_analysis_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "best_candidates": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "chi2_total": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "deltas": {
+            "type": "object"
+          },
+          "metric_value": {
+            "type": "number"
+          },
+          "ndof_total": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "params": {
+            "type": "object"
+          },
+          "plan_point_id": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "rank",
+          "plan_point_id",
+          "metric_value",
+          "params"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": true,
+      "properties": {
+        "dedup_unique_plan_point_id": {
+          "type": "integer"
+        },
+        "error_rows": {
+          "type": "integer"
+        },
+        "ok_rows": {
+          "type": "integer"
+        },
+        "rank_candidates_considered": {
+          "type": "integer"
+        },
+        "rank_candidates_with_finite_metric": {
+          "type": "integer"
+        },
+        "rows_invalid_json": {
+          "type": "integer"
+        },
+        "rows_missing_plan_point_id": {
+          "type": "integer"
+        },
+        "rows_parsed": {
+          "type": "integer"
+        },
+        "rows_total": {
+          "type": "integer"
+        },
+        "top_k_emitted": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rows_total",
+        "rows_parsed",
+        "rows_invalid_json",
+        "rows_missing_plan_point_id",
+        "ok_rows",
+        "error_rows",
+        "dedup_unique_plan_point_id",
+        "rank_candidates_considered",
+        "rank_candidates_with_finite_metric",
+        "top_k_emitted"
+      ],
+      "type": "object"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "digests": {
+      "additionalProperties": true,
+      "properties": {
+        "best_table_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "best_table_sha256"
+      ],
+      "type": "object"
+    },
+    "inputs": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "basename": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "basename",
+          "sha256",
+          "kind"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "metric": {
+      "additionalProperties": true,
+      "properties": {
+        "min_ndof": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "name": {
+          "enum": [
+            "chi2_total",
+            "delta_chi2_total"
+          ],
+          "type": "string"
+        },
+        "require_ok": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "require_ok",
+        "min_ndof"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "phase3_sigmatensor_lowz_scan_analysis_v1",
+      "type": "string"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "unique_plan_source_sha256": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unique_scan_config_sha256": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "inputs",
+    "counts",
+    "metric",
+    "best_candidates",
+    "digests"
+  ],
+  "type": "object"
+}

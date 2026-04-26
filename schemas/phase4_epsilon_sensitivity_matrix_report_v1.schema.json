@@ -1,0 +1,246 @@
+{
+  "$id": "phase4_epsilon_sensitivity_matrix_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_epsilon_sensitivity_matrix_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "fail"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "repo_snapshot_manifest_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_manifest_source": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "epsilon_em": {
+          "type": "number"
+        },
+        "epsilon_qcd": {
+          "type": "number"
+        },
+        "epsilon_gr": {
+          "type": "number"
+        },
+        "delta_eps": {
+          "type": "number"
+        },
+        "z_sn_pivot": {
+          "type": "number"
+        },
+        "z_bao_pivot": {
+          "type": "number"
+        },
+        "z_cmb_pivot": {
+          "type": "number"
+        },
+        "z_lensing_pivot": {
+          "type": "number"
+        },
+        "h_exponent_p": {
+          "type": "number"
+        },
+        "growth_exponent_gamma": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "epsilon_em",
+        "epsilon_qcd",
+        "epsilon_gr",
+        "delta_eps",
+        "z_sn_pivot",
+        "z_bao_pivot",
+        "z_cmb_pivot",
+        "z_lensing_pivot",
+        "h_exponent_p",
+        "growth_exponent_gamma"
+      ]
+    },
+    "probe_definitions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "pivot_z": {
+            "type": "number"
+          },
+          "weights": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "epsilon_em": {
+                "type": "number"
+              },
+              "epsilon_qcd": {
+                "type": "number"
+              },
+              "epsilon_gr": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "epsilon_em",
+              "epsilon_qcd",
+              "epsilon_gr"
+            ]
+          }
+        },
+        "required": [
+          "pivot_z",
+          "weights"
+        ]
+      }
+    },
+    "analytic_sensitivities": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "d_ln_H0_inferred_d_epsilon": {
+          "type": "object"
+        },
+        "d_ln_sigma8_inferred_d_epsilon": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "d_ln_H0_inferred_d_epsilon",
+        "d_ln_sigma8_inferred_d_epsilon"
+      ]
+    },
+    "finite_difference_sensitivities": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "d_ln_H0_inferred_d_epsilon": {
+          "type": "object"
+        },
+        "d_ln_sigma8_inferred_d_epsilon": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "d_ln_H0_inferred_d_epsilon",
+        "d_ln_sigma8_inferred_d_epsilon"
+      ]
+    },
+    "self_check": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "max_abs_diff_d_ln_H0": {
+          "type": "number"
+        },
+        "max_abs_diff_d_ln_sigma8": {
+          "type": "number"
+        },
+        "max_abs_diff_overall": {
+          "type": "number"
+        },
+        "tolerance": {
+          "type": "number"
+        },
+        "self_check_ok": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "max_abs_diff_d_ln_H0",
+        "max_abs_diff_d_ln_sigma8",
+        "max_abs_diff_overall",
+        "tolerance",
+        "self_check_ok"
+      ]
+    },
+    "digests": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "sensitivity_table_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sensitivity_table_sha256"
+      ]
+    },
+    "disclaimers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "artifact_paths": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "json": {
+          "type": "string"
+        },
+        "markdown": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "json",
+        "markdown"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "repo_version_dir",
+    "paths_redacted",
+    "repo_snapshot_manifest_sha256",
+    "repo_snapshot_manifest_source",
+    "inputs",
+    "probe_definitions",
+    "analytic_sensitivities",
+    "finite_difference_sensitivities",
+    "self_check",
+    "digests",
+    "disclaimers",
+    "artifact_paths"
+  ]
+}

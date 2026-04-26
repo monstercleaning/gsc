@@ -1,0 +1,12 @@
+{
+  "schema": "predictions_p3_observed_data_v1",
+  "prediction_id": "P3",
+  "source": "PDG 2024 world averages",
+  "data_release_date": "2024-08-31",
+  "url_reference": "https://pdg.lbl.gov/",
+  "tau_n_beam_s": 887.7,
+  "tau_n_beam_sigma_s": 2.2,
+  "tau_n_trap_s": 878.4,
+  "tau_n_trap_sigma_s": 0.5,
+  "notes": "World averages of beam and trap method measurements as compiled by the Particle Data Group. The beam-trap discrepancy of 9.3 ± 2.3 s is currently unexplained in the Standard Model."
+}

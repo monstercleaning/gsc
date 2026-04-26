@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p9_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P9 (constancy of μ = m_p/m_e)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "scaling_mode",
+    "prediction"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p9_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P9"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "scaling_mode": {"type": "string"},
+    "prediction": {
+      "type": "object",
+      "required": [
+        "mu_dot_over_mu_z0_per_yr",
+        "differential_coupling_eta_diff",
+        "powerlaw_p",
+        "trajectory"
+      ],
+      "properties": {
+        "mu_dot_over_mu_z0_per_yr": {"type": "number"},
+        "differential_coupling_eta_diff": {"type": "number"},
+        "powerlaw_p": {"type": "number"},
+        "trajectory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["z", "sigma_ratio", "delta_mu_over_mu_predicted"],
+            "properties": {
+              "z": {"type": "number", "minimum": 0},
+              "sigma_ratio": {"type": "number", "exclusiveMinimum": 0},
+              "delta_mu_over_mu_predicted": {"type": "number"}
+            }
+          }
+        }
+      }
+    },
+    "framework_implications": {"type": "object"}
+  }
+}

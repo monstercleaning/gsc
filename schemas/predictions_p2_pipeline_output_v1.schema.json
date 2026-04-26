@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p2_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P2 (21cm Cosmic-Dawn signal)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "ansatz",
+    "ansatz_parameters",
+    "registered_couplings",
+    "profile",
+    "consistency_with_edges_2018"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p2_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P2"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "ansatz": {"type": "string"},
+    "ansatz_parameters": {"type": "object"},
+    "cosmology_inputs": {"type": "object"},
+    "registered_couplings": {
+      "type": "object",
+      "required": ["K_sigma_amplification"]
+    },
+    "profile": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "z",
+          "frequency_MHz",
+          "delta_T_b_lcdm_mK",
+          "delta_T_b_gsc_mK",
+          "delta_T_b_diff_mK"
+        ]
+      }
+    },
+    "consistency_with_edges_2018": {
+      "type": "object",
+      "required": [
+        "edges_z_centre",
+        "edges_depth_mk",
+        "gsc_predicted_depth_mk",
+        "z_score_vs_edges",
+        "consistent_with_edges_at_2sigma"
+      ]
+    }
+  }
+}

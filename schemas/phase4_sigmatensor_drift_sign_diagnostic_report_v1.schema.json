@@ -1,0 +1,166 @@
+{
+  "$id": "phase4_sigmatensor_drift_sign_diagnostic_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_sigmatensor_drift_sign_diagnostic_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "H0_km_s_Mpc": {
+          "type": "number"
+        },
+        "Omega_m0": {
+          "type": "number"
+        },
+        "w_phi0": {
+          "type": "number"
+        },
+        "lambda_min": {
+          "type": "number"
+        },
+        "lambda_max": {
+          "type": "number"
+        },
+        "n_lambda": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "H0_km_s_Mpc",
+        "Omega_m0",
+        "w_phi0",
+        "lambda_min",
+        "lambda_max",
+        "n_lambda"
+      ]
+    },
+    "grids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "lambda_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "z_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "eval_z_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "lambda_values",
+        "z_values",
+        "eval_z_values"
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "drift_positive_anywhere_in_2_5": {
+          "type": "boolean"
+        },
+        "drift_positive_all_eval_points": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "drift_positive_anywhere_in_2_5",
+        "drift_positive_all_eval_points"
+      ]
+    },
+    "lambda_summaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "lambda": {
+            "type": "number"
+          },
+          "drift_rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "z": {
+                  "type": "number"
+                },
+                "dz_dt0_si": {
+                  "type": "number"
+                },
+                "drift_sign": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "z",
+                "dz_dt0_si",
+                "drift_sign"
+              ]
+            }
+          }
+        },
+        "required": [
+          "lambda",
+          "drift_rows"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "created_utc",
+    "created_utc_epoch",
+    "repo_version_dir",
+    "paths_redacted",
+    "status",
+    "params",
+    "grids",
+    "summary",
+    "lambda_summaries"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "predictions_p4_observed_data_v1",
+  "prediction_id": "P4",
+  "source": "Minami & Komatsu 2020 (Planck 2018 polarization re-analysis)",
+  "data_release_date": "2020-11-23",
+  "url_reference": "https://doi.org/10.1103/PhysRevLett.125.221301",
+  "beta_observed_deg": 0.35,
+  "beta_observed_sigma_deg": 0.14,
+  "significance_sigma": 2.4,
+  "notes": "Tentative detection (not yet definitive). Planck-derived global rotation angle from EE-TE-EB-TB polarization spectra. Future LiteBIRD measurement (~2030) will sharpen to ~0.05 degree precision; CMB-S4 (~2032) to ~0.02 degree."
+}

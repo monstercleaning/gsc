@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_reviewer_pack_plan_v1.schema.json",
+  "title": "Phase-2 reviewer pack plan v1",
+  "description": "Schema for the plan object embedded in reviewer-pack summaries.",
+  "type": "object",
+  "required": [
+    "readme",
+    "reviewer_guide",
+    "docs",
+    "manifest",
+    "bundle_zip",
+    "bundle_sha256"
+  ],
+  "properties": {
+    "readme": {
+      "type": "string"
+    },
+    "reviewer_guide": {
+      "type": "string"
+    },
+    "docs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "manifest": {
+      "type": "string"
+    },
+    "bundle_zip": {
+      "type": "string"
+    },
+    "bundle_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_zip": {
+      "type": "string"
+    },
+    "repo_snapshot_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_manifest": {
+      "type": "string"
+    },
+    "paper_assets_root": {
+      "type": "string"
+    },
+    "verify_text": {
+      "type": "string"
+    },
+    "verify_json": {
+      "type": "string"
+    },
+    "boltzmann_export_script": {
+      "type": "string"
+    },
+    "boltzmann_results_script": {
+      "type": "string"
+    },
+    "boltzmann_export_root": {
+      "type": "string"
+    },
+    "boltzmann_export_zip": {
+      "type": "string"
+    },
+    "boltzmann_results_root": {
+      "type": "string"
+    },
+    "boltzmann_results_zip": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

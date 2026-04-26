@@ -1,0 +1,50 @@
+{
+  "$id": "phase4_red_team_check_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_red_team_check_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "strict": {
+      "type": "boolean"
+    },
+    "overall_status": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "repo_version_dir",
+    "overall_status",
+    "paths_redacted",
+    "checks"
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "$id": "phase4_m163_five_problems_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_m163_five_problems_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "created_utc": {
+      "type": "integer"
+    },
+    "created_utc_iso": {
+      "type": "string"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "sigma_star_ratio": {
+          "type": "number"
+        },
+        "omega0": {
+          "type": "number"
+        },
+        "lambda_qcd_gev": {
+          "type": "number"
+        },
+        "drift_eps": {
+          "type": "number"
+        },
+        "z_drift_min": {
+          "type": "number"
+        },
+        "z_drift_max": {
+          "type": "number"
+        },
+        "use_cov_requested": {
+          "type": "boolean"
+        },
+        "priors_basename": {
+          "type": "string"
+        },
+        "priors_sha256": {
+          "type": "string"
+        },
+        "cov_basename": {
+          "type": "string"
+        },
+        "cov_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sigma_star_ratio",
+        "omega0",
+        "lambda_qcd_gev",
+        "drift_eps",
+        "z_drift_min",
+        "z_drift_max",
+        "use_cov_requested",
+        "priors_basename",
+        "priors_sha256",
+        "cov_basename",
+        "cov_sha256"
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "barrier_present": {
+          "type": "boolean"
+        },
+        "phi_near_over_phi_far": {
+          "type": "number"
+        },
+        "k_star_mpc_inv": {
+          "type": "number"
+        },
+        "n_sigma_R": {
+          "type": "number"
+        },
+        "n_sigma_lA": {
+          "type": "number"
+        },
+        "covariance_mode_used": {
+          "type": "string"
+        },
+        "chi2": {
+          "type": "number"
+        },
+        "ndof": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "barrier_present",
+        "phi_near_over_phi_far",
+        "k_star_mpc_inv",
+        "n_sigma_R",
+        "n_sigma_lA",
+        "covariance_mode_used",
+        "chi2",
+        "ndof"
+      ]
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "kinetic_barrier": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "sigma_star": {
+              "type": "number"
+            },
+            "sigma_near": {
+              "type": "number"
+            },
+            "phi_near": {
+              "type": "number"
+            },
+            "phi_far": {
+              "type": "number"
+            },
+            "phi_near_over_phi_far": {
+              "type": "number"
+            },
+            "barrier_present": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sigma_star",
+            "sigma_near",
+            "phi_near",
+            "phi_far",
+            "phi_near_over_phi_far",
+            "barrier_present"
+          ]
+        },
+        "scale_separation": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "sigma_star_mpc": {
+              "type": "number"
+            },
+            "k_star_mpc_inv": {
+              "type": "number"
+            },
+            "scales": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "k_Mpc_inv": {
+                    "type": "number"
+                  },
+                  "k_over_k_star": {
+                    "type": "number"
+                  },
+                  "log10_k_over_k_star_sq": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "label",
+                  "k_Mpc_inv",
+                  "k_over_k_star",
+                  "log10_k_over_k_star_sq"
+                ]
+              }
+            }
+          },
+          "required": [
+            "sigma_star_mpc",
+            "k_star_mpc_inv",
+            "scales"
+          ]
+        },
+        "drift_vs_cmb": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "inputs": {
+              "type": "object"
+            },
+            "baseline": {
+              "type": "object"
+            },
+            "toy_prediction": {
+              "type": "object"
+            },
+            "chw2018": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "R_mean": {
+                  "type": "number"
+                },
+                "sigma_R": {
+                  "type": "number"
+                },
+                "n_sigma_R": {
+                  "type": "number"
+                },
+                "n_sigma_lA": {
+                  "type": "number"
+                },
+                "covariance_mode_used": {
+                  "type": "string"
+                },
+                "covariance_used": {
+                  "type": "boolean"
+                },
+                "chi2": {
+                  "type": "number"
+                },
+                "ndof": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "R_mean",
+                "sigma_R",
+                "n_sigma_R",
+                "n_sigma_lA",
+                "covariance_mode_used",
+                "covariance_used",
+                "chi2",
+                "ndof"
+              ]
+            }
+          },
+          "required": [
+            "inputs",
+            "baseline",
+            "toy_prediction",
+            "chw2018"
+          ]
+        }
+      },
+      "required": [
+        "kinetic_barrier",
+        "scale_separation",
+        "drift_vs_cmb"
+      ]
+    },
+    "snapshot_fingerprint": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_iso",
+    "repo_version_dir",
+    "paths_redacted",
+    "inputs",
+    "summary",
+    "details",
+    "snapshot_fingerprint"
+  ]
+}

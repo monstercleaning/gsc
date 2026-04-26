@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_lowz_joint_report_v1.schema.json",
+  "title": "Phase-3 SigmaTensor low-z joint report v1",
+  "description": "Conservative schema for LOWZ_JOINT_REPORT.json emitted by phase3_joint_sigmatensor_lowz_report.py.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "params",
+    "derived_today",
+    "blocks",
+    "total",
+    "digests"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_lowz_joint_report_v1"
+      ]
+    },
+    "tool": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "params": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "H0_si",
+        "Omega_m0",
+        "w_phi0",
+        "lambda",
+        "bao_enabled",
+        "sn_enabled",
+        "rsd_enabled",
+        "compare_lcdm"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number"},
+        "H0_si": {"type": "number"},
+        "Omega_m0": {"type": "number"},
+        "w_phi0": {"type": "number"},
+        "lambda": {"type": "number"},
+        "bao_enabled": {"type": "boolean"},
+        "sn_enabled": {"type": "boolean"},
+        "cmb_enabled": {"type": "boolean"},
+        "rsd_enabled": {"type": "boolean"},
+        "compare_lcdm": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "derived_today": {
+      "type": "object",
+      "required": [
+        "Omega_r0",
+        "Omega_phi0",
+        "u0",
+        "Vhat0",
+        "p_action"
+      ],
+      "properties": {
+        "Omega_r0": {"type": "number"},
+        "Omega_phi0": {"type": "number"},
+        "u0": {"type": "number"},
+        "Vhat0": {"type": "number"},
+        "p_action": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "background_summary": {
+      "type": "object",
+      "required": [
+        "z_max_bg_effective",
+        "n_steps_bg",
+        "max_data_z"
+      ],
+      "properties": {
+        "z_max_bg_requested": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "z_max_bg_effective": {"type": "number"},
+        "n_steps_bg": {"type": "integer", "minimum": 1},
+        "max_data_z": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "blocks": {
+      "type": "object",
+      "required": [
+        "bao",
+        "sn",
+        "rsd"
+      ],
+      "properties": {
+        "bao": {"type": "object"},
+        "sn": {"type": "object"},
+        "cmb": {"type": "object"},
+        "rsd": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "total": {
+      "type": "object",
+      "required": [
+        "chi2",
+        "ndof"
+      ],
+      "properties": {
+        "chi2": {"type": "number"},
+        "ndof": {"type": "integer"}
+      },
+      "additionalProperties": true
+    },
+    "lcdm_baseline": {
+      "type": "object",
+      "required": [
+        "derived_today",
+        "blocks",
+        "total"
+      ],
+      "additionalProperties": true
+    },
+    "deltas": {
+      "type": "object",
+      "required": [
+        "delta_chi2_total",
+        "delta_chi2_bao",
+        "delta_chi2_sn",
+        "delta_chi2_rsd"
+      ],
+      "properties": {
+        "delta_chi2_total": {"type": "number"},
+        "delta_chi2_bao": {"type": "number"},
+        "delta_chi2_sn": {"type": "number"},
+        "delta_chi2_cmb": {"type": "number"},
+        "delta_chi2_rsd": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "stable_rows_digest_sha256"
+      ],
+      "properties": {
+        "stable_rows_digest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "properties": {
+              "compare_lcdm": {"const": true}
+            },
+            "required": [
+              "compare_lcdm"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "lcdm_baseline",
+          "deltas"
+        ]
+      }
+    }
+  ]
+}

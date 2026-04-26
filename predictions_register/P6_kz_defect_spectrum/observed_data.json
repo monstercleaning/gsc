@@ -1,0 +1,10 @@
+{
+  "schema": "predictions_p6_observed_data_v1",
+  "prediction_id": "P6",
+  "source": "NANOGrav 15-yr (Agazie et al. 2023) + EPTA DR2 (Antoniadis et al. 2023) + LIGO O3 stochastic upper bound",
+  "data_release_date": "2023-06-29",
+  "url_reference": "https://doi.org/10.3847/2041-8213/acdac6",
+  "stochastic_omega_gw_upper_bound": 1e-9,
+  "stochastic_omega_gw_at_nanograv_band_indicative_signal": 1e-9,
+  "notes": "PTA stochastic background detection at f ~ nHz with characteristic Ω_GW ≈ 10^-9. Whether this is from supermassive-black-hole binaries or cosmic-string remnants is debated. As a constraint on cosmic strings, a more conservative upper bound Ω_GW < 10^-9 is widely cited. Detailed string-tension bounds depend on string-network evolution model."
+}

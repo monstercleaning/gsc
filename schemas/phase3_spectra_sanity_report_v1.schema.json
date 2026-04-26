@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_spectra_sanity_report_v1.schema.json",
+  "title": "Phase-3 spectra sanity report v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "input",
+    "selected_spectra_file",
+    "tt_metrics",
+    "gates",
+    "digests"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_spectra_sanity_report_v1"
+      ]
+    },
+    "tool": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "input": {
+      "type": "object",
+      "required": [
+        "kind",
+        "inferred_layout",
+        "used_outputs_root"
+      ],
+      "properties": {
+        "kind": {"type": "string"},
+        "inferred_layout": {"type": "string"},
+        "used_outputs_root": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "selected_spectra_file": {
+      "type": "object",
+      "required": [
+        "relpath",
+        "sha256",
+        "header_tokens",
+        "column_map"
+      ],
+      "properties": {
+        "relpath": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"]},
+        "header_tokens": {"type": "array"},
+        "column_map": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "tt_metrics": {
+      "type": "object",
+      "required": [
+        "has_tt",
+        "n_rows",
+        "ell_min",
+        "ell_max",
+        "peak1_ell"
+      ],
+      "properties": {
+        "has_tt": {"type": "boolean"},
+        "n_rows": {"type": "integer", "minimum": 0},
+        "ell_min": {"type": ["integer", "null"]},
+        "ell_max": {"type": ["integer", "null"]},
+        "peak1_ell": {"type": ["integer", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "enabled",
+          "passed",
+          "detail"
+        ],
+        "properties": {
+          "name": {"type": "string"},
+          "enabled": {"type": "boolean"},
+          "passed": {"type": "boolean"},
+          "detail": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "sha256_rows"
+      ],
+      "properties": {
+        "sha256_rows": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
+

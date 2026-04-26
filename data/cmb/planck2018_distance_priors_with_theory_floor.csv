@@ -1,0 +1,2 @@
+name,value,sigma,sigma_theory,label
+theta_star,0.0104109,0.0000030,2.0e-5,PLACEHOLDER_UPDATE_WITH_CITED_PRIOR + E1 theory floor

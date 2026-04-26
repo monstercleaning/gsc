@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_cmb_rs_zstar_reference_audit_v1.schema.json",
+  "title": "Phase-2 rs/z* reference audit v1",
+  "description": "Conservative schema for RS_ZSTAR_REFERENCE_AUDIT.json outputs.",
+  "type": "object",
+  "required": [
+    "schema",
+    "created_utc",
+    "source",
+    "candidate",
+    "reference",
+    "comparison",
+    "gates"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase2_cmb_rs_zstar_reference_audit_v1"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "strict",
+        "ok"
+      ],
+      "properties": {
+        "strict": {
+          "type": "boolean"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "marker": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,34 @@
+{
+  "ansatz": "powerlaw",
+  "ansatz_parameters": {
+    "p": 0.001
+  },
+  "consistency_with_planck_2020_hint": {
+    "consistent_with_planck_at_2sigma": false,
+    "planck_hint_deg": 0.35,
+    "planck_hint_sigma_deg": 0.14,
+    "predicted_minus_observed_deg": -0.34851,
+    "z_score_vs_planck_hint": -2.4894
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "lcdm_baseline": {
+    "H0_km_s_Mpc": 67.4,
+    "Omega_L": 0.685,
+    "Omega_m": 0.315
+  },
+  "n_integration_steps": 5000,
+  "physics_status": "Leading-order line-of-sight Chern-Simons rotation. The g_CS amplitude is a parametric placeholder for the FRG-derived \u03c3-F\u0303F coupling f_\u03c3; Paper B FRG calculation is gating piece for narrowing g_CS to a specific predicted value.",
+  "prediction": {
+    "beta_deg": 0.00149,
+    "beta_rad": 2.6007e-05,
+    "g_CS": 0.036,
+    "integral_dimensionless": 0.000722426,
+    "z_CMB": 1100.0
+  },
+  "prediction_id": "P4",
+  "schema": "predictions_p4_pipeline_output_v1",
+  "tier": "T3",
+  "title": "CMB cosmic birefringence from \u03c3-F\u0303F coupling",
+  "tool": "predictions_compute_P4",
+  "tool_version": "v0.1-leading-order-CS"
+}

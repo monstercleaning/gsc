@@ -1,0 +1,10 @@
+{
+  "schema": "predictions_p1_observed_data_v1",
+  "prediction_id": "P1",
+  "source": "DESI Year-1 BAO (DESI Collaboration 2024) — preliminary near-term constraint pending DESI Y3 (2027)",
+  "data_release_date": "2024-04-04",
+  "url_reference": "https://arxiv.org/abs/2404.03000",
+  "r_d_observed_mpc": 147.09,
+  "r_d_observed_sigma_mpc": 0.26,
+  "notes": "DESI Y1 BAO measurement of the sound horizon at the drag epoch r_d (or equivalently r_s) consistent with Planck 2018 ΛCDM at the sub-percent level. Used here as an interim constraint pending the v12-target DESI Y3 release. The Y3 increment will sharpen the bound by a factor of ~2."
+}

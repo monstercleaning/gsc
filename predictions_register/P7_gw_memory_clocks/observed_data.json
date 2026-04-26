@@ -1,0 +1,11 @@
+{
+  "schema": "predictions_p7_observed_data_v1",
+  "prediction_id": "P7",
+  "source": "Best current optical-lattice clock instabilities (Sr, Yb+, Al+, ITOC, BACON)",
+  "data_release_date": "2024-12-31",
+  "url_reference": "https://www.nist.gov/programs-projects/optical-clocks",
+  "best_clock_instability_per_tau_10000s": 8e-19,
+  "estimated_n_relevant_gw_events_2017_2024": 100,
+  "stacking_sqrt_n_assumption": true,
+  "notes": "Best published 10000s clock instability is from Al+ (8e-19). Stacking over 100 LIGO/Virgo events with √N gain assumed; in practice many events are sub-threshold for stacking. Conservative estimate."
+}

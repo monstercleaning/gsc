@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_class_export_pack_v1.schema.json",
+  "title": "Phase-3 SigmaTensor CLASS export pack summary v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "params",
+    "derived_today",
+    "mapping",
+    "grid_summary",
+    "digests"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_class_export_pack_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "H0_si",
+        "Omega_m0",
+        "w_phi0",
+        "lambda"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number"},
+        "H0_si": {"type": "number"},
+        "Omega_m0": {"type": "number"},
+        "w_phi0": {"type": "number"},
+        "lambda": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "derived_today": {
+      "type": "object",
+      "required": [
+        "Omega_r0",
+        "Omega_phi0",
+        "u0",
+        "Vhat0"
+      ],
+      "properties": {
+        "Omega_r0": {"type": "number"},
+        "Omega_phi0": {"type": "number"},
+        "u0": {"type": "number"},
+        "Vhat0": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "mapping": {
+      "type": "object",
+      "required": [
+        "de_model",
+        "wa_mode",
+        "wa_value"
+      ],
+      "properties": {
+        "de_model": {"type": "string"},
+        "wa_mode": {"type": "string"},
+        "wa_value": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "grid_summary": {
+      "type": "object",
+      "required": [
+        "z_max",
+        "n_steps",
+        "n_grid"
+      ],
+      "properties": {
+        "z_max": {"type": "number"},
+        "n_steps": {"type": "integer", "minimum": 1},
+        "n_grid": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "sha256_grid",
+        "params_hash"
+      ],
+      "properties": {
+        "sha256_grid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "params_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
+

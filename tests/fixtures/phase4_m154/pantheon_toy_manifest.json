@@ -1,0 +1,14 @@
+{
+  "schema": "phase4_pantheon_plus_fetch_manifest_v1",
+  "files": {
+    "cov": {
+      "name": "pantheon_toy_cov.txt",
+      "sha256": "bd3a312ffd1e0dba0cbd3a976c069d8aa58a733bbbfc83c52b0da5f4e8d079b4"
+    },
+    "mu": {
+      "name": "pantheon_toy_mu_fullcov.csv",
+      "sha256": "3f299d1fe0d5c2c62003f3ec2c5bd33d19ce7d3c3bbcba1d6898662d825d5ac8"
+    }
+  },
+  "source": "local_fixture_phase4_m154"
+}

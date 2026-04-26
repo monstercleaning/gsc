@@ -1,0 +1,22 @@
+{
+  "deterministic_mode": true,
+  "files": {
+    "desi_dr1_bao_baseline.csv": {
+      "bytes": 915,
+      "sha256": "7e53df31dbde5a01887b3fa563bdb9a139b8bfc6d8fe43fc136d62a4a0715c05"
+    }
+  },
+  "license_terms_note": "See v11.0.0/docs/DATA_LICENSES_AND_SOURCES.md and upstream DESI terms.",
+  "paths_redacted": true,
+  "retrieved_utc": "2000-01-01T00:00:00Z",
+  "retrieved_utc_epoch": 946684800,
+  "schema": "phase4_desi_bao_fetch_manifest_v1",
+  "source": {
+    "kind": "local_dir",
+    "preset": "none",
+    "release_id": "desi_dr1_bao_baseline_compact_v1",
+    "value": "desi"
+  },
+  "tool": "fetch_desi_bao_products",
+  "tool_version": "m156-v1"
+}

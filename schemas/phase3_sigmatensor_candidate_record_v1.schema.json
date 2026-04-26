@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_candidate_record_v1.schema.json",
+  "title": "Phase-3 SigmaTensor candidate record v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "selection",
+    "best",
+    "record"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_candidate_record_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "rank_by",
+        "eligible_status"
+      ],
+      "properties": {
+        "rank_by": {"type": "string"},
+        "eligible_status": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "best": {
+      "type": "object",
+      "required": [
+        "best_params_hash"
+      ],
+      "properties": {
+        "best_params_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "status",
+        "params_hash",
+        "mapping"
+      ],
+      "properties": {
+        "status": {"type": "string"},
+        "params_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "mapping": {
+          "type": "object",
+          "required": [
+            "de_model",
+            "wa_mode",
+            "wa_value"
+          ],
+          "properties": {
+            "de_model": {"type": "string"},
+            "wa_mode": {"type": "string"},
+            "wa_value": {"type": "number"}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
+

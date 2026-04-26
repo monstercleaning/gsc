@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_pt_boltzmann_run_metadata_v1.schema.json",
+  "title": "Phase-2 Boltzmann run metadata v1",
+  "description": "Conservative schema for RUN_METADATA.json produced by the external run harness.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "paths_redacted",
+    "code",
+    "runner",
+    "command_argv",
+    "run_dir",
+    "run_log",
+    "returncode",
+    "input_files"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase2_pt_boltzmann_run_metadata_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "code": {
+      "type": "string"
+    },
+    "runner": {
+      "type": "string"
+    },
+    "command_argv": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "run_dir": {
+      "type": "string"
+    },
+    "run_dir_abs": {
+      "type": "string"
+    },
+    "run_log": {
+      "type": "string"
+    },
+    "returncode": {
+      "type": "integer"
+    },
+    "input_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "sha256",
+          "source"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source": {
+            "type": "string"
+          },
+          "source_abs": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "external_code": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

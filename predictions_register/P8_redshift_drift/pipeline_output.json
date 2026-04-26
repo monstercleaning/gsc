@@ -1,0 +1,82 @@
+{
+  "ansatz": "powerlaw",
+  "ansatz_parameters": {
+    "p": 0.001
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "drift_table": [
+    {
+      "delta_v_diff_cm_s": 0.953308,
+      "delta_v_gsc_cm_s": 1.87684,
+      "delta_v_lcdm_cm_s": 0.923532,
+      "sign_flip_vs_lcdm": false,
+      "z": 0.1
+    },
+    {
+      "delta_v_diff_cm_s": 4.432783,
+      "delta_v_gsc_cm_s": 6.882724,
+      "delta_v_lcdm_cm_s": 2.449941,
+      "sign_flip_vs_lcdm": false,
+      "z": 0.5
+    },
+    {
+      "delta_v_diff_cm_s": 8.158082,
+      "delta_v_gsc_cm_s": 10.325303,
+      "delta_v_lcdm_cm_s": 2.167221,
+      "sign_flip_vs_lcdm": false,
+      "z": 1.0
+    },
+    {
+      "delta_v_diff_cm_s": 11.299316,
+      "delta_v_gsc_cm_s": 12.391383,
+      "delta_v_lcdm_cm_s": 1.092067,
+      "sign_flip_vs_lcdm": false,
+      "z": 1.5
+    },
+    {
+      "delta_v_diff_cm_s": 13.986041,
+      "delta_v_gsc_cm_s": 13.769051,
+      "delta_v_lcdm_cm_s": -0.216991,
+      "sign_flip_vs_lcdm": true,
+      "z": 2.0
+    },
+    {
+      "delta_v_diff_cm_s": 18.413723,
+      "delta_v_gsc_cm_s": 15.491534,
+      "delta_v_lcdm_cm_s": -2.922189,
+      "sign_flip_vs_lcdm": true,
+      "z": 3.0
+    },
+    {
+      "delta_v_diff_cm_s": 22.019257,
+      "delta_v_gsc_cm_s": 16.52529,
+      "delta_v_lcdm_cm_s": -5.493967,
+      "sign_flip_vs_lcdm": true,
+      "z": 4.0
+    },
+    {
+      "delta_v_diff_cm_s": 25.101905,
+      "delta_v_gsc_cm_s": 17.214602,
+      "delta_v_lcdm_cm_s": -7.887303,
+      "sign_flip_vs_lcdm": true,
+      "z": 5.0
+    }
+  ],
+  "lcdm_baseline": {
+    "H0_km_s_Mpc": 67.4,
+    "Omega_L": 0.685,
+    "Omega_m": 0.315
+  },
+  "observation_interval_years": 10.0,
+  "physics_status": "Computed from registered \u03c3(t) ansatz via gsc/measurement_model.py Sandage\u2013Loeb formula. ELT/ANDES integration time of `years` is the registered observation interval.",
+  "prediction_id": "P8",
+  "schema": "predictions_p8_pipeline_output_v1",
+  "summary": {
+    "any_sign_flip_vs_lcdm": true,
+    "max_abs_diff_cm_s": 25.101905
+  },
+  "tier": "T2 (supporting only, not primary)",
+  "title": "Redshift-drift sign and amplitude (supporting discriminator)",
+  "tool": "predictions_compute_P8",
+  "tool_version": "v0.1"
+}

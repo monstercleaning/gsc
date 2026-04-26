@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_consistency_report_v1.schema.json",
+  "title": "Phase-2 consistency report v1",
+  "description": "Conservative schema for CONSISTENCY_REPORT.json outputs.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "bundle_dir",
+    "status",
+    "summary",
+    "checks"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase2_consistency_report_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "bundle_dir": {
+      "type": "string"
+    },
+    "strict": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "n_errors",
+        "n_warnings",
+        "exit_code"
+      ],
+      "properties": {
+        "n_errors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "n_warnings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": true
+    },
+    "presence": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "severity",
+          "ok",
+          "detail"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "numeric_probe": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "tt_probe": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

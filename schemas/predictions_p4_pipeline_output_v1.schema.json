@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p4_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P4 (CMB cosmic birefringence)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "ansatz",
+    "ansatz_parameters",
+    "lcdm_baseline",
+    "n_integration_steps",
+    "prediction",
+    "consistency_with_planck_2020_hint"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p4_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P4"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "ansatz": {"type": "string"},
+    "ansatz_parameters": {"type": "object"},
+    "lcdm_baseline": {
+      "type": "object",
+      "required": ["H0_km_s_Mpc", "Omega_m", "Omega_L"],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number", "exclusiveMinimum": 0},
+        "Omega_m": {"type": "number", "minimum": 0, "maximum": 1},
+        "Omega_L": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "n_integration_steps": {"type": "integer", "minimum": 100},
+    "prediction": {
+      "type": "object",
+      "required": [
+        "beta_rad",
+        "beta_deg",
+        "integral_dimensionless",
+        "g_CS",
+        "z_CMB"
+      ],
+      "properties": {
+        "beta_rad": {"type": "number"},
+        "beta_deg": {"type": "number"},
+        "integral_dimensionless": {"type": "number"},
+        "g_CS": {"type": "number"},
+        "z_CMB": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "consistency_with_planck_2020_hint": {
+      "type": "object",
+      "required": [
+        "planck_hint_deg",
+        "planck_hint_sigma_deg",
+        "predicted_minus_observed_deg",
+        "z_score_vs_planck_hint",
+        "consistent_with_planck_at_2sigma"
+      ],
+      "properties": {
+        "planck_hint_deg": {"type": "number"},
+        "planck_hint_sigma_deg": {"type": "number"},
+        "predicted_minus_observed_deg": {"type": "number"},
+        "z_score_vs_planck_hint": {"type": "number"},
+        "consistent_with_planck_at_2sigma": {"type": "boolean"}
+      }
+    }
+  }
+}

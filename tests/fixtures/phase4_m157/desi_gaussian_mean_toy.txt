@@ -1,0 +1,4 @@
+# [z] [value at z] [quantity]
+0.300 7.90000000 DV_over_rs
+0.850 20.50000000 DM_over_rs
+0.850 18.20000000 DH_over_rs

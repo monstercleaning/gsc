@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "GSC (Gravitational Structural Collapse)"
+type: software
+authors:
+  - family-names: "Baev"
+    given-names: "Dimitar"
+    orcid: "https://orcid.org/0009-0009-7812-9203"
+    affiliation: "Monster Cleaning Ltd. — https://monstercleaning.com"
+repository-code: "https://github.com/monstercleaning/gsc"
+url: "https://github.com/monstercleaning/gsc"
+license: "MIT"
+abstract: >
+  An open-source pre-registration reproducibility stack demonstrated on a
+  scale-covariant cosmology framework. The stack combines deterministic
+  computational pipelines, cryptographically-signed numerical predictions, and
+  a layered claim hierarchy (kinematic → phenomenological → ansatz →
+  speculative extensions) to make speculative model-building falsifiable in
+  operational practice. Developed and audited via multi-LLM iterative
+  hostile-review cycles. The cosmology framework itself serves as a working
+  case study; the methodology is the primary contribution.
+keywords:
+  - cosmology
+  - scale-covariant
+  - renormalization group
+  - dark energy
+  - reproducibility
+  - pre-registration
+  - falsification
+  - AI-assisted research
+  - multi-LLM peer review

@@ -1,0 +1,5 @@
+name,value,sigma,label
+R,1.750235,0.00462101180588747,Planck 2018 distance priors (CHW2018; base_plikHM_TTTEEE_lowE)
+lA,301.4707,0.088864091840637,Planck 2018 distance priors (CHW2018; base_plikHM_TTTEEE_lowE)
+omega_b_h2,0.02235976,0.0001491182753474269,Planck 2018 distance priors (CHW2018; base_plikHM_TTTEEE_lowE)
+

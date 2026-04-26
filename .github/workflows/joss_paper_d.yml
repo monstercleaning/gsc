@@ -1,0 +1,81 @@
+name: joss-paper-d
+
+# Validate Paper D (methodology) JOSS submission package on every change
+# to the paper or its bibliography. Renders paper.pdf as an artefact so
+# you can preview without local Docker.
+
+on:
+  push:
+    paths:
+      - 'papers/paper_D_methodology/joss/paper.md'
+      - 'papers/paper_D_methodology/joss/paper.bib'
+      - '.github/workflows/joss_paper_d.yml'
+  pull_request:
+    paths:
+      - 'papers/paper_D_methodology/joss/paper.md'
+      - 'papers/paper_D_methodology/joss/paper.bib'
+  workflow_dispatch:
+
+jobs:
+  paper:
+    name: render JOSS paper.pdf via openjournals/inara
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: build draft PDF via openjournals/inara
+        uses: openjournals/openjournals-draft-action@master
+        with:
+          journal: joss
+          paper-path: papers/paper_D_methodology/joss/paper.md
+
+      - name: upload paper.pdf as artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper_D_pdf
+          path: papers/paper_D_methodology/joss/paper.pdf
+
+  validate-structure:
+    name: structural validation (YAML front-matter, word count, citations)
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: validate paper.md structure
+        run: |
+          cd papers/paper_D_methodology/joss
+          python3 << 'EOF'
+          import re, sys
+          text = open('paper.md').read()
+          fm = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
+          assert fm, "no YAML front-matter"
+          fm_text = fm.group(1)
+          for k in ('title', 'tags', 'authors', 'affiliations', 'date', 'bibliography'):
+              assert f'{k}:' in fm_text, f'missing required field: {k}'
+          assert 'bibliography: paper.bib' in fm_text, 'bibliography must point to paper.bib'
+
+          body = re.sub(r'^---.*?---', '', text, count=1, flags=re.DOTALL)
+          body = re.sub(r'# References.*', '', body, flags=re.DOTALL)
+          body = re.sub(r'#.*', '', body)
+          body = re.sub(r'\[@\w+\]', '', body)
+          words = len(body.split())
+          assert 250 <= words <= 1000, f'word count {words} out of JOSS range [250, 1000]'
+          print(f'OK: word count {words}')
+
+          bib = open('paper.bib').read()
+          entries = set(re.findall(r'@\w+\{(\w+),', bib))
+          cites = set(re.findall(r'@(\w+)', text))
+          cites.discard('')
+          unresolved = cites - entries
+          assert not unresolved, f'unresolved citations: {unresolved}'
+          print(f'OK: all {len(cites)} citations resolved')
+          print(f'INFO: {len(entries) - len(cites)} unused bib entries (acceptable)')
+
+          assert 'orcid: 0000-0000-0000-0000' not in fm_text, \
+              'ORCID placeholder still present — fill in real ORCID before submission'
+          EOF

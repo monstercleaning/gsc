@@ -1,0 +1,103 @@
+{
+  "$id": "phase4_epsilon_framework_readiness_audit_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_epsilon_framework_readiness_audit_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "repo_snapshot_manifest_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_manifest_source": {
+      "type": "string"
+    },
+    "detected_assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "code_support_flags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "gap_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggested_owner": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "severity",
+          "description",
+          "blocks",
+          "suggested_owner"
+        ]
+      }
+    },
+    "recommended_next_tasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "created_utc",
+    "created_utc_epoch",
+    "repo_version_dir",
+    "paths_redacted",
+    "repo_snapshot_manifest_sha256",
+    "repo_snapshot_manifest_source",
+    "detected_assets",
+    "code_support_flags",
+    "gap_list",
+    "recommended_next_tasks"
+  ]
+}

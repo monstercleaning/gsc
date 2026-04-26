@@ -1,0 +1,132 @@
+{
+  "$id": "phase3_sigmatensor_candidate_dossier_quicklook_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase3_sigmatensor_candidate_dossier_quicklook_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "dossier_input": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "basename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "basename",
+        "sha256"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "n_candidates": {
+          "type": "integer"
+        },
+        "n_ok": {
+          "type": "integer"
+        },
+        "n_error": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "n_candidates",
+        "n_ok",
+        "n_error"
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "required": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "pass": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "required",
+        "pass"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "rank": {
+            "type": "integer"
+          },
+          "plan_point_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "outdir_rel": {
+            "type": "string"
+          },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "missing_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "rank",
+          "plan_point_id",
+          "status",
+          "outdir_rel",
+          "metrics",
+          "missing_files"
+        ]
+      }
+    },
+    "digests": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "stable_table_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "stable_table_sha256"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "dossier_input",
+    "counts",
+    "gates",
+    "candidates",
+    "digests"
+  ]
+}

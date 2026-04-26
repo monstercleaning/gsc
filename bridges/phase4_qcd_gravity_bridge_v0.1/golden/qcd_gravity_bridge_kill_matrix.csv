@@ -1,0 +1,8 @@
+check_id,constraint_name,applies_if,bound_value,bound_units,status,notes,source_ref
+KT-001,MICROSCOPE Eotvos parameter,epsilon induces composition-dependent fifth force without screening at lab scales,1.0e-14,eta,KILLED,Any unscreened O(1e-6+) composition dependence is excluded.,MICROSCOPE-2017
+KT-002,Atomic clock drift,epsilon_em mapped to physical d(alpha)/dt in local environment,1.0e-17,yr^-1,TENSION,Strongly constrains direct time-varying-coupling interpretation.,AtomicClocks-2021
+KT-003,Oklo natural reactor,same epsilon_em applies at geologic lookback with no screening,1.0e-7,|Delta alpha / alpha|,TENSION,Model-dependent mapping from epsilon to alpha variation is required.,Oklo-Review
+KT-004,Lunar laser ranging,epsilon_gr induces direct local dG/dt,1.0e-13,yr^-1,KILLED,Unscreened local G variation is tightly bounded.,LLR-Review
+KT-005,BBN/CMB consistency,epsilon modifies early-time expansion/recombination without compensating sector model,order(1e-2),fractional,TENSION,Requires explicit coupling model before any combined statement.,Uzan-2011
+KT-006,Cross-constraint combination,single coupling model links all probes consistently,N/A,conditional,N-A,Apples-vs-oranges otherwise; combined bounds are model-conditional.,Martins-2017
+KT-007,Inference-layer epsilon only,epsilon treated strictly as measurement-model parameterization (no physical constant drift claim),N/A,interpretation,PASS,Within current roadmap framing this remains a valid working interpretation.,Roadmap-v2.8

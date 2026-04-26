@@ -1,0 +1,389 @@
+{
+  "$id": "phase4_triangle1_joint_sn_bao_epsilon_posterior_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_triangle1_joint_sn_bao_epsilon_posterior_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "run_mode": {
+      "type": "string",
+      "enum": [
+        "demo",
+        "paper_grade"
+      ]
+    },
+    "toy_mode": {
+      "type": "boolean"
+    },
+    "plot_backend": {
+      "type": "string",
+      "enum": [
+        "matplotlib",
+        "fallback"
+      ]
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "covariance_mode": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "pantheon": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "dataset_mode": {
+              "type": "string"
+            },
+            "dataset_relpath": {
+              "type": "string"
+            },
+            "dataset_sha256": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_mode",
+            "dataset_relpath",
+            "dataset_sha256"
+          ]
+        },
+        "bao": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "dataset_mode": {
+              "type": "string"
+            },
+            "dataset_relpath": {
+              "type": "string"
+            },
+            "dataset_sha256": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_mode",
+            "dataset_relpath",
+            "dataset_sha256"
+          ]
+        },
+        "grid": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "omega_m_min": {
+              "type": "number"
+            },
+            "omega_m_max": {
+              "type": "number"
+            },
+            "omega_m_steps": {
+              "type": "integer"
+            },
+            "epsilon_min": {
+              "type": "number"
+            },
+            "epsilon_max": {
+              "type": "number"
+            },
+            "epsilon_steps": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "omega_m_min",
+            "omega_m_max",
+            "omega_m_steps",
+            "epsilon_min",
+            "epsilon_max",
+            "epsilon_steps"
+          ]
+        },
+        "bao_rd_mode": {
+          "type": "string"
+        },
+        "H0_km_s_Mpc": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "pantheon",
+        "bao",
+        "grid",
+        "bao_rd_mode",
+        "H0_km_s_Mpc"
+      ]
+    },
+    "assumptions": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "intervention_level": {
+          "type": "string"
+        },
+        "epsilon_mapping": {
+          "type": "string"
+        },
+        "sn_lightcurve_training": {
+          "type": "string"
+        },
+        "bao_rd_handling": {
+          "type": "string"
+        },
+        "h0_handling": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "intervention_level",
+        "epsilon_mapping",
+        "sn_lightcurve_training",
+        "bao_rd_handling",
+        "h0_handling"
+      ]
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "best_fit": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "chi2_min": {
+              "type": "number"
+            },
+            "chi2_sn": {
+              "type": "number"
+            },
+            "chi2_bao": {
+              "type": "number"
+            },
+            "ndof_joint": {
+              "type": "integer"
+            },
+            "omega_m": {
+              "type": "number"
+            },
+            "epsilon_em": {
+              "type": "number"
+            },
+            "rd_m": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "chi2_min",
+            "chi2_sn",
+            "chi2_bao",
+            "ndof_joint",
+            "omega_m",
+            "epsilon_em",
+            "rd_m"
+          ]
+        },
+        "epsilon_em": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mean": {
+              "type": "number"
+            },
+            "std": {
+              "type": "number"
+            },
+            "p16": {
+              "type": "number"
+            },
+            "p50": {
+              "type": "number"
+            },
+            "p84": {
+              "type": "number"
+            },
+            "p2_5": {
+              "type": "number"
+            },
+            "p97_5": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5"
+          ]
+        },
+        "omega_m": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mean": {
+              "type": "number"
+            },
+            "std": {
+              "type": "number"
+            },
+            "p16": {
+              "type": "number"
+            },
+            "p50": {
+              "type": "number"
+            },
+            "p84": {
+              "type": "number"
+            },
+            "p2_5": {
+              "type": "number"
+            },
+            "p97_5": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5"
+          ]
+        },
+        "h0_equivalent_shift_at_pivot": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "pivot_z_obs": {
+              "type": "number"
+            },
+            "h0_ratio_equivalent": {
+              "type": "number"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pivot_z_obs",
+            "h0_ratio_equivalent",
+            "note"
+          ]
+        }
+      },
+      "required": [
+        "best_fit",
+        "epsilon_em",
+        "omega_m",
+        "h0_equivalent_shift_at_pivot"
+      ]
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "chi2_at_nearest_epsilon_zero": {
+          "type": "number"
+        },
+        "delta_chi2_vs_epsilon_zero": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "chi2_at_nearest_epsilon_zero",
+        "delta_chi2_vs_epsilon_zero"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "filename"
+        ]
+      },
+      "minItems": 4
+    },
+    "portability": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "forbidden_absolute_path_match_count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "forbidden_absolute_path_match_count"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "run_mode",
+    "toy_mode",
+    "plot_backend",
+    "repo_version_dir",
+    "paths_redacted",
+    "covariance_mode",
+    "inputs",
+    "assumptions",
+    "results",
+    "diagnostics",
+    "artifacts",
+    "portability"
+  ]
+}

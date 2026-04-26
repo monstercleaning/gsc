@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p3_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P3 (neutron-lifetime beam-trap)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "prediction",
+    "consistency_with_observed_anomaly"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p3_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P3"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "prediction": {
+      "type": "object",
+      "required": [
+        "tau_n_beam_predicted_s",
+        "tau_n_trap_predicted_s",
+        "delta_tau_beam_minus_trap_s",
+        "delta_sigma_fraction_trap_minus_beam",
+        "tau_intrinsic_s",
+        "sensitivity_dlntau_dlnsigma"
+      ],
+      "properties": {
+        "tau_n_beam_predicted_s": {"type": "number", "exclusiveMinimum": 0},
+        "tau_n_trap_predicted_s": {"type": "number", "exclusiveMinimum": 0},
+        "delta_tau_beam_minus_trap_s": {"type": "number"},
+        "delta_sigma_fraction_trap_minus_beam": {"type": "number"},
+        "tau_intrinsic_s": {"type": "number", "exclusiveMinimum": 0},
+        "sensitivity_dlntau_dlnsigma": {"type": "number"}
+      }
+    },
+    "consistency_with_observed_anomaly": {
+      "type": "object",
+      "required": [
+        "observed_tau_n_beam_s",
+        "observed_tau_n_trap_s",
+        "observed_delta_beam_minus_trap_s",
+        "z_score_delta",
+        "consistent_at_2sigma",
+        "explains_observed_anomaly"
+      ],
+      "properties": {
+        "observed_tau_n_beam_s": {"type": "number"},
+        "observed_tau_n_beam_sigma_s": {"type": "number"},
+        "observed_tau_n_trap_s": {"type": "number"},
+        "observed_tau_n_trap_sigma_s": {"type": "number"},
+        "observed_delta_beam_minus_trap_s": {"type": "number"},
+        "observed_delta_sigma_s": {"type": "number"},
+        "z_score_tau_beam": {"type": "number"},
+        "z_score_tau_trap": {"type": "number"},
+        "z_score_delta": {"type": "number"},
+        "consistent_at_2sigma": {"type": "boolean"},
+        "explains_observed_anomaly": {"type": "boolean"}
+      }
+    }
+  }
+}

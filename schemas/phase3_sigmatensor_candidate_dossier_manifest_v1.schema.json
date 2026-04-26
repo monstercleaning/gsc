@@ -1,0 +1,133 @@
+{
+  "$id": "phase3_sigmatensor_candidate_dossier_manifest_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": true,
+  "properties": {
+    "analysis_input": {
+      "additionalProperties": true,
+      "properties": {
+        "basename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "basename",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "candidates": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "outdir_rel": {
+            "type": "string"
+          },
+          "plan_point_id": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subtools": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "rank",
+          "plan_point_id",
+          "outdir_rel",
+          "status",
+          "subtools"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "digests": {
+      "additionalProperties": true,
+      "properties": {
+        "dossier_file_table_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "dossier_file_table_sha256"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "phase3_sigmatensor_candidate_dossier_manifest_v1",
+      "type": "string"
+    },
+    "selection": {
+      "additionalProperties": true,
+      "properties": {
+        "class_extra_args": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "eft_extra_args": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "fsigma8_extra_args": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "joint_extra_args": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ranks": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "top_k": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "top_k",
+        "ranks",
+        "joint_extra_args",
+        "fsigma8_extra_args",
+        "eft_extra_args",
+        "class_extra_args"
+      ],
+      "type": "object"
+    },
+    "tool": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "analysis_input",
+    "selection",
+    "candidates",
+    "digests"
+  ],
+  "type": "object"
+}

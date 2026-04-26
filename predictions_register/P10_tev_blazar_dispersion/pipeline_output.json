@@ -1,0 +1,65 @@
+{
+  "blazar_predictions": [
+    {
+      "d_L_Gpc": 0.13,
+      "name": "Mrk 421",
+      "predicted_sigma_t_seconds": 1.9e-12,
+      "z": 0.03
+    },
+    {
+      "d_L_Gpc": 0.15,
+      "name": "Mrk 501",
+      "predicted_sigma_t_seconds": 2.041e-12,
+      "z": 0.034
+    },
+    {
+      "d_L_Gpc": 0.52,
+      "name": "PKS 2155-304",
+      "predicted_sigma_t_seconds": 3.8e-12,
+      "z": 0.116
+    },
+    {
+      "d_L_Gpc": 0.86,
+      "name": "1ES 1101-232",
+      "predicted_sigma_t_seconds": 4.887e-12,
+      "z": 0.186
+    },
+    {
+      "d_L_Gpc": 3.0,
+      "name": "3C 279",
+      "predicted_sigma_t_seconds": 9.128e-12,
+      "z": 0.536
+    }
+  ],
+  "detector_assessment": {
+    "CTAO (commissioning 2026, science 2027)": {
+      "any_detectable": false,
+      "detectable_blazars": [],
+      "min_resolvable_sigma_t_s": 1.0
+    },
+    "HESS (current archival)": {
+      "any_detectable": false,
+      "detectable_blazars": [],
+      "min_resolvable_sigma_t_s": 30.0
+    },
+    "MAGIC (current archival)": {
+      "any_detectable": false,
+      "detectable_blazars": [],
+      "min_resolvable_sigma_t_s": 25.0
+    }
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "discriminator_vs_qg_liv": "Standard QG-LIV signatures are energy-dependent: \u0394t \u221d E (linear) or \u0394t \u221d E\u00b2 (quadratic). GSC predicts NO E-dependence; instead, stochastic variance correlated with line-of-sight DM column density. A positive observation of energy-flat structure-correlated dispersion would distinguish GSC \u03c3(x) from QG-LIV.",
+  "physics_status": "Parametric \u03c3(x) gradient model. The k_grad coupling is a free parameter; the \u03c3(x,t) field equation derivation in Section 6 of GSC_Framework.md is gating piece for narrowing it to a specific predicted value. Energy-flat signature distinguishes from QG-LIV.",
+  "prediction_id": "P10",
+  "registered_couplings": {
+    "epsilon_sigma_fluctuation": 0.001,
+    "k_grad_seconds_per_sqrt_meter": 3e-23,
+    "k_grad_units_note": "k_grad has SI units of s \u00d7 m^{-1/2}; corrected v0.2 from earlier dimensionless misdescription"
+  },
+  "schema": "predictions_p10_pipeline_output_v1",
+  "tier": "T4 (\u03c3(x) spatial-extension test)",
+  "title": "TeV blazar arrival-time dispersion (energy-flat, structure-correlated)",
+  "tool": "predictions_compute_P10",
+  "tool_version": "v0.2-dimensionally-consistent"
+}

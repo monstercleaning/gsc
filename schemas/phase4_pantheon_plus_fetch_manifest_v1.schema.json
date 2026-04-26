@@ -1,0 +1,107 @@
+{
+  "$id": "phase4_pantheon_plus_fetch_manifest_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_pantheon_plus_fetch_manifest_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ]
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "mu": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "bytes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "filename",
+            "sha256",
+            "bytes"
+          ]
+        },
+        "cov": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "bytes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "filename",
+            "sha256",
+            "bytes"
+          ]
+        }
+      },
+      "required": [
+        "mu",
+        "cov"
+      ]
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "source",
+    "files",
+    "paths_redacted"
+  ]
+}

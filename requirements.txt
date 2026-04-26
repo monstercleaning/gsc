@@ -1,0 +1,7 @@
+# Minimal dependencies for the v11.0.0 late-time pipeline:
+# - full-covariance SN likelihood (Cholesky + fast triangular solves)
+# - BAO covariance blocks
+# - figures + confidence-region plots
+numpy>=1.22
+scipy>=1.9
+matplotlib>=3.7

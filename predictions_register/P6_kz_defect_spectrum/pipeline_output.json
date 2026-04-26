@@ -1,0 +1,61 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "gw_background_prediction": {
+    "G_mu_dimensionless": 6.719e-07,
+    "M_star_GeV": 1e+16,
+    "Omega_GW_typical": 0.6719,
+    "band_predictions": {
+      "EPTA / IPTA": {
+        "detectable_at_3sigma": true,
+        "experiment_h_c_sensitivity": 5e-16,
+        "f_centre_Hz": 1e-08,
+        "predicted_h_c_estimate": 0.8197,
+        "snr_estimate": 1639000000000000.0
+      },
+      "Einstein Telescope": {
+        "detectable_at_3sigma": true,
+        "experiment_h_c_sensitivity": 1e-24,
+        "f_centre_Hz": 10.0,
+        "predicted_h_c_estimate": 0.8197,
+        "snr_estimate": 8.197e+23
+      },
+      "LISA (~2035)": {
+        "detectable_at_3sigma": true,
+        "experiment_h_c_sensitivity": 1e-21,
+        "f_centre_Hz": 0.001,
+        "predicted_h_c_estimate": 0.8197,
+        "snr_estimate": 8.197e+20
+      },
+      "NANOGrav (15-yr)": {
+        "detectable_at_3sigma": true,
+        "experiment_h_c_sensitivity": 1e-15,
+        "f_centre_Hz": 1e-08,
+        "predicted_h_c_estimate": 0.8197,
+        "snr_estimate": 819700000000000.0
+      }
+    },
+    "h_c_estimate": 0.8197
+  },
+  "joint_consistency_with_C1_vortex_dm": {
+    "note": "P6 (KZ defect spectrum) and Section 5 of GSC_Framework.md (vortex DM derivation) probe the same underlying physics. Joint consistency requires that the KZ-derived defect density matches the dark-matter abundance \u03a9_DM \u2248 0.265. This cross-check is implemented in the M201+ joint scoring layer once FRG critical exponents are available."
+  },
+  "kz_defect_density": {
+    "density_ratio_to_unit_tau": 1000000.0,
+    "scaling_exponent_minus_d_nu_over_1_plus_nu_z": -1.0,
+    "tau_quench_s": 1e-06
+  },
+  "physics_status": "Parametric Kibble-Zurek scaling. The critical exponents (\u03bd, z) at the \u03c3_*-crossing FRG fixed point are NOT YET COMPUTED \u2014 gating piece for this prediction and Section 5 of GSC_Framework.md (vortex-DM derivation). Plausible-range bracketed defaults are used; FRG calculation will narrow to a derived value.",
+  "prediction_id": "P6",
+  "registered_parameters": {
+    "M_star_GeV": 1e+16,
+    "nu_critical_exponent": 0.5,
+    "spatial_dimension": 3,
+    "tau_quench_s": 1e-06,
+    "z_dynamic_exponent": 1.0
+  },
+  "schema": "predictions_p6_pipeline_output_v1",
+  "tier": "T4",
+  "title": "Kibble\u2013Zurek defect spectrum from \u03c3_*-crossing",
+  "tool": "predictions_compute_P6",
+  "tool_version": "v0.1-parametric-KZ"
+}

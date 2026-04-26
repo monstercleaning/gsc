@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_pt_boltzmann_results_pack_v1.schema.json",
+  "title": "Phase-2 Boltzmann results pack v1",
+  "description": "Conservative schema for RESULTS_SUMMARY.json outputs.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "code",
+    "candidate",
+    "files",
+    "counts",
+    "gates"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase2_pt_boltzmann_results_pack_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "code": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "relpath",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "relpath": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "n_files_copied",
+        "total_bytes_copied"
+      ],
+      "properties": {
+        "n_files_copied": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_bytes_copied": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "spectra_detected": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "run_metadata": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "external_code": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "require",
+        "ok"
+      ],
+      "properties": {
+        "require": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "marker": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "zip": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

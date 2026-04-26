@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_eft_export_pack_v1.schema.json",
+  "title": "Phase-3 SigmaTensor EFT export pack v1",
+  "description": "Conservative schema for EFT_EXPORT_SUMMARY.json emitted by phase3_pt_sigmatensor_eft_export_pack.py.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "params",
+    "derived_today",
+    "grid_summary",
+    "alpha_defs",
+    "digests"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_eft_export_pack_v1"
+      ]
+    },
+    "tool": {"type": "string"},
+    "params": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "H0_si",
+        "Omega_m0",
+        "w_phi0",
+        "lambda"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number"},
+        "H0_si": {"type": "number"},
+        "Omega_m0": {"type": "number"},
+        "w_phi0": {"type": "number"},
+        "lambda": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "derived_today": {
+      "type": "object",
+      "required": [
+        "Omega_r0",
+        "Omega_phi0",
+        "u0",
+        "Vhat0",
+        "p_action"
+      ],
+      "properties": {
+        "Omega_r0": {"type": "number"},
+        "Omega_phi0": {"type": "number"},
+        "u0": {"type": "number"},
+        "Vhat0": {"type": "number"},
+        "p_action": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "grid_summary": {
+      "type": "object",
+      "required": [
+        "z_max",
+        "n_steps",
+        "alpha_K_min",
+        "alpha_K_max"
+      ],
+      "properties": {
+        "z_max": {"type": "number"},
+        "n_steps": {"type": "integer", "minimum": 1},
+        "alpha_K_min": {"type": "number"},
+        "alpha_K_max": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "alpha_defs": {
+      "type": "object",
+      "required": [
+        "alpha_K",
+        "alpha_M",
+        "alpha_B",
+        "alpha_T",
+        "c_s2"
+      ],
+      "properties": {
+        "alpha_K": {"type": "string"},
+        "alpha_M": {"type": "string"},
+        "alpha_B": {"type": "string"},
+        "alpha_T": {"type": "string"},
+        "c_s2": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "z_E_wphi_Omphi_alphaK_alphaM_alphaB_alphaT_cs2_sha256"
+      ],
+      "properties": {
+        "z_E_wphi_Omphi_alphaK_alphaM_alphaB_alphaT_cs2_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
+

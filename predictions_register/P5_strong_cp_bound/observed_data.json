@@ -1,0 +1,11 @@
+{
+  "schema": "predictions_p5_observed_data_v1",
+  "prediction_id": "P5",
+  "source": "n2EDM 2024 (Abel et al.)",
+  "data_release_date": "2020-02-28",
+  "url_reference": "https://doi.org/10.1103/PhysRevLett.124.081803",
+  "neutron_EDM_bound_e_cm": 1.8e-26,
+  "confidence_level_percent": 90,
+  "implied_theta_eff_bound_abs": 1e-10,
+  "notes": "Most stringent current bound on the neutron electric dipole moment. The implied bound on |θ_eff(z=0)| of order 10^-10 follows from standard nuclear-physics matrix-element calculations; subleading uncertainties of factor 2-3 are present."
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "description": "Single source of truth for canonical local artifact verification.",
+  "artifacts": {
+    "late_time": {
+      "type": "late-time",
+      "tier": "frozen",
+      "tag": "v10.1.1-late-time-r4",
+      "release_url": "https://github.com/morfikus/GSC/releases/tag/v10.1.1-late-time-r4",
+      "asset": "paper_assets_v10.1.1-late-time-r4.zip",
+      "sha256": "b29d5cb0e30941d2bb0cb4b2930f21a4a219a7e0a8439f7fec82704134cf4823"
+    },
+    "submission": {
+      "type": "submission",
+      "tier": "frozen",
+      "tag": "v10.1.1-submission-r2",
+      "release_url": "https://github.com/morfikus/GSC/releases/tag/v10.1.1-submission-r2",
+      "asset": "submission_bundle_v10.1.1-late-time-r4.zip",
+      "sha256": "fa06a2ce85a7991fa63670eb867a03fda4213989ca981b437e2ae2c5d8c3efe5"
+    },
+    "referee_pack": {
+      "type": "referee",
+      "tier": "recommended",
+      "tag": "v10.1.1-referee-pack-r7",
+      "release_url": "https://github.com/morfikus/GSC/releases/tag/v10.1.1-referee-pack-r7",
+      "asset": "referee_pack_v10.1.1-late-time-r4-r7.zip",
+      "sha256": "4faf0f4d5754bcd18c401c709396965229d4da7dc73cd4aa7bec38cebca1a2b0"
+    },
+    "toe_bundle": {
+      "type": "toe",
+      "tier": "recommended",
+      "tag": "v10.1.1-toe-track-r2",
+      "release_url": "https://github.com/morfikus/GSC/releases/tag/v10.1.1-toe-track-r2",
+      "asset": "toe_bundle_v10.1.1-r2.zip",
+      "sha256": "0d328efefc59e4744b6998b7ea14c3c3c932ad8575377d7a5629ec2fe5663894"
+    }
+  }
+}

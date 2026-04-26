@@ -1,0 +1,163 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1499,
+      "filename": "qcd_gravity_bridge_kill_matrix.csv",
+      "sha256": "222e9d197ddcc9e972213c7ad5424c1802781afcdee1f27637d187f256676def"
+    },
+    {
+      "bytes": 1883,
+      "filename": "qcd_gravity_bridge_scale_plot.png",
+      "sha256": "d35aac29e5f953a4bedacfa23195b2ccc722ad22cb0192cefae17234a88b18f6"
+    }
+  ],
+  "assumptions": {
+    "beta_convention": "dg/dln(mu)=(b_i/16pi^2)g^3",
+    "induced_gravity_model": "Sakharov/Adler-Zee order-of-magnitude with explicit UV cutoff and species count.",
+    "mu_running_not_time_variation": "Any mu->t mapping is an external assumption (scale setting / background / screening).",
+    "vacuum_scaling_ansatz": "rho ~ H0 * Lambda_QCD^3"
+  },
+  "constants": {
+    "h0_km_s_mpc": 67.4,
+    "hbar_gev_s": 6.582119569e-25,
+    "induced_cutoff_gev": 0.3,
+    "lambda_qcd_gev": 0.2,
+    "m_pl_reduced_gev": 2.435e+18,
+    "n_species": 60.0,
+    "omega_lambda": 0.685
+  },
+  "created_utc": "2000-01-01T00:00:00Z",
+  "induced_gravity_sanity": {
+    "conclusion": "Under the stated assumptions, SM/QCD-scale cutoff is far too small to reproduce observed Planck scale.",
+    "g_induced_over_newton": "4.139379933662e+37",
+    "m_pl_induced_gev": "3.784698783030e-01",
+    "m_pl_induced_over_observed": "1.554291081327e-19"
+  },
+  "interpretation": "Supporting sanity-check bundle for reviewer triage; not a standalone unification claim.",
+  "kill_test_matrix": {
+    "model_conditionality_note": "Combined precision bounds are apples-vs-oranges without an explicit coupling model across probes.",
+    "rows": [
+      {
+        "applies_if": "epsilon induces composition-dependent fifth force without screening at lab scales",
+        "bound_units": "eta",
+        "bound_value": "1.0e-14",
+        "check_id": "KT-001",
+        "constraint_name": "MICROSCOPE Eotvos parameter",
+        "notes": "Any unscreened O(1e-6+) composition dependence is excluded.",
+        "source_ref": "MICROSCOPE-2017",
+        "status": "KILLED"
+      },
+      {
+        "applies_if": "epsilon_em mapped to physical d(alpha)/dt in local environment",
+        "bound_units": "yr^-1",
+        "bound_value": "1.0e-17",
+        "check_id": "KT-002",
+        "constraint_name": "Atomic clock drift",
+        "notes": "Strongly constrains direct time-varying-coupling interpretation.",
+        "source_ref": "AtomicClocks-2021",
+        "status": "TENSION"
+      },
+      {
+        "applies_if": "same epsilon_em applies at geologic lookback with no screening",
+        "bound_units": "|Delta alpha / alpha|",
+        "bound_value": "1.0e-7",
+        "check_id": "KT-003",
+        "constraint_name": "Oklo natural reactor",
+        "notes": "Model-dependent mapping from epsilon to alpha variation is required.",
+        "source_ref": "Oklo-Review",
+        "status": "TENSION"
+      },
+      {
+        "applies_if": "epsilon_gr induces direct local dG/dt",
+        "bound_units": "yr^-1",
+        "bound_value": "1.0e-13",
+        "check_id": "KT-004",
+        "constraint_name": "Lunar laser ranging",
+        "notes": "Unscreened local G variation is tightly bounded.",
+        "source_ref": "LLR-Review",
+        "status": "KILLED"
+      },
+      {
+        "applies_if": "epsilon modifies early-time expansion/recombination without compensating sector model",
+        "bound_units": "fractional",
+        "bound_value": "order(1e-2)",
+        "check_id": "KT-005",
+        "constraint_name": "BBN/CMB consistency",
+        "notes": "Requires explicit coupling model before any combined statement.",
+        "source_ref": "Uzan-2011",
+        "status": "TENSION"
+      },
+      {
+        "applies_if": "single coupling model links all probes consistently",
+        "bound_units": "conditional",
+        "bound_value": "N/A",
+        "check_id": "KT-006",
+        "constraint_name": "Cross-constraint combination",
+        "notes": "Apples-vs-oranges otherwise; combined bounds are model-conditional.",
+        "source_ref": "Martins-2017",
+        "status": "N-A"
+      },
+      {
+        "applies_if": "epsilon treated strictly as measurement-model parameterization (no physical constant drift claim)",
+        "bound_units": "interpretation",
+        "bound_value": "N/A",
+        "check_id": "KT-007",
+        "constraint_name": "Inference-layer epsilon only",
+        "notes": "Within current roadmap framing this remains a valid working interpretation.",
+        "source_ref": "Roadmap-v2.8",
+        "status": "PASS"
+      }
+    ],
+    "status_counts": {
+      "KILLED": 2,
+      "N-A": 1,
+      "PASS": 1,
+      "TENSION": 3
+    }
+  },
+  "mu_running_vs_time_variation_memo": [
+    "RG running is defined against renormalization scale mu, not cosmological time t.",
+    "A mu->t mapping requires extra assumptions: scale-setting rule, background dynamics, and screening/environment model.",
+    "Therefore beta-function evidence alone is insufficient to claim observable temporal drift."
+  ],
+  "non_claims": [
+    "No claim that gravity equals the strong force.",
+    "No claim that QCD alone explains M_Pl.",
+    "No claim that RG beta-functions imply cosmic time variation.",
+    "This artifact is an idea-bank plus kill-test sanity scaffold only."
+  ],
+  "paths_redacted": true,
+  "preset": "ci_smoke",
+  "qcd_vacuum_scaling": {
+    "conclusion": "Naive scaling typically overshoots observed dark-energy density and needs model-dependent suppression.",
+    "h0_gev": "1.437722662963e-42",
+    "ratio_qcd_to_rho_de": "4.566727640396e+02",
+    "required_suppression_factor_if_qcd_is_direct_source": "4.566727640396e+02",
+    "rho_de_observed_gev4": "2.518604613501e-47",
+    "rho_qcd_h0_lambda3_gev4": "1.150178130370e-44"
+  },
+  "schema": "phase4_qcd_gravity_bridge_numbers_v1",
+  "seed": 0,
+  "tool": "make_qcd_gravity_bridge_artifacts",
+  "tool_version": "m160-v1",
+  "trace_anomaly_sector_table": [
+    {
+      "beta_coefficient": "+4.100000000000e+00",
+      "comment": "Landau-like growth in UV for abelian coupling.",
+      "sector": "QED/U(1)_Y",
+      "sign": "positive"
+    },
+    {
+      "beta_coefficient": "-3.166666666667e+00",
+      "comment": "Asymptotically free trend in this convention.",
+      "sector": "EW/SU(2)_L",
+      "sign": "negative"
+    },
+    {
+      "beta_coefficient": "-7.000000000000e+00",
+      "comment": "Asymptotic freedom; does not imply cosmological time-variation.",
+      "sector": "QCD/SU(3)_c",
+      "sign": "negative"
+    }
+  ]
+}

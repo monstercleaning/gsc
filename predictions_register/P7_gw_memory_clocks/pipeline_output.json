@@ -1,0 +1,95 @@
+{
+  "analysis_strategy": {
+    "data_source": "Existing atomic-clock comparison time-series (ITOC, BACON, NICT-PTB-NIST), correlated with LIGO/Virgo public trigger times from the GraceDB and gw-openscience catalogs.",
+    "scoring_method": "Cross-correlate predicted (\u03b4\u03bd/\u03bd) signal at each station against the post-merger residuals; stack over events with significance weighting by registered h_mem; extract combined detection or upper limit.",
+    "trigger_window": "post-merger \u00b1100 s"
+  },
+  "detectability_assessment": {
+    "detection_targets": {
+      "Al+ (1 sec)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 8e-17,
+        "snr_single_event": 1.25e-05,
+        "snr_stacked": 0.000125
+      },
+      "Al+ (10000 sec)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 8e-19,
+        "snr_single_event": 0.00125,
+        "snr_stacked": 0.0125
+      },
+      "Sr (1 sec)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 1e-15,
+        "snr_single_event": 1e-06,
+        "snr_stacked": 1e-05
+      },
+      "Sr (10000 sec, white-noise scaling)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 1e-17,
+        "snr_single_event": 0.0001,
+        "snr_stacked": 0.001
+      },
+      "Yb+ (1 sec)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 5e-16,
+        "snr_single_event": 2e-06,
+        "snr_stacked": 2e-05
+      },
+      "Yb+ (10000 sec)": {
+        "detectable_at_3sigma_stacked": false,
+        "instability": 5e-18,
+        "snr_single_event": 0.0002,
+        "snr_stacked": 0.002
+      }
+    },
+    "n_events_stacked": 100,
+    "sqrt_n_gain_assumed": true,
+    "stacked_signal_abs": 1e-20,
+    "stacking_factor": 10.0
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "event_amplitude_survey": {
+    "GW150914-like (BBH ~30 Msun, 400 Mpc)": {
+      "delta_nu_over_nu_predicted": -5e-22,
+      "delta_sigma_over_sigma": 5e-22,
+      "h_mem_strain": 5e-22,
+      "k_gw_coupling": 1.0
+    },
+    "GW170817-like (BNS ~1.4+1.4 Msun, 40 Mpc)": {
+      "delta_nu_over_nu_predicted": -1e-21,
+      "delta_sigma_over_sigma": 1e-21,
+      "h_mem_strain": 1e-21,
+      "k_gw_coupling": 1.0
+    },
+    "Local SMBH (~10^6 Msun, 1 Mpc, hypothetical)": {
+      "delta_nu_over_nu_predicted": -1e-18,
+      "delta_sigma_over_sigma": 1e-18,
+      "h_mem_strain": 1e-18,
+      "k_gw_coupling": 1.0
+    },
+    "Massive BBH (~50 Msun, 100 Mpc)": {
+      "delta_nu_over_nu_predicted": -5e-21,
+      "delta_sigma_over_sigma": 5e-21,
+      "h_mem_strain": 5e-21,
+      "k_gw_coupling": 1.0
+    }
+  },
+  "main_event_prediction": {
+    "delta_nu_over_nu_predicted": -1e-21,
+    "delta_sigma_over_sigma": 1e-21,
+    "h_mem_strain": 1e-21,
+    "k_gw_coupling": 1.0
+  },
+  "physics_status": "Leading-order \u03c3-GW coupling (k_GW parametric until FRG-derived). Predicted permanent atomic-frequency shift \u03b4\u03bd/\u03bd = -k_GW \u00d7 h_mem after each merger event with GW-memory amplitude h_mem. Stacking over multiple events gains \u221aN factor.",
+  "prediction_id": "P7",
+  "registered_couplings": {
+    "h_mem_default_strain": 1e-21,
+    "k_gw": 1.0
+  },
+  "schema": "predictions_p7_pipeline_output_v1",
+  "tier": "T4",
+  "title": "GW-memory-induced atomic-clock-array signature",
+  "tool": "predictions_compute_P7",
+  "tool_version": "v0.1-parametric-coupling"
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_lowz_scan_plan_v1.schema.json",
+  "title": "Phase-3 SigmaTensor low-z scan plan v1",
+  "description": "Conservative schema for deterministic plan JSON emitted by phase3_scan_sigmatensor_lowz_joint.py.",
+  "type": "object",
+  "required": [
+    "schema",
+    "created_utc",
+    "grid_spec",
+    "fixed_params",
+    "points",
+    "plan_source_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_lowz_scan_plan_v1"
+      ]
+    },
+    "tool": {"type": "string"},
+    "created_utc": {"type": "string"},
+    "grid_spec": {
+      "type": "object",
+      "required": [
+        "Omega_m_min",
+        "Omega_m_max",
+        "Omega_m_steps",
+        "w0_min",
+        "w0_max",
+        "w0_steps",
+        "lambda_min",
+        "lambda_max",
+        "lambda_steps"
+      ],
+      "properties": {
+        "Omega_m_min": {"type": "number"},
+        "Omega_m_max": {"type": "number"},
+        "Omega_m_steps": {"type": "integer", "minimum": 1},
+        "w0_min": {"type": "number"},
+        "w0_max": {"type": "number"},
+        "w0_steps": {"type": "integer", "minimum": 1},
+        "lambda_min": {"type": "number"},
+        "lambda_max": {"type": "number"},
+        "lambda_steps": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "fixed_params": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "Tcmb_K",
+        "N_eff",
+        "Omega_r0_override",
+        "sign_u0"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number"},
+        "Tcmb_K": {"type": "number"},
+        "N_eff": {"type": "number"},
+        "Omega_r0_override": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "sign_u0": {"type": "integer", "enum": [-1, 1]}
+      },
+      "additionalProperties": true
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "params",
+          "plan_point_id"
+        ],
+        "properties": {
+          "index": {"type": "integer", "minimum": 0},
+          "params": {
+            "type": "object",
+            "required": [
+              "Omega_m",
+              "w0",
+              "lambda"
+            ],
+            "properties": {
+              "Omega_m": {"type": "number"},
+              "w0": {"type": "number"},
+              "lambda": {"type": "number"}
+            },
+            "additionalProperties": true
+          },
+          "plan_point_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "plan_source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

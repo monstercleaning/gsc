@@ -1,0 +1,7 @@
+# Grandfathered large tracked paths (fnmatch-style patterns).
+# This list exists to keep the footprint guard non-invasive for legacy trees.
+
+v11.0.0/B/**
+v11.0.0/archive/**
+v11.0.0/GSC_Framework_v10_1_FINAL.pdf
+GSC_Framework_v10.1.pdf

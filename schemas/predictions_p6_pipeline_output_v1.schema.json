@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p6_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P6 (Kibble-Zurek defect spectrum)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "registered_parameters",
+    "kz_defect_density",
+    "gw_background_prediction"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p6_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P6"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "registered_parameters": {
+      "type": "object",
+      "required": [
+        "nu_critical_exponent",
+        "z_dynamic_exponent",
+        "tau_quench_s",
+        "M_star_GeV",
+        "spatial_dimension"
+      ]
+    },
+    "kz_defect_density": {
+      "type": "object",
+      "required": [
+        "scaling_exponent_minus_d_nu_over_1_plus_nu_z",
+        "density_ratio_to_unit_tau",
+        "tau_quench_s"
+      ]
+    },
+    "gw_background_prediction": {
+      "type": "object",
+      "required": [
+        "G_mu_dimensionless",
+        "M_star_GeV",
+        "Omega_GW_typical",
+        "h_c_estimate",
+        "band_predictions"
+      ]
+    },
+    "joint_consistency_with_C1_vortex_dm": {"type": "object"}
+  }
+}

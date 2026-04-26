@@ -1,0 +1,684 @@
+---
+title: "Gravitational Structural Collapse (GSC)"
+subtitle: "A Renormalized Framework for Freeze-Frame Cosmology and Global Energy Conservation"
+author: "Dimitar Baev"
+date: "January 2026"
+version: "v10.1"
+---
+
+> **Status banner (Phase-4 sync):**
+> Historical v10.1 snapshot; drift-sign framing superseded by E2 + Roadmap v2.8; do not submit as-is.
+
+**Author:** Dimitar Baev (project lead)  
+**Status:** Historical conceptual framework + supporting drift diagnostic context.  
+**Scope:** Late-time only (post-recombination). See the boxed summary below for scope/claims/kill-tests.
+
+> **Scope, Claims, and Kill Tests (v11.0.0)**
+>
+> |  |  |
+> |---|---|
+> | **Scope (v11.0.0)** | late-time only (post-recombination; roughly $z\lesssim 5$). Early-time/CMB closure, FRG derivation, and perturbations/LSS are out of scope. |
+> | **What is *not* new physics** | conformal frame swap / duality (acknowledged heritage). |
+> | **What is new in this submission** | measurement model (Option-2 freeze-frame), explicit late-time **history selection** class (power-law/transition), reproducible pipeline, and drift sign as a historical/supporting no-go diagnostic. |
+> | **Historical initial falsifier / supporting diagnostic** | redshift drift sign at $z\sim 2$–5: in Roadmap v2.8 framing this is no longer primary; it is retained as supporting no-go evidence for specific late-time toy histories. |
+> | **Hard consistency requirements** | local metrology is a null test under universality; classic expansion tests retained (SN time dilation $\propto(1+z)$, Tolman $\propto(1+z)^{-4}$); not tired light. |
+> | **Roadmap only** | early-time (E2 plan), FRG $k_*$ derivation, and perturbations/structure formation. |
+
+
+---
+
+## Abstract
+
+We propose **Gravitational Structural Collapse (GSC)** as a renormalized, scale-covariant framework in which the standard interpretation of cosmological redshift as *metric expansion* is replaced by a physically equivalent description: a **freeze-frame (conformally static) background spacetime** with a **time-evolving matter scale**. In this formulation, the observed growth of cosmological distances in atomic units is attributed to the **continuous shrinkage of bound matter** (equivalently, the growth of particle masses in a freeze-frame description), while **dimensionless local physics remains invariant**.
+
+The core dynamical hypothesis of v10 is that the collapse of the characteristic matter scale is driven by **renormalization-group (RG) running of gravity**: the effective Newton coupling becomes strongly enhanced as the system approaches a critical ultraviolet scale. We replace all prior large-extra-dimension (ADD/LED) toy enhancements with a single RG-flow mechanism featuring a **sharp, pole-like crossover (Padé-type) enhancement** in the coupling. This provides a natural route to an effective phantom equation of state ($w_{\rm eff} < -1$) without introducing ad hoc fluid components.
+
+A key conceptual addition is **energy bookkeeping**. In standard FLRW cosmology, global energy is not generally a Noether charge because a time-dependent background lacks a global timelike Killing symmetry. In the GSC freeze frame, a global time-translation symmetry is restored and total energy can be defined as a conserved Noether quantity, while the apparent “photon energy loss” of redshift is reinterpreted as the evolution of the detector scale.
+
+GSC v10 is deliberately minimal: it highlights one **historical supporting diagnostic** beyond the LambdaCDM concordance model, namely the **sign of the redshift drift** ($dz/dt_0$) at high redshift. For the toy late-time histories considered here (monotonic accelerated collapse satisfying $H(z)<H_0(1+z)$ in the quasar range), these histories imply $\dot z>0$ at $z\sim 2$–5, in contrast with the standard expectation $\dot z<0$ in that range. This diagnostic remains testable with upcoming ultra-stable high-resolution spectroscopy (ELT/ANDES; precursor programs with VLT/ESPRESSO).
+Because Sandage-Loeb is a kinematic relation, this is explicitly a **history-vs-history** test (`H(z)_GSC` versus `H(z)_\Lambda\mathrm{CDM}`), not a frame-label test.
+
+---
+
+## Contents
+
+1. Motivation and Design Principles  
+2. The Core Postulates of GSC v10  
+3. Conformal Frame Map: Expansion vs. Shrinking Matter  
+4. Renormalized Scale-Dependent Gravity (RG Flow, Pole-like Crossover)  
+5. Scale Covariance and Why Local Metrology Sees No Drift (GPS, Clocks, Oklo)  
+6. Global Energy Bookkeeping and Noether Charge  
+7. Cosmological Dynamics and Effective Equation of State  
+8. Redshift drift (historical; deprecated as primary)  
+9. What Was Removed from v9.1 and Why  
+10. Open Problems and v10+ Roadmap  
+Appendices: Notation, proofs, and a legacy-to-v10 mapping
+
+---
+
+# 1. Motivation and Design Principles
+
+### 1.1 The empirical starting point: cosmological redshift
+
+The observable fact is the systematic redshift of distant spectral lines. The standard interpretation is that spacetime expands (FLRW metric), stretching photon wavelengths.
+
+### 1.2 Relationship to Wetterich (2013) and key differentiation
+
+The conformal-frame reinterpretation of cosmological redshift as arising from evolving matter scales rather than metric expansion was emphasized by Wetterich (2013) in the scalar-tensor / variable-gravity literature. Via a **conformal field redefinition**, an expanding FLRW description can be mapped to a frame with approximately static background geometry and time-evolving particle masses and rulers. As stressed in that literature, this is a field redefinition: it does not, by itself, constitute new physics.
+
+Frameworks of this type are therefore often perceived as observationally equivalent to ΛCDM unless one commits to additional dynamical structure that fixes the cosmological history $H(z)$. In GSC v10 we make two minimal commitments:
+
+- **Mechanism framing (phenomenological):** the evolution of the universal scale $\sigma(t)$ is driven by RG-motivated, scale-dependent gravity. In v10 this is an explicit parameterization (not a first-principles derivation).
+- **Testability upgrade:** we emphasize a look-back observable (redshift drift) that constrains the selected late-time history once a specific $H(z)$ is specified. The key discriminator is the *sign* of $\dot z$ in the quasar range, testable with upcoming ultra-stable spectroscopy (ELT/ANDES; precursors with VLT/ESPRESSO).
+
+| Model | High-z drift sign ($z \gtrsim 2$) | Comment |
+|---|---:|---|
+| ΛCDM | $\dot z < 0$ | past deceleration (matter domination) |
+| GSC (monotonic accelerated collapse) | $\dot z > 0$ | accelerated collapse toward today |
+
+### 1.3 The guiding design principles of v10
+
+v10 enforces four principles that v9.1 violated in places:
+
+1. **One gravity mechanism.**  
+   No ADD/LED exponents, no curve-fitted power laws. The only allowed mechanism for “strong gravity” is RG flow.
+
+2. **Universality over cleverness.**  
+   Local null results (GPS, atomic clocks, equivalence principle) are not “marginal survivals”; they are required consequences of universal/coherent scaling.
+
+3. **No fragile anomaly-collecting.**  
+   v10 does not claim to “solve” neutron lifetime, Casimir deviations, Li-7, etc. unless the mechanism survives a clean scale analysis.
+
+4. **Falsifiability first.**  
+   v10 has one primary discriminant: the sign of redshift drift at high redshift.
+
+### 1.4 Historical context and failure modes (Dirac, tired light, conformal cosmologies)
+
+The idea that a change of “fundamental” scales could mimic expansion has a long history. Dirac’s varying-$G$ proposal (1937) is an instructive precedent: it was testable and ultimately constrained, highlighting the need to keep claims tightly tied to clean observables.
+
+Separately, “tired light” mechanisms (photon energy-loss or scattering processes) are ruled out by classic expansion tests, including the Tolman surface-brightness relation and the observed $(1+z)$ time dilation of Type Ia supernova light curves (as well as the near-perfect blackbody spectrum of the CMB). **GSC is not a tired-light mechanism:** it preserves time dilation and Tolman dimming within the conformal, scale-covariant measurement model (Sec. 3.4), assuming standard photon number conservation along null geodesics rather than ad hoc energy-loss physics.
+
+In this context, Wetterich-style conformal descriptions are best viewed as alternative variable choices; here we emphasize a look-back observable (redshift drift) that breaks the perceived equivalence once one commits to a specific late-time $H(z)$ history.
+
+---
+
+# 2. The Core Postulates of GSC v10
+
+We define the theory by a small set of postulates (the “axioms” of the framework). Everything else is derived or deferred.
+
+## Postulate P1: Static background in the freeze frame
+
+There exists a conformal frame (the **freeze frame**) in which the cosmological background metric is approximately Minkowski,
+
+$$
+\bar g_{\mu\nu} \simeq \eta_{\mu\nu},
+$$
+
+up to small perturbations describing local gravitational fields. There is no global expansion of spatial geometry in this frame.
+
+## Postulate P2: A universal scale field controls all matter scales
+
+There exists a homogeneous scalar scale field $\sigma(t)$ such that the characteristic size of bound matter (atomic and hadronic) is proportional to $\sigma$,
+
+$$
+\ell_{\rm bound}(t) \propto \sigma(t),
+$$
+
+so that **matter shrinks** as $\sigma(t)$ decreases. Equivalently, particle masses increase as
+
+$$
+m_i(t) \propto \sigma(t)^{-1}.
+$$
+
+In v10 we adopt **universal scaling**: all SM mass scales (QCD confinement, Higgs vev, lepton masses, nuclear scales) co-scale in such a way that **dimensionless couplings and ratios** remain constant to high precision.
+
+To preserve the constancy of *dimensionless* gravitational couplings (e.g. $\alpha_G \equiv G m_p^2/(\hbar c)$), the framework further requires that the effective Planck mass co-scales with the matter scale,
+
+$$
+M_{\rm Pl}(t) \propto \sigma(t)^{-1},
+$$
+
+so that the infrared (macroscopic) Newton coupling scales as
+
+$$
+G_{\rm IR}(t) \propto \sigma(t)^2.
+$$
+
+This scaling is *frame dependent*: in an Einstein frame with constant $M_{\rm Pl}$ the same physics is described by an expanding metric; in the freeze frame the background metric is static while masses and $G$ evolve coherently.
+
+
+## Postulate P3: Gravity is renormalized and scale-dependent (RG flow)
+
+The effective Newton coupling runs with physical scale $k$ (or length $\ell \sim 1/k$). In the ultraviolet it exhibits a rapid enhancement consistent with the idea of asymptotic safety / nonperturbative RG flow.
+
+For the purposes of v10, we encode the essential behavior in a minimal *pole-like Padé / sharp-crossover parameterization*,
+
+$$
+G(k) \;=\; \frac{G_{\rm IR}}{1 - \left(\frac{k}{k_*}\right)^2},
+\qquad
+k_* \;\text{(phenomenological UV scale)},
+$$
+
+Motivation note: earlier iterations heuristically associated $k_*$ with a hadronic/confinement scale, but in v11.0.0 it is treated phenomenologically.
+
+This is an *effective* parametrization of a rapid crossover in $G(k)$; we do **not** claim a physical divergence at $k=k_*$. In a UV-complete treatment one expects regulated behavior (fixed points, crossover/walking, or other nonperturbative completion).
+
+or equivalently in length language,
+
+$$
+G(\ell) \;=\; \frac{G_{\rm IR}}{1 - \left(\frac{\ell_*}{\ell}\right)^2},
+\qquad
+\ell_* = k_*^{-1}.
+$$
+
+**Interpretation:** as the relevant physical scale approaches a critical ultraviolet scale $\ell \rightarrow \ell_*$, the effective coupling grows sharply. This removes any need for large arbitrary exponents (e.g., $n \approx 36$).
+
+**Important:** In v10, $\ell_*$ (or $k_*$) is treated as a *phenomenological UV scale*, heuristically associated with hadronic physics, but not assumed as a derived identity. Deriving it from first principles is an open problem and is explicitly listed in the roadmap.
+
+## Postulate P4: Observables are dimensionless; local drift is a null prediction
+
+Any local experiment compares dimensionless ratios (clock ratios, frequency ratios, orbital-to-atomic times, etc.). Under universal scaling, these ratios remain constant. Therefore:
+
+- **Local comparisons (GPS, metrology, clock networks) must show null secular drift** beyond standard GR/SM predictions.
+- Only **look-back** observables (those comparing emission vs. observation epochs) can reveal the evolution of $\sigma(t)$.
+
+---
+
+# 3. Conformal Frame Map: Expansion vs. Shrinking Matter
+
+This section is the “mathematical shield”: it shows how the static-space description is connected to the usual expanding-space description.
+
+## 3.1 Frame map
+
+Let $g_{\mu\nu}$ denote the metric in the usual Einstein-frame cosmological description (expanding FLRW), and let $\bar g_{\mu\nu}$ denote the freeze-frame metric.
+
+We define a conformal transformation
+
+$$
+g_{\mu\nu} \;=\; \Omega^2(\sigma)\, \bar g_{\mu\nu},
+\qquad
+\Omega(\sigma) \equiv \frac{\sigma_0}{\sigma(t)}.
+$$
+
+Then the Einstein-frame scale factor is
+
+$$
+a(t) \;=\; \Omega(\sigma(t)) \;=\; \frac{\sigma_0}{\sigma(t)}.
+$$
+
+Thus, expansion ($a$ increasing) is equivalent to collapse ($\sigma$ decreasing).
+
+## 3.2 Redshift in the freeze frame
+
+For an emitter at time $t_e$ and observer at $t_0$,
+
+$$
+1+z \;=\; \frac{a(t_0)}{a(t_e)} \;=\; \frac{\sigma(t_e)}{\sigma(t_0)}.
+$$
+
+This means that the observed redshift can be interpreted as the ratio of matter scales between emission and observation: spectral lines emitted when atoms were larger (smaller masses) are redshifted relative to today’s atoms.
+
+## 3.3 What is (and is not) claimed
+
+- The existence of the frame map is not controversial: it follows from scalar-tensor field redefinitions.
+- GSC’s physical claim is that there exists a **dynamical reason** for $\sigma(t)$ to evolve, and that the freeze frame is the natural bookkeeping frame for conserved quantities.
+
+This equivalence point is double-edged: if two descriptions use the same physical history $H(z)$, they predict the same dimensionless observables. Therefore the empirical target is not “frame label versus frame label” but the specific dynamics that selects a non-$\Lambda$CDM history. In this submission, falsifiability is tied to that selected history class.
+
+## 3.4 Classic expansion tests retained (time dilation, Tolman dimming)
+
+Because the GSC interpretation is implemented as a conformal measurement-model map (not as photon energy-loss physics), it preserves the classic expansion tests that rule out tired-light analogies.
+
+**SN Ia time dilation.** From
+
+$$
+1+z = \frac{\sigma(t_e)}{\sigma(t_0)},
+$$
+
+and the scaling of characteristic atomic times $\tau_{\rm atom}(t)\propto 1/m(t)\propto \sigma(t)$, a process with a local characteristic duration $\Delta t\propto \tau_{\rm atom}$ obeys
+
+$$
+\frac{\Delta t_{\rm obs}}{\Delta t_{\rm em}}
+= \frac{\tau_{\rm atom}(t_e)}{\tau_{\rm atom}(t_0)}
+= \frac{\sigma(t_e)}{\sigma(t_0)}
+= 1+z,
+$$
+
+matching the observed $(1+z)$ stretch of SN light curves.
+
+**Tolman surface brightness.** With photon number conservation along null geodesics,
+
+$$
+F=\frac{L}{4\pi D_L^2},
+\qquad
+D_L=(1+z)^2D_A,
+$$
+
+and therefore for an object with physical area $A$ and angular size $\theta^2\sim A/D_A^2$,
+
+$$
+SB \equiv \frac{F}{\theta^2} \propto \frac{L/A}{(1+z)^4}.
+$$
+
+In GSC this standard $(1+z)^{-4}$ Tolman dimming is retained via the conformal map and Etherington reciprocity, so the framework is not a tired-light mechanism.
+
+---
+
+# 4. Renormalized Scale-Dependent Gravity (RG Flow, Pole-like Crossover)
+
+## 4.1 Connection to asymptotic safety (conceptual)
+
+The asymptotic safety program posits that quantum gravity may be nonperturbatively renormalizable, with couplings approaching a UV fixed point. In many functional RG treatments, the dimensionless Newton coupling $g(k)=k^2 G(k)$ approaches a nontrivial fixed point, implying non-classical running of $G(k)$.
+
+v10 does **not** attempt a full FRG derivation. Instead it uses the robust qualitative lesson: **gravity need not be a constant coupling across scales**, and strong enhancement can occur in the UV.
+
+## 4.2 Minimal parametrization used in v10
+
+We adopt:
+
+$$
+G(k) = \frac{G_{\rm IR}}{1-(k/k_*)^2}.
+$$
+
+This form has three useful properties:
+
+1. **Correct IR limit:** $G(k)\rightarrow G_{\rm IR}$ for $k\ll k_*$.
+2. **Rapid UV enhancement:** $G$ grows quickly as $k\rightarrow k_*$.
+3. **No arbitrary exponents:** unlike ADD-style power laws.
+
+We emphasize again: this is a minimal *pole-like crossover* parametrization capturing qualitative RG behavior. We do **not** claim a physical divergence at $k=k_*$; in a UV-complete picture one expects regulated behavior (fixed points / crossover / walking). The scale $k_*$ is treated phenomenologically in v10. The detailed FRG beta functions are deferred to a technical companion note.
+
+## 4.3 Why this matters for cosmology in GSC
+
+Because the matter scale $\sigma(t)$ controls the characteristic physical scales inside bound systems, the RG-enhanced gravity can couple back into the evolution of $\sigma(t)$. As $\sigma(t)$ decreases, the relevant internal scales probe higher $k$, and the effective coupling increases — producing **accelerated structural collapse**. In v11.0.0, the identification between RG scale and cosmological/structural scale (e.g. $k \leftrightarrow 1/\sigma$) is treated as a working ansatz, not a FRG derivation, and remains an explicit open-problem item.
+
+**RG scale identification note (`k(\sigma)`)**: throughout the current release, the map from FRG scale `k` to the bound-matter evolution variable `\sigma` is a phenomenological identification used for modeling consistency, not a first-principles derivation from asymptotic safety. See `v11.0.0/docs/rg_scale_identification.md` for the precise claim boundary and deferred derivation scope.
+
+This is the v10 replacement for the v8–v9 ADD-based “$n=36$” mechanism.
+
+---
+
+# 5. Scale Covariance and Why Local Metrology Sees No Drift
+
+The critiques of v9.1 emphasized GPS, atomic clocks, Oklo, pulsars, and equivalence-principle tests. v10 does not treat these as external “threats”; they are internal consistency requirements.
+
+## 5.1 Scale-covariance lemma (informal statement)
+
+If all dimensionful quantities in the local experiment (masses, lengths, gravitational parameters, and the clock transitions themselves) co-scale with a single $\sigma(t)$, then any dimensionless ratio measured by that experiment is invariant.
+
+This is the central reason that **local physics is blind** to the global evolution of $\sigma(t)$.
+
+## 5.2 Example: atomic clocks vs orbital dynamics (GPS logic)
+
+Atomic transition frequencies scale (schematically) as
+
+$$
+\nu_{\rm atom} \propto m_e\, \alpha^2,
+$$
+
+while orbital frequencies scale as
+
+$$
+\nu_{\rm orb} \sim \sqrt{\frac{GM}{r^3}}.
+$$
+
+Under universal scaling, $m_e\propto \sigma^{-1}$ and the size of bound systems (including orbit sizes expressed in local rods) scales as $r\propto \sigma$.
+Macroscopic masses scale as $M\propto \sigma^{-1}$. With the freeze-frame infrared scaling $G_{\rm IR}\propto \sigma^2$ (Postulate P2), the gravitational parameter obeys
+
+$$
+GM \propto \sigma^2\,\sigma^{-1} = \sigma.
+$$
+
+Therefore
+
+$$
+\nu_{\rm orb} \sim \sqrt{\frac{GM}{r^3}} \propto \sqrt{\frac{\sigma}{\sigma^3}} = \sigma^{-1}.
+$$
+
+Both the orbital frequency and the atomic transition frequency scale as $\sigma^{-1}$, so the ratio $\nu_{\rm atom}/\nu_{\rm orb}$ is invariant.
+
+**v10 stance:** the observed long-term success of GPS is therefore not a problem to “survive”; it is a *null prediction* of coherent scaling.
+
+## 5.3 WEP and universality
+
+Any non-universal scaling (e.g., the QCD sector scaling differently from the electroweak sector) would generate composition-dependent accelerations, which are tightly constrained by Weak Equivalence Principle (WEP) tests.
+
+In particular, the MICROSCOPE mission reports a null result at the level of $\eta \sim 10^{-15}$ for composition pairs such as Ti vs Pt (Eotvos parameter; see the cited experimental literature).
+
+Therefore v10 elevates universality from an “assumption” to a **required symmetry**: the framework must be constructed so that all sectors scale coherently at the level demanded by modern WEP bounds.
+
+## 5.4 SI-2019/2018 and operational definitions
+
+Modern SI definitions fix numerical values of $h$, $c$, and the Cs hyperfine frequency. This emphasizes a key point aligned with v10: **units are operationally defined by specific physical systems**, and only dimensionless comparisons are fundamental.
+
+v10 interprets SI stability as consistent with coherent scaling: if all local clocks and rods are governed by the same evolving scale, the SI realizations remain self-consistent and show no internal drift.
+
+
+## 5.5 Oklo, long-baseline bounds, and what v10 must satisfy
+
+Long-baseline constraints (geophysical and astrophysical) are often summarized as bounds on the time variation of dimensionless quantities such as the fine-structure constant $\alpha$ or mass ratios. A canonical example is the Oklo natural fission reactor, where isotope data constrain possible shifts in nuclear resonance energies over ${\sim}10^9$ year timescales.
+
+In v10, the *target design* is that **dimensionless couplings and ratios are constant** under the universal scaling postulate. In that ideal limit, Oklo-type bounds are automatically satisfied because only dimensionless combinations (e.g. resonance energy relative to the relevant nuclear scale) enter the physics.
+
+However, critics are correct that this is not something to hand-wave: Oklo constrains not only the location of a resonance but also aspects of widths and reaction rates that can mix different contributions. v10 therefore treats Oklo (and similar systems such as pulsar timing bounds on $\dot G/G$) as *mandatory consistency checks* for any non-universal corrections to the scaling symmetry.
+
+## 5.6 Parameterized departures from universality (risk model)
+
+To make the role of universality explicit, it is useful to parameterize small departures as a *risk model*. A minimal two-parameter encoding of “non-universality” is to allow small differential scalings between an electromagnetic/leptonic scale and a hadronic/nuclear scale, e.g.
+
+- $m_e \propto \sigma^{-1-\epsilon_{\rm EM}}$
+- $m_p$ (or $\Lambda_{\rm had}$) $\propto \sigma^{-1-\epsilon_{\rm QCD}}$
+
+Then $\mu\equiv m_p/m_e$ drifts as
+
+$$
+\frac{d\ln\mu}{dt} = (\epsilon_{\rm EM}-\epsilon_{\rm QCD})\,H_\sigma,
+\qquad
+H_\sigma \equiv -\frac{\dot\sigma}{\sigma}.
+$$
+
+For a clock-ratio comparison $A/B$, a generic drift template is:
+
+$$
+\frac{d}{dt}\ln\left(\frac{\nu_A}{\nu_B}\right)
+= K_\alpha^{AB}\frac{d\ln\alpha}{dt} + K_\mu^{AB}\frac{d\ln\mu}{dt} + \dots,
+$$
+
+where the $K$'s are dimensionless sensitivity coefficients and $H_\sigma\equiv -\dot\sigma/\sigma$.
+At the present epoch $H_\sigma(t_0)=H_0 \approx 7\times 10^{-11}\,{\rm yr^{-1}}$ (for $H_0\simeq 70\,{\rm km\,s^{-1}\,Mpc^{-1}}$).
+
+So even $|\epsilon_{\rm EM}-\epsilon_{\rm QCD}|\sim 10^{-7}$ corresponds to an order ${\sim}10^{-17}\,{\rm yr^{-1}}$ drift in $\ln\mu$ *before* $K$ factors.
+
+**v11.0.0 policy:** we set $\epsilon_{\rm EM}=\epsilon_{\rm QCD}=0$ (strict universality) in the *core claims*. Nonzero $\epsilon$'s are an explicit parameterization of a failure mode that must be bounded by atomic-clock, Oklo, and WEP constraints in any future non-universal extension; they are not used in the late-time fits. See `v11.0.0/docs/precision_constraints_translator.md`.
+---
+
+# 6. Global Energy Bookkeeping and Noether Charge
+
+## 6.1 The core issue
+
+In a time-dependent cosmological spacetime, there is generally no global timelike Killing vector, and therefore no globally conserved energy associated with time translation symmetry. This is why the “where does photon energy go?” question in an expanding universe does not admit a simple global answer.
+
+This is not a logical inconsistency of GR; it is a statement about the symmetry structure of the background.
+
+## 6.2 The GSC claim
+
+In the freeze frame, the background is static (approximately Minkowski). Therefore it possesses a time-translation symmetry and admits a global Noether energy (up to boundary conditions and perturbations). In that frame:
+
+- photon energies are conserved along null propagation in the static background;
+- the apparent redshift is produced by the evolution of the detector/emitter energy scales.
+
+This reframes the cosmological “energy nonconservation” intuition into a symmetry-respecting accounting identity.
+
+## 6.3 Why this is a selling point (without overclaiming)
+
+v10 does **not** claim that LambdaCDM is “wrong because it violates energy conservation.” The correct statement is:
+
+- in standard expanding backgrounds, the concept of a single global conserved energy is not generally defined;
+- GSC offers an alternative formulation in which a global energy can be defined and conserved.
+
+---
+
+# 7. Cosmological Dynamics and Effective Equation of State
+
+We define the collapse rate
+
+$$
+H_\sigma(t) \equiv -\frac{\dot{\sigma}}{\sigma},
+$$
+
+which maps to the usual Hubble parameter in the expanding frame:
+
+$$
+H(t) = \frac{\dot a}{a} = H_\sigma(t).
+$$
+
+If $H_\sigma(t)$ increases with time (accelerating collapse), then the effective equation of state satisfies
+
+$$
+w_{\rm eff} < -1
+\quad \Longleftrightarrow \quad
+\dot H > 0.
+$$
+
+In v10 we do not attempt to fit all background data. The focus is:
+
+- identify the dynamical sign of $\dot H$ implied by RG-driven collapse near a critical scale;
+- connect it to the redshift drift discriminant.
+
+---
+
+# 8. Redshift drift (historical; deprecated as primary)
+
+## 8.1 Definition
+
+Redshift drift is the secular change of the observed redshift of a distant source as measured over a human timescale:
+
+$$
+\dot z \equiv \frac{dz}{dt_0}.
+$$
+
+For any FLRW description, the Sandage–Loeb relation is
+
+$$
+\dot z = H_0(1+z) - H(z)
+\quad\Rightarrow\quad
+\dot z > 0 \;\Longleftrightarrow\; H(z) < H_0(1+z),
+$$
+
+and “positive drift throughout the quasar range” requires this inequality for all $z\in[2,5]$.
+
+This relation is kinematic. It does not discriminate conformal frames by itself; it discriminates competing histories $H(z)$ once they are specified.
+If two models share the same $H(z)$, this observable cannot select a preferred frame label at this level.
+
+It is also useful to define the corresponding velocity drift rate,
+
+$$
+\dot v \equiv c\,\frac{\dot z}{1+z}
+= c\left[H_0 - \frac{H(z)}{1+z}\right].
+$$
+
+This is an observable independent of distance ladder calibrations.
+
+## 8.2 Standard expectation (LambdaCDM)
+
+In LambdaCDM, the universe decelerates at high redshift (matter domination), so $H(z)$ grows rapidly with $z$. As a consequence, $\dot z$ changes sign and becomes negative at sufficiently high redshift (typically in the quasar range $z\sim 2$–5).
+
+## 8.3 GSC v10: drift-sign criterion and toy histories
+
+In GSC v10, the collapse is driven by RG-enhanced gravity and is assumed to be **accelerating** in the sense that $H_\sigma(t)$ increases with cosmic time. Equivalently, $H(z)$ decreases toward the past more slowly than the $(1+z)$ factor.
+
+A simple representative parameterization is a toy power-law history,
+
+$$
+H(z) = H_0 (1+z)^p,
+\qquad 0<p<1,
+$$
+
+
+*Simulation note:* In the accompanying v10.1 toy simulations, we adopt a representative choice $p=0.5$ solely for visualization. The **sign** result $\dot z>0$ is robust for any $0<p<1$, and the detailed form of $p(z)$ is explicitly left to a Phase-2 derivation from the RG dynamics.
+
+This yields
+
+$$
+\dot z = H_0\left[(1+z) - (1+z)^p\right].
+$$
+
+Since $(1+z)^p < (1+z)$ for $z>0$ when $0<p<1$, this class satisfies the positivity criterion $H(z)<H_0(1+z)$ and therefore gives $\dot z>0$. Transition histories that asymptotically satisfy $H(z)<H_0(1+z)$ for $z\gtrsim 2$ likewise yield $\dot z>0$ in the quasar range.
+
+**Therefore:**
+
+> **Prediction (P-redshift-drift):** For quasars in the range $2\lesssim z \lesssim 5$, the late-time GSC toy histories used here imply $\dot z > 0$, whereas standard $\Lambda$CDM implies $\dot z < 0$.
+
+In the current Roadmap v2.8 framing this is supporting no-go evidence, not the primary framework discriminator.
+
+## 8.4 Experimental prospects
+
+Redshift drift is often expressed as an apparent spectroscopic velocity drift
+
+$$
+\Delta v \equiv c\,\frac{\Delta z}{1+z},
+$$
+
+which is expected to be of order ${\rm cm\,s^{-1}}$ over decade baselines for $z\sim 2$--5 targets.
+
+*Illustrative amplitude (not a fit prediction):* for the toy parameterization $H(z)=H_0(1+z)^p$,
+
+$$
+\dot v = c\,H_0\left[1-(1+z)^{p-1}\right].
+$$
+
+The table below gives illustrative $\Delta v$ values over $\Delta t=20$ years for representative ANDES redshift bins, comparing a Planck-like $\Lambda$CDM benchmark ($H_0=67.4$, $\Omega_m=0.315$) to a toy GSC power-law history with $p=0.9$ (same $H_0$). These values are *illustrative* (not fit predictions); the *sign* at high $z$ is the core discriminator.
+
+| Model (illustrative) | $z=2.0$ | $2.5$ | $3.0$ | $3.5$ | $4.5$ |
+|---|---:|---:|---:|---:|---:|
+| $\Lambda$CDM (Planck-like) | $-0.43$ | $-3.15$ | $-5.84$ | $-8.46$ | $-13.42$ |
+| GSC toy power-law ($p=0.9$) | $+4.30$ | $+4.87$ | $+5.35$ | $+5.77$ | $+6.48$ |
+
+Values are $\Delta v$ in ${\rm cm\,s^{-1}}$ over $\Delta t=20$ years.
+
+Upcoming ultra-stable, high-resolution spectroscopy on extremely large telescopes is explicitly designed to reach this regime. The ELT/ANDES science case lists the *Sandage test* (redshift drift) as a top priority and targets long-term stability at the ${\sim}1\,\mathrm{cm\,s^{-1}}$ level.
+
+Recent feasibility analyses using VLT/ESPRESSO data illustrate both the difficulty and the realism of the measurement: the observed drift over a 5-year baseline is consistent with zero, while end-to-end forecasts show that a definitive detection in the standard scenario requires very large integration times distributed over multi-decade baselines. In GSC, the key discriminator is the *sign* of the effect at high redshift, which reduces the dependence on absolute model fits and emphasizes systematic control.
+# 9. What Was Removed from v9.1 and Why (v10 Change Log Summary)
+
+v10 is not “v9.1 plus more ideas.” It is a pruning and renormalization.
+
+**Removed from main claims:**
+
+- ADD / large extra dimensions and any large exponent ($n\approx 36$): this is curve-fitting.
+- Casimir “10–100 nm deviations” prediction: high risk of existing falsification; removed.
+- Cosmic-background torsion explanation of neutron lifetime: fails by many orders of magnitude; removed.
+- Claims of solving Li-7: removed unless a full deuterium-consistent calculation exists.
+- Overextended thermodynamic/information narratives that produced internal contradictions: reduced to speculative discussion only.
+
+**Kept and strengthened:**
+
+- Freeze-frame / conformal-duality interpretation as a viable frame (via Wetterich-style transformations).
+- RG-flow mechanism as the only gravity enhancement.
+- Scale covariance as the reason local tests show null drift.
+- Redshift drift as the decisive discriminant.
+
+---
+
+# 10. Open Problems and v10+ Roadmap
+
+v10 is intentionally conservative. The following are required for a v10+ “full theory”:
+
+1. **Derive $k_*$ (or $\ell_*$) from first principles**  
+   Connect the critical RG scale to a hadronic/confinement scale and/or to a controlled FRG truncation. Make explicit and testable the map between RG scale and cosmological/structural scale (e.g. $k\leftrightarrow 1/\sigma$ or related constructions).
+
+2. **Construct a consistent scalar-tensor action with universal scaling**  
+   Show explicitly how hadronic and electroweak scales co-scale without violating WEP bounds.
+
+3. **Structure formation and dark sector phenomenology**  
+   Determine whether additional fields/defects are required, or whether the collapse framework can reproduce DM/DE phenomenology in perturbations.
+
+4. **Local microphysics modules (torsion, nuclear physics)**  
+   Any neutron/BBN claims must be rebuilt on a local intrinsic mechanism and confronted with existing laboratory bounds, not with optimistic summaries.
+
+## 10.1 Early-time/CMB closure checkpoint (diagnostic-only)
+
+The v11.0.0 canonical release is late-time only. However, strict compressed CMB distance priors (CHW2018: $R$, $\ell_A$, $\omega_b h^2$ + published covariance) provide a high-leverage reviewer check on what an early-time closure would need to change. The table below records diagnostic-only numbers for a representative non-degenerate bridge checkpoint.
+
+**Localized failure (diagnostic-only):** in this checkpoint, the distance-budget diagnostic shows that the excess in $D_M(z_*)$ is dominated by the integral contribution from $z\in[2,5]$; for $z>z_{\rm used}$ the bridge enforces $\Delta D_M\simeq 0$ by construction.
+
+| Diagnostic | Value | Note |
+|---|---:|---|
+| Distance-budget excess in $D_M(z_*)$ (E1.3) | $\Delta D_M[2,5]\approx +1070\,{\rm Mpc}$ | For `gsc_transition` ($p=0.6$, $z_{\rm transition}=1.8$) at non-degenerate bridge $z_{\rm used}=5$: the excess is dominated by $2<z<5$; for $z>5$ the bridge enforces $\Delta D_M\simeq 0$ by construction. |
+| Joint-fit closure knobs (E2.2) | $dm_*\approx 0.92909$, $rs_*\approx 1.0045$ | Multipliers on $D_M(z_*)$ and $r_s(z_*)$ in the CHW2018 compressed-priors distance-priors prediction path (diagnostic-only). Here $dm_*\approx 0.92909$ corresponds to about $-7.1\\%$ in $D_M(z_*)$. |
+| Strict CHW2018 $\chi^2$ after joint fit (E2.2) | $\chi^2_{\rm cmb,min}\approx 0.0177$ (ndof $=3$) | Confirms that distance closure (via $R\\propto D_M$) is required; $r_s(z_*)$ rescaling alone cannot repair $R$. |
+
+Interpretation: CHW2018 closure in the non-degenerate bridge regime requires a *distance* component (effective reduction in $D_M(z_*)$), not only a sound-horizon rescaling. This is diagnostic only; early-time closure remains deferred in v11.0.0.
+
+Phase-2 E2 status note: these are compressed-priors diagnostics under explicit
+scan families/filters. v11.0.0 does not claim a full CMB power-spectrum or
+peak-level closure module. Current E2 outputs are versioned evidence for an
+open early-time closure problem, while late-time claims remain scoped
+independently.
+
+**Pointers:** the referee pack includes a consolidated verdict in `v11.0.0/docs/early_time_e2_synthesis.md` and a module index in `v11.0.0/docs/diagnostics_index.md`, plus implementation details in `v11.0.0/docs/early_time_e2_plan.md` and `v11.0.0/docs/early_time_bridge.md`.
+
+## 10.2 Perturbations and structure-formation bridge (diagnostic checkpoint)
+
+Phase-2 now includes a compact structure bridge for reviewer-facing diagnostics:
+BBKS transfer-function sampling and GR-baseline linear growth (`D(z)`, `f(z)`,
+optional `fσ8`) driven by explicit background histories. This is a diagnostic
+approximation layer, not a full perturbation/Boltzmann module and not a
+survey-level LSS fit. Dark-matter treatment remains baseline-conservative in
+the current release, while perturbation-level closure is deferred.
+
+**Pointers:** `v11.0.0/docs/structure_formation_status.md`; tool:
+`v11.0.0/scripts/phase2_sf_structure_report.py`.
+
+---
+
+# Appendices (Sketch)
+
+## Appendix A: Notation
+
+- $\sigma(t)$: universal matter scale (bound-system size scale) in the freeze frame  
+- $a(t)=\sigma_0/\sigma(t)$: Einstein-frame scale factor  
+- $H_\sigma = -\dot\sigma/\sigma$: collapse rate (equals $H$ under the map)  
+- $k_*$: critical RG scale (phenomenological UV scale)  
+- $\ell_* = 1/k_*$: critical length scale  
+
+## Appendix B: Minimal “GPS invariance” derivation (to be expanded)
+
+Goal: prove that GPS-type dimensionless observables are invariant under universal scaling.
+
+Inputs:
+- $\ell_{\rm atom}\propto\sigma$
+- $m\propto\sigma^{-1}$
+- $G$ scales coherently in the freeze frame such that dimensionless gravitational couplings are invariant
+
+Output:
+- ratios of clock rates and orbital frequencies are constant.
+
+(*Full derivation deferred to a technical note.*)
+
+## Appendix C: Legacy-code provenance map (v8.2 → v10)
+
+- All scripts using ADD-style enhancements are legacy and not used as evidence in v10.
+- Scripts validating ratio-invariance are retained as consistency checks, not as discriminators.
+
+## Appendix D (optional): Phase-2 E2 bundle snippets
+
+When paper build is executed with `--phase2-e2-bundle`, the build script verifies
+the bundle and extracts Phase-2 E2 paper assets before LaTeX compilation. The
+conditional TeX appendix uses these canonical snippet files. The single-file
+aggregator includes `phase2_sf_rsd_summary.md`, `phase2_sf_fsigma8.md`,
+`phase2_rg_flow_table.md`, and `phase2_rg_pade_fit.md` in deterministic order:
+
+<!-- PHASE2_E2_SNIPPETS_BEGIN -->
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_e2_all.tex`
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_e2_all.md`
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_sf_rsd_summary.tex`
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_sf_fsigma8.tex`
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_rg_flow_table.tex`
+- `paper_assets_cmb_e2_drift_constrained_closure_bound/snippets/phase2_rg_pade_fit.tex`
+<!-- PHASE2_E2_SNIPPETS_END -->
+
+---
+
+# References (starter list)
+
+This v10 draft is written to be compatible with a conventional journal reference list. Suggested core references:
+
+1. C. Wetterich, “A Universe without expansion,” arXiv:1303.6878 (2013).  
+2. M. Niedermaier and M. Reuter, “The Asymptotic Safety Scenario in Quantum Gravity,” Living Rev. Relativity 9, 5 (2006).  
+3. M. Reuter and F. Saueressig, “Quantum Einstein Gravity,” arXiv:1202.2274 (2012).  
+4. N. Ashby, “Relativity in the Global Positioning System,” Living Rev. Relativity 6, 1 (2003).  
+5. P. Touboul et al., “MICROSCOPE Mission: Final Results of the Test of the Equivalence Principle,” Class. Quantum Grav. 39, 204009 (2022).  
+6. T. Rosenband et al., “Frequency Ratio of Al$^+$ and Hg$^+$ Single-Ion Optical Clocks; Metrology at the 17th Decimal Place,” Science 319, 1808 (2008), doi:10.1126/science.1154622.  
+7. 26th CGPM (2018), Resolution 1: “On the revision of the International System of Units (SI).”  
+8. E. R. Harrison, “Mining energy in an expanding universe,” Astrophys. J. 446, 63 (1995).  
+9. D. Tong, *Lectures on General Relativity* (notes; Killing vectors and conserved quantities).  
+10. A. Sandage, “The Change of Redshift and Apparent Luminosity of Galaxies due to the Deceleration of Selected Expanding Universes,” Astrophys. J. 136, 319 (1962).  
+11. A. Loeb, “Direct Measurement of Cosmological Parameters from the Cosmic Deceleration of Extragalactic Objects,” Astrophys. J. 499, L111 (1998).  
+12. ANDES Consortium, “ANDES: the high-resolution spectrograph for the ELT,” arXiv:2407.14601 (public science-case summary, 2024).  
+13. A. Trost et al., “The ESPRESSO Redshift Drift Experiment -- I. High-resolution spectra of the Lyman-$\alpha$ forest of QSO J052915.80-435152.0,” Astron. Astrophys. 699, A159 (2025), doi:10.1051/0004-6361/202554502.  
+14. T. Damour and F. Dyson, “The Oklo bound on the time variation of the fine-structure constant revisited,” arXiv:hep-ph/9606486 (1996).  
+15. A. C. Davis and A. G. Hamdan, “Oklo constraints on variations of the fine-structure constant,” Phys. Rev. C 92, 045501 (2015).
+16. P. A. M. Dirac, “The Cosmological Constants,” Nature 139, 323 (1937), doi:10.1038/139323a0.  
+17. G. Goldhaber et al., “Timescale Stretch Parameterization of Type Ia Supernova B-band Light Curves,” Astrophys. J. 558, 359–368 (2001), doi:10.1086/322460, arXiv:astro-ph/0104382.  
+18. L. M. Lubin and A. Sandage, “The Tolman Surface Brightness Test for the Reality of the Expansion. IV. A Measurement of the Tolman Signal and the Luminosity Evolution of Early-Type Galaxies,” Astron. J. 122, 1084–1103 (2001), doi:10.1086/322134, arXiv:astro-ph/0106566.

@@ -1,0 +1,84 @@
+{
+  "$id": "phase4_desi_bao_fetch_manifest_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_desi_bao_fetch_manifest_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "retrieved_utc": {
+      "type": "string"
+    },
+    "retrieved_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "release_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "release_id"
+      ]
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "sha256": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sha256",
+          "bytes"
+        ]
+      }
+    },
+    "license_terms_note": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "retrieved_utc",
+    "retrieved_utc_epoch",
+    "deterministic_mode",
+    "source",
+    "files",
+    "license_terms_note",
+    "paths_redacted"
+  ]
+}

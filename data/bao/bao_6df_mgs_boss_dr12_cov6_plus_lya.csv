@@ -1,0 +1,5 @@
+type,z,dv_over_rd,sigma_dv_over_rd,values_path,cov_path,survey,label,source
+DV_over_rd,0.106,2.976190476,0.1328656463,,,6dFGS,Beutler+2011,r_d/D_V(0.106)=0.336±0.015 (invert)
+DV_over_rd,0.15,4.465666824,0.1681350461,,,SDSS-MGS,Ross+2015,D_V(0.15)*(r_d,fid/r_d)=664±25 Mpc; r_d,fid=148.69 Mpc
+VECTOR_over_rd,,,,boss_dr12_dm_dh_over_rd.csv,boss_dr12_dm_dh_over_rd_cov6.cov,BOSS-DR12,Alam+2017,"Consensus (DM*(r_d,fid/r_d), H*(r_d/r_d,fid)) converted to (DM/r_d, D_H/r_d) using a Jacobian transform; full 6×6 covariance"
+VECTOR_over_rd,2.33,,,eboss_dr16_lya_dm_dh_over_rd.csv,eboss_dr16_lya_dm_dh_over_rd_cov2.cov,eBOSS-DR16,Lyα GCcomb,"Combined Lyα BAO Gaussian constraint at z=2.33 (DM/r_d, D_H/r_d) from CobayaSampler/bao_data; source files use _over_rs, treated as nuisance r_d at v11.0.0 scope."

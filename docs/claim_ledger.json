@@ -1,0 +1,272 @@
+{
+  "schema": "gsc_claim_ledger_v2",
+  "schema_notes": "Extended from phase2_claim_ledger_v1: each entry now carries an explicit tier (T1/T2/T3/T4) and kill_test field. Bounded/non-claim entries from prior cycles are retained.",
+  "entries": [
+    {
+      "id": "CLM-T1-FRAME-EQUIV-001",
+      "tier": "T1",
+      "claim_text": "FRW expansion and freeze-frame shrinkage are conformally equivalent descriptions of the same observable cosmology, related by σ(t).",
+      "status": "asserted",
+      "kill_test": "Mathematical inconsistency in the conformal coordinate transformation. Essentially impossible at the kinematic level.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "1.1 The frame equivalence"},
+        {"path": "docs/measurement_model.md", "section": "Coordinate map"}
+      ],
+      "supporting_artifacts": [
+        {"path": "gsc/measurement_model.py"}
+      ],
+      "tests": [
+        "tests/test_measurement_model.py"
+      ]
+    },
+    {
+      "id": "CLM-T1-GEOMETRIC-LOCK-002",
+      "tier": "T1",
+      "claim_text": "Universal coherent scaling of m, G, r ensures local dimensionless observables (atomic clocks, GPS, lunar laser ranging) exhibit no secular drift.",
+      "status": "asserted",
+      "kill_test": "Detection of secular drift in dimensionless local observables not attributable to known systematic. Constrained by Eötvös, MICROSCOPE, atomic-clock comparison limits.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "1.3 Operational measurement model"},
+        {"path": "docs/measurement_model.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "gsc/measurement_model.py"}
+      ],
+      "tests": [
+        "tests/test_measurement_model_null_predictions.py"
+      ]
+    },
+    {
+      "id": "CLM-T2-LATE-TIME-FIT-003",
+      "tier": "T2",
+      "claim_text": "A phenomenological σ(t) ansatz reproduces Pantheon+SH0ES, DESI BAO, and fσ8 late-time data within ΔAIC < 4 of ΛCDM.",
+      "status": "supported",
+      "kill_test": "No σ(t) ansatz consistent with the geometric-lock condition (T1) achieves Δχ² < 50 vs ΛCDM on combined late-time data.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "2 (T2) σ(t) and Late-Time Observations"}
+      ],
+      "supporting_artifacts": [
+        {"path": "gsc/histories/"},
+        {"path": "gsc/fit.py"},
+        {"path": "scripts/late_time_fit_grid.py"}
+      ],
+      "tests": [
+        "tests/test_late_time_fit_grid_smoke.py"
+      ],
+      "predictions": ["P1", "P8"]
+    },
+    {
+      "id": "CLM-T2-BAO-SHIFT-004",
+      "tier": "T2",
+      "claim_text": "GSC predicts a calculable Δr_s/r_s shift relative to ΛCDM in DESI Year-3 BAO, computed from σ-evolution of c_s and t_rec.",
+      "status": "pre-registered (pending pipeline implementation)",
+      "kill_test": "Observed Δr_s/r_s outside the GSC-predicted band at >3σ falsifies T2 for the registered ansatz family.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "9.1 Prediction P1"},
+        {"path": "predictions_register/P1_bao_ruler_shift/prediction.md"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P1"]
+    },
+    {
+      "id": "CLM-T3-RG-RUNNING-005",
+      "tier": "T3",
+      "claim_text": "The gravitational coupling G(σ) follows an RG-running profile with a critical scale σ_* near a hadronic length, motivated by Asymptotic Safety scenarios.",
+      "status": "ansatz",
+      "kill_test": "All G(σ) profiles consistent with T2 phenomenology are excluded by precision tests of equivalence-principle universality, dimensionless-constant variation (Oklo, atomic clocks for α and m_e/m_p), or solar-system Ġ/G bounds; OR a first-principles FRG derivation produces a running incompatible with T2.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "3 (T3) The Renormalization-Group Ansatz"},
+        {"path": "docs/rg_asymptotic_safety_bridge.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "gsc/rg/"},
+        {"path": "scripts/phase2_rg_flow_table_report.py"}
+      ],
+      "tests": [
+        "tests/test_phase2_m92_rg_flow_table_report.py",
+        "tests/test_phase2_m93_rg_pade_fit_report_synthetic.py"
+      ]
+    },
+    {
+      "id": "CLM-T3-SIGMA-STAR-OPEN-006",
+      "tier": "T3",
+      "claim_text": "σ_* is currently a phenomenological parameter; first-principles derivation from FRG, non-commutative IR/UV mixing, or AdS/QCD warp factor is outstanding work.",
+      "status": "open problem",
+      "kill_test": "Persists until a first-principles derivation is produced. Two candidate routes are under exploration.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "3.2 Status of σ_*; 3.5 Two Candidate Derivations"},
+        {"path": "docs/sigma_field_origin_status.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "bridges/phase4_qcd_gravity_bridge_v0.1/"}
+      ],
+      "tests": []
+    },
+    {
+      "id": "CLM-T3-SIGMA-AXION-007",
+      "tier": "T3",
+      "claim_text": "The same RG flow that drives G(σ) running induces a σ-F̃F coupling, providing cosmological θ-relaxation without a separate axion field. Predicts CMB cosmic birefringence consistent with Planck hint and bounded by nEDM measurements.",
+      "status": "structural argument; FRG calculation outstanding",
+      "kill_test": "FRG calculation showing the gravitational fixed point produces zero or wrong-sign σ-F̃F coupling; OR LiteBIRD measurement of birefringence amplitude incompatible with late-time σ-fit at >3σ; OR future tighter nEDM bound incompatible with predicted θ_eff trajectory.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "4 (T3) σ-Field Coupling to Topological Sectors"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P4", "P5"]
+    },
+    {
+      "id": "CLM-T4-VORTEX-DM-KZ-008",
+      "tier": "T4",
+      "claim_text": "The σ_*-crossing constitutes a continuous phase transition; topological defects formed at the crossing carry Kibble–Zurek density and produce the dark-matter abundance.",
+      "status": "candidate derivation; KZ critical exponents pending",
+      "kill_test": "NANOGrav, EPTA, or LISA exclusion of cosmic-string GW background at the GSC-predicted amplitude; OR LiteBIRD/CMB-S4 B-mode pattern incompatible with predicted defect contribution; OR dwarf-galaxy DM phenomenology incompatible with vortex-tangle predictions.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "5 (T4) Topological Defects from σ_*-Crossing"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P6"]
+    },
+    {
+      "id": "CLM-T4-SPATIAL-SIGMA-009",
+      "tier": "T4",
+      "claim_text": "Spatial σ(x,t) field generates MOND-like phenomenology in galactic potentials, with predictions distinct from generic MOND at cluster scale and in voids.",
+      "status": "field-theoretic extension; quantitative predictions pending",
+      "kill_test": "DESI peculiar-velocity surveys finding standard ΛCDM consistency at GSC-predicted deviation level; OR cluster mass-temperature relations incompatible with σ(x)-predicted profiles.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "6 (T4) Spatial σ-Field, MOND Phenomenology"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P3"]
+    },
+    {
+      "id": "CLM-T4-INFO-THERMO-010",
+      "tier": "T4",
+      "claim_text": "σ-running tracks cosmological information density; identifying σ̇/σ with holographic complexity rate provides a microphysical origin for σ-evolution. Time emerges as RG-flow parameter (Connes thermal-time hypothesis).",
+      "status": "conjecture; structural identification only",
+      "kill_test": "Structural inconsistency with established holographic-complexity bounds (Lloyd) or Connes modular flow formalism.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "7 (T3+T4) Information-Thermodynamic Interpretation"}
+      ],
+      "supporting_artifacts": [],
+      "tests": []
+    },
+    {
+      "id": "CLM-T4-COSM-QRF-011",
+      "tier": "T4",
+      "claim_text": "GSC admits reformulation as a cosmological quantum reference frame in the Giacomini–Brukner formalism; the geometric-lock condition becomes a theorem about invariance of dimensionless observables under σ-QRF transformations.",
+      "status": "structural reformulation; complete formalism outstanding",
+      "kill_test": "Mathematical inconsistency between the σ-QRF Hilbert space construction and the established Giacomini–Brukner formalism. (Empirical kill-tests are indirect, via decoherence-rate bounds on σ-superpositions from CMB primary anisotropies.)",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "8 (T4) σ as Cosmological Quantum Reference Frame"}
+      ],
+      "supporting_artifacts": [],
+      "tests": []
+    },
+    {
+      "id": "CLM-T4-NEUTRON-LIFETIME-012",
+      "tier": "T4",
+      "claim_text": "The ~9 second beam-trap discrepancy in neutron lifetime measurements is explained by σ-environmental dependence (different σ-equilibria in different matter-density environments).",
+      "status": "candidate explanation; ∂(τ_n)/∂σ pending",
+      "kill_test": "Different trap geometries (varying wall material, density, distance) showing no corresponding τ_n variation at the GSC-predicted level.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "9.3 Prediction P3"},
+        {"path": "predictions_register/P3_neutron_lifetime/prediction.md"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P3"]
+    },
+    {
+      "id": "CLM-T4-GW-MEMORY-013",
+      "tier": "T4",
+      "claim_text": "GW-memory passage induces a permanent shift in σ-equilibrium, observable as correlated frequency shifts in a globally-distributed atomic-clock network following LIGO/Virgo merger events.",
+      "status": "candidate prediction; σ-GW coupling formalism pending",
+      "kill_test": "No correlated atomic-clock frequency shift observed in post-merger data at the GSC-predicted amplitude given measured GW-memory amplitudes.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "9.7 Prediction P7"},
+        {"path": "predictions_register/P7_gw_memory_clocks/prediction.md"}
+      ],
+      "supporting_artifacts": [],
+      "tests": [],
+      "predictions": ["P7"]
+    },
+    {
+      "id": "CLM-E2-CMB-COMPRESSED-014",
+      "tier": "T2",
+      "claim_text": "Early-time bridge uses compressed CMB priors and does not provide a full TT/TE/EE spectra fit in-repo.",
+      "status": "bounded (non-claim)",
+      "kill_test": "N/A — this is an explicit non-claim. Promoting to a full closure claim would require Phase-3+ Boltzmann integration.",
+      "doc_locations": [
+        {"path": "docs/early_time_bridge.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "scripts/phase2_e2_scan.py"}
+      ],
+      "tests": [
+        "tests/test_phase2_m111_golden_toy_pipeline_bundle_and_paper_assets.py"
+      ]
+    },
+    {
+      "id": "CLM-SF-LINEAR-DIAGNOSTIC-015",
+      "tier": "T2",
+      "claim_text": "Structure-formation support is linear-theory diagnostic tooling (transfer/growth/fσ8 overlay), not a full nonlinear LSS closure.",
+      "status": "bounded (non-claim)",
+      "kill_test": "N/A — this is an explicit non-claim. Promotion would require nonlinear Boltzmann + N-body integration.",
+      "doc_locations": [
+        {"path": "docs/structure_formation_status.md"},
+        {"path": "docs/perturbations_and_dm_scope.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "data/structure/fsigma8_gold2017_plus_zhao2018.csv"}
+      ],
+      "tests": []
+    },
+    {
+      "id": "CLM-PT-EXPORT-RESULTS-PATH-016",
+      "tier": "T3",
+      "claim_text": "Boltzmann export/results paths are reproducibility packaging for external CLASS/CAMB runs and do not compute spectra in-repo.",
+      "status": "supported",
+      "kill_test": "Reproducer cannot regenerate the export bundle deterministically from registered inputs.",
+      "doc_locations": [
+        {"path": "docs/perturbations_and_dm_scope.md"}
+      ],
+      "supporting_artifacts": [
+        {"path": "scripts/phase2_pt_boltzmann_export_pack.py"},
+        {"path": "scripts/phase2_pt_boltzmann_results_pack.py"}
+      ],
+      "tests": [
+        "tests/test_phase2_m103_pt_boltzmann_export_pack_determinism_toy.py"
+      ]
+    },
+    {
+      "id": "CLM-DM-NONCLAIM-017",
+      "tier": "non-claim",
+      "claim_text": "The framework does not claim dark matter is solved, replaced, or eliminated. The KZ-derived vortex-DM (T4) is a candidate mechanism, not a closure.",
+      "status": "bounded (non-claim)",
+      "kill_test": "N/A — explicit non-claim. T4 vortex-DM derivation independently kill-tested under CLM-T4-VORTEX-DM-KZ-008.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "12.4 Honest Limitations"},
+        {"path": "docs/perturbations_and_dm_scope.md"}
+      ],
+      "supporting_artifacts": [],
+      "tests": []
+    },
+    {
+      "id": "CLM-OPEN-GAPS-PLAN-018",
+      "tier": "meta",
+      "claim_text": "Open problems explicitly listed: σ_* derivation, σ-F̃F FRG calculation, KZ critical exponents, σ-QRF Hilbert space, full CMB closure, full nonlinear structure closure.",
+      "status": "planned",
+      "kill_test": "N/A — meta-claim about scope. Each open problem has its own kill-test in the corresponding tier entry above.",
+      "doc_locations": [
+        {"path": "GSC_Framework.md", "section": "12 Honest Limitations and Known Gaps"},
+        {"path": "GSC_Framework.md", "section": "13 Roadmap to the Next Cycle"}
+      ],
+      "supporting_artifacts": [],
+      "tests": []
+    }
+  ]
+}

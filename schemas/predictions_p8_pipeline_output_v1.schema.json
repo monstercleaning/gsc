@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p8_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P8 (Sandage–Loeb redshift drift)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "ansatz",
+    "ansatz_parameters",
+    "lcdm_baseline",
+    "observation_interval_years",
+    "drift_table",
+    "summary"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p8_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P8"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "ansatz": {"type": "string"},
+    "ansatz_parameters": {"type": "object"},
+    "lcdm_baseline": {
+      "type": "object",
+      "required": ["H0_km_s_Mpc", "Omega_m", "Omega_L"],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number", "exclusiveMinimum": 0},
+        "Omega_m": {"type": "number", "minimum": 0, "maximum": 1.0},
+        "Omega_L": {"type": "number", "minimum": 0, "maximum": 1.0}
+      }
+    },
+    "observation_interval_years": {"type": "number", "exclusiveMinimum": 0},
+    "drift_table": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "z",
+          "delta_v_lcdm_cm_s",
+          "delta_v_gsc_cm_s",
+          "delta_v_diff_cm_s",
+          "sign_flip_vs_lcdm"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "z": {"type": "number", "minimum": 0},
+          "delta_v_lcdm_cm_s": {"type": "number"},
+          "delta_v_gsc_cm_s": {"type": "number"},
+          "delta_v_diff_cm_s": {"type": "number"},
+          "sign_flip_vs_lcdm": {"type": "boolean"}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["any_sign_flip_vs_lcdm", "max_abs_diff_cm_s"],
+      "properties": {
+        "any_sign_flip_vs_lcdm": {"type": "boolean"},
+        "max_abs_diff_cm_s": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

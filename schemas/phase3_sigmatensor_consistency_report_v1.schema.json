@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase3_sigmatensor_consistency_report_v1.schema.json",
+  "title": "Phase-3 SigmaTensor consistency report v1",
+  "description": "Conservative schema for THEORY_CONSISTENCY_REPORT.json emitted by phase3_st_sigmatensor_consistency_report.py.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "params",
+    "derived_today",
+    "summary_over_grid",
+    "gates",
+    "digests"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase3_sigmatensor_consistency_report_v1"
+      ]
+    },
+    "tool": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "H0_si",
+        "Omega_m0",
+        "w_phi0",
+        "lambda"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {"type": "number"},
+        "H0_si": {"type": "number"},
+        "Omega_m0": {"type": "number"},
+        "w_phi0": {"type": "number"},
+        "lambda": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "derived_today": {
+      "type": "object",
+      "required": [
+        "Omega_r0",
+        "Omega_phi0",
+        "u0",
+        "Vhat0",
+        "p_action",
+        "w_eff0",
+        "q0"
+      ],
+      "properties": {
+        "Omega_r0": {"type": "number"},
+        "Omega_phi0": {"type": "number"},
+        "u0": {"type": "number"},
+        "Vhat0": {"type": "number"},
+        "p_action": {"type": "number"},
+        "w_eff0": {"type": "number"},
+        "q0": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "summary_over_grid": {
+      "type": "object",
+      "required": [
+        "z_max",
+        "n_steps",
+        "denom_min",
+        "denom_max",
+        "Omega_phi_at_zref"
+      ],
+      "properties": {
+        "z_max": {"type": "number"},
+        "n_steps": {"type": "integer", "minimum": 1},
+        "denom_min": {"type": "number"},
+        "denom_max": {"type": "number"},
+        "Omega_phi_at_zref": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "enabled",
+          "passed",
+          "detail"
+        ],
+        "properties": {
+          "name": {"type": "string"},
+          "enabled": {"type": "boolean"},
+          "passed": {"type": "boolean"},
+          "detail": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "z_E_wphi_Omphi_sha256"
+      ],
+      "properties": {
+        "z_E_wphi_Omphi_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

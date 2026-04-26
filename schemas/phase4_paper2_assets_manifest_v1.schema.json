@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "phase4_paper2_assets_manifest_v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "created_utc",
+    "preset",
+    "run_mode",
+    "deterministic",
+    "paths_redacted",
+    "inputs",
+    "artifacts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "phase4_paper2_assets_manifest_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "preset": {
+      "type": "string",
+      "enum": ["ci_smoke", "paper_grade"]
+    },
+    "run_mode": {
+      "type": "string",
+      "enum": ["demo", "paper_grade"]
+    },
+    "deterministic": {
+      "type": "boolean"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "sha256", "bytes"],
+        "additionalProperties": true,
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+kind,z,y,survey,label,source
+DM,1.48,30.6876,eBOSS-DR16,QSO,CobayaSampler/bao_data: sdss_DR16_QSO_BAO_DMDH.txt (DM_over_rs)
+DH,1.48,13.2609,eBOSS-DR16,QSO,CobayaSampler/bao_data: sdss_DR16_QSO_BAO_DMDH.txt (DH_over_rs)

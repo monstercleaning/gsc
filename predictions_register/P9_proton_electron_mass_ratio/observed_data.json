@@ -1,0 +1,12 @@
+{
+  "schema": "predictions_p9_observed_data_v1",
+  "prediction_id": "P9",
+  "source": "Combination: HD+ ion-trap (Patra et al. 2020, Science 369, 1238) + H2 absorbers at z~2-3 (Ubachs/Bagdonaite review)",
+  "data_release_date": "2024-12-31",
+  "url_reference": "https://www.science.org/doi/10.1126/science.aba0453",
+  "mu_dot_over_mu_bound_per_yr": 5e-17,
+  "mu_dot_over_mu_bound_confidence_sigma": 1.0,
+  "delta_mu_over_mu_bound_at_z2_to_3": 1e-6,
+  "delta_mu_over_mu_bound_at_z2_to_3_confidence_sigma": 2.0,
+  "notes": "Best laboratory bound on μ̇/μ from HD+ Doppler-free spectroscopy is at the ~5e-17/yr level. Cosmological bounds from H2 Lyman-Werner absorbers in quasar spectra constrain |Δμ/μ| < ~1e-6 at z~2-3 at 2σ. Both bounds are model-independent and consistent with no variation."
+}

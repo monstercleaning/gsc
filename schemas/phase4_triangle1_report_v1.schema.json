@@ -1,0 +1,225 @@
+{
+  "$id": "phase4_triangle1_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_triangle1_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "run_mode": {
+      "type": "string",
+      "enum": [
+        "demo",
+        "paper_grade"
+      ]
+    },
+    "toy_mode": {
+      "type": "boolean"
+    },
+    "plot_backend": {
+      "type": "string",
+      "enum": [
+        "matplotlib",
+        "fallback"
+      ]
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "covariance_mode": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "pantheon",
+        "bao",
+        "planck_prior",
+        "grid",
+        "H0_km_s_Mpc",
+        "H0_si",
+        "Tcmb_K",
+        "N_eff",
+        "covariance_mode",
+        "integration_n",
+        "pivot_z",
+        "z_star"
+      ]
+    },
+    "assumptions": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "intervention_level",
+        "epsilon_mapping",
+        "bao_planck_closure",
+        "planck_prior_mode",
+        "h0_handling"
+      ]
+    },
+    "planck_theta_prior": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "source_name",
+        "lA_mean",
+        "lA_sigma",
+        "theta_star_mean",
+        "theta_star_sigma"
+      ]
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "best_fit": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "chi2_min",
+            "chi2_sn",
+            "chi2_bao_theta",
+            "ndof_joint",
+            "ndof_sn",
+            "ndof_bao_theta",
+            "omega_m",
+            "epsilon_em",
+            "delta_M_profiled"
+          ]
+        },
+        "epsilon_em": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5",
+            "best_fit"
+          ]
+        },
+        "omega_m": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5",
+            "best_fit"
+          ]
+        },
+        "h0_equivalent_shift_at_pivot": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "pivot_z_obs",
+            "epsilon_em_reference",
+            "delta_mu_at_pivot",
+            "h0_ratio_equivalent",
+            "note"
+          ]
+        }
+      },
+      "required": [
+        "best_fit",
+        "epsilon_em",
+        "omega_m",
+        "h0_equivalent_shift_at_pivot"
+      ]
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "chi2_at_nearest_epsilon_zero",
+        "delta_chi2_vs_epsilon_zero",
+        "nearest_epsilon_zero_value",
+        "bao_theta_covariance_shape"
+      ]
+    },
+    "digests": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "joint_grid_sha256",
+        "epsilon_marginal_sha256"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "filename",
+          "kind"
+        ]
+      },
+      "minItems": 4
+    },
+    "portability": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "forbidden_absolute_path_match_count"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "run_mode",
+    "toy_mode",
+    "plot_backend",
+    "repo_version_dir",
+    "paths_redacted",
+    "covariance_mode",
+    "inputs",
+    "assumptions",
+    "planck_theta_prior",
+    "results",
+    "diagnostics",
+    "digests",
+    "artifacts",
+    "portability"
+  ]
+}

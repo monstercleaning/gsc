@@ -1,0 +1,246 @@
+{
+  "$id": "phase4_epsilon_translator_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_epsilon_translator_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "repo_snapshot_manifest_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_manifest_source": {
+      "type": "string"
+    },
+    "toy_ansatz": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "scope_note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "definition",
+        "scope_note"
+      ]
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "epsilon_em": {
+          "type": "number"
+        },
+        "epsilon_qcd": {
+          "type": "number"
+        },
+        "epsilon_gr": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sigma_ratio_min": {
+          "type": "number"
+        },
+        "sigma_ratio_max": {
+          "type": "number"
+        },
+        "n": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "epsilon_em",
+        "epsilon_qcd",
+        "epsilon_gr",
+        "sigma_ratio_min",
+        "sigma_ratio_max",
+        "n"
+      ]
+    },
+    "grid_summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "n_points": {
+          "type": "integer"
+        },
+        "sigma_ratio_min": {
+          "type": "number"
+        },
+        "sigma_ratio_max": {
+          "type": "number"
+        },
+        "delta_ln_1pz_min": {
+          "type": "number"
+        },
+        "delta_ln_1pz_max": {
+          "type": "number"
+        },
+        "delta_z_min": {
+          "type": "number"
+        },
+        "delta_z_max": {
+          "type": "number"
+        },
+        "grid_digest_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "n_points",
+        "sigma_ratio_min",
+        "sigma_ratio_max",
+        "delta_ln_1pz_min",
+        "delta_ln_1pz_max",
+        "delta_z_min",
+        "delta_z_max",
+        "grid_digest_sha256"
+      ]
+    },
+    "mismatch_metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "n_points": {
+          "type": "integer"
+        },
+        "sigma_ratio_min": {
+          "type": "number"
+        },
+        "sigma_ratio_max": {
+          "type": "number"
+        },
+        "eps_em": {
+          "type": "number"
+        },
+        "eps_qcd": {
+          "type": "number"
+        },
+        "max_abs_delta_ln_1pz_em_minus_qcd": {
+          "type": "number"
+        },
+        "max_abs_delta_z_em_minus_qcd": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "n_points",
+        "sigma_ratio_min",
+        "sigma_ratio_max",
+        "eps_em",
+        "eps_qcd",
+        "max_abs_delta_ln_1pz_em_minus_qcd",
+        "max_abs_delta_z_em_minus_qcd"
+      ]
+    },
+    "grid_rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "sigma_ratio": {
+            "type": "number"
+          },
+          "one_plus_z_em": {
+            "type": "number"
+          },
+          "one_plus_z_qcd": {
+            "type": "number"
+          },
+          "delta_ln_1pz_em_minus_qcd": {
+            "type": "number"
+          },
+          "delta_z_em_minus_qcd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "sigma_ratio",
+          "one_plus_z_em",
+          "one_plus_z_qcd",
+          "delta_ln_1pz_em_minus_qcd",
+          "delta_z_em_minus_qcd"
+        ]
+      }
+    },
+    "artifact_paths": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "json": {
+          "type": "string"
+        },
+        "markdown": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "json",
+        "markdown"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "repo_version_dir",
+    "paths_redacted",
+    "repo_snapshot_manifest_sha256",
+    "repo_snapshot_manifest_source",
+    "toy_ansatz",
+    "inputs",
+    "grid_summary",
+    "mismatch_metrics",
+    "grid_rows",
+    "artifact_paths"
+  ]
+}

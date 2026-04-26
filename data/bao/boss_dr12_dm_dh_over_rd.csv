@@ -1,0 +1,8 @@
+kind,z,y,survey,label,source
+DM,0.38,10.27202598457166,BOSS-DR12,Alam+2017,"Consensus DM*(r_d,fid/r_d) converted to DM/r_d using r_d,fid=147.78 Mpc"
+DH,0.38,24.89129156506065,BOSS-DR12,Alam+2017,"Consensus H*(r_d/r_d,fid) converted to D_H/r_d = c/(H*r_d) using c=299792.458 km/s, r_d,fid=147.78 Mpc"
+DM,0.51,13.37799431587495,BOSS-DR12,Alam+2017,"Consensus DM*(r_d,fid/r_d) converted to DM/r_d using r_d,fid=147.78 Mpc"
+DH,0.51,22.44071086894295,BOSS-DR12,Alam+2017,"Consensus H*(r_d/r_d,fid) converted to D_H/r_d = c/(H*r_d) using c=299792.458 km/s, r_d,fid=147.78 Mpc"
+DM,0.61,15.44863987007714,BOSS-DR12,Alam+2017,"Consensus DM*(r_d,fid/r_d) converted to DM/r_d using r_d,fid=147.78 Mpc"
+DH,0.61,20.84933466138173,BOSS-DR12,Alam+2017,"Consensus H*(r_d/r_d,fid) converted to D_H/r_d = c/(H*r_d) using c=299792.458 km/s, r_d,fid=147.78 Mpc"
+

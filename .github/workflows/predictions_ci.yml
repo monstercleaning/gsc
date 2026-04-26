@@ -1,0 +1,114 @@
+name: predictions-ci
+
+# Validate the pre-registration pipeline: run all 8 prediction compute scripts,
+# verify determinism (each pipeline produces byte-identical output across two
+# runs), and confirm scoreboard/sign/score scripts are functional.
+
+on:
+  push:
+    paths:
+      - 'scripts/predictions_*.py'
+      - 'scripts/predictions_*.sh'
+      - 'predictions_register/**'
+      - 'gsc/**'
+      - 'schemas/predictions_*.json'
+      - '.github/workflows/predictions_ci.yml'
+  pull_request:
+    paths:
+      - 'scripts/predictions_*.py'
+      - 'scripts/predictions_*.sh'
+      - 'predictions_register/**'
+      - 'gsc/**'
+      - 'schemas/predictions_*.json'
+  workflow_dispatch:
+
+jobs:
+  predictions-determinism:
+    name: predictions determinism + scoreboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup python (stdlib-only)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: list available predictions
+        run: |
+          python3 scripts/predictions_scoreboard.py
+          python3 scripts/predictions_sign.py --list
+
+      - name: run all 8 compute pipelines + verify determinism
+        run: |
+          bash scripts/predictions_compute_all.sh --verify
+
+      - name: validate sign-protocol dry-run (does NOT modify files)
+        run: |
+          for pid in P1 P2 P3 P4 P5 P6 P7 P8; do
+            python3 scripts/predictions_sign.py "$pid" --dry-run
+          done
+
+      - name: scoreboard JSON output (used by downstream tools)
+        run: |
+          python3 scripts/predictions_scoreboard.py --format json > /tmp/scoreboard.json
+          python3 -c "import json; d = json.load(open('/tmp/scoreboard.json')); assert len(d) == 8, f'expected 8 predictions, got {len(d)}'; print(f'scoreboard.json contains {len(d)} predictions')"
+
+  schema-validate-pipeline-outputs:
+    name: validate pipeline outputs against JSON schemas (if jsonschema is available)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: predictions-determinism
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: install jsonschema
+        run: pip install jsonschema
+      - name: regenerate all pipeline outputs
+        run: bash scripts/predictions_compute_all.sh
+      - name: validate each pipeline_output.json against its schema
+        run: |
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+          import jsonschema
+
+          schemas_dir = Path('schemas')
+          register = Path('predictions_register')
+          failed = []
+          checked = 0
+          for pdir in sorted(register.iterdir()):
+              if not pdir.is_dir():
+                  continue
+              po = pdir / 'pipeline_output.json'
+              if not po.is_file():
+                  continue
+              data = json.loads(po.read_text())
+              schema_name = data.get('schema')
+              if not schema_name:
+                  failed.append(f'{po}: no schema field')
+                  continue
+              schema_path = schemas_dir / f'{schema_name}.schema.json'
+              if not schema_path.is_file():
+                  print(f'{po}: schema {schema_name} not found, skipping')
+                  continue
+              schema = json.loads(schema_path.read_text())
+              try:
+                  jsonschema.validate(instance=data, schema=schema)
+                  print(f'{po}: ✓ valid against {schema_name}')
+                  checked += 1
+              except jsonschema.ValidationError as e:
+                  failed.append(f'{po}: {e.message}')
+          if failed:
+              print(f'\nFAILED ({len(failed)}):')
+              for f in failed:
+                  print(f'  {f}')
+              exit(1)
+          print(f'\nAll {checked} pipeline outputs validated successfully.')
+          EOF

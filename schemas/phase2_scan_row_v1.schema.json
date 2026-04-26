@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_scan_row_v1.schema.json",
+  "title": "Phase-2 scan row v1 (permissive)",
+  "description": "Conservative schema for Phase-2 scan JSONL rows. Allows additive fields.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "params_hash": {
+      "type": "string"
+    },
+    "plan_point_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "scan_config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "chi2_total": {
+      "type": "number"
+    },
+    "chi2_joint_total": {
+      "type": "number"
+    },
+    "rsd_chi2_total": {
+      "type": "number"
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "type",
+        "schema"
+      ]
+    },
+    {
+      "required": [
+        "status"
+      ]
+    }
+  ],
+  "additionalProperties": true
+}

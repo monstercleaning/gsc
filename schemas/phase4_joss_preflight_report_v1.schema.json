@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "phase4_joss_preflight_report_v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "tool",
+    "created_utc",
+    "repo_root_name",
+    "status",
+    "checks"
+  ],
+  "properties": {
+    "schema": {
+      "const": "phase4_joss_preflight_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "repo_root_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "fail"]
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "detail"],
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ok", "fail"]
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

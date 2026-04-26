@@ -1,0 +1,9 @@
+# SDSS/eBOSS DR16 QSO BAO anisotropic constraint.
+# Source: CobayaSampler/bao_data
+#   mean: sdss_DR16_QSO_BAO_DMDH.txt
+#   cov:  sdss_DR16_QSO_BAO_DMDH_covtot.txt
+#
+# Order matches `eboss_dr16_qso_dm_dh_over_rd.csv`:
+#   [DM@1.48, DH@1.48]
+0.63731604 0.1706891
+0.1706891 0.30468415

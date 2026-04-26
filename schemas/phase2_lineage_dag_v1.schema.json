@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "phase2_lineage_dag_v1.schema.json",
+  "title": "Phase-2 lineage DAG v1",
+  "description": "Conservative schema for LINEAGE.json payloads.",
+  "type": "object",
+  "required": [
+    "schema",
+    "bundle_dir",
+    "manifest_relpath",
+    "nodes",
+    "edges",
+    "counts"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "enum": [
+        "phase2_lineage_dag_v1"
+      ]
+    },
+    "bundle_dir": {
+      "type": "string"
+    },
+    "bundle_dir_abs": {
+      "type": "string"
+    },
+    "manifest_relpath": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source",
+          "target",
+          "relation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "relation": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "n_nodes",
+        "n_edges"
+      ],
+      "properties": {
+        "n_nodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "n_edges": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "node_types": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "n_external_refs_skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

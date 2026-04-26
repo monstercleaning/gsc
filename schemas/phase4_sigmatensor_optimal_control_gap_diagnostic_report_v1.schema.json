@@ -1,0 +1,247 @@
+{
+  "$id": "phase4_sigmatensor_optimal_control_gap_diagnostic_report_v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_sigmatensor_optimal_control_gap_diagnostic_report_v1"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "H0_km_s_Mpc": {
+          "type": "number"
+        },
+        "Omega_m0": {
+          "type": "number"
+        },
+        "w_phi0": {
+          "type": "number"
+        },
+        "lambda_min": {
+          "type": "number"
+        },
+        "lambda_max": {
+          "type": "number"
+        },
+        "n_lambda": {
+          "type": "integer"
+        },
+        "z_min": {
+          "type": "number"
+        },
+        "z_max": {
+          "type": "number"
+        },
+        "n_z": {
+          "type": "integer"
+        },
+        "n_knots": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "H0_km_s_Mpc",
+        "Omega_m0",
+        "w_phi0",
+        "lambda_min",
+        "lambda_max",
+        "n_lambda",
+        "z_min",
+        "z_max",
+        "n_z",
+        "n_knots"
+      ]
+    },
+    "grids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "lambda_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "z_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "eval_z_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "distance_z_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "lambda_values",
+        "z_values",
+        "eval_z_values",
+        "distance_z_values"
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "feasible_count": {
+          "type": "integer"
+        },
+        "infeasible_count": {
+          "type": "integer"
+        },
+        "drift_positive_anywhere_in_2_5": {
+          "type": "boolean"
+        },
+        "drift_positive_all_eval_points_for_all_lambda": {
+          "type": "boolean"
+        },
+        "best_gap_metric_distance_mismatch": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "feasible_count",
+        "infeasible_count",
+        "drift_positive_anywhere_in_2_5",
+        "drift_positive_all_eval_points_for_all_lambda",
+        "best_gap_metric_distance_mismatch"
+      ]
+    },
+    "gap_by_lambda": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "lambda": {
+            "type": "number"
+          },
+          "feasible_drift_positive_all_eval": {
+            "type": "boolean"
+          },
+          "physically_allowed_canonical": {
+            "type": "boolean"
+          },
+          "gap_metric_distance_mismatch": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "drift_eval": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "z": {
+                  "type": "number"
+                },
+                "dz_dt0_si": {
+                  "type": "number"
+                },
+                "drift_sign": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "z",
+                "dz_dt0_si",
+                "drift_sign"
+              ]
+            }
+          },
+          "distance_targets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "z": {
+                  "type": "number"
+                },
+                "relative_mismatch": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "z",
+                "relative_mismatch"
+              ]
+            }
+          }
+        },
+        "required": [
+          "lambda",
+          "feasible_drift_positive_all_eval",
+          "physically_allowed_canonical",
+          "gap_metric_distance_mismatch",
+          "drift_eval",
+          "distance_targets"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "created_utc",
+    "created_utc_epoch",
+    "repo_version_dir",
+    "paths_redacted",
+    "status",
+    "params",
+    "grids",
+    "summary",
+    "gap_by_lambda"
+  ]
+}

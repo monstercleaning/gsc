@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p10_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P10 (TeV blazar dispersion)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "registered_couplings",
+    "blazar_predictions",
+    "detector_assessment"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p10_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P10"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "discriminator_vs_qg_liv": {"type": "string"},
+    "registered_couplings": {
+      "type": "object",
+      "required": ["k_grad_seconds_per_sqrt_meter", "epsilon_sigma_fluctuation"],
+      "properties": {
+        "k_grad_seconds_per_sqrt_meter": {"type": "number", "exclusiveMinimum": 0},
+        "k_grad_units_note": {"type": "string"},
+        "epsilon_sigma_fluctuation": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "blazar_predictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "z", "d_L_Gpc", "predicted_sigma_t_seconds"],
+        "properties": {
+          "name": {"type": "string"},
+          "z": {"type": "number", "minimum": 0},
+          "d_L_Gpc": {"type": "number", "exclusiveMinimum": 0},
+          "predicted_sigma_t_seconds": {"type": "number", "minimum": 0}
+        }
+      }
+    },
+    "detector_assessment": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["min_resolvable_sigma_t_s", "detectable_blazars", "any_detectable"],
+        "properties": {
+          "min_resolvable_sigma_t_s": {"type": "number", "exclusiveMinimum": 0},
+          "detectable_blazars": {"type": "array", "items": {"type": "string"}},
+          "any_detectable": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

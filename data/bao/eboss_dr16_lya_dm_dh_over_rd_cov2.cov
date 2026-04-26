@@ -1,0 +1,9 @@
+# eBOSS DR16 Lyα BAO (GCcomb combined Gaussian constraint).
+# Source: CobayaSampler/bao_data
+#   mean: desi_2024_eboss_gaussian_bao_Lya_GCcomb_mean.txt
+#   cov:  desi_2024_eboss_gaussian_bao_Lya_GCcomb_cov.txt
+#
+# Order matches `eboss_dr16_lya_dm_dh_over_rd.csv`:
+#   [DM@2.33, DH@2.33]
+5.714203578729510902e-01 -4.783633485342092539e-02
+-4.783633485342092539e-02 1.826077187249444678e-02

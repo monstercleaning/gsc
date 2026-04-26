@@ -1,0 +1,37 @@
+{
+  "consistency_with_observed_anomaly": {
+    "consistent_at_2sigma": false,
+    "explains_observed_anomaly": false,
+    "observed_delta_beam_minus_trap_s": 9.3,
+    "observed_delta_sigma_s": 2.2561,
+    "observed_tau_n_beam_s": 887.7,
+    "observed_tau_n_beam_sigma_s": 2.2,
+    "observed_tau_n_trap_s": 878.4,
+    "observed_tau_n_trap_sigma_s": 0.5,
+    "z_score_delta": -4.1222,
+    "z_score_tau_beam": 0.0,
+    "z_score_tau_trap": 18.6
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "honest_verdict": "P3 cannot be claimed as 'GSC explains the beam-trap anomaly' within the canonical framework. The earlier v0.1 PASS verdict was a numerical artefact of two cancelling errors (sign of mass scaling and missing G_F running). P3 is downgraded to: 'GSC predicts NO anomaly \u2014 observed discrepancy must have another origin (Standard Model systematic? new non-\u03c3 physics?).'",
+    "non_universal_extension_outcome": "Possible explanation requires \u03b4\u03c3/\u03c3 \u2248 -1.05% non-universal local shift, which violates the geometric-lock condition and conflicts with EP-violation bounds (MICROSCOPE \u03b7 < 10^-15) at >10\u03c3.",
+    "universal_scaling_outcome": "FAIL \u2014 predicted \u0394\u03c4 = 0 under universal coherent scaling, but observed +9.3 s anomaly is real. Framework cannot explain the discrepancy at T1+T2 level."
+  },
+  "physics_status": "CORRECTED v0.2: under strict universal coherent scaling (Sections 1.3, 2.4 of GSC_Framework.md), atomic-clock-measured \u03c4_n is \u03c3-invariant (sensitivity coefficient = 0). The framework PREDICTS NO contribution to the beam-trap anomaly. To recover an explanation requires NON-UNIVERSAL \u03c3-coupling (geometric-lock violated), which is beyond the canonical T1 framework. The previous v0.1 used a wrong sensitivity coefficient (-5 instead of +1 in physical units, and ignored the cancellation with atomic-clock \u03c3-dependence).",
+  "prediction": {
+    "delta_sigma_fraction_trap_minus_beam": 0.0,
+    "delta_tau_beam_minus_trap_s": 0.0,
+    "scaling_mode": "universal coherent scaling (geometric-lock honoured)",
+    "sensitivity_dlntau_dlnsigma": 0.0,
+    "tau_intrinsic_s": 887.7,
+    "tau_n_beam_predicted_s": 887.7,
+    "tau_n_trap_predicted_s": 887.7
+  },
+  "prediction_id": "P3",
+  "schema": "predictions_p3_pipeline_output_v1",
+  "tier": "T4",
+  "title": "Neutron-lifetime beam-trap discrepancy",
+  "tool": "predictions_compute_P3",
+  "tool_version": "v0.2-corrected-geometric-lock"
+}

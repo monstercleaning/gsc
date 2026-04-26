@@ -1,0 +1,420 @@
+{
+  "$id": "phase4_pantheon_plus_epsilon_posterior_report_v2.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "phase4_pantheon_plus_epsilon_posterior_report_v2"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "created_utc_epoch": {
+      "type": "integer"
+    },
+    "deterministic_mode": {
+      "type": "boolean"
+    },
+    "run_mode": {
+      "type": "string",
+      "enum": [
+        "demo",
+        "paper_grade"
+      ]
+    },
+    "plot_backend": {
+      "type": "string",
+      "enum": [
+        "matplotlib",
+        "fallback"
+      ]
+    },
+    "repo_version_dir": {
+      "type": "string"
+    },
+    "paths_redacted": {
+      "type": "boolean"
+    },
+    "repo_snapshot_manifest_sha256": {
+      "type": "string"
+    },
+    "repo_snapshot_manifest_source": {
+      "type": "string"
+    },
+    "data_manifest_sha256": {
+      "type": "string"
+    },
+    "covariance_mode": {
+      "type": "string",
+      "enum": [
+        "diag_only_proof_of_concept",
+        "full"
+      ]
+    },
+    "model": {
+      "type": "string",
+      "const": "flat_lcdm"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "dataset_mode": {
+          "type": "string"
+        },
+        "dataset_relpath": {
+          "type": "string"
+        },
+        "dataset_sha256": {
+          "type": "string"
+        },
+        "n_points": {
+          "type": "integer"
+        },
+        "omega_m_min": {
+          "type": "number"
+        },
+        "omega_m_max": {
+          "type": "number"
+        },
+        "omega_m_n": {
+          "type": "integer"
+        },
+        "epsilon_min": {
+          "type": "number"
+        },
+        "epsilon_max": {
+          "type": "number"
+        },
+        "epsilon_n": {
+          "type": "integer"
+        },
+        "pivot_z": {
+          "type": "number"
+        },
+        "toy_mode": {
+          "type": "boolean"
+        },
+        "covariance_relpath": {
+          "type": "string"
+        },
+        "covariance_sha256": {
+          "type": "string"
+        },
+        "covariance_n": {
+          "type": "integer"
+        },
+        "row_full_subset_mode": {
+          "type": "boolean"
+        },
+        "data_manifest_relpath": {
+          "type": "string"
+        },
+        "data_manifest_sha256": {
+          "type": "string"
+        },
+        "data_manifest_schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "dataset_mode",
+        "dataset_relpath",
+        "dataset_sha256",
+        "n_points",
+        "omega_m_min",
+        "omega_m_max",
+        "omega_m_n",
+        "epsilon_min",
+        "epsilon_max",
+        "epsilon_n",
+        "pivot_z",
+        "toy_mode"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "prior_omega_m_uniform": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2
+        },
+        "prior_epsilon_em_uniform": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2
+        },
+        "grid_resolution": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "omega_m_n": {
+              "type": "integer"
+            },
+            "epsilon_n": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "omega_m_n",
+            "epsilon_n"
+          ]
+        },
+        "pivot_redshift_for_h0_equivalent_shift": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "prior_omega_m_uniform",
+        "prior_epsilon_em_uniform",
+        "grid_resolution",
+        "pivot_redshift_for_h0_equivalent_shift"
+      ]
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "epsilon_em": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mean": {
+              "type": "number"
+            },
+            "std": {
+              "type": "number"
+            },
+            "p16": {
+              "type": "number"
+            },
+            "p50": {
+              "type": "number"
+            },
+            "p84": {
+              "type": "number"
+            },
+            "p2_5": {
+              "type": "number"
+            },
+            "p97_5": {
+              "type": "number"
+            },
+            "best_fit": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5",
+            "best_fit"
+          ]
+        },
+        "omega_m": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mean": {
+              "type": "number"
+            },
+            "std": {
+              "type": "number"
+            },
+            "p16": {
+              "type": "number"
+            },
+            "p50": {
+              "type": "number"
+            },
+            "p84": {
+              "type": "number"
+            },
+            "p2_5": {
+              "type": "number"
+            },
+            "p97_5": {
+              "type": "number"
+            },
+            "best_fit": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "mean",
+            "std",
+            "p16",
+            "p50",
+            "p84",
+            "p2_5",
+            "p97_5",
+            "best_fit"
+          ]
+        },
+        "best_fit": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "omega_m_best_fit": {
+              "type": "number"
+            },
+            "epsilon_em_best_fit": {
+              "type": "number"
+            },
+            "delta_M_profiled_best_fit": {
+              "type": "number"
+            },
+            "chi2_min": {
+              "type": "number"
+            },
+            "ndof_approx": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "omega_m_best_fit",
+            "epsilon_em_best_fit",
+            "delta_M_profiled_best_fit",
+            "chi2_min",
+            "ndof_approx"
+          ]
+        },
+        "h0_equivalent_shift_at_pivot": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "pivot_z_obs": {
+              "type": "number"
+            },
+            "epsilon_em_reference": {
+              "type": "number"
+            },
+            "z_gr_at_pivot": {
+              "type": "number"
+            },
+            "delta_mu_at_pivot": {
+              "type": "number"
+            },
+            "h0_ratio_equivalent": {
+              "type": "number"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pivot_z_obs",
+            "epsilon_em_reference",
+            "z_gr_at_pivot",
+            "delta_mu_at_pivot",
+            "h0_ratio_equivalent",
+            "note"
+          ]
+        }
+      },
+      "required": [
+        "epsilon_em",
+        "omega_m",
+        "best_fit",
+        "h0_equivalent_shift_at_pivot"
+      ]
+    },
+    "digests": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "posterior_grid_sha256": {
+          "type": "string"
+        },
+        "epsilon_marginal_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "posterior_grid_sha256",
+        "epsilon_marginal_sha256"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "filename"
+        ]
+      },
+      "minItems": 5
+    },
+    "portability": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "forbidden_absolute_path_match_count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "forbidden_absolute_path_match_count"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "tool_version",
+    "status",
+    "created_utc",
+    "created_utc_epoch",
+    "deterministic_mode",
+    "run_mode",
+    "plot_backend",
+    "repo_version_dir",
+    "paths_redacted",
+    "repo_snapshot_manifest_sha256",
+    "repo_snapshot_manifest_source",
+    "covariance_mode",
+    "model",
+    "inputs",
+    "parameters",
+    "results",
+    "digests",
+    "artifacts",
+    "portability"
+  ]
+}

@@ -1,0 +1,13 @@
+# Covariance for Planck 2018 distance priors (R, lA, omega_b_h2) in the same
+# row order as the corresponding CSV file:
+#   [R, lA, omega_b_h2]
+#
+# Source: Chen, Huang & Wang (2018), arXiv:1808.05724, Appendix (Planck 2018
+# base_plikHM_TTTEEE_lowE). The paper/tabulation provides the inverse
+# covariance; this file stores the covariance matrix obtained by inverting the
+# published inverse covariance (double precision).
+3
+2.135375011015138e-05 0.0001902983999039395 -4.546257021883779e-07
+0.0001902983999039396 0.007896826818661168 -4.337087985365848e-06
+-4.546257021883778e-07 -4.337087985365847e-06 2.223626004259103e-08
+

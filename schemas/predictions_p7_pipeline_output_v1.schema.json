@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p7_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P7 (GW-memory atomic-clock signature)",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "registered_couplings",
+    "main_event_prediction",
+    "detectability_assessment",
+    "event_amplitude_survey",
+    "analysis_strategy"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p7_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P7"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "registered_couplings": {
+      "type": "object",
+      "required": ["k_gw", "h_mem_default_strain"],
+      "properties": {
+        "k_gw": {"type": "number"},
+        "h_mem_default_strain": {"type": "number"}
+      }
+    },
+    "main_event_prediction": {
+      "type": "object",
+      "required": [
+        "h_mem_strain",
+        "k_gw_coupling",
+        "delta_sigma_over_sigma",
+        "delta_nu_over_nu_predicted"
+      ]
+    },
+    "detectability_assessment": {
+      "type": "object",
+      "required": [
+        "n_events_stacked",
+        "sqrt_n_gain_assumed",
+        "stacking_factor",
+        "stacked_signal_abs",
+        "detection_targets"
+      ],
+      "properties": {
+        "n_events_stacked": {"type": "integer", "minimum": 1},
+        "sqrt_n_gain_assumed": {"type": "boolean"},
+        "stacking_factor": {"type": "number", "exclusiveMinimum": 0},
+        "stacked_signal_abs": {"type": "number", "minimum": 0},
+        "detection_targets": {"type": "object"}
+      }
+    },
+    "event_amplitude_survey": {"type": "object"},
+    "analysis_strategy": {"type": "object"}
+  }
+}
