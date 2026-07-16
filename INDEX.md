@@ -160,7 +160,7 @@ archive/
 python3 scripts/predictions_compute_P3.py
 ```
 
-### Compute all 8 predictions deterministically
+### Compute all 10 predictions deterministically
 
 ```bash
 bash scripts/predictions_compute_all.sh --verify
@@ -227,12 +227,12 @@ Predictions: 10/10 deterministic + schema-validated (P1-P10)
 Scored predictions: 7/10 with PASS/FAIL/SUB-THRESHOLD verdicts
 Paper drafts: 3 of 4 (Paper A empirical, Paper B theoretical with v12.1 corrections, Paper D methodology)
 CI: predictions-determinism + schema validation
-Tests: 22+ representative core tests passing
-Pre-registration: signing + scoring protocols operational end-to-end with 7 active scorers (P1, P3, P4, P5, P6, P7, P9)
+Tests: prediction/falsification stack fully green (compute×2 determinism, 7 scorers, 10 schema validations — CI-asserted); full inherited unittest suite: 539/626 pass, 87 known-stale v11 doc-layout regressions fail in the v12 tree (see CHANGELOG → "July 2026 execution audit")
+Pre-registration: scoring protocol operational end-to-end with 7 active scorers (P1, P3, P4, P5, P6, P7, P9); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
 
 Outcome breakdown post-v12.2:
 - 2 PASS:           P5 (n2EDM bound), P9 (universal-scaling μ̇/μ = 0)
-- 5 FAIL:           P1 (DESI Y1 4σ tension at central p), P3 (universal scaling predicts no anomaly), P4 (Planck β tension), P6 (M_* near GUT excluded)
+- 5 FAIL:           P1 (DESI Y1 4σ tension at central p), P3 (universal scaling predicts no anomaly), P4 (Planck β tension), P6 (M_* near GUT excluded), + joint σ-axion window exclusion (Paper B §4)
 - 1 SUB-THRESHOLD:  P7 (sub-detector for current k_GW)
 - 3 PENDING:        P2 (HERA/SKA), P8 (ELT 2040+), P10 (CTAO 2026-2028)
 

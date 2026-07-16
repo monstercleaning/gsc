@@ -1,12 +1,12 @@
 # Pre-Registration
 
-Pre-registration of numerical predictions before observational data are released is a defining methodological commitment of the GSC framework. The pre-registration register at [predictions_register/](../predictions_register/) is append-only, time-stamped, and cryptographically signed.
+Pre-registration of numerical predictions before observational data are released is a defining methodological *commitment* of the GSC framework, and the register tooling is built to enforce it. The pre-registration register at [predictions_register/](../predictions_register/) is an append-only directory whose entries are content-hashed and publicly time-stamped through git commit history. Cryptographic (GPG) signing is specified by the protocol below but is **not yet executed** in the current release, and most of the worked examples shipped so far are retrodictive consistency checks against already-public data rather than genuine forward pre-registrations — see *Current implementation status* at the end of this document.
 
 ## Why pre-register
 
 The single most common failure mode in cosmological model-building is post-hoc parameter adjustment: a model "predicts" data that was already known, with parameters tuned after the fact. Pre-registration eliminates this failure mode by committing to a numerical prediction *before* the corresponding observational data are released.
 
-This converts the reproducibility infrastructure (deterministic pipelines, schema validation, lineage DAGs) from a *defensive* tool ("here are our results, you can re-run them") into a *falsification engine* ("here is our prediction, signed and dated; you cannot move the goalposts").
+The goal is to convert the reproducibility infrastructure (deterministic pipelines, schema validation, lineage DAGs) from a *defensive* tool ("here are our results, you can re-run them") toward a *falsification engine* ("here is our prediction, hashed and dated; the scoring rule is fixed in advance") — for the forward-looking predictions to which the discipline genuinely applies.
 
 ## What constitutes a pre-registration
 
@@ -41,6 +41,8 @@ Failure of a Tier-4 prediction does not propagate to T1–T3.
 Failure of a Tier-3 prediction may eliminate the corresponding T3 ansatz but leaves T1+T2 intact.
 Failure of a Tier-2 prediction is structural and triggers framework-wide review.
 
+These demotion rules are themselves bounded. A framework-level kill condition (see `GSC_Framework.md`) converts a pre-specified majority of *forward* pre-registration failures into abandonment of the GSC core — so that per-tier demotion cannot be used to rescue the framework indefinitely, and no new tier-demotion or non-universal extension may be introduced to save a prediction after it has been registered.
+
 ## Current pre-registered predictions
 
 See [predictions_register/](../predictions_register/) for the full list. Brief summary:
@@ -70,4 +72,15 @@ The register is a directory of one-file-per-entry markdown documents with struct
 - A scoring orchestrator (`scripts/predictions_score.py`);
 - A scoreboard generator (`scripts/predictions_scoreboard.py`).
 
-These scripts are part of the current cycle deliverable and are scheduled for implementation in M201.
+The scoring orchestrator and scoreboard generator are implemented and exercised by the worked examples. The signing script (`scripts/predictions_sign.py`) is a **reference scaffold and has not been run**: no register entry is GPG-signed in the current release.
+
+## Current implementation status
+
+To avoid the exact post-hoc failure mode this document warns against, we state plainly where the implementation stands as of v12.3:
+
+- **Signing:** Not executed. Every `prediction.md` carries `status: SCAFFOLD`. Pre-registration integrity currently rests on git's public, append-only commit history (content hash + commit timestamp), not on cryptographic signatures.
+- **Retrodictive vs. forward:** Seven worked examples (P1, P3, P4, P5, P6, P7, P9) are scored against data that was already public when written; they are consistency checks that exercise the tooling, not forward pre-registrations. Three (P2, P8, P10), plus the BAO test against the *future* DESI Year-3 release, target unreleased data and are the genuine forward pre-registrations.
+- **P1 caveat:** The worked P1 `scorecard.md` scores against DESI **Year-1** (public 2024) using a relative-shift statistic; this is a retrodictive consistency check. The *registered* P1 prediction targets DESI **Year-3** (≈2027) and remains unscored.
+- **Framework-level falsifiability:** A pre-committed kill condition (see `GSC_Framework.md`) prevents the tier hierarchy from absorbing every failure by demotion.
+
+Promoting the register from git-timestamped to GPG-signed, and scoring the forward predictions when their data arrive, is the principal remaining work.

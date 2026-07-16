@@ -5,7 +5,7 @@ tier: T2 (supporting only, not primary)
 ansatz: σ(t) — late-time fit ansatz from Paper A
 target_dataset: ELT/ANDES Sandage–Loeb redshift-drift measurements at z ≈ 2–5
 target_release_date: ≥ 2040 (ELT/ANDES first-light + integration time)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; FORWARD pre-registration (awaiting unreleased data)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

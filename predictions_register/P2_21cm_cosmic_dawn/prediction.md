@@ -5,7 +5,7 @@ tier: T2/T3
 ansatz: σ(t) — to be specified at signing time
 target_dataset: HERA Phase-II / SKA-Low globally averaged 21cm signal at z ≈ 15–25
 target_release_date: 2027–2030 (HERA Phase-II ≈ 2027, SKA-Low precision ≈ 2030)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; FORWARD pre-registration (awaiting unreleased data)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

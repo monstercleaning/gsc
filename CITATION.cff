@@ -13,7 +13,9 @@ license: "MIT"
 abstract: >
   An open-source pre-registration reproducibility stack demonstrated on a
   scale-covariant cosmology framework. The stack combines deterministic
-  computational pipelines, cryptographically-signed numerical predictions, and
+  computational pipelines, an append-only register of content-hashed,
+  git-time-stamped numerical predictions (GPG signing specified but not yet
+  executed; most worked examples are retrodictive checks), and
   a layered claim hierarchy (kinematic → phenomenological → ansatz →
   speculative extensions) to make speculative model-building falsifiable in
   operational practice. Developed and audited via multi-LLM iterative

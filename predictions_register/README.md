@@ -14,7 +14,9 @@ predictions_register/
 ├── P5_strong_cp_bound/           # nEDM / θ-evolution
 ├── P6_kz_defect_spectrum/        # Kibble-Zurek string-network GWs
 ├── P7_gw_memory_clocks/          # Atomic-clock shifts post-merger
-└── P8_redshift_drift/            # ELT/ANDES (supporting)
+├── P8_redshift_drift/            # ELT/ANDES (supporting)
+├── P9_proton_electron_mass_ratio/ # μ-constancy consistency check (T1)
+└── P10_tev_blazar_dispersion/    # CTAO arrival-time dispersion (σ(x) test)
 ```
 
 Each prediction directory contains:
@@ -23,14 +25,14 @@ Each prediction directory contains:
 - `pipeline_output.json` — the deterministic output of the prediction pipeline at registration time, with its SHA-256 hash.
 - `scorecard.md` — generated when the target observational data are released.
 
-## Status
+## Status (v12.3 honest labeling)
 
-All eight prediction directories are scaffolded but **none is yet signed**. Implementation milestones:
+All **ten** prediction directories (P1–P10) are implemented with compute pipelines, and **none is GPG-signed**: register integrity currently rests on the content hash plus the public, append-only git commit history, not on cryptographic signatures. Per the v12.3 honesty pass (see `docs/pre_registration.md` → *Current implementation status*):
 
-- **M201** (target: 2 weeks): P1 (BAO ruler shift) — pipeline implementation, prediction signed.
-- **M202** (target: 3 months): P2 (21cm Cosmic Dawn) — module implementation, prediction signed.
-- **M203** (target: 1 month): P3 (neutron lifetime) — σ-derivative computation, prediction signed.
-- **M204+**: P4–P8 implementations and signatures.
+- **Retrodictive consistency checks** (target data already public when the pipelines were written): P1's worked DESI Year-1 scorecard, P3, P4, P5, P6, P7, P9. These exercise the compute–score–scoreboard tooling; they are not forward pre-registrations.
+- **Forward pre-registrations** (target data unreleased): P2 (HERA Phase-II / SKA-Low), P8 (ELT/ANDES), P10 (CTAO), and P1's registered DESI Year-3 target.
+
+Executing the GPG signing step (`scripts/predictions_sign.py`) remains the principal outstanding work before any entry may be called "signed."
 
 ## Signing protocol
 

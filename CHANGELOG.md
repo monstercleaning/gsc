@@ -2,6 +2,56 @@
 
 Notable changes to GSC across framework cycles. Internal cycle markers are retained for traceability.
 
+## [v12.3 execution audit] — July 2026
+
+A fourth audit pass, execution-grounded where the previous three were reasoning-grounded: every executable claim in the package was run and checked against behavior.
+
+**Verified (previously asserted, never executed as a check):**
+
+- All 10 prediction pipelines regenerate `pipeline_output.json` **byte-identical to the committed register files** — a check CI itself does not perform (CI verifies run-to-run determinism but never diffs against the committed register). Also cross-version deterministic (Python 3.9 vs CI's 3.10).
+- Scorecard-recorded SHA-256 hashes match the committed outputs for all 7 scored predictions; re-run scorers reproduce the recorded verdicts exactly; all 10 outputs validate against their JSON schemas.
+
+**Found and fixed (claim drift):**
+
+- The register grew 8 → 10 predictions in v12.1–v12.2 but prose in 14 places still said "eight" (framework doc ×2 + prediction list, README, INDEX, QUICKSTART, Paper D long-form ×3 incl. a "P1–P8" range, compute orchestrator docstring). **`GSC_Framework.md` §9 had no P9/P10 sections at all** — §9.9 and §9.10 added, faithful to the register entries.
+- "Four-paper strategy" → five (Paper E added).
+- Residual signing overclaims corrected: framework closing line, M201–M203 roadmap milestones (annotated with actual outcomes), INDEX "signing … operational" wording, and an editorial note on the v12.0 changelog entry ("signed-and-dated" was never true).
+- Scoreboard presentation harmonized everywhere to: **2 PASS (P5, P9); 4 FAIL (P1, P3, P4, P6) + joint σ-axion window exclusion; 1 SUB-THRESHOLD (P7); 3 PENDING (P2, P8, P10)** (QUICKSTART was still quoting the v12.1 landscape).
+- §12.2.1 framework-level kill condition gained an explicit **evaluability clause**: majority = ≥3 of 4 forward tests, firing incrementally (P8's ≥2040 data cannot delay a kill already triggered); passes never veto. Tightening only.
+
+**Disclosed (known debt, not hidden):**
+
+- The full inherited unittest suite is **not green**: 626 tests, 539 pass, 87 fail — every failure an inherited v11 doc-layout regression test asserting files that v12 relocated to `archive/legacy_docs/`. v12 CI never runs this suite, so the debt was invisible. The prediction/falsification stack is fully green. QUICKSTART now states this and points verification at `predictions_compute_all.sh --verify`.
+- Package hygiene scan: no secrets, no private emails, no machine-local paths outside `archive/` (the only pattern hits are the project's own hygiene tests).
+
+## [Current cycle, v12.3 honesty pass] — May 2026
+
+### Triggered by a third hostile re-audit (post-publication)
+
+After the v12.2 deposit (Zenodo, figshare, OSF), a third independent hostile re-audit turned scrutiny on the *methodology paper's own central claim* — not on the individual physics predictions, which the earlier cycles had already corrected. It found that the headline claim was overstated, and in one place internally self-contradictory. The scientific scoreboard below is **unchanged**; this sprint corrects how the methodology was *described*, which for a methodology paper is the substance.
+
+**Findings:**
+
+- **Pre-registration overclaim (CRITICAL).** The JOSS paper, `paper_D/main.md`, Paper A, and `docs/pre_registration.md` stated that predictions were "cryptographically signed and time-stamped before the corresponding observational data are released" and that this made moving the goalposts "structurally impossible." In fact **all ten register entries are `status: SCAFFOLD`** with empty signature fields; `predictions_sign.py` is an unexecuted reference scaffold. `docs/pre_registration.md` simultaneously claimed the register "is cryptographically signed" (line 3) and that the signing scripts were "scheduled for implementation in M201" (a milestone that never ran).
+- **Retrodictive vs. forward conflation (CRITICAL).** Seven of the ten worked examples (P1, P3, P4, P5, P6, P7, P9) are scored against data that was already public when their pipelines were written; they are *retrodictive consistency checks*, not forward pre-registrations. Only P2, P8, P10, and the future DESI Year-3 BAO target are genuine forward pre-registrations.
+- **P1 scored against the wrong data increment.** The registered P1 target is DESI **Year-3** (≈2027), but the worked `scorecard.md` scored against DESI **Year-1** (public 2024-04-04), using a relative-shift statistic and a confidence label ("2.0σ") inconsistent with the registered `|z| < 3` rule.
+- **No framework-level falsifier (degenerating-programme risk).** Every failed prediction had been absorbed by tier-demotion or a "non-universal extension"; no observation was conceded to falsify the framework *core*. The only existing statement ("reduces to a re-parametrization of ΛCDM") was reduction, not falsification.
+- **Physics demarcation (Paper A).** The redshift-drift sign and BAO-shift "deviations from ΛCDM" originate in the phenomenological H(z) = H₀(1+z)^p ansatz, **not** in the freeze-frame relabeling (which is conformally equivalent to ΛCDM and shares all dimensionless observables). Paper A had marketed them without this caveat.
+
+**Corrections applied in v12.3:**
+
+- Reworded the JOSS `paper.md` (the deposited artifact), `paper_D/main.md`, Paper A abstract, `docs/pre_registration.md`, and `paper_D/README.md` to drop "cryptographically-signed" / "signed-before-data" and state honestly: the register is **content-hashed and git-time-stamped**, GPG signing is **specified but not executed**, and the worked examples are **mostly retrodictive**.
+- Added a **"Scope and honest limitations"** section to the JOSS paper, plus a paragraph recording that this v12.3 self-audit caught the overclaim (reported rather than quietly edited).
+- Relabeled all ten `prediction.md` `status:` fields as RETRODICTIVE-check vs FORWARD-pre-registration (kept the `SCAFFOLD` prefix so the signing/scoreboard tooling still parses).
+- Relabeled P1's `scorecard.md` as a retrodictive DESI Year-1 check, reconciled the `|z| < 3` threshold, and removed the "σ-modified recombination (M201) reverses the verdict" escape hatch.
+- Fixed `P3 prediction.md` so the registered text matches its own corrected compute (Δτ_n = 0 / null under the canonical universal framework; non-zero only under the opt-in non-universal extension).
+- Added a **pre-committed framework-level kill condition** (`GSC_Framework.md` §12.2.1): a conjunctive test over the *forward* predictions, with no post-hoc tier-demotion or extension permitted to rescue a registered prediction.
+- Tempered the "a methodology paper can survive any physics outcome" language so it is not an unfalsifiability escape hatch.
+
+This sprint is the methodology operating at its own expense: the discipline's most consequential value here was catching the overstatement of the discipline itself, before it could be cited.
+
+---
+
 ## [Current cycle, v12.2 corrections sprint] — April 2026
 
 ### Triggered by Agent 3 hostile-audit findings
@@ -92,7 +142,7 @@ This is a markedly less flattering picture than the v12.0 release, which claimed
 
 - **Layered tier hierarchy** introduced (T1 kinematic frame, T2 phenomenological fit, T3 RG ansatz, T4 speculative extensions). Each tier carries an independent kill-test.
 - **Four-paper publication strategy** replacing the prior single-paper scope. Papers A (empirical), B (theoretical), C (extensions), D (methodology) align with tier boundaries.
-- **Pre-registration register** introduced as primary methodological commitment. Eight (then ten) signed-and-dated predictions (P1–P10) with associated scoring pipelines.
+- **Pre-registration register** introduced as primary methodological commitment. Eight (then ten) predictions (P1–P10) with associated scoring pipelines. *(Editorial note, v12.3: the original entry read "signed-and-dated"; signing was in fact never executed — entries are content-hashed and git-time-stamped only. See the v12.3 honesty pass.)*
 
 ### New theoretical content
 

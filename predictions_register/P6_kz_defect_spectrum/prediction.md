@@ -5,7 +5,7 @@ tier: T4
 ansatz: σ(t) + RG critical exponents (ν, z) at σ_*-crossing — to be specified at signing time
 target_dataset: Stochastic gravitational-wave background (NANOGrav, EPTA, LISA)
 target_release_date: continuous (NANOGrav 30-yr ≈ 2030); LISA ≈ 2035
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

@@ -5,7 +5,7 @@ tier: T4
 ansatz: σ(t) + σ-GW coupling — to be specified at signing time
 target_dataset: Optical-lattice atomic-clock comparison data (ITOC, BACON, NICT-PTB-NIST), correlated with LIGO/Virgo merger triggers
 target_release_date: continuous (existing post-O3/O4 data + future O5)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

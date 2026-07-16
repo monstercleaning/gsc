@@ -2,16 +2,16 @@
 
 ## Pre-submission checklist
 
-- [ ] **Fill in your ORCID** in `paper.md` line 13 (`orcid: 0000-0000-0000-0000` placeholder)
-- [ ] **Affiliation review** — currently "Independent researcher"; update if you have an institutional affiliation
-- [ ] **Repository public** on GitHub (currently `github.com/morfikus/GSC` per CITATION.cff — verify it is public, MIT-licensed, and contains the v12.2 codebase)
-- [ ] **Tag a release** at the public repository (e.g., `v12.2.0`) — JOSS requires a versioned release archived to a citable platform
+- [x] **Fill in your ORCID** in `paper.md` — done: `0009-0009-7812-9203`
+- [x] **Affiliation review** — done: "Independent researcher; Founder, Monster Cleaning Ltd."
+- [ ] **Repository public** on GitHub (canonical public repo: `github.com/monstercleaning/gsc` — verify it is public, MIT-licensed, and contains the v12.3 codebase)
+- [ ] **Tag a release** at the public repository (e.g., `v12.3.0`) — JOSS requires a versioned release archived to a citable platform
 - [ ] **Zenodo DOI** — link the GitHub release to Zenodo for permanent archival; copy the DOI into the JOSS submission form (not into paper.md itself)
 - [ ] **Cross-platform smoke test** — run the orchestrator on a fresh Python 3.10+ install:
 
 ```bash
-git clone https://github.com/morfikus/GSC.git
-cd GSC/v12.0.0
+git clone https://github.com/monstercleaning/gsc.git
+cd gsc/v12.0.0
 python3 -m unittest discover -s tests -p 'test_*.py'
 bash scripts/predictions_compute_all.sh --verify
 ```
@@ -76,8 +76,8 @@ print(f'word count: {len(body.split())} (limit 250-1000)')
 
 1. Visit https://joss.theoj.org/papers/new
 2. Fill in:
-   - **Repository URL**: `https://github.com/morfikus/GSC`
-   - **Software version**: `v12.2.0` (or current release tag)
+   - **Repository URL**: `https://github.com/monstercleaning/gsc`
+   - **Software version**: `v12.3.0` (or current release tag)
    - **Branch**: `main` (or whichever contains the release)
    - **Submission target paper**: path `v12.0.0/papers/paper_D_methodology/joss/paper.md`
 3. Submit. JOSS Editor-in-Chief will assign a topic editor within ~1 week.

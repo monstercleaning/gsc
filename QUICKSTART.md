@@ -94,11 +94,12 @@ python3 scripts/predictions_score_P7.py
 python3 scripts/predictions_score_P9.py
 ```
 
-In v12.1 (post-correction), the scoring landscape is **2 PASS (P5, P9), 4 FAIL
-(P3, P4, P6, joint σ-axion), 1 SUB-THRESHOLD (P7), 3 PENDING (P1, P2, P8)**, and
-P10 (TeV blazar dispersion) awaits CTAO data. The FAIL on P3 reverses an
-earlier (v12.0) PASS verdict — a sign that the pre-registration discipline is
-working: errors caught early, retracted explicitly, framework status updated.
+Post-v12.2, the scoring landscape is **2 PASS (P5, P9); 4 FAIL (P1, P3, P4, P6)
+plus the joint σ-axion window exclusion; 1 SUB-THRESHOLD (P7); 3 PENDING (P2,
+P8, P10)**. The FAIL on P3 reverses an earlier (v12.0) PASS verdict, and P1
+moved from PENDING to FAIL when its DESI Y1 scorer landed in v12.2 — signs that
+the pre-registration discipline is working: errors caught early, retracted
+explicitly, framework status updated.
 
 The FAIL verdict for P4 is itself useful: it tells us the σ-Chern-Simons
 coupling g_CS must be larger than the registered value (FRG-dependent, Paper B),
@@ -135,11 +136,12 @@ This is the operational core of the framework: predictions are signed *before* o
 |---|---|
 | Understand the physics | [GSC_Framework.md](GSC_Framework.md) |
 | Understand the methodology | [docs/pre_registration.md](docs/pre_registration.md) and [docs/tier_hierarchy.md](docs/tier_hierarchy.md) |
-| Add a new prediction | The eight existing prediction directories at `predictions_register/PN_*` are templates |
-| Read or contribute to a paper | [papers/README.md](papers/README.md) lists the four-paper publication strategy |
+| Add a new prediction | The ten existing prediction directories at `predictions_register/PN_*` are templates |
+| Read or contribute to a paper | [papers/README.md](papers/README.md) lists the five-paper publication strategy |
 | Run the full late-time fit | `bash scripts/bootstrap_venv.sh && .venv/bin/python -m scripts.late_time_fit_grid --help` |
 | Audit the repository | `python3 scripts/audit_repo_footprint.py --max-mb 10` |
-| Run the test suite | `python3 -m unittest discover -s tests -p test_*.py` (stdlib-only smoke) |
+| Verify the falsification layer | `bash scripts/predictions_compute_all.sh --verify` (all 10 pipelines, determinism-checked — this is what CI asserts) |
+| Run the full inherited test suite | `python3 -m unittest discover -s tests -p test_*.py` — **honest status:** ~539/626 pass; ~87 inherited v11 doc-layout regression tests fail in the reorganized v12 tree (known debt; does not affect the prediction stack) |
 | Verify a release bundle | `bash scripts/release_candidate_check.sh` |
 
 ## Common operations

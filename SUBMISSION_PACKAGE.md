@@ -15,8 +15,8 @@ https://monstercleaning.com
 
 - **Title**: GSC: A Pre-Registration Reproducibility Stack for Falsifiable Cosmological Models
 - **License**: MIT
-- **Version**: v12.2.0
-- **Repository**: https://github.com/morfikus/GSC
+- **Version**: v12.3.0 (honesty pass — see CHANGELOG)
+- **Repository**: https://github.com/monstercleaning/gsc
 - **Subject categories**: Astrophysics; Cosmology; Scientific Software; Research Methodology
 
 **Common abstract** (~250 words):
@@ -24,7 +24,9 @@ https://monstercleaning.com
 ```
 An open-source pre-registration reproducibility stack demonstrated on a
 scale-covariant cosmology framework. The stack combines deterministic
-computational pipelines, cryptographically-signed numerical predictions, and
+computational pipelines, an append-only register of content-hashed and
+git-time-stamped numerical predictions (most shipped as retrodictive
+consistency checks; cryptographic signing specified but not yet executed), and
 a layered four-tier claim hierarchy (kinematic frame, phenomenological fit,
 RG ansatz, speculative extensions) to make speculative model-building
 falsifiable in operational practice. Ten worked predictions (P1-P10) cover
@@ -43,8 +45,8 @@ updates the framework status transparently.
 The honest scientific position post-audit: 2 PASS (P5 within nEDM bound; P9
 universal-scaling null prediction), 4 FAIL (P1 DESI Y1 BAO 4σ tension; P3
 universal scaling predicts no anomaly; P4 Planck birefringence at literature
-couplings; P6 PTAs exclude default M_*), 1 SUB-THRESHOLD (P7), 3 PENDING
-future data (P2, P8, P10).
+couplings; P6 PTAs exclude default M_*) plus a joint σ-axion window exclusion,
+1 SUB-THRESHOLD (P7), 3 PENDING future data (P2, P8, P10).
 
 The methodology is the primary contribution; the cosmology framework is a
 working case study. The stack is reusable for any model whose predictions
@@ -95,7 +97,7 @@ can be expressed as numerical functions of well-defined parameters.
 ```bash
 # Create zip locally
 cd /path/to/GSC
-zip -r gsc_v12.2.0.zip v12.0.0/ \
+zip -r gsc_v12.3.0.zip v12.0.0/ \
   --exclude '*/.venv/*' \
   --exclude '*/__pycache__/*' \
   --exclude '*/results/*' \
@@ -108,12 +110,12 @@ zip -r gsc_v12.2.0.zip v12.0.0/ \
 - Description: (use common abstract above)
 - Keywords: (use full keyword list)
 - License: MIT
-- Version: v12.2.0
-- Related/alternate identifier: GitHub URL https://github.com/morfikus/GSC, "Is supplement to"
+- Version: v12.3.0
+- Related/alternate identifier: GitHub URL https://github.com/monstercleaning/gsc, "Is supplement to"
 
 **Auto-DOI minted on submission. Save the DOI.**
 
-**Tip**: If you set up the GitHub→Zenodo integration before tagging, the v12.2.0 release tag will trigger automatic deposit using `.zenodo.json` (already in the repo).
+**Tip**: If you set up the GitHub→Zenodo integration before tagging, the v12.3.0 release tag will trigger automatic deposit using `.zenodo.json` (already in the repo).
 
 ---
 
@@ -134,7 +136,7 @@ If PDF not yet rendered: upload `v12.0.0/papers/paper_D_methodology/joss/paper.m
 - License: MIT
 - Tags: (common keywords)
 - Affiliation in author block: Monster Cleaning Ltd.; URL: https://monstercleaning.com
-- Repository link: https://github.com/morfikus/GSC
+- Repository link: https://github.com/monstercleaning/gsc
 
 ---
 
@@ -174,7 +176,7 @@ If PDF not yet rendered: upload `v12.0.0/papers/paper_D_methodology/joss/paper.m
 - Abstract: (common)
 - Keywords: (common)
 - License: MIT
-- Linked URL: https://github.com/morfikus/GSC
+- Linked URL: https://github.com/monstercleaning/gsc
 
 **Note**: ResearchGate creates a profile page at `researchgate.net/profile/Dimitar-Baev-X` with author affiliation visible. This page is itself indexed by Google as a high-DA brand-mention.
 
@@ -205,7 +207,7 @@ Abstract:
 Files attached: gsc_v12_2_paper_d.pdf
 
 License: MIT
-Repository: https://github.com/morfikus/GSC
+Repository: https://github.com/monstercleaning/gsc
 
 Comments: This is a methodology paper using a cosmology framework as case
 study. The framework's predictions mostly fail current observational data
@@ -234,7 +236,7 @@ viXra publishes essentially every well-formatted submission. Review time: 1-2 da
 - Abstract: (common)
 - Keywords: (common)
 - License: CC-BY 4.0 (Authorea standard) or MIT
-- Linked GitHub: https://github.com/morfikus/GSC
+- Linked GitHub: https://github.com/monstercleaning/gsc
 
 Authorea has built-in DOI minting and Crossref registration.
 

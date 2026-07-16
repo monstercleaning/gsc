@@ -5,7 +5,7 @@ tier: T1 (consistency check on geometric lock)
 ansatz: universal coherent scaling (Section 1.3 of GSC_Framework.md)
 target_dataset: H₂, CH₃OH, HD⁺ molecular spectroscopy of cosmological absorbers + laboratory ion-trap measurements
 target_release_date: continuous (current bounds; HD⁺ ion-trap improvements 2026-2028)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

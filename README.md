@@ -81,7 +81,7 @@ Adverse review of any one layer does not invalidate the others.
 
 ## Pre-registered predictions
 
-Eight central predictions are documented in [predictions_register/](predictions_register/), each with:
+Ten central predictions are documented in [predictions_register/](predictions_register/), each with:
 
 - The numerical prediction and its uncertainty band;
 - The σ(t) ansatz and parameter values producing it;
@@ -115,7 +115,7 @@ Limitations and open problems are listed explicitly in [GSC_Framework.md §12](G
 ## Contributing and feedback
 
 - Open issues in the repository for technical questions or replication problems.
-- Pre-registered predictions are append-only; once signed and dated, they cannot be modified.
+- Pre-registered predictions are append-only; once committed and dated (git history), they cannot be modified. (GPG signing is specified but not yet executed — see `docs/pre_registration.md`.)
 - Cross-checks against alternative scale-covariant frameworks are welcome.
 
 ## License

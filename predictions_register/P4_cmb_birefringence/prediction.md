@@ -5,7 +5,7 @@ tier: T3
 ansatz: σ(t) + RG-induced σ-F̃F coupling f_σ — to be specified at signing time
 target_dataset: CMB polarization rotation angle β
 target_release_date: Planck (current hint); LiteBIRD ≈ 2030; CMB-S4 ≈ 2032
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

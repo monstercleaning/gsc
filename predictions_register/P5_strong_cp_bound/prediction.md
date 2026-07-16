@@ -5,7 +5,7 @@ tier: T3
 ansatz: σ(t) + σ-θ coupling (Section 4) — to be specified at signing time
 target_dataset: Neutron electric dipole moment (nEDM) measurements bounding |θ_eff|
 target_release_date: continuous (active n2EDM, PSI nEDM upgrades, 2027+)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

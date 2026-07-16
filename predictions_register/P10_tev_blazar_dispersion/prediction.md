@@ -5,7 +5,7 @@ tier: T4 (σ(x) spatial-extension test)
 ansatz: σ(x,t) field with spatial gradients sourced by large-scale structure
 target_dataset: CTAO archival blazar arrival-time data, line-of-sight cross-correlated with Planck-Compton-Y / kSZ tomography
 target_release_date: CTAO commissioning 2026; first archival reanalysis 2027-2028
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; FORWARD pre-registration (awaiting unreleased data)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

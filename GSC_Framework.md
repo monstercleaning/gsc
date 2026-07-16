@@ -2,9 +2,9 @@
 
 ## A Layered Scale-Covariant Cosmology with Pre-Registered Falsification
 
-**Status:** Working research draft, April 2026.
+**Status:** Working research draft, April 2026; corrected in the v12.3 honesty pass (May 2026 — see CHANGELOG).
 **Audience:** Theoretical cosmology, gravitational physics, quantum gravity, scientific software methodology.
-**Repository:** `github.com/morfikus/GSC`
+**Repository:** `github.com/monstercleaning/gsc`
 
 > Predecessor framework drafts (provenance only) are retained at [archive/](archive/).
 
@@ -31,7 +31,7 @@ We present **GSC**, a scale-covariant cosmological framework structured as four 
 
 Each tier carries an independent kill-test, so the failure of any T4 module does not propagate to the lower tiers. The framework is supported by a deterministic reproducibility stack (schema-validated artifacts, lineage DAGs, container-based reproducers) and a pre-registration register pinning numerical predictions before observational releases (DESI Year-3 BAO, LiteBIRD, HERA/SKA 21cm, neutron-lifetime experiments).
 
-The eight central pre-registered predictions are:
+The ten central registered predictions are:
 
 1. **BAO standard-ruler shift** Δr_s/r_s in DESI Year-3, calculable from σ-evolution of c_s and t_rec.
 2. **21cm Cosmic-Dawn signal** at z ≈ 15–25, distinct from ΛCDM expectation; testable with HERA Phase-II and SKA-Low.
@@ -41,8 +41,10 @@ The eight central pre-registered predictions are:
 6. **Topological-defect spectrum** from σ_*-crossing as Kibble–Zurek phase transition (string density, gravitational-wave signature).
 7. **GW-memory-induced atomic-clock-array shifts** correlated with LIGO/Virgo merger events.
 8. **Redshift-drift sign and amplitude** at z ≈ 2–5 (now framed as supporting, not primary discriminator).
+9. **Proton-electron mass-ratio (μ) constancy** — a null prediction: universal coherent scaling forbids any cosmological μ drift (T1 consistency check on the geometric lock).
+10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
 
-A four-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), and the software/pre-registration methodology (Paper D), so that adverse review of any layer does not compromise the others.
+A five-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), the software/pre-registration methodology (Paper D), and the self-falsification case report (Paper E), so that adverse review of any layer does not compromise the others.
 
 ---
 
@@ -451,7 +453,7 @@ Status: structural reformulation. A complete development requires defining the �
 
 ## 9. Pre-Registered Predictions
 
-A defining methodological feature of the framework is **pre-registration** of numerical predictions before observational data are released. The pre-registration register is a cryptographically-signed, time-stamped artifact at [predictions_register/](predictions_register/), with each entry containing:
+A defining methodological feature of the framework is **pre-registration** of numerical predictions before observational data are released. The pre-registration register is a content-hashed, publicly git-time-stamped artifact at [predictions_register/](predictions_register/) (GPG signing is specified by the protocol but not yet executed; most shipped entries are retrodictive consistency checks — see `docs/pre_registration.md` → *Current implementation status*), with each entry containing:
 
 - The prediction itself, expressed as a numerical range or threshold;
 - The σ(t) ansatz and parameter values producing it;
@@ -461,7 +463,7 @@ A defining methodological feature of the framework is **pre-registration** of nu
 
 Pre-registration prevents post-hoc parameter adjustment and converts the reproducibility infrastructure from a *referee tool* into a *falsification engine*. This is the operational core of the framework.
 
-The eight central predictions are summarized below.
+The ten central predictions are summarized below.
 
 ### 9.1 Prediction P1: BAO standard-ruler shift in DESI Year-3
 
@@ -554,6 +556,22 @@ with amplitude calculable from the late-time σ-fit and the derived σ-θ coupli
 
 **Target.** ELT/ANDES (~2040+).
 
+### 9.9 Prediction P9: Constancy of μ = m_p/m_e (added v12.1)
+
+**Statement.** Under universal coherent scaling, all local dimensionless constants — including μ = m_p/m_e — are strictly invariant. This is a *null* prediction and a consistency check on the geometric-lock axiom (T1): the framework predicts **no** cosmological μ drift at any redshift.
+
+**Target.** Molecular spectroscopy of cosmological absorbers (H₂, CH₃OH) and laboratory HD⁺ ion-trap bounds.
+
+**Kill-test.** Any robust detection of cosmological μ variation falsifies universal coherent scaling and with it T1. Current status: PASS at existing bounds — with the honest caveat that the PASS is partially by construction (see the register entry).
+
+### 9.10 Prediction P10: TeV blazar arrival-time dispersion (added v12.2)
+
+**Statement.** If σ carries spatial gradients sourced by large-scale structure (T4 σ(x) extension), TeV photons accumulate an *energy-independent*, structure-correlated arrival-time dispersion along the line of sight — distinct from quantum-gravity dispersion, which is energy-dependent.
+
+**Target.** CTAO blazar timing, cross-correlated with line-of-sight structure tracers.
+
+**Kill-test.** Absence of the structure-correlated dispersion at the predicted amplitude excludes the σ(x) gradient module; any *energy-dependent* dispersion signature is attributable to other physics, not this module. Current status: PENDING — at the dimensionally-corrected k_grad (v12.2), the predicted amplitude is below current detector thresholds.
+
 ---
 
 ## 10. The v11 Reproducibility Stack: Operational Foundation
@@ -570,11 +588,11 @@ GSC is not only a theoretical proposal; it is built on a deterministic, publicly
 
 The current cycle adds:
 
-- **Pre-registration register** [predictions_register/](predictions_register/) — cryptographically-signed, time-stamped predictions with associated computation pipelines.
+- **Pre-registration register** [predictions_register/](predictions_register/) — content-hashed, git-time-stamped predictions with associated computation pipelines (GPG signing pending; see §12.2.1 and `docs/pre_registration.md`).
 - **Tier-tagged claim ledger** `docs/claim_ledger.json` (to be migrated from the predecessor framework with tier annotations) — every claim labelled with tier, kill-test, dependency.
 - **Falsification scoring scripts** that automatically compare published observational data against pre-registered predictions and produce timestamped scorecards.
 
-This converts the existing reproducibility stack from a *defensive* tool ("here are our results, you can re-run them") into an *offensive* tool ("here is our prediction, signed and dated; here is the scoring pipeline; you cannot move the goalposts").
+This is intended to convert the reproducibility stack from a *defensive* tool ("here are our results, you can re-run them") toward an *offensive* tool ("here is our prediction, hashed and dated; here is the scoring pipeline; the scoring rule is fixed in advance") — genuinely so for the forward-looking predictions, and as a tooling demonstration for the retrodictive ones.
 
 ---
 
@@ -651,7 +669,20 @@ Despite the two candidate routes of §3.5, σ_* remains effectively phenomenolog
 
 ### 12.2 Conformal-frame triviality
 
-Section 1.2 addresses this critique structurally but does not eliminate it. The empirical content of GSC depends on σ having genuinely independent dynamics. Demonstrations of this independence are concentrated in the T3 ansatz (specific G(σ) running) and T4 modules (σ-θ coupling, σ(x,t) gradient effects). If all of these fail, GSC reduces to a re-parametrization of ΛCDM.
+Section 1.2 addresses this critique structurally but does not eliminate it. The empirical content of GSC depends on σ having genuinely independent dynamics. Demonstrations of this independence are concentrated in the T3 ansatz (specific G(σ) running) and T4 modules (σ-θ coupling, σ(x,t) gradient effects). If all of these fail, GSC reduces to a re-parametrization of ΛCDM — which, being observationally identical to ΛCDM, is not an independent theory. We treat that reduction as *falsification of GSC-as-a-distinct-theory*, not as a safe harbour.
+
+### 12.2.1 Framework-level kill condition (pre-committed)
+
+A tiered hierarchy with per-module kill-tests can degenerate into unfalsifiability if every failed prediction is absorbed by demoting it to a lower tier or adding a bespoke non-universal extension. To foreclose that move we pre-commit, now, to a *conjunctive* framework-level kill condition that sits above the individual tiers:
+
+1. **Scope.** The condition is evaluated only over the **genuinely forward** pre-registered tests — those registered before their target data exist (currently P2, P8, P10, and the DESI Year-3 BAO test of P1). Retrodictive consistency checks against already-public data do **not** count toward it.
+2. **Threshold.** If a **majority** of these forward tests fail at their registered confidence once their data arrive, the GSC **core (T1–T3)** is abandoned as a distinct theory — not merely the individual implicated modules. The repository status is set to FALSIFIED and the case study is closed.
+3. **No post-hoc rescue.** After a prediction is registered it may **not** be saved by introducing a new tier-demotion, a new non-universal extension, or an unimplemented correction (e.g. a "σ-modified recombination" term). Such mechanisms are admissible only if registered and scored as *new* forward predictions in their own right.
+4. **Conformal-reduction clause.** If the surviving content of GSC becomes observationally indistinguishable from ΛCDM (i.e. the T3/T4 independent-dynamics demonstrations all fail), GSC is considered falsified *as a distinct theory* under §12.2, regardless of how many ΛCDM-equivalent fits it can still produce.
+
+**Evaluability.** With four forward tests in scope, "majority" means **at least three**. The condition is evaluable incrementally: it fires as soon as any three forward tests have failed at their registered confidence, without waiting for the remaining test's data (P8's ELT/ANDES target, ≥2040, therefore cannot delay a kill that P1-Y3, P2, and P10 have already triggered). Passing tests never veto a kill once three failures exist.
+
+This condition is itself part of the pre-registration: it is recorded here before the forward data exist, so that "most predictions failed but the framework survived" cannot be claimed after the fact.
 
 ### 12.3 Full CMB closure
 
@@ -681,9 +712,9 @@ These limitations are listed here, in the main document, deliberately. The frame
 
 **Six-month milestones:**
 
-- **M201:** Pre-registration register implementation; first prediction (BAO ruler shift) signed and dated;
-- **M202:** 21cm Cosmic-Dawn module implementation; second prediction signed;
-- **M203:** Neutron-lifetime σ-derivative computation; third prediction signed;
+- **M201:** Pre-registration register implementation; first prediction (BAO ruler shift) signed and dated; *(v12.3 status: register and pipelines implemented; GPG signing was never executed — entries are content-hashed and git-time-stamped only)*
+- **M202:** 21cm Cosmic-Dawn module implementation; second prediction signed; *(same v12.3 caveat)*
+- **M203:** Neutron-lifetime σ-derivative computation; third prediction signed; *(computed; corrected to a null result in v12.1; unsigned)*
 - **M204:** Paper A draft circulated to internal reviewers;
 - **M205:** Paper D (methodology) draft and JOSS preflight.
 
@@ -720,7 +751,7 @@ The framework *is* a claim that the v9.1 maximalism (twelve sections, eleven pre
 
 Whether GSC succeeds will be determined by the next observational decade: DESI Year-3 BAO, LiteBIRD birefringence, HERA/SKA 21cm, neutron-lifetime experiments, and cosmic-string GW backgrounds will produce sharp, pre-registered tests of specific GSC predictions. Failure of any individual prediction will cleanly eliminate the corresponding tier or module, leaving the others unaffected. Success of multiple independent predictions would constitute genuine evidence beyond ΛCDM.
 
-The framework's honesty is its strongest defensive position. Every limitation is explicit. Every kill-test is specified. Every prediction is pre-registered. If the universe disagrees with the framework, we will know — and we will know which part disagrees.
+The framework's honesty is its strongest defensive position. Every limitation is explicit. Every kill-test is specified. Every prediction is content-hashed and git-time-stamped in the register — the forward subset ahead of its data, the rest as labeled retrodictive checks (§12.2.1, `docs/pre_registration.md`). If the universe disagrees with the framework, we will know — and we will know which part disagrees.
 
 ---
 

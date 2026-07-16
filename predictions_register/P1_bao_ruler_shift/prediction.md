@@ -5,7 +5,7 @@ tier: T2
 ansatz: σ(t) — to be specified at signing time
 target_dataset: DESI Year-3 galaxy-clustering BAO peak position
 target_release_date: 2027 (estimated)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; registered target DESI Year-3 (FORWARD); worked scorecard is a RETRODICTIVE Year-1 check
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —

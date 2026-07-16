@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# predictions_compute_all.sh — orchestrate all 8 prediction compute pipelines.
+# predictions_compute_all.sh — orchestrate all 10 prediction compute pipelines.
 #
 # Runs each of the predictions_compute_PN.py scripts in sequence, captures
 # the SHA-256 of each pipeline output, and prints a summary table.

@@ -8,11 +8,11 @@
 
 **Venue target:** Journal of Open Source Software (JOSS); SoftwareX; Astronomy and Computing.
 
-**Status:** Drafting from the existing reproducibility stack; scheduled for first submission.
+**Status:** Submitted; revised in the v12.3 honesty pass (corrected an overclaim that the register was cryptographically signed / predictions signed-before-data).
 
 ## Scope
 
-Paper D documents the deterministic, schema-validated, lineage-tracked reproducibility infrastructure underlying the GSC framework, and the pre-registration discipline that converts it from a defensive tool into a falsification engine.
+Paper D documents the deterministic, schema-validated, lineage-tracked reproducibility infrastructure underlying the GSC framework, and the pre-registration discipline intended to convert it from a defensive tool toward a falsification engine. The current release relies on git-history timestamps rather than executed GPG signatures, and most worked examples are retrodictive consistency checks; see the paper's *Scope and honest limitations*.
 
 ### Sections
 

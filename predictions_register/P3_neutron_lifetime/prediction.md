@@ -1,11 +1,11 @@
 ---
 prediction_id: P3
-title: Neutron-lifetime beam–trap discrepancy as σ-environmental dependence
+title: Neutron-lifetime beam–trap discrepancy (non-universal σ-coupling test; null under the canonical framework)
 tier: T4
 ansatz: σ(x,t) with matter-density coupling — to be specified at signing time
 target_dataset: Neutron lifetime measurements in beam (BL-NPDγ, BL3, ATRAP-style) and trap (UCNτ, μSR, magnetic trap) configurations
 target_release_date: continuous (ongoing UCNτ campaigns, BL3 startup ≈ 2026)
-status: SCAFFOLD — NOT YET SIGNED
+status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —
@@ -16,7 +16,7 @@ pipeline_output_hash: —
 
 ## Statement
 
-The currently-unexplained ~9 second discrepancy between beam (τ_n^beam ≈ 887.7 s) and trap (τ_n^trap ≈ 878.4 s) measurements of free-neutron lifetime arises from σ-environmental dependence: σ takes slightly different equilibrium values in the high-density trap-wall environment vs. the beam free-vacuum environment, modifying the β-decay rate.
+**Under the canonical (universal coherent-scaling) framework, GSC predicts NO beam–trap difference: Δτ_n = 0.** The σ-dependence of the atomic-clock time reference and of the β-decay rate cancel, so the neutron lifetime is σ-invariant (consistent with prediction P9). The currently-unexplained ~9-second discrepancy between beam (τ_n^beam ≈ 887.7 s) and trap (τ_n^trap ≈ 878.4 s) measurements can be reproduced *only* by a **non-universal** σ-coupling — an opt-in extension beyond the canonical T1–T3 framework — in which σ takes different equilibrium values in the high-density trap-wall environment vs. the beam free-vacuum environment. The corrected compute pipeline (v0.2) returns Δτ_n = 0 in the default universal mode and a non-zero value only when this non-universal coupling is explicitly enabled. This prediction therefore tests the non-universal extension, not the framework core; under the core it is a null prediction.
 
 The prediction is
 

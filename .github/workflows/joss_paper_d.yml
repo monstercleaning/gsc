@@ -64,7 +64,11 @@ jobs:
           body = re.sub(r'#.*', '', body)
           body = re.sub(r'\[@\w+\]', '', body)
           words = len(body.split())
-          assert 250 <= words <= 1000, f'word count {words} out of JOSS range [250, 1000]'
+          # Preprint format: JOSS's ~1000-word guideline targets minimal software
+          # papers. This is deposited as a preprint and carries an expanded
+          # "Scope and honest limitations" section (added in the v12.3 honesty
+          # pass), so we allow up to 2000 words.
+          assert 250 <= words <= 2000, f'word count {words} out of preprint range [250, 2000]'
           print(f'OK: word count {words}')
 
           bib = open('paper.bib').read()

@@ -2,11 +2,11 @@
 
 ## Abstract
 
-We describe an open-source software stack that combines deterministic, schema-validated computational pipelines with cryptographically-signed pre-registered numerical predictions, intended to make speculative cosmological model-building falsifiable in practice rather than only in principle. The stack is implemented around the Gravitational Structural Collapse (GSC) framework — a scale-covariant alternative to ΛCDM organised as a four-tier epistemic hierarchy — but the architecture is independent of the specific physical claims and is reusable for any model whose predictions can be expressed as numerical functions of well-defined parameter sets.
+We describe an open-source software stack that combines deterministic, schema-validated computational pipelines with an append-only register of content-hashed, publicly time-stamped numerical predictions, intended to make speculative cosmological model-building falsifiable in practice rather than only in principle. The stack is implemented around the Gravitational Structural Collapse (GSC) framework — a scale-covariant alternative to ΛCDM organised as a four-tier epistemic hierarchy — but the architecture is independent of the specific physical claims and is reusable for any model whose predictions can be expressed as numerical functions of well-defined parameter sets.
 
-The contribution is methodological rather than physical: a *publication discipline* that makes "moving the goalposts" structurally impossible, by separating prediction-generation from data-comparison through dated cryptographic signatures, with a per-prediction scoring algorithm that resolves to a public pass/fail outcome at the originally-registered confidence level when the corresponding observational data are released.
+The contribution is methodological rather than physical: a *publication discipline* designed to make "moving the goalposts" structurally difficult, by separating prediction-generation from data-comparison through a content hash and public (git) timestamp recorded before scoring, with a per-prediction scoring algorithm that resolves to a public pass/fail outcome at the originally-registered confidence level when the corresponding observational data are released. We are explicit (Section 6) that the present release relies on git-history timestamps rather than executed cryptographic signatures, and that most of the worked examples are retrodictive consistency checks rather than genuine forward pre-registrations.
 
-We document the protocol, demonstrate the implementation on eight near-term cosmological predictions (BAO ruler shift, 21cm Cosmic-Dawn signal, neutron-lifetime environmental dependence, CMB cosmic birefringence, strong-CP θ-bound, Kibble–Zurek defect spectrum, gravitational-wave-memory atomic-clock signature, Sandage–Loeb redshift drift), and discuss adoption considerations for other research programmes.
+We document the protocol, demonstrate the implementation on ten near-term cosmological predictions (BAO ruler shift, 21cm Cosmic-Dawn signal, neutron-lifetime environmental dependence, CMB cosmic birefringence, strong-CP θ-bound, Kibble–Zurek defect spectrum, gravitational-wave-memory atomic-clock signature, Sandage–Loeb redshift drift, proton-electron mass-ratio constancy, TeV blazar arrival-time dispersion), and discuss adoption considerations for other research programmes.
 
 **Keywords:** reproducibility, pre-registration, cosmology, falsifiability, scientific software.
 
@@ -22,11 +22,11 @@ The proposed methodology has four components:
 
 2. A **layered claim hierarchy** that separates the model into tiers of epistemic confidence (kinematic, phenomenological, ansatz-level, speculative). Each tier carries an independent kill-test, so adverse review of one tier does not propagate to lower tiers.
 
-3. A **pre-registration register** of numerical predictions, cryptographically signed and time-stamped before the corresponding observational data are released. Each entry captures the prediction, the producing pipeline, the scoring algorithm, and the SHA-256 hash of the deterministic pipeline output as of the signing date.
+3. A **pre-registration register** of numerical predictions, content-hashed and publicly time-stamped (via the append-only git history) ahead of the corresponding observational data for the forward-looking subset. Each entry captures the prediction, the producing pipeline, the scoring algorithm, and the SHA-256 hash of the deterministic pipeline output as of the registration commit. GPG signing is specified by the protocol but is not executed in the current release (Section 6).
 
 4. A **layered publication strategy** in which different model tiers are presented in separate papers, so journal review acts at the granularity at which it can resolve.
 
-We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on eight pre-registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
+We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on ten registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
 
 ## 2. The Falsifiability Problem in Cosmology
 
@@ -162,7 +162,7 @@ Each script returns exit code 0 on success and non-zero on any verification fail
 
 ## 5. Case Study: Pre-registered Predictions
 
-We demonstrate the workflow on the eight pre-registered predictions of the GSC framework. Detailed prediction records are at `predictions_register/P1`–`P8`; here we summarise the methodological aspects.
+We demonstrate the workflow on the ten registered predictions of the GSC framework. Detailed prediction records are at `predictions_register/P1`–`P10`; here we summarise the methodological aspects.
 
 ### 5.1 P1 — BAO standard-ruler shift (DESI Year-3)
 
@@ -188,7 +188,7 @@ P4–P8 follow the same pattern: a pipeline computes the prediction, the predict
 
 The methodology provides:
 
-- A protective barrier against post-hoc parameter tuning (predictions are signed before data);
+- A protective barrier against post-hoc parameter tuning for the forward-looking subset (predictions are content-hashed and git-time-stamped before their data exist; GPG signing is future work);
 - A structural protection against tier-cross-contamination in journal review (each paper presents one tier);
 - A reproducibility guarantee at the byte-identical level for any registered prediction;
 - A mechanism for community contribution (independent reproducers can sign scorecards).
@@ -196,7 +196,7 @@ The methodology provides:
 The methodology does *not* provide:
 
 - A guarantee of physical correctness (a model can be wrong even if all its predictions are honestly signed);
-- A protection against the *choice* of which observations to register against (the choice of P1–P8 itself reflects researcher selection);
+- A protection against the *choice* of which observations to register against (the choice of P1–P10 itself reflects researcher selection);
 - A guarantee against bugs in the prediction pipeline (only that the bug, if present, is reproducibly present).
 
 The first two limitations are inherent to all model-building. The third is mitigated by deterministic-pipeline + content-hashing: a bug is at least exactly reproducible, allowing later identification and correction (with explicit superseding-prediction records).
@@ -221,11 +221,11 @@ For other research programmes considering adoption:
 2. **Define the tier hierarchy first.** The layered architecture is what allows speculative extensions to coexist with disciplined empirical claims. Without it, the temptation is to either over-commit (everything is a primary claim) or under-commit (everything is "diagnostic only").
 3. **Pre-register early and often.** Each pre-registration tightens the model's empirical content. The discipline is most useful when it is routine rather than exceptional.
 4. **Treat scoring as appending, not editing.** The scorecard is added to the register; the original prediction is never modified. This is the operational guarantee of falsifiability.
-5. **Separate methodology and physics in publication.** A methodology paper independent of the specific physical claims can survive any physics outcome. We submit ours first.
+5. **Separate methodology and physics in publication.** A methodology paper independent of the specific physical claims is judged on its own merits, regardless of the physics outcome — but this separation is *not* an escape hatch: the case-study physics is reported honestly under the same framework-level kill condition (see `GSC_Framework.md` §12.2.1), and a methodology that could not survive scrutiny of its own central claim would not be worth submitting. We submit the methodology paper first.
 
 ## 8. Conclusions
 
-We have described an open-source software stack that combines deterministic computational pipelines, a layered claim hierarchy, cryptographically-signed pre-registered predictions, and a layered publication strategy, intended to make speculative cosmological model-building falsifiable in operational practice. The stack is implemented around the GSC framework but the architecture is independent of the specific physical claims and is reusable for any model whose predictions can be expressed as numerical functions of well-defined parameters.
+We have described an open-source software stack that combines deterministic computational pipelines, a layered claim hierarchy, an append-only register of content-hashed and publicly time-stamped predictions, and a layered publication strategy, intended to make speculative cosmological model-building falsifiable in operational practice. The stack is implemented around the GSC framework but the architecture is independent of the specific physical claims and is reusable for any model whose predictions can be expressed as numerical functions of well-defined parameters.
 
 The methodological contribution is independent of the truth or falsehood of GSC's specific physical claims: a successful methodology paper, cited and adopted by other groups, is a contribution in itself.
 
