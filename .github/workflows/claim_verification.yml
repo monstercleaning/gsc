@@ -70,4 +70,8 @@ jobs:
 
       - name: retro-test (requires a FAILURE on the historical tree to pass)
         working-directory: .
+        env:
+          # This repository's own pre-honesty-pass release (package at repo root).
+          GSC_RETRO_COMMIT: 6cf7ee7
+          GSC_RETRO_SUBDIR: ''
         run: bash scripts/verify_claims_retro_test.sh

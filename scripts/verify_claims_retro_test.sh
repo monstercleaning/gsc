@@ -21,8 +21,15 @@
 
 set -uo pipefail
 
-RETRO_COMMIT="a42d294"          # v12.2, 2026-04-27, pre-honesty-pass
-RETRO_SUBDIR="v12.0.0"
+# Which historical tree to test the detector against. Overridable by environment
+# so the same script works in both repository layouts:
+#   * working repo (package nested):  a42d294 : v12.0.0
+#   * public repo  (package at root): 6cf7ee7 : "" (its own v12.2 initial release)
+# A permanently-skipping guard is a silently-dead guard, which is precisely the
+# failure class this tooling exists to prevent — so make it configurable rather
+# than letting it no-op in one of the two repositories.
+RETRO_COMMIT="${GSC_RETRO_COMMIT:-a42d294}"   # v12.2, 2026-04-27, pre-honesty-pass
+RETRO_SUBDIR="${GSC_RETRO_SUBDIR-v12.0.0}"    # may be empty (package at repo root)
 MUST_FAIL_CLAIM="register-gpg-signed"
 # Sensitivity floor. Historically 18 assertion sites existed in the v12.2 tree.
 # A binary "does the claim still fire?" check is NOT sufficient: a negative-control
@@ -33,10 +40,14 @@ MIN_SITES=10
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKG_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-REPO_ROOT="$(cd "${PKG_ROOT}/.." && pwd)"
+# Ask git for the repository root rather than assuming the package sits one level
+# below it: in the public repository the package IS the root, and guessing
+# "${PKG_ROOT}/.." there points outside the repo, which made this guard skip
+# silently — the exact silently-dead-check failure mode it is meant to prevent.
+REPO_ROOT="$(git -C "${PKG_ROOT}" rev-parse --show-toplevel 2>/dev/null || echo "${PKG_ROOT}")"
 
 echo "=== claim-detector retro-test ==="
-echo "  historical commit: ${RETRO_COMMIT} (${RETRO_SUBDIR})"
+echo "  historical commit: ${RETRO_COMMIT} (${RETRO_SUBDIR:-<repo root>})"
 echo "  claim that must still be caught: ${MUST_FAIL_CLAIM}"
 
 if ! git -C "${REPO_ROOT}" cat-file -e "${RETRO_COMMIT}^{commit}" 2>/dev/null; then
@@ -48,8 +59,13 @@ fi
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 
-if ! git -C "${REPO_ROOT}" archive "${RETRO_COMMIT}:${RETRO_SUBDIR}" | tar -x -C "${WORK}"; then
-  echo "  SKIP: could not extract ${RETRO_COMMIT}:${RETRO_SUBDIR}"
+if [ -n "${RETRO_SUBDIR}" ]; then
+  ARCHIVE_REF="${RETRO_COMMIT}:${RETRO_SUBDIR}"
+else
+  ARCHIVE_REF="${RETRO_COMMIT}"
+fi
+if ! git -C "${REPO_ROOT}" archive "${ARCHIVE_REF}" | tar -x -C "${WORK}"; then
+  echo "  SKIP: could not extract ${ARCHIVE_REF}"
   exit 0
 fi
 
