@@ -1,0 +1,73 @@
+name: claim-verification
+
+# Bind prose claims to executable facts about the artifact.
+#
+# Job 1 (claim-verification): every load-bearing claim in CLAIMS.json must
+#   be backed by the repository's actual state. Fails on ASSERTED + UNBACKED —
+#   the documentation says it, the artifact does not do it.
+#
+# Job 2 (detector-sensitivity): a regression guard on the detector itself. It runs
+#   the current tool + manifest against the historical pre-honesty-pass tree
+#   (v12.2) and REQUIRES the known-false signing claim to still be caught, on at
+#   least 10 of its 18 historical assertion sites. This blocks the obvious attack
+#   on a claim verifier: over-hedging the detector until the inconvenient finding
+#   goes quiet. Needs full history (fetch-depth: 0).
+#
+# See docs/claim_verification.md for the design and its limitations.
+
+on:
+  push:
+    paths:
+      - 'CLAIMS.json'
+      - 'scripts/verify_claims.py'
+      - 'scripts/verify_claims_retro_test.sh'
+      - '**/*.md'
+      - 'CITATION.cff'
+      - 'predictions_register/**'
+      - '.github/workflows/v12_claim_verification.yml'
+  pull_request:
+    paths:
+      - 'CLAIMS.json'
+      - 'scripts/verify_claims.py'
+      - 'scripts/verify_claims_retro_test.sh'
+      - '**/*.md'
+      - 'CITATION.cff'
+      - 'predictions_register/**'
+  workflow_dispatch:
+
+jobs:
+  claim-verification:
+    name: claims are backed by the artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup python (stdlib-only)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: verify every claim against the artifact
+        working-directory: .
+        run: python3 scripts/verify_claims.py --explain
+
+  detector-sensitivity:
+    name: detector still catches the historical false claim
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout (full history — retro-test needs the v12.2 commit)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: setup python (stdlib-only)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: retro-test (requires a FAILURE on the historical tree to pass)
+        working-directory: .
+        run: bash scripts/verify_claims_retro_test.sh

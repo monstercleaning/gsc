@@ -96,7 +96,7 @@ Total realistic timeline: 3–6 months from submission to publication.
 
 Based on the framework's nature, expect questions/requests on:
 
-1. **"Why isn't this just the Open Science Framework?"** — emphasise the deterministic-pipeline + cryptographic signing + scoring-protocol + tier-architecture combination. OSF provides time-stamping; we provide the operational pipeline binding it to specific computational artefacts.
+1. **"Why isn't this just the Open Science Framework?"** — emphasise the deterministic-pipeline + content-hashed register + fixed-in-advance scoring-protocol + tier-architecture combination (do **not** claim cryptographic signing: the GPG step is specified in the protocol but was never executed — see the v12.3 honesty pass). OSF provides time-stamping; we provide the operational pipeline binding it to specific computational artefacts.
 
 2. **"Demonstrate independent reproduction."** — invite the editor to recommend a reproducer; provide minimal install + smoke-test instructions; offer to add the reproducer's signature to a scorecard.
 

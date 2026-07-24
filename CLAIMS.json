@@ -1,0 +1,144 @@
+{
+  "schema": "claim_verification_v1",
+  "about": "Load-bearing prose claims of this package, each bound to a machine-checkable fact about the artifact. Run: python3 scripts/verify_claims.py. The failure mode this exists to catch is ASSERTED + UNBACKED — the docs say it, the artifact does not do it. See scripts/verify_claims.py for why the existing phrase-linter cannot express these checks.",
+  "claims": [
+    {
+      "id": "register-gpg-signed",
+      "claim": "The prediction register is cryptographically (GPG) signed; predictions are signed before their data are released.",
+      "detect": {
+        "globs": ["*.md", "docs/**/*.md", "papers/**/*.md", "predictions_register/**/*.md"],
+        "exclude": ["^docs/claim_verification\\.md$"],
+        "exclude_note": "Meta-documentation about this very checker necessarily quotes the false claim it detects (e.g. when describing the negative control). Excluded for the same reason CHANGELOG.md is excluded from count claims: it is a record *about* claims, not an assertion. Noted honestly rather than silently hedged — the tool flagged its own documentation on first run.",
+        "pattern": "cryptographic(?:ally)?[- ]?(?:sign|signed|signing)|signed and (?:time-?stamped|dated)|signed before",
+        "unless": [
+          "not yet", "never", "not executed", "unexecuted", "pending", "scaffold",
+          "overstat", "was false", "corrected", "v12\\.3", "honesty pass",
+          "is designed to", "specified but", "reference scaffold", "future work",
+          "editorial note", "simultaneously asserted", "would have to", "principal (?:remaining|piece)",
+          "dry-run", "promoting the register",
+          "not GPG-signed", "no entry carries", "rather than", "weaker than",
+          "signing protocol\\b", "log format", "toward a falsification",
+          "must be\\b", "or equivalent", "is one whose", "requirements? (?:are|is)\\b",
+          "do \\*\\*not\\*\\* claim"
+        ],
+        "unless_note": "Hedges fall into three families: (a) explicit self-correction (overstat/was false/v12.3), (b) explicit non-execution (not yet/never/unexecuted/not GPG-signed), (c) normative or definitional statements of the protocol rather than assertions about this register ('must be', 'or equivalent', 'is one whose'). Family (c) is the subtle one: a protocol spec may legitimately describe signing it does not perform. Validated empirically: these hedges still fire on the historical v12.2 wording (see docs/claim_verification.md)."
+      },
+      "verify": {
+        "type": "frontmatter_field_nonempty",
+        "globs": ["predictions_register/*/prediction.md"],
+        "fields": ["signed_by", "signature_timestamp", "pipeline_output_hash"],
+        "min_count": 1
+      },
+      "note": "THE historical failure. At v12.2 this claim was asserted in the deposited JOSS paper while all ten register entries were unsigned scaffolds. This check is the automated form of the `grep SCAFFOLD` that finally caught it."
+    },
+    {
+      "id": "prediction-count",
+      "claim": "The register contains N pre-registered predictions (N stated in prose must match the register).",
+      "verify": {
+        "type": "number_agreement",
+        "count_globs": ["predictions_register/P*/prediction.md"],
+        "globs": ["*.md", "docs/**/*.md", "papers/**/*.md", "scripts/*.sh"],
+        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\\d{1,2})\\s+(?:central\\s+|initial\\s+|near-term\\s+|worked\\s+)?(?:pre-)?registered\\s+(?:numerical\\s+|cosmological\\s+)?predictions?\\b",
+        "unless": ["eight \\(then ten\\)", "grew", "still said", "v12\\.0\\)", "initial predictions \\(v12\\.0\\)", "^#"]
+      },
+      "always": true,
+      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand."
+    },
+    {
+      "id": "paper-count",
+      "claim": "The publication strategy comprises N papers (N stated in prose must match papers/ on disk).",
+      "verify": {
+        "type": "number_agreement",
+        "count_dir_globs": ["papers/paper_*"],
+        "globs": ["*.md", "docs/**/*.md", "papers/**/*.md"],
+        "exclude": ["^CHANGELOG\\.md$"],
+        "pattern": "\\b(two|three|four|five|six|\\d)[- ]paper (?:publication )?strategy\\b"
+      },
+      "always": true,
+      "note": "Paper E was added after the 'four-paper strategy' phrasing was written. CHANGELOG.md is excluded by design: it is a historical record, and per project policy history is annotated rather than rewritten — a v12.0 entry describing the then-current four-paper strategy is accurate as history."
+    },
+    {
+      "id": "active-scorer-count",
+      "claim": "N scoring pipelines are active (N stated in prose must match scripts/predictions_score_P*.py).",
+      "verify": {
+        "type": "number_agreement",
+        "count_globs": ["scripts/predictions_score_P*.py"],
+        "globs": ["*.md", "docs/**/*.md"],
+        "pattern": "\\b(one|two|three|four|five|six|seven|eight|nine|ten|\\d{1,2})\\s+active\\s+scorers?\\b"
+      },
+      "always": true
+    },
+    {
+      "id": "register-hash-integrity",
+      "claim": "Each scorecard records the SHA-256 of the pipeline output it scored, so the evidence chain is verifiable.",
+      "verify": {
+        "type": "sibling_hash_match",
+        "record_globs": ["predictions_register/*/scorecard.md"],
+        "target_name": "pipeline_output.json"
+      },
+      "always": true,
+      "note": "Exact, mechanical: recomputes each hash. Catches a scorecard drifting from the output it claims to describe."
+    },
+    {
+      "id": "schema-validated-artifacts",
+      "claim": "Every major artifact is schema-validated; each pipeline output names its schema.",
+      "verify": {
+        "type": "json_field_resolves",
+        "globs": ["predictions_register/*/pipeline_output.json"],
+        "field": "schema",
+        "resolves_to": "schemas/{value}.schema.json"
+      },
+      "always": true
+    },
+    {
+      "id": "no-unqualified-explained-anomaly",
+      "claim": "No surviving claim that GSC explains a real observational anomaly (all such claims were retracted).",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": ["*.md", "docs/**/*.md", "papers/**/*.md", "predictions_register/**/*.md"],
+        "exclude": ["^archive/", "^CHANGELOG\\.md$"],
+        "pattern": "GSC explains (?:a |the )?(?:real |unsolved |experimental )*anomaly|explains the (?:neutron|beam-trap) anomaly|first explained anomaly",
+        "unless": ["no longer", "retract", "no \"explained", "does not", "cannot", "was an artefact", "claim is retracted"],
+        "max": 0
+      },
+      "always": true,
+      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced."
+    },
+    {
+      "id": "canonical-repo-pointer",
+      "claim": "Citation metadata points at the canonical public repository.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": ["CITATION.cff"],
+        "pattern": "github\\.com/monstercleaning/gsc",
+        "min": 1
+      },
+      "always": true,
+      "note": "Guards against citing a private repo (a 404 for anyone following the citation), which was true until July 2026."
+    },
+    {
+      "id": "framework-documents-every-prediction",
+      "claim": "The framework document has a section for every prediction in the register.",
+      "verify": {
+        "type": "number_agreement",
+        "mode": "max",
+        "count_globs": ["predictions_register/P*/prediction.md"],
+        "globs": ["GSC_Framework.md"],
+        "pattern": "###\\s+9\\.(?:\\d+)\\s+Prediction\\s+P(\\d{1,2})\\b"
+      },
+      "always": true,
+      "note": "Heuristic-but-useful: the highest PN section number should equal the register size. GSC_Framework.md had no P9/P10 sections at all until the July 2026 audit."
+    },
+    {
+      "id": "deterministic-pipelines",
+      "claim": "Prediction pipelines are deterministic: identical inputs produce byte-identical output.",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": ["bash", "scripts/predictions_compute_all.sh", "--verify"],
+        "timeout": 900
+      },
+      "always": true,
+      "note": "Slow (runs all ten pipelines twice). Requires --include-slow."
+    }
+  ]
+}

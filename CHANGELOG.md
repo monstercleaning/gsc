@@ -2,6 +2,24 @@
 
 Notable changes to GSC across framework cycles. Internal cycle markers are retained for traceability.
 
+## [v12.4 claim verification] — July 2026
+
+Turns the project's one hard-won lesson into an instrument. The v12.3 false claim was caught by `grep SCAFFOLD` — one mechanical check, one line long, that nobody had bound to the prose. This release generalizes that binding.
+
+**New: `scripts/verify_claims.py` + `CLAIMS.json`.** Each load-bearing claim is paired with a predicate over the repository's real state (front-matter field values, file/directory counts, SHA-256 recomputation, schema-name resolution, subprocess exit codes). It fails on **ASSERTED + UNBACKED**: the docs say it, the artifact does not do it. Ten claims covered. Runs in ~0.15 s over 134 markdown files, stdlib-only, zero inference.
+
+This closes a real gap: the existing `docs_claims_lint.py` (28 KB) can only express "this phrase must not appear" and "this phrase must appear". It has no subprocess and no artifact introspection, so it cannot ask whether a sentence is *true* — a `REQUIRED_RULES` entry would happily have mandated the false signing claim.
+
+**Validated by retro-detection.** Run against the pre-honesty-pass v12.2 tree (`a42d294`), the current manifest independently rediscovers four findings that each cost a human-led audit cycle: the signing overclaim (**18 assertion sites** vs 0/10 signed entries), the eight-vs-ten prediction drift, the private-repo citation pointer, and §9 documenting only P1–P8. Current tree: clean. Honest caveat: this is a *regression test, not a blind trial* — the manifest was written knowing those findings. One genuinely prospective catch (n=1): a reviewer talking-point in `joss/SUBMIT.md` still coaching the author to advertise "cryptographic signing", which the July hand-audit missed hours earlier; now corrected. Of four first-run failures, three were bugs in the tool, not the repository.
+
+**New: `scripts/verify_claims_retro_test.sh` — a regression guard on the detector itself.** It requires a *failure* on the historical tree to pass, which blocks the obvious attack on any claim verifier: over-hedging until the inconvenient finding goes quiet. A negative control (adding the over-broad hedge `"signed"`) exposed a weakness in the guard's first version — detection collapsed 18 → 1 site while the binary "did it fire?" check still passed — so the guard now enforces a **sensitivity floor**, not mere liveness. Both controls verified.
+
+**Also fixed (found by the new tool):** `README.md` still advertised a "four-paper publication strategy" with Paper E missing from its table entirely.
+
+**New CI workflow** `v12_claim_verification.yml`: two jobs — claims-backed, and detector-sensitivity (needs `fetch-depth: 0`).
+
+Design, predicates, and limitations: `docs/claim_verification.md`.
+
 ## [v12.3 execution audit] — July 2026
 
 A fourth audit pass, execution-grounded where the previous three were reasoning-grounded: every executable claim in the package was run and checked against behavior.

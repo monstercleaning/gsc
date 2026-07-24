@@ -66,9 +66,9 @@ Repository footprint audit (size cap):
 python3 scripts/audit_repo_footprint.py --max-mb 10
 ```
 
-## The four-paper publication strategy
+## The five-paper publication strategy
 
-The framework is published as four layered papers, isolated by tier:
+The framework is published as five layered papers, isolated by tier:
 
 | Paper | Scope | Tier | Venue |
 |---|---|---|---|
@@ -76,6 +76,7 @@ The framework is published as four layered papers, isolated by tier:
 | **B** | [RG mechanism for G(σ)](papers/paper_B_rg_mechanism/) | T3 | CQG / JHEP |
 | **C** | [Speculative extensions](papers/paper_C_extensions/) | T4 | Foundations of Physics / Universe |
 | **D** | [Methodology and software](papers/paper_D_methodology/) | meta | JOSS / SoftwareX |
+| **E** | [Self-falsification case report](papers/paper_E_self_falsification/) | meta | Meta-science / commentary |
 
 Adverse review of any one layer does not invalidate the others.
 
