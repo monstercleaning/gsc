@@ -130,6 +130,18 @@
       "note": "Heuristic-but-useful: the highest PN section number should equal the register size. GSC_Framework.md had no P9/P10 sections at all until the July 2026 audit."
     },
     {
+      "id": "no-hardcoded-prediction-count-in-ci",
+      "claim": "CI asserts the register's prediction count without hardcoding it, so the assertion cannot drift as predictions are added.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [".github/workflows/*.yml", "../.github/workflows/*.yml"],
+        "pattern": "assert\\s+len\\(d\\)\\s*==\\s*\\d+",
+        "max": 0
+      },
+      "always": true,
+      "note": "Added after a real regression: the public repository had fixed a hardcoded `assert len(d) == 8` to 10 (its commit 0296485), and a later package overlay from the working repository silently clobbered that fix with the stale in-package copy — reintroducing a bug the operator had already solved months earlier, and turning CI red. The prose-side count was covered by `prediction-count`; the CI-side count was not. Both workflows now derive the expected number from `predictions_register/P*/prediction.md`, and this claim forbids the hardcoded form from returning. Lesson: a count is a claim wherever it lives, including inside automation."
+    },
+    {
       "id": "deterministic-pipelines",
       "claim": "Prediction pipelines are deterministic: identical inputs produce byte-identical output.",
       "verify": {

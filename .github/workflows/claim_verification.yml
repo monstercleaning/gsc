@@ -1,8 +1,8 @@
-name: claim-verification
+name: v12-claim-verification
 
 # Bind prose claims to executable facts about the artifact.
 #
-# Job 1 (claim-verification): every load-bearing claim in CLAIMS.json must
+# Job 1 (claim-verification): every load-bearing claim in v12.0.0/CLAIMS.json must
 #   be backed by the repository's actual state. Fails on ASSERTED + UNBACKED —
 #   the documentation says it, the artifact does not do it.
 #
@@ -13,26 +13,26 @@ name: claim-verification
 #   on a claim verifier: over-hedging the detector until the inconvenient finding
 #   goes quiet. Needs full history (fetch-depth: 0).
 #
-# See docs/claim_verification.md for the design and its limitations.
+# See v12.0.0/docs/claim_verification.md for the design and its limitations.
 
 on:
   push:
     paths:
-      - 'CLAIMS.json'
-      - 'scripts/verify_claims.py'
-      - 'scripts/verify_claims_retro_test.sh'
-      - '**/*.md'
-      - 'CITATION.cff'
-      - 'predictions_register/**'
+      - 'v12.0.0/CLAIMS.json'
+      - 'v12.0.0/scripts/verify_claims.py'
+      - 'v12.0.0/scripts/verify_claims_retro_test.sh'
+      - 'v12.0.0/**/*.md'
+      - 'v12.0.0/CITATION.cff'
+      - 'v12.0.0/predictions_register/**'
       - '.github/workflows/v12_claim_verification.yml'
   pull_request:
     paths:
-      - 'CLAIMS.json'
-      - 'scripts/verify_claims.py'
-      - 'scripts/verify_claims_retro_test.sh'
-      - '**/*.md'
-      - 'CITATION.cff'
-      - 'predictions_register/**'
+      - 'v12.0.0/CLAIMS.json'
+      - 'v12.0.0/scripts/verify_claims.py'
+      - 'v12.0.0/scripts/verify_claims_retro_test.sh'
+      - 'v12.0.0/**/*.md'
+      - 'v12.0.0/CITATION.cff'
+      - 'v12.0.0/predictions_register/**'
   workflow_dispatch:
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
           python-version: '3.10'
 
       - name: verify every claim against the artifact
-        working-directory: .
+        working-directory: v12.0.0
         run: python3 scripts/verify_claims.py --explain
 
   detector-sensitivity:
@@ -69,9 +69,5 @@ jobs:
           python-version: '3.10'
 
       - name: retro-test (requires a FAILURE on the historical tree to pass)
-        working-directory: .
-        env:
-          # This repository's own pre-honesty-pass release (package at repo root).
-          GSC_RETRO_COMMIT: 6cf7ee7
-          GSC_RETRO_SUBDIR: ''
+        working-directory: v12.0.0
         run: bash scripts/verify_claims_retro_test.sh
