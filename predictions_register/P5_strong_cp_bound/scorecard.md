@@ -1,7 +1,7 @@
 # Scorecard — Prediction P5 (Strong-CP θ-bound)
 **Outcome:** ✅ PASS  (mode: nedm-only)
-**Scored at:** `2026-04-26T13:53:11Z`
-**Pipeline output hash:** `2db0b64bf46889d1b7c14e22884ab70e811fe9d27d473d2752e0cd9006563b7e`
+**Scored at:** `2026-07-27T07:51:27Z`
+**Pipeline output hash:** `5f6f45074bc10c041e18c4f0d66f323c0d8089b975c249a5a1b8b02aef8f9300`
 **Observed source:** n2EDM 2024 (Abel et al.) (released 2020-02-28)
 
 ## nEDM bound check
@@ -15,7 +15,7 @@
 ## Quasar bound check (rough, order-of-magnitude)
 | Quantity | Value |
 |---|---|
-| Predicted |Δθ| at z=2 | 3.953e-05 |
+| Predicted |Δθ| at z=2 | 2.372e-05 |
 | Rough bound | 1e-05 |
 | Pass (soft) | ✗ |
 

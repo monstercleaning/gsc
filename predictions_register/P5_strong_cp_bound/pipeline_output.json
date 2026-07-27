@@ -1,7 +1,7 @@
 {
   "ansatz": "powerlaw",
   "ansatz_parameters": {
-    "p": 0.001
+    "p": 0.0006
   },
   "consistency_with_nedm": {
     "consistent_with_nedm": true,
@@ -12,7 +12,7 @@
   },
   "consistency_with_quasar_rough": {
     "consistent_with_quasar_rough": false,
-    "predicted_abs_delta_theta_at_z2": 3.953e-05,
+    "predicted_abs_delta_theta_at_z2": 2.372e-05,
     "quasar_caveat": "Order-of-magnitude only. Actual quasar bounds on \u03b8-evolution depend on assumed isospin structure and require a full nuclear-physics interpretation; this comparison is illustrative.",
     "quasar_z_probe": 2.0,
     "rough_quasar_bound_abs_delta_theta": 1e-05
@@ -34,63 +34,63 @@
   "tool_version": "v0.1-parametrized-trajectory",
   "trajectory": [
     {
-      "delta_theta_vs_z0": -3.431e-06,
-      "sigma_over_sigma0": 0.999904694,
-      "theta_eff": -3.431e-06,
+      "delta_theta_vs_z0": -2.059e-06,
+      "sigma_over_sigma0": 0.999942816,
+      "theta_eff": -2.059e-06,
       "z": 0.1
     },
     {
-      "delta_theta_vs_z0": -1.459e-05,
-      "sigma_over_sigma0": 0.999594617,
-      "theta_eff": -1.459e-05,
+      "delta_theta_vs_z0": -8.757e-06,
+      "sigma_over_sigma0": 0.999756751,
+      "theta_eff": -8.757e-06,
       "z": 0.5
     },
     {
-      "delta_theta_vs_z0": -2.494e-05,
-      "sigma_over_sigma0": 0.999307093,
-      "theta_eff": -2.494e-05,
+      "delta_theta_vs_z0": -1.497e-05,
+      "sigma_over_sigma0": 0.999584198,
+      "theta_eff": -1.497e-05,
       "z": 1.0
     },
     {
-      "delta_theta_vs_z0": -3.297e-05,
-      "sigma_over_sigma0": 0.999084129,
-      "theta_eff": -3.297e-05,
+      "delta_theta_vs_z0": -1.979e-05,
+      "sigma_over_sigma0": 0.999450377,
+      "theta_eff": -1.979e-05,
       "z": 1.5
     },
     {
-      "delta_theta_vs_z0": -3.953e-05,
-      "sigma_over_sigma0": 0.998901991,
-      "theta_eff": -3.953e-05,
+      "delta_theta_vs_z0": -2.372e-05,
+      "sigma_over_sigma0": 0.99934105,
+      "theta_eff": -2.372e-05,
       "z": 2.0
     },
     {
-      "delta_theta_vs_z0": -4.987e-05,
-      "sigma_over_sigma0": 0.998614666,
-      "theta_eff": -4.987e-05,
+      "delta_theta_vs_z0": -2.993e-05,
+      "sigma_over_sigma0": 0.999168569,
+      "theta_eff": -2.993e-05,
       "z": 3.0
     },
     {
-      "delta_theta_vs_z0": -6.445e-05,
-      "sigma_over_sigma0": 0.998209845,
-      "theta_eff": -6.445e-05,
+      "delta_theta_vs_z0": -3.868e-05,
+      "sigma_over_sigma0": 0.998925522,
+      "theta_eff": -3.868e-05,
       "z": 5.0
     },
     {
-      "delta_theta_vs_z0": -8.622e-05,
-      "sigma_over_sigma0": 0.997604977,
-      "theta_eff": -8.622e-05,
+      "delta_theta_vs_z0": -5.176e-05,
+      "sigma_over_sigma0": 0.998562297,
+      "theta_eff": -5.176e-05,
       "z": 10.0
     },
     {
-      "delta_theta_vs_z0": -0.0001658,
-      "sigma_over_sigma0": 0.995395513,
-      "theta_eff": -0.0001658,
+      "delta_theta_vs_z0": -9.955e-05,
+      "sigma_over_sigma0": 0.997234758,
+      "theta_eff": -9.955e-05,
       "z": 100.0
     },
     {
-      "delta_theta_vs_z0": -0.0002513,
-      "sigma_over_sigma0": 0.993020497,
-      "theta_eff": -0.0002513,
+      "delta_theta_vs_z0": -0.000151,
+      "sigma_over_sigma0": 0.995806433,
+      "theta_eff": -0.000151,
       "z": 1100.0
     }
   ]

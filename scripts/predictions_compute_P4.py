@@ -45,6 +45,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from gsc.canonical_params import CANONICAL_P  # noqa: E402
+
 from gsc.measurement_model import (  # noqa: E402
     FlatLambdaCDMHistory,
     H0_to_SI,
@@ -57,7 +59,7 @@ DEFAULTS = {
     "Omega_m": 0.315,
     "Omega_L": 0.685,
     "z_CMB": 1100.0,
-    "p_powerlaw": 0.001,
+    "p_powerlaw": CANONICAL_P,
     # Literature-grounded estimate for the σ-Chern-Simons amplitude.
     # g_CS ≈ G_* × η_F̃F / (4π) where:
     #   G_*  ≈ 1.5  — Reuter-Saueressig FRG fixed-point value for the dimensionless

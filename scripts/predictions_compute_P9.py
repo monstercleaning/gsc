@@ -27,13 +27,17 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from gsc.canonical_params import CANONICAL_P  # noqa: E402
 
 DEFAULT_REDSHIFTS = (0.0, 0.7, 1.0, 2.0, 3.0)
 
 DEFAULTS = {
     # Strict universal scaling: differential coupling is zero by definition.
     "eta_qcd_minus_eta_higgs": 0.0,
-    "p_powerlaw": 0.001,
+    "p_powerlaw": CANONICAL_P,
     "H0_per_yr": 6.9e-11,  # H_0 in 1/yr units (~67 km/s/Mpc)
 }
 

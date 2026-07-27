@@ -1,7 +1,7 @@
 # Scorecard — Prediction P9 (μ = m_p/m_e constancy)
 **Outcome:** ✅ PASS
-**Scored at:** `2026-04-26T13:53:11Z`
-**Pipeline output hash:** `879864e244195b36056a7a5b148159f831c350e155ad78ba710ea0e6cfb46366`
+**Scored at:** `2026-07-27T07:51:27Z`
+**Pipeline output hash:** `4395d6bee0ac000e99da69d59dd2c1f68d61924503badcd86e14754a77b2b567`
 **Observed source:** Combination: HD+ ion-trap (Patra et al. 2020, Science 369, 1238) + H2 absorbers at z~2-3 (Ubachs/Bagdonaite review) (released 2024-12-31)
 
 ## Laboratory check (HD+ ion trap)

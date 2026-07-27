@@ -1,7 +1,7 @@
 {
   "ansatz": "powerlaw",
   "ansatz_parameters": {
-    "p": 0.001
+    "p": 0.0006
   },
   "consistency_with_edges_2018": {
     "closest_evaluated_z": 17.0,
@@ -10,10 +10,10 @@
     "edges_depth_mk": -500.0,
     "edges_depth_sigma_mk": 80.0,
     "edges_z_centre": 17.2,
-    "gsc_predicted_depth_mk": -228.862,
+    "gsc_predicted_depth_mk": -217.3272,
     "lcdm_baseline_depth_mk": -200.0,
-    "predicted_minus_edges_mk": 271.138,
-    "z_score_vs_edges": 3.3892
+    "predicted_minus_edges_mk": 282.6728,
+    "z_score_vs_edges": 3.5334
   },
   "cosmology_inputs": {
     "Omega_b_h2": 0.02237,
@@ -25,57 +25,57 @@
   "prediction_id": "P2",
   "profile": [
     {
-      "delta_T_b_diff_mK": -22.1704,
-      "delta_T_b_gsc_mK": -182.3179,
+      "delta_T_b_diff_mK": -13.3096,
+      "delta_T_b_gsc_mK": -173.4571,
       "delta_T_b_lcdm_mK": -160.1475,
       "frequency_MHz": 88.7754,
       "z": 15.0
     },
     {
-      "delta_T_b_diff_mK": -26.7631,
-      "delta_T_b_gsc_mK": -215.955,
+      "delta_T_b_diff_mK": -16.067,
+      "delta_T_b_gsc_mK": -205.2589,
       "delta_T_b_lcdm_mK": -189.1919,
       "frequency_MHz": 83.5533,
       "z": 16.0
     },
     {
-      "delta_T_b_diff_mK": -28.862,
-      "delta_T_b_gsc_mK": -228.862,
+      "delta_T_b_diff_mK": -17.3272,
+      "delta_T_b_gsc_mK": -217.3272,
       "delta_T_b_lcdm_mK": -200.0,
       "frequency_MHz": 78.9114,
       "z": 17.0
     },
     {
-      "delta_T_b_diff_mK": -27.8122,
-      "delta_T_b_gsc_mK": -217.0041,
+      "delta_T_b_diff_mK": -16.6972,
+      "delta_T_b_gsc_mK": -205.8891,
       "delta_T_b_lcdm_mK": -189.1919,
       "frequency_MHz": 74.7582,
       "z": 18.0
     },
     {
-      "delta_T_b_diff_mK": -23.9521,
-      "delta_T_b_gsc_mK": -184.0995,
+      "delta_T_b_diff_mK": -14.3798,
+      "delta_T_b_gsc_mK": -174.5273,
       "delta_T_b_lcdm_mK": -160.1475,
       "frequency_MHz": 71.0203,
       "z": 19.0
     },
     {
-      "delta_T_b_diff_mK": -18.4379,
-      "delta_T_b_gsc_mK": -139.744,
+      "delta_T_b_diff_mK": -11.0695,
+      "delta_T_b_gsc_mK": -132.3756,
       "delta_T_b_lcdm_mK": -121.3061,
       "frequency_MHz": 67.6384,
       "z": 20.0
     },
     {
-      "delta_T_b_diff_mK": -7.8062,
-      "delta_T_b_gsc_mK": -57.6766,
+      "delta_T_b_diff_mK": -4.6866,
+      "delta_T_b_gsc_mK": -54.5571,
       "delta_T_b_lcdm_mK": -49.8704,
       "frequency_MHz": 61.7568,
       "z": 22.0
     },
     {
-      "delta_T_b_diff_mK": -0.9292,
-      "delta_T_b_gsc_mK": -6.6423,
+      "delta_T_b_diff_mK": -0.5579,
+      "delta_T_b_gsc_mK": -6.271,
       "delta_T_b_lcdm_mK": -5.7131,
       "frequency_MHz": 54.631,
       "z": 25.0

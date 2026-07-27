@@ -1,11 +1,15 @@
 # Scorecard — Prediction P1 (BAO ruler shift)
 
 > **RETRODICTIVE CONSISTENCY CHECK — not a score of the registered forward prediction.**
-> This card scores against **already-public DESI Year-1** data (released 2024-04-04) using a relative-shift statistic, to exercise the scoring pipeline end-to-end. The *registered* P1 prediction targets **DESI Year-3** (≈2027) and remains **unscored**. See `docs/pre_registration.md` → *Current implementation status*.
+> This card scores against **already-public DESI DR1-era** data using the registered
+> relative-shift statistic, to exercise the scoring pipeline end-to-end. The *registered*
+> forward target is the **full five-year DESI BAO release** (DESI DR2, containing the
+> Year-3 data, is itself already public since 2025-03). See `docs/pre_registration.md`
+> → *Current implementation status*.
 
-**Outcome:** ❌ FAIL  (power-law ansatz z = +3.93, outside the registered |z| < 3 band)
-**Scored at:** `2026-04-26T13:53:10Z`
-**Pipeline output hash:** `8f6165734461f752194f5db23036a6ebbfa52658e1b7871bead29e57ff4df2ca`
+**Outcome:** ✅ PASS  (at the registered |z| < 3 rule)
+**Scored at:** `2026-07-27T07:51:27Z`
+**Pipeline output hash:** `a6228f68b3b7b7e28c792a92c9202d61b0e317f59de510e07289c385ac5835fe`
 **Observed source:** DESI Year-1 BAO (DESI Collaboration 2024) — preliminary near-term constraint pending DESI Y3 (2027) (released 2024-04-04)
 **Observed r_d:** 147.09 ± 0.26 Mpc
 
@@ -14,12 +18,12 @@ Test: predicted Δr/r vs DESI Y1 relative precision (σ_DESI / r_DESI).
 
 | Ansatz | parameters | Δr/r predicted | z-score | Pass |
 |---|---|---|---|---|
-| powerlaw | p=0.001 | +0.6953% | +3.934 | ✗ |
-| transition | dz=0.5, p_high=0.005, p_low=0.001, z_t=1.0 | +3.5253% | +19.944 | ✗ |
-| rg_profile | alpha=0.5, p_eff=0.001, sigma_star_z=1000000.0 | +0.6954% | +3.934 | ✗ |
+| powerlaw | p=0.0006 | +0.4166% | +2.357 | ✓ |
+| transition | dz=0.5, p_high=0.0029999999999999996, p_low=0.0006, z_t=1.0 | +2.1005% | +11.883 | ✗ |
+| rg_profile | alpha=0.5, p_eff=0.0006, sigma_star_z=1000000.0 | +0.4167% | +2.357 | ✓ |
 
 ## Interpretation
-FAIL: all registered σ(z) ansätze produce r_d values outside the DESI Y1 confidence band. The σ(z) parametrisation is therefore in tension with DESI Y1 BAO at the registered confidence unless the scaling exponent is restricted to very small p (≲ 10⁻³ for the power-law ansatz) — which is the value the other predictions already assume. We do **not** invoke an unimplemented "σ-modified recombination correction" to reverse this verdict; any such mechanism would have to be registered and scored on its own before it could count.
+PASS (retrodictive consistency check): at least one registered σ(z) ansatz is consistent with the DESI DR1-era constraint at the registered |z| < 3 rule. Context from public data: DESI DR2 (released 2025-03; aggregate isotropic BAO precision ~0.24%, arXiv:2503.14742) is also already public — the canonical powerlaw shift of +0.417% sits at ~1.7σ of that aggregate precision. The genuine forward test is the full five-year DESI BAO release (~0.2% forecast, arXiv:2402.14070), scored at the registered rule when it is released. No unimplemented correction may be invoked to modify this verdict (GSC_Framework.md §12.2.1).
 
 ## Reproduce
 

@@ -1,0 +1,11 @@
+{
+  "observable": "Linear distance-duality deviation parameter eta1 in eta(z) = 1 + eta1 * z",
+  "eta1_observed": 0.023,
+  "eta1_sigma": 0.027,
+  "data_source": "Zhang et al. 2025, 'Testing Cosmic Distance Duality Relation and Transparency with DESI DR2' (arXiv:2506.17926): DESI DR2 BAO + Pantheon+ SNe + cosmic chronometers; eta1 = 0.023 +/- 0.027, statistically consistent with zero.",
+  "data_release_date": "2025-06",
+  "context_notes": [
+    "Keil, Nesseris, Tutusaus & Blanchard (arXiv:2504.01750): parametrized DDR-violation claims at 2 sigma (uncalibrated) or up to 6 sigma (with BBN+SH0ES calibration) are methodology/calibration-dependent; model-independent reconstructions are consistent with eta = 1 at <= 1 sigma.",
+    "This entry scores the linear parametrization only. The registered kill condition additionally requires that any claimed violation be calibration-robust and model-independent before it counts against T1."
+  ]
+}

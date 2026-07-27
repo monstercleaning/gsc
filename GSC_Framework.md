@@ -31,7 +31,7 @@ We present **GSC**, a scale-covariant cosmological framework structured as four 
 
 Each tier carries an independent kill-test, so the failure of any T4 module does not propagate to the lower tiers. The framework is supported by a deterministic reproducibility stack (schema-validated artifacts, lineage DAGs, container-based reproducers) and a pre-registration register pinning numerical predictions before observational releases (DESI Year-3 BAO, LiteBIRD, HERA/SKA 21cm, neutron-lifetime experiments).
 
-The ten central registered predictions are:
+The eleven central registered predictions are:
 
 1. **BAO standard-ruler shift** Δr_s/r_s in DESI Year-3, calculable from σ-evolution of c_s and t_rec.
 2. **21cm Cosmic-Dawn signal** at z ≈ 15–25, distinct from ΛCDM expectation; testable with HERA Phase-II and SKA-Low.
@@ -43,6 +43,7 @@ The ten central registered predictions are:
 8. **Redshift-drift sign and amplitude** at z ≈ 2–5 (now framed as supporting, not primary discriminator).
 9. **Proton-electron mass-ratio (μ) constancy** — a null prediction: universal coherent scaling forbids any cosmological μ drift (T1 consistency check on the geometric lock).
 10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
+11. **Distance-duality (Etherington) null** — η(z) = 1 exactly under universal scaling; a single robust DDR violation falsifies T1 outright (sudden-death channel, §12.2.1a).
 
 A five-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), the software/pre-registration methodology (Paper D), and the self-falsification case report (Paper E), so that adverse review of any layer does not compromise the others.
 
@@ -463,7 +464,7 @@ A defining methodological feature of the framework is **pre-registration** of nu
 
 Pre-registration prevents post-hoc parameter adjustment and converts the reproducibility infrastructure from a *referee tool* into a *falsification engine*. This is the operational core of the framework.
 
-The ten central predictions are summarized below.
+The eleven central predictions are summarized below.
 
 ### 9.1 Prediction P1: BAO standard-ruler shift in DESI Year-3
 
@@ -572,6 +573,16 @@ with amplitude calculable from the late-time σ-fit and the derived σ-θ coupli
 
 **Kill-test.** Absence of the structure-correlated dispersion at the predicted amplitude excludes the σ(x) gradient module; any *energy-dependent* dispersion signature is attributable to other physics, not this module. Current status: PENDING — at the dimensionally-corrected k_grad (v12.2), the predicted amplitude is below current detector thresholds.
 
+### 9.11 Prediction P11: Distance-duality null — η(z) = 1 exactly (added v12.5)
+
+**Statement.** Under universal coherent scaling the freeze-frame is an exact conformal relabeling of FLRW: photon number is conserved, redshift is achromatic, and no coupling singles out the photon sector. Etherington reciprocity is therefore preserved identically: η(z) = D_L/[(1+z)²D_A] = 1 at all z, to all orders, with **no free parameters**. For the linear parametrization η = 1 + η₁z used in DESI-era tests, GSC predicts η₁ = 0 exactly.
+
+**What it is not.** η = 1 is shared with ΛCDM — this prediction does not discriminate GSC from the standard model. It discriminates GSC from DDR-violating alternatives (photon–axion mixing, varying-c/ħ models, cosmic opacity) and pre-commits the framework to death if duality breaks.
+
+**Target.** DDR compilations, continuously improving: DESI DR2 BAO × Pantheon+ × cosmic chronometers currently give η₁ = 0.023 ± 0.027 (Zhang et al. 2025, arXiv:2506.17926) — GSC's null sits at z = +0.85, PASS.
+
+**Kill-test.** A robust DDR violation — ≥ 3σ, robust to SN calibration choices, and present in model-independent reconstructions (all three; parametrized 2–6σ claims that appear only under specific external calibrations do not qualify, cf. Keil et al. 2025, arXiv:2504.01750) — falsifies T1 outright. This is the sudden-death channel of §12.2.1a: one confirmed violation suffices, no majority required, no rescue permitted.
+
 ---
 
 ## 10. The v11 Reproducibility Stack: Operational Foundation
@@ -665,7 +676,7 @@ The following are not solved by the current framework and should not be claimed:
 
 ### 12.1 σ_* derivation
 
-Despite the two candidate routes of §3.5, σ_* remains effectively phenomenological. A complete first-principles derivation is outstanding work and a top priority for the next major framework cycle.
+Despite the two candidate routes of §3.5, σ_* remains effectively phenomenological. **v12.5 re-anchoring:** the hadronic identification of σ_* is retired as a derivation target. The Landau-pole form G(σ) = G_N/(1−(σ_*/σ)²) is the *opposite* of asymptotic-safety behaviour (AS exists to remove such poles), gravity at the fixed point is sector-blind and cannot import Λ_QCD, and the σ-F̃F bridge that could tie σ to hadronic physics is independently obstructed (de Brito–Eichhorn–Lino dos Santos 2022). The G(σ) form is therefore retained only as a T2-level phenomenological parametrization, not as an AS-derivable mechanism. The one genuinely live derivation route is the FRG scaling-solution programme, whose derived intrinsic scale is associated with the **dark-energy (meV) density, not a hadronic scale** ("the largest intrinsic mass scale generated by the flow away from the fixed point" — Wetterich, arXiv:2407.03465). Pursuing it means computing the scaling solution for the σ sector and reading off its crossover scale — a named specialist calculation; the repository's FRG flow-table ingestion tooling (`phase2_rg_flow_table_report.py`) exists to receive its output.
 
 ### 12.2 Conformal-frame triviality
 
@@ -680,7 +691,11 @@ A tiered hierarchy with per-module kill-tests can degenerate into unfalsifiabili
 3. **No post-hoc rescue.** After a prediction is registered it may **not** be saved by introducing a new tier-demotion, a new non-universal extension, or an unimplemented correction (e.g. a "σ-modified recombination" term). Such mechanisms are admissible only if registered and scored as *new* forward predictions in their own right.
 4. **Conformal-reduction clause.** If the surviving content of GSC becomes observationally indistinguishable from ΛCDM (i.e. the T3/T4 independent-dynamics demonstrations all fail), GSC is considered falsified *as a distinct theory* under §12.2, regardless of how many ΛCDM-equivalent fits it can still produce.
 
-**Evaluability.** With four forward tests in scope, "majority" means **at least three**. The condition is evaluable incrementally: it fires as soon as any three forward tests have failed at their registered confidence, without waiting for the remaining test's data (P8's ELT/ANDES target, ≥2040, therefore cannot delay a kill that P1-Y3, P2, and P10 have already triggered). Passing tests never veto a kill once three failures exist.
+**Evaluability.** With four forward tests in scope, "majority" means **at least three**. The condition is evaluable incrementally: it fires as soon as any three forward tests have failed at their registered confidence, without waiting for the remaining test's data (P8's ELT/ANDES target, ≥2040, therefore cannot delay a kill that P1, P2, and P10 have already triggered). Passing tests never veto a kill once three failures exist. *(v12.5 note: P1's forward target is the full five-year DESI BAO release — DESI DR2, containing the Year-3 data, became public in 2025-03, before this framework's registration cycle completed, and is therefore treated as retrodictive context, not a forward test.)*
+
+#### 12.2.1a Sudden-death channel (added v12.5)
+
+In addition to the majority rule above, **a single robust violation of distance duality falsifies T1 outright** (prediction P11, §9.11). "Robust" is pre-specified: ≥ 3σ, stable under SN calibration choices, and present in model-independent reconstructions — all three conditions, so that a calibration artefact cannot execute the framework. No tier-demotion, non-universal extension, or unimplemented correction may be invoked against a qualifying violation. This clause only *adds* a way for the framework to die; it removes none.
 
 This condition is itself part of the pre-registration: it is recorded here before the forward data exist, so that "most predictions failed but the framework survived" cannot be claimed after the fact.
 

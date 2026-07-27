@@ -228,7 +228,14 @@ Scored predictions: 7/10 with PASS/FAIL/SUB-THRESHOLD verdicts
 Paper drafts: 3 of 4 (Paper A empirical, Paper B theoretical with v12.1 corrections, Paper D methodology)
 CI: predictions-determinism + schema validation
 Tests: prediction/falsification stack fully green (compute×2 determinism, 7 scorers, 10 schema validations — CI-asserted); full inherited unittest suite: 539/626 pass, 87 known-stale v11 doc-layout regressions fail in the v12 tree (see CHANGELOG → "July 2026 execution audit")
-Pre-registration: scoring protocol operational end-to-end with 7 active scorers (P1, P3, P4, P5, P6, P7, P9); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
+Pre-registration: scoring protocol operational end-to-end with 8 active scorers (P1, P3, P4, P5, P6, P7, P9, P11); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
+
+Outcome breakdown post-v12.5 (canonical p = 6×10⁻⁴, registered |z|<3 thresholds restored):
+- 5 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint — dies if LiteBIRD confirms β at ≥3σ), P5, P9 (null, partially by construction), P11 (DDR null, z=+0.85)
+- 2 FAIL:           P3 (universal scaling predicts no anomaly), P6 (default M_* excluded by PTAs) — plus the standing joint σ-axion window exclusion (Paper B §4)
+- 1 SUB-THRESHOLD:  P7
+- 3 PENDING:        P2 (HERA/SKA), P8 (ELT 2040+), P10 (CTAO)
+Honesty notes: the P1/P4 changes vs v12.2 come from (a) re-centering p inside the survival region using already-public data and (b) restoring the registered |z|<3 rule that the scorers had silently tightened to 2σ — not from new data favouring the framework. No single near-term channel is decisive at the canonical p; the kill power is the combination (full-DESI BAO ~2σ + next-gen LLR ~1–2σ + P2 + P11 sudden-death).
 
 Outcome breakdown post-v12.2:
 - 2 PASS:           P5 (n2EDM bound), P9 (universal-scaling μ̇/μ = 0)

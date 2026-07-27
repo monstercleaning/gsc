@@ -56,12 +56,16 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from gsc.canonical_params import CANONICAL_P  # noqa: E402
 
 DEFAULT_REDSHIFTS = (15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 22.0, 25.0)
 
 DEFAULTS = {
     "K_sigma": 50.0,             # parametric σ-amplification factor (dimensionless)
-    "p_powerlaw": 0.001,
+    "p_powerlaw": CANONICAL_P,
     "T_cmb_today_K": 2.7255,
     "Omega_b_h2": 0.02237,
     "Omega_m_h2": 0.1430,
@@ -207,7 +211,7 @@ def main(argv: list[str] | None = None) -> int:
         "--p",
         type=float,
         default=DEFAULTS["p_powerlaw"],
-        help="powerlaw σ(z) ∝ (1+z)^(-p) exponent (default 0.001)",
+        help="powerlaw σ(z) ∝ (1+z)^(-p) exponent (default: canonical, gsc/canonical_params.py)",
     )
     parser.add_argument(
         "--output",

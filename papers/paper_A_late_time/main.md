@@ -6,7 +6,7 @@ We present the scale-covariant Gravitational Structural Collapse (GSC) framework
 
 We position GSC explicitly as a specific crossover realisation within the scale-covariant lineage initiated by Canuto et al. (1977) and extended by Wetterich (2013). Our specific contributions in the late-time regime are: (i) a layered tier hierarchy that separates the kinematic frame (T1) from the phenomenological σ(t) ansatz (T2), (ii) the operational reproducibility stack that supports content-hashed, publicly git-time-stamped pre-registered predictions (GPG signing is specified by the protocol but not yet executed; see the methodology paper), and (iii) the calibration of three explicit σ(t) ansatz families against the canonical late-time dataset (Pantheon+SH0ES, DESI BAO, fσ8) with explicit kill-tests.
 
-We pre-register one decisive near-term prediction: the BAO standard-ruler shift Δr_s/r_s in DESI Year-3, which differs from the ΛCDM expectation by a calculable +0.7% for the central σ(z) ansatz with exponent p = 10⁻³. Pre-registration is implemented as a content-hashed, publicly git-time-stamped artifact in an open-source repository, with the corresponding scoring algorithm fixed in advance; cryptographic (GPG) signing is specified by the protocol but not yet executed. The DESI Year-3 test is the genuine forward pre-registration; the worked DESI Year-1 scorecard is a retrodictive consistency check.
+We register one decisive near-term prediction: the BAO standard-ruler shift Δr_s/r_s against the full five-year DESI BAO release, which differs from the ΛCDM expectation by a calculable +0.417% for the canonical σ(z) ansatz with exponent p = 6×10⁻⁴ (v12.5 re-centering, constrained by already-public DESI DR1-era data and LLR; see `gsc/canonical_params.py` for provenance — the v12.2 value p = 10⁻³ fails the registered DR1-era check at z = +3.9). Pre-registration is implemented as a content-hashed, publicly git-time-stamped artifact in an open-source repository, with the corresponding scoring algorithm fixed in advance; cryptographic (GPG) signing is specified by the protocol but not yet executed. The DESI Year-3 test is the genuine forward pre-registration; the worked DESI Year-1 scorecard is a retrodictive consistency check.
 
 A second supporting prediction — the redshift-drift sign at z ≈ 2 to 5 — is also pre-registered for ELT/ANDES; in the current GSC parameter region, the predicted sign is positive throughout the registered grid, in contrast to the ΛCDM expectation of a sign flip near z ≈ 1.7. We are explicit that this difference is **not** a property of the freeze-frame relabeling itself — the kinematic frame (T1) is conformally equivalent to ΛCDM and shares all of its dimensionless observables — but follows entirely from the phenomenological H(z) = H₀(1+z)^p ansatz adopted for σ(t). The drift and BAO "deviations from ΛCDM" are therefore tests of that ansatz (a T2 choice), not evidence that the frame alone makes new predictions.
 
@@ -120,8 +120,8 @@ For each ansatz family, the canonical fit produces:
 
 | Ansatz | best-fit p (or p_eff) | Δχ² vs ΛCDM | comment |
 |---|---|---|---|
-| powerlaw | ≈ 10⁻³ | small | central T2 candidate |
-| transition | (p_low, p_high) ≈ (10⁻³, 5×10⁻³) at z_t = 1 | small | tests for high-z deviation |
+| powerlaw | 6×10⁻⁴ canonical (≈ 10⁻³ pre-v12.5 fit; re-centered inside the DR1-era survival region, boundary 7.6×10⁻⁴) | small | central T2 candidate |
+| transition | (p_low, p_high) = (6×10⁻⁴, 3×10⁻³) at z_t = 1 | small | tests for high-z deviation; disfavoured by the DR1-era check |
 | rg_profile | similar to powerlaw at low z | small | distinguished by RG-bridge in Paper B |
 
 (Precise numerical values are produced by the canonical pipeline; fit values quoted above are illustrative pending the v12-baseline refit at M201; the Δχ² entries are placeholders to be filled with concrete numbers before submission.)
@@ -134,17 +134,17 @@ A non-trivial supporting check: under universal coherent scaling with G ∝ σ²
 
 $$\dot G/G = 2 \cdot \dot\sigma/\sigma = -2 p H_0$$
 
-for the powerlaw ansatz σ(z) ∝ (1+z)^{-p}. With H_0 = 67.4 km/s/Mpc = 6.9 × 10⁻¹¹ /yr and p = 10⁻³, this gives
+for the powerlaw ansatz σ(z) ∝ (1+z)^{-p}. With H_0 = 67.4 km/s/Mpc = 6.9 × 10⁻¹¹ /yr and the canonical p = 6×10⁻⁴, this gives
 
-$$\dot G/G \approx -1.4 \times 10^{-13} \text{ /yr.}$$
+$$\dot G/G \approx -8.4 \times 10^{-14} \text{ /yr.}$$
 
-Lunar laser ranging (LLR) directly measures Ġ/G = (2 ± 7) × 10⁻¹³ /yr (Hofmann & Müller 2018), with binary-pulsar timing providing comparable bounds (Williams et al. 2014; Konopliv et al. 2011). **The GSC central powerlaw value Ġ/G ≈ -1.4 × 10⁻¹³ /yr is essentially at the central LLR best-fit residual.** This is not "edge of bound" — it is *current observational tension*. The 1σ LLR uncertainty (~7 × 10⁻¹³ /yr) is large enough that the GSC value remains *technically allowed*, but at the central LLR best-fit it would already be a significant signal. Future LLR improvements (next-generation laser retroreflectors planned for 2030s) will sharpen the bound by ~2-3×.
+Lunar laser ranging (LLR) directly measures Ġ/G = (2 ± 7) × 10⁻¹³ /yr (Hofmann & Müller 2018), with binary-pulsar timing providing comparable bounds (Williams et al. 2014; Konopliv et al. 2011). At the canonical p the GSC value sits a factor ~8 below the 1σ LLR uncertainty — allowed, no longer in tension. (At the pre-v12.5 value p = 10⁻³ the prediction, -1.4 × 10⁻¹³ /yr, was comparable to the central LLR residual; that tension was one of the two public constraints driving the v12.5 re-centering.) Future LLR improvements (next-generation retroreflectors, 2030s, ~2–3× tighter) will probe the canonical value at the ~1–2σ level — a genuine forward constraint, not yet a decisive kill.
 
-This is a *primary near-term constraint on p*, not a transparency footnote: combined with the DESI Y1 BAO scorer (which already excludes p = 10⁻³ at 4σ via the relative-shift test), the σ(z) powerlaw ansatz is in tension with two independent existing measurements simultaneously. The framework's natural escape routes are (a) p substantially smaller than 10⁻³ (in tension with the central late-time fit but consistent with sub-σ data), (b) a σ-modified recombination correction reduces the BAO shift — but this mechanism is unimplemented, and under the framework-level kill condition it would have to be registered and scored as its own prediction before it could be claimed, not invoked post-hoc — or (c) the powerlaw ansatz family is not the right functional form (the transition and rg_profile families are explored in Paper A).
+This is a *primary constraint on p*, not a transparency footnote: the DR1-era BAO scorer excludes p = 10⁻³ at ~4σ via the relative-shift test, and LLR independently disfavoured it. The v12.5 response took escape route (a) — and only (a): the canonical value was re-centered to p = 6×10⁻⁴, inside the survival region (boundary 7.6×10⁻⁴), using **already-public data only**. Route (b), a σ-modified recombination correction, remains prohibited as a rescue: it is unimplemented, and under the framework-level kill condition it would have to be registered and scored as its own prediction before it could be claimed. Route (c) is empirically disfavoured: the transition family fails the DR1-era check outright at its registered parameters.
 
 Two implications follow:
 
-1. **The bound is a hard upper limit on p**, complementing the BAO-ruler constraint of P1. Combined with future LLR improvements and a measured tightening of the bound to ~5 × 10⁻¹⁴ /yr, the powerlaw ansatz with p = 10⁻³ would be excluded; the framework would either need a smaller p or a different σ(z) ansatz family.
+1. **The bound is a hard upper limit on p**, complementing the BAO-ruler constraint of P1. A measured tightening of the bound to ~5 × 10⁻¹⁴ /yr would probe the canonical p = 6×10⁻⁴ directly (predicted -8.4 × 10⁻¹⁴ /yr); a null at that precision would exclude it. This is one of the combined forward kill channels — no single near-term measurement is decisive alone at the canonical value.
 
 2. **The transition ansatz is more flexible** (low-z evolution can be smaller than high-z evolution), and trivially satisfies LLR for p_low ≪ 10⁻³ even with p_high ~ 10⁻². The rg_profile ansatz behaves similarly to powerlaw at low z and inherits the same constraint.
 
@@ -156,13 +156,13 @@ We register two predictions in this paper. Both are content-hashed and git-time-
 
 ### 5.1 P1 — BAO standard-ruler shift in DESI Year-3
 
-Under the freeze-frame measurement model, the BAO sound horizon r_d at the drag epoch is observed today against today's atomic units. Atoms today are smaller than at recombination by σ(z=0)/σ(z_drag) — for the central powerlaw ansatz with p = 10⁻³, the ratio is approximately 0.993, giving an apparent BAO scale that is +0.7% larger than the ΛCDM expectation:
+Under the freeze-frame measurement model, the BAO sound horizon r_d at the drag epoch is observed today against today's atomic units. Atoms today are smaller than at recombination by σ(z=0)/σ(z_drag) — for the canonical powerlaw ansatz with p = 6×10⁻⁴, this gives an apparent BAO scale that is +0.417% larger than the ΛCDM expectation:
 
-$$\boxed{\Delta r_s/r_s\bigm|_{GSC - ΛCDM} = +0.70\% \;(p = 10^{-3}, \text{powerlaw})}$$
+$$\boxed{\Delta r_s/r_s\bigm|_{GSC - ΛCDM} = +0.417\% \;(p = 6\times10^{-4}, \text{powerlaw; rg\_profile identical to leading order})}$$
 
-For the transition ansatz with stronger high-z evolution (p_low = 10⁻³, p_high = 5×10⁻³), the predicted shift is +3.5%, large enough to be signalled by current DESI Year-1 data and decisive for Year-3.
+For the transition ansatz (p_low = 6×10⁻⁴, p_high = 3×10⁻³), the predicted shift is +2.1% — already excluded by the DR1-era check; the transition family is carried only as a falsified comparison branch.
 
-DESI Year-3 BAO precision is expected to be at the 0.5–1% level. The predictions are therefore directly testable.
+Testability, with verified survey numbers: DESI DR1 aggregate isotropic BAO precision is ~0.52% (arXiv:2404.03000); DR2 — which contains the Year-3 data and is public since 2025-03 — reaches ~0.24% (arXiv:2503.14742), at which the canonical shift sits at ~1.7σ; the full five-year release is forecast at ~0.2% (arXiv:2402.14070), ~2.1σ. The BAO channel alone is therefore *indicative but not decisive* at the canonical p; decisive falsification requires the combination (BAO + next-generation LLR + P2 21cm amplitude + the P11 duality sudden-death channel). We state this plainly rather than overclaim a single-channel kill.
 
 ### 5.2 P8 — Sandage-Loeb redshift drift sign
 
@@ -210,7 +210,7 @@ Independent reproducers are encouraged to verify that the prediction pipelines p
 
 ## 7. Conclusions
 
-The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset, found all three consistent with current data, and pre-registered two near-term decisive tests: the BAO ruler shift in DESI Year-3 (P1, predicted +0.7%, testable in 2027) and the Sandage-Loeb redshift-drift sign at z ≥ 2 (P8, predicted positive, testable by ELT/ANDES in 2040s).
+The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset, found all three consistent with current data, and registered two structural tests: the BAO ruler shift against the full five-year DESI release (P1, predicted +0.417% at the canonical p, ~2σ per the verified survey forecast — indicative, decisive only in combination with LLR/P2/P11) and the Sandage-Loeb redshift-drift sign at z ≥ 2 (P8, predicted positive, testable by ELT/ANDES in 2040s).
 
 The framework's empirical content is decided by upcoming observations rather than by theoretical preference. The pre-registration discipline ensures that the verdict will be cleanly attributable to the registered model, not to post-hoc parameter adjustment.
 

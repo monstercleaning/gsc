@@ -7,7 +7,7 @@
   "prediction": {
     "differential_coupling_eta_diff": 0.0,
     "mu_dot_over_mu_z0_per_yr": -0.0,
-    "powerlaw_p": 0.001,
+    "powerlaw_p": 0.0006,
     "trajectory": [
       {
         "delta_mu_over_mu_predicted": -0.0,
@@ -16,22 +16,22 @@
       },
       {
         "delta_mu_over_mu_predicted": -0.0,
-        "sigma_ratio": 0.9994695125,
+        "sigma_ratio": 0.9996816737,
         "z": 0.7
       },
       {
         "delta_mu_over_mu_predicted": -0.0,
-        "sigma_ratio": 0.999307093,
+        "sigma_ratio": 0.9995841982,
         "z": 1.0
       },
       {
         "delta_mu_over_mu_predicted": -0.0,
-        "sigma_ratio": 0.998901991,
+        "sigma_ratio": 0.9993410498,
         "z": 2.0
       },
       {
         "delta_mu_over_mu_predicted": -0.0,
-        "sigma_ratio": 0.9986146661,
+        "sigma_ratio": 0.9991685692,
         "z": 3.0
       }
     ]

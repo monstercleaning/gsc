@@ -37,6 +37,12 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from gsc.canonical_params import (  # noqa: E402
+    CANONICAL_P,
+    CANONICAL_P_TRANSITION_HIGH,
+    CANONICAL_P_TRANSITION_LOW,
+)
+
 # Import existing GSC machinery for the ΛCDM baseline.
 from gsc.early_time.rd import (  # noqa: E402
     z_drag_eisenstein_hu,
@@ -126,12 +132,12 @@ def sigma_ratio_at_z(z: float, ansatz: str, params: dict) -> float:
         raise ValueError("z must be non-negative")
 
     if ansatz == "powerlaw":
-        p = float(params.get("p", 0.001))
+        p = float(params.get("p", CANONICAL_P))
         return (1.0 + z) ** (-p)
 
     if ansatz == "transition":
-        p_low = float(params.get("p_low", 0.001))
-        p_high = float(params.get("p_high", 0.005))
+        p_low = float(params.get("p_low", CANONICAL_P_TRANSITION_LOW))
+        p_high = float(params.get("p_high", CANONICAL_P_TRANSITION_HIGH))
         z_t = float(params.get("z_t", 1.0))
         dz = max(float(params.get("dz", 0.5)), 1e-3)
         # Smooth transition via tanh interpolation in p.
@@ -140,7 +146,7 @@ def sigma_ratio_at_z(z: float, ansatz: str, params: dict) -> float:
         return (1.0 + z) ** (-p_eff)
 
     if ansatz == "rg_profile":
-        p_eff = float(params.get("p_eff", 0.001))
+        p_eff = float(params.get("p_eff", CANONICAL_P))
         sigma_star_z = float(params.get("sigma_star_z", 1e6))  # arbitrary high-z scale
         alpha = float(params.get("alpha", 0.5))
         # Padé-like approximation: deviates from powerlaw near sigma_star_z
@@ -238,14 +244,14 @@ def compute_p1(
 
 
 DEFAULT_ANSATZE = [
-    {"ansatz": "powerlaw", "params": {"p": 0.001}},
+    {"ansatz": "powerlaw", "params": {"p": CANONICAL_P}},
     {
         "ansatz": "transition",
-        "params": {"p_low": 0.001, "p_high": 0.005, "z_t": 1.0, "dz": 0.5},
+        "params": {"p_low": CANONICAL_P_TRANSITION_LOW, "p_high": CANONICAL_P_TRANSITION_HIGH, "z_t": 1.0, "dz": 0.5},
     },
     {
         "ansatz": "rg_profile",
-        "params": {"p_eff": 0.001, "sigma_star_z": 1e6, "alpha": 0.5},
+        "params": {"p_eff": CANONICAL_P, "sigma_star_z": 1e6, "alpha": 0.5},
     },
 ]
 
@@ -318,8 +324,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--p",
         type=float,
-        default=0.001,
-        help="powerlaw exponent p in σ(z) ∝ (1+z)^(-p) (default 0.001)",
+        default=CANONICAL_P,
+        help="powerlaw exponent p in σ(z) ∝ (1+z)^(-p) (default: canonical, gsc/canonical_params.py)",
     )
     parser.add_argument(
         "--omega-m-h2", type=float, default=DEFAULTS["omega_m_h2"]

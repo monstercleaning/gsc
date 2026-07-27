@@ -167,7 +167,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--confidence",
         type=float,
-        default=2.0,
+        default=3.0,  # REGISTERED rule (prediction.md: |z| < 3); 2.0 was implementation drift
         help="z-score threshold for pass (default 2σ)",
     )
     parser.add_argument(

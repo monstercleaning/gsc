@@ -82,7 +82,7 @@ Adverse review of any one layer does not invalidate the others.
 
 ## Pre-registered predictions
 
-Ten central predictions are documented in [predictions_register/](predictions_register/), each with:
+Eleven central predictions are documented in [predictions_register/](predictions_register/), each with:
 
 - The numerical prediction and its uncertainty band;
 - The σ(t) ansatz and parameter values producing it;

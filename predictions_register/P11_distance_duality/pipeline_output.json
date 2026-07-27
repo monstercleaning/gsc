@@ -1,0 +1,58 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "discrimination_note": "eta(z) = 1 is shared with LCDM: this prediction does not distinguish GSC from the standard model. It distinguishes GSC from DDR-violating alternatives and pre-commits the framework to death if duality breaks.",
+    "universal_scaling_outcome": "Predicted eta(z) = 1 at all z, exactly. Any robust, calibration-robust violation of distance duality at >= 3 sigma falsifies universal coherent scaling (T1) and propagates to all higher tiers. This is a standing sudden-death channel: unlike the majority rule over forward tests, a single confirmed DDR violation suffices."
+  },
+  "physics_status": "Exact consequence of the T1 conformal relabeling: photon-number conservation + achromatic redshift + no photon-sector coupling imply Etherington reciprocity is preserved identically. Not a fit; no free parameters. The non-universal sigma-F.F opt-in module (T3) is the only GSC sector that could break this, and it is independently bounded.",
+  "prediction": {
+    "eta0_deviation": 0.0,
+    "eta1_linear_coefficient": 0.0,
+    "eta_of_z": [
+      {
+        "eta": 1.0,
+        "z": 0.1
+      },
+      {
+        "eta": 1.0,
+        "z": 0.3
+      },
+      {
+        "eta": 1.0,
+        "z": 0.5
+      },
+      {
+        "eta": 1.0,
+        "z": 0.7
+      },
+      {
+        "eta": 1.0,
+        "z": 1.0
+      },
+      {
+        "eta": 1.0,
+        "z": 1.3
+      },
+      {
+        "eta": 1.0,
+        "z": 1.7
+      },
+      {
+        "eta": 1.0,
+        "z": 2.0
+      },
+      {
+        "eta": 1.0,
+        "z": 2.33
+      }
+    ],
+    "parametrization_note": "For linear parametrizations eta(z) = 1 + eta1*z (as used in current DESI-era DDR tests), GSC predicts eta1 = 0 exactly. For ANY parametrization, the predicted deviation is identically zero."
+  },
+  "prediction_id": "P11",
+  "scaling_mode": "universal_coherent",
+  "schema": "predictions_p11_pipeline_output_v1",
+  "tier": "T1 (falsification channel on the geometric lock, photon sector)",
+  "title": "Distance-duality (Etherington) relation: eta(z) = 1 exactly under universal coherent scaling",
+  "tool": "predictions_compute_P11.py",
+  "tool_version": "0.1"
+}

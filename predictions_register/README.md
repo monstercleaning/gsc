@@ -16,7 +16,8 @@ predictions_register/
 ├── P7_gw_memory_clocks/          # Atomic-clock shifts post-merger
 ├── P8_redshift_drift/            # ELT/ANDES (supporting)
 ├── P9_proton_electron_mass_ratio/ # μ-constancy consistency check (T1)
-└── P10_tev_blazar_dispersion/    # CTAO arrival-time dispersion (σ(x) test)
+├── P10_tev_blazar_dispersion/    # CTAO arrival-time dispersion (σ(x) test)
+└── P11_distance_duality/         # η(z) = 1 exact null; DDR sudden-death channel (T1)
 ```
 
 Each prediction directory contains:
@@ -27,9 +28,10 @@ Each prediction directory contains:
 
 ## Status (v12.3 honest labeling)
 
-All **ten** prediction directories (P1–P10) are implemented with compute pipelines, and **none is GPG-signed**: register integrity currently rests on the content hash plus the public, append-only git commit history, not on cryptographic signatures. Per the v12.3 honesty pass (see `docs/pre_registration.md` → *Current implementation status*):
+All **eleven** prediction directories (P1–P11) are implemented with compute pipelines, and **none is GPG-signed**: register integrity currently rests on the content hash plus the public, append-only git commit history, not on cryptographic signatures. Per the v12.3 honesty pass (see `docs/pre_registration.md` → *Current implementation status*):
 
-- **Retrodictive consistency checks** (target data already public when the pipelines were written): P1's worked DESI Year-1 scorecard, P3, P4, P5, P6, P7, P9. These exercise the compute–score–scoreboard tooling; they are not forward pre-registrations.
+- **Retrodictive consistency checks** (target data already public when the pipelines were written): P1's worked DESI DR1-era scorecard, P3, P4, P5, P6, P7, P9, and P11's current-bounds check. These exercise the compute–score–scoreboard tooling; they are not forward pre-registrations.
+- **Sudden-death channel**: P11 additionally carries a standing forward clause — any robust (≥3σ, calibration-robust, model-independent) distance-duality violation falsifies T1 outright (GSC_Framework.md §12.2.1a).
 - **Forward pre-registrations** (target data unreleased): P2 (HERA Phase-II / SKA-Low), P8 (ELT/ANDES), P10 (CTAO), and P1's registered DESI Year-3 target.
 
 Executing the GPG signing step (`scripts/predictions_sign.py`) remains the principal outstanding work before any entry may be called "signed."

@@ -1,6 +1,6 @@
 # Scorecard — Prediction P7 (GW-memory atomic-clock signature)
 **Outcome:** ⏸ SUB-THRESHOLD
-**Scored at:** `2026-04-26T13:53:11Z`
+**Scored at:** `2026-07-27T07:51:27Z`
 **Pipeline output hash:** `4ac7c362f4c0d9237c8afdb44e88fa51024660085d7a1397a67c393a4b8e9742`
 **Observed source:** Best current optical-lattice clock instabilities (Sr, Yb+, Al+, ITOC, BACON) (released 2024-12-31)
 

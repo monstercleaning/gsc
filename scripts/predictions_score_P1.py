@@ -88,17 +88,22 @@ def score_p1(*, pipeline_path: Path, observed_path: Path, confidence_sigma: floa
         "sub_prediction_results": sub_results,
         "overall_outcome": "PASS" if any_pass else "FAIL",
         "interpretation": (
-            "PASS: at least one registered σ(z) ansatz produces a BAO sound "
-            "horizon r_d consistent with DESI Y1 at the registered confidence "
-            "level. Note that this is an interim test pending DESI Y3 (2027); "
-            "Y3 will tighten the bound by ~2x."
+            "PASS (retrodictive consistency check): at least one registered σ(z) "
+            "ansatz is consistent with the DESI DR1-era constraint at the "
+            "registered |z| < 3 rule. Context from public data: DESI DR2 "
+            "(released 2025-03; aggregate isotropic BAO precision ~0.24%, "
+            "arXiv:2503.14742) is also already public — the canonical powerlaw "
+            "shift of +0.417% sits at ~1.7σ of that aggregate precision. The "
+            "genuine forward test is the full five-year DESI BAO release "
+            "(~0.2% forecast, arXiv:2402.14070), scored at the registered rule "
+            "when it is released. No unimplemented correction may be invoked to "
+            "modify this verdict (GSC_Framework.md §12.2.1)."
             if any_pass
-            else "FAIL: all registered σ(z) ansätze produce r_d values outside "
-            "the DESI Y1 confidence band. Either the σ(z) parametrisation is "
-            "incompatible with DESI Y1 BAO at the registered confidence, or "
-            "the σ-modified recombination correction (gating M201) reverses "
-            "the verdict. The framework's σ(z) parameter region must be "
-            "restricted to small p (≲ 10^-3 for powerlaw)."
+            else "FAIL (retrodictive consistency check): all registered σ(z) "
+            "ansätze produce r_d values outside the confidence band at the "
+            "registered |z| < 3 rule. Under GSC_Framework.md §12.2.1 no "
+            "unimplemented correction may be invoked to reverse this verdict; "
+            "the σ(z) parameter region is excluded at the stated confidence."
         ),
     }
 
@@ -107,7 +112,15 @@ def render_scorecard(card: dict, scored_at_utc: str) -> str:
     badge = "✅ PASS" if card["overall_outcome"] == "PASS" else "❌ FAIL"
     parts: list[str] = []
     parts.append(f"# Scorecard — Prediction P1 (BAO ruler shift)\n")
-    parts.append(f"**Outcome:** {badge}  (at {card['scoring_confidence_sigma']}σ confidence)\n")
+    parts.append(
+        "\n> **RETRODICTIVE CONSISTENCY CHECK — not a score of the registered forward prediction.**\n"
+        "> This card scores against **already-public DESI DR1-era** data using the registered\n"
+        "> relative-shift statistic, to exercise the scoring pipeline end-to-end. The *registered*\n"
+        "> forward target is the **full five-year DESI BAO release** (DESI DR2, containing the\n"
+        "> Year-3 data, is itself already public since 2025-03). See `docs/pre_registration.md`\n"
+        "> → *Current implementation status*.\n\n"
+    )
+    parts.append(f"**Outcome:** {badge}  (at the registered |z| < {card['scoring_confidence_sigma']:g} rule)\n")
     parts.append(f"**Scored at:** `{scored_at_utc}`\n")
     parts.append(
         f"**Pipeline output hash:** `{card['pipeline_output_hash_at_scoring']}`\n"
@@ -146,7 +159,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--pipeline", type=Path, default=PRED_DIR / "pipeline_output.json")
     parser.add_argument("--observed", type=Path, default=PRED_DIR / "observed_data.json")
-    parser.add_argument("--confidence", type=float, default=2.0)
+    parser.add_argument(
+        "--confidence", type=float, default=3.0,
+        help="pass threshold in sigma; 3.0 is the REGISTERED rule (prediction.md: |z| < 3)",
+    )
     parser.add_argument("--output", type=Path, default=PRED_DIR / "scorecard.md")
     parser.add_argument("--print", action="store_true")
     args = parser.parse_args(argv)

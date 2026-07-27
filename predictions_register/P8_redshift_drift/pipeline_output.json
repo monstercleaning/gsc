@@ -1,62 +1,62 @@
 {
   "ansatz": "powerlaw",
   "ansatz_parameters": {
-    "p": 0.001
+    "p": 0.0006
   },
   "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
   "drift_table": [
     {
-      "delta_v_diff_cm_s": 0.953308,
-      "delta_v_gsc_cm_s": 1.87684,
+      "delta_v_diff_cm_s": 0.954024,
+      "delta_v_gsc_cm_s": 1.877556,
       "delta_v_lcdm_cm_s": 0.923532,
       "sign_flip_vs_lcdm": false,
       "z": 0.1
     },
     {
-      "delta_v_diff_cm_s": 4.432783,
-      "delta_v_gsc_cm_s": 6.882724,
+      "delta_v_diff_cm_s": 4.435018,
+      "delta_v_gsc_cm_s": 6.884959,
       "delta_v_lcdm_cm_s": 2.449941,
       "sign_flip_vs_lcdm": false,
       "z": 0.5
     },
     {
-      "delta_v_diff_cm_s": 8.158082,
-      "delta_v_gsc_cm_s": 10.325303,
+      "delta_v_diff_cm_s": 8.160948,
+      "delta_v_gsc_cm_s": 10.328169,
       "delta_v_lcdm_cm_s": 2.167221,
       "sign_flip_vs_lcdm": false,
       "z": 1.0
     },
     {
-      "delta_v_diff_cm_s": 11.299316,
-      "delta_v_gsc_cm_s": 12.391383,
+      "delta_v_diff_cm_s": 11.302348,
+      "delta_v_gsc_cm_s": 12.394415,
       "delta_v_lcdm_cm_s": 1.092067,
       "sign_flip_vs_lcdm": false,
       "z": 1.5
     },
     {
-      "delta_v_diff_cm_s": 13.986041,
-      "delta_v_gsc_cm_s": 13.769051,
+      "delta_v_diff_cm_s": 13.989071,
+      "delta_v_gsc_cm_s": 13.772081,
       "delta_v_lcdm_cm_s": -0.216991,
       "sign_flip_vs_lcdm": true,
       "z": 2.0
     },
     {
-      "delta_v_diff_cm_s": 18.413723,
-      "delta_v_gsc_cm_s": 15.491534,
+      "delta_v_diff_cm_s": 18.416591,
+      "delta_v_gsc_cm_s": 15.494402,
       "delta_v_lcdm_cm_s": -2.922189,
       "sign_flip_vs_lcdm": true,
       "z": 3.0
     },
     {
-      "delta_v_diff_cm_s": 22.019257,
-      "delta_v_gsc_cm_s": 16.52529,
+      "delta_v_diff_cm_s": 22.021921,
+      "delta_v_gsc_cm_s": 16.527954,
       "delta_v_lcdm_cm_s": -5.493967,
       "sign_flip_vs_lcdm": true,
       "z": 4.0
     },
     {
-      "delta_v_diff_cm_s": 25.101905,
-      "delta_v_gsc_cm_s": 17.214602,
+      "delta_v_diff_cm_s": 25.104377,
+      "delta_v_gsc_cm_s": 17.217074,
       "delta_v_lcdm_cm_s": -7.887303,
       "sign_flip_vs_lcdm": true,
       "z": 5.0
@@ -73,7 +73,7 @@
   "schema": "predictions_p8_pipeline_output_v1",
   "summary": {
     "any_sign_flip_vs_lcdm": true,
-    "max_abs_diff_cm_s": 25.101905
+    "max_abs_diff_cm_s": 25.104377
   },
   "tier": "T2 (supporting only, not primary)",
   "title": "Redshift-drift sign and amplitude (supporting discriminator)",

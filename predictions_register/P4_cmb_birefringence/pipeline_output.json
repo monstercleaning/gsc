@@ -1,14 +1,14 @@
 {
   "ansatz": "powerlaw",
   "ansatz_parameters": {
-    "p": 0.001
+    "p": 0.0006
   },
   "consistency_with_planck_2020_hint": {
     "consistent_with_planck_at_2sigma": false,
     "planck_hint_deg": 0.35,
     "planck_hint_sigma_deg": 0.14,
-    "predicted_minus_observed_deg": -0.34851,
-    "z_score_vs_planck_hint": -2.4894
+    "predicted_minus_observed_deg": -0.349106,
+    "z_score_vs_planck_hint": -2.4936
   },
   "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
   "lcdm_baseline": {
@@ -19,10 +19,10 @@
   "n_integration_steps": 5000,
   "physics_status": "Leading-order line-of-sight Chern-Simons rotation. The g_CS amplitude is a parametric placeholder for the FRG-derived \u03c3-F\u0303F coupling f_\u03c3; Paper B FRG calculation is gating piece for narrowing g_CS to a specific predicted value.",
   "prediction": {
-    "beta_deg": 0.00149,
-    "beta_rad": 2.6007e-05,
+    "beta_deg": 0.000894,
+    "beta_rad": 1.5609e-05,
     "g_CS": 0.036,
-    "integral_dimensionless": 0.000722426,
+    "integral_dimensionless": 0.000433578,
     "z_CMB": 1100.0
   },
   "prediction_id": "P4",

@@ -116,7 +116,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--pipeline", type=Path, default=PRED_DIR / "pipeline_output.json")
     parser.add_argument("--observed", type=Path, default=PRED_DIR / "observed_data.json")
-    parser.add_argument("--confidence", type=float, default=2.0)
+    parser.add_argument(
+        "--confidence", type=float, default=3.0,
+        help="pass threshold in sigma; 3.0 is the REGISTERED rule (prediction.md: |z| < 3)",
+    )
     parser.add_argument("--output", type=Path, default=PRED_DIR / "scorecard.md")
     parser.add_argument("--print", action="store_true")
     args = parser.parse_args(argv)

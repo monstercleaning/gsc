@@ -1,6 +1,6 @@
 # Scorecard — Prediction P6 (Kibble-Zurek defect spectrum)
 **Outcome:** ❌ FAIL
-**Scored at:** `2026-04-26T13:53:11Z`
+**Scored at:** `2026-07-27T07:51:27Z`
 **Pipeline output hash:** `04d1715e4758465ebf1923f4fc5111821362a0edc0a3db002920eb4264f36a21`
 **Observed source:** NANOGrav 15-yr (Agazie et al. 2023) + EPTA DR2 (Antoniadis et al. 2023) + LIGO O3 stochastic upper bound (released 2023-06-29)
 

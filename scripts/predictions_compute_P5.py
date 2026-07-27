@@ -46,6 +46,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from gsc.canonical_params import CANONICAL_P  # noqa: E402
+
 
 # Current nEDM bound: |d_n| < 1.8e-26 e·cm at 90% CL (n2EDM 2024).
 # This translates approximately to |θ_eff(z=0)| < ~10^-10.
@@ -65,7 +67,7 @@ DEFAULTS = {
     # and converting to dimensionless g_θ/f_σ ≈ 0.45/(4π) ≈ 0.036 in
     # σ(0)=1 units. Plausible range [0.005, 0.2].
     "g_theta_over_f_sigma": 0.036,
-    "p_powerlaw": 0.001,
+    "p_powerlaw": CANONICAL_P,
 }
 
 
@@ -233,7 +235,7 @@ def main(argv: list[str] | None = None) -> int:
         "--p",
         type=float,
         default=DEFAULTS["p_powerlaw"],
-        help="powerlaw σ(z) ∝ (1+z)^(-p) exponent (default 0.001)",
+        help="powerlaw σ(z) ∝ (1+z)^(-p) exponent (default: canonical, gsc/canonical_params.py)",
     )
     parser.add_argument(
         "--output",

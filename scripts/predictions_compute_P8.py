@@ -27,6 +27,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from gsc.canonical_params import CANONICAL_P  # noqa: E402
+
 from gsc.measurement_model import (  # noqa: E402
     FlatLambdaCDMHistory,
     H0_to_SI,
@@ -44,7 +46,7 @@ DEFAULTS = {
     "Omega_m": 0.315,
     "Omega_L": 0.685,
     "years": 10.0,
-    "p_powerlaw": 0.001,  # σ(z) ∝ (1+z)^(-p) ↔ a(z) ∝ (1+z)^p in PowerLawHistory
+    "p_powerlaw": CANONICAL_P,  # σ(z) ∝ (1+z)^(-p) ↔ a(z) ∝ (1+z)^p in PowerLawHistory
 }
 
 
@@ -181,7 +183,7 @@ def main(argv: list[str] | None = None) -> int:
         "--p",
         type=float,
         default=DEFAULTS["p_powerlaw"],
-        help="σ(z) ∝ (1+z)^(-p) exponent (default 0.001)",
+        help="σ(z) ∝ (1+z)^(-p) exponent (default: canonical, gsc/canonical_params.py)",
     )
     parser.add_argument(
         "--H0", type=float, default=DEFAULTS["H0_km_s_Mpc"], dest="H0_km_s_Mpc"

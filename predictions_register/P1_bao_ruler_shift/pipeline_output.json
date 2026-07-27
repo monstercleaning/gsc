@@ -12,7 +12,7 @@
     {
       "ansatz": "powerlaw",
       "ansatz_parameters": {
-        "p": 0.001
+        "p": 0.0006
       },
       "cosmology_inputs": {
         "N_eff": 3.046,
@@ -21,20 +21,20 @@
         "omega_b_h2": 0.02237,
         "omega_m_h2": 0.143
       },
-      "delta_rs_relative": 0.006953301,
+      "delta_rs_relative": 0.004166198,
       "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
-      "r_s_gsc_predicted_mpc": 151.963525,
+      "r_s_gsc_predicted_mpc": 151.542911,
       "r_s_lcdm_baseline_mpc": 150.914173,
-      "shift_factor": 1.006953301,
-      "sigma_ratio_today_over_drag": 0.993094713,
+      "shift_factor": 1.004166198,
+      "sigma_ratio_today_over_drag": 0.995851087,
       "z_drag": 1020.7158
     },
     {
       "ansatz": "transition",
       "ansatz_parameters": {
         "dz": 0.5,
-        "p_high": 0.005,
-        "p_low": 0.001,
+        "p_high": 0.0029999999999999996,
+        "p_low": 0.0006,
         "z_t": 1.0
       },
       "cosmology_inputs": {
@@ -44,19 +44,19 @@
         "omega_b_h2": 0.02237,
         "omega_m_h2": 0.143
       },
-      "delta_rs_relative": 0.035253364,
+      "delta_rs_relative": 0.021005286,
       "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
-      "r_s_gsc_predicted_mpc": 156.234405,
+      "r_s_gsc_predicted_mpc": 154.084168,
       "r_s_lcdm_baseline_mpc": 150.914173,
-      "shift_factor": 1.035253364,
-      "sigma_ratio_today_over_drag": 0.965947114,
+      "shift_factor": 1.021005286,
+      "sigma_ratio_today_over_drag": 0.979426859,
       "z_drag": 1020.7158
     },
     {
       "ansatz": "rg_profile",
       "ansatz_parameters": {
         "alpha": 0.5,
-        "p_eff": 0.001,
+        "p_eff": 0.0006,
         "sigma_star_z": 1000000.0
       },
       "cosmology_inputs": {
@@ -66,12 +66,12 @@
         "omega_b_h2": 0.02237,
         "omega_m_h2": 0.143
       },
-      "delta_rs_relative": 0.006953826,
+      "delta_rs_relative": 0.004166721,
       "physics_status": "Includes leading freeze-frame metrology shift (\u03c3(z=0)/\u03c3(z_drag) ratio). Does NOT yet include second-order \u03c3-modified recombination corrections (modified z_drag, modified c_s(z) inside the sound-horizon integral). These are gating work for v12-cycle M201+ and will narrow the prediction band.",
-      "r_s_gsc_predicted_mpc": 151.963604,
+      "r_s_gsc_predicted_mpc": 151.54299,
       "r_s_lcdm_baseline_mpc": 150.914173,
-      "shift_factor": 1.006953826,
-      "sigma_ratio_today_over_drag": 0.993094196,
+      "shift_factor": 1.004166721,
+      "sigma_ratio_today_over_drag": 0.995850569,
       "z_drag": 1020.7158
     }
   ],
