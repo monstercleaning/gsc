@@ -44,7 +44,7 @@ The twelve central registered predictions are:
 9. **Proton-electron mass-ratio (μ) constancy** — a null prediction: universal coherent scaling forbids any cosmological μ drift (T1 consistency check on the geometric lock).
 10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
 11. **Distance-duality (Etherington) null** — η(z) = 1 exactly under universal scaling; a single robust DDR violation falsifies T1 outright (sudden-death channel, §12.2.1a).
-12. **Nuclear–electronic clock-ratio null (Th-229m/Sr-87)** — d ln(ν_Th/ν_Sr)/dt = 0 exactly under universal scaling, hadronic sector included (measured α-sensitivity K = 5900(2300) makes this the sharpest sector-drift channel); a robust nonzero drift falsifies T1 outright (sudden-death channel, §12.2.1b).
+12. **Nuclear–electronic clock-ratio null (Th-229m/Sr-87)** — d ln(ν_Th/ν_Sr)/dt = 0 exactly under universal scaling, hadronic sector included (measured α-sensitivity K = 5900(2300); the only clock channel with quark-mass/strong-sector reach); a robust nonzero drift falsifies T1 outright (sudden-death channel, §12.2.1b).
 
 A five-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), the software/pre-registration methodology (Paper D), and the self-falsification case report (Paper E), so that adverse review of any layer does not compromise the others.
 
