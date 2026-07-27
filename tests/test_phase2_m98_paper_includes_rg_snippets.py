@@ -1,8 +1,15 @@
 from pathlib import Path
 import unittest
 
+from tests._v12_layout import retired_artifact_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: the v10.1 monolithic paper was consciously retired from the v12
+# layout; this guard skips iff the retirement is declared (an undeclared
+# absence raises). The v11 tree runs the same guard against the real file.
+_RETIRED_SKIP = retired_artifact_skip_reason(ROOT, "GSC_Framework_v10_1_FINAL.tex")
 TEX = ROOT / "GSC_Framework_v10_1_FINAL.tex"
 MD = ROOT / "GSC_Framework_v10_1_FINAL.md"
 
@@ -18,6 +25,7 @@ def _extract_block(text: str, begin: str, end: str) -> str:
     return text[start:stop]
 
 
+@unittest.skipIf(bool(_RETIRED_SKIP), _RETIRED_SKIP or "")
 class TestPhase2M98PaperIncludesRgSnippets(unittest.TestCase):
     def test_tex_phase2_block_mentions_rg_snippets(self) -> None:
         self.assertTrue(TEX.is_file())

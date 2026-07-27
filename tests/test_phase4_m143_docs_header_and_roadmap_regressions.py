@@ -5,13 +5,14 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 PHASE4_DOCS = (
-    ROOT / "docs" / "REVIEW_START_HERE.md",
+    ROOT / "archive" / "legacy_docs" / "REVIEW_START_HERE.md",
     ROOT / "docs" / "VERIFICATION_MATRIX.md",
     ROOT / "docs" / "FRAMES_UNITS_INVARIANTS.md",
-    ROOT / "docs" / "DM_DECISION_MEMO.md",
+    ROOT / "archive" / "legacy_docs" / "DM_DECISION_MEMO.md",
 )
 
-ROADMAP = ROOT / "docs" / "GSC_Consolidated_Roadmap_v2.8.md"
+# v12.6: relocated into archive/legacy_docs/ (see CHANGELOG)
+ROADMAP = ROOT / "archive" / "legacy_docs" / "GSC_Consolidated_Roadmap_v2.8.md"
 
 
 class TestPhase4M143DocsHeaderAndRoadmapRegressions(unittest.TestCase):

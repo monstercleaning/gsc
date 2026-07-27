@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any, Dict, List, Mapping, Optional, Sequence
 
 
@@ -44,7 +44,7 @@ _EXPECTED_FILES: List[Dict[str, Any]] = [
     {"rel": "schemas/phase2_cmb_rs_zstar_reference_audit_v1.schema.json", "required": True},
     {"rel": "schemas/gsc_repo_snapshot_manifest_v1.schema.json", "required": True},
     # Phase-3 SigmaTensor spine (required)
-    {"rel": "docs/phase3_sigma_tensor_model_v1.md", "required": True},
+    {"rel": "archive/legacy_docs/phase_specific_status/phase3_sigma_tensor_model_v1.md", "required": True},
     {"rel": "scripts/phase3_st_sigmatensor_background_report.py", "required": True},
     {"rel": "scripts/phase3_st_sigmatensor_consistency_report.py", "required": True},
     {"rel": "scripts/phase3_pt_sigmatensor_eft_export_pack.py", "required": True},
@@ -135,35 +135,41 @@ _EXPECTED_FILES: List[Dict[str, Any]] = [
     # RG helpers (optional across branches)
     {"rel": "scripts/phase2_rg_flow_table_report.py", "required": False},
     {"rel": "scripts/phase2_rg_pade_fit_report.py", "required": False},
+    # v12.6 reconciliation: doc entries below follow the v12 relocation into
+    # archive/legacy_docs/ (see CHANGELOG v12.6). The v11-era paper2 bundle
+    # (papers/paper2_measurement_model_epsilon/*) and the outreach/ pack were
+    # retired with the five-paper strategy and are deliberately absent from
+    # the v12 layout; their entries were removed here rather than left to
+    # report phantom 'required missing' files forever.
     # Canonical docs (required)
-    {"rel": "docs/project_status_and_roadmap.md", "required": True},
-    {"rel": "docs/GSC_Consolidated_Roadmap_v2.8.md", "required": True},
-    {"rel": "docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md", "required": True},
-    {"rel": "docs/GSC_Consolidated_Roadmap_v2.5.md", "required": False},
-    {"rel": "docs/REVIEW_START_HERE.md", "required": True},
+    {"rel": "archive/legacy_docs/project_status_and_roadmap.md", "required": True},
+    {"rel": "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.md", "required": True},
+    {"rel": "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md", "required": True},
+    {"rel": "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.5.md", "required": False},
+    {"rel": "archive/legacy_docs/REVIEW_START_HERE.md", "required": True},
     {"rel": "docs/VERIFICATION_MATRIX.md", "required": True},
     {"rel": "docs/FRAMES_UNITS_INVARIANTS.md", "required": True},
     {"rel": "docs/DATA_LICENSES_AND_SOURCES.md", "required": True},
     {"rel": "docs/DATASET_ONBOARDING_POLICY.md", "required": True},
     {"rel": "docs/AI_USAGE_AND_VALIDATION_POLICY.md", "required": True},
-    {"rel": "docs/DM_DECISION_MEMO.md", "required": True},
-    {"rel": "docs/EPSILON_FRAMEWORK_READINESS.md", "required": True},
-    {"rel": "docs/LEGACY_VERSIONED_ARTIFACTS.md", "required": True},
-    {"rel": "docs/PRIOR_ART_AND_NOVELTY_MAP.md", "required": True},
-    {"rel": "docs/PRIOR_ART_MAP.md", "required": True},
-    {"rel": "docs/PAPER2_SUBMISSION.md", "required": True},
-    {"rel": "docs/PAPER2_SUBMISSION_GUIDE.md", "required": True},
-    {"rel": "docs/PAPER2_BUILD_AND_REPRODUCIBILITY.md", "required": True},
-    {"rel": "docs/ARXIV_METADATA.md", "required": True},
-    {"rel": "docs/ARXIV_UPLOAD_CHECKLIST.md", "required": True},
-    {"rel": "docs/ARXIV_SUBMISSION_CHECKLIST.md", "required": True},
-    {"rel": "docs/JOSS_AUTHORS.md", "required": True},
-    {"rel": "docs/JOSS_SUBMISSION_GUIDE.md", "required": True},
-    {"rel": "docs/JOSS_SUBMISSION.md", "required": True},
-    {"rel": "docs/JOSS_SUBMISSION_CHECKLIST.md", "required": True},
-    {"rel": "docs/AFFILIATION_AND_BRANDING.md", "required": True},
+    {"rel": "archive/legacy_docs/DM_DECISION_MEMO.md", "required": True},
+    {"rel": "archive/legacy_docs/EPSILON_FRAMEWORK_READINESS.md", "required": True},
+    {"rel": "archive/legacy_docs/LEGACY_VERSIONED_ARTIFACTS.md", "required": True},
+    {"rel": "archive/legacy_docs/PRIOR_ART_AND_NOVELTY_MAP.md", "required": True},
+    {"rel": "archive/legacy_docs/PRIOR_ART_MAP.md", "required": True},
+    {"rel": "archive/legacy_docs/PAPER2_SUBMISSION.md", "required": True},
+    {"rel": "archive/legacy_docs/PAPER2_SUBMISSION_GUIDE.md", "required": True},
+    {"rel": "archive/legacy_docs/PAPER2_BUILD_AND_REPRODUCIBILITY.md", "required": True},
+    {"rel": "archive/legacy_docs/ARXIV_METADATA.md", "required": True},
+    {"rel": "archive/legacy_docs/ARXIV_UPLOAD_CHECKLIST.md", "required": True},
+    {"rel": "archive/legacy_docs/ARXIV_SUBMISSION_CHECKLIST.md", "required": True},
+    {"rel": "archive/legacy_docs/JOSS_AUTHORS.md", "required": True},
+    {"rel": "archive/legacy_docs/JOSS_SUBMISSION_GUIDE.md", "required": True},
+    {"rel": "archive/legacy_docs/JOSS_SUBMISSION.md", "required": True},
+    {"rel": "archive/legacy_docs/JOSS_SUBMISSION_CHECKLIST.md", "required": True},
+    {"rel": "archive/legacy_docs/AFFILIATION_AND_BRANDING.md", "required": True},
     {"rel": "docs/research_notes/PHASE4_M163_FIVE_PROBLEMS.md", "required": True},
-    {"rel": "docs/early_time_e2_status.md", "required": True},
+    {"rel": "archive/legacy_docs/phase_specific_status/early_time_e2_status.md", "required": True},
     {"rel": "docs/structure_formation_status.md", "required": True},
     {"rel": "docs/sigma_field_origin_status.md", "required": True},
     {"rel": "docs/perturbations_and_dm_scope.md", "required": True},
@@ -171,23 +177,8 @@ _EXPECTED_FILES: List[Dict[str, Any]] = [
     {"rel": "docs/sharing_and_snapshots.md", "required": True},
     {"rel": "docs/claim_ledger.json", "required": True},
     {"rel": "docs/DATA_SOURCES.md", "required": True},
-    {"rel": "docs/SBOM.md", "required": True},
-    {"rel": "docs/phase3_scanning_lowz_joint.md", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/main.tex", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/paper2.tex", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/refs.bib", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/paper2.bib", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/numbers.tex", "required": True},
-    {"rel": "papers/paper2_measurement_model_epsilon/README.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_index.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_gsc.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_paper2.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_cosmofalsify.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_transparency.md", "required": True},
-    {"rel": "outreach/labs_site_copy/labs_press_kit.md", "required": True},
-    {"rel": "outreach/templates/email_researcher_feedback.md", "required": True},
-    {"rel": "outreach/templates/email_oss_maintainer_feedback.md", "required": True},
-    {"rel": "outreach/templates/email_journalist_pitch.md", "required": True},
+    {"rel": "archive/legacy_docs/SBOM.md", "required": True},
+    {"rel": "archive/legacy_docs/phase_specific_status/phase3_scanning_lowz_joint.md", "required": True},
 ]
 
 
@@ -201,6 +192,11 @@ def _sha256_file(path: Path) -> str:
 
 def _repo_root_display(raw: str) -> str:
     text = str(raw).replace("\\", "/").rstrip("/")
+    # v12.6: an absolute repo-root (now the default — the script audits its own
+    # package) must not leak machine-local prefixes into serialized paths;
+    # entries are reported package-relative in that case.
+    if PurePosixPath(text).is_absolute() or (len(text) > 1 and text[1] == ":"):
+        return "."
     return text if text else "."
 
 
@@ -277,7 +273,7 @@ def _render_text(payload: Mapping[str, Any], *, require_present: bool) -> str:
 
 def _parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="Deterministic Phase-2 contract-file inventory.")
-    ap.add_argument("--repo-root", default="v11.0.0", help="Phase-2 root directory (default: v11.0.0)")
+    ap.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[1]), help="Phase-2 root directory (default: v11.0.0)")
     ap.add_argument("--format", choices=("text", "json"), default="text")
     ap.add_argument("--require-present", action="store_true", help="Exit with code 2 if required files are missing")
     ap.add_argument("--write", default=None, help="Optional path to write output deterministically")

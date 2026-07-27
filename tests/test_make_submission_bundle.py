@@ -4,11 +4,18 @@ import subprocess
 import sys
 import tempfile
 import unittest
+
+from tests._v12_layout import retired_artifact_skip_reason
 import zipfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]  # v11.0.0/
+
+# v12.6: the v10.1 monolithic paper was consciously retired from the v12
+# layout; this guard skips iff the retirement is declared (an undeclared
+# absence raises). The v11 tree runs the same guard against the real file.
+_RETIRED_SKIP = retired_artifact_skip_reason(ROOT, "GSC_Framework_v10_1_FINAL.tex")
 
 
 def _sha256_file(path: Path) -> str:
@@ -19,6 +26,7 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+@unittest.skipIf(bool(_RETIRED_SKIP), _RETIRED_SKIP or "")
 class TestMakeSubmissionBundle(unittest.TestCase):
     def test_builder_creates_expected_zip_structure(self):
         script = ROOT / "scripts" / "make_submission_bundle.py"

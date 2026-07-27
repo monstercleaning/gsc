@@ -14,8 +14,9 @@ class TestFitGridRDMode(unittest.TestCase):
     def test_rd_mode_early_wires_into_output(self):
         try:
             import numpy  # noqa: F401
+            import scipy  # noqa: F401  # the fit-grid script hard-requires scipy for SN covariance handling
         except Exception:
-            self.skipTest("numpy not available")
+            self.skipTest("numpy/scipy not available")
 
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)

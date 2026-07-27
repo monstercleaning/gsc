@@ -136,9 +136,14 @@ class TestCMBDmRsFitDiagnostic(unittest.TestCase):
         self.assertNotIn("/Users/", s)
         self.assertNotIn("C:\\\\", s)
 
-        # Inputs should be repo-relative.
-        self.assertTrue(str(manifest["inputs"]["cmb_csv"]).startswith("v11.0.0/"))
-        self.assertTrue(str(manifest["inputs"]["cmb_cov"]).startswith("v11.0.0/"))
+        # Inputs should be repo-relative (layout-agnostic: the serialized prefix
+        # differs between the nested working repo and the root-layout public
+        # repo; what matters is that the path is relative and names the real
+        # data file — the old assertion hardcoded a "v11.0.0/" prefix).
+        for key in ("cmb_csv", "cmb_cov"):
+            rel = str(manifest["inputs"][key])
+            self.assertFalse(rel.startswith("/"), msg=f"absolute path leaked: {rel}")
+            self.assertIn("data/cmb/planck2018_distance_priors_chw2018", rel)
 
         # Walk all strings to catch other accidental absolute paths.
         for v in _walk_strings(manifest):

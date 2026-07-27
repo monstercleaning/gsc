@@ -3,7 +3,8 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PATCH_DOC = ROOT / "docs" / "GSC_Consolidated_Roadmap_v2.8.1_patch.md"
+# v12.6: relocated into archive/legacy_docs/ (see CHANGELOG)
+PATCH_DOC = ROOT / "archive" / "legacy_docs" / "GSC_Consolidated_Roadmap_v2.8.1_patch.md"
 
 
 class TestPhase4M144RoadmapPatchDocContent(unittest.TestCase):

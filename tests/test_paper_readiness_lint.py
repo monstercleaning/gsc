@@ -2,15 +2,22 @@ import subprocess
 import sys
 import tempfile
 import unittest
+
+from tests._v12_layout import retired_artifact_skip_reason
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]  # v11.0.0/
+
+# v12.6: the v10.1 monolithic paper was consciously retired from the v12
+# layout; skip iff declared (undeclared absence raises). See _v12_layout.
+_RETIRED_SKIP = retired_artifact_skip_reason(ROOT, "GSC_Framework_v10_1_FINAL.tex")
 SCRIPTS = ROOT / "scripts"
 
 sys.path.insert(0, str(SCRIPTS))
 
 
+@unittest.skipIf(bool(_RETIRED_SKIP), _RETIRED_SKIP or "")
 class TestPaperReadinessLint(unittest.TestCase):
     def test_current_tex_passes(self):
         import paper_readiness_lint as lint  # noqa: E402

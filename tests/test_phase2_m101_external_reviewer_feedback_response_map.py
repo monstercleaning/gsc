@@ -5,7 +5,8 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOC = ROOT / "docs" / "external_reviewer_feedback.md"
+# v12.6: relocated into archive/legacy_docs/ (see CHANGELOG)
+DOC = ROOT / "archive" / "legacy_docs" / "external_reviewer_feedback.md"
 
 
 class TestPhase2M101ExternalReviewerFeedbackResponseMap(unittest.TestCase):
