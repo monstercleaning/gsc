@@ -7,34 +7,48 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 
+# v12.6 reconciliation: the original lists froze the v11 doc layout; the v12
+# layout relocated those docs into archive/legacy_docs/ and this test kept
+# asserting the old paths (part of the inherited doc-layout failure class
+# recorded in AUDIT.md). The lists now name (a) the v12 package's own living
+# entry-point docs and (b) the relocated legacy docs at their real locations.
 REQUIRED_DOCS = (
-    ROOT / "docs" / "REVIEW_START_HERE.md",
+    # living v12 entry points
+    ROOT / "INDEX.md",
+    ROOT / "QUICKSTART.md",
+    ROOT / "CHANGELOG.md",
+    ROOT / "GSC_Framework.md",
+    ROOT / "docs" / "pre_registration.md",
+    ROOT / "docs" / "claim_verification.md",
+    # living reviewer-facing docs
     ROOT / "docs" / "VERIFICATION_MATRIX.md",
     ROOT / "docs" / "FRAMES_UNITS_INVARIANTS.md",
     ROOT / "docs" / "DATA_LICENSES_AND_SOURCES.md",
     ROOT / "docs" / "DATASET_ONBOARDING_POLICY.md",
     ROOT / "docs" / "AI_USAGE_AND_VALIDATION_POLICY.md",
-    ROOT / "docs" / "DM_DECISION_MEMO.md",
-    ROOT / "docs" / "EPSILON_FRAMEWORK_READINESS.md",
-    ROOT / "docs" / "LEGACY_VERSIONED_ARTIFACTS.md",
-    ROOT / "docs" / "PRIOR_ART_AND_NOVELTY_MAP.md",
-    ROOT / "docs" / "GSC_Consolidated_Roadmap_v2.8.md",
-    ROOT / "docs" / "GSC_Consolidated_Roadmap_v2.8.1_patch.md",
+    # relocated legacy docs (still shipped; see scripts/docs_claims_lint.py)
+    ROOT / "archive" / "legacy_docs" / "REVIEW_START_HERE.md",
+    ROOT / "archive" / "legacy_docs" / "DM_DECISION_MEMO.md",
+    ROOT / "archive" / "legacy_docs" / "EPSILON_FRAMEWORK_READINESS.md",
+    ROOT / "archive" / "legacy_docs" / "LEGACY_VERSIONED_ARTIFACTS.md",
+    ROOT / "archive" / "legacy_docs" / "PRIOR_ART_AND_NOVELTY_MAP.md",
+    ROOT / "archive" / "legacy_docs" / "GSC_Consolidated_Roadmap_v2.8.md",
+    ROOT / "archive" / "legacy_docs" / "GSC_Consolidated_Roadmap_v2.8.1_patch.md",
 )
 
 REQUIRED_LINT_REL = (
-    "docs/REVIEW_START_HERE.md",
     "docs/VERIFICATION_MATRIX.md",
     "docs/FRAMES_UNITS_INVARIANTS.md",
     "docs/DATA_LICENSES_AND_SOURCES.md",
     "docs/DATASET_ONBOARDING_POLICY.md",
     "docs/AI_USAGE_AND_VALIDATION_POLICY.md",
-    "docs/DM_DECISION_MEMO.md",
-    "docs/EPSILON_FRAMEWORK_READINESS.md",
-    "docs/LEGACY_VERSIONED_ARTIFACTS.md",
-    "docs/PRIOR_ART_AND_NOVELTY_MAP.md",
-    "docs/GSC_Consolidated_Roadmap_v2.8.md",
-    "docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md",
+    "archive/legacy_docs/REVIEW_START_HERE.md",
+    "archive/legacy_docs/DM_DECISION_MEMO.md",
+    "archive/legacy_docs/EPSILON_FRAMEWORK_READINESS.md",
+    "archive/legacy_docs/LEGACY_VERSIONED_ARTIFACTS.md",
+    "archive/legacy_docs/PRIOR_ART_AND_NOVELTY_MAP.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md",
 )
 
 
@@ -54,10 +68,13 @@ class TestPhase4M139DocsClaimsLintAndRequiredDocsPresent(unittest.TestCase):
             self.assertIn(rel, listed, msg=f"{rel} missing from DEFAULT_REL_FILES")
 
     def test_docs_claims_lint_passes(self) -> None:
+        # Lint THIS package. (The original test linted the sibling v11.0.0
+        # tree via cwd=ROOT.parent — impossible in the public root layout and
+        # in unzipped deposits, and redundant: the v11 tree runs its own copy
+        # of this lint in its own suite.)
         script = SCRIPTS / "docs_claims_lint.py"
         proc = subprocess.run(
-            [sys.executable, str(script), "--repo-root", "v11.0.0"],
-            cwd=str(ROOT.parent),
+            [sys.executable, str(script), "--repo-root", str(ROOT)],
             text=True,
             capture_output=True,
         )

@@ -9,7 +9,9 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-DOC = ROOT / "docs" / "external_reviewer_feedback.md"
+# v12.6: the doc was relocated into archive/legacy_docs/ by the v12 layout;
+# the registry and this test now follow it (see CHANGELOG v12.6).
+DOC = ROOT / "archive" / "legacy_docs" / "external_reviewer_feedback.md"
 
 
 class TestPhase2M99DocsExternalReviewerFeedbackCoverage(unittest.TestCase):
@@ -17,7 +19,7 @@ class TestPhase2M99DocsExternalReviewerFeedbackCoverage(unittest.TestCase):
         import docs_claims_lint as lint  # noqa: E402
 
         self.assertTrue(DOC.is_file())
-        self.assertIn("docs/external_reviewer_feedback.md", set(lint.DEFAULT_REL_FILES))
+        self.assertIn("archive/legacy_docs/external_reviewer_feedback.md", set(lint.DEFAULT_REL_FILES))
 
     def test_doc_contains_claim_safe_scope_disclaimers(self) -> None:
         text = " ".join(DOC.read_text(encoding="utf-8").lower().split())

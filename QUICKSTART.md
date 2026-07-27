@@ -145,7 +145,7 @@ This is the operational core of the framework: predictions are signed *before* o
 | Audit the repository | `python3 scripts/audit_repo_footprint.py --max-mb 10` |
 | Check the docs don't overclaim | `python3 scripts/verify_claims.py --explain` — binds each load-bearing prose claim to a machine-checkable fact; fails on ASSERTED + UNBACKED. See [docs/claim_verification.md](docs/claim_verification.md) |
 | Verify the falsification layer | `bash scripts/predictions_compute_all.sh --verify` (all 10 pipelines, determinism-checked — this is what CI asserts) |
-| Run the full inherited test suite | `python3 -m unittest discover -s tests -p test_*.py` — **honest status:** ~539/626 pass; ~87 inherited v11 doc-layout regression tests fail in the reorganized v12 tree (known debt; does not affect the prediction stack) |
+| Run the full inherited test suite | `python3 -m unittest discover -s tests -p test_*.py` — **honest status (re-measured v12.6):** 607/626 pass; 19 stale-expectation tests fail (paper-readiness / branding-pack / roadmap-content / submission-bundle classes; known debt, none CI-exercised, does not affect the prediction stack). The v12.6 registry reconciliation fixed the doc-relocation classes — see CHANGELOG |
 | Verify a release bundle | `bash scripts/release_candidate_check.sh` |
 
 ## Common operations

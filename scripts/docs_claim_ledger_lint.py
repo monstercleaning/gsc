@@ -13,6 +13,14 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Set
 SCHEMA = "phase2_claim_ledger_lint_v1"
 DEFAULT_LEDGER_REL = "docs/claim_ledger.json"
 VALID_STATUS = {"supported", "bounded", "planned"}
+# gsc_claim_ledger_v2 (see the ledger's schema_notes): the closed three-status
+# vocabulary is replaced by free-form epistemic-status strings, and every entry
+# instead carries an explicit tier and a kill_test — a *stronger* contract on
+# the fields that matter for falsifiability. The linter enforces v2 on v2
+# ledgers and the historic v1 rules otherwise (v12.6 reconciliation; before
+# this, the linter applied v1 rules to the v2 ledger and failed on every run).
+LEDGER_SCHEMA_V2 = "gsc_claim_ledger_v2"
+VALID_TIERS_V2 = {"T1", "T2", "T3", "T4", "non-claim", "meta"}
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 
 FORBIDDEN_PARTS: Set[str] = {
@@ -61,6 +69,8 @@ def _lint_payload(payload: Any, repo_root: Path) -> Dict[str, Any]:
             "errors": ["Ledger root must be a JSON object."],
         }
 
+    is_v2 = str(payload.get("schema", "")).strip() == LEDGER_SCHEMA_V2
+
     entries = payload.get("entries")
     if not isinstance(entries, list):
         errors.append("Ledger 'entries' must be a list.")
@@ -87,7 +97,15 @@ def _lint_payload(payload: Any, repo_root: Path) -> Dict[str, Any]:
             errors.append(f"{where}: missing non-empty 'claim_text'.")
 
         status = str(entry.get("status", "")).strip()
-        if status not in VALID_STATUS:
+        if is_v2:
+            if not status:
+                errors.append(f"{where}: missing non-empty 'status'.")
+            tier = str(entry.get("tier", "")).strip()
+            if tier not in VALID_TIERS_V2:
+                errors.append(f"{where}: tier must be one of {sorted(VALID_TIERS_V2)}.")
+            if not str(entry.get("kill_test", "")).strip():
+                errors.append(f"{where}: missing non-empty 'kill_test' (v2 contract).")
+        elif status not in VALID_STATUS:
             errors.append(f"{where}: status must be one of {sorted(VALID_STATUS)}.")
 
         doc_locations = entry.get("doc_locations")
@@ -107,7 +125,8 @@ def _lint_payload(payload: Any, repo_root: Path) -> Dict[str, Any]:
                 if not abs_doc.is_file():
                     errors.append(f"{loc_where}: referenced doc does not exist: {doc_path}")
                 section = str(raw_loc.get("section", "")).strip()
-                if not section:
+                if not section and not is_v2:
+                    # v2 permits section-less locations (whole-document refs).
                     errors.append(f"{loc_where}: missing non-empty 'section'.")
 
         artifacts = entry.get("supporting_artifacts")

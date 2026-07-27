@@ -12,47 +12,62 @@ from typing import Dict, List, Sequence, Tuple
 
 V101_DIR = Path(__file__).resolve().parents[1]
 
+# v12.6 registry reconciliation: the v12 layout relocated most v11-era docs
+# into archive/legacy_docs/ (they still ship in the deposit and remain lint
+# targets — an archived doc must not carry overclaims either). This registry
+# was copied from v11 without following the relocation, so the linter reported
+# 27 missing_file violations on every run since the v12 layout landed. Entries
+# below point at the files' actual v12 locations. See CHANGELOG (v12.6).
 DEFAULT_REL_FILES: Tuple[str, ...] = (
-    "GSC_Framework_v10_1_FINAL.md",
-    "GSC_Framework_v10_1_FINAL.tex",
-    "docs/project_status_and_roadmap.md",
-    "docs/external_reviewer_feedback.md",
     "docs/measurement_model.md",
-    "docs/reviewer_faq.md",
-    "docs/early_time_e2_status.md",
     "docs/perturbations_and_dm_scope.md",
     "docs/sigma_field_origin_status.md",
-    "docs/phase3_sigma_tensor_model_v1.md",
-    "docs/REVIEW_START_HERE.md",
     "docs/VERIFICATION_MATRIX.md",
     "docs/FRAMES_UNITS_INVARIANTS.md",
     "docs/DATA_LICENSES_AND_SOURCES.md",
     "docs/DATASET_ONBOARDING_POLICY.md",
     "docs/AI_USAGE_AND_VALIDATION_POLICY.md",
-    "docs/DM_DECISION_MEMO.md",
-    "docs/EPSILON_FRAMEWORK_READINESS.md",
-    "docs/LEGACY_VERSIONED_ARTIFACTS.md",
-    "docs/PRIOR_ART_AND_NOVELTY_MAP.md",
-    "docs/PRIOR_ART_MAP.md",
-    "docs/GSC_Consolidated_Roadmap_v2.8.md",
-    "docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md",
-    "docs/PAPER2_SUBMISSION.md",
-    "docs/PAPER2_SUBMISSION_GUIDE.md",
-    "docs/PAPER2_BUILD_AND_REPRODUCIBILITY.md",
-    "docs/ARXIV_METADATA.md",
-    "docs/ARXIV_UPLOAD_CHECKLIST.md",
-    "docs/ARXIV_SUBMISSION_CHECKLIST.md",
-    "docs/JOSS_AUTHORS.md",
-    "docs/JOSS_SUBMISSION_GUIDE.md",
-    "docs/JOSS_SUBMISSION.md",
-    "docs/JOSS_SUBMISSION_CHECKLIST.md",
-    "docs/AFFILIATION_AND_BRANDING.md",
-    "outreach/labs_site_copy/labs_transparency.md",
     "bridges/phase4_qcd_gravity_bridge_v0.1/report/QCD_Gravity_Bridge_v0.1.md",
     "docs/rg_scale_identification.md",
     "docs/rg_asymptotic_safety_bridge.md",
     "docs/structure_formation_status.md",
     "docs/provenance_and_schemas.md",
+    # relocated in the v12 layout (archive/legacy_docs/):
+    "archive/legacy_docs/project_status_and_roadmap.md",
+    "archive/legacy_docs/external_reviewer_feedback.md",
+    "archive/legacy_docs/reviewer_faq.md",
+    "archive/legacy_docs/phase_specific_status/early_time_e2_status.md",
+    "archive/legacy_docs/phase_specific_status/phase3_sigma_tensor_model_v1.md",
+    "archive/legacy_docs/REVIEW_START_HERE.md",
+    "archive/legacy_docs/DM_DECISION_MEMO.md",
+    "archive/legacy_docs/EPSILON_FRAMEWORK_READINESS.md",
+    "archive/legacy_docs/LEGACY_VERSIONED_ARTIFACTS.md",
+    "archive/legacy_docs/PRIOR_ART_AND_NOVELTY_MAP.md",
+    "archive/legacy_docs/PRIOR_ART_MAP.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.1_patch.md",
+    "archive/legacy_docs/PAPER2_SUBMISSION.md",
+    "archive/legacy_docs/PAPER2_SUBMISSION_GUIDE.md",
+    "archive/legacy_docs/PAPER2_BUILD_AND_REPRODUCIBILITY.md",
+    "archive/legacy_docs/ARXIV_METADATA.md",
+    "archive/legacy_docs/ARXIV_UPLOAD_CHECKLIST.md",
+    "archive/legacy_docs/ARXIV_SUBMISSION_CHECKLIST.md",
+    "archive/legacy_docs/JOSS_AUTHORS.md",
+    "archive/legacy_docs/JOSS_SUBMISSION_GUIDE.md",
+    "archive/legacy_docs/JOSS_SUBMISSION.md",
+    "archive/legacy_docs/JOSS_SUBMISSION_CHECKLIST.md",
+    "archive/legacy_docs/AFFILIATION_AND_BRANDING.md",
+)
+
+# Deliberately absent from the v12 layout — retired, not silently dropped.
+# The full GSC_Framework_v10_1_FINAL.{md,tex} live in the v11 tree, where that
+# tree's own linter enforces their content rules; v12 carries banner-stub
+# pointers at archive/v10_1_framework.md instead. The outreach copy was not
+# carried forward at all.
+RETIRED_V11_REL_FILES: Tuple[str, ...] = (
+    "GSC_Framework_v10_1_FINAL.md",
+    "GSC_Framework_v10_1_FINAL.tex",
+    "outreach/labs_site_copy/labs_transparency.md",
 )
 
 
@@ -248,11 +263,11 @@ QUARANTINE_DOC_PATTERNS: Tuple[str, ...] = (
 )
 
 K_SIGMA_ANSATZ_EXEMPT_REL_FILES: Tuple[str, ...] = (
-    "docs/GSC_Consolidated_Roadmap_v2.8.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.md",
 )
 
 VERBATIM_ROADMAP_CONTEXT_EXEMPT_REL_FILES: Tuple[str, ...] = (
-    "docs/GSC_Consolidated_Roadmap_v2.8.md",
+    "archive/legacy_docs/GSC_Consolidated_Roadmap_v2.8.md",
 )
 
 
@@ -269,7 +284,7 @@ REQUIRED_RULES: Dict[str, Tuple[Rule, ...]] = {
             message="measurement_model must state Sandage-Loeb is kinematic.",
         ),
     ),
-    "docs/reviewer_faq.md": (
+    "archive/legacy_docs/reviewer_faq.md": (
         Rule(
             key="require_faq_drift_frame_question",
             pattern=r"Does redshift drift discriminate frames\?",
@@ -281,30 +296,10 @@ REQUIRED_RULES: Dict[str, Tuple[Rule, ...]] = {
             message="reviewer_faq must include explicit falsifiability question.",
         ),
     ),
-    "GSC_Framework_v10_1_FINAL.md": (
-        Rule(
-            key="require_field_redefinition_disclaimer_md",
-            pattern=r"field redefinition:\s*it does not,\s*by itself,\s*constitute new physics",
-            message="framework MD must explicitly state frame-map is not new physics.",
-        ),
-        Rule(
-            key="require_history_discriminant_md",
-            pattern=r"This relation is kinematic\..*discriminates competing histories",
-            message="framework MD must state drift discriminates histories, not frames.",
-        ),
-    ),
-    "GSC_Framework_v10_1_FINAL.tex": (
-        Rule(
-            key="require_field_redefinition_disclaimer_tex",
-            pattern=r"field redefinition:\s*it does not,\s*by itself,\s*constitute new physics",
-            message="framework TeX must explicitly state frame-map is not new physics.",
-        ),
-        Rule(
-            key="require_history_discriminant_tex",
-            pattern=r"This relation is kinematic\..*discriminates competing histories",
-            message="framework TeX must state drift discriminates histories, not frames.",
-        ),
-    ),
+    # The GSC_Framework_v10_1_FINAL.{md,tex} content rules are retired here
+    # (v12.6): those files live in the v11 tree, whose own linter enforces
+    # them; v12 carries banner-stub pointers at archive/v10_1_framework.md.
+    # See RETIRED_V11_REL_FILES above.
     "docs/rg_scale_identification.md": (
         Rule(
             key="require_rg_scale_ansatz_wording",

@@ -223,11 +223,11 @@ python3 scripts/audit_repo_footprint.py --max-mb 10
 
 ```
 Standalone size: ~8.4 MB
-Predictions: 10/10 deterministic + schema-validated (P1-P10)
-Scored predictions: 7/10 with PASS/FAIL/SUB-THRESHOLD verdicts
-Paper drafts: 3 of 4 (Paper A empirical, Paper B theoretical with v12.1 corrections, Paper D methodology)
-CI: predictions-determinism + schema validation
-Tests: prediction/falsification stack fully green (compute×2 determinism, 7 scorers, 10 schema validations — CI-asserted); full inherited unittest suite: 539/626 pass, 87 known-stale v11 doc-layout regressions fail in the v12 tree (see CHANGELOG → "July 2026 execution audit")
+Predictions: 12/12 deterministic + schema-validated (P1-P12)
+Scored predictions: 8/12 with PASS/FAIL/SUB-THRESHOLD verdicts (P2, P8, P10, P12 pending — genuine forward)
+Paper drafts: 5 of 5 (Paper A empirical, Paper B theoretical, Paper C extensions, Paper D methodology, Paper E self-falsification case report)
+CI: predictions-determinism + schema validation + claim-verification + detector-sensitivity retro-guard
+Tests: prediction/falsification stack fully green (compute×2 determinism, 8 active scorers, 12 schema validations — CI-asserted); full inherited unittest suite re-measured at v12.6: 607/626 pass, 19 stale-expectation tests remain (paper/branding/roadmap/submission-bundle classes, none CI-exercised; the doc-relocation registry classes were fixed in v12.6 — see CHANGELOG)
 Pre-registration: scoring protocol operational end-to-end with 8 active scorers (P1, P3, P4, P5, P6, P7, P9, P11); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
 
 Outcome breakdown post-v12.6 (canonical p = 6×10⁻⁴ unchanged; Ġ/G bounds corrected; P12 added):
