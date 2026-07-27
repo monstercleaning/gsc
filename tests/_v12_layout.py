@@ -41,6 +41,30 @@ def _retired_rel_files(root: Path):
             sys.path.remove(scripts)
 
 
+def nested_working_repo_skip_reason(package_root: Path):
+    """Return a skip reason iff this package is NOT inside the nested working repo.
+
+    A family of tests guards cross-version invariants of the multi-version
+    working repository (v11-tree deprecation banners, publication-metadata
+    consistency across version trees, repo-root snapshot/gitignore hygiene).
+    Those invariants are only defined where the sibling version trees exist.
+    In a single-package layout — the public root-layout repository or an
+    unzipped deposit — they are definitionally out of scope, and the tests
+    skip with this documented reason instead of failing on paths above the
+    package root. In the nested working repo this returns None and the tests
+    run in full. See CHANGELOG (v12.6).
+    """
+    repo_root = package_root.parent
+    if (repo_root / ".git").exists() and (repo_root / "v11.0.0").is_dir():
+        return None
+    return (
+        "cross-version working-repo invariant: requires the nested "
+        "multi-version repository (sibling v11.0.0/ tree and repo root); "
+        "definitionally out of scope in a single-package layout. See "
+        "tests/_v12_layout.py and CHANGELOG v12.6."
+    )
+
+
 def retired_artifact_skip_reason(root: Path, rel: str):
     """Return a skip reason iff `rel` is absent AND declared retired.
 

@@ -5,8 +5,15 @@ import tempfile
 from pathlib import Path
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 SCRIPT = ROOT / "scripts" / "phase4_build_paper2_assets.py"
 ABS_TOKENS = ("/Users/", "/home/", "/var/folders/", "C:\\Users\\")
 
@@ -19,6 +26,7 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase4PublishPaper2AssetsCiSmokeToy(unittest.TestCase):
     def _run_once(self, workdir: Path, outdir: Path) -> subprocess.CompletedProcess[str]:
         return subprocess.run(

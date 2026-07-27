@@ -145,7 +145,7 @@ This is the operational core of the framework: predictions are signed *before* o
 | Audit the repository | `python3 scripts/audit_repo_footprint.py --max-mb 10` |
 | Check the docs don't overclaim | `python3 scripts/verify_claims.py --explain` — binds each load-bearing prose claim to a machine-checkable fact; fails on ASSERTED + UNBACKED. See [docs/claim_verification.md](docs/claim_verification.md) |
 | Verify the falsification layer | `bash scripts/predictions_compute_all.sh --verify` (all 10 pipelines, determinism-checked — this is what CI asserts) |
-| Run the full inherited test suite | `python3 -m unittest discover -s tests -p test_*.py` — **fully green as of v12.6:** 626 tests, 0 failures, 24 documented skips (consciously-retired v11-era artifacts gate themselves via `tests/_v12_layout.py`; optional-dependency guards). See CHANGELOG → v12.6 legacy-suite reconciliation |
+| Run the full inherited test suite | `python3 -m unittest discover -s tests -p test_*.py` — **fully green as of v12.6 in both layouts:** 626 tests, 0 failures everywhere; skips are layout-dependent and documented (nested working repo: 24; single-package/deposit layout: 93 — cross-version working-repo checks and retired-artifact guards gate themselves via `tests/_v12_layout.py`). See CHANGELOG → v12.6 legacy-suite reconciliation |
 | Verify a release bundle | `bash scripts/release_candidate_check.sh` |
 
 ## Common operations

@@ -227,7 +227,7 @@ Predictions: 12/12 deterministic + schema-validated (P1-P12)
 Scored predictions: 8/12 with PASS/FAIL/SUB-THRESHOLD verdicts (P2, P8, P10, P12 pending — genuine forward)
 Paper drafts: 5 of 5 (Paper A empirical, Paper B theoretical, Paper C extensions, Paper D methodology, Paper E self-falsification case report)
 CI: predictions-determinism + schema validation + claim-verification + detector-sensitivity retro-guard
-Tests: prediction/falsification stack fully green (compute×2 determinism, 8 active scorers, 12 schema validations — CI-asserted); full inherited unittest suite fully green as of v12.6 (626 tests, 0 failures, 24 documented skips via the self-enforcing retired-artifact gate — see CHANGELOG)
+Tests: prediction/falsification stack fully green (compute×2 determinism, 8 active scorers, 12 schema validations — CI-asserted); full inherited unittest suite fully green as of v12.6 in both layouts (626 tests, 0 failures; documented layout-dependent skips: 24 nested / 93 single-package via the self-enforcing gates in tests/_v12_layout.py — see CHANGELOG)
 Pre-registration: scoring protocol operational end-to-end with 8 active scorers (P1, P3, P4, P5, P6, P7, P9, P11); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
 
 Outcome breakdown post-v12.6 (canonical p = 6×10⁻⁴ unchanged; Ġ/G bounds corrected; P12 added):

@@ -4,12 +4,20 @@ import sys
 import tempfile
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 SCAN_SCRIPT = ROOT / "scripts" / "phase3_scan_sigmatensor_lowz_joint.py"
 VALIDATE_SCRIPT = ROOT / "scripts" / "phase2_schema_validate.py"
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase3M130LowzScanPlanSchemaValidateAutoToy(unittest.TestCase):
     def test_plan_schema_validate_auto(self) -> None:
         with tempfile.TemporaryDirectory() as td:

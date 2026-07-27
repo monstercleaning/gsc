@@ -5,8 +5,15 @@ import sys
 import tempfile
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 REPO_ROOT = ROOT.parent
 SCRIPT = ROOT / "scripts" / "make_repo_snapshot.py"
 
@@ -20,6 +27,7 @@ def _git(repo: Path, *args: str) -> str:
     return proc.stdout.strip()
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase2M77MakeRepoSnapshotShareProfile(unittest.TestCase):
     def test_share_profile_excludes_bloat_paths_and_keeps_core_files(self) -> None:
         args = [

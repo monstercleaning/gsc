@@ -5,10 +5,17 @@ import subprocess
 import sys
 import tempfile
 import unittest
+
+from tests._v12_layout import nested_working_repo_skip_reason
 import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 REVIEWER_PACK_SCRIPT = ROOT / "scripts" / "phase2_e2_make_reviewer_pack.py"
 LINEAGE_SCRIPT = ROOT / "scripts" / "phase2_lineage_dag.py"
 
@@ -19,6 +26,7 @@ def _sha256_bytes(data: bytes) -> str:
     return h.hexdigest()
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase2M118ReviewerPackStrictVerifyCatchesBundlePortableLeak(unittest.TestCase):
     def _run(self, cmd: list[str]) -> subprocess.CompletedProcess[str]:
         return subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)

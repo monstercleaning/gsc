@@ -1,7 +1,15 @@
 from pathlib import Path
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
 
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
+
+
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase2M41GitignorePaperAssets(unittest.TestCase):
     def test_gitignore_contains_phase2_paper_asset_paths(self) -> None:
         repo_root = Path(__file__).resolve().parents[2]

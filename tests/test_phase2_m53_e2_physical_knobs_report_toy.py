@@ -6,8 +6,15 @@ import sys
 import tempfile
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 REPORT_SCRIPT = ROOT / "scripts" / "phase2_e2_physical_knobs_report.py"
 ASSETS_SCRIPT = ROOT / "scripts" / "phase2_e2_make_paper_assets.py"
 KNOBS_DIR = "paper_assets_cmb_e2_closure_to_physical_knobs"
@@ -17,6 +24,7 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase2M53E2PhysicalKnobsReportToy(unittest.TestCase):
     def _run_report(self, *args: str) -> subprocess.CompletedProcess:
         cmd = [sys.executable, str(REPORT_SCRIPT), *args]

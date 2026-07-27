@@ -4,15 +4,23 @@ import subprocess
 import sys
 import tempfile
 import unittest
+
+from tests._v12_layout import nested_working_repo_skip_reason
 import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 SNAPSHOT_SCRIPT = ROOT / "scripts" / "make_repo_snapshot.py"
 TRANSLATOR_SCRIPT = ROOT / "scripts" / "phase4_epsilon_translator_mvp.py"
 ABS_TOKENS = ("/Users/", "/home/", "/var/folders/", "C:\\\\Users\\\\")
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase4M148EpsilonTranslatorGitlessSnapshotToy(unittest.TestCase):
     def test_gitless_snapshot_run_emits_portable_report(self) -> None:
         with tempfile.TemporaryDirectory() as td:

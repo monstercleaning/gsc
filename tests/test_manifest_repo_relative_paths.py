@@ -2,17 +2,25 @@ import json
 import subprocess
 import tempfile
 import unittest
+
+from tests._v12_layout import nested_working_repo_skip_reason
 from pathlib import Path
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]  # v11.0.0/
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 REPO_ROOT = ROOT.parent
 sys.path.insert(0, str(ROOT))
 
 from gsc.early_time.cmb_distance_priors import _RS_STAR_CALIB_CHW2018  # noqa: E402
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestManifestRepoRelativePaths(unittest.TestCase):
     def test_manifest_normalizes_repo_paths_and_records_rs_star_calibration(self):
         script = ROOT / "scripts/late_time_make_manifest.py"

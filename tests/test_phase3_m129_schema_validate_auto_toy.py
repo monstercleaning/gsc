@@ -5,8 +5,15 @@ import sys
 import tempfile
 import unittest
 
+from tests._v12_layout import nested_working_repo_skip_reason
+
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# v12.6: cross-version working-repo invariant — runs fully in the nested
+# repo; skips with documented reason in single-package layouts (see
+# tests/_v12_layout.py and CHANGELOG).
+_NESTED_SKIP = nested_working_repo_skip_reason(Path(__file__).resolve().parents[1])
 REPORT_SCRIPT = ROOT / "scripts" / "phase3_joint_sigmatensor_lowz_report.py"
 VALIDATE_SCRIPT = ROOT / "scripts" / "phase2_schema_validate.py"
 
@@ -87,6 +94,7 @@ def _make_toy_cmb_priors_and_cov(base: Path) -> tuple[Path, Path]:
     return priors_path, cov_path
 
 
+@unittest.skipIf(bool(_NESTED_SKIP), _NESTED_SKIP or "")
 class TestPhase3M129SchemaValidateAutoToy(unittest.TestCase):
     def test_schema_validate_auto_passes(self) -> None:
         _require_numpy_or_skip(self)
