@@ -75,7 +75,7 @@ Hardware timeline for this family (all on others' schedules): NGLR-1 next-genera
 | Candidate | Prediction | Current published number to register against | Blocking work |
 |---|---|---|---|
 | **P13: GW–EM duality null** | Ξ₀ = 1 exactly, all z | Ξ₀ = 1.2 +0.8/−0.4 (GWTC-4.0) [V-scout — re-verify directly]; GWTC-5.0 consistent [V] | Verify Ξ₀ convention + number from the GWTC-4.0 paper directly; standard P11-pattern registration. O5/GWTC-6 tightens automatically. |
-| **M-task: w₀wₐ response to the +0.417% shift** | — (computation, not registration) | DESI DR2 w0wa posterior [V]; Adi degeneracy direction [V] | Fit w0waCDM to GSC-mock BAO (+CMB priors) with standard r_d assumed; report the induced (w0, wa) displacement and compare to the DESI preference. Outcome feeds Paper A §5.1 either as a constructive connection or an honest null. |
+| **M-task: w₀wₐ response to the +0.417% shift** — **✅ COMPUTED (v12.6, same cycle)** | — (computation, not registration) | DESI DR2 w0wa posterior [V]; Adi degeneracy direction [V] | Done: `docs/analysis_w0wa_rd_shift.md` + `scripts/analysis_w0wa_rd_shift_diagnostic.py`. Result: the shift hides in H₀ (+0.42% bias); the residual (w₀, wₐ) pull is collinear with the DESI/Dovekie direction to ~8° but carries <1% of the χ² evidence; joint-fit degeneracy weakens BAO-only tests of P1 (honesty refinement recorded). |
 | **P14 (parked): redshift achromaticity** | Δz/z = 0 across bands | 10⁻⁶ (z < 0.1), 10⁻⁵ (0.1 < z < 0.25) from ~500k SDSS spectra (Ferreras & Trujillo 2016, arXiv:1605.09380) [V-scout] | No external pipeline guarantees improvement — a registration would wait on data indefinitely. Parked until a survey commits to a modern band-cross test. |
 
 ---

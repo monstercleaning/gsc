@@ -261,5 +261,6 @@ on multiple independent channels. No "explained anomaly" claim survives v12.2 co
 - [QUICKSTART.md](QUICKSTART.md) — five-minute tour
 - [CHANGELOG.md](CHANGELOG.md) — what changed across cycles
 - [docs/observational_frontier_2026.md](docs/observational_frontier_2026.md) — July 2026 verified frontier sweep: per-channel data status, threats, feeds, registration queue
+- [docs/analysis_w0wa_rd_shift.md](docs/analysis_w0wa_rd_shift.md) — diagnostic: the +0.417% ruler shift vs w₀wₐ fits (direction matches DESI to ~8°, magnitude <1% of the evidence; shift hides in H₀)
 - [GSC_Framework.md](GSC_Framework.md) — full theoretical specification
 - [archive/README.md](archive/README.md) — what's in historical provenance
