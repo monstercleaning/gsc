@@ -21,15 +21,15 @@
 
 set -uo pipefail
 
-# Which historical tree to test the detector against. Overridable by environment
-# so the same script works in both repository layouts:
-#   * working repo (package nested):  a42d294 : v12.0.0
-#   * public repo  (package at root): 6cf7ee7 : "" (its own v12.2 initial release)
-# A permanently-skipping guard is a silently-dead guard, which is precisely the
-# failure class this tooling exists to prevent — so make it configurable rather
-# than letting it no-op in one of the two repositories.
-RETRO_COMMIT="${GSC_RETRO_COMMIT:-a42d294}"   # v12.2, 2026-04-27, pre-honesty-pass
-RETRO_SUBDIR="${GSC_RETRO_SUBDIR-v12.0.0}"    # may be empty (package at repo root)
+# Which historical tree to test the detector against. AUTO-DETECTED by layout,
+# overridable by environment:
+#   * working repo (package nested under v12.0.0/):  a42d294 : v12.0.0
+#   * public repo  (package at repo root):           6cf7ee7 : ""  (its own v12.2 release)
+# Auto-detection exists because per-repo workflow env blocks proved fragile: the
+# package-overlay sync clobbered the public repo's customized workflow and the
+# guard (and the whole claim-verification workflow) went silently dead — the
+# exact failure class this tooling exists to prevent. One self-configuring
+# script survives the overlay; two hand-customized copies do not.
 MUST_FAIL_CLAIM="register-gpg-signed"
 # Sensitivity floor. Historically 18 assertion sites existed in the v12.2 tree.
 # A binary "does the claim still fire?" check is NOT sufficient: a negative-control
@@ -45,6 +45,15 @@ PKG_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 # "${PKG_ROOT}/.." there points outside the repo, which made this guard skip
 # silently — the exact silently-dead-check failure mode it is meant to prevent.
 REPO_ROOT="$(git -C "${PKG_ROOT}" rev-parse --show-toplevel 2>/dev/null || echo "${PKG_ROOT}")"
+
+# Layout auto-detection (see header note). Env vars still win when set.
+if [ "${REPO_ROOT}" != "${PKG_ROOT}" ]; then
+  RETRO_COMMIT="${GSC_RETRO_COMMIT:-a42d294}"   # nested layout: working repo history
+  RETRO_SUBDIR="${GSC_RETRO_SUBDIR-v12.0.0}"
+else
+  RETRO_COMMIT="${GSC_RETRO_COMMIT:-6cf7ee7}"   # root layout: public repo's own v12.2 release
+  RETRO_SUBDIR="${GSC_RETRO_SUBDIR-}"
+fi
 
 echo "=== claim-detector retro-test ==="
 echo "  historical commit: ${RETRO_COMMIT} (${RETRO_SUBDIR:-<repo root>})"

@@ -142,6 +142,18 @@
       "note": "Added after a real regression: the public repository had fixed a hardcoded `assert len(d) == 8` to 10 (its commit 0296485), and a later package overlay from the working repository silently clobbered that fix with the stale in-package copy — reintroducing a bug the operator had already solved months earlier, and turning CI red. The prose-side count was covered by `prediction-count`; the CI-side count was not. Both workflows now derive the expected number from `predictions_register/P*/prediction.md`, and this claim forbids the hardcoded form from returning. Lesson: a count is a claim wherever it lives, including inside automation."
     },
     {
+      "id": "package-workflows-layout-agnostic",
+      "claim": "The in-package CI workflows contain no layout-specific v12.0.0/ path references, so the package-overlay sync cannot silently kill them when promoted to the root-layout public repository.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [".github/workflows/*.yml"],
+        "pattern": "working-directory: v12\\.0\\.0|cd v12\\.0\\.0\\b",
+        "max": 0
+      },
+      "always": true,
+      "note": "Added after the second overlay-clobber incident: the public repo's hand-customized claim_verification.yml (root-layout paths) was overwritten by the in-package nested-layout copy during the v12.5 sync, and the workflow went silently dead — its 'v12.0.0/**' path filters matched nothing at the repository root, so it simply never triggered again. Detected only by noticing the workflow ABSENT from the CI run list (a silently-dead check produces no red X). Fix: the in-package workflows are layout-agnostic (dual path triggers, runtime package detection, retro-guard auto-configures by layout), so the overlay propagates correctness to both layouts. This claim forbids hard-wired working directories from returning; dual path triggers in the `on:` block are permitted (they are additive, not layout-breaking)."
+    },
+    {
       "id": "deterministic-pipelines",
       "claim": "Prediction pipelines are deterministic: identical inputs produce byte-identical output.",
       "verify": {

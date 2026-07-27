@@ -1,37 +1,52 @@
-name: v12-claim-verification
+name: claim-verification
 
-# Bind prose claims to executable facts about the artifact.
+# Bind prose claims to executable facts about the artifact. Two jobs:
+#   1. claim-verification: every load-bearing claim in CLAIMS.json must be
+#      backed by the repository's actual state (fails on ASSERTED + UNBACKED).
+#   2. detector-sensitivity: regression guard on the detector itself — runs the
+#      current tool + manifest against a known-bad historical tree and REQUIRES
+#      the false signing claim to still be caught on >= the sensitivity floor.
 #
-# Job 1 (claim-verification): every load-bearing claim in v12.0.0/CLAIMS.json must
-#   be backed by the repository's actual state. Fails on ASSERTED + UNBACKED —
-#   the documentation says it, the artifact does not do it.
+# LAYOUT-AGNOSTIC BY DESIGN. This file is maintained inside the package
+# (v12.0.0/.github/workflows/) and is promoted verbatim to the public
+# repository root by the package-overlay sync. An earlier, layout-specific
+# version was clobbered by exactly that sync and went silently dead (its
+# `v12.0.0/**` path filters matched nothing in the root layout). Hence:
+#   * path triggers list BOTH layouts' variants;
+#   * run steps detect the package directory at runtime;
+#   * the retro-guard script auto-detects its historical commit by layout.
+# Do not reintroduce layout-specific working directories here —
+# CLAIMS.json (`package-workflows-layout-agnostic`) fails the build if you do.
 #
-# Job 2 (detector-sensitivity): a regression guard on the detector itself. It runs
-#   the current tool + manifest against the historical pre-honesty-pass tree
-#   (v12.2) and REQUIRES the known-false signing claim to still be caught, on at
-#   least 10 of its 18 historical assertion sites. This blocks the obvious attack
-#   on a claim verifier: over-hedging the detector until the inconvenient finding
-#   goes quiet. Needs full history (fetch-depth: 0).
-#
-# See v12.0.0/docs/claim_verification.md for the design and its limitations.
+# See docs/claim_verification.md for design and limitations.
 
 on:
   push:
     paths:
+      - 'CLAIMS.json'
       - 'v12.0.0/CLAIMS.json'
+      - 'scripts/verify_claims.py'
       - 'v12.0.0/scripts/verify_claims.py'
+      - 'scripts/verify_claims_retro_test.sh'
       - 'v12.0.0/scripts/verify_claims_retro_test.sh'
-      - 'v12.0.0/**/*.md'
+      - '**/*.md'
+      - 'CITATION.cff'
       - 'v12.0.0/CITATION.cff'
+      - 'predictions_register/**'
       - 'v12.0.0/predictions_register/**'
-      - '.github/workflows/v12_claim_verification.yml'
+      - '.github/workflows/claim_verification.yml'
   pull_request:
     paths:
+      - 'CLAIMS.json'
       - 'v12.0.0/CLAIMS.json'
+      - 'scripts/verify_claims.py'
       - 'v12.0.0/scripts/verify_claims.py'
+      - 'scripts/verify_claims_retro_test.sh'
       - 'v12.0.0/scripts/verify_claims_retro_test.sh'
-      - 'v12.0.0/**/*.md'
+      - '**/*.md'
+      - 'CITATION.cff'
       - 'v12.0.0/CITATION.cff'
+      - 'predictions_register/**'
       - 'v12.0.0/predictions_register/**'
   workflow_dispatch:
 
@@ -49,16 +64,18 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: verify every claim against the artifact
-        working-directory: v12.0.0
-        run: python3 scripts/verify_claims.py --explain
+      - name: verify every claim against the artifact (layout-detected)
+        run: |
+          PKG="$([ -d v12.0.0 ] && echo v12.0.0 || echo .)"
+          echo "package root: ${PKG}"
+          cd "${PKG}" && python3 scripts/verify_claims.py --explain
 
   detector-sensitivity:
     name: detector still catches the historical false claim
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: checkout (full history — retro-test needs the v12.2 commit)
+      - name: checkout (full history — retro-test needs the historical commit)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -69,5 +86,7 @@ jobs:
           python-version: '3.10'
 
       - name: retro-test (requires a FAILURE on the historical tree to pass)
-        working-directory: v12.0.0
-        run: bash scripts/verify_claims_retro_test.sh
+        run: |
+          PKG="$([ -d v12.0.0 ] && echo v12.0.0 || echo .)"
+          echo "package root: ${PKG}"
+          cd "${PKG}" && bash scripts/verify_claims_retro_test.sh

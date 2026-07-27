@@ -6,7 +6,7 @@
 > ≥ 3σ falsifies T1 — a single confirmed violation suffices (no majority rule).
 
 **Outcome:** ✅ PASS  (at the registered |z| < 3 rule)
-**Scored at:** `2026-07-27T07:52:23Z`
+**Scored at:** `2026-07-27T07:51:27Z`
 **Pipeline output hash:** `38bb489a7c50dbe10f155c28e940acbb3a84de429fc43de9ad913e1574795198`
 **Observed source:** Zhang et al. 2025, 'Testing Cosmic Distance Duality Relation and Transparency with DESI DR2' (arXiv:2506.17926): DESI DR2 BAO + Pantheon+ SNe + cosmic chronometers; eta1 = 0.023 +/- 0.027, statistically consistent with zero.
 
