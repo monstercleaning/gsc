@@ -1,0 +1,35 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "discrimination_note": "The null is shared with LCDM+GR: this prediction does not distinguish GSC from the standard model. It distinguishes GSC from sector-coupled varying-constants scenarios (including GSC's own retired non-universal extensions) and pre-commits the framework to death if any local dimensionless ratio drifts.",
+    "universal_scaling_outcome": "Predicted drift exactly zero at all epochs. A robust nonzero drift (>= 3 sigma, stable under systematic reanalysis, independently reproduced — all three) falsifies universal coherent scaling (T1) outright via the sudden-death clause 12.2.1b. A single qualifying detection suffices; no rescue mechanism is permitted."
+  },
+  "physics_status": "Exact consequence of the T1 geometric lock: every local dimensionless ratio is sigma-invariant, including nuclear-to-electronic transition frequency ratios. Not a fit; no free parameters. The measured alpha-sensitivity K = 5900(2300) (arXiv:2407.17300) and theory-level ~1e4 quark-mass leverage give this null hadronic-sector reach no electronic clock comparison has. Sector-coupled sigma extensions (all retired/bounded T3-T4 modules) would violate it; the canonical framework carries no such term.",
+  "prediction": {
+    "anchor": {
+      "ratio_nu_Th229m_over_nu_Sr87": 4.707072615078,
+      "source": "Zhang et al., Nature 633, 63 (2024); arXiv:2406.18719",
+      "uncertainty_in_last_two_digits": 18
+    },
+    "dln_ratio_dt_per_yr": 0.0,
+    "parametrization_note": "For ANY parametrization of secular ratio drift the predicted coefficient is identically zero; the registered scoring statistic is z = (r - 0)/sigma_r on the two-epoch drift rate r.",
+    "sector_coverage": {
+      "alpha_sensitivity_K_measured": 5900,
+      "alpha_sensitivity_K_sigma": 2300,
+      "coverage_note": "GSC predicts zero drift in every sector simultaneously; a drift induced through ANY sector (alpha, quark masses, strong-sector condensates) would move the ratio and fail the score.",
+      "quark_mass_sensitivity_theory": "~1e4 (theory estimate, not measurement)"
+    }
+  },
+  "prediction_id": "P12",
+  "scaling_mode": "universal_coherent",
+  "schema": "predictions_p12_pipeline_output_v1",
+  "scoring_preconditions": {
+    "max_fractional_uncertainty_per_epoch": 1e-13,
+    "min_epoch_separation_yr": 0.5,
+    "note": "Registered 2026-07-27 with exactly one public epoch (the anchor). Scoring begins when a qualifying second epoch is published by any group; the scorer script ships then, so the active-scorer count continues to reflect scoreable predictions only."
+  },
+  "tier": "T1 (falsification channel on the geometric lock, hadronic sector)",
+  "title": "Nuclear-electronic clock-ratio null: d ln(nu_Th229m/nu_Sr87)/dt = 0 exactly under universal coherent scaling",
+  "tool": "predictions_compute_P12.py",
+  "tool_version": "0.1"
+}

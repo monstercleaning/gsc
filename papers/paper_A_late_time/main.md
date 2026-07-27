@@ -6,7 +6,7 @@ We present the scale-covariant Gravitational Structural Collapse (GSC) framework
 
 We position GSC explicitly as a specific crossover realisation within the scale-covariant lineage initiated by Canuto et al. (1977) and extended by Wetterich (2013). Our specific contributions in the late-time regime are: (i) a layered tier hierarchy that separates the kinematic frame (T1) from the phenomenological σ(t) ansatz (T2), (ii) the operational reproducibility stack that supports content-hashed, publicly git-time-stamped pre-registered predictions (GPG signing is specified by the protocol but not yet executed; see the methodology paper), and (iii) the calibration of three explicit σ(t) ansatz families against the canonical late-time dataset (Pantheon+SH0ES, DESI BAO, fσ8) with explicit kill-tests.
 
-We register one decisive near-term prediction: the BAO standard-ruler shift Δr_s/r_s against the full five-year DESI BAO release, which differs from the ΛCDM expectation by a calculable +0.417% for the canonical σ(z) ansatz with exponent p = 6×10⁻⁴ (v12.5 re-centering, constrained by already-public DESI DR1-era data and LLR; see `gsc/canonical_params.py` for provenance — the v12.2 value p = 10⁻³ fails the registered DR1-era check at z = +3.9). Pre-registration is implemented as a content-hashed, publicly git-time-stamped artifact in an open-source repository, with the corresponding scoring algorithm fixed in advance; cryptographic (GPG) signing is specified by the protocol but not yet executed. The DESI Year-3 test is the genuine forward pre-registration; the worked DESI Year-1 scorecard is a retrodictive consistency check.
+We register one decisive near-term prediction: the BAO standard-ruler shift Δr_s/r_s against the full five-year DESI BAO release, which differs from the ΛCDM expectation by a calculable +0.417% for the canonical σ(z) ansatz with exponent p = 6×10⁻⁴ (v12.5 re-centering against already-public DESI DR1-era data; see `gsc/canonical_params.py` for provenance — the v12.2 value p = 10⁻³ fails the registered DR1-era check at z = +3.9. The v12.5 provenance also cited a stale LLR bound; v12.6 corrects it: current Ġ/G bounds exclude the associated locally-observable G-running module at canonical coupling, and the universal core's local Ġ/G prediction is an exact null — §4.4). Pre-registration is implemented as a content-hashed, publicly git-time-stamped artifact in an open-source repository, with the corresponding scoring algorithm fixed in advance; cryptographic (GPG) signing is specified by the protocol but not yet executed. The DESI Year-3 test is the genuine forward pre-registration; the worked DESI Year-1 scorecard is a retrodictive consistency check.
 
 A second supporting prediction — the redshift-drift sign at z ≈ 2 to 5 — is also pre-registered for ELT/ANDES; in the current GSC parameter region, the predicted sign is positive throughout the registered grid, in contrast to the ΛCDM expectation of a sign flip near z ≈ 1.7. We are explicit that this difference is **not** a property of the freeze-frame relabeling itself — the kinematic frame (T1) is conformally equivalent to ΛCDM and shares all of its dimensionless observables — but follows entirely from the phenomenological H(z) = H₀(1+z)^p ansatz adopted for σ(t). The drift and BAO "deviations from ΛCDM" are therefore tests of that ansatz (a T2 choice), not evidence that the frame alone makes new predictions.
 
@@ -128,27 +128,39 @@ For each ansatz family, the canonical fit produces:
 
 The key empirical finding is that all three ansatz families admit parameter regions consistent with the canonical late-time dataset within ΔAIC < 4 of ΛCDM. The framework is *not yet excluded* by current late-time data.
 
-### 4.4 Cross-check against lunar-laser-ranging Ġ/G bound
+### 4.4 Local Ġ/G: corrected bounds, a module exclusion, and the surviving exact null
 
-A non-trivial supporting check: under universal coherent scaling with G ∝ σ², the cosmological evolution implies a present-day rate
+**(This section was substantially corrected in v12.6. Versions through v12.5 compared against a stale, misattributed LLR bound; the corrected comparison changes the verdict. The correction is disclosed inline rather than silently rewritten.)**
 
-$$\dot G/G = 2 \cdot \dot\sigma/\sigma = -2 p H_0$$
+Two distinct readings of "Ġ/G in GSC" must be separated first.
 
-for the powerlaw ansatz σ(z) ∝ (1+z)^{-p}. With H_0 = 67.4 km/s/Mpc = 6.9 × 10⁻¹¹ /yr and the canonical p = 6×10⁻⁴, this gives
+**Reading 1 — the lock-preserving (universal) core.** Under the strict geometric lock (§2.3), the coherent package m ∝ σ⁻¹, G ∝ σ², r ∝ σ leaves every local dimensionless observable invariant. This includes lunar laser ranging: the lunar orbit co-scales adiabatically with the atomic units used to range it (with GM ∝ σ and angular-momentum adiabatic invariance, the semi-major axis scales as a ∝ σ, so ω_orb/ω_atom and the range expressed in atomic light-times are both σ-invariant). The T1/T2 universal core therefore predicts a locally measured Ġ/G of **exactly zero** — a parameter-free null, not a small number.
 
-$$\dot G/G \approx -8.4 \times 10^{-14} \text{ /yr.}$$
+**Reading 2 — a lock-breaking G-sector module.** A nonzero locally observable rate arises only if the G-sector runs *against* the local units, i.e. a non-universal G(σ) module — a T3 extension in the framework's classification (GSC_Framework.md §3.3.1), carrying the pre-registered T3 kill-channel "solar-system bounds on Ġ/G" (§3.4). For an unscreened G ∝ σ² module the rate is
 
-Lunar laser ranging (LLR) directly measures Ġ/G = (2 ± 7) × 10⁻¹³ /yr (Hofmann & Müller 2018), with binary-pulsar timing providing comparable bounds (Williams et al. 2014; Konopliv et al. 2011). At the canonical p the GSC value sits a factor ~8 below the 1σ LLR uncertainty — allowed, no longer in tension. (At the pre-v12.5 value p = 10⁻³ the prediction, -1.4 × 10⁻¹³ /yr, was comparable to the central LLR residual; that tension was one of the two public constraints driving the v12.5 re-centering.) Future LLR improvements (next-generation retroreflectors, 2030s, ~2–3× tighter) will probe the canonical value at the ~1–2σ level — a genuine forward constraint, not yet a decisive kill.
+$$\dot G/G = 2 \cdot \dot\sigma/\sigma = -2 p H_0 \approx -8.4 \times 10^{-14} \text{ /yr} \quad (p = 6\times10^{-4}).$$
 
-This is a *primary constraint on p*, not a transparency footnote: the DR1-era BAO scorer excludes p = 10⁻³ at ~4σ via the relative-shift test, and LLR independently disfavoured it. The v12.5 response took escape route (a) — and only (a): the canonical value was re-centered to p = 6×10⁻⁴, inside the survival region (boundary 7.6×10⁻⁴), using **already-public data only**. Route (b), a σ-modified recombination correction, remains prohibited as a rescue: it is unimplemented, and under the framework-level kill condition it would have to be registered and scored as its own prediction before it could be claimed. Route (c) is empirically disfavoured: the transition family fails the DR1-era check outright at its registered parameters.
+**The v12.6 correction.** Through v12.5 this section benchmarked that module against "Ġ/G = (2 ± 7) × 10⁻¹³ /yr (Hofmann & Müller 2018)". That was doubly wrong: the (2 ± 7) × 10⁻¹³ value is the 2007-era LLR result (Müller & Biskupek 2007), and Hofmann & Müller 2018 actually reported (7.1 ± 7.6) × 10⁻¹⁴ /yr. The verified current bounds (July 2026) are:
 
-Two implications follow:
+| Probe | Ġ/G bound | Source |
+|---|---|---|
+| LLR 1970–2020 (incl. new IR data) | (−5.0 ± 9.6) × 10⁻¹⁵ /yr | Biskupek, Müller & Torre 2021, arXiv:2012.12032 |
+| MESSENGER Mercury ranging | \|Ġ/G\| < 4 × 10⁻¹⁴ /yr (after solar-mass-loss modeling) | Genova et al. 2018, Nat. Commun. 9, 289 |
+| LLR (previous analysis) | (7.1 ± 7.6) × 10⁻¹⁴ /yr | Hofmann & Müller 2018 |
 
-1. **The bound is a hard upper limit on p**, complementing the BAO-ruler constraint of P1. A measured tightening of the bound to ~5 × 10⁻¹⁴ /yr would probe the canonical p = 6×10⁻⁴ directly (predicted -8.4 × 10⁻¹⁴ /yr); a null at that precision would exclude it. This is one of the combined forward kill channels — no single near-term measurement is decisive alone at the canonical value.
+Against these, the unscreened G ∝ σ² module at canonical p is **excluded**: |z| ≈ 8.2 relative to Biskupek et al. 2021; a factor ~2.1 above the MESSENGER bound; −2.0σ even against Hofmann & Müller 2018 alone. Under the register's |z| < 3 convention, a locally observable running G ∝ σ^{2λ} must satisfy λ ≲ 0.40 at the canonical p. This exclusion was available in data published 2018–2021 — the correction is ours, not the data's. (The Phase-4 bridge artifact had in fact already recorded unscreened local dG/dt as KILLED — check KT-004 in `bridges/phase4_qcd_gravity_bridge_v0.1/golden/` — and this section stood in unnoticed contradiction with that verdict until the v12.6 reconciliation.)
 
-2. **The transition ansatz is more flexible** (low-z evolution can be smaller than high-z evolution), and trivially satisfies LLR for p_low ≪ 10⁻³ even with p_high ~ 10⁻². The rg_profile ansatz behaves similarly to powerlaw at low z and inherits the same constraint.
+Consequences:
 
-This cross-check should be revisited as part of the v12-baseline refit (M201). It is mentioned here for transparency: the framework is at the edge of an existing bound, not safely below it.
+1. **LLR drops out of the constraint budget for p.** The v12.5 provenance statement that the re-centering was "constrained by already-public DESI DR1-era data and LLR" overstated LLR's role: with corrected bounds the LLR channel never legitimately bounded p (it bounds the now-excluded module), and the binding constraint on p was and remains the BAO channel (survival boundary p = 7.63 × 10⁻⁴, untouched by this correction). The canonical p = 6 × 10⁻⁴ and the +0.417% BAO shift of §5.1 are unchanged.
+
+2. **The exclusion resolves an internal contradiction in the module's favor of the lock.** §2.3 (local invariance, including LLR) and the pre-v12.6 §4.4 (locally observable −2pH₀) could not both be right. The data decided: the lock-preserving reading survives; the locally observable G ∝ σ² running is dead at canonical coupling, exactly as the T3 kill-test §3.4 anticipated as a possibility.
+
+3. **The local-null family becomes a sharpened T1 prediction with a sudden-death clause** (GSC_Framework.md §12.2.1b): GSC's forward claim at every upcoming instrument in this family — BepiColombo Mercury-orbiter ranging (orbit insertion late 2026), the NGLR-1 next-generation retroreflector already emplaced in Mare Crisium and ranged by LRO-LOLA, ESA's MoonLIGHT (2026 delivery) — is **exactly zero**, with no adjustable parameter. A robust nonzero local Ġ/G, or a robust secular drift of any local clock ratio (P9; P12 for the nuclear/electronic sector), falsifies the universal-scaling core outright.
+
+4. **The transition and rg_profile ansatz families** inherit the same structure: their T2 parameters are constrained by BAO, and any locally observable G-running they might be paired with is bounded by the same λ ≲ 0.40.
+
+The decisive-falsification combination for the T2 ansatz quoted in §5.1 is correspondingly updated: BAO + P2 21cm + the P11/P12 sudden-death nulls. LLR and planetary ephemerides no longer probe p; they now serve the T1 null package, where every future tightening GSC survives is a passed test and a single robust detection is a kill.
 
 ## 5. Pre-registered Predictions
 
@@ -162,7 +174,7 @@ $$\boxed{\Delta r_s/r_s\bigm|_{GSC - ΛCDM} = +0.417\% \;(p = 6\times10^{-4}, \t
 
 For the transition ansatz (p_low = 6×10⁻⁴, p_high = 3×10⁻³), the predicted shift is +2.1% — already excluded by the DR1-era check; the transition family is carried only as a falsified comparison branch.
 
-Testability, with verified survey numbers: DESI DR1 aggregate isotropic BAO precision is ~0.52% (arXiv:2404.03000); DR2 — which contains the Year-3 data and is public since 2025-03 — reaches ~0.24% (arXiv:2503.14742), at which the canonical shift sits at ~1.7σ; the full five-year release is forecast at ~0.2% (arXiv:2402.14070), ~2.1σ. The BAO channel alone is therefore *indicative but not decisive* at the canonical p; decisive falsification requires the combination (BAO + next-generation LLR + P2 21cm amplitude + the P11 duality sudden-death channel). We state this plainly rather than overclaim a single-channel kill.
+Testability, with verified survey numbers: DESI DR1 aggregate isotropic BAO precision is ~0.52% (arXiv:2404.03000); DR2 — which contains the Year-3 data and is public since 2025-03 — reaches ~0.24% (arXiv:2503.14742), at which the canonical shift sits at ~1.7σ; the full five-year release is forecast at ~0.2% (arXiv:2402.14070), ~2.1σ. The BAO channel alone is therefore *indicative but not decisive* at the canonical p; decisive falsification requires the combination (BAO + P2 21cm amplitude + the P11/P12 sudden-death nulls; LLR was removed from this list in v12.6 — with corrected bounds it constrains the excluded G-running module, not p, see §4.4). We state this plainly rather than overclaim a single-channel kill.
 
 ### 5.2 P8 — Sandage-Loeb redshift drift sign
 

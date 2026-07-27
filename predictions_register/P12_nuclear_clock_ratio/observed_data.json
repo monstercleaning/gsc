@@ -1,0 +1,32 @@
+{
+  "observable": "Secular drift rate d ln(nu_Th229m / nu_Sr87)/dt of the nuclear-electronic clock frequency ratio",
+  "status": "ANCHOR ONLY — no second-epoch measurement exists; this file records the first-epoch anchor and sensitivity context. Scoring begins when a qualifying second epoch (Delta_t >= 0.5 yr, fractional uncertainty <= 1e-13) is published. This is a genuine forward registration (2026-07-27).",
+  "anchor": {
+    "ratio_nu_Th229m_over_nu_Sr87": 4.707072615078,
+    "uncertainty_in_last_two_digits": 18,
+    "fractional_uncertainty_approx": 3.8e-12,
+    "epoch": "2024",
+    "source": "Zhang et al., 'Frequency ratio of the 229mTh nuclear isomeric transition and the 87Sr atomic clock', Nature 633, 63 (2024); arXiv:2406.18719. First direct nuclear-electronic frequency ratio (JILA VUV frequency comb).",
+    "verification_note": "Ratio value cross-confirmed in three independent secondary sources during the 2026-07 sweep; uncertainty digits from the primary paper (agent-opened). See docs/observational_frontier_2026.md source ledger."
+  },
+  "sensitivity_context": {
+    "K_alpha_measured": 5900,
+    "K_alpha_sigma": 2300,
+    "K_alpha_source": "Beeks et al., 'Fine-structure constant sensitivity of the Th-229 nuclear clock transition', arXiv:2407.17300 (publ. Nat. Commun. 2025): K = 5900(2300), 'three orders of magnitude enhancement over atomic clock schemes' (verbatim, abstract).",
+    "K_quark_mass_theory": "~1e4 (Flambaum-type theory estimates; NOT a measurement — labeled accordingly wherever cited)",
+    "instrument_trajectory": "Closed-loop solid-state Th-229 clock: fractional instability 3e-12*sqrt(tau/s), ~1e-15 at one day averaging; already constrains slow drifts of strong-sector couplings beyond previous limits (Toscani De Col et al. 2026, arXiv:2606.04997)."
+  },
+  "electronic_sector_reference_bounds": {
+    "dln_alpha_dt_per_yr": 1.8e-19,
+    "dln_alpha_dt_sigma_per_yr": 2.5e-19,
+    "dln_alpha_dt_source": "Filzinger et al., PRL 130, 253001 (2023), Yb+ E3/E2 vs Sr.",
+    "dln_mu_dt_per_yr": -8e-18,
+    "dln_mu_dt_sigma_per_yr": 3.6e-17,
+    "dln_mu_dt_source": "Lange et al., PRL 126, 011102 (2021)."
+  },
+  "context_notes": [
+    "GSC (T1 universal coherent scaling) predicts the drift rate is exactly zero in every sector simultaneously; the registered scoring rule is z = (r - 0)/sigma_r with PASS at |z| < 3.",
+    "The kill condition additionally requires >= 3 sigma, systematic-reanalysis stability, and independent-apparatus reproduction (all three) before a nonzero drift counts against T1 (GSC_Framework.md section 12.2.1b).",
+    "No scorer script ships with this entry by design: the active-scorer count reflects scoreable predictions only, and no second epoch exists yet."
+  ]
+}

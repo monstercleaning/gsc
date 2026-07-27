@@ -31,7 +31,7 @@ We present **GSC**, a scale-covariant cosmological framework structured as four 
 
 Each tier carries an independent kill-test, so the failure of any T4 module does not propagate to the lower tiers. The framework is supported by a deterministic reproducibility stack (schema-validated artifacts, lineage DAGs, container-based reproducers) and a pre-registration register pinning numerical predictions before observational releases (DESI Year-3 BAO, LiteBIRD, HERA/SKA 21cm, neutron-lifetime experiments).
 
-The eleven central registered predictions are:
+The twelve central registered predictions are:
 
 1. **BAO standard-ruler shift** Δr_s/r_s in DESI Year-3, calculable from σ-evolution of c_s and t_rec.
 2. **21cm Cosmic-Dawn signal** at z ≈ 15–25, distinct from ΛCDM expectation; testable with HERA Phase-II and SKA-Low.
@@ -44,6 +44,7 @@ The eleven central registered predictions are:
 9. **Proton-electron mass-ratio (μ) constancy** — a null prediction: universal coherent scaling forbids any cosmological μ drift (T1 consistency check on the geometric lock).
 10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
 11. **Distance-duality (Etherington) null** — η(z) = 1 exactly under universal scaling; a single robust DDR violation falsifies T1 outright (sudden-death channel, §12.2.1a).
+12. **Nuclear–electronic clock-ratio null (Th-229m/Sr-87)** — d ln(ν_Th/ν_Sr)/dt = 0 exactly under universal scaling, hadronic sector included (measured α-sensitivity K = 5900(2300) makes this the sharpest sector-drift channel); a robust nonzero drift falsifies T1 outright (sudden-death channel, §12.2.1b).
 
 A five-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), the software/pre-registration methodology (Paper D), and the self-falsification case report (Paper E), so that adverse review of any layer does not compromise the others.
 
@@ -207,7 +208,7 @@ Several proposed extensions of the framework — the σ-F̃F coupling underlying
 - **Non-universal extensions**: σ couples differently to different sectors. Each such extension has parameters bounded by:
   - MICROSCOPE / Eötvös for free-fall composition dependence;
   - Atomic-clock comparisons for spatial σ-gradients (currently 10⁻¹⁸ level for similar-altitude clocks);
-  - LLR Ġ/G for cosmological σ̇/σ rate (Section 4.4 of Paper A);
+  - Solar-system Ġ/G for any lock-breaking G-running: LLR gives Ġ/G = (−5.0 ± 9.6)×10⁻¹⁵/yr (Biskupek, Müller & Torre 2021, arXiv:2012.12032) and MESSENGER Mercury ranging gives |Ġ/G| < 4×10⁻¹⁴/yr (Genova et al. 2018) — as of v12.6 these exclude the unscreened G ∝ σ² module at the canonical p (Paper A §4.4);
   - Quasar-absorption isospin spectroscopy for high-redshift dimensionless-ratio drift.
 
 **The σ-axion claim and the σ-environmental claim are therefore on the same footing as non-universal T3/T4 extensions.** P3's non-universal mode that would explain the τ_n beam-trap anomaly requires δσ/σ ≈ -1.05% between trap-wall and beam-vacuum environments — a magnitude likely excluded by atomic-clock comparison bounds, leading to its FAIL verdict. P4/P5 require non-universal σ-F̃F coupling at literature couplings g_CS ≈ 0.036 — currently in tension with Planck birefringence (P4 FAIL) but consistent with nEDM (P5 PASS), and additionally challenged by the de Brito-Eichhorn-Lino dos Santos 2022 obstruction (Paper B §3.2.1).
@@ -223,7 +224,7 @@ T3 falls if either:
 - All viable G(σ) running profiles consistent with the σ(t) phenomenology of T2 are excluded by precision tests of equivalence-principle universality, dimensionless-constant variation (Oklo, atomic-clock comparisons of α and m_e/m_p), or solar-system bounds on Ġ/G;
 - A first-principles FRG derivation produces a running incompatible with the form required by T2.
 
-As of the current framework cycle, the surviving G(σ) parameter region is narrow but non-empty.
+v12.6 status: the first kill-channel has partially fired. Corrected solar-system bounds (Biskupek et al. 2021: Ġ/G = (−5.0 ± 9.6)×10⁻¹⁵/yr; Genova et al. 2018: |Ġ/G| < 4×10⁻¹⁴/yr) exclude the unscreened, locally observable G ∝ σ² profile at the canonical p at |z| ≈ 8.2 (Paper A §4.4 — the v12.5 texts had benchmarked this against a stale 2007-era bound, which is disclosed there). The surviving G(σ) region is: locally observable running G ∝ σ^{2λ} with λ ≲ 0.40, or lock-preserving (universal/screened) running whose local signature is exactly null. The FRG scaling-solution route of §12.1 is unaffected — it concerns the cosmological σ-dynamics, not an unscreened local G-drift.
 
 ---
 
@@ -464,7 +465,7 @@ A defining methodological feature of the framework is **pre-registration** of nu
 
 Pre-registration prevents post-hoc parameter adjustment and converts the reproducibility infrastructure from a *referee tool* into a *falsification engine*. This is the operational core of the framework.
 
-The eleven central predictions are summarized below.
+The twelve central predictions are summarized below.
 
 ### 9.1 Prediction P1: BAO standard-ruler shift in DESI Year-3
 
@@ -583,6 +584,16 @@ with amplitude calculable from the late-time σ-fit and the derived σ-θ coupli
 
 **Kill-test.** A robust DDR violation — ≥ 3σ, robust to SN calibration choices, and present in model-independent reconstructions (all three; parametrized 2–6σ claims that appear only under specific external calibrations do not qualify, cf. Keil et al. 2025, arXiv:2504.01750) — falsifies T1 outright. This is the sudden-death channel of §12.2.1a: one confirmed violation suffices, no majority required, no rescue permitted.
 
+### 9.12 Prediction P12: Nuclear–electronic clock-ratio null — d ln(ν_Th/ν_Sr)/dt = 0 exactly (added v12.6)
+
+**Statement.** Under universal coherent scaling every local dimensionless ratio is σ-invariant. This includes the ratio of a *nuclear* transition frequency (the Th-229m isomer at 148 nm) to an *electronic* clock transition (Sr-87): d ln(ν_Th/ν_Sr)/dt = 0 exactly, at all epochs, with **no free parameters**. The channel is qualitatively new: the Th-229m transition's *measured* fine-structure-constant sensitivity K = 5900(2300) (Beeks et al. 2024, arXiv:2407.17300) and its theory-estimated ~10⁴ leverage on quark-mass/strong-sector parameters make the nuclear/electronic ratio sensitive to hadronic-sector drifts that no electronic–electronic clock comparison can see. GSC predicts zero in every sector at once.
+
+**Anchor.** ν(²²⁹ᵐTh)/ν(⁸⁷Sr) = 4.707072615078(18), measured at JILA via VUV frequency comb (Zhang et al., Nature 633, 63 (2024), arXiv:2406.18719; fractional uncertainty ~4×10⁻¹²). Closed-loop solid-state Th-229 clocks now run with instability 3×10⁻¹² √(τ/s), reaching ~10⁻¹⁵ in a day of averaging (Toscani De Col et al. 2026, arXiv:2606.04997), and already constrain slow drifts of strong-sector couplings beyond previous limits. The data stream improves on other groups' timelines (JILA, PTB, TU Wien), with no involvement from this project.
+
+**What it is not.** The null is shared with ΛCDM+GR — it does not discriminate GSC from the standard model. It discriminates against every varying-constants and sector-coupled σ scenario, including GSC's own retired non-universal extensions, and it adds a hadronic-sector arm to the local-null package of §12.2.1b.
+
+**Kill-test.** When repeat measurements of the ratio (or an equivalent clock network chain) spanning Δt ≥ 0.5 yr with combined fractional uncertainty ≤ 1×10⁻¹³ exist, the registered score is z = (d ln r/dt − 0)/σ_drift with PASS at |z| < 3. A robust nonzero drift — ≥ 3σ, stable under systematic reanalysis, reproduced on an independent apparatus (all three) — falsifies T1 outright via §12.2.1b. This is a genuine forward registration: no second-epoch ratio measurement existed at registration (2026-07-27).
+
 ---
 
 ## 10. The v11 Reproducibility Stack: Operational Foundation
@@ -686,16 +697,27 @@ Section 1.2 addresses this critique structurally but does not eliminate it. The 
 
 A tiered hierarchy with per-module kill-tests can degenerate into unfalsifiability if every failed prediction is absorbed by demoting it to a lower tier or adding a bespoke non-universal extension. To foreclose that move we pre-commit, now, to a *conjunctive* framework-level kill condition that sits above the individual tiers:
 
-1. **Scope.** The condition is evaluated only over the **genuinely forward** pre-registered tests — those registered before their target data exist (currently P2, P8, P10, and the DESI Year-3 BAO test of P1). Retrodictive consistency checks against already-public data do **not** count toward it.
+1. **Scope.** The condition is evaluated only over the **genuinely forward** pre-registered tests — those registered before their target data exist (currently P2, P8, P10, P12, and the full-survey DESI BAO test of P1). Retrodictive consistency checks against already-public data do **not** count toward it.
 2. **Threshold.** If a **majority** of these forward tests fail at their registered confidence once their data arrive, the GSC **core (T1–T3)** is abandoned as a distinct theory — not merely the individual implicated modules. The repository status is set to FALSIFIED and the case study is closed.
 3. **No post-hoc rescue.** After a prediction is registered it may **not** be saved by introducing a new tier-demotion, a new non-universal extension, or an unimplemented correction (e.g. a "σ-modified recombination" term). Such mechanisms are admissible only if registered and scored as *new* forward predictions in their own right.
 4. **Conformal-reduction clause.** If the surviving content of GSC becomes observationally indistinguishable from ΛCDM (i.e. the T3/T4 independent-dynamics demonstrations all fail), GSC is considered falsified *as a distinct theory* under §12.2, regardless of how many ΛCDM-equivalent fits it can still produce.
 
-**Evaluability.** With four forward tests in scope, "majority" means **at least three**. The condition is evaluable incrementally: it fires as soon as any three forward tests have failed at their registered confidence, without waiting for the remaining test's data (P8's ELT/ANDES target, ≥2040, therefore cannot delay a kill that P1, P2, and P10 have already triggered). Passing tests never veto a kill once three failures exist. *(v12.5 note: P1's forward target is the full five-year DESI BAO release — DESI DR2, containing the Year-3 data, became public in 2025-03, before this framework's registration cycle completed, and is therefore treated as retrodictive context, not a forward test.)*
+**Evaluability.** With five forward tests in scope, "majority" means **at least three** — numerically unchanged from the pre-P12 four-test scope, so adding P12 (v12.6) does not raise the kill threshold. The condition is evaluable incrementally: it fires as soon as any three forward tests have failed at their registered confidence, without waiting for the remaining tests' data (P8's ELT/ANDES target, ≥2040, therefore cannot delay a kill once three others have failed). Passing tests never veto a kill once three failures exist. *(v12.5 note: P1's forward target is the full five-year DESI BAO release — DESI DR2, containing the Year-3 data, became public in 2025-03, before this framework's registration cycle completed, and is therefore treated as retrodictive context, not a forward test.)*
 
 #### 12.2.1a Sudden-death channel (added v12.5)
 
 In addition to the majority rule above, **a single robust violation of distance duality falsifies T1 outright** (prediction P11, §9.11). "Robust" is pre-specified: ≥ 3σ, stable under SN calibration choices, and present in model-independent reconstructions — all three conditions, so that a calibration artefact cannot execute the framework. No tier-demotion, non-universal extension, or unimplemented correction may be invoked against a qualifying violation. This clause only *adds* a way for the framework to die; it removes none.
+
+#### 12.2.1b Local-invariance sudden-death channel (added v12.6)
+
+The geometric lock (§3.3, Paper A §2.3) is the framework's load-bearing wall: universal coherent scaling must leave every **local** dimensionless observable free of secular drift. This clause pre-commits the framework to death by any robust local drift detection:
+
+- a nonzero local Ġ/G in orbital-vs-atomic comparisons — current bounds: LLR Ġ/G = (−5.0 ± 9.6)×10⁻¹⁵/yr (Biskupek, Müller & Torre 2021, arXiv:2012.12032); MESSENGER |Ġ/G| < 4×10⁻¹⁴/yr (Genova et al. 2018). BepiColombo Mercury-orbiter ranging (orbit insertion late 2026) and the next-generation lunar retroreflectors (NGLR-1, already emplaced and ranged; MoonLIGHT) tighten this family on others' timelines;
+- a secular drift of any local clock ratio: electronic (α — current bound d ln α/dt = 1.8(2.5)×10⁻¹⁹/yr, Filzinger et al. 2023, PRL 130, 253001), mass-ratio (μ — P9), or nuclear/electronic (P12).
+
+"Robust" carries the same three-part qualifier as §12.2.1a: ≥ 3σ, stable under systematic/calibration reanalysis, independently reproduced. A qualifying detection falsifies the universal-scaling core (T1) outright; no tier-demotion, non-universal extension, or screening mechanism may be invoked against it. GSC's registered value at every instrument in this family is **exactly zero**. Like §12.2.1a, this clause only adds ways for the framework to die.
+
+*(v12.6 disclosure: through v12.5 the framework carried a locally observable Ġ/G ≈ −8.4×10⁻¹⁴/yr as a T3-module output, benchmarked against a stale 2007-era LLR bound. Corrected bounds exclude that module at canonical coupling — Paper A §4.4 — and the exact null stated here is the surviving, sharpened claim.)*
 
 This condition is itself part of the pre-registration: it is recorded here before the forward data exist, so that "most predictions failed but the framework survived" cannot be claimed after the fact.
 

@@ -217,7 +217,7 @@ python3 scripts/audit_repo_footprint.py --max-mb 10
 | **σ-environmental explanation of τ_n anomaly fails** | P3 v0.2 corrected: universal scaling predicts no anomaly | ⭐ retracted earlier PASS |
 | **Powerlaw σ(z) with p ≈ 10⁻³ in tension with DESI Y1 BAO at 4σ** | P1 v12.2 scorer | ⭐ requires σ-modified recombination correction (M201) |
 | **Redshift-drift sign-flip at z ≥ 2 vs ΛCDM (ELT/ANDES test)** | P8 calibrated | ⭐ pending observation |
-| **Lunar laser ranging Ġ/G at edge of bound for p ≈ 10⁻³** | Paper A §4.4 | ⭐ near-term constraint |
+| **Locally observable G ∝ σ² running excluded at canonical p by corrected Ġ/G bounds** (LLR Biskupek+ 2021 (−5.0±9.6)×10⁻¹⁵/yr, |z|≈8.2; MESSENGER < 4×10⁻¹⁴/yr) | Paper A §4.4 (v12.6 correction) | ⭐⭐ T3 kill-channel fired; universal core's exact local null survives (§12.2.1b) |
 
 ## Status snapshot (post-v12.2 corrections)
 
@@ -229,6 +229,13 @@ Paper drafts: 3 of 4 (Paper A empirical, Paper B theoretical with v12.1 correcti
 CI: predictions-determinism + schema validation
 Tests: prediction/falsification stack fully green (compute×2 determinism, 7 scorers, 10 schema validations — CI-asserted); full inherited unittest suite: 539/626 pass, 87 known-stale v11 doc-layout regressions fail in the v12 tree (see CHANGELOG → "July 2026 execution audit")
 Pre-registration: scoring protocol operational end-to-end with 8 active scorers (P1, P3, P4, P5, P6, P7, P9, P11); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
+
+Outcome breakdown post-v12.6 (canonical p = 6×10⁻⁴ unchanged; Ġ/G bounds corrected; P12 added):
+- 5 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint), P5, P9 (null), P11 (DDR null, z=+0.85)
+- 2 FAIL + module exclusions: P3, P6, + the standing joint σ-axion window exclusion (Paper B §4), + NEW v12.6: the locally observable G ∝ σ² running is excluded at canonical p by corrected Ġ/G bounds (LLR Biskupek+ 2021, |z|≈8.2; MESSENGER < 4×10⁻¹⁴/yr) — a pre-registered T3 kill-channel firing (Paper A §4.4; the v12.5 texts' stale-bound comparison is disclosed there)
+- 1 SUB-THRESHOLD:  P7
+- 4 PENDING (genuine forward): P2 (HERA/SKA), P8 (ELT 2040+), P10 (CTAO), P12 (nuclear-clock second epoch, ~2027–29)
+Honesty notes: the only verdict change vs v12.5 comes from correcting our own stale LLR bound — not from new data. LLR/ephemerides no longer probe p (they bound the excluded module); the kill power for the T2 ansatz is the combination (full-DESI BAO ~2σ + P2 + the P11/P12 sudden-death package §12.2.1a/b). The framework's registered forward content is now the three-sector local-null package (P9 μ, P11 photon DDR, P12 nuclear/hadronic, plus local Ġ/G ≡ 0) alongside the +0.417% BAO shift. External frontier context: docs/observational_frontier_2026.md.
 
 Outcome breakdown post-v12.5 (canonical p = 6×10⁻⁴, registered |z|<3 thresholds restored):
 - 5 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint — dies if LiteBIRD confirms β at ≥3σ), P5, P9 (null, partially by construction), P11 (DDR null, z=+0.85)
@@ -253,5 +260,6 @@ on multiple independent channels. No "explained anomaly" claim survives v12.2 co
 - [README.md](README.md) — top-level README with quick orientation
 - [QUICKSTART.md](QUICKSTART.md) — five-minute tour
 - [CHANGELOG.md](CHANGELOG.md) — what changed across cycles
+- [docs/observational_frontier_2026.md](docs/observational_frontier_2026.md) — July 2026 verified frontier sweep: per-channel data status, threats, feeds, registration queue
 - [GSC_Framework.md](GSC_Framework.md) — full theoretical specification
 - [archive/README.md](archive/README.md) — what's in historical provenance

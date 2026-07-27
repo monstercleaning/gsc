@@ -9,23 +9,32 @@ means they were one careless edit away from silently fracturing the "one
 framework" claim into N independently tuned models. All pipelines now import
 the canonical value from here.
 
-Provenance of the value (v12.5 re-centering, 2026-07)
------------------------------------------------------
+Provenance of the value (v12.5 re-centering, 2026-07; LLR leg corrected v12.6)
+------------------------------------------------------------------------------
 The v12.2 central value p = 1.0e-3 FAILS the registered DESI Year-1
-relative-shift test at z = +3.93 (rule: |z| < 3) and sits in tension with
-lunar-laser-ranging Ġ/G. A p-scan through the actual P1 pipeline against the
-registered DESI Y1 precision (0.26/147.09) gives:
+relative-shift test at z = +3.93 (rule: |z| < 3). A p-scan through the actual
+P1 pipeline against the registered DESI Y1 precision (0.26/147.09) gives:
 
     survival boundary (|z| = 3):  p = 7.63e-4
     canonical choice:             p = 6.00e-4
         -> Delta r_d / r_d = +0.417%  (z_Y1 = +2.36, PASSES with ~21% margin)
-        -> Gdot/G ~ -8.4e-14 /yr      (8.3x under the LLR bound 2±7e-13 /yr)
 
-The re-centering uses ONLY already-public data (DESI Y1, LLR) and is therefore
+v12.6 correction: the v12.5 provenance also listed "Gdot/G ~ -8.4e-14 /yr
+(8.3x under the LLR bound 2±7e-13 /yr)". That LLR bound was stale (2007-era)
+and misattributed. Verified current bounds — LLR (Biskupek+ 2021,
+arXiv:2012.12032): (-5.0±9.6)e-15 /yr; MESSENGER (Genova+ 2018): |Gdot/G| <
+4e-14 /yr — EXCLUDE a locally observable G ∝ σ² running at this p (|z|≈8.2).
+Consequence: the lock-breaking T3 G-running module is dead at canonical
+coupling (Paper A §4.4); the universal core predicts exactly zero local
+Gdot/G (sudden-death clause, GSC_Framework.md §12.2.1b). LLR never
+legitimately constrained p itself — the binding constraint on p was and is
+the BAO channel, so the canonical value is unchanged by the correction.
+
+The re-centering uses ONLY already-public data (DESI Y1) and is therefore
 a retrodictive constraint, not a prediction. The forward risk is carried by
-the pre-registered forward set (P1@DESI-Y3, P2, P10, P11): at Y3-era BAO
-precision the +0.417% shift is decisively testable. Framework-level kill
-condition: GSC_Framework.md §12.2.1.
+the pre-registered forward set (P1@DESI-full-survey, P2, P10, P12): at
+full-survey BAO precision the +0.417% shift is decisively testable.
+Framework-level kill condition: GSC_Framework.md §12.2.1.
 
 Honesty note: choosing p near the survival boundary maximises
 distinguishability; choosing p -> 0 would make the framework observationally

@@ -139,7 +139,7 @@ This is the operational core of the framework: predictions are signed *before* o
 |---|---|
 | Understand the physics | [GSC_Framework.md](GSC_Framework.md) |
 | Understand the methodology | [docs/pre_registration.md](docs/pre_registration.md) and [docs/tier_hierarchy.md](docs/tier_hierarchy.md) |
-| Add a new prediction | The eleven existing prediction directories at `predictions_register/PN_*` are templates |
+| Add a new prediction | The twelve existing prediction directories at `predictions_register/PN_*` are templates |
 | Read or contribute to a paper | [papers/README.md](papers/README.md) lists the five-paper publication strategy |
 | Run the full late-time fit | `bash scripts/bootstrap_venv.sh && .venv/bin/python -m scripts.late_time_fit_grid --help` |
 | Audit the repository | `python3 scripts/audit_repo_footprint.py --max-mb 10` |

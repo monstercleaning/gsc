@@ -49,14 +49,18 @@ See [predictions_register/](../predictions_register/) for the full list. Brief s
 
 | ID | Prediction | Tier | Target | Expected release |
 |---|---|---|---|---|
-| P1 | BAO standard-ruler shift | T2 | DESI Year-3 | 2027 |
+| P1 | BAO standard-ruler shift | T2 | DESI full five-year release (v12.5 correction: DR2, containing Year-3 data, became public 2025-03) | ~2027+ |
 | P2 | 21cm Cosmic-Dawn signal | T2/T3 | HERA Phase-II / SKA-Low | 2027–2030 |
 | P3 | Neutron-lifetime beam–trap discrepancy | T4 | Ongoing UCNτ etc. | continuous |
-| P4 | CMB cosmic birefringence | T3 | Planck (current) / LiteBIRD | 2030 |
+| P4 | CMB cosmic birefringence | T3 | Planck (current) / LiteBIRD | 2030s (launch slipped) |
 | P5 | Strong-CP θ-bound consistency | T3 | nEDM (continuous) | continuous |
 | P6 | Kibble-Zurek defect spectrum | T4 | NANOGrav / EPTA / LISA | continuous / 2035 |
 | P7 | GW-memory atomic-clock signatures | T4 | ITOC / BACON post-LIGO events | continuous |
 | P8 | Redshift-drift sign and amplitude | T2 (supporting) | ELT/ANDES | 2040+ |
+| P9 | μ = m_p/m_e constancy (exact null) | T1 | Optical/molecular clock comparisons | continuous |
+| P10 | TeV blazar arrival-time dispersion | T4 | CTAO | 2026+ |
+| P11 | Distance-duality η(z) = 1 (exact null, sudden-death §12.2.1a) | T1 | DDR compilations (DESI × SNe × chronometers) | continuous |
+| P12 | Th-229m/Sr-87 clock-ratio drift = 0 (exact null, sudden-death §12.2.1b) | T1 | Nuclear-clock repeat ratio epochs (JILA/PTB/TU Wien) | ~2027–2029 |
 
 ## Pre-registration vs. blind analysis
 
@@ -79,7 +83,7 @@ The scoring orchestrator and scoreboard generator are implemented and exercised 
 To avoid the exact post-hoc failure mode this document warns against, we state plainly where the implementation stands as of v12.3:
 
 - **Signing:** Not executed. Every `prediction.md` carries `status: SCAFFOLD`. Pre-registration integrity currently rests on git's public, append-only commit history (content hash + commit timestamp), not on cryptographic signatures.
-- **Retrodictive vs. forward:** Eight worked examples (P1, P3, P4, P5, P6, P7, P9, P11) are scored against data that was already public when written; they are consistency checks that exercise the tooling, not forward pre-registrations. Three (P2, P8, P10), plus the BAO test against the *future full five-year* DESI release, target unreleased data and are the genuine forward pre-registrations. (v12.5 correction: the originally named "DESI Year-3 (2027)" target was stale at registration — DESI DR2, containing the Year-3 data, became public in 2025-03; the honest forward target is the full-survey release.) P11 additionally carries a standing **sudden-death clause**: a robust distance-duality violation falsifies T1 outright (GSC_Framework.md §12.2.1a).
+- **Retrodictive vs. forward:** Eight worked examples (P1, P3, P4, P5, P6, P7, P9, P11) are scored against data that was already public when written; they are consistency checks that exercise the tooling, not forward pre-registrations. Four (P2, P8, P10, P12), plus the BAO test against the *future full five-year* DESI release, target unreleased data and are the genuine forward pre-registrations. (v12.5 correction: the originally named "DESI Year-3 (2027)" target was stale at registration — DESI DR2, containing the Year-3 data, became public in 2025-03; the honest forward target is the full-survey release. P12, added v12.6, was registered with exactly one public epoch of its target ratio — the forward content is every future epoch.) P11 and P12 additionally carry standing **sudden-death clauses**: a robust distance-duality violation (§12.2.1a) or a robust local clock-ratio drift (§12.2.1b) falsifies T1 outright.
 - **P1 caveat:** The worked P1 `scorecard.md` scores against DESI **Year-1** (public 2024) using a relative-shift statistic; this is a retrodictive consistency check. The *registered* P1 prediction targets DESI **Year-3** (≈2027) and remains unscored.
 - **Framework-level falsifiability:** A pre-committed kill condition (see `GSC_Framework.md`) prevents the tier hierarchy from absorbing every failure by demotion.
 

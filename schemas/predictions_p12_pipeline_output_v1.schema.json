@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p12_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P12 (nuclear-electronic clock-ratio drift null)",
+  "$comment": "The prediction is an exact null: dln_ratio_dt_per_yr is const 0.0 by construction. Any relaxation of this constant is a framework-content change and must be registered as a superseding prediction, not edited here. The anchor ratio value is likewise pinned: re-anchoring to a different first epoch is a superseding registration.",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "scaling_mode",
+    "prediction",
+    "scoring_preconditions"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p12_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P12"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "scaling_mode": {"type": "string", "const": "universal_coherent"},
+    "prediction": {
+      "type": "object",
+      "required": ["dln_ratio_dt_per_yr", "anchor"],
+      "additionalProperties": true,
+      "properties": {
+        "dln_ratio_dt_per_yr": {"type": "number", "const": 0.0},
+        "sector_coverage": {"type": "object"},
+        "anchor": {
+          "type": "object",
+          "required": ["ratio_nu_Th229m_over_nu_Sr87", "uncertainty_in_last_two_digits", "source"],
+          "properties": {
+            "ratio_nu_Th229m_over_nu_Sr87": {"type": "number", "const": 4.707072615078},
+            "uncertainty_in_last_two_digits": {"type": "integer", "const": 18},
+            "source": {"type": "string"}
+          }
+        },
+        "parametrization_note": {"type": "string"}
+      }
+    },
+    "scoring_preconditions": {
+      "type": "object",
+      "required": ["min_epoch_separation_yr", "max_fractional_uncertainty_per_epoch"],
+      "properties": {
+        "min_epoch_separation_yr": {"type": "number", "const": 0.5},
+        "max_fractional_uncertainty_per_epoch": {"type": "number", "const": 1e-13},
+        "note": {"type": "string"}
+      }
+    },
+    "framework_implications": {"type": "object"}
+  }
+}
