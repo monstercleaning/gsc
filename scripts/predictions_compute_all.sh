@@ -22,7 +22,7 @@ if [ "${1:-}" = "--verify" ]; then
   VERIFY=1
 fi
 
-PREDICTIONS=(P1 P2 P3 P4 P5 P7 P8 P6 P9 P10 P11 P12)
+PREDICTIONS=(P1 P2 P3 P4 P5 P7 P8 P6 P9 P10 P11 P12 P13)
 
 echo "=== GSC predictions compute orchestrator ==="
 echo "  repo: ${REPO_ROOT}"
@@ -56,7 +56,7 @@ done
 
 echo
 echo "=== Scoring (where observed_data.json is available) ==="
-SCORERS=(P1 P3 P4 P5 P6 P7 P9 P11)
+SCORERS=(P1 P3 P4 P5 P6 P7 P9 P11 P13)
 for pid in "${SCORERS[@]}"; do
   scorer="scripts/predictions_score_${pid}.py"
   if [ -f "${scorer}" ]; then

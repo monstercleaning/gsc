@@ -1,0 +1,15 @@
+{
+  "observable": "Modified GW-propagation parameter Xi_0 in d_L^GW/d_L^EM = Xi_0 + (1 - Xi_0)/(1+z)^n",
+  "xi0_observed": 1.2,
+  "xi0_sigma_upper": 0.8,
+  "xi0_sigma_lower": 0.4,
+  "sigma_toward_null": 0.4,
+  "sigma_convention_note": "Asymmetric 68.3% credible interval. The registered scoring rule uses the error bar on the side facing the null (observed 1.2 > 1, so the lower bar 0.4) — the conservative choice that maximizes |z|.",
+  "data_source": "LVK GWTC-4.0 cosmology paper, 'GWTC-4.0: Constraints on the Cosmic Expansion Rate and Modified Gravitational-wave Propagation' (arXiv:2509.04348): 142 of 218 GW sources x GLADE+ galaxy catalog; Xi_0 = 1.2 +0.8/-0.4 (68.3%), 'Xi_0 = 1 recovers the behavior of general relativity' (abstract, verified via INSPIRE record 2026-07-27). H0 = 76.6 +13.0/-9.5 km/s/Mpc from the same analysis.",
+  "data_release_date": "2025-09",
+  "context_notes": [
+    "Forward context: GWTC-5.0 (arXiv:2605.27227, 236 sources) reports 'no departures from GR in parameterized tests of GW propagation' (verbatim abstract) with H0 = 71.0 +9.0/-7.1 — the constraint tightens each observing run with no involvement from this project.",
+    "GSC (T1 universal coherent scaling) predicts Xi_0 = 1 exactly and d_L^GW/d_L^EM = 1 at all z (n irrelevant); the registered scoring rule is z = (Xi_0_obs - 1)/sigma_toward_null with PASS at |z| < 3.",
+    "The kill condition additionally requires >= 3 sigma, systematics stability (galaxy catalog, population model), and independent-analysis reproduction (all three) before a nonunit Xi_0 counts against T1 (GSC_Framework.md section 12.2.1a, tensor-sector extension)."
+  ]
+}

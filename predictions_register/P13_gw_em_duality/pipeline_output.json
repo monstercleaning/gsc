@@ -1,0 +1,54 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "discrimination_note": "Xi_0 = 1 is shared with LCDM+GR: this prediction does not distinguish GSC from the standard model. It distinguishes GSC from tensor-friction/leakage modified gravity and pre-commits the framework to death if the tensor-sector duality breaks.",
+    "universal_scaling_outcome": "Predicted d_L^GW/d_L^EM = 1 at all z, exactly. A robust (>= 3 sigma, systematics-stable, independently reproduced) Xi_0 != 1 falsifies universal coherent scaling (T1) outright via the tensor-sector sudden-death extension of 12.2.1a. A single qualifying detection suffices; no rescue is permitted."
+  },
+  "physics_status": "Exact consequence of the T1 conformal relabeling: GW and EM luminosity distances are relabeled identically, so their ratio is 1 at every redshift. Not a fit; no free parameters. No GSC sector couples to the tensor sector non-universally; the canonical framework carries no term that could break this.",
+  "prediction": {
+    "distance_ratio_of_z": [
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.05
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.1
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.2
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.3
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.5
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 0.7
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 1.0
+      },
+      {
+        "dl_gw_over_dl_em": 1.0,
+        "z": 1.5
+      }
+    ],
+    "parametrization_note": "For the Xi_0-n parametrization used by LVK GWTC cosmology analyses, GSC predicts Xi_0 = 1 exactly and the ratio is 1 at all z, so n is irrelevant. For ANY parametrization of modified GW propagation the predicted deviation is identically zero.",
+    "xi0": 1.0,
+    "xi0_deviation": 0.0
+  },
+  "prediction_id": "P13",
+  "scaling_mode": "universal_coherent",
+  "schema": "predictions_p13_pipeline_output_v1",
+  "tier": "T1 (falsification channel on the geometric lock, tensor sector)",
+  "title": "GW-EM luminosity-distance duality: Xi_0 = 1 exactly under universal coherent scaling",
+  "tool": "predictions_compute_P13.py",
+  "tool_version": "0.1"
+}

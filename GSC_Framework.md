@@ -31,7 +31,7 @@ We present **GSC**, a scale-covariant cosmological framework structured as four 
 
 Each tier carries an independent kill-test, so the failure of any T4 module does not propagate to the lower tiers. The framework is supported by a deterministic reproducibility stack (schema-validated artifacts, lineage DAGs, container-based reproducers) and a pre-registration register pinning numerical predictions before observational releases (DESI Year-3 BAO, LiteBIRD, HERA/SKA 21cm, neutron-lifetime experiments).
 
-The twelve central registered predictions are:
+The thirteen central registered predictions are:
 
 1. **BAO standard-ruler shift** Δr_s/r_s in DESI Year-3, calculable from σ-evolution of c_s and t_rec.
 2. **21cm Cosmic-Dawn signal** at z ≈ 15–25, distinct from ΛCDM expectation; testable with HERA Phase-II and SKA-Low.
@@ -45,6 +45,7 @@ The twelve central registered predictions are:
 10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
 11. **Distance-duality (Etherington) null** — η(z) = 1 exactly under universal scaling; a single robust DDR violation falsifies T1 outright (sudden-death channel, §12.2.1a).
 12. **Nuclear–electronic clock-ratio null (Th-229m/Sr-87)** — d ln(ν_Th/ν_Sr)/dt = 0 exactly under universal scaling, hadronic sector included (measured α-sensitivity K = 5900(2300); the only clock channel with quark-mass/strong-sector reach); a robust nonzero drift falsifies T1 outright (sudden-death channel, §12.2.1b).
+13. **GW–EM luminosity-distance duality null (Ξ₀ = 1)** — d_L^GW/d_L^EM = 1 exactly under universal scaling (tensor sector); a robust Ξ₀ ≠ 1 falsifies T1 outright (sudden-death channel, §12.2.1a tensor-sector extension).
 
 A five-paper publication strategy isolates the empirical contribution (Paper A), the theoretical ansatz (Paper B), the speculative extension modules (Paper C), the software/pre-registration methodology (Paper D), and the self-falsification case report (Paper E), so that adverse review of any layer does not compromise the others.
 
@@ -465,7 +466,7 @@ A defining methodological feature of the framework is **pre-registration** of nu
 
 Pre-registration prevents post-hoc parameter adjustment and converts the reproducibility infrastructure from a *referee tool* into a *falsification engine*. This is the operational core of the framework.
 
-The twelve central predictions are summarized below.
+The thirteen central predictions are summarized below.
 
 ### 9.1 Prediction P1: BAO standard-ruler shift in DESI Year-3
 
@@ -594,6 +595,16 @@ with amplitude calculable from the late-time σ-fit and the derived σ-θ coupli
 
 **Kill-test.** When repeat measurements of the ratio (or an equivalent clock network chain) spanning Δt ≥ 0.5 yr with combined fractional uncertainty ≤ 1×10⁻¹³ exist, the registered score is z = (d ln r/dt − 0)/σ_drift with PASS at |z| < 3. A robust nonzero drift — ≥ 3σ, stable under systematic reanalysis, reproduced on an independent apparatus (all three) — falsifies T1 outright via §12.2.1b. This is a genuine forward registration: no second-epoch ratio measurement existed at registration (2026-07-27).
 
+### 9.13 Prediction P13: GW–EM duality null — Ξ₀ = 1 exactly (added v12.6)
+
+**Statement.** Standard-siren cosmology parametrizes modified GW propagation as d_L^GW/d_L^EM = Ξ₀ + (1 − Ξ₀)/(1+z)^n, with Ξ₀ = 1 recovering general relativity. Under universal coherent scaling the freeze-frame relabeling acts identically on the tensor and electromagnetic sectors, so d_L^GW/d_L^EM = 1 at all z and **Ξ₀ = 1 exactly, with no free parameters** (n irrelevant). Together with P9 (matter), P11 (photon), and P12 (nuclear/hadronic), this completes the universal core's four-sector null package.
+
+**Target.** LVK standard-siren catalogs, tightening every observing run: GWTC-4.0 gives Ξ₀ = 1.2 +0.8/−0.4 (68.3%; 142 dark sirens × GLADE+; "Ξ₀ = 1 recovers the behavior of general relativity" — arXiv:2509.04348, abstract verified via INSPIRE) → GSC's null sits at z = +0.5, PASS. GWTC-5.0 (236 sources): "no departures from GR in parameterized tests of GW propagation" (arXiv:2605.27227).
+
+**What it is not.** Ξ₀ = 1 is shared with ΛCDM+GR — this prediction does not discriminate GSC from the standard model. It discriminates GSC from tensor-friction/leakage modified gravity (running Planck mass, extra dimensions, α_M ≠ 0) and pre-commits the framework to death if the tensor-sector duality breaks.
+
+**Kill-test.** A robust Ξ₀ ≠ 1 — ≥ 3σ, stable under galaxy-catalog and population-model systematics, independently reproduced (all three) — falsifies T1 outright via the tensor-sector extension of §12.2.1a: one confirmed violation suffices, no majority required, no rescue permitted.
+
 ---
 
 ## 10. The v11 Reproducibility Stack: Operational Foundation
@@ -707,6 +718,8 @@ A tiered hierarchy with per-module kill-tests can degenerate into unfalsifiabili
 #### 12.2.1a Sudden-death channel (added v12.5)
 
 In addition to the majority rule above, **a single robust violation of distance duality falsifies T1 outright** (prediction P11, §9.11). "Robust" is pre-specified: ≥ 3σ, stable under SN calibration choices, and present in model-independent reconstructions — all three conditions, so that a calibration artefact cannot execute the framework. No tier-demotion, non-universal extension, or unimplemented correction may be invoked against a qualifying violation. This clause only *adds* a way for the framework to die; it removes none.
+
+*(v12.6 tensor-sector extension: the same sudden-death applies to the GW–EM luminosity-distance duality, prediction P13, §9.13 — a robust Ξ₀ ≠ 1, with "robust" carrying the analogous three-part qualifier (≥ 3σ, systematics-stable across galaxy-catalog and population-model choices, independently reproduced), falsifies T1 outright. Like every clause in this family, it only adds a way to die.)*
 
 #### 12.2.1b Local-invariance sudden-death channel (added v12.6)
 

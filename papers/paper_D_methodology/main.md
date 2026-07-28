@@ -26,7 +26,7 @@ The proposed methodology has four components:
 
 4. A **layered publication strategy** in which different model tiers are presented in separate papers, so journal review acts at the granularity at which it can resolve.
 
-We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on twelve registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
+We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on thirteen registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
 
 ## 2. The Falsifiability Problem in Cosmology
 
@@ -162,7 +162,7 @@ Each script returns exit code 0 on success and non-zero on any verification fail
 
 ## 5. Case Study: Pre-registered Predictions
 
-We demonstrate the workflow on the twelve registered predictions of the GSC framework. Detailed prediction records are at `predictions_register/P1`–`P12`; here we summarise the methodological aspects.
+We demonstrate the workflow on the thirteen registered predictions of the GSC framework. Detailed prediction records are at `predictions_register/P1`–`P13`; here we summarise the methodological aspects.
 
 ### 5.1 P1 — BAO standard-ruler shift (DESI Year-3)
 

@@ -223,19 +223,19 @@ python3 scripts/audit_repo_footprint.py --max-mb 10
 
 ```
 Standalone size: ~8.4 MB
-Predictions: 12/12 deterministic + schema-validated (P1-P12)
-Scored predictions: 8/12 with PASS/FAIL/SUB-THRESHOLD verdicts (P2, P8, P10, P12 pending — genuine forward)
+Predictions: 13/13 deterministic + schema-validated (P1-P13)
+Scored predictions: 9/13 with PASS/FAIL/SUB-THRESHOLD verdicts (P2, P8, P10, P12 pending — genuine forward)
 Paper drafts: 5 of 5 (Paper A empirical, Paper B theoretical, Paper C extensions, Paper D methodology, Paper E self-falsification case report)
 CI: predictions-determinism + schema validation + claim-verification + detector-sensitivity retro-guard
-Tests: prediction/falsification stack fully green (compute×2 determinism, 8 active scorers, 12 schema validations — CI-asserted); full inherited unittest suite fully green as of v12.6 in both layouts (626 tests, 0 failures; documented layout-dependent skips: 24 nested / 93 single-package via the self-enforcing gates in tests/_v12_layout.py — see CHANGELOG)
-Pre-registration: scoring protocol operational end-to-end with 8 active scorers (P1, P3, P4, P5, P6, P7, P9, P11); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
+Tests: prediction/falsification stack fully green (compute×2 determinism, 9 active scorers, 13 schema validations — CI-asserted); full inherited unittest suite fully green as of v12.6 in both layouts (626 tests, 0 failures; documented layout-dependent skips: 24 nested / 93 single-package via the self-enforcing gates in tests/_v12_layout.py — see CHANGELOG)
+Pre-registration: scoring protocol operational end-to-end with 9 active scorers (P1, P3, P4, P5, P6, P7, P9, P11, P13); signing protocol implemented as a dry-run scaffold only — never executed (see v12.3 honesty pass)
 
-Outcome breakdown post-v12.6 (canonical p = 6×10⁻⁴ unchanged; Ġ/G bounds corrected; P12 added):
-- 5 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint), P5, P9 (null), P11 (DDR null, z=+0.85)
+Outcome breakdown post-v12.6 (canonical p = 6×10⁻⁴ unchanged; Ġ/G bounds corrected; P12, P13 added):
+- 6 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint), P5, P9 (null), P11 (DDR null, z=+0.85), P13 (GW–EM duality null, z=+0.50)
 - 2 FAIL + module exclusions: P3, P6, + the standing joint σ-axion window exclusion (Paper B §4), + NEW v12.6: the locally observable G ∝ σ² running is excluded at canonical p by corrected Ġ/G bounds (LLR Biskupek+ 2021, |z|≈8.2; MESSENGER < 4×10⁻¹⁴/yr) — a pre-registered T3 kill-channel firing (Paper A §4.4; the v12.5 texts' stale-bound comparison is disclosed there)
 - 1 SUB-THRESHOLD:  P7
 - 4 PENDING (genuine forward): P2 (HERA/SKA), P8 (ELT 2040+), P10 (CTAO), P12 (nuclear-clock second epoch, ~2027–29)
-Honesty notes: the only verdict change vs v12.5 comes from correcting our own stale LLR bound — not from new data. LLR/ephemerides no longer probe p (they bound the excluded module); the kill power for the T2 ansatz is the combination (full-DESI BAO ~2σ + P2 + the P11/P12 sudden-death package §12.2.1a/b). The framework's registered forward content is now the three-sector local-null package (P9 μ, P11 photon DDR, P12 nuclear/hadronic, plus local Ġ/G ≡ 0) alongside the +0.417% BAO shift. External frontier context: docs/observational_frontier_2026.md.
+Honesty notes: the only verdict change vs v12.5 comes from correcting our own stale LLR bound — not from new data. LLR/ephemerides no longer probe p (they bound the excluded module); the kill power for the T2 ansatz is the combination (full-DESI BAO ~2σ + P2 + the P11/P12 sudden-death package §12.2.1a/b). The framework's registered forward content is now the four-sector null package (P9 μ, P11 photon DDR, P12 nuclear/hadronic, P13 tensor-sector duality, plus local Ġ/G ≡ 0) alongside the +0.417% BAO shift. External frontier context: docs/observational_frontier_2026.md.
 
 Outcome breakdown post-v12.5 (canonical p = 6×10⁻⁴, registered |z|<3 thresholds restored):
 - 5 PASS:           P1 (retrodictive DR1-era check, z=+2.36), P4 (null vs a <3σ hint — dies if LiteBIRD confirms β at ≥3σ), P5, P9 (null, partially by construction), P11 (DDR null, z=+0.85)
