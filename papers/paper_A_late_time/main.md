@@ -128,6 +128,8 @@ For each ansatz family, the canonical fit produces:
 
 **On the symbol p (v12.7 clarification).** The canonical p = 6×10⁻⁴ is the *metrology* exponent of the T2 ansatz — the leading-order modulation σ(z)/σ(0) = (1+z)^{−p} of atomic units relative to a flat-ΛCDM background — and it is the only sense in which P1, P2, P4, P5 and P9 use it. The historical late-time fit machinery also contains a *toy expansion law* H(z) = H₀(1+z)^p (v10.1's `PowerLawHistory`), in which the same letter is the entire history; that toy fits SN+BAO only near p ≈ 0.8–1 and is a different model. Through v12.6 the P8 pipeline conflated the two; §5.2 records the correction. The "powerlaw" row above refers to the metrology ansatz.
 
+> **Flagged — open problem 8 ([OPEN_PROBLEMS.md](../../OPEN_PROBLEMS.md)).** The table above holds illustrative values and placeholder Δχ² entries, and the fitting code behind the earlier fits is not part of this package. The finding stated next, and its repetitions in §6.1 and §7, therefore have no backing numbers here. No registered prediction depends on this fit: the canonical p comes from the P1 pipeline's scan against the DESI DR1-era precision.
+
 The key empirical finding is that all three ansatz families admit parameter regions consistent with the canonical late-time dataset within ΔAIC < 4 of ΛCDM. The framework is *not yet excluded* by current late-time data.
 
 ### 4.4 Local Ġ/G: corrected bounds, a module exclusion, and the surviving exact null
@@ -207,7 +209,7 @@ The maximum GSC–ΛCDM difference is 0.03 cm/s — an order of magnitude below 
 We claim:
 
 - The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when σ has independent dynamics.
-- Three σ(t) ansatz families have been calibrated against the canonical late-time dataset; all three admit parameter regions consistent with current data within ΔAIC < 4 of ΛCDM.
+- Three σ(t) ansatz families have been calibrated against the canonical late-time dataset; all three admit parameter regions consistent with current data within ΔAIC < 4 of ΛCDM (flagged in §4.3: not reproduced by this package).
 - The framework produces one pre-registered late-time test with framework-specific content (P1, the BAO ruler shift against the full DESI release — indicative alone, decisive only in combination), plus a registered redshift-drift consistency test (P8 r2) that is ΛCDM-degenerate at foreseeable precision. The earlier description of P8 as a second "decisive" sign test is withdrawn (§5.2).
 
 We do not claim:
@@ -224,13 +226,13 @@ A reader who endorses the present paper is *not* implicitly endorsing the σ-axi
 
 ### 6.3 Reproducibility and pre-registration
 
-All numerical results in this paper are produced by deterministic pipelines under the project repository. Each reported figure carries a deterministic provenance record; each pre-registered prediction carries a SHA-256 hash of the corresponding pipeline output as of the registration date. The signing protocol is documented in `METHOD.md`; the pre-registration register is at `predictions/`.
+The registered predictions in this paper are produced by deterministic pipelines in this package, and `bash pipelines/predictions_compute_all.sh --verify` reproduces them byte for byte; the SHA-256 of every registered output is listed in the register manifest. The late-time fit of Section 4 is not reproduced by this package (flagged in §4.3). The signing protocol is documented in `METHOD.md` (specified, not executed); the pre-registration register is at `predictions/`.
 
 Independent reproducers are encouraged to verify that the prediction pipelines produce byte-identical output when re-run from the registered inputs. The methodology paper (Paper D) discusses the design considerations.
 
 ## 7. Conclusions
 
-The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset, found all three consistent with current data, and registered two tests: the BAO ruler shift against the full five-year DESI release (P1, predicted +0.417% at the canonical p, ~2σ per the verified survey forecast — indicative, decisive only in combination with P2/P11/P12) and the Sandage–Loeb redshift drift (P8 r2, ΛCDM-degenerate to 0.03 cm/s; a consistency test, not a discriminator — the pre-v12.7 "positive sign at z ≥ 2" claim is withdrawn in §5.2).
+The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset and found all three consistent with current data (flagged in §4.3: the fit is not reproduced by this package), and registered two tests: the BAO ruler shift against the full five-year DESI release (P1, predicted +0.417% at the canonical p, ~2σ per the verified survey forecast — indicative, decisive only in combination with P2/P11/P12) and the Sandage–Loeb redshift drift (P8 r2, ΛCDM-degenerate to 0.03 cm/s; a consistency test, not a discriminator — the pre-v12.7 "positive sign at z ≥ 2" claim is withdrawn in §5.2).
 
 The framework's empirical content is decided by upcoming observations rather than by theoretical preference. The pre-registration discipline ensures that the verdict will be cleanly attributable to the registered model, not to post-hoc parameter adjustment.
 

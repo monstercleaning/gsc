@@ -14,7 +14,7 @@ The companion empirical paper (Paper A) treats the late-time σ(t) fit on which 
 
 ## 1. Introduction
 
-The empirical content of GSC, established in Paper A, is the freeze-frame measurement model with a phenomenological scale field σ(t). The σ(t) profile is calibrated against late-time observables but has, at that level, no first-principles mechanism. The present paper proposes the underlying mechanism: σ-evolution is driven by the renormalization-group flow of the gravitational coupling near a critical scale σ_* in the spirit of the asymptotic-safety scenario for quantum gravity (Reuter 1998; Wetterich 2007; Percacci & Saueressig 2017).
+The empirical content of GSC, established in Paper A, is the freeze-frame measurement model with a phenomenological scale field σ(t). The σ(t) profile is calibrated against late-time observables (Paper A §4; flagged there because the fit is not reproduced by this package, OPEN_PROBLEMS.md problem 8) but has, at that level, no first-principles mechanism. The present paper proposes the underlying mechanism: σ-evolution is driven by the renormalization-group flow of the gravitational coupling near a critical scale σ_* in the spirit of the asymptotic-safety scenario for quantum gravity (Reuter 1998; Wetterich 2007; Percacci & Saueressig 2017).
 
 Two structural payoffs follow:
 

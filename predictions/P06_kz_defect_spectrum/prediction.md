@@ -26,7 +26,7 @@ where ν and z are the critical exponents of the gravitational FRG fixed point a
 
 ## Tier
 
-**T4** — depends on the KZ derivation of vortex DM (Section 5 of THEORY.md). Failure does not affect T1–T3 or other T4 modules.
+**T4** — depends on the KZ derivation of vortex DM (Section 6.1 of THEORY.md). Failure does not affect T1–T3 or other T4 modules.
 
 ## Pipeline
 

@@ -61,6 +61,18 @@ earlier release. Each finding was corrected and became a mechanical check:
   not implement. New or extended checks: stated verdicts must match the scorecards; bare file names must exist;
   the count, retracted-explanation and signing patterns cover the phrasings that escaped. Each has a negative
   control in `tests/test_verification.py`.
+- The reorganization's own reference rewriting had altered history in two places: Paper E attributed a false
+  signing statement to METHOD.md (it was made by a file of the earlier release, now linked in its verbatim fixture
+  copy), and the claim-verification findings table named THEORY.md where the findings were made on its
+  predecessor. Both records are restored.
+- The same rewriting renamed the former framework document to THEORY.md inside five registered statements (P1, P4,
+  P5, P6, P9), but the two documents number their sections differently, so those statements pointed at the wrong
+  section (one at a section that does not exist). The pointers now name the matching section. The statements'
+  predictions are unchanged; the register manifest was regenerated, so its digest differs from the first 20.0
+  commit.
+- Paper A reports a late-time fit whose table holds illustrative values and placeholder Δχ² entries, produced by
+  code that is not in this package. Its conclusions and Paper B now carry a flag, and the issue is recorded as
+  open problem 8. No registered prediction depends on the fit.
 - The JOSS version of the methodology paper is about 1,700 words, above the journal's 1,000-word limit; its
   submission guide said 750. The guide now gives the real count, and the paper workflow warns until it is cut.
 

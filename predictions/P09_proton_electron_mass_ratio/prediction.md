@@ -2,7 +2,7 @@
 prediction_id: P9
 title: Constancy of μ = m_p/m_e under universal coherent scaling
 tier: T1 (consistency check on geometric lock)
-ansatz: universal coherent scaling (Section 1.3 of THEORY.md)
+ansatz: universal coherent scaling (Section 3.4 of THEORY.md)
 target_dataset: H₂, CH₃OH, HD⁺ molecular spectroscopy of cosmological absorbers + laboratory ion-trap measurements
 target_release_date: continuous (current bounds; HD⁺ ion-trap improvements 2026-2028)
 status: SCAFFOLD — git-timestamped, GPG-signing pending; RETRODICTIVE consistency check (target data already public)
@@ -16,7 +16,7 @@ pipeline_output_hash: —
 
 ## Honest framing (revised v12.2)
 
-P9 is **not an independent prediction** in the sense that P1, P4, P6 are. It is a *consistency test of the geometric-lock axiom* — under strict universal coherent scaling (Section 1.3 of `THEORY.md`), all dimensionless ratios are σ-invariant *by definition*. Calling this a "prediction" is partially tautological: it asks whether the framework's defining axiom is consistent with the data that motivates it.
+P9 is **not an independent prediction** in the sense that P1, P4, P6 are. It is a *consistency test of the geometric-lock axiom* — under strict universal coherent scaling (Section 3.4 of `THEORY.md`), all dimensionless ratios are σ-invariant *by definition*. Calling this a "prediction" is partially tautological: it asks whether the framework's defining axiom is consistent with the data that motivates it.
 
 The scientific value of registering P9 is twofold:
 1. **Negative result is informative**: a future detection of μ̇/μ ≠ 0 falsifies the universal-scaling axiom and propagates to all higher tiers.

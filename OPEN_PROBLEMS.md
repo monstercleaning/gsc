@@ -105,3 +105,14 @@ the computations their statements describe.
 Not new, listed in [THEORY.md](THEORY.md) §9: no derivation of σ_*; compressed CMB priors only; linear
 perturbations only; the σ–F̃F, defect and quantum-reference-frame modules lack their calculations; cryptographic
 signing of the register is specified but not yet executed.
+
+## 8. Paper A's late-time fit is not reproduced in this package
+
+Paper A §4 states that the three σ(t) families fit the late-time data (supernovae, BAO, compressed CMB priors,
+fσ8) within ΔAIC < 4 of ΛCDM, and Paper B builds on that calibration. The values in Paper A's fit table are
+illustrative and its Δχ² entries are placeholders, as the paper itself notes; the earlier fitting code is not part
+of this package (it remains in the project's git history, tag `v12.7-final`). No registered prediction depends on
+the fit: the canonical parameter comes from the P1 pipeline's scan against the DESI DR1-era precision
+([gsc/canonical_params.py](gsc/canonical_params.py)). What decides it: a refit of the three families with code
+shipped in the package, ideally together with the joint CMB + BAO fit that problem 1 calls for. Until then the
+statement is flagged in both papers.

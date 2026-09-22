@@ -16,7 +16,7 @@ pipeline_output_hash: —
 
 ## Statement
 
-The σ-θ coupling (Section 4 of THEORY.md) drives θ_eff(z) along a calculable cosmological trajectory. The current limit |θ_eff(z=0)| ≲ 10^{-10} (from |d_n| < 1.8 × 10^{-26} e·cm, n2EDM 2024) constrains the σ-coupling parameter f_σ.
+The σ-θ coupling (Section 5.5 of THEORY.md) drives θ_eff(z) along a calculable cosmological trajectory. The current limit |θ_eff(z=0)| ≲ 10^{-10} (from |d_n| < 1.8 × 10^{-26} e·cm, n2EDM 2024) constrains the σ-coupling parameter f_σ.
 
 The prediction is a *trajectory* θ_eff(z) for the registered σ(t) ansatz and σ-θ coupling f_σ, with the present-day endpoint θ_eff(z=0) consistent with current nEDM bounds. Future tighter nEDM bounds will then test the relaxation efficacy of the σ-mechanism.
 

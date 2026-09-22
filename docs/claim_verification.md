@@ -41,9 +41,11 @@ Detection is heuristic because prose varies and legitimate mentions exist: a cha
 | Finding | Originally found by | Retro-detected? | Evidence produced |
 |---|---|---|---|
 | Register described as cryptographically signed while all 10 entries were unsigned scaffolds | v12.3 hostile re-audit (survived 12 cycles + 2 audits) | **Yes** | **18 assertion sites** across 8 files vs `0/10` entries with a signature field |
-| Prose said "eight predictions"; register held ten | July 2026 execution audit (manual grep) | **Yes** | 3 sites (`THEORY.md:34`, `paper_D/main.md:29,165`) vs counted 10 |
+| Prose said "eight predictions"; register held ten | July 2026 execution audit (manual grep) | **Yes** | 3 sites (`GSC_Framework.md:34`, `paper_D/main.md:29,165`) vs counted 10 |
 | `CITATION.cff` pointed at the private repo — a 404 for anyone following the citation | July 2026 metadata pass | **Yes** | 0 matches for the canonical public repo |
-| `THEORY.md` §9 documented only P1–P8 | July 2026 execution audit | **Yes** | highest enumerated section = P8 vs counted 10 |
+| `GSC_Framework.md` §9 documented only P1–P8 | July 2026 execution audit | **Yes** | highest enumerated section = P8 vs counted 10 |
+
+File names in this table are those of the release each finding was made on; `GSC_Framework.md` is now [THEORY.md](../THEORY.md).
 
 **Runtime: 0.11–0.20 s** over 134 markdown files. Current tree: **exit 0, clean.**
 

@@ -40,7 +40,7 @@ To be locked at signing time. Candidate forms from `gsc/histories/`:
 
 - `gsc_powerlaw_*` — power-law σ(t) ∝ t^p
 - `gsc_transition_*` — transition between two power-law regimes around z_t
-- `gsc_rg_profile_*` — numerically integrated from G(σ) ansatz of Section 3 of THEORY.md
+- `gsc_rg_profile_*` — numerically integrated from G(σ) ansatz of Section 5.1 of THEORY.md
 
 Each will produce a distinct prediction; all three should be registered as separate sub-predictions (P1.a, P1.b, P1.c) so that DESI Y3 simultaneously tests all three σ(t) families.
 

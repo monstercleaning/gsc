@@ -30,7 +30,7 @@ The project was wrapped in deliberate rigor scaffolding: deterministic pipelines
 
 - all ten register entries carried `status: SCAFFOLD — NOT YET SIGNED`, with empty signature fields;
 - the signing script was an unexecuted reference stub;
-- `METHOD.md` simultaneously asserted the register "is cryptographically signed" *and* that the signing scripts were "scheduled for implementation" — an internal contradiction in one file;
+- [docs/pre_registration.md](../../verification/fixtures/historical_false_claim/docs/pre_registration.md) (kept verbatim in the checker's negative-control fixture) simultaneously asserted the register "is cryptographically signed" *and* that the signing scripts were "scheduled for implementation" — an internal contradiction in one file;
 - the flagship prediction (P1) had been scored against a dataset (DESI Year-1, public since 2024) two years *older* than its registered target (DESI Year-3, 2027), with the test statistic altered after the fact.
 
 In other words, the methodology paper's central sentence — *"predictions are signed and time-stamped before the corresponding observational data are released … you cannot move the goalposts"* — was false on both counts: nothing was signed, and most "predictions" were retrodictions.
