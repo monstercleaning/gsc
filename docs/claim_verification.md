@@ -90,7 +90,11 @@ python3 scripts/verify_claims.py --format json   # machine-readable
 python3 scripts/verify_claims.py --root <tree>   # verify some other tree with this manifest
 ```
 
-Adding a claim means answering one question: **what fact, checkable by a machine, would be false if this sentence were a lie?** Available predicates: `frontmatter_field_nonempty`, `path_count`, `number_agreement` (modes `each`/`max`, counts files or directories), `sibling_hash_match`, `json_field_resolves`, `file_regex_count`, `command_exit_zero`.
+Adding a claim means answering one question: **what fact, checkable by a machine, would be false if this sentence were a lie?** Available predicates: `frontmatter_field_nonempty`, `path_count`, `number_agreement` (modes `each`/`max`, counts files or directories; optional `min_sites`), `sibling_hash_match`, `json_field_resolves`, `file_regex_count`, `command_exit_zero`.
+
+**Liveness floors (v12.7).** `number_agreement` accepts `min_sites`: if fewer prose sites than that match the pattern, the claim is UNBACKED rather than vacuously OK. This was added after an incident: the `prediction-count` pattern's number-word alternation stopped at "twelve", so from the moment the register reached thirteen predictions the check matched *zero* sites and reported success for two months — a silently-dead check, the same failure class the retro-guard's `MIN_SITES` floor exists to catch on the detector side. All three count claims now carry `min_sites: 1`, and a negative control (an alternation deliberately truncated at "twelve") fails as required. The rule generalises: every automated check must make "zero findings" distinguishable from "not looking".
+
+**Cross-pipeline physical consistency (v12.7).** Two further claims encode a lesson the count/hash/schema predicates could not express: `registered-pipelines-never-use-coasting-toy-history` (no registered pipeline may instantiate the v10.1 toy expansion law with the canonical metrology exponent — the misuse that produced the withdrawn P8 r1 "sign-flip" prediction) and `no-unqualified-drift-sign-flip-claim` (keeps that withdrawal enforced across all prose, as `no-unqualified-explained-anomaly` does for the v12.1 retraction). Neither predicate is new; the lesson is that a shared *number* verified everywhere is not the same as a shared *meaning* — see CHANGELOG v12.7.
 
 If no such fact exists, that is itself worth knowing: the sentence is unfalsifiable as written, and either it should be sharpened or it is decoration.
 

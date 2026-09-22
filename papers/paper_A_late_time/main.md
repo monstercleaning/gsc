@@ -8,7 +8,7 @@ We position GSC explicitly as a specific crossover realisation within the scale-
 
 We register one decisive near-term prediction: the BAO standard-ruler shift Δr_s/r_s against the full five-year DESI BAO release, which differs from the ΛCDM expectation by a calculable +0.417% for the canonical σ(z) ansatz with exponent p = 6×10⁻⁴ (v12.5 re-centering against already-public DESI DR1-era data; see `gsc/canonical_params.py` for provenance — the v12.2 value p = 10⁻³ fails the registered DR1-era check at z = +3.9. The v12.5 provenance also cited a stale LLR bound; v12.6 corrects it: current Ġ/G bounds exclude the associated locally-observable G-running module at canonical coupling, and the universal core's local Ġ/G prediction is an exact null — §4.4). Pre-registration is implemented as a content-hashed, publicly git-time-stamped artifact in an open-source repository, with the corresponding scoring algorithm fixed in advance; cryptographic (GPG) signing is specified by the protocol but not yet executed. The DESI Year-3 test is the genuine forward pre-registration; the worked DESI Year-1 scorecard is a retrodictive consistency check.
 
-A second supporting prediction — the redshift-drift sign at z ≈ 2 to 5 — is also pre-registered for ELT/ANDES; in the current GSC parameter region, the predicted sign is positive throughout the registered grid, in contrast to the ΛCDM expectation of a sign flip near z ≈ 1.7. We are explicit that this difference is **not** a property of the freeze-frame relabeling itself — the kinematic frame (T1) is conformally equivalent to ΛCDM and shares all of its dimensionless observables — but follows entirely from the phenomenological H(z) = H₀(1+z)^p ansatz adopted for σ(t). The drift and BAO "deviations from ΛCDM" are therefore tests of that ansatz (a T2 choice), not evidence that the frame alone makes new predictions.
+A second, supporting registration — the Sandage–Loeb redshift drift at z ≈ 0.1–5 (P8) — is also pre-registered for ELT/ANDES. **v12.7 correction:** versions of this paper through v12.6 stated that the predicted drift is positive throughout the grid, in contrast to ΛCDM's sign flip near z ≈ 1.7. That statement was an artefact of computing P8 with a v10.1 toy history, H(z) = H₀(1+z)^p, in which the T2 metrology exponent p was misread as the whole expansion law — at p = 6×10⁻⁴ a coasting universe excluded at 7–128σ by the very DESI BAO data this paper uses (§5.2). With the T2-consistent history (ΛCDM background times the same leading-order metrology modulation P1 uses), the drift equals ΛCDM's to within 0.03 cm/s at every grid point, with identical sign structure. P8 is therefore a ΛCDM-degenerate consistency test, not a discriminator; the framework's discriminating late-time content is the BAO ruler shift alone, and the kinematic frame (T1) remains conformally equivalent to ΛCDM in all dimensionless observables.
 
 **Companion papers** in the same framework cycle treat the renormalization-group mechanism for σ-evolution (Paper B), the speculative T4 extension modules including vortex dark matter and σ as cosmological quantum reference frame (Paper C), and the methodology and software stack independent of any specific physical claim (Paper D).
 
@@ -126,6 +126,8 @@ For each ansatz family, the canonical fit produces:
 
 (Precise numerical values are produced by the canonical pipeline; fit values quoted above are illustrative pending the v12-baseline refit at M201; the Δχ² entries are placeholders to be filled with concrete numbers before submission.)
 
+**On the symbol p (v12.7 clarification).** The canonical p = 6×10⁻⁴ is the *metrology* exponent of the T2 ansatz — the leading-order modulation σ(z)/σ(0) = (1+z)^{−p} of atomic units relative to a flat-ΛCDM background — and it is the only sense in which P1, P2, P4, P5 and P9 use it. The historical late-time fit machinery also contains a *toy expansion law* H(z) = H₀(1+z)^p (v10.1's `PowerLawHistory`), in which the same letter is the entire history; that toy fits SN+BAO only near p ≈ 0.8–1 and is a different model. Through v12.6 the P8 pipeline conflated the two; §5.2 records the correction. The "powerlaw" row above refers to the metrology ansatz.
+
 The key empirical finding is that all three ansatz families admit parameter regions consistent with the canonical late-time dataset within ΔAIC < 4 of ΛCDM. The framework is *not yet excluded* by current late-time data.
 
 ### 4.4 Local Ġ/G: corrected bounds, a module exclusion, and the surviving exact null
@@ -164,7 +166,7 @@ The decisive-falsification combination for the T2 ansatz quoted in §5.1 is corr
 
 ## 5. Pre-registered Predictions
 
-We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions_register/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040). The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
+We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions_register/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040) and, since the v12.7 revision (P8 r2), is a ΛCDM-degenerate consistency test rather than a discriminator. The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
 
 ### 5.1 P1 — BAO standard-ruler shift in DESI Year-3
 
@@ -178,21 +180,21 @@ Testability, with verified survey numbers: DESI DR1 aggregate isotropic BAO prec
 
 A v12.6 diagnostic (`docs/analysis_w0wa_rd_shift.md`) adds two refinements with numbers. First, in a *joint* BAO+compressed-CMB fit the shift is nearly invisible: it is absorbed as a +0.42% H₀ bias (the CMB pins ω_m, not h), so the σ-estimates above apply to the registered configuration — r_d compared against an externally calibrated value — not to joint fits; external metrology closure (megamasers, next-generation lunar ranging) is what breaks the degeneracy. Second, the residual the shift *does* leave in a w₀wₐCDM fit is displaced from ΛCDM in the same direction as the current DESI/Dovekie preference (collinear to ~8°) but carries under 1% of that signal's χ² evidence: the GSC shift does not explain the DESI hint, and the DESI hint does not (yet) constrain the GSC shift.
 
-### 5.2 P8 — Sandage-Loeb redshift drift sign
+### 5.2 P8 — Sandage–Loeb redshift drift (revision r2, v12.7)
 
-The cosmological evolution of σ produces a Sandage-Loeb redshift drift Δv(z, Δt) at observer redshift z over interval Δt. For the central powerlaw ansatz, the drift remains *positive* across the registered redshift grid (z = 0.1 to 5.0), in contrast to the ΛCDM expectation that the drift sign flips near z ≈ 1.7 from positive at low z to negative at high z.
+**Correction disclosed inline.** Through v12.6 this section reported that, for the canonical ansatz, the drift "remains positive across the registered grid, in contrast to ΛCDM's sign flip near z ≈ 1.7", with a GSC–ΛCDM differential of ~25 cm/s at z = 5. Those numbers were produced with the v10.1 toy history H(z) = H₀(1+z)^p, in which the T2 metrology exponent p was misread as the whole expansion law. At p = 6×10⁻⁴ that is a coasting universe (H ≈ H₀), which the DESI DR1 BAO points bundled with this package exclude at +7σ (D_M/r_d, z = 0.51) to +128σ (D_H/r_d, z = 2.33) — and which contradicts §2's own statement that T1 is conformally equivalent to ΛCDM. The project's archived Roadmap v2.8 (§E.1) had in fact already shown that positive drift at z > 2 is impossible for standard matter content (it requires Ω_m0 < 1/(1+z)); the v12 layout lost that result. The r1 output is retained in the register as `pipeline_output.r1_superseded.json`.
 
-| z | Δv_LCDM (cm/s) | Δv_GSC (cm/s) | sign-flip? |
-|---|---|---|---|
-| 0.1 | +0.92 | +1.88 | — |
-| 1.0 | +2.17 | +10.33 | — |
-| 2.0 | -0.22 | +13.77 | YES |
-| 3.0 | -2.92 | +15.49 | YES |
-| 5.0 | -7.89 | +17.21 | YES |
+**The T2-consistent prediction.** With the same leading-order metrology modulation P1 applies to the BAO ruler, the late-time history is H(z) = H_ΛCDM(z)·(1+z)^p (`SigmaModulatedLCDMHistory`). For the canonical p and a 10-year interval:
 
-The maximum predicted GSC vs ΛCDM differential is about 25 cm/s at z = 5, well above the ~few cm/s precision target for ELT/ANDES in a 10-year integration.
+| z | Δv_ΛCDM (cm/s) | Δv_GSC (cm/s) | difference (cm/s) | same sign? |
+|---|---|---|---|---|
+| 0.1 | +0.924 | +0.922 | −0.001 | yes |
+| 1.0 | +2.167 | +2.160 | −0.008 | yes |
+| 2.0 | −0.217 | −0.231 | −0.014 | yes |
+| 3.0 | −2.922 | −2.942 | −0.020 | yes |
+| 5.0 | −7.887 | −7.918 | −0.031 | yes |
 
-We deliberately frame P8 as *supporting*, not primary: ELT/ANDES will deliver decisive results in the 2040s, well after DESI (P1) and CMB measurements probing P4 (Paper B). The structural sign-flip prediction is nonetheless a clean falsifier.
+The maximum GSC–ΛCDM difference is 0.03 cm/s — an order of magnitude below any foreseeable ELT/ANDES precision (the first direct ESPRESSO limits are ±3.6 m/s/yr, arXiv:2603.02318) — and the sign flips between z = 1.5 and 2.0 in both models. **P8 therefore carries no framework-specific discriminating power**: it can fail only if ΛCDM-class kinematics fail, in which case it falsifies T1/T2 exactly as it falsifies ΛCDM, with no rescue permitted. It stays registered as a forward consistency test (its data are unreleased), no longer as a structural sign prediction.
 
 ## 6. Discussion
 
@@ -202,7 +204,7 @@ We claim:
 
 - The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when σ has independent dynamics.
 - Three σ(t) ansatz families have been calibrated against the canonical late-time dataset; all three admit parameter regions consistent with current data within ΔAIC < 4 of ΛCDM.
-- The framework produces two near-term, pre-registered, decisive observational tests (P1 BAO ruler shift in DESI Year-3, P8 redshift-drift sign at z ≥ 2) that would falsify the σ(t) ansatz region currently consistent with data.
+- The framework produces one pre-registered late-time test with framework-specific content (P1, the BAO ruler shift against the full DESI release — indicative alone, decisive only in combination), plus a registered redshift-drift consistency test (P8 r2) that is ΛCDM-degenerate at foreseeable precision. The earlier description of P8 as a second "decisive" sign test is withdrawn (§5.2).
 
 We do not claim:
 
@@ -224,7 +226,7 @@ Independent reproducers are encouraged to verify that the prediction pipelines p
 
 ## 7. Conclusions
 
-The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset, found all three consistent with current data, and registered two structural tests: the BAO ruler shift against the full five-year DESI release (P1, predicted +0.417% at the canonical p, ~2σ per the verified survey forecast — indicative, decisive only in combination with LLR/P2/P11) and the Sandage-Loeb redshift-drift sign at z ≥ 2 (P8, predicted positive, testable by ELT/ANDES in 2040s).
+The freeze-frame measurement model is a consistent reformulation of late-time cosmology that admits non-trivial empirical content when the scale field σ has independent dynamics. We have calibrated three σ(t) ansatz families against the canonical late-time dataset, found all three consistent with current data, and registered two tests: the BAO ruler shift against the full five-year DESI release (P1, predicted +0.417% at the canonical p, ~2σ per the verified survey forecast — indicative, decisive only in combination with P2/P11/P12) and the Sandage–Loeb redshift drift (P8 r2, ΛCDM-degenerate to 0.03 cm/s; a consistency test, not a discriminator — the pre-v12.7 "positive sign at z ≥ 2" claim is withdrawn in §5.2).
 
 The framework's empirical content is decided by upcoming observations rather than by theoretical preference. The pre-registration discipline ensures that the verdict will be cleanly attributable to the registered model, not to post-hoc parameter adjustment.
 

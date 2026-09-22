@@ -46,7 +46,21 @@ value is deliberately large enough to die by.
 from __future__ import annotations
 
 # Canonical powerlaw exponent: σ(z) ∝ (1+z)^(-p).
+#
+# ROLE (clarified v12.7): this is the T2 METROLOGY exponent — the leading-order
+# modulation of atomic units relative to a flat-ΛCDM background. It is NOT an
+# expansion-history exponent. In particular it must never be passed to
+# gsc.measurement_model.PowerLawHistory (the v10.1 toy H = H0 (1+z)^p, in which
+# the same symbol is the whole expansion law): at p ~ 6e-4 that toy is a
+# coasting universe excluded at >100σ by the bundled DESI BAO. The v12.2–v12.6
+# P8 register entry was computed that way (superseded by P8 r2 in v12.7); the
+# "single source of truth" refactor of v12.5 wired P8 to this constant without
+# checking the role — a cross-pipeline physical-consistency failure that the
+# count/hash/schema checks could not see. The T2-consistent late-time history
+# is gsc.measurement_model.SigmaModulatedLCDMHistory, and CLAIMS.json now
+# forbids registered pipelines from instantiating PowerLawHistory.
 CANONICAL_P: float = 6.0e-4
+CANONICAL_P_ROLE: str = "sigma_metrology_exponent"  # not an expansion-history exponent
 
 # v12.2 historical central value, kept for provenance/reproduction of the
 # retrodictive Y1 scorecard analysis. Do NOT use in new pipelines.

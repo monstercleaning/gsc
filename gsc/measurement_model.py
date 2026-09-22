@@ -214,7 +214,17 @@ def distance_modulus_flat(
 
 @dataclass(frozen=True)
 class PowerLawHistory:
-    """Late-time toy history used in v10.1: H(z)=H0(1+z)^p."""
+    """Late-time toy history used in v10.1: H(z)=H0(1+z)^p.
+
+    WARNING (v12.7): here ``p`` is the WHOLE expansion law, not the T2 metrology
+    exponent of ``gsc.canonical_params.CANONICAL_P`` (sigma(z)/sigma(0) = (1+z)^-p).
+    Feeding the canonical p ~ 6e-4 into this class yields H(z) ~ H0 — a coasting
+    universe excluded at >100 sigma by the bundled DESI BAO data. The v12.2–v12.6
+    P8 register entry was computed exactly that way and is superseded (P8 r2).
+    Registered pipelines must not instantiate this class (CLAIMS.json:
+    ``registered-pipelines-never-use-coasting-toy-history``). Diagnostic/bridge
+    scripts that explore genuine power-law histories (p ~ 1) may still use it.
+    """
 
     H0: float
     p: float
@@ -225,6 +235,36 @@ class PowerLawHistory:
         if self.H0 <= 0:
             raise ValueError("H0 must be positive")
         return self.H0 * (1.0 + z) ** self.p
+
+
+@dataclass(frozen=True)
+class SigmaModulatedLCDMHistory:
+    """T2-consistent late-time history: flat LCDM with the leading-order sigma-metrology
+    modulation, H(z) = H_LCDM(z) * (1+z)^p.
+
+    ``p`` is the T2 metrology exponent (``CANONICAL_P``; sigma(z)/sigma(0) = (1+z)^-p) —
+    the same object P1 applies to the BAO ruler. This is the framework's actual late-time
+    claim (T1 conformal equivalence to LCDM plus a sub-percent T2 metrology effect): at the
+    canonical p = 6e-4 every late-time kinematic observable, redshift drift included, differs
+    from LCDM by well under 1%, and the drift's sign structure is LCDM's. Added in v12.7 to
+    replace the coasting toy in P8. Radiation is ignored (post-recombination kinematics),
+    matching FlatLambdaCDMHistory.
+    """
+
+    H0: float
+    Omega_m: float
+    Omega_Lambda: float
+    p: float
+
+    def H(self, z: float) -> float:
+        if z < -1.0:
+            raise ValueError("Require z >= -1")
+        if self.H0 <= 0:
+            raise ValueError("H0 must be positive")
+        if self.Omega_m < 0 or self.Omega_Lambda < 0:
+            raise ValueError("Require non-negative density parameters")
+        one_p = 1.0 + z
+        return self.H0 * math.sqrt(self.Omega_m * one_p ** 3 + self.Omega_Lambda) * one_p ** self.p
 
 
 @dataclass(frozen=True)

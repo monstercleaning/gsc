@@ -1,6 +1,6 @@
 # Scorecard — Prediction P5 (Strong-CP θ-bound)
 **Outcome:** ✅ PASS  (mode: nedm-only)
-**Scored at:** `2026-07-27T07:51:27Z`
+**Scored at:** `2026-09-22T08:11:40Z`
 **Pipeline output hash:** `5f6f45074bc10c041e18c4f0d66f323c0d8089b975c249a5a1b8b02aef8f9300`
 **Observed source:** n2EDM 2024 (Abel et al.) (released 2020-02-28)
 

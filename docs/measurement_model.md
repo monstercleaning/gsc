@@ -241,8 +241,10 @@ v11.0.0 is explicitly late-time focused. “Done” at the current framework mea
 - We can compute `z`, `ż`, and baseline distances reproducibly.
 - Primary discriminator follows Roadmap v2.8:
   `epsilon` / measurement-model inference + cross-probe consistency triangles.
-- Redshift-drift sign checks at `z ~ 2–5` remain supporting diagnostics
-  (historical no-go/pre-check evidence), not the primary project discriminator.
+- Redshift-drift checks at `z ~ 2–5` are supporting consistency diagnostics only:
+  the T2-consistent history reproduces ΛCDM's drift (sign and amplitude) to
+  0.03 cm/s (P8 r2, v12.7); the historical "sign-flip" framing applied to retired
+  toy histories and is withdrawn.
 
 Full early-universe / full CMB-likelihood claims require v10+ work:
 freeze-frame mapping of recombination physics, sound horizon, transfer

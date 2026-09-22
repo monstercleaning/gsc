@@ -8,7 +8,7 @@
 > → *Current implementation status*.
 
 **Outcome:** ✅ PASS  (at the registered |z| < 3 rule)
-**Scored at:** `2026-07-27T07:51:27Z`
+**Scored at:** `2026-09-22T08:11:40Z`
 **Pipeline output hash:** `a6228f68b3b7b7e28c792a92c9202d61b0e317f59de510e07289c385ac5835fe`
 **Observed source:** DESI Year-1 BAO (DESI Collaboration 2024) — preliminary near-term constraint pending DESI Y3 (2027) (released 2024-04-04)
 **Observed r_d:** 147.09 ± 0.26 Mpc

@@ -1,6 +1,6 @@
 # Scorecard — Prediction P3 (Neutron-lifetime beam-trap)
 **Outcome:** ❌ FAIL  (at 3.0σ confidence)
-**Scored at:** `2026-07-27T07:51:27Z`
+**Scored at:** `2026-09-22T08:11:40Z`
 **Pipeline output hash:** `bb9bc0e922ef044f361583e2f2fcf3f7324f170f998ee41df2c3acfd99cb1a97`
 **Observed data source:** PDG 2024 world averages (released 2024-08-31)
 

@@ -56,7 +56,7 @@ See [predictions_register/](../predictions_register/) for the full list. Brief s
 | P5 | Strong-CP θ-bound consistency | T3 | nEDM (continuous) | continuous |
 | P6 | Kibble-Zurek defect spectrum | T4 | NANOGrav / EPTA / LISA | continuous / 2035 |
 | P7 | GW-memory atomic-clock signatures | T4 | ITOC / BACON post-LIGO events | continuous |
-| P8 | Redshift-drift sign and amplitude | T2 (supporting) | ELT/ANDES | 2040+ |
+| P8 | Redshift drift — ΛCDM-degenerate consistency test (r2, v12.7; earlier "sign" claim withdrawn) | T2 (supporting) | ELT/ANDES | 2040+ |
 | P9 | μ = m_p/m_e constancy (exact null) | T1 | Optical/molecular clock comparisons | continuous |
 | P10 | TeV blazar arrival-time dispersion | T4 | CTAO | 2026+ |
 | P11 | Distance-duality η(z) = 1 (exact null, sudden-death §12.2.1a) | T1 | DDR compilations (DESI × SNe × chronometers) | continuous |

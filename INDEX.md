@@ -21,7 +21,7 @@ A complete map of the standalone GSC framework package. Use this as the entry po
 | [P5](predictions_register/P5_strong_cp_bound/) | Strong-CP θ-bound | T3 | ✅ θ-trajectory | ✅ | ✅ scored vs n2EDM 2020 | ✅ PASS (within nEDM) |
 | [P6](predictions_register/P6_kz_defect_spectrum/) | Kibble-Zurek defect spectrum | T4 | ✅ KZ scaling | ✅ | ✅ scored vs PTA bounds | ❌ FAIL (excludes default M_*) |
 | [P7](predictions_register/P7_gw_memory_clocks/) | GW-memory atomic-clock signature | T4 | ✅ σ-GW coupling | ✅ | ✅ scored vs Al+ clock | ⏸ SUB-THRESHOLD |
-| [P8](predictions_register/P8_redshift_drift/) | Redshift-drift sign | T2 (supporting) | ✅ Sandage-Loeb | ✅ | pending ELT (2040+) | — |
+| [P8](predictions_register/P8_redshift_drift/) | Redshift drift (r2: ΛCDM-degenerate consistency test) | T2 (supporting) | ✅ Sandage-Loeb | ✅ | pending ELT (2040+) | — |
 
 **6 scored predictions (post-v12.1 corrections): 1 PASS (P5), 4 FAIL (P3, P4, P6, plus joint-constraint exclusion of σ-axion at literature couplings), 1 SUB-THRESHOLD (P7).** Two predictions await future data (P1, P8).
 
@@ -216,7 +216,7 @@ python3 scripts/audit_repo_footprint.py --max-mb 10
 | **σ_*-crossing with M_* ≈ GUT excluded by PTA bounds** | P6 with default parameters | ⭐⭐ M_* ≲ TeV required |
 | **σ-environmental explanation of τ_n anomaly fails** | P3 v0.2 corrected: universal scaling predicts no anomaly | ⭐ retracted earlier PASS |
 | **Powerlaw σ(z) with p ≈ 10⁻³ in tension with DESI Y1 BAO at 4σ** | P1 v12.2 scorer | ⭐ requires σ-modified recombination correction (M201) |
-| **Redshift-drift sign-flip at z ≥ 2 vs ΛCDM (ELT/ANDES test)** | P8 calibrated | ⭐ pending observation |
+| **Redshift drift: ΛCDM-degenerate to 0.03 cm/s (P8 r2, v12.7)** — the pre-v12.7 "sign-flip at z ≥ 2" claim was a toy-history artefact, withdrawn | P8 r2 | ⭐ consistency test; no framework-specific discriminating power |
 | **Locally observable G ∝ σ² running excluded at canonical p by corrected Ġ/G bounds** (LLR Biskupek+ 2021 (−5.0±9.6)×10⁻¹⁵/yr, |z|≈8.2; MESSENGER < 4×10⁻¹⁴/yr) | Paper A §4.4 (v12.6 correction) | ⭐⭐ T3 kill-channel fired; universal core's exact local null survives (§12.2.1b) |
 
 ## Status snapshot (post-v12.2 corrections)

@@ -115,3 +115,46 @@ class TestMeasurementModel(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSigmaModulatedLCDMHistory(unittest.TestCase):
+    """v12.7: the T2-consistent late-time history must stay LCDM-degenerate.
+
+    Guards the P8 r2 finding: the canonical metrology exponent must produce a
+    sub-percent modulation of LCDM with identical drift sign structure — never
+    a coasting universe (which is what feeding it into PowerLawHistory gives).
+    """
+
+    def _histories(self):
+        from gsc.canonical_params import CANONICAL_P
+        from gsc.measurement_model import (
+            FlatLambdaCDMHistory,
+            PowerLawHistory,
+            SigmaModulatedLCDMHistory,
+            H0_to_SI,
+            z_dot_sandage_loeb,
+        )
+        H0 = H0_to_SI(67.4)
+        lcdm = FlatLambdaCDMHistory(H0=H0, Omega_m=0.315, Omega_Lambda=0.685)
+        mod = SigmaModulatedLCDMHistory(H0=H0, Omega_m=0.315, Omega_Lambda=0.685, p=CANONICAL_P)
+        toy = PowerLawHistory(H0=H0, p=CANONICAL_P)
+        return H0, lcdm, mod, toy, z_dot_sandage_loeb
+
+    def test_modulated_history_is_sub_percent_from_lcdm(self):
+        H0, lcdm, mod, _, _ = self._histories()
+        for z in (0.1, 0.5, 1.0, 2.0, 3.0, 5.0):
+            rel = abs(mod.H(z) / lcdm.H(z) - 1.0)
+            self.assertLess(rel, 0.01, msg=f"z={z}: H deviates from LCDM by {rel:.4%}")
+
+    def test_modulated_history_keeps_lcdm_drift_sign_structure(self):
+        H0, lcdm, mod, _, z_dot = self._histories()
+        for z in (0.1, 1.0, 1.5, 2.0, 3.0, 5.0):
+            a = z_dot(z=z, H0=H0, H_of_z=lcdm.H)
+            b = z_dot(z=z, H0=H0, H_of_z=mod.H)
+            self.assertGreater(a * b, 0.0, msg=f"z={z}: drift sign differs from LCDM")
+
+    def test_canonical_p_in_toy_history_is_coasting_and_thus_wrong(self):
+        # Negative control: the misuse that produced P8 r1 must remain detectable.
+        H0, lcdm, _, toy, _ = self._histories()
+        self.assertLess(abs(toy.H(2.33) / H0 - 1.0), 0.01, "toy at canonical p should be ~coasting")
+        self.assertGreater(lcdm.H(2.33) / toy.H(2.33), 3.0, "LCDM H(z=2.33) is >3x the coasting value")

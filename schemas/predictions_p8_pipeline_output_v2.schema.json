@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p8_pipeline_output_v2.schema.json",
+  "title": "Pipeline output for prediction P8, revision r2 (redshift drift, T2-consistent history)",
+  "$comment": "r2 (v12.7) supersedes the v1 schema/r1 output, which was computed with the v10.1 coasting toy history. The T2-consistent prediction is LCDM-degenerate: `all_same_sign_as_lcdm` must be true and the absolute deviation from LCDM must stay below 0.1 cm/s at every grid point (an order of magnitude below any foreseeable drift precision). Relative differences are reported for information only: they are ill-defined near LCDM's zero crossing (z ~ 1.5-2). If a future revision breaks either constraint, that is a framework-content change and must be registered as a superseding entry, not edited here.",
+  "type": "object",
+  "required": [
+    "schema",
+    "prediction_id",
+    "revision",
+    "title",
+    "tier",
+    "tool",
+    "tool_version",
+    "supersedes",
+    "ansatz",
+    "ansatz_parameters",
+    "lcdm_baseline",
+    "observation_interval_years",
+    "drift_table",
+    "summary",
+    "framework_implications"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "predictions_p8_pipeline_output_v2"
+    },
+    "prediction_id": {
+      "type": "string",
+      "const": "P8"
+    },
+    "revision": {
+      "type": "string",
+      "const": "r2"
+    },
+    "title": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string"
+    },
+    "tool": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "physics_status": {
+      "type": "string"
+    },
+    "determinism_note": {
+      "type": "string"
+    },
+    "supersedes": {
+      "type": "object",
+      "required": [
+        "revision",
+        "file",
+        "reason"
+      ],
+      "properties": {
+        "revision": {
+          "type": "string",
+          "const": "r1"
+        },
+        "file": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "history_used_by_r1": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "ansatz": {
+      "type": "string",
+      "enum": [
+        "powerlaw_metrology",
+        "coasting_toy_r1_superseded"
+      ]
+    },
+    "ansatz_parameters": {
+      "type": "object",
+      "required": [
+        "p"
+      ],
+      "properties": {
+        "p": {
+          "type": "number"
+        }
+      }
+    },
+    "lcdm_baseline": {
+      "type": "object",
+      "required": [
+        "H0_km_s_Mpc",
+        "Omega_m",
+        "Omega_L"
+      ],
+      "properties": {
+        "H0_km_s_Mpc": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "Omega_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "Omega_L": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "observation_interval_years": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "drift_table": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "z",
+          "delta_v_lcdm_cm_s",
+          "delta_v_gsc_cm_s",
+          "delta_v_diff_cm_s",
+          "rel_diff_percent",
+          "same_sign_as_lcdm"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "z": {
+            "type": "number",
+            "minimum": 0
+          },
+          "delta_v_lcdm_cm_s": {
+            "type": "number"
+          },
+          "delta_v_gsc_cm_s": {
+            "type": "number"
+          },
+          "delta_v_diff_cm_s": {
+            "type": "number",
+            "minimum": -0.1,
+            "maximum": 0.1
+          },
+          "rel_diff_percent": {
+            "type": "number"
+          },
+          "same_sign_as_lcdm": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "all_same_sign_as_lcdm",
+        "max_abs_diff_cm_s",
+        "discriminating_power"
+      ],
+      "properties": {
+        "all_same_sign_as_lcdm": {
+          "type": "boolean",
+          "const": true
+        },
+        "max_abs_rel_diff_percent": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_abs_diff_cm_s": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.1
+        },
+        "lcdm_sign_flip_z_interval": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "gsc_sign_flip_z_interval": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "discriminating_power": {
+          "type": "string"
+        }
+      }
+    },
+    "framework_implications": {
+      "type": "object"
+    }
+  }
+}

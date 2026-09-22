@@ -14,7 +14,7 @@ predictions_register/
 ├── P5_strong_cp_bound/           # nEDM / θ-evolution
 ├── P6_kz_defect_spectrum/        # Kibble-Zurek string-network GWs
 ├── P7_gw_memory_clocks/          # Atomic-clock shifts post-merger
-├── P8_redshift_drift/            # ELT/ANDES (supporting)
+├── P8_redshift_drift/            # ELT/ANDES (supporting; r2 v12.7: ΛCDM-degenerate consistency test — r1 output retained as superseded)
 ├── P9_proton_electron_mass_ratio/ # μ-constancy consistency check (T1)
 ├── P10_tev_blazar_dispersion/    # CTAO arrival-time dispersion (σ(x) test)
 ├── P11_distance_duality/         # η(z) = 1 exact null; DDR sudden-death channel (T1)

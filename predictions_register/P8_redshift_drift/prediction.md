@@ -1,73 +1,109 @@
 ---
 prediction_id: P8
-title: Redshift-drift sign and amplitude (supporting discriminator)
-tier: T2 (supporting only, not primary)
-ansatz: σ(t) — late-time fit ansatz from Paper A
-target_dataset: ELT/ANDES Sandage–Loeb redshift-drift measurements at z ≈ 2–5
+revision: r2
+title: Redshift drift — ΛCDM-degenerate consistency test at foreseeable precision (r2, v12.7)
+tier: T2 (supporting only; no framework-specific discriminating power)
+ansatz: σ(t) powerlaw metrology exponent (canonical p) applied to a flat-ΛCDM background — SigmaModulatedLCDMHistory
+target_dataset: ELT/ANDES Sandage–Loeb redshift-drift measurements at z ≈ 0.1–5 (first direct ESPRESSO limits already exist)
 target_release_date: ≥ 2040 (ELT/ANDES first-light + integration time)
-status: SCAFFOLD — git-timestamped, GPG-signing pending; FORWARD pre-registration (awaiting unreleased data)
+status: SCAFFOLD — git-timestamped, GPG-signing pending; FORWARD registration (awaiting unreleased data); REVISION r2 supersedes r1 (see below)
+supersedes: r1 (pipeline_output.r1_superseded.json) — computed with the v10.1 coasting toy history; withdrawn v12.7
 signed_by: —
 signature_timestamp: —
 repo_commit_at_signing: —
 pipeline_output_hash: —
 ---
 
-# Prediction P8 — Redshift-drift sign and amplitude
+# Prediction P8 — Sandage–Loeb redshift drift (revision r2, v12.7)
 
-## Statement
+## Why there is a revision r2 (correction disclosed in full)
 
-The redshift-drift `dz/dt = H_0(1+z) - H(z)` differs between GSC and ΛCDM at moderate-to-high redshift. For the registered σ(t) ansatz, the predicted Δv velocity drift (for an observation interval Δt = 10 yr) is calculable as:
+The r1 entry (v12.2–v12.6) registered a structural claim, quoted here as history [r1 — superseded]:
+
+> [r1 — superseded] *"for the canonical ansatz the drift is positive across the grid,*
+> [r1 — superseded] *in contrast to ΛCDM's sign flip near z ≈ 1.7; the sign-flip is*
+> [r1 — superseded] *retained as a structural prediction."*
+
+Those numbers were produced by feeding the canonical T2
+metrology exponent p = 6×10⁻⁴ into `PowerLawHistory`, the v10.1 toy in which
+the same letter is the **whole expansion law**, H(z) = H₀(1+z)^p. At that p
+the toy is a coasting universe (H ≈ H₀), which the DESI DR1 BAO points bundled
+with this package exclude at +7σ (D_M/r_d, z = 0.51) to +128σ (D_H/r_d,
+z = 2.33) — and which contradicts the framework's own T1 statement of conformal
+equivalence to ΛCDM. The project's archived Roadmap v2.8 §E.1 had already shown
+that positive drift at z > 2 is impossible for standard matter content
+(Ω_m0 < 1/(1+z) would be required); the v12 layout lost that result, and the
+v12.5 "single source of truth" refactor wired P8 to the shared constant
+without checking its role.
+
+Per the append-only discipline the r1 output is **retained** as
+`pipeline_output.r1_superseded.json` (its SHA-256 is recorded inside the r2
+output under `supersedes`), and it can be reproduced with the loudly-named
+provenance option `--ansatz coasting_toy_r1_superseded`. Nothing was deleted;
+the claim is withdrawn.
+
+## Statement (r2)
+
+The T2-consistent late-time history is flat ΛCDM with the leading-order
+σ-metrology modulation — the same p that P1 applies to the BAO ruler:
 
 ```
-Δv ≈ c · (dz/dt) / (1+z) · Δt
+H(z) = H_ΛCDM(z) · (1+z)^p ,   p = 6×10⁻⁴   (SigmaModulatedLCDMHistory)
+dz/dt = H₀(1+z) − H(z) ,      Δv ≈ c · (dz/dt)/(1+z) · Δt
 ```
 
-at each redshift z. The historical GSC framing was that the *sign* of dz/dt at z ≈ 2–5 differs between GSC accelerated-collapse models and ΛCDM. **This is now framed as a *supporting* test, not the primary discriminator.** The primary near-term discriminators are P1 (BAO ruler shift) and the P4+P5 strong-CP joint consistency.
+For a 10-year interval the registered table (`pipeline_output.json`) gives, at
+every grid point z ∈ {0.1, 0.5, 1, 1.5, 2, 3, 4, 5}:
+
+- |Δv_GSC − Δv_ΛCDM| ≤ 0.03 cm/s (maximum at z = 5);
+- identical sign structure — both flip from positive to negative between
+  z = 1.5 and z = 2.0;
+- relative deviations sub-percent away from ΛCDM's zero crossing (relative
+  values are ill-defined near z ≈ 2, where the absolute difference is
+  0.014 cm/s).
+
+**P8 therefore carries no framework-specific discriminating power at any
+foreseeable precision** (first direct ESPRESSO limits: ±3.6 m/s/yr,
+arXiv:2603.02318; ELT/ANDES targets of order cm/s per decade). It is a
+ΛCDM-degenerate consistency test.
 
 ## Tier
 
-**T2 (supporting only)** — refines the late-time σ(t) ansatz but is not in the primary kill-test path. P1 and P4+P5 will resolve the framework's status well before ELT/ANDES delivers drift measurements.
+**T2 (supporting only).** The drift is a genuine observable and remains
+registered because its data are unreleased, but it can fail only if ΛCDM-class
+kinematics fail — in which case it falsifies T1/T2 exactly as it falsifies
+ΛCDM, with no rescue permitted.
 
 ## Pipeline
 
-Already implemented in the existing late-time pipeline. New computation:
+- `scripts/predictions_compute_P8.py` (v0.2) — default ansatz
+  `powerlaw_metrology`; schema `predictions_p8_pipeline_output_v2`.
+- Provenance reproduction of r1: `--ansatz coasting_toy_r1_superseded`
+  (never the default; not the registered prediction).
 
-1. Script `scripts/predictions_compute_P8.py` — wraps `scripts/redshift_drift_table.py` to produce dz/dt(z) and Δv(z, Δt=10yr) for the registered σ(t).
-2. The output is a tabulated prediction at z = 0.1, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0.
+## Scoring algorithm (registered)
 
-## Target observation
-
-- **ELT/ANDES:** Sandage–Loeb test, expected first integrated-time results ≥ 2040.
-- **Earlier proxies:** none currently competitive.
-
-## Scoring algorithm
-
-When ELT delivers Δv(z) measurements, score as:
+When ELT/ANDES delivers Δv(z) measurements:
 
 ```
-z_chi2 = Σ_z [(Δv_observed(z) - Δv_predicted(z))^2 / σ(z)^2]
+z_chi2 = Σ_z [(Δv_observed(z) − Δv_predicted(z))² / σ(z)²]
 ```
 
-Pass if χ²/dof is within registered band.
+Pass if χ²/dof is within the registered band; because Δv_predicted equals the
+ΛCDM prediction to 0.03 cm/s, a PASS or FAIL for P8 is a PASS or FAIL for
+ΛCDM-class kinematics.
 
-The *sign-flip* at high z (z > 3) is the historical "killer" indicator: ΛCDM expects `dz/dt < 0`; some GSC realizations expect `dz/dt > 0`. This sign-flip is *retained* as a structural prediction even though it is no longer framed as the primary discriminator.
+## Kill-test
 
-## Effort estimate
-
-Trivial (~3 days) — wraps existing implementations.
+A robust drift measurement inconsistent with the ΛCDM-class sign structure at
+z ≥ 2 falsifies T1/T2 outright — and ΛCDM with it. No tier-demotion,
+non-universal extension, or unimplemented correction may be invoked.
 
 ## Significance
 
-P8 is the historical primary GSC discriminator, demoted in the current framework cycle to supporting status because:
-
-1. Earlier release of P1 (DESI 2027) and P4+P5 (LiteBIRD 2030) will resolve the framework's status well before ELT/ANDES delivers (≥ 2040);
-2. Refined late-time data have narrowed the parameter region in which GSC predicts a sign-flip at z ≈ 2–5;
-3. Confidence in any specific pre-registered amplitude depends on choices that may evolve over the 15-year run-up.
-
-It is retained as P8 because:
-
-1. The sign-flip remains a clean, falsifiable, *structural* prediction;
-2. Pre-registering it now provides historical record of what GSC predicted before the data;
-3. ELT/ANDES will test it eventually regardless of whether GSC is the focus by then.
-
-**Pre-register but do not weight as primary.**
+The honest value of P8 after r2 is negative-space: it demonstrates that the
+framework's late-time content beyond ΛCDM is confined to the BAO metrology
+shift (P1) and the exact-null package (P9, P11, P12, P13), and it documents —
+mechanically, via the new CLAIMS.json guards — the class of error that produced
+r1: one symbol feeding two incompatible models. The pre-v12.7 description of
+P8 as a "clean structural falsifier" is withdrawn [r1 — superseded].

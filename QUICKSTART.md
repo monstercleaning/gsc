@@ -48,7 +48,7 @@ For the redshift-drift prediction:
 python3 scripts/predictions_compute_P8.py
 ```
 
-Output shows the Sandage–Loeb drift Δv at z = 0.1 to 5.0 for both ΛCDM and GSC, including which redshifts exhibit a *sign flip* between the two.
+Output shows the Sandage–Loeb drift Δv at z = 0.1 to 5.0 for both ΛCDM and GSC. Since v12.7 (P8 r2) the two agree to within 0.03 cm/s with identical sign structure — the table documents a ΛCDM-degenerate consistency test, not a discriminator (the pre-v12.7 "sign flip" output came from a toy history and is superseded; see CHANGELOG).
 
 ### 4. Sign the prediction (1 sec)
 

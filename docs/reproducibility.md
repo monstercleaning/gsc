@@ -220,7 +220,7 @@ The late‑time scorecard / fit layer supports:
 intended to:
 
 * validate the Option‑2 measurement translation layer
-* quantify how SN/BAO/drift prefer or reject “positive drift for all z” type histories
+* quantify how SN/BAO/drift prefer or reject “positive drift for all z” type histories (v10.1 toy histories; retired from the registered pipelines in v12.7 — the T2-consistent history is ΛCDM-degenerate, see P8 r2)
 * produce publication‑ready plots/tables for v10.1.x
 
 Guardrails (where enabled) include:

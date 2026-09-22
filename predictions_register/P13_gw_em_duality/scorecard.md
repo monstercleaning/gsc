@@ -6,7 +6,7 @@
 > at ≥ 3σ falsifies T1 — a single confirmed violation suffices.
 
 **Outcome:** ✅ PASS  (at the registered |z| < 3 rule)
-**Scored at:** `2026-07-28T11:57:17Z`
+**Scored at:** `2026-09-22T08:11:40Z`
 **Pipeline output hash:** `c5b974036f8885c81fd5df9abc089d5c36c1f6a218f4e628a9441436e63635a1`
 **Observed source:** LVK GWTC-4.0 cosmology paper, 'GWTC-4.0: Constraints on the Cosmic Expansion Rate and Modified Gravitational-wave Propagation' (arXiv:2509.04348): 142 of 218 GW sources x GLADE+ galaxy catalog; Xi_0 = 1.2 +0.8/-0.4 (68.3%), 'Xi_0 = 1 recovers the behavior of general relativity' (abstract, verified via INSPIRE record 2026-07-27). H0 = 76.6 +13.0/-9.5 km/s/Mpc from the same analysis.
 

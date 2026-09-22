@@ -263,6 +263,15 @@ def _v_number_agreement(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
             if mode == "each" and stated != counted:
                 mismatches.append("%s says %d" % (site, stated))
     if not found:
+        # Liveness floor (v12.7): a count claim that matches zero prose sites
+        # verifies nothing. It passed vacuously for two months after the register
+        # reached thirteen because the number-word alternation stopped at twelve.
+        min_sites = int(spec.get("min_sites", 0))
+        if min_sites > 0:
+            return False, ("no prose statement of this count found (artifact has %d); "
+                           "liveness floor min_sites=%d — zero matched sites is a dead check, "
+                           "not a pass (pattern/alternation probably lags the prose)"
+                           % (counted, min_sites))
         return True, "no prose statement of this count found; artifact has %d" % counted
     if mode == "max":
         best_site, best = max(found, key=lambda t: t[1])

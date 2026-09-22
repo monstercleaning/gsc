@@ -40,7 +40,7 @@ The thirteen central registered predictions are:
 5. **Strong-CP θ-bound** evolved by RG-driven σ-θ coupling; consistent with current nEDM limits, calculable cosmological evolution.
 6. **Topological-defect spectrum** from σ_*-crossing as Kibble–Zurek phase transition (string density, gravitational-wave signature).
 7. **GW-memory-induced atomic-clock-array shifts** correlated with LIGO/Virgo merger events.
-8. **Redshift-drift sign and amplitude** at z ≈ 2–5 (now framed as supporting, not primary discriminator).
+8. **Redshift drift** at z ≈ 0.1–5 — since v12.7 (P8 r2) a ΛCDM-degenerate consistency test: the T2-consistent history reproduces ΛCDM's drift to 0.03 cm/s with identical sign structure; the pre-v12.7 "positive sign at z ≥ 2" claim was an artefact of a toy history and is withdrawn (§9.8).
 9. **Proton-electron mass-ratio (μ) constancy** — a null prediction: universal coherent scaling forbids any cosmological μ drift (T1 consistency check on the geometric lock).
 10. **TeV blazar arrival-time dispersion** — energy-flat, large-scale-structure-correlated dispersion from σ(x) spatial gradients (T4; CTAO-era test).
 11. **Distance-duality (Etherington) null** — η(z) = 1 exactly under universal scaling; a single robust DDR violation falsifies T1 outright (sudden-death channel, §12.2.1a).
@@ -555,9 +555,13 @@ with amplitude calculable from the late-time σ-fit and the derived σ-θ coupli
 
 ### 9.8 Prediction P8: Redshift-drift sign and amplitude
 
-**Statement.** The historical GSC prediction: redshift-drift sign at z ≈ 2–5 differs from ΛCDM. Now framed as a *supporting* discriminator, not the primary kill-test (the previously primary status was demoted in v11 in light of refined late-time data).
+**Statement (r2, v12.7).** The T2-consistent late-time history is flat ΛCDM with the leading-order metrology modulation, H(z) = H_ΛCDM(z)·(1+z)^p — the same p P1 applies to the BAO ruler. Its Sandage–Loeb drift equals ΛCDM's to within 0.03 cm/s at every registered grid point (z = 0.1–5), with the sign flipping between z = 1.5 and 2.0 in both. P8 is therefore a **ΛCDM-degenerate consistency test with no framework-specific discriminating power** at any foreseeable precision.
 
-**Target.** ELT/ANDES (~2040+).
+**Correction disclosed.** Through v12.6 this section, Paper A and the register described P8 as a structural "positive drift at z ≥ 2" prediction. That came from computing the pipeline with the v10.1 toy history H(z) = H₀(1+z)^p, in which the metrology exponent was misread as the whole expansion law — a coasting universe at p = 6×10⁻⁴, excluded at 7–128σ by the bundled DESI BAO and contradicting T1's ΛCDM equivalence (Paper A §5.2). The archived Roadmap v2.8 §E.1 had already established the impossibility of positive drift at z > 2 for standard matter; the v12 layout had lost that knowledge. The r1 output is retained in the register for provenance; the shared parameter's role is now documented in `gsc/canonical_params.py`, and CLAIMS.json forbids registered pipelines from using the toy history.
+
+**Target.** ELT/ANDES (~2040+); first direct ESPRESSO limits already exist (±3.6 m/s/yr).
+
+**Kill-test.** A robust drift measurement inconsistent with the ΛCDM-class sign structure at z ≥ 2 falsifies T1/T2 exactly as it falsifies ΛCDM; no rescue permitted.
 
 ### 9.9 Prediction P9: Constancy of μ = m_p/m_e (added v12.1)
 
@@ -708,7 +712,7 @@ Section 1.2 addresses this critique structurally but does not eliminate it. The 
 
 A tiered hierarchy with per-module kill-tests can degenerate into unfalsifiability if every failed prediction is absorbed by demoting it to a lower tier or adding a bespoke non-universal extension. To foreclose that move we pre-commit, now, to a *conjunctive* framework-level kill condition that sits above the individual tiers:
 
-1. **Scope.** The condition is evaluated only over the **genuinely forward** pre-registered tests — those registered before their target data exist (currently P2, P8, P10, P12, and the full-survey DESI BAO test of P1). Retrodictive consistency checks against already-public data do **not** count toward it.
+1. **Scope.** The condition is evaluated only over the **genuinely forward** pre-registered tests — those registered before their target data exist (currently P2, P8, P10, P12, and the full-survey DESI BAO test of P1). Retrodictive consistency checks against already-public data do **not** count toward it. *(v12.7 note: P8 r2 is ΛCDM-degenerate at foreseeable precision and can fail only if ΛCDM-class kinematics fail — it therefore contributes no framework-specific failure mode. The registered five-test scope and its "at least three" majority are left unchanged rather than re-tuned, and this reduction in framework-specific forward content is recorded openly.)*
 2. **Threshold.** If a **majority** of these forward tests fail at their registered confidence once their data arrive, the GSC **core (T1–T3)** is abandoned as a distinct theory — not merely the individual implicated modules. The repository status is set to FALSIFIED and the case study is closed.
 3. **No post-hoc rescue.** After a prediction is registered it may **not** be saved by introducing a new tier-demotion, a new non-universal extension, or an unimplemented correction (e.g. a "σ-modified recombination" term). Such mechanisms are admissible only if registered and scored as *new* forward predictions in their own right.
 4. **Conformal-reduction clause.** If the surviving content of GSC becomes observationally indistinguishable from ΛCDM (i.e. the T3/T4 independent-dynamics demonstrations all fail), GSC is considered falsified *as a distinct theory* under §12.2, regardless of how many ΛCDM-equivalent fits it can still produce.
