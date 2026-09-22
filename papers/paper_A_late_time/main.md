@@ -170,7 +170,7 @@ The decisive-falsification combination for the T2 ansatz quoted in §5.1 is corr
 
 We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040) and, since the v12.7 revision (P8 r2), is a ΛCDM-degenerate consistency test rather than a discriminator. The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
 
-### 5.1 P1 — BAO standard-ruler shift in DESI Year-3
+### 5.1 P1 — BAO standard-ruler shift (forward target: the full five-year DESI release)
 
 Under the freeze-frame measurement model, the BAO sound horizon r_d at the drag epoch is observed today against today's atomic units. Atoms today are smaller than at recombination by σ(z=0)/σ(z_drag) — for the canonical powerlaw ansatz with p = 6×10⁻⁴, this gives an apparent BAO scale that is +0.417% larger than the ΛCDM expectation:
 

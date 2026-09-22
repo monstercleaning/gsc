@@ -164,11 +164,11 @@ Each script returns exit code 0 on success and non-zero on any verification fail
 
 We demonstrate the workflow on the thirteen registered predictions of the GSC framework. Detailed prediction records are at `predictions/P1`–`P13`; here we summarise the methodological aspects.
 
-### 5.1 P1 — BAO standard-ruler shift (DESI Year-3)
+### 5.1 P1 — BAO standard-ruler shift (forward target: the full five-year DESI release)
 
 The prediction `Δr_s/r_s |_{GSC − ΛCDM}` is computed by `predictions_compute_P1.py`, which extends the existing Eisenstein–Hu (1998) sound-horizon implementation with a parametrised σ-shift factor. The pipeline output is a single JSON record with the ΛCDM baseline `r_d`, the GSC-predicted `r_d`, the relative shift, and the cosmology inputs used.
 
-This is the **lowest-effort, highest-impact** near-term test: DESI Year-3 BAO results are expected in 2027, and the prediction precision is well within DESI's measurement precision band.
+Its forward target is the full five-year DESI release (the Year-3 data became public in 2025 and serve as retrodictive context). At the canonical parameter the shift is about 2σ at full-survey precision — indicative alone, and its physical coherence is an open problem (OPEN_PROBLEMS.md).
 
 ### 5.2 P2 — 21cm Cosmic-Dawn signal
 

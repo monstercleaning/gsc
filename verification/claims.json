@@ -87,7 +87,7 @@
           "verification/*.md",
           "pipelines/*.sh"
         ],
-        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+(?:central\\s+|initial\\s+|near-term\\s+|worked\\s+)?(?:pre-)?registered\\s+(?:numerical\\s+|cosmological\\s+)?predictions?\\b",
+        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+(?:(?:central|initial|near-term|worked)\\s+)?(?:(?:pre-)?registered\\s+(?:numerical\\s+|cosmological\\s+)?predictions?|worked\\s+examples?)\\b",
         "unless": [
           "eight \\(then ten\\)",
           "grew",
@@ -99,7 +99,7 @@
         "min_sites": 1
       },
       "always": true,
-      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim."
+      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim. Extended at the reorganization to also match 'N worked examples': the deposited methodology paper still said 'ten worked examples' when the register held thirteen, a count claim the earlier pattern could not see."
     },
     {
       "id": "paper-count",
