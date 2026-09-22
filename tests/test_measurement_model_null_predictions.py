@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 import sys
 
-# Allow running from repo root: add v11.0.0/ to import path.
+# Allow running from the package root.
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 

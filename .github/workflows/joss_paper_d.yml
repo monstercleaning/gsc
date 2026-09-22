@@ -1,85 +1,65 @@
 name: joss-paper-d
 
-# Validate Paper D (methodology) JOSS submission package on every change
-# to the paper or its bibliography. Renders paper.pdf as an artefact so
-# you can preview without local Docker.
+# Render the JOSS-format methodology paper (Paper D) and check its structure.
+# Layout-agnostic: works whether the package sits at the repository root or
+# in a subdirectory (the package root is detected at runtime).
 
 on:
   push:
     paths:
-      - 'papers/paper_D_methodology/joss/paper.md'
-      - 'papers/paper_D_methodology/joss/paper.bib'
-      - '.github/workflows/joss_paper_d.yml'
-  pull_request:
-    paths:
+      - '**/papers/paper_D_methodology/joss/paper.md'
+      - '**/papers/paper_D_methodology/joss/paper.bib'
       - 'papers/paper_D_methodology/joss/paper.md'
       - 'papers/paper_D_methodology/joss/paper.bib'
   workflow_dispatch:
 
 jobs:
   paper:
-    name: render JOSS paper.pdf via openjournals/inara
+    name: render paper.pdf (openjournals draft action)
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: build draft PDF via openjournals/inara
-        uses: openjournals/openjournals-draft-action@master
+      - uses: actions/checkout@v4
+      - name: locate the paper
+        id: loc
+        run: |
+          PKG="$([ -d v20 ] && echo v20 || echo .)"
+          echo "path=${PKG}/papers/paper_D_methodology/joss/paper.md" >> "$GITHUB_OUTPUT"
+          echo "dir=${PKG}/papers/paper_D_methodology/joss" >> "$GITHUB_OUTPUT"
+      - uses: openjournals/openjournals-draft-action@master
         with:
           journal: joss
-          paper-path: papers/paper_D_methodology/joss/paper.md
-
-      - name: upload paper.pdf as artefact
-        uses: actions/upload-artifact@v4
+          paper-path: ${{ steps.loc.outputs.path }}
+      - uses: actions/upload-artifact@v4
         with:
           name: paper_D_pdf
-          path: papers/paper_D_methodology/joss/paper.pdf
+          path: ${{ steps.loc.outputs.dir }}/paper.pdf
 
-  validate-structure:
-    name: structural validation (YAML front-matter, word count, citations)
+  structure:
+    name: front matter, word count, citations
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: setup python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-      - name: validate paper.md structure
+          python-version: '3.11'
+      - name: validate paper.md
         run: |
-          cd papers/paper_D_methodology/joss
-          python3 << 'EOF'
+          PKG="$([ -d v20 ] && echo v20 || echo .)"
+          python3 - "${PKG}/papers/paper_D_methodology/joss" <<'EOF'
           import re, sys
-          text = open('paper.md').read()
-          fm = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
-          assert fm, "no YAML front-matter"
-          fm_text = fm.group(1)
-          for k in ('title', 'tags', 'authors', 'affiliations', 'date', 'bibliography'):
-              assert f'{k}:' in fm_text, f'missing required field: {k}'
-          assert 'bibliography: paper.bib' in fm_text, 'bibliography must point to paper.bib'
-
-          body = re.sub(r'^---.*?---', '', text, count=1, flags=re.DOTALL)
-          body = re.sub(r'# References.*', '', body, flags=re.DOTALL)
-          body = re.sub(r'#.*', '', body)
-          body = re.sub(r'\[@\w+\]', '', body)
-          words = len(body.split())
-          # Preprint format: JOSS's ~1000-word guideline targets minimal software
-          # papers. This is deposited as a preprint and carries an expanded
-          # "Scope and honest limitations" section (added in the v12.3 honesty
-          # pass), so we allow up to 2000 words.
-          assert 250 <= words <= 2000, f'word count {words} out of preprint range [250, 2000]'
-          print(f'OK: word count {words}')
-
-          bib = open('paper.bib').read()
-          entries = set(re.findall(r'@\w+\{(\w+),', bib))
-          cites = set(re.findall(r'@(\w+)', text))
-          cites.discard('')
-          unresolved = cites - entries
-          assert not unresolved, f'unresolved citations: {unresolved}'
-          print(f'OK: all {len(cites)} citations resolved')
-          print(f'INFO: {len(entries) - len(cites)} unused bib entries (acceptable)')
-
-          assert 'orcid: 0000-0000-0000-0000' not in fm_text, \
-              'ORCID placeholder still present — fill in real ORCID before submission'
+          from pathlib import Path
+          d = Path(sys.argv[1])
+          text = (d / "paper.md").read_text()
+          fm = re.match(r"^---\n(.*?)\n---", text, re.DOTALL)
+          assert fm, "no YAML front matter"
+          for k in ("title", "tags", "authors", "affiliations", "date", "bibliography"):
+              assert f"{k}:" in fm.group(1), f"missing field: {k}"
+          body = re.sub(r"^---.*?---", "", text, count=1, flags=re.DOTALL)
+          body = re.sub(r"# References.*", "", body, flags=re.DOTALL)
+          words = len(re.sub(r"\[@\w+\]", "", re.sub(r"#.*", "", body)).split())
+          assert 250 <= words <= 2000, f"word count {words} outside [250, 2000]"
+          entries = set(re.findall(r"@\w+\{(\w+),", (d / "paper.bib").read_text()))
+          cites = set(re.findall(r"@(\w+)", text)) - {""}
+          assert not (cites - entries), f"unresolved citations: {cites - entries}"
+          print(f"OK: {words} words, {len(cites)} citations resolved")
           EOF

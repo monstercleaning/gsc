@@ -136,17 +136,17 @@ Pass/fail outcomes drive tier or module promotion/demotion in the next framework
 
 The stack is implemented in Python 3 with minimal external dependencies. The core package (`gsc/`) requires only `numpy`, `scipy`, and `matplotlib`; many sub-modules run under Python's standard library alone for CI smoke-testing. There is no `pyproject.toml` — `requirements.txt` lists three lines. This minimalism is a design choice: dependency churn is the dominant source of "reproducibility decay" in research software, and a small dependency footprint extends the half-life of the reproducibility guarantees.
 
-The pre-registration scripts (`scripts/predictions_sign.py`, `scripts/predictions_score.py`, `scripts/predictions_scoreboard.py`) are stdlib-only.
+The pre-registration scripts (`pipelines/predictions_sign.py`, `pipelines/predictions_score.py`, `pipelines/predictions_scoreboard.py`) are stdlib-only.
 
 ### 4.2 Continuous integration
 
 The CI pipeline runs three layers:
 
-1. **Footprint audit**: `audit_repo_footprint.py --max-mb 10` enforces a strict repository size cap. Generated outputs (`results/`, `paper_assets/`, `.venv/`) are gitignored; inputs and small derived datasets are committed.
+1. **Register reproduction**: `bash pipelines/predictions_compute_all.sh --verify` recomputes every registered prediction twice and requires byte-identical agreement with the frozen register.
 
-2. **Stdlib-only test suite**: `python3 -m unittest discover -s tests -p test_*.py` runs the entire test base under Python's standard library alone, with numpy-tier tests skipped. This catches reproducibility bugs that would otherwise be masked by numpy's internal state.
+2. **Stdlib-only test suite**: `python3 -m unittest discover -s tests -p test_*.py` runs the entire test base under Python's standard library alone. This catches reproducibility bugs that would otherwise be masked by numpy's internal state.
 
-3. **Full-stack pipeline tests**: `bash scripts/bootstrap_venv.sh && .venv/bin/python -m unittest discover ...` runs the complete test suite with numpy/scipy/matplotlib installed.
+3. **Claim verification**: `python3 verification/verify_claims.py --include-slow` binds the documentation's load-bearing sentences to facts about the package, and `python3 verification/retro_test.py` proves the checker still catches a historical false claim.
 
 CI runs on every commit. Failure in any layer blocks merging to the canonical branch.
 
@@ -162,7 +162,7 @@ Each script returns exit code 0 on success and non-zero on any verification fail
 
 ## 5. Case Study: Pre-registered Predictions
 
-We demonstrate the workflow on the thirteen registered predictions of the GSC framework. Detailed prediction records are at `predictions_register/P1`–`P13`; here we summarise the methodological aspects.
+We demonstrate the workflow on the thirteen registered predictions of the GSC framework. Detailed prediction records are at `predictions/P1`–`P13`; here we summarise the methodological aspects.
 
 ### 5.1 P1 — BAO standard-ruler shift (DESI Year-3)
 
@@ -172,7 +172,7 @@ This is the **lowest-effort, highest-impact** near-term test: DESI Year-3 BAO re
 
 ### 5.2 P2 — 21cm Cosmic-Dawn signal
 
-The prediction is the globally-averaged differential brightness temperature `δT_b(ν)` over 70–200 MHz, distinct from ΛCDM through σ-evolution of recombination, Lyman-α coupling, and X-ray heating. Implementation depends on a new `gsc/cosmic_dawn/` module to be developed; pre-registration is staged for HERA Phase-II precision data (≈ 2027) and SKA-Low (≈ 2030).
+The prediction is the globally-averaged differential brightness temperature `δT_b(ν)` over 70–200 MHz, distinct from ΛCDM through σ-evolution of recombination, Lyman-α coupling, and X-ray heating. The registered implementation is a parametric pipeline (`pipelines/predictions_compute_P2.py`); the full cosmic-dawn module it was meant to become was never built (see OPEN_PROBLEMS.md); pre-registration is staged for HERA Phase-II precision data (≈ 2027) and SKA-Low (≈ 2030).
 
 ### 5.3 P3 — Neutron-lifetime environmental dependence
 
@@ -221,7 +221,7 @@ For other research programmes considering adoption:
 2. **Define the tier hierarchy first.** The layered architecture is what allows speculative extensions to coexist with disciplined empirical claims. Without it, the temptation is to either over-commit (everything is a primary claim) or under-commit (everything is "diagnostic only").
 3. **Pre-register early and often.** Each pre-registration tightens the model's empirical content. The discipline is most useful when it is routine rather than exceptional.
 4. **Treat scoring as appending, not editing.** The scorecard is added to the register; the original prediction is never modified. This is the operational guarantee of falsifiability.
-5. **Separate methodology and physics in publication.** A methodology paper independent of the specific physical claims is judged on its own merits, regardless of the physics outcome — but this separation is *not* an escape hatch: the case-study physics is reported honestly under the same framework-level kill condition (see `GSC_Framework.md` §12.2.1), and a methodology that could not survive scrutiny of its own central claim would not be worth submitting. We submit the methodology paper first.
+5. **Separate methodology and physics in publication.** A methodology paper independent of the specific physical claims is judged on its own merits, regardless of the physics outcome — but this separation is *not* an escape hatch: the case-study physics is reported honestly under the same framework-level kill condition (see `THEORY.md` kill condition K0 (THEORY.md)), and a methodology that could not survive scrutiny of its own central claim would not be worth submitting. We submit the methodology paper first.
 
 ## 8. Conclusions
 
@@ -231,7 +231,7 @@ The methodological contribution is independent of the truth or falsehood of GSC'
 
 ## Code availability
 
-The complete reproducibility stack is available at the project repository under MIT licence. The pre-registration register and per-prediction pipelines are at `predictions_register/` and `scripts/predictions_*`. Independent reproducers are welcome and encouraged to sign scorecards.
+The complete reproducibility stack is available at the project repository under MIT licence. The pre-registration register and per-prediction pipelines are at `predictions/` and `pipelines/predictions_*`. Independent reproducers are welcome and encouraged to sign scorecards.
 
 ## References
 

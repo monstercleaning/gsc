@@ -1,73 +1,53 @@
-"""Canonical σ(t) ansatz parameters — single source of truth (v12.5 revival).
+"""Canonical σ(t) ansatz parameters — the single source of truth for every pipeline.
 
 Why this module exists
 ----------------------
-The July 2026 cross-prediction consistency audit found that every prediction
-pipeline hard-coded its own copy of the scaling exponent (``p = 0.001`` in six
-separate DEFAULTS dicts). The values happened to agree by copy-paste, which
-means they were one careless edit away from silently fracturing the "one
-framework" claim into N independently tuned models. All pipelines now import
-the canonical value from here.
+An audit once found every prediction pipeline hard-coding its own copy of the
+scaling exponent. The copies agreed only by copy-paste, one careless edit away
+from silently splitting "one framework" into several independently tuned
+models. All pipelines import the canonical value from here.
 
-Provenance of the value (v12.5 re-centering, 2026-07; LLR leg corrected v12.6)
-------------------------------------------------------------------------------
-The v12.2 central value p = 1.0e-3 FAILS the registered DESI Year-1
-relative-shift test at z = +3.93 (rule: |z| < 3). A p-scan through the actual
-P1 pipeline against the registered DESI Y1 precision (0.26/147.09) gives:
+Provenance of the value
+-----------------------
+An earlier central value, p = 1.0e-3, fails the registered DESI Year-1
+relative-shift check at z = +3.93 (rule |z| < 3). A p-scan through the P1
+pipeline against the registered DESI Year-1 precision (0.26/147.09 Mpc) gives:
 
     survival boundary (|z| = 3):  p = 7.63e-4
     canonical choice:             p = 6.00e-4
-        -> Delta r_d / r_d = +0.417%  (z_Y1 = +2.36, PASSES with ~21% margin)
+        -> Delta r_d / r_d = +0.417%   (z_Y1 = +2.36, passes with ~21% margin)
 
-v12.6 correction: the v12.5 provenance also listed "Gdot/G ~ -8.4e-14 /yr
-(8.3x under the LLR bound 2±7e-13 /yr)". That LLR bound was stale (2007-era)
-and misattributed. Verified current bounds — LLR (Biskupek+ 2021,
-arXiv:2012.12032): (-5.0±9.6)e-15 /yr; MESSENGER (Genova+ 2018): |Gdot/G| <
-4e-14 /yr — EXCLUDE a locally observable G ∝ σ² running at this p (|z|≈8.2).
-Consequence: the lock-breaking T3 G-running module is dead at canonical
-coupling (Paper A §4.4); the universal core predicts exactly zero local
-Gdot/G (sudden-death clause, GSC_Framework.md §12.2.1b). LLR never
-legitimately constrained p itself — the binding constraint on p was and is
-the BAO channel, so the canonical value is unchanged by the correction.
+The value uses only already-public data, so it is a retrodictive constraint,
+not a prediction. It is deliberately near the boundary: p -> 0 would make the
+framework observationally identical to ΛCDM, and a theory kept alive by
+shrinking its observables to zero is not alive.
 
-The re-centering uses ONLY already-public data (DESI Y1) and is therefore
-a retrodictive constraint, not a prediction. The forward risk is carried by
-the pre-registered forward set (P1@DESI-full-survey, P2, P10, P12): at
-full-survey BAO precision the +0.417% shift is decisively testable.
-Framework-level kill condition: GSC_Framework.md §12.2.1.
-
-Honesty note: choosing p near the survival boundary maximises
-distinguishability; choosing p -> 0 would make the framework observationally
-identical to ΛCDM (T1 is conformally equivalent by construction). A theory
-kept alive by shrinking its observables to zero is not alive. The canonical
-value is deliberately large enough to die by.
+Open problem (OPEN_PROBLEMS.md, problem 1): which sector carries p. A universal
+rescaling is unobservable; the only reading that reproduces P1's shift (masses
+drifting relative to the Planck mass) implies a present-day drift of G in atomic
+units that lunar laser ranging (arXiv:2012.12032) excludes at about 9σ for the
+power law. Kill conditions: THEORY.md §8.
 """
 
 from __future__ import annotations
 
-# Canonical powerlaw exponent: σ(z) ∝ (1+z)^(-p).
+# Canonical power-law exponent: σ(z)/σ(0) = (1+z)^(-p).
 #
-# ROLE (clarified v12.7): this is the T2 METROLOGY exponent — the leading-order
-# modulation of atomic units relative to a flat-ΛCDM background. It is NOT an
-# expansion-history exponent. In particular it must never be passed to
-# gsc.measurement_model.PowerLawHistory (the v10.1 toy H = H0 (1+z)^p, in which
-# the same symbol is the whole expansion law): at p ~ 6e-4 that toy is a
-# coasting universe excluded at >100σ by the bundled DESI BAO. The v12.2–v12.6
-# P8 register entry was computed that way (superseded by P8 r2 in v12.7); the
-# "single source of truth" refactor of v12.5 wired P8 to this constant without
-# checking the role — a cross-pipeline physical-consistency failure that the
-# count/hash/schema checks could not see. The T2-consistent late-time history
-# is gsc.measurement_model.SigmaModulatedLCDMHistory, and CLAIMS.json now
-# forbids registered pipelines from instantiating PowerLawHistory.
+# ROLE: a METROLOGY exponent — a leading-order modulation of atomic units
+# relative to a flat-ΛCDM background. It is NOT an expansion-history exponent
+# and must never be passed to gsc.measurement_model.PowerLawHistory (the toy
+# H = H0 (1+z)^p, in which the same letter is the whole expansion law): at
+# p ~ 6e-4 that toy is a coasting universe excluded at >100σ by the package's
+# own DESI BAO data. The P8 revision r1 was computed that way and is superseded;
+# verification/claims.json forbids registered pipelines from using the toy.
 CANONICAL_P: float = 6.0e-4
 CANONICAL_P_ROLE: str = "sigma_metrology_exponent"  # not an expansion-history exponent
 
-# v12.2 historical central value, kept for provenance/reproduction of the
-# retrodictive Y1 scorecard analysis. Do NOT use in new pipelines.
+# The earlier central value (fails the registered DESI Year-1 check); kept only
+# to reproduce that historical check. Do NOT use in new pipelines.
 V12_2_HISTORICAL_P: float = 1.0e-3
 
 # Transition-ansatz companion parameters scale with the canonical value so the
-# three σ(z) families stay mutually comparable (high-z leg = 5x low-z leg, as
-# in the v12.2 registration).
+# σ(z) families stay comparable (high-redshift leg = 5x the low-redshift leg).
 CANONICAL_P_TRANSITION_LOW: float = CANONICAL_P
 CANONICAL_P_TRANSITION_HIGH: float = 5.0 * CANONICAL_P

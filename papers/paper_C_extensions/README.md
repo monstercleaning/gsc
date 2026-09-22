@@ -12,7 +12,7 @@
 
 ## Scope
 
-Paper C presents the T4 extension modules. Each module is presented with explicit kill-test, so a reviewer can reject one without affecting the others. Modules carried forward from v9.1, with corrections of dimensional errors documented in [archive/v9_1_deferred_ideas.md](../../archive/v9_1_deferred_ideas.md) (to be ported from `../GSC v9.1/DEFERRED_IDEAS_v10.md`).
+Paper C presents the T4 extension modules. Each module is presented with explicit kill-test, so a reviewer can reject one without affecting the others. Modules carried forward from earlier drafts, with corrections of dimensional errors documented in the project's earlier drafts (git history).
 
 ### Modules
 
@@ -71,13 +71,12 @@ This is the operational realization of the tier hierarchy at the module level.
 
 ## Key sources
 
-- Framework: [GSC_Framework.md §5–§8](../../GSC_Framework.md)
-- v9.1 deferred ideas (historical): [archive/v9_1_deferred_ideas.md](../../archive/) (to be ported)
-- Pre-registered predictions: [P6](../../predictions_register/P6_kz_defect_spectrum/), [P7](../../predictions_register/P7_gw_memory_clocks/)
+- Framework: [THEORY.md–§8](../../THEORY.md)
+- Pre-registered predictions: [P6](../../predictions/P06_kz_defect_spectrum/), [P7](../../predictions/P07_gw_memory_clocks/)
 
 ## Outstanding work
 
-- [ ] Port and dimension-check v9.1 vortex-DM material;
+- [ ] Port and dimension-check the vortex-DM material of earlier drafts;
 - [ ] KZ defect density: critical exponents at σ_*-crossing fixed point;
 - [ ] σ(x,t) field-theoretic action;
 - [ ] σ-QRF Hilbert-space construction sketch;

@@ -1,2 +1,2 @@
-# Package marker for GSC v11.0.0 active code.
+# GSC computational core: the modules the prediction register imports.
 

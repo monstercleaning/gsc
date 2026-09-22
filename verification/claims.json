@@ -1,0 +1,406 @@
+{
+  "schema": "claim_verification_v1",
+  "about": "Load-bearing prose claims of this package, each bound to a machine-checkable fact about the package. Run: python3 verification/verify_claims.py. The failure mode this exists to catch is ASSERTED + UNBACKED: the documents say it, the package does not do it.",
+  "claims": [
+    {
+      "id": "register-gpg-signed",
+      "claim": "The prediction register is cryptographically (GPG) signed; predictions are signed before their data are released.",
+      "detect": {
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^docs/claim_verification\\.md$"
+        ],
+        "exclude_note": "Meta-documentation about this very checker necessarily quotes the false claim it detects (e.g. when describing the negative control). Excluded for the same reason CHANGELOG.md is excluded from count claims: it is a record *about* claims, not an assertion. Noted honestly rather than silently hedged — the tool flagged its own documentation on first run.",
+        "pattern": "cryptographic(?:ally)?[- ]?(?:sign|signed|signing)|signed and (?:time-?stamped|dated)|signed before",
+        "unless": [
+          "not yet",
+          "never",
+          "not executed",
+          "unexecuted",
+          "pending",
+          "scaffold",
+          "overstat",
+          "was false",
+          "corrected",
+          "v12\\.3",
+          "honesty pass",
+          "is designed to",
+          "specified but",
+          "reference scaffold",
+          "future work",
+          "editorial note",
+          "simultaneously asserted",
+          "would have to",
+          "principal (?:remaining|piece)",
+          "dry-run",
+          "promoting the register",
+          "not GPG-signed",
+          "no entry carries",
+          "rather than",
+          "weaker than",
+          "signing protocol\\b",
+          "log format",
+          "toward a falsification",
+          "must be\\b",
+          "or equivalent",
+          "is one whose",
+          "requirements? (?:are|is)\\b",
+          "do \\*\\*not\\*\\* claim"
+        ],
+        "unless_note": "Hedges fall into three families: (a) explicit self-correction (overstat/was false/v12.3), (b) explicit non-execution (not yet/never/unexecuted/not GPG-signed), (c) normative or definitional statements of the protocol rather than assertions about this register ('must be', 'or equivalent', 'is one whose'). Family (c) is the subtle one: a protocol spec may legitimately describe signing it does not perform. Validated empirically: these hedges still fire on the historical v12.2 wording (see docs/claim_verification.md)."
+      },
+      "verify": {
+        "type": "frontmatter_field_nonempty",
+        "globs": [
+          "predictions/*/prediction.md"
+        ],
+        "fields": [
+          "signed_by",
+          "signature_timestamp",
+          "pipeline_output_hash"
+        ],
+        "min_count": 1
+      },
+      "note": "THE historical failure. At v12.2 this claim was asserted in the deposited JOSS paper while all ten register entries were unsigned scaffolds. This check is the automated form of the `grep SCAFFOLD` that finally caught it; verification/retro_test.sh proves the detector still fires on a verbatim copy of that historical prose."
+    },
+    {
+      "id": "prediction-count",
+      "claim": "The register contains N pre-registered predictions (N stated in prose must match the register).",
+      "verify": {
+        "type": "number_agreement",
+        "count_globs": [
+          "predictions/P*/prediction.md"
+        ],
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md",
+          "pipelines/*.sh"
+        ],
+        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+(?:central\\s+|initial\\s+|near-term\\s+|worked\\s+)?(?:pre-)?registered\\s+(?:numerical\\s+|cosmological\\s+)?predictions?\\b",
+        "unless": [
+          "eight \\(then ten\\)",
+          "grew",
+          "still said",
+          "v12\\.0\\)",
+          "initial predictions \\(v12\\.0\\)",
+          "^#"
+        ],
+        "min_sites": 1
+      },
+      "always": true,
+      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim."
+    },
+    {
+      "id": "paper-count",
+      "claim": "The publication strategy comprises N papers (N stated in prose must match papers/ on disk).",
+      "verify": {
+        "type": "number_agreement",
+        "count_dir_globs": [
+          "papers/paper_*"
+        ],
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^CHANGELOG\\.md$"
+        ],
+        "pattern": "\\b(two|three|four|five|six|\\d)[- ]paper (?:publication )?strategy\\b",
+        "min_sites": 1
+      },
+      "always": true,
+      "note": "Paper E was added after the 'four-paper strategy' phrasing was written. CHANGELOG.md is excluded by design: it is a historical record, and per project policy history is annotated rather than rewritten — a v12.0 entry describing the then-current four-paper strategy is accurate as history."
+    },
+    {
+      "id": "active-scorer-count",
+      "claim": "N scoring pipelines are active (N stated in prose must match scripts/predictions_score_P*.py).",
+      "verify": {
+        "type": "number_agreement",
+        "count_globs": [
+          "pipelines/predictions_score_P*.py"
+        ],
+        "globs": [
+          "*.md",
+          "docs/**/*.md"
+        ],
+        "pattern": "\\b(one|two|three|four|five|six|seven|eight|nine|ten|\\d{1,2})\\s+active\\s+scorers?\\b",
+        "min_sites": 1
+      },
+      "always": true
+    },
+    {
+      "id": "register-hash-integrity",
+      "claim": "Each scorecard records the SHA-256 of the pipeline output it scored, so the evidence chain is verifiable.",
+      "verify": {
+        "type": "sibling_hash_match",
+        "record_globs": [
+          "predictions/*/scorecard.md"
+        ],
+        "target_name": "pipeline_output.json"
+      },
+      "always": true,
+      "note": "Exact, mechanical: recomputes each hash. Catches a scorecard drifting from the output it claims to describe."
+    },
+    {
+      "id": "schema-validated-artifacts",
+      "claim": "Every major artifact is schema-validated; each pipeline output names its schema.",
+      "verify": {
+        "type": "json_field_resolves",
+        "globs": [
+          "predictions/*/pipeline_output.json"
+        ],
+        "field": "schema",
+        "resolves_to": "schemas/{value}.schema.json"
+      },
+      "always": true
+    },
+    {
+      "id": "no-unqualified-explained-anomaly",
+      "claim": "No surviving claim that GSC explains a real observational anomaly (all such claims were retracted).",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^archive/",
+          "^CHANGELOG\\.md$"
+        ],
+        "pattern": "GSC explains (?:a |the )?(?:real |unsolved |experimental )*anomaly|explains the (?:neutron|beam-trap) anomaly|first explained anomaly",
+        "unless": [
+          "no longer",
+          "retract",
+          "no \"explained",
+          "does not",
+          "cannot",
+          "was an artefact",
+          "claim is retracted"
+        ],
+        "max": 0
+      },
+      "always": true,
+      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced."
+    },
+    {
+      "id": "canonical-repo-pointer",
+      "claim": "Citation metadata points at the canonical public repository.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          "CITATION.cff"
+        ],
+        "pattern": "github\\.com/monstercleaning/gsc",
+        "min": 1
+      },
+      "always": true,
+      "note": "Guards against citing a private repo (a 404 for anyone following the citation), which was true until July 2026."
+    },
+    {
+      "id": "framework-documents-every-prediction",
+      "claim": "The theory document has a section for every prediction in the register.",
+      "verify": {
+        "type": "number_agreement",
+        "mode": "max",
+        "count_globs": [
+          "predictions/P*/prediction.md"
+        ],
+        "globs": [
+          "THEORY.md"
+        ],
+        "pattern": "###\\s+Prediction\\s+P(\\d{1,2})\\b"
+      },
+      "always": true,
+      "note": "The highest documented prediction number must equal the register size."
+    },
+    {
+      "id": "no-hardcoded-prediction-count-in-ci",
+      "claim": "CI asserts the register's prediction count without hardcoding it, so the assertion cannot drift as predictions are added.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          ".github/workflows/*.yml"
+        ],
+        "pattern": "assert\\s+len\\(d\\)\\s*==\\s*\\d+",
+        "max": 0
+      },
+      "always": true,
+      "note": "CI derives the expected count from predictions/P*/prediction.md; a hard-coded count once drifted and turned CI red."
+    },
+    {
+      "id": "package-workflows-layout-agnostic",
+      "claim": "The package's CI workflow contains no hard-wired version-directory working paths, so it runs unchanged whether the package sits at a repository root or in a subdirectory.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          ".github/workflows/*.yml"
+        ],
+        "pattern": "working-directory:\\s*v\\d|cd v\\d+(?:\\.\\d+)*\\b",
+        "max": 0
+      },
+      "always": true,
+      "note": "Two past incidents: a repository sync overwrote a customized workflow, and a layout-specific workflow silently stopped triggering. The workflow detects the package directory at runtime instead."
+    },
+    {
+      "id": "registered-pipelines-never-use-coasting-toy-history",
+      "claim": "No registered prediction pipeline instantiates the v10.1 coasting toy history (PowerLawHistory) — the canonical metrology exponent must never be used as an expansion-history exponent.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          "pipelines/predictions_compute_P*.py"
+        ],
+        "pattern": "PowerLawHistory\\(",
+        "max": 0
+      },
+      "always": true,
+      "note": "Added v12.7 after the P8 finding: the same symbol p fed two incompatible models (T2 metrology exponent in P1/P2/P4/P5/P9; whole expansion law in P8 via PowerLawHistory). At p = 6e-4 the latter is a coasting universe excluded at >100 sigma by the bundled DESI BAO. The count/hash/schema checks could not see a cross-pipeline PHYSICAL inconsistency; this claim encodes the one lesson mechanically. The P8 pipeline keeps a loudly-named provenance option that imports the toy lazily inside a function; the pattern above targets instantiation at module scope or in default code paths — the provenance path constructs the class through a local import and is exercised only by an explicit flag."
+    },
+    {
+      "id": "no-unqualified-drift-sign-flip-claim",
+      "claim": "No surviving claim that GSC predicts a redshift-drift sign flip / positive drift at z >= 2 relative to LCDM (withdrawn in v12.7: it was a toy-history artefact).",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^archive/",
+          "^CHANGELOG\\.md$"
+        ],
+        "pattern": "sign[- ]flip|positive (?:drift|sign)[^.\\n]{0,80}(?:all|throughout|across) |drift remains \\*?positive|predicted positive",
+        "unless": [
+          "superseded",
+          "withdrawn",
+          "artefact",
+          "artifact",
+          "toy",
+          "v12\\.7",
+          "r1\\b",
+          "historical",
+          "never a prediction",
+          "no longer",
+          "impossible",
+          "identical sign",
+          "same sign",
+          "both models",
+          "ΛCDM-degenerate",
+          "LCDM-degenerate",
+          "no framework-specific",
+          "flipping between",
+          "flips between"
+        ],
+        "max": 0
+      },
+      "always": true,
+      "note": "Keeps the v12.7 withdrawal enforced across every prose surface, the same way no-unqualified-explained-anomaly keeps the v12.1 retraction enforced."
+    },
+    {
+      "id": "standalone-paths-resolve",
+      "claim": "Every repository path mentioned in a living document exists in this package (no references to files of other versions or to moved files).",
+      "verify": {
+        "type": "path_references_resolve",
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^CHANGELOG\\.md$"
+        ],
+        "min_checked": 50,
+        "allow": [
+          "gsc/histories/",
+          "scripts/phase4_desi_bao_baseline.py",
+          "gsc/cosmic_dawn/",
+          "gsc/cosmic_dawn/recombination.py",
+          "gsc/cosmic_dawn/spin_temperature.py",
+          "gsc/cosmic_dawn/heating.py",
+          "gsc/neutron_lifetime/sigma_environmental.py",
+          "gsc/neutron_lifetime/beta_decay_rate.py",
+          "gsc/birefringence/sigma_photon_coupling.py",
+          "gsc/birefringence/integrator.py",
+          "gsc/strong_cp/theta_evolution.py",
+          "gsc/topological_defects/kz_density.py",
+          "gsc/topological_defects/string_network_evolution.py",
+          "gsc/topological_defects/gw_spectrum.py",
+          "gsc/gw_memory/sigma_response.py",
+          "gsc/gw_memory/atomic_frequency_shift.py",
+          "gsc/gw_memory/correlation_analysis.py"
+        ]
+      },
+      "always": true,
+      "note": "The standalone guarantee made mechanical. CHANGELOG.md is excluded because its prehistory section describes the past; verification/fixtures/ is out of scope by glob (verbatim historical text). The `allow` list enumerates, one by one, the modules that registered statements P1–P7 name in their pipeline sections but that were planned and never built; each such entry carries an editorial flag, and OPEN_PROBLEMS.md problem 6 records the issue. The list is explicit on purpose: a pattern-based exemption would be the over-hedging the negative control exists to prevent."
+    },
+    {
+      "id": "register-manifest-intact",
+      "claim": "predictions/MANIFEST.sha256 lists the SHA-256 of every registered statement and output, and every listed file matches.",
+      "verify": {
+        "type": "sha256_manifest",
+        "manifest": "predictions/MANIFEST.sha256",
+        "covers_globs": [
+          "predictions/*/prediction.md",
+          "predictions/*/pipeline_output*.json",
+          "predictions/*/observed_data.json"
+        ]
+      },
+      "always": true,
+      "note": "The manifest is what gets quoted in each public deposit's description, so the deposit's date independently timestamps the exact register content."
+    },
+    {
+      "id": "predictions-table-current",
+      "claim": "PREDICTIONS.md is exactly what the generator produces from the register (the table cannot drift from the data).",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": [
+          "python3",
+          "pipelines/make_predictions_table.py",
+          "--check"
+        ],
+        "timeout": 120
+      },
+      "always": true
+    },
+    {
+      "id": "deterministic-pipelines",
+      "claim": "Prediction pipelines are deterministic: identical inputs produce byte-identical output.",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": [
+          "bash",
+          "pipelines/predictions_compute_all.sh",
+          "--verify"
+        ],
+        "timeout": 900
+      },
+      "always": true,
+      "note": "Slow (runs every pipeline twice). Requires --include-slow."
+    }
+  ]
+}

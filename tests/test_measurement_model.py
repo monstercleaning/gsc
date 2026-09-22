@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 import sys
 
-# Allow running from repo root: add v11.0.0/ to import path.
+# Allow running from the package root.
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
 
 class TestSigmaModulatedLCDMHistory(unittest.TestCase):
-    """v12.7: the T2-consistent late-time history must stay LCDM-degenerate.
+    """The modulated late-time history used by P8 must stay LCDM-degenerate.
 
     Guards the P8 r2 finding: the canonical metrology exponent must produce a
     sub-percent modulation of LCDM with identical drift sign structure — never

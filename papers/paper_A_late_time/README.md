@@ -29,21 +29,15 @@ Paper A presents the freeze-frame measurement model and the canonical late-time 
 
 ## Key sources
 
-- Framework: [GSC_Framework.md §1, §2](../../GSC_Framework.md)
+- Framework: [THEORY.md, §2](../../THEORY.md)
 - Measurement model: [docs/measurement_model.md](../../docs/measurement_model.md)
-- Pipeline: [scripts/reproduce_late_time.sh](../../scripts/) (renamed from v11 reproduce_v10_1_late_time.sh)
-- Data: [data/sn/pantheon_plus_shoes/](../../data/sn/pantheon_plus_shoes/), [data/bao/](../../data/bao/)
-- Pre-registered prediction: [predictions_register/P1_bao_ruler_shift/](../../predictions_register/P1_bao_ruler_shift/)
+- Pipelines: [pipelines/](../../pipelines/) — the registered computations for P1 and P8, verified by `bash pipelines/predictions_compute_all.sh`
+- Data: [data/](../../data/) and the `observed_data.json` file of each register entry
+- Pre-registered prediction: [predictions/P01_bao_ruler_shift/](../../predictions/P01_bao_ruler_shift/)
 
 ## Build instructions
 
-When ready to compile:
-
-```bash
-bash ../../scripts/build_paper.sh paper_A
-```
-
-(target script to be implemented; currently a placeholder).
+The paper is Markdown ([main.md](main.md)); there is no build step yet.
 
 ## Outstanding work
 

@@ -21,9 +21,8 @@ These require explicit human verification and, where applicable, reproducible co
 No claim should ship without an executable check or artifact.
 
 Operationally:
-- map claim boundaries to checks in `docs/VERIFICATION_MATRIX.md`;
-- keep claim language within lint guardrails enforced by
-  `scripts/docs_claims_lint.py`;
+- bind every load-bearing claim to a machine check in `verification/claims.json`,
+  enforced by `verification/verify_claims.py`;
 - prefer schema-tagged outputs and deterministic replay paths.
 
 ## External disclosure guidance

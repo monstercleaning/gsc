@@ -13,7 +13,7 @@
 git clone https://github.com/monstercleaning/gsc.git
 cd gsc/v12.0.0
 python3 -m unittest discover -s tests -p 'test_*.py'
-bash scripts/predictions_compute_all.sh --verify
+bash pipelines/predictions_compute_all.sh --verify
 ```
 
 Confirm all 10 predictions compute deterministically and the 7 scorers produce expected outcomes (P1, P3, P4, P6 FAIL; P5, P9 PASS; P7 SUB-THRESHOLD).
@@ -79,7 +79,7 @@ print(f'word count: {len(body.split())} (limit 250-1000)')
    - **Repository URL**: `https://github.com/monstercleaning/gsc`
    - **Software version**: `v12.3.0` (or current release tag)
    - **Branch**: `main` (or whichever contains the release)
-   - **Submission target paper**: path `v12.0.0/papers/paper_D_methodology/joss/paper.md`
+   - **Submission target paper**: path `papers/paper_D_methodology/joss/paper.md`
 3. Submit. JOSS Editor-in-Chief will assign a topic editor within ~1 week.
 
 ## Expected review timeline

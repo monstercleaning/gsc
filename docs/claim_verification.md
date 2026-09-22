@@ -1,6 +1,6 @@
 # Claim verification: binding prose to executable facts
 
-**Status:** implemented and validated, July 2026. Tool: [`scripts/verify_claims.py`](../scripts/verify_claims.py). Manifest: [`CLAIMS.json`](../CLAIMS.json). Regression guard: [`scripts/verify_claims_retro_test.sh`](../scripts/verify_claims_retro_test.sh).
+**Status:** implemented and validated, July 2026. Tool: [`verification/verify_claims.py`](../verification/verify_claims.py). Manifest: [`verification/claims.json`](../verification/claims.json). Regression guard: [`verification/retro_test.py`](../verification/retro_test.py).
 
 ## 1. The gap this closes
 
@@ -15,7 +15,7 @@ That is not a hypothetical limitation. For twelve build cycles and through two h
 
 The lesson is not "we needed a better model." The decisive evidence was one line long and cost nothing. The failure was that no one had **bound the claim to a check**.
 
-`verify_claims.py` generalizes that binding. Each load-bearing claim in `CLAIMS.json` is paired with a predicate over the repository's real state. The failure mode it exists to catch is:
+`verify_claims.py` generalizes that binding. Each load-bearing claim in `verification/claims.json` is paired with a predicate over the repository's real state. The failure mode it exists to catch is:
 
 > **ASSERTED + UNBACKED** — the documentation says it; the artifact does not do it.
 
@@ -41,9 +41,9 @@ Detection is heuristic because prose varies and legitimate mentions exist: a cha
 | Finding | Originally found by | Retro-detected? | Evidence produced |
 |---|---|---|---|
 | Register described as cryptographically signed while all 10 entries were unsigned scaffolds | v12.3 hostile re-audit (survived 12 cycles + 2 audits) | **Yes** | **18 assertion sites** across 8 files vs `0/10` entries with a signature field |
-| Prose said "eight predictions"; register held ten | July 2026 execution audit (manual grep) | **Yes** | 3 sites (`GSC_Framework.md:34`, `paper_D/main.md:29,165`) vs counted 10 |
+| Prose said "eight predictions"; register held ten | July 2026 execution audit (manual grep) | **Yes** | 3 sites (`THEORY.md:34`, `paper_D/main.md:29,165`) vs counted 10 |
 | `CITATION.cff` pointed at the private repo — a 404 for anyone following the citation | July 2026 metadata pass | **Yes** | 0 matches for the canonical public repo |
-| `GSC_Framework.md` §9 documented only P1–P8 | July 2026 execution audit | **Yes** | highest enumerated section = P8 vs counted 10 |
+| `THEORY.md` §9 documented only P1–P8 | July 2026 execution audit | **Yes** | highest enumerated section = P8 vs counted 10 |
 
 **Runtime: 0.11–0.20 s** over 134 markdown files. Current tree: **exit 0, clean.**
 
@@ -56,7 +56,7 @@ Detection is heuristic because prose varies and legitimate mentions exist: a cha
 The validation experiment is not a one-off. It is wired in as a check that runs on every change to the tool or the manifest:
 
 ```bash
-bash scripts/verify_claims_retro_test.sh
+bash verification/retro_test.py
 ```
 
 It asserts that the current tool + manifest **still fail** against the historical v12.2 tree on the signing claim. This inverts the usual polarity of a test — it requires a *failure* to succeed — and that is precisely what defends against over-hedging:
@@ -83,11 +83,11 @@ The general lesson is worth stating, because it generalizes past this repository
 ## 5. Using and extending it
 
 ```bash
-python3 scripts/verify_claims.py                 # verify this package (exit 1 if any claim unbacked)
-python3 scripts/verify_claims.py --explain       # show every claim and its reasoning
-python3 scripts/verify_claims.py --include-slow  # also run subprocess facts (determinism)
-python3 scripts/verify_claims.py --format json   # machine-readable
-python3 scripts/verify_claims.py --root <tree>   # verify some other tree with this manifest
+python3 verification/verify_claims.py                 # verify this package (exit 1 if any claim unbacked)
+python3 verification/verify_claims.py --explain       # show every claim and its reasoning
+python3 verification/verify_claims.py --include-slow  # also run subprocess facts (determinism)
+python3 verification/verify_claims.py --format json   # machine-readable
+python3 verification/verify_claims.py --root <tree>   # verify some other tree with this manifest
 ```
 
 Adding a claim means answering one question: **what fact, checkable by a machine, would be false if this sentence were a lie?** Available predicates: `frontmatter_field_nonempty`, `path_count`, `number_agreement` (modes `each`/`max`, counts files or directories; optional `min_sites`), `sibling_hash_match`, `json_field_resolves`, `file_regex_count`, `command_exit_zero`.
@@ -104,4 +104,4 @@ If no such fact exists, that is itself worth knowing: the sentence is unfalsifia
 - **Covers 10 claims,** not every sentence in the package. It covers the load-bearing ones, chosen by hand.
 - **Cannot judge physics.** It verifies that documentation matches artifact. It says nothing about whether the cosmology is correct — that question is settled elsewhere and unfavourably (`docs/cosmic_acceleration_origins_findings.md`).
 - **Detection can be defeated** by novel phrasing no pattern anticipates. Anchors (`<!-- claim:id -->`) are the mitigation where exactness matters.
-- **This document is excluded from the signing-claim detector**, and the reason is worth recording: on its first run the tool flagged *this file*, because §4.1 quotes the historical false claim verbatim while explaining the negative control. Meta-documentation about a checker necessarily contains the strings the checker hunts. The exclusion is declared in `CLAIMS.json` (`exclude_note`) rather than hidden in a hedge pattern, so a reviewer can see and challenge it. A verifier that cannot be pointed at itself would be a poor advertisement for the idea; a verifier whose self-exclusions are undocumented would be worse.
+- **This document is excluded from the signing-claim detector**, and the reason is worth recording: on its first run the tool flagged *this file*, because §4.1 quotes the historical false claim verbatim while explaining the negative control. Meta-documentation about a checker necessarily contains the strings the checker hunts. The exclusion is declared in `verification/claims.json` (`exclude_note`) rather than hidden in a hedge pattern, so a reviewer can see and challenge it. A verifier that cannot be pointed at itself would be a poor advertisement for the idea; a verifier whose self-exclusions are undocumented would be worse.

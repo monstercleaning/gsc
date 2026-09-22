@@ -1,7 +1,7 @@
 """Early-time drag-scale helpers (E0 rd-only closure).
 
 This module provides a minimal, deterministic `r_d` computation for the
-v11.0.0 Option-2 bridge. The default method is a standard closed-form
+Sound-horizon helper. The default method is a standard closed-form
 Eisenstein & Hu (1998) approximation, implemented with stdlib `math` only.
 """
 

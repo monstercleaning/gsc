@@ -30,9 +30,9 @@ Paper B presents the physical mechanism for σ(t) evolution: the renormalization
 
 ## Key sources
 
-- Framework: [GSC_Framework.md §3, §3.5, §4](../../GSC_Framework.md)
-- Bridges: [bridges/phase4_qcd_gravity_bridge_v0.1/](../../bridges/) (to be promoted from diagnostic-only annex to T3 candidate derivation)
-- Pre-registered predictions: [P4](../../predictions_register/P4_cmb_birefringence/), [P5](../../predictions_register/P5_strong_cp_bound/)
+- Framework: [THEORY.md, §3.5, §4](../../THEORY.md)
+- The QCD–gravity bridge diagnostic of earlier drafts is not part of this package; the hadronic route to σ_* is retired ([THEORY.md](../../THEORY.md) §5.1–5.2).
+- Pre-registered predictions: [P4](../../predictions/P04_cmb_birefringence/), [P5](../../predictions/P05_strong_cp_bound/)
 
 ## Outstanding work
 

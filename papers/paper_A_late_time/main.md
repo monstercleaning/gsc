@@ -112,7 +112,7 @@ $$\log L = -\tfrac{1}{2}\left[\chi^2_{SN} + \chi^2_{BAO} + \chi^2_{CMB-priors} +
 
 with the σ(t) ansatz parameters as free variables, the absolute SN luminosity ΔM as a profiled nuisance parameter, and the BAO sound-horizon r_d profiled when not jointly tied to the early-time bridge.
 
-The fit is implemented in `gsc/fit.py` with options for grid search and adaptive Metropolis–Hastings sampling. Results are reproducible against the deterministic pipeline `scripts/late_time_fit_grid.py`.
+The fits summarized below were produced with the project's earlier fitting code (grid search and adaptive Metropolis–Hastings sampling), which is not part of the current package; the values are illustrative, as the note under the table states.
 
 ### 4.3 Results summary
 
@@ -132,13 +132,15 @@ The key empirical finding is that all three ansatz families admit parameter regi
 
 ### 4.4 Local Ġ/G: corrected bounds, a module exclusion, and the surviving exact null
 
+> **Flagged — open problem 1 ([OPEN_PROBLEMS.md](../../OPEN_PROBLEMS.md)).** Item 1 below states that lunar laser ranging does not constrain p. A later consistency review found that the only physical reading reproducing P1's shift (particle masses drifting relative to the Planck mass) implies a present-day drift that lunar ranging excludes at about 9σ for the canonical power law. The statement is kept as written pending the joint CMB + BAO analysis described there.
+
 **(This section was substantially corrected in v12.6. Versions through v12.5 compared against a stale, misattributed LLR bound; the corrected comparison changes the verdict. The correction is disclosed inline rather than silently rewritten.)**
 
 Two distinct readings of "Ġ/G in GSC" must be separated first.
 
 **Reading 1 — the lock-preserving (universal) core.** Under the strict geometric lock (§2.3), the coherent package m ∝ σ⁻¹, G ∝ σ², r ∝ σ leaves every local dimensionless observable invariant. This includes lunar laser ranging: the lunar orbit co-scales adiabatically with the atomic units used to range it (with GM ∝ σ and angular-momentum adiabatic invariance, the semi-major axis scales as a ∝ σ, so ω_orb/ω_atom and the range expressed in atomic light-times are both σ-invariant). The T1/T2 universal core therefore predicts a locally measured Ġ/G of **exactly zero** — a parameter-free null, not a small number.
 
-**Reading 2 — a lock-breaking G-sector module.** A nonzero locally observable rate arises only if the G-sector runs *against* the local units, i.e. a non-universal G(σ) module — a T3 extension in the framework's classification (GSC_Framework.md §3.3.1), carrying the pre-registered T3 kill-channel "solar-system bounds on Ġ/G" (§3.4). For an unscreened G ∝ σ² module the rate is
+**Reading 2 — a lock-breaking G-sector module.** A nonzero locally observable rate arises only if the G-sector runs *against* the local units, i.e. a non-universal G(σ) module — a T3 extension in the framework's classification (THEORY.md), carrying the pre-registered T3 kill-channel "solar-system bounds on Ġ/G" (§3.4). For an unscreened G ∝ σ² module the rate is
 
 $$\dot G/G = 2 \cdot \dot\sigma/\sigma = -2 p H_0 \approx -8.4 \times 10^{-14} \text{ /yr} \quad (p = 6\times10^{-4}).$$
 
@@ -150,7 +152,7 @@ $$\dot G/G = 2 \cdot \dot\sigma/\sigma = -2 p H_0 \approx -8.4 \times 10^{-14} \
 | MESSENGER Mercury ranging | \|Ġ/G\| < 4 × 10⁻¹⁴ /yr (after solar-mass-loss modeling) | Genova et al. 2018, Nat. Commun. 9, 289 |
 | LLR (previous analysis) | (7.1 ± 7.6) × 10⁻¹⁴ /yr | Hofmann & Müller 2018 |
 
-Against these, the unscreened G ∝ σ² module at canonical p is **excluded**: |z| ≈ 8.2 relative to Biskupek et al. 2021; a factor ~2.1 above the MESSENGER bound; −2.0σ even against Hofmann & Müller 2018 alone. Under the register's |z| < 3 convention, a locally observable running G ∝ σ^{2λ} must satisfy λ ≲ 0.40 at the canonical p. This exclusion was available in data published 2018–2021 — the correction is ours, not the data's. (The Phase-4 bridge artifact had in fact already recorded unscreened local dG/dt as KILLED — check KT-004 in `bridges/phase4_qcd_gravity_bridge_v0.1/golden/` — and this section stood in unnoticed contradiction with that verdict until the v12.6 reconciliation.)
+Against these, the unscreened G ∝ σ² module at canonical p is **excluded**: |z| ≈ 8.2 relative to Biskupek et al. 2021; a factor ~2.1 above the MESSENGER bound; −2.0σ even against Hofmann & Müller 2018 alone. Under the register's |z| < 3 convention, a locally observable running G ∝ σ^{2λ} must satisfy λ ≲ 0.40 at the canonical p. This exclusion was available in data published 2018–2021 — the correction is ours, not the data's. (An earlier diagnostic of the project had in fact already recorded unscreened local dG/dt as excluded, and this section stood in unnoticed contradiction with that verdict until the correction.)
 
 Consequences:
 
@@ -158,7 +160,7 @@ Consequences:
 
 2. **The exclusion resolves an internal contradiction in the module's favor of the lock.** §2.3 (local invariance, including LLR) and the pre-v12.6 §4.4 (locally observable −2pH₀) could not both be right. The data decided: the lock-preserving reading survives; the locally observable G ∝ σ² running is dead at canonical coupling, exactly as the T3 kill-test §3.4 anticipated as a possibility.
 
-3. **The local-null family becomes a sharpened T1 prediction with a sudden-death clause** (GSC_Framework.md §12.2.1b): GSC's forward claim at every upcoming instrument in this family — BepiColombo Mercury-orbiter ranging (orbit insertion late 2026), the NGLR-1 next-generation retroreflector already emplaced in Mare Crisium and ranged by LRO-LOLA, ESA's MoonLIGHT (2026 delivery) — is **exactly zero**, with no adjustable parameter. A robust nonzero local Ġ/G, or a robust secular drift of any local clock ratio (P9; P12 for the nuclear/electronic sector), falsifies the universal-scaling core outright.
+3. **The local-null family becomes a sharpened T1 prediction with a sudden-death clause** (THEORY.md, kill condition K2): GSC's forward claim at every upcoming instrument in this family — BepiColombo Mercury-orbiter ranging (orbit insertion late 2026), the NGLR-1 next-generation retroreflector already emplaced in Mare Crisium and ranged by LRO-LOLA, ESA's MoonLIGHT (2026 delivery) — is **exactly zero**, with no adjustable parameter. A robust nonzero local Ġ/G, or a robust secular drift of any local clock ratio (P9; P12 for the nuclear/electronic sector), falsifies the universal-scaling core outright.
 
 4. **The transition and rg_profile ansatz families** inherit the same structure: their T2 parameters are constrained by BAO, and any locally observable G-running they might be paired with is bounded by the same λ ≲ 0.40.
 
@@ -166,7 +168,7 @@ The decisive-falsification combination for the T2 ansatz quoted in §5.1 is corr
 
 ## 5. Pre-registered Predictions
 
-We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions_register/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040) and, since the v12.7 revision (P8 r2), is a ΛCDM-degenerate consistency test rather than a discriminator. The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
+We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040) and, since the v12.7 revision (P8 r2), is a ΛCDM-degenerate consistency test rather than a discriminator. The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
 
 ### 5.1 P1 — BAO standard-ruler shift in DESI Year-3
 
@@ -178,9 +180,11 @@ For the transition ansatz (p_low = 6×10⁻⁴, p_high = 3×10⁻³), the predic
 
 Testability, with verified survey numbers: DESI DR1 aggregate isotropic BAO precision is ~0.52% (arXiv:2404.03000); DR2 — which contains the Year-3 data and is public since 2025-03 — reaches ~0.24% (arXiv:2503.14742), at which the canonical shift sits at ~1.7σ; the full five-year release is forecast at ~0.2% (arXiv:2402.14070), ~2.1σ. The BAO channel alone is therefore *indicative but not decisive* at the canonical p; decisive falsification requires the combination (BAO + P2 21cm amplitude + the P11/P12 sudden-death nulls; LLR was removed from this list in v12.6 — with corrected bounds it constrains the excluded G-running module, not p, see §4.4). We state this plainly rather than overclaim a single-channel kill.
 
-A v12.6 diagnostic (`docs/analysis_w0wa_rd_shift.md`) adds two refinements with numbers. First, in a *joint* BAO+compressed-CMB fit the shift is nearly invisible: it is absorbed as a +0.42% H₀ bias (the CMB pins ω_m, not h), so the σ-estimates above apply to the registered configuration — r_d compared against an externally calibrated value — not to joint fits; external metrology closure (megamasers, next-generation lunar ranging) is what breaks the degeneracy. Second, the residual the shift *does* leave in a w₀wₐCDM fit is displaced from ΛCDM in the same direction as the current DESI/Dovekie preference (collinear to ~8°) but carries under 1% of that signal's χ² evidence: the GSC shift does not explain the DESI hint, and the DESI hint does not (yet) constrain the GSC shift.
+A v12.6 diagnostic (`analyses/w0wa_rd_shift.md`) adds two refinements with numbers. First, in a *joint* BAO+compressed-CMB fit the shift is nearly invisible: it is absorbed as a +0.42% H₀ bias (the CMB pins ω_m, not h), so the σ-estimates above apply to the registered configuration — r_d compared against an externally calibrated value — not to joint fits; external metrology closure (megamasers, next-generation lunar ranging) is what breaks the degeneracy. Second, the residual the shift *does* leave in a w₀wₐCDM fit is displaced from ΛCDM in the same direction as the current DESI/Dovekie preference (collinear to ~8°) but carries under 1% of that signal's χ² evidence: the GSC shift does not explain the DESI hint, and the DESI hint does not (yet) constrain the GSC shift.
 
 ### 5.2 P8 — Sandage–Loeb redshift drift (revision r2, v12.7)
+
+> **Flagged — open problem 2 ([OPEN_PROBLEMS.md](../../OPEN_PROBLEMS.md)).** The history described below as "the same leading-order metrology modulation P1 applies" moves the BAO ruler in the opposite direction to P1 when computed consistently. The conclusion — the drift is indistinguishable from ΛCDM's — holds in every coherent reading.
 
 **Correction disclosed inline.** Through v12.6 this section reported that, for the canonical ansatz, the drift "remains positive across the registered grid, in contrast to ΛCDM's sign flip near z ≈ 1.7", with a GSC–ΛCDM differential of ~25 cm/s at z = 5. Those numbers were produced with the v10.1 toy history H(z) = H₀(1+z)^p, in which the T2 metrology exponent p was misread as the whole expansion law. At p = 6×10⁻⁴ that is a coasting universe (H ≈ H₀), which the DESI DR1 BAO points bundled with this package exclude at +7σ (D_M/r_d, z = 0.51) to +128σ (D_H/r_d, z = 2.33) — and which contradicts §2's own statement that T1 is conformally equivalent to ΛCDM. The project's archived Roadmap v2.8 (§E.1) had in fact already shown that positive drift at z > 2 is impossible for standard matter content (it requires Ω_m0 < 1/(1+z)); the v12 layout lost that result. The r1 output is retained in the register as `pipeline_output.r1_superseded.json`.
 
@@ -220,7 +224,7 @@ A reader who endorses the present paper is *not* implicitly endorsing the σ-axi
 
 ### 6.3 Reproducibility and pre-registration
 
-All numerical results in this paper are produced by deterministic pipelines under the project repository. Each reported figure carries a deterministic provenance record; each pre-registered prediction carries a SHA-256 hash of the corresponding pipeline output as of the registration date. The signing protocol is documented in `docs/pre_registration.md`; the pre-registration register is at `predictions_register/`.
+All numerical results in this paper are produced by deterministic pipelines under the project repository. Each reported figure carries a deterministic provenance record; each pre-registered prediction carries a SHA-256 hash of the corresponding pipeline output as of the registration date. The signing protocol is documented in `METHOD.md`; the pre-registration register is at `predictions/`.
 
 Independent reproducers are encouraged to verify that the prediction pipelines produce byte-identical output when re-run from the registered inputs. The methodology paper (Paper D) discusses the design considerations.
 
@@ -232,7 +236,7 @@ The framework's empirical content is decided by upcoming observations rather tha
 
 ## Code availability
 
-The complete reproducibility stack, including the pre-registration register and per-prediction pipelines, is at the project repository under MIT licence. The canonical late-time fit is reproduced by `bash scripts/reproduce_late_time.sh`.
+The complete reproducibility stack, including the pre-registration register and per-prediction pipelines, is at the project repository under MIT licence. Every registered prediction is recomputed and checked against its registered output by `bash pipelines/predictions_compute_all.sh`.
 
 ## Acknowledgments
 

@@ -1,128 +1,58 @@
-# GSC — Gravitational Structural Collapse
+# GSC — a self-checking scale-covariant cosmology
 
-A scale-covariant cosmology framework with renormalization-group-running gravity, organized as a layered theory with pre-registered falsification.
+**What it is.** Standard cosmology says the universe expands. GSC asks what follows if instead matter shrinks —
+atoms, rulers and clocks all together — against a nearly static background. Mathematically the two descriptions
+are equivalent (C. Wetterich, 2013; the idea goes back to Canuto et al., 1977), so the question is whether matter's
+"shrinking" has any dynamics of its own that could be measured. GSC turns that question into thirteen registered
+predictions, each with a pipeline, a scoring rule fixed in advance, and a condition under which the framework
+admits it is wrong.
 
-## What this is
+**Honest status.** Most predictions that could distinguish GSC from standard cosmology are either excluded by
+data or indistinguishable from it. The one registered deviation — a +0.417% shift of the cosmic "BAO ruler" — is
+under review for physical consistency ([OPEN_PROBLEMS.md](OPEN_PROBLEMS.md)). What stands independently of the
+physics is the method: a prediction register that cannot be quietly edited, and a checker that fails the build
+whenever the documents claim something the package does not do.
 
-GSC reframes cosmological redshift via a *freeze-frame measurement model*: an approximately static background spacetime in which a universal scale field σ(t) drives the coherent shrinkage of bound matter (atoms, hadrons), while local dimensionless physics remains invariant. The mechanism for σ-evolution is renormalization-group flow of the gravitational coupling near a critical scale σ_*.
+## Start here
 
-The framework is structured as four explicit tiers of epistemic confidence (kinematic frame → phenomenological fit → physical ansatz → speculative extensions), each with independent kill-tests, so that failure of any one module does not propagate to the others.
+| If you want to… | Read |
+|---|---|
+| Understand the theory and its current status | [THEORY.md](THEORY.md) |
+| See every prediction and its verdict | [PREDICTIONS.md](PREDICTIONS.md) |
+| Understand how predictions are registered, scored and verified | [METHOD.md](METHOD.md) |
+| See the known problems | [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) |
+| Read the papers | [papers/](papers/) |
+| See what changed and why | [CHANGELOG.md](CHANGELOG.md) |
 
-## Read first
+## Check it yourself
 
-- [GSC_Framework.md](GSC_Framework.md) — the canonical theoretical framework (start here).
-- [docs/measurement_model.md](docs/measurement_model.md) — the freeze-frame measurement model (operational core).
-- [docs/tier_hierarchy.md](docs/tier_hierarchy.md) — the architectural principle.
-- [docs/pre_registration.md](docs/pre_registration.md) — pre-registration of predictions.
-
-## Repository layout
-
-```
-.
-├── GSC_Framework.md             # Canonical theoretical framework
-├── README.md                    # This file
-├── CITATION.cff                 # Citation metadata
-├── LICENSE                      # MIT
-├── requirements.txt             # Python dependencies
-├── artifacts.json               # Machine-readable artifact manifest
-│
-├── gsc/                         # Core Python package
-├── scripts/                     # Reproducible pipelines + CLI entry points
-├── tests/                       # Unit and integration tests
-├── schemas/                     # JSON schemas for artifact validation
-├── data/                        # Committed datasets (SN, BAO, CMB, drift, structure)
-├── docs/                        # Documentation, claim ledger, roadmaps
-├── bridges/                     # Optional bridge packages (early-time, structure, QCD)
-├── containers/                  # Reproducible container definitions
-├── papers/                      # Multi-paper publication scaffold (A, B, C, D)
-├── predictions_register/        # Pre-registered predictions and scoring pipelines
-└── archive/                     # Historical framework drafts (provenance only)
-```
-
-## Quick start
-
-Self-contained Python environment:
+Python 3.9 or newer, no other dependencies.
 
 ```bash
-bash scripts/bootstrap_venv.sh
-.venv/bin/python -m unittest discover -s tests -p 'test_*.py' -v
+python3 -m unittest discover -s tests            # unit tests
+python3 verification/verify_claims.py            # do the documents tell the truth about the package?
+bash pipelines/predictions_compute_all.sh        # recompute every prediction and score it
 ```
 
-Stdlib-only smoke (no extra deps):
+## Layout
 
-```bash
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+```
+README.md  THEORY.md  PREDICTIONS.md  METHOD.md  OPEN_PROBLEMS.md  CHANGELOG.md
+predictions/   one folder per prediction: statement, frozen output, data, scorecard
+pipelines/     the code that computes and scores each prediction
+gsc/           the small computational core the pipelines use
+verification/  the claim checker, its manifest and its negative control
+analyses/      diagnostic studies (not registered predictions)
+papers/        papers A–E
+docs/          design notes and research notes
+data/          the one external dataset the analyses read
+schemas/       JSON schemas of the pipeline outputs
+tests/         unit tests
 ```
 
-Reproducible late-time pipeline (fit + figures):
+## Citation and licence
 
-```bash
-bash scripts/reproduce_late_time.sh
-```
-
-Repository footprint audit (size cap):
-
-```bash
-python3 scripts/audit_repo_footprint.py --max-mb 10
-```
-
-## The five-paper publication strategy
-
-The framework is published as five layered papers, isolated by tier:
-
-| Paper | Scope | Tier | Venue |
-|---|---|---|---|
-| **A** | [Late-time empirical fit](papers/paper_A_late_time/) | T1+T2 | Phys. Rev. D / JCAP |
-| **B** | [RG mechanism for G(σ)](papers/paper_B_rg_mechanism/) | T3 | CQG / JHEP |
-| **C** | [Speculative extensions](papers/paper_C_extensions/) | T4 | Foundations of Physics / Universe |
-| **D** | [Methodology and software](papers/paper_D_methodology/) | meta | JOSS / SoftwareX |
-| **E** | [Self-falsification case report](papers/paper_E_self_falsification/) | meta | Meta-science / commentary |
-
-Adverse review of any one layer does not invalidate the others.
-
-## Pre-registered predictions
-
-Eleven central predictions are documented in [predictions_register/](predictions_register/), each with:
-
-- The numerical prediction and its uncertainty band;
-- The σ(t) ansatz and parameter values producing it;
-- The relevant scripts and pipeline invocation;
-- The target observational dataset and its expected release date;
-- A SHA-256 hash of the corresponding scoring pipeline output.
-
-The register converts the reproducibility infrastructure from a defensive tool into a falsification engine.
-
-## Reproducibility guarantees
-
-- Schema validation on all major artifacts.
-- Deterministic ordering and lineage DAGs.
-- Portable-content lints (no machine-local paths in shared bundles).
-- Operator scripts: `release_candidate_check.sh`, `arxiv_preflight_check.sh`, `operator_one_button.sh`.
-- CI: stdlib-only smoke + full-stack pipeline tests.
-- Strict repository footprint cap.
-
-## Honesty statement
-
-GSC's core kinematic claim — the conformal equivalence between FRW expansion and freeze-frame shrinkage — is not original to this work. See **C. Wetterich, *A Universe without expansion*, arXiv:1303.6878 (2013)** and the asymptotic-safety lineage in [GSC_Framework.md §0](GSC_Framework.md). GSC is positioned as a specific RG-crossover realization within this lineage, with the original contributions being:
-
-1. The layered-tier architecture and pre-registration discipline;
-2. The σ-axion equivalence proposal for the strong CP problem;
-3. The Kibble–Zurek derivation of vortex-DM density from σ_*-crossing;
-4. Multiple specific near-term observational predictions (BAO ruler shift, 21cm Cosmic-Dawn, neutron-lifetime environmental dependence, GW-memory atomic-clock signatures);
-5. The deterministic reproducibility stack as a publishable contribution in its own right.
-
-Limitations and open problems are listed explicitly in [GSC_Framework.md §12](GSC_Framework.md).
-
-## Contributing and feedback
-
-- Open issues in the repository for technical questions or replication problems.
-- Pre-registered predictions are append-only; once committed and dated (git history), they cannot be modified. (GPG signing is specified but not yet executed — see `docs/pre_registration.md`.)
-- Cross-checks against alternative scale-covariant frameworks are welcome.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
-
-## Citation
-
-See [CITATION.cff](CITATION.cff).
+Dimitar Baev (ORCID 0009-0009-7812-9203), independent researcher; founder of Monster Cleaning Ltd.
+(https://monstercleaning.com). See [CITATION.cff](CITATION.cff). Code under the MIT licence ([LICENSE](LICENSE));
+papers under CC BY 4.0. Developed with AI assistance and audited by adversarial multi-model review
+([docs/AI_USAGE_AND_VALIDATION_POLICY.md](docs/AI_USAGE_AND_VALIDATION_POLICY.md)).

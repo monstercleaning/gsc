@@ -1,0 +1,31 @@
+name: ci
+
+# Tests, claim verification (including slow checks), and the negative control.
+# Layout-agnostic: the package directory is detected at runtime, so the same
+# file works at a repository root or in a subdirectory.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: tests, claims, negative control
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: locate the package
+        run: echo "PKG=$([ -d v20 ] && echo v20 || echo .)" >> "$GITHUB_ENV"
+      - name: unit tests
+        run: cd "$PKG" && python3 -m unittest discover -s tests -v
+      - name: claims are backed by the package (including slow checks)
+        run: cd "$PKG" && python3 verification/verify_claims.py --include-slow --explain
+      - name: the checker still catches the historical false claim
+        run: cd "$PKG" && python3 verification/retro_test.py
+      - name: every pipeline reproduces its registered output
+        run: cd "$PKG" && bash pipelines/predictions_compute_all.sh --verify

@@ -171,7 +171,7 @@ p ∈ [10⁻⁵, 10⁻¹], holding all other parameters at literature-grounded
 defaults (Section 4.2). The results are reproducible via:
 
 ```bash
-python3 scripts/predictions_joint_constraint_scan.py
+python3 pipelines/predictions_joint_constraint_scan.py
 ```
 
 ### 4.2 Literature-grounded coupling defaults
@@ -327,10 +327,10 @@ The σ-F̃F coupling is a *non-universal* coupling — it acts on the F̃F opera
 
 For full reproducibility, the predictions discussed in this paper are pre-registered in the project repository:
 
-- `predictions_register/P4_cmb_birefringence/` — current scorecard records FAIL at 2σ vs Planck 2020.
-- `predictions_register/P5_strong_cp_bound/` — current scorecard records PASS within 50% of n2EDM bound.
+- `predictions/P04_cmb_birefringence/` — current scorecard records FAIL at 2σ vs Planck 2020.
+- `predictions/P05_strong_cp_bound/` — current scorecard records PASS within 50% of n2EDM bound.
 
-The deterministic compute pipelines are at `scripts/predictions_compute_P4.py` and `predictions_compute_P5.py`. Both produce byte-identical output for byte-identical input, with SHA-256 hashes recorded in the corresponding `prediction.md` front-matter at signing time.
+The deterministic compute pipelines are at `pipelines/predictions_compute_P4.py` and `predictions_compute_P5.py`. Both produce byte-identical output for byte-identical input, with SHA-256 hashes recorded in the corresponding `prediction.md` front-matter at signing time.
 
 The methodology paper (Paper D) describes the operational protocol; the empirical paper (Paper A) develops the late-time σ(t) calibration on which the present paper builds.
 
@@ -349,10 +349,10 @@ If the FRG calculation produces a coupling structure consistent with both channe
 The full reproducibility stack, including the σ(z) ansatz catalogue, the σ-F̃F coupling pipeline, and the pre-registered predictions, is at the project repository under MIT licence. The reproducer for the predictions in this paper is
 
 ```bash
-python3 scripts/predictions_compute_P4.py     # CMB birefringence pipeline
-python3 scripts/predictions_compute_P5.py     # strong-CP θ-trajectory pipeline
-python3 scripts/predictions_score_P4.py       # vs Planck 2020 hint
-python3 scripts/predictions_score_P5.py       # vs n2EDM 2020 bound
+python3 pipelines/predictions_compute_P4.py     # CMB birefringence pipeline
+python3 pipelines/predictions_compute_P5.py     # strong-CP θ-trajectory pipeline
+python3 pipelines/predictions_score_P4.py       # vs Planck 2020 hint
+python3 pipelines/predictions_score_P5.py       # vs n2EDM 2020 bound
 ```
 
 ## Acknowledgments

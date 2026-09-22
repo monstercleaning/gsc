@@ -1,6 +1,6 @@
-"""GSC v11.0.0 — Measurement Model helpers (Option 2: freeze-frame).
+"""GSC measurement-model helpers (freeze frame).
 
-This module implements the minimal "measurement model" layer for v11.0.0:
+This module implements the minimal "measurement model" layer:
 - definition of redshift in terms of the universal matter scale σ(t)
 - Sandage–Loeb redshift drift (kinematic relation; late-time scope)
 - baseline distance relations under a conservative reciprocity assumption
@@ -208,7 +208,7 @@ def distance_modulus_flat(
     n: int = 10_000,
     pc: float = PC_SI,
 ) -> float:
-    """Distance modulus μ(z) using the v11.0.0 baseline D_L(z) hypothesis."""
+    """Distance modulus μ(z) using the baseline D_L(z) hypothesis."""
     return distance_modulus_from_D_L(D_L_m=D_L_flat(z=z, H_of_z=H_of_z, c=c, n=n), pc=pc)
 
 
@@ -216,12 +216,12 @@ def distance_modulus_flat(
 class PowerLawHistory:
     """Late-time toy history used in v10.1: H(z)=H0(1+z)^p.
 
-    WARNING (v12.7): here ``p`` is the WHOLE expansion law, not the T2 metrology
+    WARNING: here ``p`` is the WHOLE expansion law, not the T2 metrology
     exponent of ``gsc.canonical_params.CANONICAL_P`` (sigma(z)/sigma(0) = (1+z)^-p).
     Feeding the canonical p ~ 6e-4 into this class yields H(z) ~ H0 — a coasting
-    universe excluded at >100 sigma by the bundled DESI BAO data. The v12.2–v12.6
-    P8 register entry was computed exactly that way and is superseded (P8 r2).
-    Registered pipelines must not instantiate this class (CLAIMS.json:
+    universe excluded at >100 sigma by the bundled DESI BAO data. The P8 revision r1
+    was computed that way and is superseded by revision r2.
+    Registered pipelines must not instantiate this class (verification/claims.json:
     ``registered-pipelines-never-use-coasting-toy-history``). Diagnostic/bridge
     scripts that explore genuine power-law histories (p ~ 1) may still use it.
     """
@@ -239,15 +239,19 @@ class PowerLawHistory:
 
 @dataclass(frozen=True)
 class SigmaModulatedLCDMHistory:
-    """T2-consistent late-time history: flat LCDM with the leading-order sigma-metrology
-    modulation, H(z) = H_LCDM(z) * (1+z)^p.
+    """Modulated late-time history used by P8 revision r2: flat LCDM times (1+z)^p,
+    H(z) = H_LCDM(z) * (1+z)^p.
+
+    FLAGGED (OPEN_PROBLEMS.md, problem 2): this is an illustrative O(p) modulation, not the
+    reading that reproduces P1 — computed consistently it moves the BAO ruler the opposite way.
+    Its use in P8 is sound only for the conclusion drawn there (drift indistinguishable from LCDM).
 
     ``p`` is the T2 metrology exponent (``CANONICAL_P``; sigma(z)/sigma(0) = (1+z)^-p) —
     the same object P1 applies to the BAO ruler. This is the framework's actual late-time
     claim (T1 conformal equivalence to LCDM plus a sub-percent T2 metrology effect): at the
     canonical p = 6e-4 every late-time kinematic observable, redshift drift included, differs
-    from LCDM by well under 1%, and the drift's sign structure is LCDM's. Added in v12.7 to
-    replace the coasting toy in P8. Radiation is ignored (post-recombination kinematics),
+    from LCDM by well under 1%, and the drift's sign structure is LCDM's. It replaced the coasting
+    toy in P8. Radiation is ignored (post-recombination kinematics),
     matching FlatLambdaCDMHistory.
     """
 
@@ -271,7 +275,7 @@ class SigmaModulatedLCDMHistory:
 class FlatLambdaCDMHistory:
     """Late-time flat ΛCDM reference history.
 
-    We ignore radiation at v11.0.0 scope (post-recombination kinematics).
+    Radiation is ignored (post-recombination kinematics).
     """
 
     H0: float
@@ -297,7 +301,7 @@ class GSCTransitionHistory:
     - for z > z_transition: switch to a power-law E(z) = E(z_t) * ((1+z)/(1+z_t))^p
 
     This keeps low-z distances close to ΛCDM while allowing a different
-    high-z drift behavior, without making early-universe claims at v11.0.0.
+    high-z drift behavior, without making early-universe claims.
     """
 
     H0: float
@@ -338,12 +342,12 @@ class GSCTransitionHistory:
 
 
 def universal_scaling_exponents() -> dict[str, float]:
-    """Return the v11.0.0 universal-scaling exponents as powers of σ.
+    """Return the universal-scaling exponents as powers of σ.
 
     Convention: if a quantity X scales as X ∝ σ^p, return p.
 
     These encode the measurement-model axioms documented in:
-      v11.0.0/docs/measurement_model.md
+      docs/measurement_model.md
 
     Notes:
     - These helpers are used only in lock-tests and docs translation.

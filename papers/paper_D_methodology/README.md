@@ -23,7 +23,7 @@ Paper D documents the deterministic, schema-validated, lineage-tracked reproduci
    - Case 1: BAO ruler-shift prediction (Paper A);
    - Case 2: CMB birefringence consistency check (Paper B);
    - Case 3: 21cm Cosmic Dawn (extension);
-5. Software stack: gsc/, scripts/, schemas/, tests/, CI;
+5. Software stack: gsc/, pipelines/, verification/, schemas/, tests/, CI;
 6. Operator workflows: one-button reproduction, release-candidate gating;
 7. Limitations and design trade-offs;
 8. Adoption notes for other projects.
@@ -32,12 +32,12 @@ Paper D documents the deterministic, schema-validated, lineage-tracked reproduci
 
 - This paper documents the infrastructure that lives in this very repository:
   - [gsc/](../../gsc/) — core Python package;
-  - [scripts/](../../scripts/) — pipeline entry points;
+  - [pipelines/](../../pipelines/) — pipeline entry points;
   - [schemas/](../../schemas/) — JSON schemas;
   - [tests/](../../tests/) — unit and integration tests;
-  - [predictions_register/](../../predictions_register/) — pre-registration register;
-  - [docs/pre_registration.md](../../docs/pre_registration.md) — pre-registration methodology;
-  - [docs/tier_hierarchy.md](../../docs/tier_hierarchy.md) — tier-based publication architecture.
+  - [predictions/](../../predictions/) — pre-registration register;
+  - [METHOD.md](../../METHOD.md) — pre-registration methodology;
+  - [THEORY.md](../../THEORY.md) §2 — the tier architecture.
 
 ## Why this paper matters
 
