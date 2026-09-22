@@ -425,14 +425,15 @@
           "gsc/gw_memory/atomic_frequency_shift.py",
           "gsc/gw_memory/correlation_analysis.py",
           "GSC_Framework.md",
-          "paper.pdf"
+          "paper.pdf",
+          "paper.tex"
         ],
         "name_index_exclude": [
           "^verification/fixtures/"
         ]
       },
       "always": true,
-      "note": "The standalone guarantee made mechanical. CHANGELOG.md is excluded because its prehistory section describes the past; verification/fixtures/ is out of scope by glob (verbatim historical text). The `allow` list enumerates, one by one, the modules that registered statements P1–P7 name in their pipeline sections but that were planned and never built; each such entry carries an editorial flag, and OPEN_PROBLEMS.md problem 6 records the issue. The list is explicit on purpose: a pattern-based exemption would be the over-hedging the negative control exists to prevent. Two further entries are not modules: GSC_Framework.md is the former name of THEORY.md, listed on purpose in METHOD.md's table of names used inside frozen records, and paper.pdf is the output of the JOSS render that papers/paper_D_methodology/joss/SUBMIT.md tells the reader how to produce. Bare file names are checked since the 20.0 deposit review, which found three operator scripts, a dependency file and a linter named in living documents but absent from the package."
+      "note": "The standalone guarantee made mechanical. CHANGELOG.md is excluded because its prehistory section describes the past; verification/fixtures/ is out of scope by glob (verbatim historical text). The `allow` list enumerates, one by one, the modules that registered statements P1–P7 name in their pipeline sections but that were planned and never built; each such entry carries an editorial flag, and OPEN_PROBLEMS.md problem 6 records the issue. The list is explicit on purpose: a pattern-based exemption would be the over-hedging the negative control exists to prevent. Two further entries are not modules: GSC_Framework.md is the former name of THEORY.md, listed on purpose in METHOD.md's table of names used inside frozen records, and paper.pdf and paper.tex are outputs of the renders that papers/paper_D_methodology/joss/SUBMIT.md tells the reader how to produce. Bare file names are checked since the 20.0 deposit review, which found three operator scripts, a dependency file and a linter named in living documents but absent from the package."
     },
     {
       "id": "register-manifest-intact",

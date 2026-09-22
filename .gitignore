@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 .DS_Store
 *.cov.npz
+# preprint render byproducts (papers/paper_D_methodology/joss/render_preprint.py)
+papers/paper_D_methodology/joss/paper.tex
+papers/paper_D_methodology/joss/paper.pdf
+papers/paper_D_methodology/joss/paper.aux
+papers/paper_D_methodology/joss/paper.log
+papers/paper_D_methodology/joss/paper.out

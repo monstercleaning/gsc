@@ -48,7 +48,13 @@ earlier release. Each finding was corrected and became a mechanical check:
 - The long-form methodology paper repeated the retracted neutron-lifetime explanation, called predictions signed,
   and still said "ten" predictions. Paper B and the frontier notes still gave P4's old FAIL and its pre-revival
   numbers; they now quote the registered output (a weak PASS at the |z| < 3 rule, a FAIL at 2σ).
-- An uncited, unverifiable reference ("in preparation") was removed from the long-form methodology paper.
+- An uncited, unverifiable reference ("in preparation") was removed from the long-form methodology paper. In
+  the JOSS paper, blind analysis was attributed to the LIGO Open Science Center, described as publishing
+  "pre-registered analysis pipelines"; it now cites the review by Klein and Roodman (2005).
+- The deposited preprint PDF was built by a script outside the package, with its own hard-coded reference list
+  that could drift from `paper.bib`, and did. The renderer is now part of the package
+  (`papers/paper_D_methodology/joss/render_preprint.py`), reads the citations and references from `paper.bib`,
+  and fails on an unknown citation key.
 - The checker's own manifest said the outputs were schema-validated while the check only resolved schema file
   names. Every registered output is now validated by a standard-library validator that agrees with the reference
   implementation on every output and several hundred mutated variants, and that rejects schema keywords it does

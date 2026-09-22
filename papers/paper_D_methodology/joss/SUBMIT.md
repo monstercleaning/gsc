@@ -58,7 +58,18 @@ docker run --rm \
 
 This produces `paper.pdf` and `paper.crossref.xml`.
 
-### Option 3: Local Python structural validation (no rendering)
+### Option 3: Local preprint render (no DRAFT watermark)
+
+The preprint deposited on Zenodo and figshare is built by a standard-library renderer that takes the citations and
+the reference list from `paper.bib` (an unknown citation key is an error). It needs xelatex:
+
+```bash
+python3 papers/paper_D_methodology/joss/render_preprint.py --pdf
+```
+
+This writes `paper.tex` and `paper.pdf` next to `paper.md` (both ignored by git).
+
+### Option 4: Local Python structural validation (no rendering)
 
 A stdlib-only check that does not produce a PDF but verifies submission structure:
 
