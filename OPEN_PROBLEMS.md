@@ -66,8 +66,12 @@ address the Hubble tension.
 
 **What remains distinct.** Only early-universe gravity. At the P1-tuned value, G in atomic units is 0.992 of
 today's at recombination and 0.970 at nucleosynthesis, tied by ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Compressed CMB
-priors cannot see this; a full-spectrum CMB fit and tighter nucleosynthesis bounds can. No registered prediction
-tests it (problem 5).
+priors cannot see this; a full-spectrum CMB fit and tighter nucleosynthesis bounds can. The closest published
+measurement, Lamine et al. (A&A 2025, doi:10.1051/0004-6361/202451602, arXiv:2407.15553), determines a single
+cosmological G from Planck PR4, DESI DR1 BAO and the nucleosynthesis helium fraction to 1.8%, consistent with the
+laboratory value. The variant's shifts are of the same order, so current data do not decisively test it, and a
+few-fold improvement would. The comparison is indicative only: that analysis assumes one G at all epochs, while
+the variant's G changes with time. No registered prediction tests it (problem 5).
 
 ## 2. The P8 revision r2 history is not "the same p as P1"
 
