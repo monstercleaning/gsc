@@ -110,12 +110,12 @@ into H₀ once the cosmological parameters are refitted (the flag on P1 explains
 spuriously at fine enough precision). The kill-condition scope and threshold are left unchanged.
 
 What still distinguishes the GSC core from ΛCDM is therefore weaker gravity, relative to atoms, in the early
-universe (problem 1), plus the T3 θ-trajectory behind P5. None of the forward tests probes the first. Under K0.3
-it counts only if registered as a new forward prediction. Until then, the registered late-time content of the
-core is observationally indistinguishable from ΛCDM, which is the situation the conformal-reduction clause K0.4
-addresses. It does not fire outright, because the early-gravity content and the T3 and T4 modules remain
-testable. The early-gravity prediction was registered as P14 in v20.1, under K0.3, with the clause that its
-failure triggers K0.4. The earlier text of this problem recorded the possibility before the computation was done.
+universe (problem 1), plus the T3 θ-trajectory behind P5. None of K0's five forward tests probes the first; under
+K0.3 it counts only as a new forward prediction, and it was registered as P14 in v20.1, with the clause that its
+failure triggers K0.4. The registered late-time content of the core is observationally indistinguishable from
+ΛCDM, which is the situation the conformal-reduction clause K0.4 addresses. It does not fire, because P14 and the
+T3 and T4 modules remain testable. The earlier text of this problem recorded the possibility before the
+computation was done.
 
 ## 6. Registered pipeline descriptions name modules that were never built
 
