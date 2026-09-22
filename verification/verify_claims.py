@@ -3,10 +3,10 @@
 
 Motivation
 ----------
-This repository already ships a claims linter (`docs_claims_lint.py`). It can
-express exactly two things: "this phrase must not appear" (BANNED_RULES) and
-"this phrase must appear" (REQUIRED_RULES). Both are pure text checks. Neither
-can ask whether a sentence is *true*.
+Earlier releases of this project shipped a claims linter (not carried into this
+package). It could express exactly two things: "this phrase must not appear" and
+"this phrase must appear". Both are pure text checks. Neither can ask whether a
+sentence is *true*.
 
 That gap is not hypothetical. For twelve build cycles this project's headline
 methodological claim — that its predictions were "cryptographically signed and
@@ -23,7 +23,7 @@ the artifact does not do it.
 Design notes (honest about what is exact and what is heuristic)
 --------------------------------------------------------------
 * The **verification** side is exact and mechanical: file counts, front-matter
-  field values, hash comparisons, schema resolution, subprocess exit codes.
+  field values, hash comparisons, JSON-schema validation, subprocess exit codes.
 * The **detection** side ("is this claim actually being asserted?") is
   heuristic when it relies on regex, because prose varies and legitimate
   mentions exist (a changelog documenting a retraction, a paper quoting its own
@@ -256,7 +256,10 @@ def _v_number_agreement(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
                 continue
             if any(u.search(line) for u in unless):
                 continue
-            stated = _word_to_int(m.group(1))
+            # A pattern may offer alternative phrasings, each with its own capture
+            # group; the stated number is whichever group matched.
+            token = next((g for g in m.groups() if g is not None), None)
+            stated = _word_to_int(token) if token is not None else None
             if stated is None:
                 continue
             site = "%s:%d" % (p.relative_to(root).as_posix(), i)
@@ -341,6 +344,224 @@ def _v_json_field_resolves(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]
     return True, "all %d '%s' value(s) resolve to real files" % (ok_n, field_name)
 
 
+# JSON Schema validation, standard library only. It implements the draft-07
+# keywords this package's schemas use. Any other validation keyword is reported
+# as an error rather than skipped: a validator that ignores what it does not
+# understand passes anything, which is the failure this tool exists to prevent.
+_SCHEMA_ANNOTATIONS = frozenset({"$schema", "$id", "$comment", "title", "description",
+                                 "default", "examples"})
+_SCHEMA_KEYWORDS = frozenset({"type", "enum", "const", "required", "properties",
+                              "additionalProperties", "items", "minItems", "maxItems",
+                              "minimum", "maximum", "exclusiveMinimum", "exclusiveMaximum",
+                              "pattern", "minLength", "maxLength"})
+_JSON_TYPES = {
+    "object": lambda v: isinstance(v, dict),
+    "array": lambda v: isinstance(v, list),
+    "string": lambda v: isinstance(v, str),
+    "number": lambda v: isinstance(v, (int, float)) and not isinstance(v, bool),
+    "integer": lambda v: ((isinstance(v, int) and not isinstance(v, bool))
+                          or (isinstance(v, float) and v.is_integer())),
+    "boolean": lambda v: isinstance(v, bool),
+    "null": lambda v: v is None,
+}
+_NUMERIC_BOUNDS = (
+    ("minimum", lambda x, b: x < b),
+    ("maximum", lambda x, b: x > b),
+    ("exclusiveMinimum", lambda x, b: x <= b),
+    ("exclusiveMaximum", lambda x, b: x >= b),
+)
+
+
+def _is_json_number(v: Any) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def _json_equal(a: Any, b: Any) -> bool:
+    """Equality as JSON defines it: 1 equals 1.0, but true does not equal 1."""
+    if isinstance(a, bool) or isinstance(b, bool):
+        return isinstance(a, bool) and isinstance(b, bool) and a == b
+    if _is_json_number(a) and _is_json_number(b):
+        return a == b
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(_json_equal(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(_json_equal(x, y) for x, y in zip(a, b))
+    return type(a) is type(b) and a == b
+
+
+def schema_errors(data: Any, schema: Any, path: str = "$") -> List[str]:
+    """Return every violation of `schema` by `data` (an empty list means valid)."""
+    errors: List[str] = []
+    _schema_check(data, schema, path, errors)
+    return errors
+
+
+def _schema_check(data: Any, schema: Any, path: str, errors: List[str]) -> None:
+    if schema is True:
+        return
+    if schema is False:
+        errors.append("%s: no value is allowed here" % path)
+        return
+    if not isinstance(schema, dict):
+        errors.append("%s: schema node is not an object" % path)
+        return
+    unknown = sorted(set(schema) - _SCHEMA_KEYWORDS - _SCHEMA_ANNOTATIONS)
+    if unknown:
+        errors.append("%s: unsupported schema keyword(s) %s" % (path, ", ".join(unknown)))
+        return
+    if "type" in schema:
+        names = schema["type"] if isinstance(schema["type"], list) else [schema["type"]]
+        unsupported = [n for n in names if n not in _JSON_TYPES]
+        if unsupported:
+            errors.append("%s: unsupported type name(s) %s" % (path, unsupported))
+            return
+        if not any(_JSON_TYPES[n](data) for n in names):
+            errors.append("%s: expected %s, got %s" % (path, "/".join(names), type(data).__name__))
+            return
+    if "const" in schema and not _json_equal(data, schema["const"]):
+        errors.append("%s: expected %r, got %r" % (path, schema["const"], data))
+    if "enum" in schema and not any(_json_equal(data, v) for v in schema["enum"]):
+        errors.append("%s: %r is not one of %r" % (path, data, schema["enum"]))
+    for key, violates in _NUMERIC_BOUNDS:
+        if key not in schema:
+            continue
+        if not _is_json_number(schema[key]):
+            errors.append("%s: %s must be a number in draft-07" % (path, key))
+        elif _is_json_number(data) and violates(data, schema[key]):
+            errors.append("%s: %r violates %s %r" % (path, data, key, schema[key]))
+    if isinstance(data, str):
+        if "pattern" in schema and not re.search(schema["pattern"], data):
+            errors.append("%s: %r does not match /%s/" % (path, data, schema["pattern"]))
+        if "minLength" in schema and len(data) < schema["minLength"]:
+            errors.append("%s: shorter than minLength %d" % (path, schema["minLength"]))
+        if "maxLength" in schema and len(data) > schema["maxLength"]:
+            errors.append("%s: longer than maxLength %d" % (path, schema["maxLength"]))
+    if isinstance(data, list):
+        if "minItems" in schema and len(data) < schema["minItems"]:
+            errors.append("%s: %d item(s), minItems %d" % (path, len(data), schema["minItems"]))
+        if "maxItems" in schema and len(data) > schema["maxItems"]:
+            errors.append("%s: %d item(s), maxItems %d" % (path, len(data), schema["maxItems"]))
+        if "items" in schema:
+            if isinstance(schema["items"], list):
+                errors.append("%s: tuple-form 'items' is not supported" % path)
+            else:
+                for i, item in enumerate(data):
+                    _schema_check(item, schema["items"], "%s[%d]" % (path, i), errors)
+    if isinstance(data, dict):
+        for key in schema.get("required", []):
+            if key not in data:
+                errors.append("%s: missing required key %r" % (path, key))
+        properties = schema.get("properties", {})
+        extra = schema.get("additionalProperties", True)
+        for key in sorted(data):
+            _schema_check(data[key], properties.get(key, extra), "%s.%s" % (path, key), errors)
+
+
+def _v_json_schema_valid(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
+    """Every matching JSON file must name a schema that exists, and validate against it."""
+    files = _iter_files(root, spec["globs"], spec.get("exclude", []))
+    template = spec.get("resolves_to", "schemas/{value}.schema.json")
+    field_name = spec.get("field", "schema")
+    problems: List[str] = []
+    valid = 0
+    for p in files:
+        rel = p.relative_to(root).as_posix()
+        try:
+            data = json.loads(_read(p))
+        except json.JSONDecodeError as exc:
+            problems.append("%s: invalid JSON (%s)" % (rel, exc.msg))
+            continue
+        name = data.get(field_name) if isinstance(data, dict) else None
+        if not name:
+            problems.append("%s: no '%s' field" % (rel, field_name))
+            continue
+        schema_path = root / template.replace("{value}", str(name))
+        if not schema_path.is_file():
+            problems.append("%s: '%s' names a missing schema" % (rel, name))
+            continue
+        try:
+            schema = json.loads(_read(schema_path))
+        except json.JSONDecodeError as exc:
+            problems.append("%s: schema %s is invalid JSON (%s)" % (rel, name, exc.msg))
+            continue
+        errs = schema_errors(data, schema)
+        if errs:
+            problems.append("%s: %d violation(s), first: %s" % (rel, len(errs), errs[0]))
+        else:
+            valid += 1
+    if problems:
+        return False, "%d of %d file(s) fail: %s" % (len(problems), len(files), "; ".join(problems[:3]))
+    min_checked = int(spec.get("min_checked", 1))
+    if valid < min_checked:
+        return False, ("only %d file(s) validated (floor %d): the glob is not seeing the outputs"
+                       % (valid, min_checked))
+    return True, "all %d file(s) validate against the JSON schema they name" % valid
+
+
+_VERDICT_WORD = re.compile(r"\b(PASS|FAIL|SUB-THRESHOLD)(?:ES|ED|S)?\b")
+_PREDICTION_ID = re.compile(r"\bP0*(\d{1,2})\b")
+_VERDICT_BOUNDARY = re.compile(r"[.;(|]\s|[;(]")
+_VERDICT_TARGET_AFTER = re.compile(r"^\s+(?:on|for|in)\s+P0*(\d{1,2})\b")
+
+
+def stated_verdicts(line: str) -> List[Tuple[int, str]]:
+    """(prediction number, verdict) pairs that a line of prose states.
+
+    A verdict word applies to every prediction ID between it and the previous
+    clause boundary or verdict word ("P1, P3 FAIL; P5 PASS"), and to an ID that
+    directly follows it ("a FAIL on P4"). Verdict words are matched in capitals
+    only, which is how the documents state verdicts.
+    """
+    out: List[Tuple[int, str]] = []
+    last = 0
+    for v in _VERDICT_WORD.finditer(line):
+        segment = line[last:v.start()]
+        cut = max((m.end() for m in _VERDICT_BOUNDARY.finditer(segment)), default=0)
+        ids = [int(x) for x in _PREDICTION_ID.findall(segment[cut:])]
+        after = _VERDICT_TARGET_AFTER.match(line[v.end():])
+        if after:
+            ids.append(int(after.group(1)))
+        out.extend((i, v.group(1)) for i in ids)
+        last = v.end()
+    return out
+
+
+def _v_verdict_agreement(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
+    """Every verdict a document states for a prediction must match its scorecard."""
+    rx_outcome = re.compile(spec.get("outcome_pattern",
+                                     r"\*\*Outcome:\*\*\s*\S+\s+(PASS|FAIL|SUB-THRESHOLD)"))
+    rx_id = re.compile(spec.get("id_pattern", r"^P0*(\d+)_"))
+    actual: Dict[int, str] = {}
+    for card in _iter_files(root, spec["scorecard_globs"]):
+        m_id, m_out = rx_id.match(card.parent.name), rx_outcome.search(_read(card))
+        if m_id and m_out:
+            actual[int(m_id.group(1))] = m_out.group(1)
+    if not actual:
+        return False, "no scorecard with a readable outcome was found"
+    unless = [re.compile(u, re.IGNORECASE) for u in spec.get("unless", [])]
+    checked = 0
+    mismatches: List[str] = []
+    for p in _iter_files(root, spec["globs"], spec.get("exclude", [])):
+        for i, line in enumerate(_read(p).splitlines(), 1):
+            if any(u.search(line) for u in unless):
+                continue
+            for pid, said in stated_verdicts(line):
+                if pid not in actual:
+                    continue
+                checked += 1
+                if said != actual[pid]:
+                    mismatches.append("%s:%d says P%d %s (scorecard: %s)"
+                                      % (p.relative_to(root).as_posix(), i, pid, said, actual[pid]))
+    if mismatches:
+        return False, "%d of %d stated verdict(s) disagree: %s" % (
+            len(mismatches), checked, "; ".join(mismatches[:4]))
+    min_sites = int(spec.get("min_sites", 1))
+    if checked < min_sites:
+        return False, ("only %d stated verdict(s) found (floor %d): the pattern is not seeing the prose"
+                       % (checked, min_sites))
+    return True, "all %d stated verdict(s) match the scorecards" % checked
+
+
 def _v_file_regex_count(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
     rx = re.compile(spec["pattern"], re.IGNORECASE if spec.get("ignore_case", True) else 0)
     unless = [re.compile(u, re.IGNORECASE) for u in spec.get("unless", [])]
@@ -369,8 +590,10 @@ def _v_command_exit_zero(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
     return proc.returncode == 0, "exit=%d; last line: %s" % (proc.returncode, tail[0][:120])
 
 
-_PATH_EXT = r"(?:md|py|sh|json|csv|yml|yaml|cff|txt|pdf|bib|tex|sha256)"
+_EXTENSIONS = "md|py|sh|json|csv|yml|yaml|cff|txt|pdf|bib|tex|sha256|toml"
+_PATH_EXT = r"(?:" + _EXTENSIONS + r")"
 _PATH_TOKEN = re.compile(r"^(?:\./)?[A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-]+)*(?:\." + _PATH_EXT + r"|/)$")
+_BARE_NAME = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.\-]*\." + _PATH_EXT + r"$")
 _MD_LINK = re.compile(r"\]\(([^)\s]+)\)")
 _BACKTICK = re.compile(r"`([^`\n]+)`")
 
@@ -379,7 +602,9 @@ def _path_candidates(text: str):
     """Yield (token, kind) for path-like references in a markdown document.
 
     kind 'link' = markdown link target (resolved relative to the file);
-    kind 'root' = backticked or code-block path (resolved relative to the root).
+    kind 'root' = backticked or code-block path (resolved relative to the root);
+    kind 'name' = backticked or code-block bare file name such as `run_all.sh`
+                  (it must exist somewhere in the package).
     """
     for m in _MD_LINK.finditer(text):
         target = m.group(1).split("#", 1)[0]
@@ -395,23 +620,36 @@ def _path_candidates(text: str):
             tok = tok.strip("\"'(),;:")
             if "/" in tok and _PATH_TOKEN.match(tok) and not tok.startswith(("path/to", "/")):
                 yield tok, "root"
+            elif "/" not in tok and _BARE_NAME.match(tok):
+                yield tok, "name"
 
 
 def _v_path_references_resolve(root: Path, spec: Dict[str, Any]) -> Tuple[bool, str]:
     """Every repository path a living document mentions must exist in this tree.
 
     Catches stale paths and references to files that live only in other versions
-    of the project — the standalone guarantee, made mechanical.
+    of the project — the standalone guarantee, made mechanical. A bare file name
+    (no directory) must match a file somewhere in the tree, outside the
+    directories listed in `name_index_exclude` (verbatim historical fixtures
+    would otherwise make old file names look present).
     """
     dangling: List[str] = []
     allowed = set(spec.get("allow", []))
+    index_exclude = spec.get("name_index_exclude", [])
+    names = {q.name for q in root.rglob("*")
+             if q.is_file() and ".git" not in q.parts
+             and not any(re.search(x, q.relative_to(root).as_posix()) for x in index_exclude)}
     checked = 0
     for p in _iter_files(root, spec["globs"], spec.get("exclude", [])):
         for tok, kind in _path_candidates(_read(p)):
             checked += 1
             if tok in allowed:
                 continue
-            if not (p.parent / tok).exists() and not (root / tok).exists():
+            if kind == "name":
+                present = tok in names
+            else:
+                present = (p.parent / tok).exists() or (root / tok).exists()
+            if not present:
                 dangling.append("%s -> %s" % (p.relative_to(root).as_posix(), tok))
     min_checked = int(spec.get("min_checked", 1))
     if checked < min_checked:
@@ -448,6 +686,8 @@ VERIFIERS = {
     "number_agreement": _v_number_agreement,
     "sibling_hash_match": _v_sibling_hash_match,
     "json_field_resolves": _v_json_field_resolves,
+    "json_schema_valid": _v_json_schema_valid,
+    "verdict_agreement": _v_verdict_agreement,
     "file_regex_count": _v_file_regex_count,
     "command_exit_zero": _v_command_exit_zero,
     "path_references_resolve": _v_path_references_resolve,

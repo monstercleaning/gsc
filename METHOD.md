@@ -66,10 +66,13 @@ assert something the package does not do. It checks, among other things:
 
 - that every prose count (predictions, papers, active scorers) matches the register, with a liveness floor so a
   pattern that matches nothing fails instead of passing vacuously;
-- that every scorecard's recorded hash matches the output it scored, and every output names a real schema;
+- that every scorecard's recorded hash matches the output it scored, and every registered output validates against
+  the JSON schema it names;
+- that every verdict a document states for a prediction matches its scorecard;
 - that withdrawn claims (an explained anomaly, a drift sign flip, a signed register) do not reappear unhedged;
 - that no registered pipeline uses the coasting toy history with the canonical parameter;
-- that every repository path mentioned in a living document exists (the package is standalone);
+- that every file a living document names, by path or by bare file name, exists in the package (the package is
+  standalone);
 - that the register manifest and the prediction table are current;
 - with `--include-slow`, that every pipeline reproduces its registered output and is deterministic.
 

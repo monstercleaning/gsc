@@ -4,7 +4,7 @@
 
 ## 1. The gap this closes
 
-This repository already shipped a claims linter (`docs_claims_lint.py`, 28 KB). Its entire expressive range is two rule families:
+Earlier releases of this project shipped a claims linter (28 KB; not carried into this package). Its entire expressive range is two rule families:
 
 - `BANNED_RULES` — this phrase must **not** appear;
 - `REQUIRED_RULES` — this phrase **must** appear in this file.
@@ -56,7 +56,7 @@ Detection is heuristic because prose varies and legitimate mentions exist: a cha
 The validation experiment is not a one-off. It is wired in as a check that runs on every change to the tool or the manifest:
 
 ```bash
-bash verification/retro_test.py
+python3 verification/retro_test.py
 ```
 
 It asserts that the current tool + manifest **still fail** against the historical v12.2 tree on the signing claim. This inverts the usual polarity of a test — it requires a *failure* to succeed — and that is precisely what defends against over-hedging:
@@ -90,7 +90,7 @@ python3 verification/verify_claims.py --format json   # machine-readable
 python3 verification/verify_claims.py --root <tree>   # verify some other tree with this manifest
 ```
 
-Adding a claim means answering one question: **what fact, checkable by a machine, would be false if this sentence were a lie?** Available predicates: `frontmatter_field_nonempty`, `path_count`, `number_agreement` (modes `each`/`max`, counts files or directories; optional `min_sites`), `sibling_hash_match`, `json_field_resolves`, `file_regex_count`, `command_exit_zero`.
+Adding a claim means answering one question: **what fact, checkable by a machine, would be false if this sentence were a lie?** Available predicates: `frontmatter_field_nonempty`, `path_count`, `number_agreement` (modes `each`/`max`, counts files or directories; optional `min_sites`), `sibling_hash_match`, `json_field_resolves`, `json_schema_valid` (validates each file against the schema it names; unknown schema keywords are errors), `verdict_agreement` (verdicts stated in prose must match the scorecards), `file_regex_count`, `path_references_resolve` (paths and bare file names must exist), `sha256_manifest`, `command_exit_zero`.
 
 **Liveness floors (v12.7).** `number_agreement` accepts `min_sites`: if fewer prose sites than that match the pattern, the claim is UNBACKED rather than vacuously OK. This was added after an incident: the `prediction-count` pattern's number-word alternation stopped at "twelve", so from the moment the register reached thirteen predictions the check matched *zero* sites and reported success for two months — a silently-dead check, the same failure class the retro-guard's `MIN_SITES` floor exists to catch on the detector side. All three count claims now carry `min_sites: 1`, and a negative control (an alternation deliberately truncated at "twelve") fails as required. The rule generalises: every automated check must make "zero findings" distinguishable from "not looking".
 
@@ -101,7 +101,7 @@ If no such fact exists, that is itself worth knowing: the sentence is unfalsifia
 ## 6. Scope and honest limitations
 
 - **Not novel in its parts.** Assertion-style docs testing (doctest, `mdbook test`, literate-programming verification) and policy-as-code (OPA, Conftest) are established. The specific composition here — *load-bearing prose claims of a research artifact, bound to predicates over that artifact's own state, with the detector's sensitivity regression-tested against a historical false claim* — is what we have not found prior art for. Treat that as an unverified novelty claim, appropriately.
-- **Covers 10 claims,** not every sentence in the package. It covers the load-bearing ones, chosen by hand.
+- **Covers the claims listed in `verification/claims.json`** (19 at the 20.0 release), not every sentence in the package. It covers the load-bearing ones, chosen by hand.
 - **Cannot judge physics.** It verifies that documentation matches artifact. It says nothing about whether the cosmology is correct — that question is settled elsewhere and unfavourably (`docs/cosmic_acceleration_origins_findings.md`).
 - **Detection can be defeated** by novel phrasing no pattern anticipates. Anchors (`<!-- claim:id -->`) are the mitigation where exactness matters.
 - **This document is excluded from the signing-claim detector**, and the reason is worth recording: on its first run the tool flagged *this file*, because §4.1 quotes the historical false claim verbatim while explaining the negative control. Meta-documentation about a checker necessarily contains the strings the checker hunts. The exclusion is declared in `verification/claims.json` (`exclude_note`) rather than hidden in a hedge pattern, so a reviewer can see and challenge it. A verifier that cannot be pointed at itself would be a poor advertisement for the idea; a verifier whose self-exclusions are undocumented would be worse.

@@ -19,7 +19,8 @@ purpose, with no references to other versions.
 - **The negative control is self-contained.** The claim checker must still catch the historical false signing
   claim, now kept verbatim as a fixture (18 of 18 sites caught) instead of being read from git history, so the
   test works in shallow clones and unzipped deposits.
-- **The package is standalone.** A new check fails if any living document mentions a path that does not exist.
+- **The package is standalone.** A new check fails if any living document names a file, by path or by bare file
+  name, that the package does not contain.
 - **The register is notarizable.** `predictions/MANIFEST.sha256` lists the SHA-256 of every registered file; its
   own digest can be quoted in a deposit description as a third-party timestamp.
 - **The status table is generated.** [PREDICTIONS.md](PREDICTIONS.md) is produced from the register and checked
@@ -36,6 +37,26 @@ the canonical parameter, and the resulting tension between P1 and lunar laser ra
 behind the P8 revision r2 moves the BAO ruler the opposite way to P1 (problem 2); P2's underived amplification
 factor (problem 3); the CMB acoustic-angle assumption (problem 4). The evidence is the deterministic diagnostic
 `analyses/p_role_consistency.py`.
+
+**Deposit review.** Checking the package before its public deposit found documents that still described an
+earlier release. Each finding was corrected and became a mechanical check:
+
+- The methodology papers described tooling this package does not contain (third-party dependencies, lineage
+  records, a size audit, three operator scripts) and said each output's hash was recorded in its `prediction.md`.
+  They now describe the package as it is: standard library only, schema validation, hashes in the scorecards and
+  the register manifest, and the claim checker.
+- The long-form methodology paper repeated the retracted neutron-lifetime explanation, called predictions signed,
+  and still said "ten" predictions. Paper B and the frontier notes still gave P4's old FAIL and its pre-revival
+  numbers; they now quote the registered output (a weak PASS at the |z| < 3 rule, a FAIL at 2σ).
+- An uncited, unverifiable reference ("in preparation") was removed from the long-form methodology paper.
+- The checker's own manifest said the outputs were schema-validated while the check only resolved schema file
+  names. Every registered output is now validated by a standard-library validator that agrees with the reference
+  implementation on every output and several hundred mutated variants, and that rejects schema keywords it does
+  not implement. New or extended checks: stated verdicts must match the scorecards; bare file names must exist;
+  the count, retracted-explanation and signing patterns cover the phrasings that escaped. Each has a negative
+  control in `tests/test_verification.py`.
+- The JOSS version of the methodology paper is about 1,700 words, above the journal's 1,000-word limit; its
+  submission guide said 750. The guide now gives the real count, and the paper workflow warns until it is cut.
 
 **Left out** (retrievable from git history, tag `v12.7-final`): the phase 2–4 exploratory pipelines, the CMB and
 structure-formation bridges, the ε-framework posteriors, referee and submission-bundle tooling, the archive, and

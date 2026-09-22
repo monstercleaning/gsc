@@ -8,23 +8,24 @@
 
 **Venue target:** Journal of Open Source Software (JOSS); SoftwareX; Astronomy and Computing.
 
-**Status:** Submitted; revised in the v12.3 honesty pass (corrected an overclaim that the register was cryptographically signed / predictions signed-before-data).
+**Status:** Deposited as a preprint on Zenodo and figshare; the JOSS checklist is in [joss/SUBMIT.md](joss/SUBMIT.md). Revised in the v12.3 honesty pass (corrected an overclaim that the register was cryptographically signed / predictions signed-before-data) and again for the 20.0 package, whose architecture, counts and case studies it now describes ([CHANGELOG.md](../../CHANGELOG.md)).
 
 ## Scope
 
-Paper D documents the deterministic, schema-validated, lineage-tracked reproducibility infrastructure underlying the GSC framework, and the pre-registration discipline intended to convert it from a defensive tool toward a falsification engine. The current release relies on git-history timestamps rather than executed GPG signatures, and most worked examples are retrodictive consistency checks; see the paper's *Scope and honest limitations*.
+Paper D documents the deterministic, schema-validated, content-hashed and self-verifying reproducibility infrastructure underlying the GSC framework, and the pre-registration discipline intended to convert it from a defensive tool toward a falsification engine. The current release relies on git-history timestamps rather than executed GPG signatures, and most worked examples are retrodictive consistency checks; see the paper's *Scope and honest limitations*.
 
 ### Sections
 
 1. Introduction: the problem of unfalsifiable cosmological model-building;
-2. Architecture: deterministic pipelines, schema-validated artifacts, lineage DAGs;
+2. Architecture: deterministic pipelines, schema validation, content hashing, the register manifest;
 3. The pre-registration register: format, signing protocol, scoring protocol;
 4. Case studies:
-   - Case 1: BAO ruler-shift prediction (Paper A);
-   - Case 2: CMB birefringence consistency check (Paper B);
-   - Case 3: 21cm Cosmic Dawn (extension);
+   - P1: BAO ruler-shift prediction (Paper A);
+   - P2: 21cm Cosmic Dawn (parametric);
+   - P3: the retracted neutron-lifetime explanation;
+   - P4–P13: including the P8 correction and the exact nulls;
 5. Software stack: gsc/, pipelines/, verification/, schemas/, tests/, CI;
-6. Operator workflows: one-button reproduction, release-candidate gating;
+6. Self-verification: the claim checker and its negative control;
 7. Limitations and design trade-offs;
 8. Adoption notes for other projects.
 

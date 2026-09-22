@@ -57,6 +57,8 @@ jobs:
           body = re.sub(r"^---.*?---", "", text, count=1, flags=re.DOTALL)
           body = re.sub(r"# References.*", "", body, flags=re.DOTALL)
           words = len(re.sub(r"\[@\w+\]", "", re.sub(r"#.*", "", body)).split())
+          if words > 1000:
+              print(f"::warning::word count {words} exceeds the JOSS limit of 1000; cut before submitting (see SUBMIT.md)")
           assert 250 <= words <= 2000, f"word count {words} outside [250, 2000]"
           entries = set(re.findall(r"@\w+\{(\w+),", (d / "paper.bib").read_text()))
           cites = set(re.findall(r"@(\w+)", text)) - {""}

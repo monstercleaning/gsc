@@ -4,23 +4,25 @@
 
 - [x] **Fill in your ORCID** in `paper.md` — done: `0009-0009-7812-9203`
 - [x] **Affiliation review** — done: "Independent researcher; Founder, Monster Cleaning Ltd."
-- [ ] **Repository public** on GitHub (canonical public repo: `github.com/monstercleaning/gsc` — verify it is public, MIT-licensed, and contains the v12.3 codebase)
-- [ ] **Tag a release** at the public repository (e.g., `v12.3.0`) — JOSS requires a versioned release archived to a citable platform
+- [x] **Repository public** on GitHub — verified 2026-09-22: `github.com/monstercleaning/gsc` clones anonymously, carries the MIT licence, and its root is this package
+- [ ] **Tag a release** at the public repository (e.g., `v20.0.0`) — JOSS requires a versioned release archived to a citable platform
 - [ ] **Zenodo DOI** — link the GitHub release to Zenodo for permanent archival; copy the DOI into the JOSS submission form (not into paper.md itself)
-- [ ] **Cross-platform smoke test** — run the orchestrator on a fresh Python 3.10+ install:
+- [ ] **Cross-platform smoke test** — run the four checks on a fresh Python 3.9+ install:
 
 ```bash
 git clone https://github.com/monstercleaning/gsc.git
-cd gsc/v12.0.0
-python3 -m unittest discover -s tests -p 'test_*.py'
+cd gsc
+python3 -m unittest discover -s tests
+python3 verification/verify_claims.py --include-slow
+python3 verification/retro_test.py
 bash pipelines/predictions_compute_all.sh --verify
 ```
 
-Confirm all 10 predictions compute deterministically and the 7 scorers produce expected outcomes (P1, P3, P4, P6 FAIL; P5, P9 PASS; P7 SUB-THRESHOLD).
+Confirm that all thirteen registered predictions reproduce their frozen outputs deterministically and that the nine scorers give the recorded verdicts (P1, P4, P5, P9, P11, P13 PASS; P3, P6 FAIL; P7 SUB-THRESHOLD).
 
 ## Word-count check
 
-JOSS requires papers between 250 and 1000 words (excluding YAML front-matter, references, and headers). Current `paper.md` body is approximately **750 words** — well within range.
+JOSS requires papers between 250 and 1000 words (excluding YAML front-matter, references, and headers). The current `paper.md` body is about **1,700 words** by the check below — **over the limit**. It grew past 1,000 when the honest-limitations section and the later corrections were added. Cut it below 1,000 before submitting; the audit-history section, which Paper E covers in full, is the natural candidate. The `joss-paper-d` workflow warns while the count exceeds 1,000.
 
 ```bash
 # Local check
@@ -77,7 +79,7 @@ print(f'word count: {len(body.split())} (limit 250-1000)')
 1. Visit https://joss.theoj.org/papers/new
 2. Fill in:
    - **Repository URL**: `https://github.com/monstercleaning/gsc`
-   - **Software version**: `v12.3.0` (or current release tag)
+   - **Software version**: `v20.0.0` (or current release tag)
    - **Branch**: `main` (or whichever contains the release)
    - **Submission target paper**: path `papers/paper_D_methodology/joss/paper.md`
 3. Submit. JOSS Editor-in-Chief will assign a topic editor within ~1 week.
@@ -96,13 +98,13 @@ Total realistic timeline: 3–6 months from submission to publication.
 
 Based on the framework's nature, expect questions/requests on:
 
-1. **"Why isn't this just the Open Science Framework?"** — emphasise the deterministic-pipeline + content-hashed register + fixed-in-advance scoring-protocol + tier-architecture combination (do **not** claim cryptographic signing: the GPG step is specified in the protocol but was never executed — see the v12.3 honesty pass). OSF provides time-stamping; we provide the operational pipeline binding it to specific computational artefacts.
+1. **"Why isn't this just the Open Science Framework?"** — emphasise the deterministic-pipeline + content-hashed register + fixed-in-advance scoring-protocol + tier-architecture combination (do **not** claim cryptographic signing: the GPG step is specified in the protocol but was never executed — see CHANGELOG.md). OSF provides time-stamping; we provide the operational pipeline binding it to specific computational artefacts.
 
-2. **"Demonstrate independent reproduction."** — invite the editor to recommend a reproducer; provide minimal install + smoke-test instructions; offer to add the reproducer's signature to a scorecard.
+2. **"Demonstrate independent reproduction."** — invite the editor to recommend a reproducer; provide minimal install + smoke-test instructions; offer to record the independent reproduction (platform, commit, result) in the repository.
 
-3. **"Discuss limitations."** — be ready to point to the v12.1/v12.2 hostile-audit corrections as the discipline working: errors caught, retracted, transparently documented. This is not a weakness — it is the central value claim.
+3. **"Discuss limitations."** — be ready to point to the recorded corrections (CHANGELOG.md) as the discipline working: the retracted anomaly explanation, the withdrawn signing claim, and the withdrawn redshift-drift difference — errors caught, retracted, transparently documented. This is not a weakness — it is the central value claim.
 
-4. **"Why ten predictions and not three / twenty?"** — explain the layered tier coverage: each tier has at least one prediction, scoring infrastructure is per-prediction, the choice was opportunistic on currently-available data.
+4. **"Why thirteen predictions and not three / twenty?"** — explain the layered tier coverage: each tier has at least one prediction, four are exact nulls guarding the framework's core, scoring infrastructure is per-prediction, and the choice was opportunistic on currently-available data.
 
 ## Post-acceptance
 

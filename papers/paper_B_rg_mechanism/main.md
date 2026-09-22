@@ -121,20 +121,21 @@ The Planck team has reported a tentative β ≈ 0.35° ± 0.14° (Minami & Komat
 
 We pre-register the predicted β for the central σ(t) ansatz from Paper A and a default g_CS amplitude:
 
-- σ(z) ∝ (1+z)^{-p} with p = 10⁻³;
-- g_CS = 0.05 (placeholder; the FRG calculation should derive a specific value);
-- Predicted β = 0.002°;
+- σ(z) ∝ (1+z)^{-p} with the canonical p = 6×10⁻⁴ (an earlier version of this paper used p = 10⁻³ and g_CS = 0.05, giving β = 0.002°);
+- g_CS = 0.036 (placeholder; the FRG calculation should derive a specific value);
+- Predicted β = 0.0009° (registered output: 0.000894°);
 - Measured β (Planck 2020): 0.35° ± 0.14°.
 
-The current scorecard records a FAIL at 2σ confidence (z = -2.49). This is a *useful FAIL*: it tells us either (i) the FRG-derived g_CS must be ~30× larger than the placeholder, (ii) the σ-evolution amplitude must be ~30× stronger (in tension with the late-time fit), or (iii) the Planck hint is from a different mechanism. LiteBIRD will resolve (iii); the FRG calculation will resolve (i); a refined late-time fit will resolve (ii).
+The current scorecard records a PASS at the registered rule |z| < 3 (z = −2.49). It is a weak pass: the predicted rotation is essentially zero and passes only because the observed hint is below 3σ. At 2σ, the level an earlier version of this paper used, the same numbers are a FAIL, and an informative one: reaching 2σ consistency would need either (i) an FRG-derived g_CS ~80× larger than the placeholder, (ii) a σ-evolution amplitude ~80× stronger (in tension with the late-time fit), or (iii) a different origin for the hint. LiteBIRD will resolve (iii); the FRG calculation will resolve (i); a refined late-time fit will resolve (ii).
 
 ### 3.5 Pre-registered prediction P5
 
 Concurrently, the σ-θ coupling drives a θ_eff(z) trajectory. We pre-register:
 
 - θ_eff(z=0) = 5×10⁻¹¹ (well within the n2EDM bound |θ_eff| ≲ 10⁻¹⁰ derived from |d_n| < 1.8×10⁻²⁶ e·cm at 90% CL);
-- Implied trajectory: θ_eff(z=2) - θ_eff(z=0) ≈ 1.1×10⁻⁵ (just exceeding rough quasar-absorption bounds at z=2);
-- Implied trajectory: θ_eff(z=1100) - θ_eff(z=0) ≈ 7.0×10⁻⁵ (tested at recombination via potentially CMB lensing-scale effects).
+- canonical p = 6×10⁻⁴ and coupling g_θ/f_σ = 0.036 (the registered output);
+- Implied trajectory: |θ_eff(z=2) − θ_eff(z=0)| ≈ 2.4×10⁻⁵ (about twice the rough quasar-absorption bound of 10⁻⁵ at z=2);
+- Implied trajectory: |θ_eff(z=1100) − θ_eff(z=0)| ≈ 1.5×10⁻⁴ (tested at recombination via potentially CMB lensing-scale effects).
 
 The current P5 scorecard records a PASS at the nEDM bound (50% of current limit). The quasar bound at z=2 is a soft check (order-of-magnitude only).
 
@@ -327,10 +328,10 @@ The σ-F̃F coupling is a *non-universal* coupling — it acts on the F̃F opera
 
 For full reproducibility, the predictions discussed in this paper are pre-registered in the project repository:
 
-- `predictions/P04_cmb_birefringence/` — current scorecard records FAIL at 2σ vs Planck 2020.
+- `predictions/P04_cmb_birefringence/` — current scorecard records PASS at the registered |z| < 3 rule (z = −2.49 vs Planck 2020; a FAIL at 2σ).
 - `predictions/P05_strong_cp_bound/` — current scorecard records PASS within 50% of n2EDM bound.
 
-The deterministic compute pipelines are at `pipelines/predictions_compute_P4.py` and `predictions_compute_P5.py`. Both produce byte-identical output for byte-identical input, with SHA-256 hashes recorded in the corresponding `prediction.md` front-matter at signing time.
+The deterministic compute pipelines are at `pipelines/predictions_compute_P4.py` and `predictions_compute_P5.py`. Both produce byte-identical output for byte-identical input. Their SHA-256 hashes are listed in the register manifest and recorded in the scorecards; the `prediction.md` hash field is filled only at signing, which has not been executed.
 
 The methodology paper (Paper D) describes the operational protocol; the empirical paper (Paper A) develops the late-time σ(t) calibration on which the present paper builds.
 
@@ -340,7 +341,7 @@ We have presented the structural argument for the σ-axion equivalence in the GS
 
 The argument is structural, not a derivation. The FRG calculation that establishes the σ-F̃F coupling sign and order is the single most important open computational task. Once available, it will sharpen both P4 (CMB birefringence) and P5 (θ-bound) into specific predictions.
 
-In the meantime, the framework records a useful FAIL on P4 (the Planck 2020 hint requires either stronger g_CS than the placeholder or a different mechanism) and a PASS on P5 (within the current n2EDM bound by a comfortable margin). These results, taken together, identify the parameter region the FRG calculation must produce: small (g_θ/f_σ)σ(0), moderately large g_CS over the integrated [0, z_CMB] line of sight.
+In the meantime, the framework records a weak PASS on P4 at the registered 3σ rule (a FAIL at 2σ: the Planck 2020 hint requires either stronger g_CS than the placeholder or a different mechanism) and a PASS on P5 (within the current n2EDM bound, at half the limit). These results, taken together, identify the parameter region the FRG calculation must produce: small (g_θ/f_σ)σ(0), moderately large g_CS over the integrated [0, z_CMB] line of sight.
 
 If the FRG calculation produces a coupling structure consistent with both channels, and if LiteBIRD (~2030) confirms the Planck β hint, the σ-axion equivalence becomes the most economical proposal currently on the table for the strong CP problem. If either input fails, the σ-axion claim is dropped from the framework, and the σ-field reverts to its narrower role as cosmological scale variable.
 

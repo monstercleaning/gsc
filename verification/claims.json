@@ -71,6 +71,40 @@
       "note": "THE historical failure. At v12.2 this claim was asserted in the deposited JOSS paper while all ten register entries were unsigned scaffolds. This check is the automated form of the `grep SCAFFOLD` that finally caught it; verification/retro_test.sh proves the detector still fires on a verbatim copy of that historical prose."
     },
     {
+      "id": "no-unqualified-signed-entries",
+      "claim": "No living document states, without qualification, that predictions, register entries or scorecards are signed.",
+      "verify": {
+        "type": "file_regex_count",
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "predictions/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^CHANGELOG\\.md$",
+          "^docs/claim_verification\\.md$"
+        ],
+        "pattern": "\\b(?:predictions?|entries|entry|register|scorecards?)\\s+(?:is|are|was|were|has been|have been)\\s+(?:honestly\\s+|GPG[- ]|cryptographically\\s+)?signed\\b|\\b(?:can|may|to)\\s+sign\\s+(?:the\\s+)?scorecards?\\b",
+        "unless": [
+          "\\bno entry\\b",
+          "\\bnot\\b",
+          "\\bnever\\b",
+          "\\buntil\\b",
+          "\\bwould\\b",
+          "overclaim",
+          "was false",
+          "corrected",
+          "central sentence"
+        ],
+        "max": 0
+      },
+      "always": true,
+      "note": "The signing detector above targets 'cryptographically signed', 'signed and time-stamped' and 'signed before'. Plain statements such as 'the prediction is signed' or 'reproducers can sign scorecards' survived in the long-form methodology paper until the 20.0 deposit review. Kept as a separate claim so the negative control's calibrated count (18 historical sites) keeps its meaning; tests/test_verification.py requires this pattern to fire on the historical fixture too."
+    },
+    {
       "id": "prediction-count",
       "claim": "The register contains N pre-registered predictions (N stated in prose must match the register).",
       "verify": {
@@ -87,7 +121,7 @@
           "verification/*.md",
           "pipelines/*.sh"
         ],
-        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+(?:(?:central|initial|near-term|worked)\\s+)?(?:(?:pre-)?registered\\s+(?:numerical\\s+|cosmological\\s+)?predictions?|worked\\s+examples?)\\b",
+        "pattern": "(?<![\\d.])\\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+(?:(?:central|initial|worked)\\s+)?(?:(?:(?:pre-)?registered|near-term)\\s+(?:(?:pre-)?registered\\s+)?(?:numerical\\s+|cosmological\\s+)?predictions?|worked\\s+(?:examples?|predictions?))\\b|(?<=\\b(?:all|the) )(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|\\d{1,2})\\s+predictions\\b",
         "unless": [
           "eight \\(then ten\\)",
           "grew",
@@ -99,7 +133,40 @@
         "min_sites": 1
       },
       "always": true,
-      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim. Extended at the reorganization to also match 'N worked examples': the deposited methodology paper still said 'ten worked examples' when the register held thirteen, a count claim the earlier pattern could not see."
+      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim. Extended at the reorganization to also match 'N worked examples': the deposited methodology paper still said 'ten worked examples' when the register held thirteen, a count claim the earlier pattern could not see. Extended again before the 20.0 deposit: 'ten near-term cosmological predictions' (the long-form methodology paper's abstract) and 'all 10 predictions' (its JOSS submission guide) escaped the qualifier list."
+    },
+    {
+      "id": "prose-verdicts-match-scorecards",
+      "claim": "Every verdict a living document states for a prediction (PASS, FAIL, SUB-THRESHOLD) matches that prediction's scorecard.",
+      "verify": {
+        "type": "verdict_agreement",
+        "scorecard_globs": [
+          "predictions/P*/scorecard.md"
+        ],
+        "globs": [
+          "*.md",
+          "docs/**/*.md",
+          "papers/**/*.md",
+          "analyses/**/*.md",
+          "verification/*.md"
+        ],
+        "exclude": [
+          "^CHANGELOG\\.md$",
+          "^docs/claim_verification\\.md$",
+          "^PREDICTIONS\\.md$"
+        ],
+        "unless": [
+          "\\bwas\\b",
+          "\\bwere\\b",
+          "earlier",
+          "previously",
+          "at the time",
+          "historical"
+        ],
+        "min_sites": 5
+      },
+      "always": true,
+      "note": "Verdicts change when a rule or a parameter is corrected: P1 and P4 both went from FAIL to PASS (the canonical parameter moved inside the region public data allow; the registered |z| < 3 rule was restored in scorers that had tightened it). Three documents still stated the old verdicts at the 20.0 deposit review. Registered statements and scorecards are out of scope (frozen records), and PREDICTIONS.md is generated and checked by predictions-table-current. A verdict word applies to the prediction IDs in its clause ('P1, P3 FAIL; P5 PASS') or directly after it ('a FAIL on P4'); lines describing the past are hedged by the `unless` list."
     },
     {
       "id": "paper-count",
@@ -158,16 +225,18 @@
     },
     {
       "id": "schema-validated-artifacts",
-      "claim": "Every major artifact is schema-validated; each pipeline output names its schema.",
+      "claim": "Every registered pipeline output names a JSON schema that exists, and validates against it.",
       "verify": {
-        "type": "json_field_resolves",
+        "type": "json_schema_valid",
         "globs": [
-          "predictions/*/pipeline_output.json"
+          "predictions/*/pipeline_output*.json"
         ],
         "field": "schema",
-        "resolves_to": "schemas/{value}.schema.json"
+        "resolves_to": "schemas/{value}.schema.json",
+        "min_checked": 13
       },
-      "always": true
+      "always": true,
+      "note": "Until the 20.0 reorganization this claim was checked only by resolving each schema name to a file: the manifest said 'schema-validated' while nothing validated. The validator implements the draft-07 keywords the schemas use and reports any other keyword as an error instead of ignoring it (a fallback validator in earlier releases silently skipped numeric bounds). min_checked is a liveness floor."
     },
     {
       "id": "no-unqualified-explained-anomaly",
@@ -186,7 +255,7 @@
           "^archive/",
           "^CHANGELOG\\.md$"
         ],
-        "pattern": "GSC explains (?:a |the )?(?:real |unsolved |experimental )*anomaly|explains the (?:neutron|beam-trap) anomaly|first explained anomaly",
+        "pattern": "GSC explains (?:a |the )?(?:real |unsolved |experimental )*anomaly|first explained anomaly|(?:explain|resolv|account)\\w*(?: for)? (?:the |a |an )?(?:existing |observed |real |unsolved |experimental |long-standing |known )*(?:~?\\s?[\\d.]+[- ]?s(?:econd)?s? )?(?:(?:neutron[- ]lifetime|beam[-–]trap|neutron|lifetime)[- ])+(?:anomaly|discrepancy|puzzle|tension)",
         "unless": [
           "no longer",
           "retract",
@@ -194,12 +263,14 @@
           "does not",
           "cannot",
           "was an artefact",
-          "claim is retracted"
+          "claim is retracted",
+          "\\bwould\\b",
+          "claimed to"
         ],
         "max": 0
       },
       "always": true,
-      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced."
+      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced. Broadened before the 20.0 deposit: the long-form methodology paper still said the P3 prediction 'explains the existing ~9-second beam-trap discrepancy', a phrasing the original pattern did not cover. tests/test_verification.py requires the pattern to catch that sentence in the historical fixture."
     },
     {
       "id": "canonical-repo-pointer",
@@ -352,11 +423,16 @@
           "gsc/topological_defects/gw_spectrum.py",
           "gsc/gw_memory/sigma_response.py",
           "gsc/gw_memory/atomic_frequency_shift.py",
-          "gsc/gw_memory/correlation_analysis.py"
+          "gsc/gw_memory/correlation_analysis.py",
+          "GSC_Framework.md",
+          "paper.pdf"
+        ],
+        "name_index_exclude": [
+          "^verification/fixtures/"
         ]
       },
       "always": true,
-      "note": "The standalone guarantee made mechanical. CHANGELOG.md is excluded because its prehistory section describes the past; verification/fixtures/ is out of scope by glob (verbatim historical text). The `allow` list enumerates, one by one, the modules that registered statements P1–P7 name in their pipeline sections but that were planned and never built; each such entry carries an editorial flag, and OPEN_PROBLEMS.md problem 6 records the issue. The list is explicit on purpose: a pattern-based exemption would be the over-hedging the negative control exists to prevent."
+      "note": "The standalone guarantee made mechanical. CHANGELOG.md is excluded because its prehistory section describes the past; verification/fixtures/ is out of scope by glob (verbatim historical text). The `allow` list enumerates, one by one, the modules that registered statements P1–P7 name in their pipeline sections but that were planned and never built; each such entry carries an editorial flag, and OPEN_PROBLEMS.md problem 6 records the issue. The list is explicit on purpose: a pattern-based exemption would be the over-hedging the negative control exists to prevent. Two further entries are not modules: GSC_Framework.md is the former name of THEORY.md, listed on purpose in METHOD.md's table of names used inside frozen records, and paper.pdf is the output of the JOSS render that papers/paper_D_methodology/joss/SUBMIT.md tells the reader how to produce. Bare file names are checked since the 20.0 deposit review, which found three operator scripts, a dependency file and a linter named in living documents but absent from the package."
     },
     {
       "id": "register-manifest-intact",
