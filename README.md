@@ -3,13 +3,15 @@
 **What it is.** Standard cosmology says the universe expands. GSC asks what follows if instead matter shrinks —
 atoms, rulers and clocks all together — against a nearly static background. Mathematically the two descriptions
 are equivalent (C. Wetterich, 2013; the idea goes back to Canuto et al., 1977), so the question is whether matter's
-"shrinking" has any dynamics of its own that could be measured. GSC turns that question into thirteen registered
+"shrinking" has any dynamics of its own that could be measured. GSC turns that question into fourteen registered
 predictions, each with a pipeline, a scoring rule fixed in advance, and a condition under which the framework
 admits it is wrong.
 
 **Honest status.** Most predictions that could distinguish GSC from standard cosmology are either excluded by
-data or indistinguishable from it. The one registered deviation — a +0.417% shift of the cosmic "BAO ruler" — is
-under review for physical consistency ([OPEN_PROBLEMS.md](OPEN_PROBLEMS.md)). What stands independently of the
+data or indistinguishable from it. The one registered late-universe deviation, a +0.417% shift of the cosmic
+"BAO ruler", is absorbed into the Hubble constant once the other cosmological parameters are refitted. What
+remains distinctive is a prediction that gravity was slightly weaker in the early universe (P14), which the
+next generation of measurements can test ([OPEN_PROBLEMS.md](OPEN_PROBLEMS.md)). What stands independently of the
 physics is the method: a prediction register that cannot be quietly edited, and a checker that fails the build
 whenever the documents claim something the package does not do.
 

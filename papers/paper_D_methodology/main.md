@@ -6,7 +6,8 @@ We describe an open-source software stack that combines deterministic, schema-va
 
 The contribution is methodological rather than physical: a *publication discipline* designed to make "moving the goalposts" structurally difficult, by separating prediction-generation from data-comparison through a content hash and public (git) timestamp recorded before scoring, with a per-prediction scoring algorithm that resolves to a public pass/fail outcome at the originally-registered confidence level when the corresponding observational data are released. We are explicit (Section 6) that the present release relies on git-history timestamps rather than executed cryptographic signatures, and that most of the worked examples are retrodictive consistency checks rather than genuine forward pre-registrations.
 
-We document the protocol, demonstrate the implementation on thirteen registered predictions (BAO ruler shift, 21cm Cosmic-Dawn signal, neutron-lifetime beam–trap test, CMB cosmic birefringence, strong-CP θ-bound, Kibble–Zurek defect spectrum, gravitational-wave-memory atomic-clock signature, Sandage–Loeb redshift drift, proton-electron mass-ratio constancy, TeV blazar arrival-time dispersion, the distance-duality relation, nuclear–electronic clock-ratio drift, and gravitational-wave–electromagnetic distance duality), describe a self-verification layer that checks the documentation against the package, and discuss adoption considerations for other research programmes.
+We document the protocol, demonstrate the implementation on fourteen registered predictions (BAO ruler shift, 21cm Cosmic-Dawn signal, neutron-lifetime beam–trap test, CMB cosmic birefringence, strong-CP θ-bound, Kibble–Zurek defect spectrum, gravitational-wave-memory atomic-clock signature, Sandage–Loeb redshift drift, proton-electron mass-ratio constancy, TeV blazar arrival-time dispersion, the distance-duality relation, nuclear–electronic clock-ratio drift, gravitational-wave–electromagnetic distance duality, and early-universe
+gravity), describe a self-verification layer that checks the documentation against the package, and discuss adoption considerations for other research programmes.
 
 **Keywords:** reproducibility, pre-registration, cosmology, falsifiability, scientific software.
 
@@ -26,7 +27,7 @@ The proposed methodology has four components:
 
 4. A **layered publication strategy** in which different model tiers are presented in separate papers, so journal review acts at the granularity at which it can resolve.
 
-We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on thirteen registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
+We implement these four components in the GSC framework's reproducibility stack and demonstrate the operational workflow end-to-end on fourteen registered cosmological predictions. The stack is licensed under MIT and available at the project repository.
 
 ## 2. The Falsifiability Problem in Cosmology
 
@@ -154,7 +155,7 @@ The checker is itself tested against a negative control: a verbatim copy of an e
 
 ## 5. Case Study: Pre-registered Predictions
 
-We demonstrate the workflow on the thirteen registered predictions of the GSC framework. Detailed records are in `predictions/`, one folder per prediction; here we summarise the methodological aspects.
+We demonstrate the workflow on the fourteen registered predictions of the GSC framework. Detailed records are in `predictions/`, one folder per prediction; here we summarise the methodological aspects.
 
 ### 5.1 P1 — BAO standard-ruler shift (forward target: the full five-year DESI release)
 
@@ -170,9 +171,12 @@ The prediction is the globally-averaged differential brightness temperature `δT
 
 The pipeline computes the beam and trap lifetimes `(τ_n^beam, τ_n^trap)` under a σ-environmental coupling. Under the canonical, universal scaling the predicted difference is zero, so the registered prediction is a null, and the scorer records a FAIL against the observed ~9-second discrepancy. An earlier release presented this entry as an explanation of the discrepancy; that result came from two cancelling errors and was retracted, and the claim checker now blocks its return (Section 4.3).
 
-### 5.4 P4–P13
+### 5.4 P4–P14
 
-The remaining entries follow the same pattern: a pipeline computes the prediction, the output is frozen and hashed in the register, and a scorer compares it with released data when they exist. Two features are worth noting. P8 (redshift drift) is the register's worked example of a correction: its first revision used an expansion history that the package's own data exclude, and the re-registered revision r2 is indistinguishable from ΛCDM at foreseeable precision. P9 and P11–P13 are exact nulls: they predict exactly what ΛCDM predicts in four sectors (matter, photons, nuclear clocks, gravitational waves), so they cannot favour GSC, but a single robust violation would end the framework. Per-prediction details are in each entry's `prediction.md`.
+The remaining entries follow the same pattern: a pipeline computes the prediction, the output is frozen and hashed in the register, and a scorer compares it with released data when they exist. Two features are worth noting. P8 (redshift drift) is the register's worked example of a correction: its first revision used an expansion history that the package's own data exclude, and the re-registered revision r2 is indistinguishable from ΛCDM at foreseeable precision. P9 and P11–P13 are exact nulls: they predict exactly what ΛCDM predicts in four sectors (matter, photons, nuclear clocks, gravitational waves), so they cannot favour GSC, but a single robust violation would end the framework. P14 shows how the register handles a finding of that
+kind: when a joint fit showed that P1's statistic cannot distinguish its only coherent reading from ΛCDM, the
+reading's remaining distinct content, weaker gravity in the early universe, was registered as a new forward
+prediction rather than used to rescue P1. Per-prediction details are in each entry's `prediction.md`.
 
 ## 6. Discussion
 
@@ -188,8 +192,8 @@ The methodology provides:
 The methodology does *not* provide:
 
 - A guarantee of physical correctness (a model can be wrong even if all its predictions are honestly registered);
-- A protection against the *choice* of which observations to register against (the choice of P1–P13 itself reflects researcher selection);
-- Evidence of predictive success from retrodictive checks: nine of the thirteen entries were scored against data that were public when their pipelines were written, so their passes exercise the tooling rather than test a prediction made in advance;
+- A protection against the *choice* of which observations to register against (the choice of P1–P14 itself reflects researcher selection);
+- Evidence of predictive success from retrodictive checks: nine of the fourteen entries were scored against data that were public when their pipelines were written, so their passes exercise the tooling rather than test a prediction made in advance;
 - A guarantee against bugs in the prediction pipeline (only that the bug, if present, is reproducibly present).
 
 The first two limitations are inherent to all model-building. The third is removed only by forward registrations scored when their data arrive. The fourth is mitigated by deterministic pipelines and content hashing: a bug is at least exactly reproducible, allowing later identification and correction with an explicit superseding revision, as happened with P8.

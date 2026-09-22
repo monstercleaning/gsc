@@ -1,6 +1,6 @@
 # The prediction register
 
-One folder per registered prediction, `P01` to `P13`, zero-padded so they sort in order. The live status table is
+One folder per registered prediction, `P01` to `P14`, zero-padded so they sort in order. The live status table is
 [../PREDICTIONS.md](../PREDICTIONS.md); how the register works is in [../METHOD.md](../METHOD.md).
 
 Each folder contains:

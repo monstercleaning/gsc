@@ -1,0 +1,61 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "k0_status": "Registered under K0.3 as a new forward prediction; the scope and threshold of K0 are unchanged. The failure clause above only adds a way for the framework to die.",
+    "not_a_rescue_of_P1": "P1 stands as registered, with its editorial flag; P14 does not score or replace it.",
+    "on_failure": "The GSC core (T1-T3) then has no registered content that distinguishes it from LCDM, and the conformal-reduction clause K0.4 applies: GSC is falsified as a distinct theory."
+  },
+  "physics_status": "Exact consequence of the early-transition reading for the registered q. Not a fit: CMB + BAO distance data do not constrain q (analyses/joint_fit.md).",
+  "prediction": {
+    "epochs": [
+      {
+        "G_over_G0": 0.992086,
+        "deviation_percent": -0.7914,
+        "epoch": "recombination",
+        "note": "z* of Planck 2018 (TT,TE,EE+lowE)",
+        "z_obs": 1089.95
+      },
+      {
+        "G_over_G0": 0.970235,
+        "deviation_percent": -2.9765,
+        "epoch": "nucleosynthesis",
+        "note": "deuterium formation, T ~ 0.1 MeV",
+        "z_obs": 430000000.0
+      },
+      {
+        "G_over_G0": 0.966983,
+        "deviation_percent": -3.3017,
+        "epoch": "weak_freeze_out",
+        "note": "neutron-proton freeze-out, T ~ 1 MeV (allowing for e+e- annihilation)",
+        "z_obs": 3000000000.0
+      }
+    ],
+    "late_universe": {
+      "G_over_G0": 1.0,
+      "note": "Exactly 1 below the transition: no local drift, consistent with kill condition K2.",
+      "z_obs_below": 10.0
+    },
+    "relation_between_epochs": {
+      "ln_G_bbn_over_ln_G_rec": 3.8029,
+      "note": "ln(G/G0) at nucleosynthesis over ln(G/G0) at recombination; fixed by the transition shape for any q, so two measurements test the shape as well as the amplitude."
+    },
+    "summary": "G/G0 = 0.9921 at recombination (-0.79%) and 0.9702 at nucleosynthesis (-2.98%)."
+  },
+  "prediction_id": "P14",
+  "registered_parameters": {
+    "q": 0.000865,
+    "q_provenance": "Inherited from P1: the value for which the variant reproduces P1's registered BAO shift at fixed cosmological parameters (analyses/p_role_consistency.py).",
+    "z_transition": 10.0
+  },
+  "schema": "predictions_p14_pipeline_output_v1",
+  "scoring_rule": {
+    "fail": "|z| >= 3 at any scored epoch, or a fit of this one-parameter model excluding the registered q at >= 3 sigma.",
+    "pass": "|z| < 3 at every scored epoch, with at least one sigma <= |r_pred - 1|/2 (a measurement able to tell the prediction from G = G0).",
+    "statistic": "For each epoch with a published determination r_obs +/- sigma of G/G0 (1 sigma; for asymmetric errors the side facing the prediction) from an analysis that lets G at that epoch differ from today's: z = (r_pred - r_obs)/sigma.",
+    "sub_threshold": "|z| < 3 everywhere, but no measurement yet precise enough to tell the prediction from G = G0."
+  },
+  "tier": "T2 (coherent reading of the canonical exponent; OPEN_PROBLEMS.md problem 1)",
+  "title": "Early-universe gravity weaker relative to atoms: G/G0 = 0.992 at recombination, 0.970 at nucleosynthesis",
+  "tool": "predictions_compute_P14.py",
+  "tool_version": "0.1"
+}

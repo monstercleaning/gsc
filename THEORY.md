@@ -20,7 +20,7 @@ or remain conjectures. The contribution that survives any physics outcome is the
 4. [T2 — the late-time ansatz](#4-t2--the-late-time-ansatz)
 5. [T3 — mechanism hypotheses](#5-t3--mechanism-hypotheses)
 6. [T4 — speculative extension modules](#6-t4--speculative-extension-modules)
-7. [The thirteen registered predictions](#7-the-thirteen-registered-predictions)
+7. [The fourteen registered predictions](#7-the-fourteen-registered-predictions)
 8. [Kill conditions (pre-committed)](#8-kill-conditions-pre-committed)
 9. [Limitations](#9-limitations)
 10. [References](#10-references)
@@ -293,7 +293,7 @@ points to a method-specific systematic in proton-counting beam experiments rathe
 
 ---
 
-## 7. The thirteen registered predictions
+## 7. The fourteen registered predictions
 
 Each prediction is a folder under [predictions/](predictions/) with its statement, frozen pipeline output,
 input data and scorecard. The live status table is [PREDICTIONS.md](PREDICTIONS.md), generated from the
@@ -356,6 +356,12 @@ Sudden-death channel K2. [predictions/P12_nuclear_clock_ratio/](predictions/P12_
 T1 exact null in the tensor sector. GWTC-4.0 gives Ξ₀ = 1.2 +0.8/−0.4 → PASS (z = +0.5). Sudden-death channel
 K1. [predictions/P13_gw_em_duality/](predictions/P13_gw_em_duality/)
 
+### Prediction P14 — Early-universe gravity weaker relative to atoms
+T2, the coherent reading of the canonical exponent (registered in v20.1 under K0.3). Gravity in atomic units is
+0.8% weaker than today's at recombination and 3.0% weaker at nucleosynthesis, exactly unchanged below z = 10, with
+ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Awaiting data precise enough to tell it from G = G₀. If it fails, K0.4 applies.
+[predictions/P14_early_gravity/](predictions/P14_early_gravity/)
+
 ---
 
 ## 8. Kill conditions (pre-committed)
@@ -381,7 +387,9 @@ numbers: §12.2.1 = K0, §12.2.1a = K1, §12.2.1b = K2 (see [METHOD.md](METHOD.m
 
 Note: P8 can fail only if ΛCDM-class kinematics fail, so it contributes no framework-specific failure mode. The
 scope and the threshold are left unchanged rather than re-tuned, and this loss of framework-specific forward
-content is recorded openly.
+content is recorded openly. P1's statistic turned out to be unable to distinguish its only coherent reading from
+ΛCDM (OPEN_PROBLEMS.md, problem 1); the early-universe content of that reading was registered under clause 3 as
+P14, whose own registration adds: if P14 fails, clause 4 applies.
 
 ### K1 — Duality sudden-death (photon and tensor sectors)
 

@@ -14,6 +14,11 @@ Physics work on the open problems, starting with the computation that problem 1 
 - The fit is validated against the priors themselves and against DESI's published ΛCDM results. The
   recombination-redshift formula as printed in the prior paper misses the priors' own central value by 1.8σ; it is
   rescaled once to Planck's z*, as documented in the code. A slow check recomputes every fit in CI.
+- **P14 registered** ([predictions/P14_early_gravity/](predictions/P14_early_gravity/)): the early-universe content of
+  that reading, gravity weaker relative to atoms by 0.79% at recombination and 2.98% at nucleosynthesis with a fixed
+  relation between the two, as a new forward prediction under K0.3. Its registration adds a kill clause: if P14
+  fails, K0.4 applies. It is not scored yet, because no current measurement can tell it from G = G₀. The register
+  now holds fourteen predictions.
 - The P8 r2 history at the canonical p fits the CMB + BAO data worse than ΛCDM (Δχ² = +2.5); added to problem 2.
 - New verified data files: DESI DR2 BAO (arXiv:2503.14738 v3) and the Planck 2018 distance priors (Chen, Huang &
   Wang 2019). The old compact DR1 table disagrees with the DESI DR1 paper in several places, including a quasar

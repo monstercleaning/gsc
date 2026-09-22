@@ -231,7 +231,9 @@ class TestDepositReviewGuards(unittest.TestCase):
                     ok, detail = vc._v_number_agreement(tree, spec)
                     self.assertFalse(ok)
                     self.assertIn("says 10", detail)
-            (tree / "README.md").write_text("Confirm all thirteen predictions compute deterministically.\n")
+            n = len(list((tree / "predictions").glob("P*/prediction.md")))
+            word = {v: k for k, v in vc.NUMBER_WORDS.items()}[n]
+            (tree / "README.md").write_text(f"Confirm all {word} predictions compute deterministically.\n")
             self.assertTrue(vc._v_number_agreement(tree, spec)[0])
 
     def test_verdict_parsing(self):

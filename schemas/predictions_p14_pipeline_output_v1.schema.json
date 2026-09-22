@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p14_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P14 (early-universe gravity, early-transition reading)",
+  "$comment": "q and z_transition are registered constants. Changing either is a new prediction and must be registered as a superseding entry, not edited here. G_over_G0 is at most 1 because the registered q is positive (gravity weaker in the past).",
+  "type": "object",
+  "required": ["schema", "prediction_id", "title", "tier", "tool", "tool_version", "registered_parameters", "prediction", "scoring_rule"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p14_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P14"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "registered_parameters": {
+      "type": "object",
+      "required": ["q", "z_transition"],
+      "properties": {
+        "q": {"type": "number", "const": 0.000865},
+        "z_transition": {"type": "number", "const": 10.0},
+        "q_provenance": {"type": "string"}
+      }
+    },
+    "prediction": {
+      "type": "object",
+      "required": ["epochs", "late_universe", "relation_between_epochs"],
+      "properties": {
+        "epochs": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["epoch", "z_obs", "G_over_G0", "deviation_percent"],
+            "properties": {
+              "epoch": {"type": "string", "enum": ["recombination", "nucleosynthesis", "weak_freeze_out"]},
+              "z_obs": {"type": "number", "exclusiveMinimum": 10.0},
+              "G_over_G0": {"type": "number", "exclusiveMinimum": 0, "maximum": 1.0},
+              "deviation_percent": {"type": "number", "maximum": 0.0},
+              "note": {"type": "string"}
+            }
+          }
+        },
+        "late_universe": {
+          "type": "object",
+          "required": ["G_over_G0"],
+          "properties": {"G_over_G0": {"type": "number", "const": 1.0}}
+        },
+        "relation_between_epochs": {
+          "type": "object",
+          "required": ["ln_G_bbn_over_ln_G_rec"],
+          "properties": {"ln_G_bbn_over_ln_G_rec": {"type": "number", "exclusiveMinimum": 1.0}}
+        },
+        "summary": {"type": "string"}
+      }
+    },
+    "scoring_rule": {
+      "type": "object",
+      "required": ["statistic", "fail", "pass", "sub_threshold"]
+    },
+    "framework_implications": {"type": "object"}
+  }
+}

@@ -23,7 +23,7 @@ Paper D documents the deterministic, schema-validated, content-hashed and self-v
    - P1: BAO ruler-shift prediction (Paper A);
    - P2: 21cm Cosmic Dawn (parametric);
    - P3: the retracted neutron-lifetime explanation;
-   - P4–P13: including the P8 correction and the exact nulls;
+   - P4–P14: including the P8 correction, the exact nulls and the early-gravity prediction;
 5. Software stack: gsc/, pipelines/, verification/, schemas/, tests/, CI;
 6. Self-verification: the claim checker and its negative control;
 7. Limitations and design trade-offs;

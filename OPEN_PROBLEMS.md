@@ -71,7 +71,7 @@ measurement, Lamine et al. (A&A 2025, doi:10.1051/0004-6361/202451602, arXiv:240
 cosmological G from Planck PR4, DESI DR1 BAO and the nucleosynthesis helium fraction to 1.8%, consistent with the
 laboratory value. The variant's shifts are of the same order, so current data do not decisively test it, and a
 few-fold improvement would. The comparison is indicative only: that analysis assumes one G at all epochs, while
-the variant's G changes with time. No registered prediction tests it (problem 5).
+the variant's G changes with time. This content is registered as P14 (v20.1, problem 5).
 
 ## 2. The P8 revision r2 history is not "the same p as P1"
 
@@ -114,8 +114,8 @@ universe (problem 1), plus the T3 θ-trajectory behind P5. None of the forward t
 it counts only if registered as a new forward prediction. Until then, the registered late-time content of the
 core is observationally indistinguishable from ΛCDM, which is the situation the conformal-reduction clause K0.4
 addresses. It does not fire outright, because the early-gravity content and the T3 and T4 modules remain
-testable, but whether to register the early-gravity prediction is the next decision for the framework. The
-earlier text of this problem recorded the possibility before the computation was done.
+testable. The early-gravity prediction was registered as P14 in v20.1, under K0.3, with the clause that its
+failure triggers K0.4. The earlier text of this problem recorded the possibility before the computation was done.
 
 ## 6. Registered pipeline descriptions name modules that were never built
 
