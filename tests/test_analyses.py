@@ -8,6 +8,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "analyses"))
+import joint_fit  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -28,6 +30,41 @@ class TestAnalyses(unittest.TestCase):
         for key in ("controls", "fits_on_shifted_mock", "fits_on_shifted_mock_dr2_precision"):
             with self.subTest(block=key):
                 self.assertEqual(fresh[key], committed[key])
+
+
+class TestJointFit(unittest.TestCase):
+    """Fast checks of analyses/joint_fit.py; the full refit runs as a slow claim (joint-fit-reproduces)."""
+
+    def test_reproduces_the_planck_distance_priors_at_planck_parameters(self):
+        p = joint_fit.PLANCK2018_TTTEEE_LOWE
+        obs = joint_fit.LCDM(p["h"], p["omega_b"], p["omega_c"]).cmb()
+        self.assertLess(abs(obs["R"] - 1.7502) / 0.0046, 0.1)
+        self.assertLess(abs(obs["l_A"] - 301.471) / 0.0895, 0.5)
+
+    def test_every_reading_reduces_to_lcdm_at_zero_exponent(self):
+        data = joint_fit.load_data()
+        ref = joint_fit.chi2_total(joint_fit.LCDM(0.68, 0.0224, 0.119), data)
+        for name in ("early_transition", "powerlaw", "history_b"):
+            with self.subTest(name):
+                model = joint_fit.MODELS[name](0.68, 0.0224, 0.119, 0.0)
+                self.assertAlmostEqual(joint_fit.chi2_total(model, data), ref, places=9)
+
+    def test_redshift_maps_invert(self):
+        for name in ("early_transition", "powerlaw"):
+            model = joint_fit.MODELS[name](0.68, 0.0224, 0.119, 8.65e-4)
+            for z in (0.5, 5.0, 20.0, 1100.0, 1.0e6):
+                self.assertAlmostEqual(model.zobs(model.zE(z)), z, delta=1e-9 * (1.0 + z))
+
+    def test_p1_tuned_variant_shifts_the_ruler_at_fixed_parameters(self):
+        base = joint_fit.LCDM(0.6852, 0.02255, 0.1175)
+        variant = joint_fit.EarlyTransition(0.6852, 0.02255, 0.1175, joint_fit.q_tuned_to_p1())
+        shift = 100.0 * ((variant.dm(0.934) / variant.r_d()) / (base.dm(0.934) / base.r_d()) - 1.0)
+        self.assertAlmostEqual(shift, -0.42, delta=0.01)
+
+    def test_committed_report_is_the_rendering_of_the_committed_numbers(self):
+        committed = json.loads((ROOT / "analyses" / "joint_fit.json").read_text(encoding="utf-8"))
+        self.assertEqual((ROOT / "analyses" / "joint_fit.md").read_text(encoding="utf-8"),
+                         joint_fit.render_markdown(committed))
 
 
 if __name__ == "__main__":

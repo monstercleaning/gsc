@@ -6,6 +6,12 @@ deterministic artifact: `analyses/w0wa_rd_shift_diagnostic.json`.
 Executed 2026-07-27 (v12.6 cycle), closing the M-task queued in
 `docs/observational_frontier_2026.md` §5.
 
+> **Superseded for the coherent reading (v20.1).** This diagnostic uses P1's heuristic convention: the ruler is
+> scaled while the CMB acoustic angle is held fixed. The joint fit of the only coherent reading
+> ([joint_fit.md](joint_fit.md)) moves the acoustic angle too and absorbs the shift into a −0.9% H₀ shift, not the
+> +0.42% found here (OPEN_PROBLEMS.md, problem 4). Its compact DR1 input table also has known discrepancies
+> ([../data/README.md](../data/README.md)).
+
 ## Question
 
 Adi (JCAP 03 (2026) 015, arXiv:2509.12331) showed that the DESI w₀wₐ

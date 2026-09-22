@@ -478,6 +478,21 @@
       },
       "always": true,
       "note": "Slow (runs every pipeline twice). Requires --include-slow."
+    },
+    {
+      "id": "joint-fit-reproduces",
+      "claim": "The joint CMB + BAO fit behind OPEN_PROBLEMS.md problems 1, 4 and 5 reproduces its committed numbers.",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": [
+          "python3",
+          "analyses/joint_fit.py",
+          "--check"
+        ],
+        "timeout": 1800
+      },
+      "always": true,
+      "note": "Slow (one to two minutes): every fit is recomputed and compared with analyses/joint_fit.json within a relative tolerance of 0.2%, and analyses/joint_fit.md must be the rendering of the committed numbers. Requires --include-slow."
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "source": "Chen, Huang & Wang, Distance priors from Planck final release, JCAP 02 (2019) 028, doi:10.1088/1475-7516/2019/02/028, arXiv:1808.05724, Table 1 (flat LCDM, Planck 2018 TT,TE,EE+lowE)",
+  "parameters": ["R", "l_A", "omega_b", "n_s"],
+  "mean": [1.7502, 301.471, 0.02236, 0.9649],
+  "sigma": [0.0046, 0.0895, 0.00015, 0.0043],
+  "correlation": [
+    [1.0, 0.46, -0.66, -0.74],
+    [0.46, 1.0, -0.33, -0.35],
+    [-0.66, -0.33, 1.0, 0.46],
+    [-0.74, -0.35, 0.46, 1.0]
+  ],
+  "note": "l_A is quoted as 301.471 +0.089/-0.090; the symmetric sigma 0.0895 is used. Definitions (the paper's equations 1-10): l_A = pi D_M(z*)/r_s(z*), R = sqrt(Omega_m H0^2) D_M(z*)/c, z* from the Hu-Sugiyama fitting formula, r_s with R_b = 31500 omega_b (T_CMB/2.7 K)^-4 a and Omega_r = Omega_m/(1+z_eq), z_eq = 2.5e4 omega_m (T_CMB/2.7 K)^-4."
+}

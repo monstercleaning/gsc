@@ -144,7 +144,9 @@ data); a mechanical guard in `verification/claims.json` forbids that use in any 
 **Open problem.** Which sector carries p — and therefore which other observables must move with it — is not
 yet specified consistently across the register. A universal σ rescaling is unobservable, so the P1 shift
 requires a specific non-universality, and the most natural one implies a present-day drift of G relative to
-atomic units that lunar laser ranging constrains. This is problem 1 in [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md).
+atomic units that lunar laser ranging constrains. The only reading that survives both lunar ranging and a joint
+CMB + BAO fit confines the drift to the early universe, where the fit absorbs it into H₀. This is problem 1 in
+[OPEN_PROBLEMS.md](OPEN_PROBLEMS.md).
 
 ### 4.2 Ansatz families
 
@@ -157,9 +159,12 @@ only as a falsified comparison branch), and **rg_profile** (identical to powerla
 - **BAO ruler shift (P1):** +0.417% relative to the ΛCDM expectation, from the drag-epoch σ ratio
   (1+z_drag)^p. The worked DR1-era check passes at z = +2.36. Testability: DESI DR2 aggregate BAO precision
   ~0.24% puts the shift at ~1.7σ; the full five-year release (~0.2%) at ~2.1σ — indicative alone, decisive
-  only in combination. In joint BAO + CMB fits the shift is largely absorbed as a +0.42% bias in H₀
-  ([analyses/w0wa_rd_shift.md](analyses/w0wa_rd_shift.md)), so the test with teeth is the comparison against
-  an externally calibrated sound horizon.
+  only in combination. These estimates hold at fixed cosmological parameters. In the only coherent reading of
+  the shift (masses drifting relative to the Planck mass before z ≈ 10), a joint CMB + BAO fit absorbs it into
+  H₀, which falls by 0.9%, and after the refit D/r_d differs from ΛCDM by less than 0.005%
+  ([analyses/joint_fit.md](analyses/joint_fit.md)). What remains distinct is early-universe gravity: 0.8% weaker
+  relative to atoms at recombination and 3% at nucleosynthesis, a target for full-spectrum CMB fits and
+  nucleosynthesis rather than for BAO.
 - **Redshift drift (P8):** equal to ΛCDM's to within 0.03 cm/s at every registered redshift, with the same
   sign structure. The drift is a consistency test, not a discriminator.
 
@@ -296,7 +301,8 @@ register itself. The register currently has 9 active scorers.
 
 ### Prediction P1 — BAO standard-ruler shift
 T2. The apparent BAO ruler is +0.417% larger than the ΛCDM expectation at the canonical p. Retrodictive
-DR1-era check: PASS (z = +2.36). Forward target: the full five-year DESI release. Coherence is open problem 1.
+DR1-era check: PASS (z = +2.36). Forward target: the full five-year DESI release. Its only coherent reading is
+absorbed into H₀ in a joint CMB + BAO fit, so the registered statistic cannot distinguish it (open problem 1).
 [predictions/P01_bao_ruler_shift/](predictions/P01_bao_ruler_shift/)
 
 ### Prediction P2 — 21cm Cosmic-Dawn signal

@@ -101,7 +101,7 @@ For each ansatz family, parameters are constrained by the joint fit against the 
 
 - **Type Ia supernovae:** Pantheon+SH0ES sample with full STAT+SYS covariance (Brout et al. 2022; Riess et al. 2022).
 - **BAO:** DESI Year-1 galaxy-clustering BAO peak positions (DESI Collaboration 2024), with anticipated Year-2 and Year-3 increments registered as future test data.
-- **Compressed CMB priors:** Chen-Howlett-Whitebook 2018 distance priors on (R, ℓ_a, Ω_b h², n_s).
+- **Compressed CMB priors:** Planck 2018 distance priors on (R, ℓ_a, Ω_b h², n_s) (Chen, Huang & Wang 2019).
 - **Linear-growth fσ8:** Gold 2017 + Zhao 2018 compilation.
 
 ### 4.2 Fit method
@@ -173,6 +173,11 @@ The decisive-falsification combination for the T2 ansatz quoted in §5.1 is corr
 We register two predictions in this paper. Both are content-hashed and git-time-stamped in the project's pre-registration register (`predictions/`) at the commit corresponding to the manuscript submission; GPG signing is specified by the protocol but not yet executed. Of the two, the DESI Year-3 BAO test is a genuine forward pre-registration (its data is unreleased); the redshift-drift test targets ELT/ANDES (≥2040) and, since the v12.7 revision (P8 r2), is a ΛCDM-degenerate consistency test rather than a discriminator. The worked DESI Year-1 BAO scorecard is a retrodictive consistency check, not a score of the registered Year-3 prediction.
 
 ### 5.1 P1 — BAO standard-ruler shift (forward target: the full five-year DESI release)
+
+> **Flagged — open problem 1 ([OPEN_PROBLEMS.md](../../OPEN_PROBLEMS.md)).** A joint fit of the only coherent
+> reading of this shift to the Planck 2018 CMB distance priors and DESI DR2 BAO data absorbs it into H₀ (−0.9%);
+> after the refit D/r_d differs from ΛCDM by less than 0.005% ([analyses/joint_fit.md](../../analyses/joint_fit.md)).
+> The testability estimates below assume fixed cosmological parameters.
 
 Under the freeze-frame measurement model, the BAO sound horizon r_d at the drag epoch is observed today against today's atomic units. Atoms today are smaller than at recombination by σ(z=0)/σ(z_drag) — for the canonical powerlaw ansatz with p = 6×10⁻⁴, this gives an apparent BAO scale that is +0.417% larger than the ΛCDM expectation:
 
@@ -253,6 +258,6 @@ We acknowledge the foundational scale-covariant cosmology lineage initiated by C
 - Brout, D. et al. *The Pantheon+ analysis: Cosmological constraints.* ApJ 938, 110 (2022).
 - Riess, A. G. et al. *A comprehensive measurement of the local value of the Hubble constant with 1 km/s/Mpc uncertainty from the Hubble Space Telescope and the SH0ES team.* ApJ Lett. 934, L7 (2022).
 - DESI Collaboration. *DESI 2024 III: Baryon Acoustic Oscillations from Galaxies and Quasars.* arXiv:2404.03000 (2024).
-- Chen, S.-F., Howlett, C., Whitebook, M. (CHW2018). *Compressed CMB distance priors.* (Reference TBD.)
+- Chen, L., Huang, Q.-G., Wang, K. (2019). *Distance priors from Planck final release.* JCAP 02, 028. doi:10.1088/1475-7516/2019/02/028; arXiv:1808.05724.
 - Sandage, A. *The change of redshift and apparent luminosity of galaxies due to the deceleration of selected expanding universes.* ApJ 136, 319 (1962).
 - Loeb, A. *Direct measurement of cosmological parameters from the cosmic deceleration of extragalactic objects.* ApJ Lett. 499, L111 (1998).

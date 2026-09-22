@@ -56,9 +56,18 @@ now about a thousand times more precise.
   (95%). This variant sits at that edge.
 - Alvey et al. 2020 (arXiv:1910.10730): G_BBN/G₀ = 0.99 +0.06/−0.05 (2σ). Compatible.
 
-**What decides it.** A joint CMB + BAO fit of the early-transition variant. If it survives, the framework gains
-its first coherent, distinguishable prediction: weaker gravity (relative to atoms) in the early universe, tied
-to the BAO ruler and to nucleosynthesis. If it fails, see problem 5.
+**The joint fit (v20.1).** [analyses/joint_fit.md](analyses/joint_fit.md) fits the variant, with the cosmological
+parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO data. The variant survives:
+Δχ² = −0.09 relative to ΛCDM. P1's signature does not. The fit absorbs the variant into H₀, which falls from
+68.5 to 67.9 km/s/Mpc, and after the refit D/r_d differs from ΛCDM by less than 0.005% at every DESI redshift.
+The same degeneracy leaves the exponent almost unconstrained by these data. Nucleosynthesis bounds it to
+−1.4×10⁻³ < q < 1.8×10⁻³ (2σ), which caps the H₀ this variant can reach at 67.3–69.5 km/s/Mpc: it does not
+address the Hubble tension.
+
+**What remains distinct.** Only early-universe gravity. At the P1-tuned value, G in atomic units is 0.992 of
+today's at recombination and 0.970 at nucleosynthesis, tied by ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Compressed CMB
+priors cannot see this; a full-spectrum CMB fit and tighter nucleosynthesis bounds can. No registered prediction
+tests it (problem 5).
 
 ## 2. The P8 revision r2 history is not "the same p as P1"
 
@@ -66,7 +75,9 @@ The P8 r2 pipeline uses the history H(z) = H_ΛCDM(z)·(1+z)^p and its texts cal
 modulation P1 applies". Computed consistently, that history moves the BAO ruler in the **opposite** direction
 (+0.47% in D/r_d instead of −0.42%). The *conclusion* of P8 r2 — the redshift drift is indistinguishable from
 ΛCDM's — holds in every coherent reading (the early-transition variant of problem 1 gives exactly ΛCDM's drift
-below z = 10). The description of its history does not. Flagged; the registered output is unchanged.
+below z = 10). The description of its history does not. Flagged; the registered output is unchanged. The joint fit of
+problem 1 adds that this history, at the canonical p, fits the CMB and BAO data worse than ΛCDM (Δχ² = +2.5); the
+data prefer the opposite sign of p.
 
 ## 3. P2's amplification factor is not derived
 
@@ -82,13 +93,25 @@ assume the CMB acoustic angle θ* is unchanged. In the only reading that reprodu
 fixed parameters. The conclusions of that diagnostic therefore hold only for the heuristic convention; the joint
 fit of problem 1 supersedes them.
 
+**Resolved by the joint fit (v20.1).** With the acoustic scale in the likelihood, the coherent reading restores
+θ* by lowering H₀ by 0.9%, where the heuristic convention had found a +0.42% bias. The w₀wₐ diagnostic's
+conclusions do not carry over to the coherent reading.
+
 ## 5. What this means for the kill conditions
 
 Of the five forward tests in kill condition K0: P8 is ΛCDM-degenerate, P2 probably is, P12 is an exact null
-shared with ΛCDM, P10 tests a separate T4 module, and P1 depends on problem 1. If the early-transition variant
-fails its joint fit, the physics case has no remaining content distinct from ΛCDM, and the conformal-reduction
-clause K0.4 applies: GSC stands as an exact re-description of standard cosmology with a verification method
-attached. This possible outcome is recorded here before the computation is done.
+shared with ΛCDM, and P10 tests a separate T4 module. The joint fit (problem 1, v20.1) settles P1: its only
+coherent reading survives, but P1's registered statistic cannot tell it from ΛCDM, because the shift is absorbed
+into H₀ once the cosmological parameters are refitted (the flag on P1 explains why the statistic would even fail
+spuriously at fine enough precision). The kill-condition scope and threshold are left unchanged.
+
+What still distinguishes the GSC core from ΛCDM is therefore weaker gravity, relative to atoms, in the early
+universe (problem 1), plus the T3 θ-trajectory behind P5. None of the forward tests probes the first. Under K0.3
+it counts only if registered as a new forward prediction. Until then, the registered late-time content of the
+core is observationally indistinguishable from ΛCDM, which is the situation the conformal-reduction clause K0.4
+addresses. It does not fire outright, because the early-gravity content and the T3 and T4 modules remain
+testable, but whether to register the early-gravity prediction is the next decision for the framework. The
+earlier text of this problem recorded the possibility before the computation was done.
 
 ## 6. Registered pipeline descriptions name modules that were never built
 

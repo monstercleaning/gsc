@@ -1,5 +1,26 @@
 # Changelog
 
+## 20.1.0 — in progress
+
+Physics work on the open problems, starting with the computation that problem 1 called decisive.
+
+- **Joint CMB + BAO fit** ([analyses/joint_fit.md](analyses/joint_fit.md)). The only coherent reading of P1's shift,
+  particle masses drifting relative to the Planck mass before z ≈ 10, was fitted with the cosmological parameters
+  free to the Planck 2018 CMB distance priors and the DESI DR2 BAO measurements. It fits as well as ΛCDM
+  (Δχ² = −0.09), but the fit absorbs it into H₀ (−0.9%), after which its BAO signature is below 0.005%. P1's
+  registered statistic therefore cannot distinguish GSC from ΛCDM. P1 carries an editorial flag, which changes the
+  register manifest digest; the kill-condition count is unchanged. What remains distinct is early-universe gravity,
+  which no registered test probes (OPEN_PROBLEMS.md problems 1, 4 and 5).
+- The fit is validated against the priors themselves and against DESI's published ΛCDM results. The
+  recombination-redshift formula as printed in the prior paper misses the priors' own central value by 1.8σ; it is
+  rescaled once to Planck's z*, as documented in the code. A slow check recomputes every fit in CI.
+- The P8 r2 history at the canonical p fits the CMB + BAO data worse than ΛCDM (Δχ² = +2.5); added to problem 2.
+- New verified data files: DESI DR2 BAO (arXiv:2503.14738 v3) and the Planck 2018 distance priors (Chen, Huang &
+  Wang 2019). The old compact DR1 table disagrees with the DESI DR1 paper in several places, including a quasar
+  measurement the paper does not contain; it is flagged in [data/README.md](data/README.md), not changed.
+- Paper A cited the distance priors to a nonexistent "Chen-Howlett-Whitebook 2018" with "Reference TBD"; it now cites
+  Chen, Huang & Wang (2019).
+
 ## 20.0.0 — 2026-09-22 — standalone reorganization
 
 A structural release. The project had grown through versions 8 to 12 into a package of about 900 files whose
