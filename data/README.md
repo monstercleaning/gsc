@@ -3,6 +3,7 @@
 | File | Content | Source |
 |---|---|---|
 | `desi_dr2_bao.csv` | DESI DR2 BAO: D_V/r_d for BGS and correlated (D_M/r_d, D_H/r_d) pairs for six tracers | DESI DR2 Results II, arXiv:2503.14738 v3, Table IV (the combined LRG3+ELG1 bin, as in DESI's baseline). Used by `analyses/joint_fit.py`. |
+| `desi_dr2_bao_dv_ap.csv` | DESI DR2 BAO in the other compression: D_V/r_d and the Alcock–Paczyński ratio D_M/D_H, with their correlation | Same table of arXiv:2503.14738 v3. Used by `analyses/timescape_fit.py`. |
 | `planck2018_distance_priors.json` | Planck 2018 CMB distance priors (R, l_A, ω_b, n_s) with their correlation matrix | Chen, Huang & Wang, JCAP 02 (2019) 028, arXiv:1808.05724, Table 1 (flat ΛCDM, TT,TE,EE+lowE). Used by `analyses/joint_fit.py`. |
 | `desi_dr1_bao_baseline.csv` | A compact DR1-era table of BAO distance ratios, used only by `analyses/w0wa_rd_shift_diagnostic.py` | Described at creation as public DESI DR1 BAO summary values (arXiv:2404.03000). See the discrepancies below. |
 

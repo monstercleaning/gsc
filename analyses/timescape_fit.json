@@ -1,0 +1,365 @@
+{
+  "tool": "timescape_fit.py",
+  "status": "DIAGNOSTIC — the timescape cosmology against DESI DR2 BAO; not a registered prediction",
+  "sources": {
+    "formulas": "Wiltshire, PRD 80, 123512 (2009), arXiv:0909.0749",
+    "bao": "DESI DR2, arXiv:2503.14738 v3, Table IV"
+  },
+  "validation": {
+    "drift_z4_10yr": {
+      "this_code": -3.31124e-10,
+      "published": -3.3e-10
+    },
+    "Om0_at_f_0.774": {
+      "numerical_from_H": 0.637956,
+      "eq_48": 0.63799,
+      "published_minimum": 0.638
+    },
+    "distance_closed_form_vs_integral_z1": {
+      "closed_form": 0.54112,
+      "integral": 0.54112
+    },
+    "lapse_consistency_z1": {
+      "from_eq72": 1.28819,
+      "eq77_with_b_eq38": 1.28819
+    },
+    "z_at_t0": 2.22045e-16,
+    "redshift_map_inverts_z2": 8.88178e-16
+  },
+  "n_bao_data": 13,
+  "n_ap_data": 6,
+  "fits": {
+    "timescape_bao": {
+      "best": 0.675,
+      "chi2_min": 62.4075,
+      "interval_1sigma": [
+        0.67,
+        0.685
+      ],
+      "interval_2sigma": [
+        0.66,
+        0.695
+      ],
+      "interval_reaches_scan_edge": false
+    },
+    "lcdm_bao": {
+      "best": 0.297,
+      "chi2_min": 10.5403,
+      "interval_1sigma": [
+        0.289,
+        0.306
+      ],
+      "interval_2sigma": [
+        0.281,
+        0.314
+      ],
+      "interval_reaches_scan_edge": false
+    },
+    "timescape_ap": {
+      "best": 0.71,
+      "chi2_min": 50.7246,
+      "interval_1sigma": [
+        0.685,
+        0.735
+      ],
+      "interval_2sigma": [
+        0.66,
+        0.765
+      ],
+      "interval_reaches_scan_edge": false
+    },
+    "lcdm_ap": {
+      "best": 0.299,
+      "chi2_min": 6.03402,
+      "interval_1sigma": [
+        0.282,
+        0.316
+      ],
+      "interval_2sigma": [
+        0.266,
+        0.335
+      ],
+      "interval_reaches_scan_edge": false
+    }
+  },
+  "delta_chi2_bao_timescape_minus_lcdm": 51.8673,
+  "delta_chi2_ap_timescape_minus_lcdm": 44.6906,
+  "desi_published_lcdm_bao_only_Omega_m": [
+    0.2975,
+    0.0086
+  ],
+  "best_fit_scale_c_over_H0_rd": {
+    "timescape": 32.1476,
+    "lcdm": 29.5138
+  },
+  "residual_pulls": [
+    {
+      "tracer": "BGS",
+      "z": 0.295,
+      "timescape": {
+        "DV_pull": 2.16431
+      },
+      "lcdm": {
+        "DV_pull": -0.551784
+      }
+    },
+    {
+      "tracer": "LRG1",
+      "z": 0.51,
+      "timescape": {
+        "DM_pull": 0.557732,
+        "DH_pull": -1.12786
+      },
+      "lcdm": {
+        "DM_pull": -1.99978,
+        "DH_pull": 1.4231
+      }
+    },
+    {
+      "tracer": "LRG2",
+      "z": 0.706,
+      "timescape": {
+        "DM_pull": 2.62955,
+        "DH_pull": -1.82742
+      },
+      "lcdm": {
+        "DM_pull": 0.342627,
+        "DH_pull": 1.6515
+      }
+    },
+    {
+      "tracer": "LRG3+ELG1",
+      "z": 0.934,
+      "timescape": {
+        "DM_pull": 3.1157,
+        "DH_pull": -5.91716
+      },
+      "lcdm": {
+        "DM_pull": 0.663018,
+        "DH_pull": -0.844425
+      }
+    },
+    {
+      "tracer": "ELG2",
+      "z": 1.321,
+      "timescape": {
+        "DM_pull": 1.57068,
+        "DH_pull": -3.15776
+      },
+      "lcdm": {
+        "DM_pull": 0.449602,
+        "DH_pull": -0.59784
+      }
+    },
+    {
+      "tracer": "QSO",
+      "z": 1.484,
+      "timescape": {
+        "DM_pull": -0.277,
+        "DH_pull": -0.681298
+      },
+      "lcdm": {
+        "DM_pull": -0.758096,
+        "DH_pull": 0.111714
+      }
+    },
+    {
+      "tracer": "Lya",
+      "z": 2.33,
+      "timescape": {
+        "DM_pull": 0.682113,
+        "DH_pull": 0.932007
+      },
+      "lcdm": {
+        "DM_pull": -0.251536,
+        "DH_pull": 0.0744224
+      }
+    }
+  ],
+  "robustness": {
+    "dv_ap_compression": {
+      "timescape_chi2": 67.4453,
+      "timescape_f_v0": 0.675,
+      "lcdm_chi2": 10.4033,
+      "lcdm_Omega_m": 0.297,
+      "delta_chi2": 57.042
+    },
+    "without_worst_bin": {
+      "dropped": "LRG3+ELG1",
+      "timescape_chi2": 25.4115,
+      "lcdm_chi2": 9.60888,
+      "delta_chi2": 15.8026
+    },
+    "bao_chi2_at_published_void_fractions": {
+      "supernovae_f_0.737": 98.9983,
+      "cmb_f_0.627": 88.924
+    },
+    "ap_ratio_at_z_0.934": {
+      "desi": 1.223,
+      "desi_sigma": 0.019,
+      "timescape_f_0.60": 1.34821,
+      "timescape_f_0.75": 1.33611,
+      "timescape_f_0.90": 1.37505,
+      "lcdm_best": 1.24023
+    }
+  },
+  "void_fraction_by_probe": {
+    "bao_shape_this_analysis": {
+      "f_v0": 0.675,
+      "interval_1sigma": [
+        0.67,
+        0.685
+      ]
+    },
+    "supernovae_2025": {
+      "f_v0": 0.737,
+      "sigma": 0.029,
+      "source": "Seifert et al., MNRAS Letters 537, L55 (2025), Pantheon+"
+    },
+    "cmb_2015": {
+      "f_v0": 0.627,
+      "sigma_total": 0.0827759,
+      "source": "Nazer & Wiltshire, PRD 91, 063519 (2015), Planck multipoles 50-2500"
+    }
+  },
+  "redshift_drift": {
+    "timescape_bao_best": {
+      "f_v0": 0.675,
+      "zero_crossing_z": 0.721483,
+      "curve": [
+        {
+          "z": 0.5,
+          "drift_over_H0": 0.0067709
+        },
+        {
+          "z": 1.0,
+          "drift_over_H0": -0.0207177
+        },
+        {
+          "z": 1.5,
+          "drift_over_H0": -0.0982843
+        },
+        {
+          "z": 2.0,
+          "drift_over_H0": -0.232976
+        },
+        {
+          "z": 2.5,
+          "drift_over_H0": -0.426352
+        },
+        {
+          "z": 3.0,
+          "drift_over_H0": -0.677133
+        },
+        {
+          "z": 3.5,
+          "drift_over_H0": -0.982835
+        },
+        {
+          "z": 4.0,
+          "drift_over_H0": -1.34063
+        },
+        {
+          "z": 4.5,
+          "drift_over_H0": -1.74774
+        },
+        {
+          "z": 5.0,
+          "drift_over_H0": -2.2016
+        }
+      ]
+    },
+    "timescape_supernovae": {
+      "f_v0": 0.737,
+      "zero_crossing_z": 1.53229,
+      "curve": [
+        {
+          "z": 0.5,
+          "drift_over_H0": 0.0199068
+        },
+        {
+          "z": 1.0,
+          "drift_over_H0": 0.025685
+        },
+        {
+          "z": 1.5,
+          "drift_over_H0": 0.00272015
+        },
+        {
+          "z": 2.0,
+          "drift_over_H0": -0.0583812
+        },
+        {
+          "z": 2.5,
+          "drift_over_H0": -0.162698
+        },
+        {
+          "z": 3.0,
+          "drift_over_H0": -0.312258
+        },
+        {
+          "z": 3.5,
+          "drift_over_H0": -0.507173
+        },
+        {
+          "z": 4.0,
+          "drift_over_H0": -0.746481
+        },
+        {
+          "z": 4.5,
+          "drift_over_H0": -1.02869
+        },
+        {
+          "z": 5.0,
+          "drift_over_H0": -1.35211
+        }
+      ]
+    },
+    "lcdm_bao_best": {
+      "Omega_m": 0.297,
+      "zero_crossing_z": 2.12455,
+      "curve": [
+        {
+          "z": 0.5,
+          "drift_over_H0": 0.1941
+        },
+        {
+          "z": 1.0,
+          "drift_over_H0": 0.245292
+        },
+        {
+          "z": 1.5,
+          "drift_over_H0": 0.188372
+        },
+        {
+          "z": 2.0,
+          "drift_over_H0": 0.0466968
+        },
+        {
+          "z": 2.5,
+          "drift_over_H0": -0.165634
+        },
+        {
+          "z": 3.0,
+          "drift_over_H0": -0.439707
+        },
+        {
+          "z": 3.5,
+          "drift_over_H0": -0.769452
+        },
+        {
+          "z": 4.0,
+          "drift_over_H0": -1.15045
+        },
+        {
+          "z": 4.5,
+          "drift_over_H0": -1.57929
+        },
+        {
+          "z": 5.0,
+          "drift_over_H0": -2.05326
+        }
+      ]
+    }
+  }
+}

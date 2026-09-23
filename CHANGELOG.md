@@ -19,6 +19,12 @@ Physics work on the open problems, starting with the computation that problem 1 
   relation between the two, as a new forward prediction under K0.3. Its registration adds a kill clause: if P14
   fails, K0.4 applies. It is not scored yet, because no current measurement can tell it from G = G₀. The register
   now holds fourteen predictions.
+- **Timescape tested** ([analyses/timescape_fit.md](analyses/timescape_fit.md)): Wiltshire's cosmology, in which
+  gravity makes clocks and rulers in galaxies differ from the void-dominated average and so mimics dark energy, is
+  the published version of GSC's intuition with a known cause. Implemented from Wiltshire (2009) and validated
+  against its published numbers, it fits the DESI DR2 BAO shape much worse than ΛCDM (Δχ² = +52; the
+  calibration-free Alcock–Paczyński ratio alone gives +45), robustly across checks. Recorded as problem 9; its
+  redshift-drift prediction is documented but not registered, because existing data already disfavour the model.
 - The P8 r2 history at the canonical p fits the CMB + BAO data worse than ΛCDM (Δχ² = +2.5); added to problem 2.
 - New verified data files: DESI DR2 BAO (arXiv:2503.14738 v3) and the Planck 2018 distance priors (Chen, Huang &
   Wang 2019). The old compact DR1 table disagrees with the DESI DR1 paper in several places, including a quasar

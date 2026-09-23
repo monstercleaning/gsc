@@ -143,3 +143,31 @@ the fit: the canonical parameter comes from the P1 pipeline's scan against the D
 ([gsc/canonical_params.py](gsc/canonical_params.py)). What decides it: a refit of the three families with code
 shipped in the package, ideally together with the joint CMB + BAO fit that problem 1 calls for. Until then the
 statement is flagged in both papers.
+
+## 9. A gravitational cause for the changing standards: timescape tested against DESI
+
+**The idea.** GSC's intuition is that what changes is not space but the standards measured with matter. Problem 1
+showed that a universal change is only a change of units, so the change must differ from place to place, and a
+known force should cause it. The published theory that does exactly this is Wiltshire's timescape cosmology: in a
+lumpy universe, clocks and rulers in galaxies are calibrated differently from the volume average, which
+fast-expanding voids dominate, and reading the data with our local clocks mimics cosmic acceleration without dark
+energy. It uses ordinary general relativity only. With Pantheon+ supernovae it was reported to fit better than ΛCDM
+(Seifert et al., MNRAS Letters 537, L55, 2025).
+
+**The test (v20.1).** [analyses/timescape_fit.md](analyses/timescape_fit.md) implements the model's tracker
+solution from Wiltshire, PRD 80, 123512 (2009), reproduces the numbers published there, and fits it to the DESI
+DR2 BAO data with the BAO scale left free, so that only the shape of the distance–redshift relation is tested.
+Timescape fits much worse than ΛCDM with the same number of parameters: χ² = 62.4 against 10.5 for 13 data points
+(Δχ² = +52). The calibration-free Alcock–Paczyński ratio alone gives Δχ² = +45, and the mismatch is a property of
+the model's shape rather than of its parameter: at z = 0.93 the ratio is 1.34–1.38 for any void fraction, where
+DESI measures 1.22 ± 0.02. The result holds with DESI's other compression (Δχ² = +57) and without the worst-fitting
+bin (Δχ² = +16). At the void fractions preferred by supernovae (0.737) and by the CMB (0.627), the BAO fit is worse
+still.
+
+**What this does and does not show.** The most developed theory in which gravity replaces dark energy through
+the calibration of matter-based standards is strongly disfavoured by DESI's radial BAO measurements, in the form
+its author published. Two caveats remain. DESI compresses its data with a fiducial ΛCDM cosmology, and a model this
+far from the fiducial may need a dedicated reanalysis; and the tracker solution is the simplest version of
+timescape. The redshift drift would decide cleanly: timescape changes sign at z ≈ 0.7–1.5, ΛCDM at z ≈ 2.1. It is
+not registered, because the model is already disfavoured by existing data.
+

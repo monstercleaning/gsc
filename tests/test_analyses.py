@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "analyses"))
 import joint_fit  # noqa: E402
+import timescape_fit  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -65,6 +66,29 @@ class TestJointFit(unittest.TestCase):
         committed = json.loads((ROOT / "analyses" / "joint_fit.json").read_text(encoding="utf-8"))
         self.assertEqual((ROOT / "analyses" / "joint_fit.md").read_text(encoding="utf-8"),
                          joint_fit.render_markdown(committed))
+
+
+class TestTimescapeFit(unittest.TestCase):
+    """The timescape implementation reproduces Wiltshire (2009), and the DESI result reproduces."""
+
+    def test_reproduces_the_published_model(self):
+        v = timescape_fit.validate()
+        self.assertAlmostEqual(v["drift_z4_10yr"]["this_code"], -3.3e-10, delta=0.05e-10)
+        self.assertAlmostEqual(v["Om0_at_f_0.774"]["numerical_from_H"], 0.638, delta=0.001)
+        self.assertAlmostEqual(v["distance_closed_form_vs_integral_z1"]["closed_form"],
+                               v["distance_closed_form_vs_integral_z1"]["integral"], places=9)
+        self.assertAlmostEqual(v["lapse_consistency_z1"]["from_eq72"], v["lapse_consistency_z1"]["eq77_with_b_eq38"],
+                               places=12)
+
+    def test_lcdm_branch_matches_desi_published_fit(self):
+        res = json.loads((ROOT / "analyses" / "timescape_fit.json").read_text(encoding="utf-8"))
+        omega_m, sigma = res["desi_published_lcdm_bao_only_Omega_m"]
+        self.assertLess(abs(res["fits"]["lcdm_bao"]["best"] - omega_m), sigma)
+
+    def test_analysis_reproduces_its_committed_output(self):
+        proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "timescape_fit.py"), "--check"],
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout)
 
 
 if __name__ == "__main__":
