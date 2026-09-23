@@ -16,6 +16,7 @@ import ccbh_fit  # noqa: E402
 import a0_evolution  # noqa: E402
 import a0_high_z  # noqa: E402
 import emergent_gravity  # noqa: E402
+import p14_bbn_status  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -191,6 +192,29 @@ class TestEmergentGravity(unittest.TestCase):
 
     def test_analysis_reproduces_its_committed_output(self):
         proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "emergent_gravity.py"), "--check"],
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout)
+
+
+
+class TestP14BBNStatus(unittest.TestCase):
+    """P14 against primordial abundances: the method reproduces Alvey et al., the readings agree, the rule is applied."""
+
+    def test_method_reproduces_alvey_and_the_lbt_readings_agree(self):
+        v = p14_bbn_status.validate()
+        self.assertAlmostEqual(v["alvey_2020_reproduced"]["G_over_G0"], 0.99, delta=0.01)
+        self.assertAlmostEqual(v["alvey_2020_reproduced"]["two_sigma"], 0.055, delta=0.01)
+        readings = [r["G_over_G0"] for r in v["lbt_helium_three_ways"].values()]
+        self.assertLess(max(readings) - min(readings), 0.005)
+        self.assertEqual(p14_bbn_status.g_from_n_eff(p14_bbn_status.N_EFF_SM), 1.0)
+
+    def test_rule_verdicts(self):
+        self.assertEqual(p14_bbn_status.rule_verdict(-1.4, 0.0137, 0.0149), "PASS")
+        self.assertEqual(p14_bbn_status.rule_verdict(-0.8, 0.025, 0.0149), "SUB-THRESHOLD")
+        self.assertEqual(p14_bbn_status.rule_verdict(-3.3, 0.021, 0.0149), "FAIL")
+
+    def test_analysis_reproduces_its_committed_output(self):
+        proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "p14_bbn_status.py"), "--check"],
                               capture_output=True, text=True)
         self.assertEqual(proc.returncode, 0, proc.stdout)
 

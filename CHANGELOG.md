@@ -24,6 +24,16 @@
   [data/rc100_table3.csv](data/rc100_table3.csv) and checked against an independent machine reading. Setting H by
   the dark-energy part beats the expansion rate by Δ(−2 ln L) = 116, the P15 pattern. Verlinde's own scale, however,
   predicts far more extra gravity than the galaxies show; they prefer 0.06–0.21 of it. Recorded in problem 11.
+- **P14 against nucleosynthesis** ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)): the P14 registration
+  missed results published before it, namely the LBT helium abundance (Aver et al. 2026) and two readings of it as
+  the expansion rate during nucleosynthesis.
+  - Helium gives G/G0 = 0.989 ± 0.014: P14 is 1.4σ away, G = G0 0.8σ.
+  - Deuterium depends on nuclear rates that are not settled. It is neutral with data-driven rates, and 3.3σ against
+    P14 with PRIMAT's rates and the Planck baryon density.
+  - Helium and deuterium together put P14 1.3σ away with the first rate set and 2.7–3.0σ with the second.
+
+  None of this is scored, because all of it predates the registration. P14 carries a new editorial flag, which
+  changes the register manifest digest. Recorded in problems 1 and 5.
 
 ## 20.1.0 — 2026-09-23 — open problems computed
 

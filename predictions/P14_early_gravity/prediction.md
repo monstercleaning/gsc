@@ -83,6 +83,22 @@ nothing.
 > tell the prediction from G = G0. The entry stays unscored as registered; its target is the next determinations of
 > early-universe G.
 
+> **Editorial flag (v20.2; the registered text is unchanged):** the status above missed results published before
+> the registration. The LBT helium abundance (Aver et al. 2026, arXiv:2601.22238), read as the expansion rate during
+> nucleosynthesis (Goldstein & Hill 2026, arXiv:2603.13226; Loverde, Saravanan & Weiner 2026, arXiv:2609.13140),
+> gives G/G0 ≈ 0.989 ± 0.014: the prediction is 1.4σ away, G = G0 0.8σ. Deuterium depends on nuclear rates that are
+> not settled. With data-driven rates (Yeh, Olive & Fields 2021) it is neutral. With PRIMAT's (Pitrou et al. 2021)
+> and the Planck baryon density, it puts the prediction 3.3σ away. Helium and deuterium together put it 1.3σ away
+> with the first rate set and 2.7–3.0σ with the second. None of this is scored: all of it predates the registration,
+> and none of it is a determination of G. Two points on reading the rule:
+>
+> - A helium result like LBT's, published after the registration as a determination of G, would score PASS although
+>   it lies closer to G = G0.
+> - A determination from deuterium with PRIMAT's rates and the Planck baryon density would, on today's data, score
+>   FAIL.
+>
+> Details: [analyses/p14_bbn_status.md](../../analyses/p14_bbn_status.md).
+
 ## Scoring algorithm
 
 For each epoch with a published determination r_obs ± σ of G/G0 (1σ; for asymmetric errors, the side facing the
