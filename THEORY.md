@@ -148,7 +148,8 @@ atomic units that lunar laser ranging constrains. The only reading that survives
 CMB + BAO fit confines the drift to the early universe, where the fit absorbs it into H₀. This is problem 1 in
 [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md). A non-universal reading with a known cause, the timescape cosmology in which
 gravity makes clocks and rulers in galaxies differ from the void-dominated average, fits the DESI DR2 BAO shape much
-worse than ΛCDM (problem 9).
+worse than ΛCDM (problem 9). Black holes coupled to the expansion fit the expansion history nearly as well as ΛCDM,
+but the growth they need conflicts with the black-hole masses measured locally (problem 10).
 
 ### 4.2 Ansatz families
 

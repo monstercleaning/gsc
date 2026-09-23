@@ -171,3 +171,36 @@ far from the fiducial may need a dedicated reanalysis; and the tracker solution 
 timescape. The redshift drift would decide cleanly: timescape changes sign at z ≈ 0.7–1.5, ΛCDM at z ≈ 2.1. It is
 not registered, because the model is already disfavoured by existing data.
 
+## 10. A gravitational source for dark energy: black holes coupled to the expansion
+
+**The idea.** The second published way to replace dark energy with gravity. If black holes have interiors of vacuum
+energy, general relativity can couple them to the expansion, so that each one grows as m ∝ a³ (Farrah et al., ApJL
+944, L31, 2023). A population of them then keeps a constant density and acts like a cosmological constant, and dark
+energy grows as massive stars collapse into black holes, consuming baryons (Croker et al., JCAP 10 (2024) 094;
+Ahlen et al., PRL 135, 081003, 2025).
+
+**The expansion-history test (v20.1).** [analyses/ccbh_fit.md](analyses/ccbh_fit.md) implements Ahlen et al.'s
+equations with the Madau star-formation histories and fits the same CMB + BAO data as problem 1. With the same number
+of free parameters it fits almost as well as ΛCDM: Δχ² = +1.7 and +2.6 for the two star-formation histories, with
+H₀ ≈ 70.3 and about half the baryons converted. The published analysis, with the full Planck likelihood, finds
+H₀ = 70.03, half the baryons converted and Δχ² = +6.1 for the same histories, and no penalty with a JWST-based
+history. The model fits the CMB almost exactly and the BAO less well than ΛCDM.
+
+**The local tests are unfavourable.** Every black hole must have grown by (1+z)³ since it formed, which the black
+holes we can weigh contradict:
+
+- Gaia BH1 and BH2 (Andrae & El-Badry, A&A 673, L10, 2023): 70% and 77% probability that they formed below
+  2.2 M_⊙, the maximum neutron-star mass.
+- The globular cluster NGC 3201 (Rodriguez, ApJL 2023, doi:10.3847/2041-8213/acc9b6): both black holes would have
+  to be seen almost face-on (probability ≤ 10⁻⁴), or one formed below 2.2 M_⊙.
+- LIGO–Virgo–KAGRA mergers (Amendola et al., MNRAS 528, 2024): k < 2.1 at 2σ if black holes form above 2 M_⊙;
+  k = 3 needs formation masses below 0.5 M_⊙.
+- Merger rates (Ghodla et al., 2023): they would exceed the observed rate by orders of magnitude.
+- JWST quasars (Lei et al., Sci. China Phys. Mech. Astron. 67, 229811, 2024): about 2σ tension.
+
+Proponents argue that coupled black holes need not obey the neutron-star mass limit. Unless that is shown, the
+growth that dark energy requires conflicts with the black holes we can measure.
+
+**The same pattern as GSC.** The expansion history can be fitted; the local signature of the mechanism is the
+problem, as lunar laser ranging is for GSC's canonical parameter. Not registered.
+

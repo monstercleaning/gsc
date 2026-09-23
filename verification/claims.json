@@ -493,6 +493,21 @@
       },
       "always": true,
       "note": "Slow (one to two minutes): every fit is recomputed and compared with analyses/joint_fit.json within a relative tolerance of 0.2%, and analyses/joint_fit.md must be the rendering of the committed numbers. Requires --include-slow."
+    },
+    {
+      "id": "ccbh-fit-reproduces",
+      "claim": "The coupled-black-hole fit behind OPEN_PROBLEMS.md problem 10 reproduces its committed numbers.",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": [
+          "python3",
+          "analyses/ccbh_fit.py",
+          "--check"
+        ],
+        "timeout": 1800
+      },
+      "always": true,
+      "note": "Slow (about half a minute): every fit is recomputed and compared with analyses/ccbh_fit.json within 0.2%. Requires --include-slow."
     }
   ]
 }

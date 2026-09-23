@@ -25,6 +25,11 @@ Physics work on the open problems, starting with the computation that problem 1 
   against its published numbers, it fits the DESI DR2 BAO shape much worse than ΛCDM (Δχ² = +52; the
   calibration-free Alcock–Paczyński ratio alone gives +45), robustly across checks. Recorded as problem 9; its
   redshift-drift prediction is documented but not registered, because existing data already disfavour the model.
+- **Coupled black holes tested** ([analyses/ccbh_fit.md](analyses/ccbh_fit.md)): black holes that grow with the
+  expansion and act as dark energy (Ahlen et al., PRL 2025). The expansion history fits nearly as well as ΛCDM
+  (Δχ² = +1.7 and +2.6 for two star-formation histories; H₀ ≈ 70.3; about half the baryons converted), close to
+  the published analysis, but the black-hole growth it needs conflicts with Gaia, globular-cluster and
+  gravitational-wave measurements of black-hole masses. Recorded as problem 10; not registered.
 - The P8 r2 history at the canonical p fits the CMB + BAO data worse than ΛCDM (Δχ² = +2.5); added to problem 2.
 - New verified data files: DESI DR2 BAO (arXiv:2503.14738 v3) and the Planck 2018 distance priors (Chen, Huang &
   Wang 2019). The old compact DR1 table disagrees with the DESI DR1 paper in several places, including a quasar

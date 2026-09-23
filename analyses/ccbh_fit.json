@@ -1,0 +1,116 @@
+{
+  "tool": "ccbh_fit.py",
+  "status": "DIAGNOSTIC — cosmologically coupled black holes against CMB + BAO; not a registered prediction",
+  "sources": {
+    "model": "Ahlen et al., PRL 135, 081003 (2025), eqs. 1-3",
+    "star_formation": "Madau & Dickinson 2014 eq. 15; Madau & Fragos 2017 eq. 1",
+    "data": "Planck 2018 distance priors; DESI DR2 BAO (as analyses/joint_fit.py)"
+  },
+  "validation": {
+    "closure_H0_today": 0.0,
+    "no_dark_energy_before_star_formation": 0.0,
+    "dark_energy_density_today_over_baryon_loss_comoving": 30.3472,
+    "w_eff_during_production_z3": -1.46102,
+    "w_eff_today": -1.00283,
+    "step_convergence_H_at_z1": -1.68198e-05
+  },
+  "lcdm": {
+    "H0": 68.5155,
+    "chi2": 15.7798
+  },
+  "fits": {
+    "ccbh": {
+      "star_formation_history": "Madau & Dickinson 2014",
+      "H0": 70.2798,
+      "omega_b_early": 0.0223377,
+      "omega_c": 0.120391,
+      "chi2": 17.4524,
+      "delta_chi2_vs_lcdm": 1.67257,
+      "chi2_cmb": 0.0352933,
+      "chi2_bao": 17.4171,
+      "baryon_survival_fraction": 0.465238,
+      "w_eff": [
+        {
+          "z": 0.0,
+          "w": -1.00283
+        },
+        {
+          "z": 0.5,
+          "w": -1.02207
+        },
+        {
+          "z": 1.0,
+          "w": -1.08103
+        },
+        {
+          "z": 2.0,
+          "w": -1.30816
+        },
+        {
+          "z": 3.0,
+          "w": -1.46102
+        },
+        {
+          "z": 5.0,
+          "w": -1.56546
+        }
+      ]
+    },
+    "ccbh_mf17": {
+      "star_formation_history": "Madau & Fragos 2017",
+      "H0": 70.3887,
+      "omega_b_early": 0.0223166,
+      "omega_c": 0.120678,
+      "chi2": 18.3662,
+      "delta_chi2_vs_lcdm": 2.58639,
+      "chi2_cmb": 0.126553,
+      "chi2_bao": 18.2397,
+      "baryon_survival_fraction": 0.441506,
+      "w_eff": [
+        {
+          "z": 0.0,
+          "w": -1.00275
+        },
+        {
+          "z": 0.5,
+          "w": -1.02092
+        },
+        {
+          "z": 1.0,
+          "w": -1.07834
+        },
+        {
+          "z": 2.0,
+          "w": -1.36036
+        },
+        {
+          "z": 3.0,
+          "w": -1.61257
+        },
+        {
+          "z": 5.0,
+          "w": -1.74968
+        }
+      ]
+    }
+  },
+  "published_reference": {
+    "madau_psi": {
+      "H0": [
+        70.03,
+        0.4
+      ],
+      "baryon_survival": 0.5,
+      "delta_chi2": 6.1,
+      "note": "DESI DR2 + Planck PR4 full likelihood, summed neutrino mass free"
+    },
+    "trinca_psi": {
+      "H0": [
+        69.37,
+        0.36
+      ],
+      "baryon_survival": 0.74,
+      "delta_chi2": 0.7
+    }
+  }
+}

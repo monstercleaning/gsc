@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "analyses"))
 import joint_fit  # noqa: E402
 import timescape_fit  # noqa: E402
+import ccbh_fit  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -89,6 +90,23 @@ class TestTimescapeFit(unittest.TestCase):
         proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "timescape_fit.py"), "--check"],
                               capture_output=True, text=True)
         self.assertEqual(proc.returncode, 0, proc.stdout)
+
+
+class TestCCBHFit(unittest.TestCase):
+    """Fast checks of analyses/ccbh_fit.py; the full refit runs as a slow claim (ccbh-fit-reproduces)."""
+
+    def test_model_bookkeeping(self):
+        v = ccbh_fit.validate()
+        self.assertAlmostEqual(v["closure_H0_today"], 0.0, places=12)
+        self.assertAlmostEqual(v["no_dark_energy_before_star_formation"], 0.0, places=9)
+        self.assertGreater(v["dark_energy_density_today_over_baryon_loss_comoving"], 1.0)
+        self.assertLess(v["w_eff_during_production_z3"], -1.0)
+        self.assertLess(abs(v["step_convergence_H_at_z1"]), 1e-3)
+
+    def test_committed_report_is_the_rendering_of_the_committed_numbers(self):
+        committed = json.loads((ROOT / "analyses" / "ccbh_fit.json").read_text(encoding="utf-8"))
+        self.assertEqual((ROOT / "analyses" / "ccbh_fit.md").read_text(encoding="utf-8"),
+                         ccbh_fit.render_markdown(committed))
 
 
 if __name__ == "__main__":
