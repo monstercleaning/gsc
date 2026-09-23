@@ -14,6 +14,7 @@ import joint_fit  # noqa: E402
 import timescape_fit  # noqa: E402
 import ccbh_fit  # noqa: E402
 import a0_evolution  # noqa: E402
+import a0_high_z  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -156,6 +157,25 @@ class TestA0Evolution(unittest.TestCase):
         committed = json.loads((ROOT / "analyses" / "a0_evolution.json").read_text(encoding="utf-8"))
         self.assertEqual((ROOT / "analyses" / "a0_evolution.md").read_text(encoding="utf-8"),
                          a0_evolution.render_markdown(committed))
+
+
+class TestA0HighZ(unittest.TestCase):
+    """The z ~ 4.5 check: special functions, component speeds, and the committed output."""
+
+    def test_special_functions_and_components(self):
+        v = a0_high_z.validate()
+        self.assertLess(abs(v["gammainc_P1_x2_vs_closed_form"]), 1e-13)
+        self.assertLess(abs(v["gammainc_P3_x10_vs_closed_form"]), 1e-13)
+        for d in v["bessel_at_1_vs_tables"]:
+            self.assertLess(abs(d), 1e-6)
+        self.assertAlmostEqual(v["exponential_disc_peak"]["radius_over_rd"], 2.15, delta=0.03)
+        self.assertAlmostEqual(v["exponential_disc_peak"]["v2_over_GM_rd"], 0.387, delta=0.002)
+        self.assertAlmostEqual(v["sersic_encloses_total_mass"], 1.0, places=6)
+
+    def test_analysis_reproduces_its_committed_output(self):
+        proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "a0_high_z.py"), "--check"],
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout)
 
 
 if __name__ == "__main__":

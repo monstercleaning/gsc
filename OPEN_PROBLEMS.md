@@ -279,3 +279,11 @@ reason why RC100's fractions are too low. A link to the cosmological constant in
 Milgrom's long-standing proposal, not a GSC prediction. The H(z) link is not registered. The dark-energy version
 above is registered as P15 (v20.2), a forward prediction for rotation curves at z ≥ 2; the RC100 data that
 suggested it cannot score it.
+
+**First look at z ≈ 4.5 (v20.2, retrodictive).** The registration promised a check against the rotation curves
+already published at z ≈ 4–5 ([analyses/a0_high_z.md](analyses/a0_high_z.md)). For the four ALMA [CII] discs of
+Roman-Oliveira et al. (2024), whose circular speeds are public, the baryons refitted within the authors' own priors
+fit about equally well for any a0 from 0 to 8 × 10⁻¹⁰ m/s², and Newtonian gravity with baryons alone fits best.
+These discs are compact and fast-rotating, and their stellar masses come only from the same rotation curves, so
+the data cannot measure a0: they neither support nor contradict P15. A real test needs rotation curves that reach
+accelerations near a0, with stellar masses from imaging.

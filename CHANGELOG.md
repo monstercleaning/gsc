@@ -13,6 +13,11 @@
   z = 3 is 0.74 (0.63–0.78) of today's, and 0.57 (0.38–0.63) at z = 5. Only determinations published after the
   registration count; RC100, which suggested it, is excluded, and the entry records that Ciocan et al.'s rising a0
   contradicts it. The register now holds fifteen predictions (6 PASS, 2 FAIL, 1 SUB-THRESHOLD, 6 awaiting data).
+- **First look at P15 at z ≈ 4.5** ([analyses/a0_high_z.md](analyses/a0_high_z.md)), after the registration as
+  promised: the four ALMA discs of Roman-Oliveira et al. (2024), with public circular speeds (new directory
+  [data/ro24_circular_speed/](data/ro24_circular_speed/), CC BY 4.0), cannot measure a0. With the baryons refitted
+  within the authors' priors, any a0 from 0 to 8 fits about equally well, and baryons alone fit best. Neither
+  support nor contradiction; recorded in problem 11.
 
 ## 20.1.0 — 2026-09-23 — open problems computed
 

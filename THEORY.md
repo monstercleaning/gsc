@@ -273,7 +273,8 @@ dynamics. The registered test is P10 (energy-independent, structure-correlated T
 the scale, a0 proportional to the expansion rate H(z) as the coincidence a0 ≈ c H₀/2π suggests, is disfavoured by
 100 rotation curves at z = 0.6–2.5 (2.8–5.4σ; OPEN_PROBLEMS.md, problem 11). Tying a0 to the dark-energy density
 instead, with DESI DR2's evolving dark energy, fits the same galaxies slightly better than a constant a0 (about 2σ
-at most) and predicts a0 falling to 38–78% of today's at z ≈ 3–5; registered as P15.
+at most) and predicts a0 falling to 38–78% of today's at z ≈ 3–5; registered as P15. The rotation curves published
+so far at z ≈ 4.5 cannot measure a0 (analyses/a0_high_z.md).
 
 ### 6.3 Information-thermodynamic readings (conjectures)
 
