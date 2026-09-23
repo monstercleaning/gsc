@@ -371,8 +371,8 @@ K1. [predictions/P13_gw_em_duality/](predictions/P13_gw_em_duality/)
 T2, the coherent reading of the canonical exponent (registered in v20.1 under K0.3). Gravity in atomic units is
 0.8% weaker than today's at recombination and 3.0% weaker at nucleosynthesis, exactly unchanged below z = 10, with
 ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Awaiting data precise enough to tell it from G = G₀. If it fails, K0.4 applies.
-Data published before the registration (not scored): helium puts it 1.4σ away and G = G₀ 0.8σ. Deuterium depends on
-nuclear rates that are not settled; with it, P14 is 1.3σ away with one rate set and 2.7–3.0σ with the other
+Data published before the registration (not scored): helium puts it 1.4σ away and G = G₀ 0.8σ. With deuterium and the
+nuclear rates now favoured, P14 is 2.4–2.7σ away, and G = G₀ fits about 17 times better
 ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)).
 [predictions/P14_early_gravity/](predictions/P14_early_gravity/)
 

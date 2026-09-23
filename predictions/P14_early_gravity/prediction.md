@@ -99,6 +99,13 @@ nothing.
 >
 > Details: [analyses/p14_bbn_status.md](../../analyses/p14_bbn_status.md).
 
+> **Addendum (v20.2, the same day; the registered text is unchanged):** a 2026 analysis of the same nuclear data
+> (Launders, Giovanetti & Liu, arXiv:2604.16600) shows that the polynomial fits behind the first rate set over-predict
+> deuterium; its unbiased fit agrees with PRIMAT. With these rates and the PDG 2025 deuterium average
+> (2.508 ± 0.029), deuterium alone puts the prediction 2.8–3.2σ away, and helium and deuterium together 2.4–2.7σ,
+> where G = G0 fits them about 17 times better. Such a combined determination, published after the registration,
+> would still score PASS under the rule (σ ≈ 0.012, |z| < 3), which is why reports give both distances.
+
 ## Scoring algorithm
 
 For each epoch with a published determination r_obs ± σ of G/G0 (1σ; for asymmetric errors, the side facing the

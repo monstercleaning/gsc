@@ -15,80 +15,101 @@ is 1.4σ away, G = G0 0.8σ. Goldstein & Hill (2026), from helium and deuterium 
 find 0.990 ± 0.014. The EMPRESS helium, which favoured much weaker gravity, is not confirmed by LBT,
 which is 2.6 times more precise.
 
-**Deuterium: it depends on nuclear physics that is not settled.** P14 lowers D/H by 2.8%; the two current
-sets of nuclear rates disagree by 2.7% on the standard prediction at the same baryon density. With the
-data-driven rates of Yeh, Olive & Fields (2021), deuterium is neutral (G/G0 = 1.007 ± 0.048). With PRIMAT's
-(Pitrou et al. 2021) it prefers G slightly above G0 (1.038 ± 0.021) and puts P14 3.3σ away (3.8σ with the
-mean of 11 systems), beyond the 3σ line of P14's rule. Widening the baryon density's error, as for a freely
-varying G at recombination, brings this to 2.2σ. P14's fixed 0.8% change at recombination implies something
-closer to Planck's error, with a shift of the central value that is not computed here. PRIMAT's standard
-prediction is itself 1.8σ below the measured deuterium, the "new tension" of Pitrou et al.; P14 widens that gap.
+**Deuterium: against P14.** P14 lowers D/H by 2.8%. The standard prediction depends on how the
+measured deuterium-burning cross sections are fitted. Launders, Giovanetti & Liu (2026) fitted them with
+Gaussian processes, validated on mock data, and found that the low-degree polynomial fits used by Yeh, Olive &
+Fields (2021) over-predict deuterium; here the polynomial prediction lies 2.9% above theirs at the same baryon
+density. Their result agrees with PRIMAT's, which takes the energy dependence from ab initio theory. With either,
+and the PDG 2025 deuterium average, deuterium alone puts P14 2.8–3.2σ away, around the 3σ line of its rule
+(the upper end with the newest CMB baryon density, from Planck, ACT and SPT together). Only the polynomial fits
+leave deuterium neutral (0.6σ). Deuterium is also 1.3–1.6σ from G = G0, in the other direction: the
+measured abundance lies above the modern standard prediction. Widening the baryon density's error, as for a freely varying G at
+recombination, brings the modern values to 1.9–2.0σ; P14's fixed 0.8% change at recombination implies
+something closer to the published error.
 
-**Together**, helium and deuterium put P14 1.3–1.4σ away with the data-driven rates and 2.7–3.0σ with
-PRIMAT's (1.9–2.1σ widened). Nothing prefers P14 over G = G0.
+**Together**, helium and deuterium put P14 2.4–2.7σ away with the modern rates (2.6–2.9σ with Cooke et al.'s
+deuterium instead of the PDG average; 1.8σ widened), and 1.3σ with the polynomial fits. Nothing
+prefers P14: with the Gaussian-process rates, G = G0 fits the combined data 17 times better. Poulin, Froustey, Pitrou
+& Smith (2026) read the same deuterium as asking for a faster expansion while deuterium burns (ΔH/H = +0.087),
+the opposite of P14's slower one.
 
 **What this means for P14.** Nothing here is scored: every result predates the registration, and none is a
-determination of G. But P14's rule also fails it if a fit of its model to CMB, BAO and abundance data excludes
-the registered q at 3σ or more. This diagnostic is not that fit, since it takes the baryon density from Planck
-instead of fitting the CMB with P14's G. It shows where such a fit would land: at the failure line if PRIMAT's
-rates are right, well inside it if the data-driven ones are. The registration missed these results; an editorial
-flag on P14 now records them.
+determination of G. P14's rule also fails it if a fit of its model to CMB, BAO and abundance data excludes the
+registered q at 3σ or more. This diagnostic is not that fit, but it shows where such a fit would land today:
+2.4–2.7σ (2.6–2.9σ with Cooke et al.'s deuterium), below the line but close to it. No new laboratory measurement of the deuterium-burning reactions
+has settled the rates; Launders et al. ask for d(d,n)³He and d(d,p)³H at 0.1–0.6 MeV. The registration missed these
+results; editorial flags on P14 record them.
 
 ## Predicted abundances
 
-| Code (deuterium-burning rates) | Standard Y_p | P14 Y_p | Standard D/H (10⁻⁵) | P14 D/H (10⁻⁵) |
-|---|---|---|---|---|
-| Yeh, Olive & Fields 2021 (data-driven fits to measured cross sections) | 0.2469 | 0.2443 | 2.510 | 2.439 |
-| PRIMAT 2021 (ab initio energy dependences normalised to data) | 0.2472 | 0.2446 | 2.439 | 2.370 |
+| Deuterium-burning rates | CMB baryon density | Standard Y_p | P14 Y_p | Standard D/H (10⁻⁵) | P14 D/H (10⁻⁵) |
+|---|---|---|---|---|---|
+| Polynomial fits (Yeh, Olive & Fields 2021) | Planck 2018 (0.02239) | 0.2469 | 0.2443 | 2.510 | 2.439 |
+| PRIMAT (Pitrou et al. 2021) | Planck 2018 (0.02242) | 0.2472 | 0.2446 | 2.439 | 2.370 |
+| Gaussian processes (Launders et al. 2026) | Planck 2018 (0.02237) | 0.2472* | 0.2446* | 2.442 | 2.373 |
+| Gaussian processes (Launders et al. 2026), Planck+ACT+SPT | Planck+ACT+SPT (0.022398) | 0.2472* | 0.2446* | 2.437 | 2.368 |
 
-Both codes use LUNA's d(p,γ)³He rate; they differ in how they fit d(d,n)³He and d(d,p)³H. Slower expansion leaves
-more time: neutrons decay longer before they are locked into helium, and deuterium burns longer. With G at the
-freeze-out value for the whole of helium's history, P14's Y_p would be lower by a further 0.00029.
+\* Helium from PRIMAT (Pitrou et al. 2021): the Gaussian-process fits change only the deuterium-burning rates, to
+which helium is insensitive. All four use LUNA's d(p,γ)³He data. Slower expansion leaves more time: neutrons decay
+longer before they are locked into helium, and deuterium burns longer. With G at the freeze-out value for the whole
+of helium's history, P14's Y_p would be lower by a further 0.00029.
 
 ## Each measurement
 
-G/G0 and the signed distance in σ, with the baryon density as each code took it from Planck. Positive: the
-measurement lies below that value of G.
+G/G0 and the signed distance in σ, with each prediction's published baryon density. Positive: the measurement
+lies below that value of G.
 
-| Measurement | Code | G/G0 | From P14 | From G = G0 |
+| Measurement | Prediction | G/G0 | From P14 | From G = G0 |
 |---|---|---|---|---|
-| Y_p: LBT (Aver et al. 2026) | Yeh, Olive & Fields 2021 | 0.987 ± 0.015 | -1.2 | +0.9 |
-| Y_p: Kurichin et al. 2021 | Yeh, Olive & Fields 2021 | 0.992 ± 0.025 | -0.9 | +0.3 |
-| Y_p: Aver et al. 2021 | Yeh, Olive & Fields 2021 | 0.982 ± 0.038 | -0.3 | +0.5 |
-| Y_p: EMPRESS (Matsumoto et al. 2022) | Yeh, Olive & Fields 2021 | 0.891 ± 0.036 | +2.1 | +2.9 |
-| D/H: Cooke, Pettini & Steidel 2018 | Yeh, Olive & Fields 2021 | 1.007 ± 0.048 | -0.8 | -0.1 |
-| D/H: Fields et al. 2020, mean of 11 systems | Yeh, Olive & Fields 2021 | 1.017 ± 0.048 | -1.0 | -0.3 |
-| Y_p: LBT (Aver et al. 2026) | PRIMAT 2021 | 0.984 ± 0.015 | -1.0 | +1.1 |
-| Y_p: Kurichin et al. 2021 | PRIMAT 2021 | 0.989 ± 0.025 | -0.7 | +0.5 |
-| Y_p: Aver et al. 2021 | PRIMAT 2021 | 0.979 ± 0.038 | -0.2 | +0.6 |
-| Y_p: EMPRESS (Matsumoto et al. 2022) | PRIMAT 2021 | 0.889 ± 0.036 | +2.2 | +2.9 |
-| D/H: Cooke, Pettini & Steidel 2018 | PRIMAT 2021 | 1.038 ± 0.021 | -3.3 | -1.8 |
-| D/H: Fields et al. 2020, mean of 11 systems | PRIMAT 2021 | 1.048 ± 0.021 | -3.8 | -2.3 |
+| Y_p: LBT (Aver et al. 2026) | Polynomial fits (Yeh, Olive & Fields 2021) | 0.987 ± 0.015 | -1.2 | +0.9 |
+| Y_p: Kurichin et al. 2021 | Polynomial fits (Yeh, Olive & Fields 2021) | 0.992 ± 0.025 | -0.9 | +0.3 |
+| Y_p: Aver et al. 2021 | Polynomial fits (Yeh, Olive & Fields 2021) | 0.982 ± 0.038 | -0.3 | +0.5 |
+| Y_p: EMPRESS (Matsumoto et al. 2022) | Polynomial fits (Yeh, Olive & Fields 2021) | 0.891 ± 0.036 | +2.1 | +2.9 |
+| D/H: PDG 2025, mean of 12 systems | Polynomial fits (Yeh, Olive & Fields 2021) | 0.999 ± 0.048 | -0.6 | +0.0 |
+| D/H: Cooke, Pettini & Steidel 2018 | Polynomial fits (Yeh, Olive & Fields 2021) | 1.007 ± 0.048 | -0.8 | -0.1 |
+| Y_p: LBT (Aver et al. 2026) | PRIMAT (Pitrou et al. 2021) | 0.984 ± 0.015 | -1.0 | +1.1 |
+| Y_p: Kurichin et al. 2021 | PRIMAT (Pitrou et al. 2021) | 0.989 ± 0.025 | -0.7 | +0.5 |
+| Y_p: Aver et al. 2021 | PRIMAT (Pitrou et al. 2021) | 0.979 ± 0.038 | -0.2 | +0.6 |
+| Y_p: EMPRESS (Matsumoto et al. 2022) | PRIMAT (Pitrou et al. 2021) | 0.889 ± 0.036 | +2.2 | +2.9 |
+| D/H: PDG 2025, mean of 12 systems | PRIMAT (Pitrou et al. 2021) | 1.030 ± 0.021 | -3.0 | -1.5 |
+| D/H: Cooke, Pettini & Steidel 2018 | PRIMAT (Pitrou et al. 2021) | 1.038 ± 0.021 | -3.3 | -1.8 |
+| D/H: PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026) | 1.028 ± 0.022 | -2.8 | -1.3 |
+| D/H: Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026) | 1.037 ± 0.022 | -3.1 | -1.7 |
+| D/H: PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026), Planck+ACT+SPT | 1.031 ± 0.020 | -3.2 | -1.6 |
+| D/H: Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026), Planck+ACT+SPT | 1.039 ± 0.020 | -3.5 | -2.0 |
 
 With the widened baryon density (0.02236 ± 0.00030), helium barely changes; deuterium loosens:
 
-| Deuterium measurement | Code | G/G0 | From P14 | From G = G0 |
+| Deuterium measurement | Prediction | G/G0 | From P14 | From G = G0 |
 |---|---|---|---|---|
-| Cooke, Pettini & Steidel 2018 | Yeh, Olive & Fields 2021 | 1.005 ± 0.052 | -0.7 | -0.1 |
-| Fields et al. 2020, mean of 11 systems | Yeh, Olive & Fields 2021 | 1.014 ± 0.052 | -0.9 | -0.3 |
-| Cooke, Pettini & Steidel 2018 | PRIMAT 2021 | 1.033 ± 0.029 | -2.2 | -1.2 |
-| Fields et al. 2020, mean of 11 systems | PRIMAT 2021 | 1.043 ± 0.030 | -2.6 | -1.5 |
+| PDG 2025, mean of 12 systems | Polynomial fits (Yeh, Olive & Fields 2021) | 0.997 ± 0.051 | -0.5 | +0.1 |
+| Cooke, Pettini & Steidel 2018 | Polynomial fits (Yeh, Olive & Fields 2021) | 1.005 ± 0.052 | -0.7 | -0.1 |
+| PDG 2025, mean of 12 systems | PRIMAT (Pitrou et al. 2021) | 1.025 ± 0.029 | -1.9 | -0.9 |
+| Cooke, Pettini & Steidel 2018 | PRIMAT (Pitrou et al. 2021) | 1.033 ± 0.029 | -2.2 | -1.2 |
+| PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026) | 1.028 ± 0.029 | -2.0 | -1.0 |
+| Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026) | 1.036 ± 0.030 | -2.3 | -1.2 |
 
 ## Helium and deuterium together
 
-LBT helium with each deuterium measurement. The last column is the tension between the helium and the deuterium
-values of G within that code.
+LBT helium with each deuterium measurement. "He vs D" is the tension between the helium and the deuterium values
+of G. The last column is P14's rule applied as if the result were a post-registration determination of G.
 
-| Deuterium | Code | Baryon density | G/G0 | From P14 | From G = G0 | He vs D |
-|---|---|---|---|---|---|---|
-| Cooke, Pettini & Steidel 2018 | Yeh, Olive & Fields 2021 | Planck | 0.989 ± 0.014 | -1.3 | +0.8 | 0.4σ |
-| Fields et al. 2020, mean of 11 systems | Yeh, Olive & Fields 2021 | Planck | 0.990 ± 0.014 | -1.4 | +0.7 | 0.6σ |
-| Cooke, Pettini & Steidel 2018 | Yeh, Olive & Fields 2021 | widened | 0.989 ± 0.014 | -1.3 | +0.8 | 0.3σ |
-| Fields et al. 2020, mean of 11 systems | Yeh, Olive & Fields 2021 | widened | 0.989 ± 0.014 | -1.4 | +0.7 | 0.5σ |
-| Cooke, Pettini & Steidel 2018 | PRIMAT 2021 | Planck | 1.003 ± 0.012 | -2.7 | -0.2 | 2.1σ |
-| Fields et al. 2020, mean of 11 systems | PRIMAT 2021 | Planck | 1.006 ± 0.012 | -3.0 | -0.5 | 2.5σ |
-| Cooke, Pettini & Steidel 2018 | PRIMAT 2021 | widened | 0.995 ± 0.013 | -1.9 | +0.4 | 1.5σ |
-| Fields et al. 2020, mean of 11 systems | PRIMAT 2021 | widened | 0.997 ± 0.013 | -2.1 | +0.2 | 1.8σ |
+| Deuterium | Prediction | Baryon density | G/G0 | From P14 | From G = G0 | He vs D | Rule |
+|---|---|---|---|---|---|---|---|
+| PDG 2025, mean of 12 systems | Polynomial fits (Yeh, Olive & Fields 2021) | as published | 0.988 ± 0.014 | -1.3 | +0.8 | 0.2σ | PASS |
+| Cooke, Pettini & Steidel 2018 | Polynomial fits (Yeh, Olive & Fields 2021) | as published | 0.989 ± 0.014 | -1.3 | +0.8 | 0.4σ | PASS |
+| PDG 2025, mean of 12 systems | Polynomial fits (Yeh, Olive & Fields 2021) | widened | 0.988 ± 0.014 | -1.3 | +0.8 | 0.2σ | PASS |
+| Cooke, Pettini & Steidel 2018 | Polynomial fits (Yeh, Olive & Fields 2021) | widened | 0.989 ± 0.014 | -1.3 | +0.8 | 0.3σ | PASS |
+| PDG 2025, mean of 12 systems | PRIMAT (Pitrou et al. 2021) | as published | 1.000 ± 0.012 | -2.5 | -0.0 | 1.8σ | PASS |
+| Cooke, Pettini & Steidel 2018 | PRIMAT (Pitrou et al. 2021) | as published | 1.003 ± 0.012 | -2.7 | -0.2 | 2.1σ | PASS |
+| PDG 2025, mean of 12 systems | PRIMAT (Pitrou et al. 2021) | widened | 0.993 ± 0.013 | -1.8 | +0.5 | 1.3σ | PASS |
+| Cooke, Pettini & Steidel 2018 | PRIMAT (Pitrou et al. 2021) | widened | 0.995 ± 0.013 | -1.9 | +0.4 | 1.5σ | PASS |
+| PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026) | as published | 0.999 ± 0.012 | -2.4 | +0.1 | 1.7σ | PASS |
+| Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026) | as published | 1.001 ± 0.012 | -2.6 | -0.1 | 2.0σ | PASS |
+| PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026) | widened | 0.993 ± 0.013 | -1.8 | +0.5 | 1.3σ | PASS |
+| Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026) | widened | 0.995 ± 0.013 | -1.9 | +0.4 | 1.6σ | PASS |
+| PDG 2025, mean of 12 systems | Gaussian processes (Launders et al. 2026), Planck+ACT+SPT | as published | 1.002 ± 0.012 | -2.7 | -0.1 | 1.9σ | PASS |
+| Cooke, Pettini & Steidel 2018 | Gaussian processes (Launders et al. 2026), Planck+ACT+SPT | as published | 1.004 ± 0.012 | -2.9 | -0.4 | 2.2σ | PASS |
 
 ## Published determinations
 
@@ -104,22 +125,27 @@ N_eff during nucleosynthesis is converted to G through the helium sensitivities 
 
 ## What the rule would say
 
-None of these results is scored: all predate the registration. Had the LBT reading been published after it as a
-determination of G, P14's rule would have scored it PASS (|z| = 1.4, σ = 0.0137 ≤ 0.0149), although
-G = G0 fits it 2.0 times better. In P14's rule, PASS means "not excluded by a measurement able to
-tell the two apart", not "preferred"; reports on P14 therefore give both distances. Conversely, a determination
-from deuterium alone with PRIMAT's rates would, on today's data, score FAIL with the Planck baryon density
-(|z| = 3.3) and SUB-THRESHOLD with the widened one (|z| = 2.2).
+None of these results is scored: all predate the registration. They show how P14's rule reads evidence. PASS
+needs |z| < 3 and σ ≤ 0.0149, so it means "not excluded by a measurement able to tell the two apart", not "preferred":
 
-In terms of P14's parameter, the LBT helium gives q = (0.30 ± 0.40)×10⁻³, or −0.49×10⁻³ < q < 1.10×10⁻³ at 2σ,
-against −1.4×10⁻³ < q < 1.8×10⁻³ quoted in the registration. The registered q = 0.865×10⁻³ is inside.
+- The LBT helium reading would score PASS (|z| = 1.4, σ = 0.0137), although G = G0 fits it 2.0 times better.
+- Helium and deuterium together, with the Gaussian-process rates, would score PASS (|z| = 2.4, σ = 0.0121), although
+  G = G0 fits them 17 times better.
+- Deuterium alone, with the same rates, would score SUB-THRESHOLD (|z| = 2.8); with PRIMAT's, SUB-THRESHOLD (|z| = 2.97);
+  with the Planck+ACT+SPT baryon density, FAIL (|z| = 3.2).
+
+Reports on P14 therefore give both distances.
+
+In terms of P14's parameter, the LBT helium alone gives q = (0.30 ± 0.40)×10⁻³, or −0.49×10⁻³ < q < 1.10×10⁻³ at 2σ; with deuterium
+(Gaussian-process rates, PDG average), q = (0.04 ± 0.35)×10⁻³, or −0.66×10⁻³ < q < 0.73×10⁻³ at 2σ. The registration quoted
+−1.4×10⁻³ < q < 1.8×10⁻³. The registered q = 0.865×10⁻³ is inside the first range and outside the second.
 
 ## What would decide it
 
+- **Deuterium-burning cross sections**, d(d,n)³He and d(d,p)³H, measured at 0.1–0.6 MeV. They set the nuclear part
+  of the deuterium prediction's error (1.2% with Gaussian processes), against P14's 2.8% shift.
 - **Helium** measured to ±0.0009 (LBT: ±0.0013) would separate P14 from G = G0 at 3σ on its own:
   P14 lowers Y_p by 0.0026, and the prediction error is ±0.0002. P14's rule precision corresponds to ±0.0013.
-- **Deuterium-burning cross sections**, d(d,n)³He and d(d,p)³H, measured at nucleosynthesis energies well enough
-  to choose between the two rate sets.
 - **A CMB fit of P14's model**, with G = 0.992 at recombination, to fix the baryon density it implies.
 - **A published determination of G during nucleosynthesis** after the registration, from an analysis that lets it
   differ from today's: that is what P14's rule scores.
@@ -135,8 +161,8 @@ against −1.4×10⁻³ < q < 1.8×10⁻³ quoted in the registration. The regis
 ## Limits
 
 - Linear in the logarithms: accurate for changes of a few percent, as here.
-- The sensitivities to G come from one code (Fields et al.) and are applied to both rate sets; the expansion-rate
-  physics is the same in both.
-- "Planck" ignores P14's 0.8% change of G at recombination; "widened" covers any change there, so it overstates
-  the error for a model in which the change is fixed. Deuterium depends on the difference (a 1% shift in the
-  baryon density moves D/H by 1.6%); helium barely does.
+- The sensitivities to G come from one code (Fields et al.) and are applied to every prediction; the expansion-rate
+  physics is the same in all.
+- "As published" ignores P14's 0.8% change of G at recombination; "widened" covers any change there, so it
+  overstates the error for a model in which the change is fixed. Deuterium depends on the difference (a 1% shift in
+  the baryon density moves D/H by 1.6%); helium barely does.

@@ -59,10 +59,11 @@ now about a thousand times more precise.
 - Alvey et al. 2020 (arXiv:1910.10730): G_BBN/G₀ = 0.99 +0.06/−0.05 (2σ). Compatible.
 - The LBT helium abundance (Aver et al. 2026, arXiv:2601.22238), read as G during nucleosynthesis (v20.2,
   [analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)): G_BBN/G₀ = 0.989 ± 0.014. The variant is 1.4σ away,
-  G = G₀ 0.8σ. Deuterium depends on nuclear rates that are not settled: it is neutral with data-driven rates, but
-  3.3σ against the variant with PRIMAT's and the Planck baryon density. Helium and deuterium together put the
-  variant 1.3σ away with the first rate set and 2.7–3.0σ with the second. The P14 registration missed these
-  results. They predate it and are not scored.
+  G = G₀ 0.8σ. Deuterium is against the variant. A 2026 Gaussian-process fit to the nuclear data shows that the
+  older polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT's ab initio
+  rates. With these rates and the PDG 2025 average, deuterium alone puts the variant 2.8–3.2σ away. Helium and
+  deuterium together put it 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G₀ fits them about 17 times
+  better. The P14 registration missed these results. They predate it and are not scored.
 
 **The joint fit (v20.1).** [analyses/joint_fit.md](analyses/joint_fit.md) fits the variant, with the cosmological
 parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO data. The variant survives:
@@ -70,8 +71,9 @@ parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO dat
 68.5 to 67.9 km/s/Mpc, and after the refit D/r_d differs from ΛCDM by less than 0.005% at every DESI redshift.
 The same degeneracy leaves the exponent almost unconstrained by these data. Nucleosynthesis bounds it to
 −1.4×10⁻³ < q < 1.8×10⁻³ (2σ), which caps the H₀ this variant can reach at 67.3–69.5 km/s/Mpc: it does not
-address the Hubble tension. The LBT helium alone narrows the bound to −0.49×10⁻³ < q < 1.10×10⁻³ (v20.2); the H₀
-cap was not recomputed.
+address the Hubble tension. The LBT helium alone narrows the bound to −0.49×10⁻³ < q < 1.10×10⁻³ (v20.2); with
+deuterium it becomes −0.66×10⁻³ < q < 0.73×10⁻³, which leaves the registered q = 0.865×10⁻³ outside. The H₀ cap
+was not recomputed.
 
 **What remains distinct.** Only early-universe gravity. At the P1-tuned value, G in atomic units is 0.992 of
 today's at recombination and 0.970 at nucleosynthesis, tied by ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Compressed CMB
@@ -128,10 +130,11 @@ clause K0.4 addresses. It does not fire, because P14 remains testable, as does t
 earlier text of this problem recorded the possibility before the computation was done.
 
 **Current pressure on P14 (v20.2).** Nucleosynthesis data published before the registration already press on it.
-With one of the two current sets of nuclear rates (PRIMAT), helium and deuterium put P14 2.7–3.0σ from the data.
-A fit of the model that reached 3σ would fail P14 by its own rule, and K0.4 would then fire. With the other set,
-P14 is 1.3σ away ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md); problem 1). Laboratory measurements of the
-deuterium-burning cross sections, or a CMB fit of the model, would settle which.
+With the deuterium-burning rates now favoured, helium and deuterium put P14 2.4–2.7σ from the data, and deuterium
+alone 2.8–3.2σ. A fit of the model that reached 3σ would fail P14 by its own rule, and K0.4 would then fire. Only
+the older polynomial rate fits, which a 2026 analysis shows over-predict deuterium, leave P14 at 1.3σ
+([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md); problem 1). New laboratory measurements of the
+deuterium-burning reactions at 0.1–0.6 MeV, or a CMB fit of the model, would settle it.
 
 ## 6. Registered pipeline descriptions name modules that were never built
 

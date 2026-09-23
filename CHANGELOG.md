@@ -28,12 +28,16 @@
   missed results published before it, namely the LBT helium abundance (Aver et al. 2026) and two readings of it as
   the expansion rate during nucleosynthesis.
   - Helium gives G/G0 = 0.989 ± 0.014: P14 is 1.4σ away, G = G0 0.8σ.
-  - Deuterium depends on nuclear rates that are not settled. It is neutral with data-driven rates, and 3.3σ against
-    P14 with PRIMAT's rates and the Planck baryon density.
-  - Helium and deuterium together put P14 1.3σ away with the first rate set and 2.7–3.0σ with the second.
+  - Deuterium is against P14. A 2026 Gaussian-process fit to the nuclear data (Launders, Giovanetti & Liu) shows
+    that the polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT. With
+    these rates and the PDG 2025 average, deuterium alone puts P14 2.8–3.2σ away.
+  - Helium and deuterium together put P14 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G0 fits them
+    about 17 times better.
+  - P14's rule would score such a combined determination PASS, since it needs only |z| < 3 and σ ≤ 0.0149.
+    Reports on P14 give both distances.
 
-  None of this is scored, because all of it predates the registration. P14 carries a new editorial flag, which
-  changes the register manifest digest. Recorded in problems 1 and 5.
+  None of this is scored, because all of it predates the registration. P14 carries a new editorial flag with a
+  same-day addendum, which changes the register manifest digest. Recorded in problems 1 and 5.
 
 ## 20.1.0 — 2026-09-23 — open problems computed
 

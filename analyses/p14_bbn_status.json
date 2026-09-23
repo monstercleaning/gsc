@@ -25,9 +25,9 @@
       0.0003
     ],
     "theory": {
-      "Yeh, Olive & Fields 2021": {
-        "rates": "data-driven fits to measured cross sections",
-        "ref": "arXiv:2011.13874, Table 2 and abstract (BBN+CMB, Planck 2018 TT+TE+EE+lowE+lensing, eta_10 = 6.129 +- 0.040)",
+      "Polynomial fits (Yeh, Olive & Fields 2021)": {
+        "ref": "arXiv:2011.13874, Table 2 and abstract (Planck 2018 TT+TE+EE+lowE+lensing; eta_10 = 6.129 +- 0.040)",
+        "cmb": "Planck 2018",
         "Y_p": [
           0.24693,
           0.00018
@@ -41,9 +41,9 @@
           0.00014
         ]
       },
-      "PRIMAT 2021": {
-        "rates": "ab initio energy dependences normalised to data",
-        "ref": "Pitrou, Coc, Uzan & Vangioni, arXiv:2011.11320, predicted-abundance table and eq. 10 (CMB+BAO)",
+      "PRIMAT (Pitrou et al. 2021)": {
+        "ref": "arXiv:2011.11320, predicted-abundance table and eq. 10 (Planck 2018 CMB+BAO)",
+        "cmb": "Planck 2018",
         "Y_p": [
           0.24721,
           0.00014
@@ -56,8 +56,35 @@
           0.02242,
           0.00014
         ]
+      },
+      "Gaussian processes (Launders et al. 2026)": {
+        "ref": "arXiv:2604.16600, eq. 6 (LINX; Planck 2018 TT,TE,EE+lowE+lensing baryon density marginalised)",
+        "cmb": "Planck 2018",
+        "Y_p": null,
+        "D/H": [
+          2.442,
+          0.04
+        ],
+        "omega_b": [
+          0.02237,
+          0.00015
+        ]
+      },
+      "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT": {
+        "ref": "arXiv:2604.16600, Table 1 (baryon density of Planck, ACT DR6 and SPT-3G D1 combined)",
+        "cmb": "Planck+ACT+SPT",
+        "Y_p": null,
+        "D/H": [
+          2.437,
+          0.034
+        ],
+        "omega_b": [
+          0.022398,
+          9.5e-05
+        ]
       }
     },
+    "helium_from": "PRIMAT (Pitrou et al. 2021)",
     "helium": {
       "LBT (Aver et al. 2026)": {
         "ref": "arXiv:2601.22238",
@@ -93,6 +120,14 @@
       }
     },
     "deuterium": {
+      "PDG 2025, mean of 12 systems": {
+        "ref": "Review of Particle Physics 2025, BBN review, Table 24.1 (scale factor 1.08)",
+        "value": [
+          2.508,
+          0.029,
+          0.029
+        ]
+      },
       "Cooke, Pettini & Steidel 2018": {
         "ref": "arXiv:1710.11129",
         "value": [
@@ -100,23 +135,25 @@
           0.03,
           0.03
         ]
-      },
-      "Fields et al. 2020, mean of 11 systems": {
-        "ref": "arXiv:1912.01132, eq. 5",
-        "value": [
-          2.55,
-          0.03,
-          0.03
-        ]
       }
+    },
+    "poulin_2026": {
+      "ref": "Poulin, Froustey, Pitrou & Smith, arXiv:2607.20635",
+      "delta_H_over_H": [
+        0.087,
+        0.036,
+        0.037
+      ],
+      "temperature_MeV": 0.03
     }
   },
   "predicted_abundances": [
     {
-      "code": "Yeh, Olive & Fields 2021",
-      "rates": "data-driven fits to measured cross sections",
-      "ref": "arXiv:2011.13874, Table 2 and abstract (BBN+CMB, Planck 2018 TT+TE+EE+lowE+lensing, eta_10 = 6.129 +- 0.040)",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "ref": "arXiv:2011.13874, Table 2 and abstract (Planck 2018 TT+TE+EE+lowE+lensing; eta_10 = 6.129 +- 0.040)",
+      "cmb": "Planck 2018",
       "omega_b": 0.02239,
+      "helium_from": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "standard_Y_p": 0.24693,
       "p14_Y_p": 0.244281,
       "p14_Y_p_freeze_out_G": 0.243988,
@@ -124,379 +161,586 @@
       "p14_D_H": 2.43882
     },
     {
-      "code": "PRIMAT 2021",
-      "rates": "ab initio energy dependences normalised to data",
-      "ref": "Pitrou, Coc, Uzan & Vangioni, arXiv:2011.11320, predicted-abundance table and eq. 10 (CMB+BAO)",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "ref": "arXiv:2011.11320, predicted-abundance table and eq. 10 (Planck 2018 CMB+BAO)",
+      "cmb": "Planck 2018",
       "omega_b": 0.02242,
+      "helium_from": "PRIMAT (Pitrou et al. 2021)",
       "standard_Y_p": 0.24721,
       "p14_Y_p": 0.244558,
       "p14_Y_p_freeze_out_G": 0.244265,
       "standard_D_H": 2.439,
       "p14_D_H": 2.36984
+    },
+    {
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "ref": "arXiv:2604.16600, eq. 6 (LINX; Planck 2018 TT,TE,EE+lowE+lensing baryon density marginalised)",
+      "cmb": "Planck 2018",
+      "omega_b": 0.02237,
+      "helium_from": "PRIMAT (Pitrou et al. 2021)",
+      "standard_Y_p": 0.24721,
+      "p14_Y_p": 0.244558,
+      "p14_Y_p_freeze_out_G": 0.244265,
+      "standard_D_H": 2.442,
+      "p14_D_H": 2.37275
+    },
+    {
+      "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "ref": "arXiv:2604.16600, Table 1 (baryon density of Planck, ACT DR6 and SPT-3G D1 combined)",
+      "cmb": "Planck+ACT+SPT",
+      "omega_b": 0.022398,
+      "helium_from": "PRIMAT (Pitrou et al. 2021)",
+      "standard_Y_p": 0.24721,
+      "p14_Y_p": 0.244558,
+      "p14_Y_p_freeze_out_G": 0.244265,
+      "standard_D_H": 2.437,
+      "p14_D_H": 2.36789
     }
   ],
   "single_measurements": [
     {
       "element": "Y_p",
       "measurement": "LBT (Aver et al. 2026)",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.987234,
       "sigma": 0.0147639,
       "p14_sigma_away": -1.16144,
       "standard_sigma_away": 0.859117,
-      "likelihood_standard_over_p14": 1.35721
+      "likelihood_standard_over_p14": 1.35721,
+      "rule_if_it_counted": "PASS"
     },
     {
       "element": "Y_p",
       "measurement": "Kurichin et al. 2021",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.991741,
       "sigma": 0.0249061,
       "p14_sigma_away": -0.872987,
       "standard_sigma_away": 0.33023,
-      "likelihood_standard_over_p14": 1.38615
+      "likelihood_standard_over_p14": 1.38615,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "Aver et al. 2021",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.981619,
       "sigma": 0.0381642,
       "p14_sigma_away": -0.300043,
       "standard_sigma_away": 0.477167,
-      "likelihood_standard_over_p14": 0.933484
+      "likelihood_standard_over_p14": 0.933484,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.891392,
       "sigma": 0.0358667,
       "p14_sigma_away": 2.10639,
       "standard_sigma_away": 2.85737,
-      "likelihood_standard_over_p14": 0.155075
+      "likelihood_standard_over_p14": 0.155075,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
+      "G_over_G0": 0.999163,
+      "sigma": 0.0475699,
+      "p14_sigma_away": -0.617093,
+      "standard_sigma_away": 0.0175872,
+      "likelihood_standard_over_p14": 1.20955,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "D/H",
       "measurement": "Cooke, Pettini & Steidel 2018",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 1.00712,
       "sigma": 0.0480329,
       "p14_sigma_away": -0.782232,
       "standard_sigma_away": -0.148666,
-      "likelihood_standard_over_p14": 1.34298
-    },
-    {
-      "element": "D/H",
-      "measurement": "Fields et al. 2020, mean of 11 systems",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
-      "G_over_G0": 1.01675,
-      "sigma": 0.0484624,
-      "p14_sigma_away": -0.982388,
-      "standard_sigma_away": -0.348433,
-      "likelihood_standard_over_p14": 1.52476
+      "likelihood_standard_over_p14": 1.34298,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "LBT (Aver et al. 2026)",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.987379,
       "sigma": 0.0148214,
       "p14_sigma_away": -1.16686,
       "standard_sigma_away": 0.84615,
-      "likelihood_standard_over_p14": 1.38098
+      "likelihood_standard_over_p14": 1.38098,
+      "rule_if_it_counted": "PASS"
     },
     {
       "element": "Y_p",
       "measurement": "Kurichin et al. 2021",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.991886,
       "sigma": 0.0249429,
       "p14_sigma_away": -0.877651,
       "standard_sigma_away": 0.323967,
-      "likelihood_standard_over_p14": 1.39467
+      "likelihood_standard_over_p14": 1.39467,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "Aver et al. 2021",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.981763,
       "sigma": 0.038191,
       "p14_sigma_away": -0.303641,
       "standard_sigma_away": 0.473136,
-      "likelihood_standard_over_p14": 0.93629
+      "likelihood_standard_over_p14": 0.93629,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.891522,
       "sigma": 0.0358905,
       "p14_sigma_away": 2.10166,
       "standard_sigma_away": 2.85225,
-      "likelihood_standard_over_p14": 0.1558
+      "likelihood_standard_over_p14": 0.1558,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "widened",
+      "G_over_G0": 0.996918,
+      "sigma": 0.0514446,
+      "p14_sigma_away": -0.525747,
+      "standard_sigma_away": 0.0598119,
+      "likelihood_standard_over_p14": 1.14616,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "D/H",
       "measurement": "Cooke, Pettini & Steidel 2018",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 1.00485,
       "sigma": 0.0519317,
       "p14_sigma_away": -0.678359,
       "standard_sigma_away": -0.0936753,
-      "likelihood_standard_over_p14": 1.2532
-    },
-    {
-      "element": "D/H",
-      "measurement": "Fields et al. 2020, mean of 11 systems",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "widened",
-      "G_over_G0": 1.01446,
-      "sigma": 0.0524009,
-      "p14_sigma_away": -0.862966,
-      "standard_sigma_away": -0.277977,
-      "likelihood_standard_over_p14": 1.39615
+      "likelihood_standard_over_p14": 1.2532,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "LBT (Aver et al. 2026)",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.984105,
       "sigma": 0.0146626,
       "p14_sigma_away": -0.952697,
       "standard_sigma_away": 1.07537,
-      "likelihood_standard_over_p14": 0.883032
+      "likelihood_standard_over_p14": 0.883032,
+      "rule_if_it_counted": "PASS"
     },
     {
       "element": "Y_p",
       "measurement": "Kurichin et al. 2021",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.988598,
       "sigma": 0.0247946,
       "p14_sigma_away": -0.747563,
       "standard_sigma_away": 0.457234,
-      "likelihood_standard_over_p14": 1.19112
+      "likelihood_standard_over_p14": 1.19112,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "Aver et al. 2021",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.978508,
       "sigma": 0.0380224,
       "p14_sigma_away": -0.218512,
       "standard_sigma_away": 0.559122,
-      "likelihood_standard_over_p14": 0.87596
+      "likelihood_standard_over_p14": 0.87596,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.888567,
       "sigma": 0.0357347,
       "p14_sigma_away": 2.18641,
       "standard_sigma_away": 2.93777,
-      "likelihood_standard_over_p14": 0.145867
+      "likelihood_standard_over_p14": 0.145867,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "G_over_G0": 1.02974,
+      "sigma": 0.0206321,
+      "p14_sigma_away": -2.97067,
+      "standard_sigma_away": -1.46256,
+      "likelihood_standard_over_p14": 28.3014,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "D/H",
       "measurement": "Cooke, Pettini & Steidel 2018",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 1.03793,
       "sigma": 0.0210021,
       "p14_sigma_away": -3.33336,
       "standard_sigma_away": -1.84002,
-      "likelihood_standard_over_p14": 47.5984
-    },
-    {
-      "element": "D/H",
-      "measurement": "Fields et al. 2020, mean of 11 systems",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
-      "G_over_G0": 1.04786,
-      "sigma": 0.0211305,
-      "p14_sigma_away": -3.81675,
-      "standard_sigma_away": -2.31829,
-      "likelihood_standard_over_p14": 99.1414
+      "likelihood_standard_over_p14": 47.5984,
+      "rule_if_it_counted": "FAIL"
     },
     {
       "element": "Y_p",
       "measurement": "LBT (Aver et al. 2026)",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.984393,
       "sigma": 0.0147223,
       "p14_sigma_away": -0.968686,
       "standard_sigma_away": 1.05175,
-      "likelihood_standard_over_p14": 0.919514
+      "likelihood_standard_over_p14": 0.919514,
+      "rule_if_it_counted": "PASS"
     },
     {
       "element": "Y_p",
       "measurement": "Kurichin et al. 2021",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.988887,
       "sigma": 0.0248349,
       "p14_sigma_away": -0.758223,
       "standard_sigma_away": 0.444968,
-      "likelihood_standard_over_p14": 1.20738
+      "likelihood_standard_over_p14": 1.20738,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "Aver et al. 2021",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.978795,
       "sigma": 0.0380547,
       "p14_sigma_away": -0.22592,
       "standard_sigma_away": 0.551282,
-      "likelihood_standard_over_p14": 0.881231
+      "likelihood_standard_over_p14": 0.881231,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "Y_p",
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.888827,
       "sigma": 0.0357638,
       "p14_sigma_away": 2.17799,
       "standard_sigma_away": 2.92897,
-      "likelihood_standard_over_p14": 0.146959
+      "likelihood_standard_over_p14": 0.146959,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "G_over_G0": 1.02512,
+      "sigma": 0.028953,
+      "p14_sigma_away": -1.94826,
+      "standard_sigma_away": -0.878386,
+      "likelihood_standard_over_p14": 4.53613,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "D/H",
       "measurement": "Cooke, Pettini & Steidel 2018",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 1.03328,
       "sigma": 0.0293291,
       "p14_sigma_away": -2.21788,
       "standard_sigma_away": -1.15332,
-      "likelihood_standard_over_p14": 6.01598
+      "likelihood_standard_over_p14": 6.01598,
+      "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
       "element": "D/H",
-      "measurement": "Fields et al. 2020, mean of 11 systems",
-      "code": "PRIMAT 2021",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "G_over_G0": 1.02841,
+      "sigma": 0.0216594,
+      "p14_sigma_away": -2.76481,
+      "standard_sigma_away": -1.33008,
+      "likelihood_standard_over_p14": 18.8692,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "G_over_G0": 1.03659,
+      "sigma": 0.0220274,
+      "p14_sigma_away": -3.11333,
+      "standard_sigma_away": -1.69134,
+      "likelihood_standard_over_p14": 30.4503,
+      "rule_if_it_counted": "FAIL"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
-      "G_over_G0": 1.04316,
-      "sigma": 0.0295582,
-      "p14_sigma_away": -2.55762,
-      "standard_sigma_away": -1.49121,
-      "likelihood_standard_over_p14": 8.66116
+      "G_over_G0": 1.02764,
+      "sigma": 0.0294897,
+      "p14_sigma_away": -2.00302,
+      "standard_sigma_away": -0.950038,
+      "likelihood_standard_over_p14": 4.73395,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "G_over_G0": 1.03582,
+      "sigma": 0.0298681,
+      "p14_sigma_away": -2.26831,
+      "standard_sigma_away": -1.2204,
+      "likelihood_standard_over_p14": 6.22102,
+      "rule_if_it_counted": "SUB-THRESHOLD"
+    },
+    {
+      "element": "D/H",
+      "measurement": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "G_over_G0": 1.03063,
+      "sigma": 0.019617,
+      "p14_sigma_away": -3.17236,
+      "standard_sigma_away": -1.58483,
+      "likelihood_standard_over_p14": 43.6442,
+      "rule_if_it_counted": "FAIL"
+    },
+    {
+      "element": "D/H",
+      "measurement": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "G_over_G0": 1.03883,
+      "sigma": 0.0199898,
+      "p14_sigma_away": -3.54995,
+      "standard_sigma_away": -1.97964,
+      "likelihood_standard_over_p14": 76.83,
+      "rule_if_it_counted": "FAIL"
     }
   ],
   "combined": [
     {
       "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
+      "G_over_G0": 0.9883,
+      "sigma": 0.0141005,
+      "p14_sigma_away": -1.29299,
+      "standard_sigma_away": 0.824904,
+      "likelihood_standard_over_p14": 1.64161,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 0.240677
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
       "deuterium": "Cooke, Pettini & Steidel 2018",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 0.988998,
       "sigma": 0.0141127,
       "p14_sigma_away": -1.34228,
       "standard_sigma_away": 0.775282,
       "likelihood_standard_over_p14": 1.82271,
+      "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.398901
     },
     {
       "helium": "LBT (Aver et al. 2026)",
-      "deuterium": "Fields et al. 2020, mean of 11 systems",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "Planck",
-      "G_over_G0": 0.989844,
-      "sigma": 0.014124,
-      "p14_sigma_away": -1.40227,
-      "standard_sigma_away": 0.715409,
-      "likelihood_standard_over_p14": 2.06943,
-      "helium_vs_deuterium_sigma": 0.589642
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
+      "baryon_density": "widened",
+      "G_over_G0": 0.98812,
+      "sigma": 0.0142422,
+      "p14_sigma_away": -1.26727,
+      "standard_sigma_away": 0.82918,
+      "likelihood_standard_over_p14": 1.58283,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 0.178907
     },
     {
       "helium": "LBT (Aver et al. 2026)",
       "deuterium": "Cooke, Pettini & Steidel 2018",
-      "code": "Yeh, Olive & Fields 2021",
+      "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.988727,
       "sigma": 0.0142526,
       "p14_sigma_away": -1.30976,
       "standard_sigma_away": 0.78644,
       "likelihood_standard_over_p14": 1.73064,
+      "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.32597
     },
     {
       "helium": "LBT (Aver et al. 2026)",
-      "deuterium": "Fields et al. 2020, mean of 11 systems",
-      "code": "Yeh, Olive & Fields 2021",
-      "baryon_density": "widened",
-      "G_over_G0": 0.989462,
-      "sigma": 0.0142626,
-      "p14_sigma_away": -1.36132,
-      "standard_sigma_away": 0.734963,
-      "likelihood_standard_over_p14": 1.92806,
-      "helium_vs_deuterium_sigma": 0.50306
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "G_over_G0": 1.00012,
+      "sigma": 0.0119574,
+      "p14_sigma_away": -2.53715,
+      "standard_sigma_away": -0.00980622,
+      "likelihood_standard_over_p14": 24.991,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.81532
     },
     {
       "helium": "LBT (Aver et al. 2026)",
       "deuterium": "Cooke, Pettini & Steidel 2018",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
       "G_over_G0": 1.0027,
       "sigma": 0.0120302,
       "p14_sigma_away": -2.74362,
       "standard_sigma_away": -0.225069,
       "likelihood_standard_over_p14": 42.0309,
+      "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 2.1193
     },
     {
       "helium": "LBT (Aver et al. 2026)",
-      "deuterium": "Fields et al. 2020, mean of 11 systems",
-      "code": "PRIMAT 2021",
-      "baryon_density": "Planck",
-      "G_over_G0": 1.00616,
-      "sigma": 0.0120571,
-      "p14_sigma_away": -3.03434,
-      "standard_sigma_away": -0.512748,
-      "likelihood_standard_over_p14": 87.545,
-      "helium_vs_deuterium_sigma": 2.50359
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "G_over_G0": 0.993171,
+      "sigma": 0.0131268,
+      "p14_sigma_away": -1.76779,
+      "standard_sigma_away": 0.518422,
+      "likelihood_standard_over_p14": 4.17104,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.26845
     },
     {
       "helium": "LBT (Aver et al. 2026)",
       "deuterium": "Cooke, Pettini & Steidel 2018",
-      "code": "PRIMAT 2021",
+      "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "G_over_G0": 0.994815,
       "sigma": 0.0131628,
       "p14_sigma_away": -1.89086,
       "standard_sigma_away": 0.392869,
       "likelihood_standard_over_p14": 5.53177,
+      "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.51062
     },
     {
       "helium": "LBT (Aver et al. 2026)",
-      "deuterium": "Fields et al. 2020, mean of 11 systems",
-      "code": "PRIMAT 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "G_over_G0": 0.998666,
+      "sigma": 0.0121472,
+      "p14_sigma_away": -2.37451,
+      "standard_sigma_away": 0.109737,
+      "likelihood_standard_over_p14": 16.6621,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.70689
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "G_over_G0": 1.0011,
+      "sigma": 0.0122129,
+      "p14_sigma_away": -2.56741,
+      "standard_sigma_away": -0.0904957,
+      "likelihood_standard_over_p14": 26.8886,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 2.00221
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
-      "G_over_G0": 0.996909,
-      "sigma": 0.0131855,
-      "p14_sigma_away": -2.05053,
-      "standard_sigma_away": 0.234067,
-      "likelihood_standard_over_p14": 7.96406,
-      "helium_vs_deuterium_sigma": 1.80972
+      "G_over_G0": 0.993475,
+      "sigma": 0.0131761,
+      "p14_sigma_away": -1.78475,
+      "standard_sigma_away": 0.493606,
+      "likelihood_standard_over_p14": 4.35293,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.32857
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "G_over_G0": 0.995077,
+      "sigma": 0.0132109,
+      "p14_sigma_away": -1.90427,
+      "standard_sigma_away": 0.371751,
+      "likelihood_standard_over_p14": 5.72031,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.56759
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "G_over_G0": 1.00153,
+      "sigma": 0.0117503,
+      "p14_sigma_away": -2.7056,
+      "standard_sigma_away": -0.130086,
+      "likelihood_standard_over_p14": 38.5392,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 1.91081
+    },
+    {
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "G_over_G0": 1.00427,
+      "sigma": 0.0118311,
+      "p14_sigma_away": -2.92664,
+      "standard_sigma_away": -0.361698,
+      "likelihood_standard_over_p14": 67.8434,
+      "rule_if_it_counted": "PASS",
+      "helium_vs_deuterium_sigma": 2.22364
     }
   ],
   "published": [
@@ -557,13 +801,23 @@
       "rule_if_it_counted": "SUB-THRESHOLD"
     }
   ],
-  "q_from_lbt_helium": {
-    "q": 0.000304973,
-    "sigma": 0.000396465,
-    "two_sigma_range": [
-      -0.000487957,
-      0.0010979
-    ],
+  "q": {
+    "from_lbt_helium": {
+      "q": 0.000304973,
+      "sigma": 0.000396465,
+      "two_sigma_range": [
+        -0.000487957,
+        0.0010979
+      ]
+    },
+    "from_helium_and_deuterium": {
+      "q": 3.82097e-05,
+      "sigma": 0.000348193,
+      "two_sigma_range": [
+        -0.000658177,
+        0.000734597
+      ]
+    },
     "registration_quoted_two_sigma_range": [
       -0.0014,
       0.0018
@@ -577,7 +831,8 @@
     "lbt_helium_error": 0.0013,
     "lbt_over_empress_precision": 2.61538,
     "p14_deuterium_shift_percent": 2.83567,
-    "rate_sets_deuterium_gap_percent": 2.65563
+    "polynomial_over_gp_percent": 2.88925,
+    "gp_nuclear_error_percent": 1.18755
   },
   "validation": {
     "alvey_2020_reproduced": {
