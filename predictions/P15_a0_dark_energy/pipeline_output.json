@@ -1,0 +1,232 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "dependence_on_dark_energy": "The numbers are fixed at DESI DR2's dark energy. With a true cosmological constant the same idea gives a constant a0, which a precise enough determination would score as a FAIL of this entry.",
+    "k0_status": "A T4 forward prediction; the scope and threshold of kill condition K0 are unchanged.",
+    "on_failure": "a0 is not set by the dark-energy density in this form, and the evolving MOND-like scale of THEORY.md §6.2 loses its registered form. The GSC core (T1-T3) is unaffected."
+  },
+  "physics_status": "Exact consequence of a0 proportional to the square root of the dark-energy density, with DESI DR2's published dark-energy histories. Not a fit: the shape has no free parameter, and only ratios to today's a0 are predicted.",
+  "prediction": {
+    "below_z_1_5": {
+      "band": [
+        0.8461,
+        0.9059
+      ],
+      "note": "Predicted change of a0 over the redshift range in which Ciocan et al. (2026) see a0 rise by a factor of about 2; not in the scored range.",
+      "z_high": 1.44,
+      "z_low": 0.33
+    },
+    "comparison_at_z3": {
+      "a0_proportional_to_H": 4.5656,
+      "constant_a0": 1.0,
+      "lcdm_simulations": "rising (Mayer et al., arXiv:2206.04333: about 3 times by z = 2)",
+      "this_prediction_band": [
+        0.6286,
+        0.775
+      ]
+    },
+    "ratio_to_today": [
+      {
+        "band": [
+          0.8369,
+          0.8739
+        ],
+        "by_history": {
+          "DESI+CMB": 0.8369,
+          "DESI+CMB+DESY5": 0.862,
+          "DESI+CMB+Pantheon+": 0.8739,
+          "DESI+CMB+Union3": 0.8543
+        },
+        "central": 0.862,
+        "z": 2.0
+      },
+      {
+        "band": [
+          0.7847,
+          0.8503
+        ],
+        "by_history": {
+          "DESI+CMB": 0.7847,
+          "DESI+CMB+DESY5": 0.8318,
+          "DESI+CMB+Pantheon+": 0.8503,
+          "DESI+CMB+Union3": 0.8182
+        },
+        "central": 0.8318,
+        "z": 2.22
+      },
+      {
+        "band": [
+          0.7235,
+          0.8217
+        ],
+        "by_history": {
+          "DESI+CMB": 0.7235,
+          "DESI+CMB+DESY5": 0.7956,
+          "DESI+CMB+Pantheon+": 0.8217,
+          "DESI+CMB+Union3": 0.7752
+        },
+        "central": 0.7956,
+        "z": 2.5
+      },
+      {
+        "band": [
+          0.6286,
+          0.775
+        ],
+        "by_history": {
+          "DESI+CMB": 0.6286,
+          "DESI+CMB+DESY5": 0.737,
+          "DESI+CMB+Pantheon+": 0.775,
+          "DESI+CMB+Union3": 0.7062
+        },
+        "central": 0.737,
+        "z": 3.0
+      },
+      {
+        "band": [
+          0.5499,
+          0.7335
+        ],
+        "by_history": {
+          "DESI+CMB": 0.5499,
+          "DESI+CMB+DESY5": 0.6856,
+          "DESI+CMB+Pantheon+": 0.7335,
+          "DESI+CMB+Union3": 0.6465
+        },
+        "central": 0.6856,
+        "z": 3.5
+      },
+      {
+        "band": [
+          0.4845,
+          0.6965
+        ],
+        "by_history": {
+          "DESI+CMB": 0.4845,
+          "DESI+CMB+DESY5": 0.6405,
+          "DESI+CMB+Pantheon+": 0.6965,
+          "DESI+CMB+Union3": 0.5948
+        },
+        "central": 0.6405,
+        "z": 4.0
+      },
+      {
+        "band": [
+          0.4299,
+          0.6635
+        ],
+        "by_history": {
+          "DESI+CMB": 0.4299,
+          "DESI+CMB+DESY5": 0.6008,
+          "DESI+CMB+Pantheon+": 0.6635,
+          "DESI+CMB+Union3": 0.5499
+        },
+        "central": 0.6008,
+        "z": 4.5
+      },
+      {
+        "band": [
+          0.384,
+          0.6339
+        ],
+        "by_history": {
+          "DESI+CMB": 0.384,
+          "DESI+CMB+DESY5": 0.5656,
+          "DESI+CMB+Pantheon+": 0.6339,
+          "DESI+CMB+Union3": 0.5107
+        },
+        "central": 0.5656,
+        "z": 5.0
+      },
+      {
+        "band": [
+          0.3119,
+          0.5829
+        ],
+        "by_history": {
+          "DESI+CMB": 0.3119,
+          "DESI+CMB+DESY5": 0.5063,
+          "DESI+CMB+Pantheon+": 0.5829,
+          "DESI+CMB+Union3": 0.4457
+        },
+        "central": 0.5063,
+        "z": 6.0
+      }
+    ],
+    "same_survey_ratios": [
+      {
+        "band": [
+          0.689,
+          0.8447
+        ],
+        "by_history": {
+          "DESI+CMB": 0.689,
+          "DESI+CMB+DESY5": 0.807,
+          "DESI+CMB+Pantheon+": 0.8447,
+          "DESI+CMB+Union3": 0.7742
+        },
+        "central": 0.807,
+        "z_high": 2.22,
+        "z_low": 0.83
+      },
+      {
+        "band": [
+          0.5711,
+          0.7837
+        ],
+        "by_history": {
+          "DESI+CMB": 0.5711,
+          "DESI+CMB+DESY5": 0.7307,
+          "DESI+CMB+Pantheon+": 0.7837,
+          "DESI+CMB+Union3": 0.685
+        },
+        "central": 0.7307,
+        "z_high": 3.0,
+        "z_low": 1.0
+      }
+    ],
+    "summary": "a0(z)/a0(0) = 0.74 (0.63-0.78) at z = 3, 0.64 at z = 4 and 0.57 at z = 5 (DESI+CMB+DESY5)."
+  },
+  "prediction_id": "P15",
+  "registered_parameters": {
+    "a0_today_reference": {
+      "sigma": 0.24,
+      "source": "McGaugh, Lelli & Schombert, PRL 117, 201101 (2016); systematic",
+      "unit": "1e-10 m/s^2",
+      "value": 1.2
+    },
+    "central_history": "DESI+CMB+DESY5",
+    "dark_energy_histories": {
+      "DESI+CMB": {
+        "w0": -0.42,
+        "wa": -1.75
+      },
+      "DESI+CMB+DESY5": {
+        "w0": -0.752,
+        "wa": -0.86
+      },
+      "DESI+CMB+Pantheon+": {
+        "w0": -0.838,
+        "wa": -0.62
+      },
+      "DESI+CMB+Union3": {
+        "w0": -0.667,
+        "wa": -1.09
+      }
+    },
+    "relation": "a0(z)/a0(0) = sqrt(rho_DE(z)/rho_DE(0)); rho_DE from the CPL form",
+    "source": "DESI DR2 Results II, arXiv:2503.14738 v3, eqs. 25-28"
+  },
+  "schema": "predictions_p15_pipeline_output_v1",
+  "scoring_rule": {
+    "fail": "z >= 3 for any scored determination.",
+    "pass": "z < 3 for every scored determination, and at least one has sigma <= (1 - upper band edge)/2, so that it can tell the prediction from a constant a0.",
+    "scope": "Determinations published after this registration. RC100 (Nestor Shachar et al., ApJ 944, 78, 2023) suggested the prediction and is not scored.",
+    "statistic": "For each published determination of the relation's acceleration scale from rotation curves of at least 10 galaxies with median redshift z >= 2: r_obs = a0(z)/a0_ref +/- sigma (1 sigma; for asymmetric errors the side facing the band). a0_ref is the same method's value at z <= 0.1, or its value in a lower-redshift bin of the same survey (the prediction is then the ratio of the formula at the two median redshifts), or else the canonical 1.20 +/- 0.24, whose uncertainty is added to sigma. d is the distance from r_obs to the registered band at that redshift (0 inside it), and z = d/sigma.",
+    "sub_threshold": "z < 3 everywhere, but no determination yet precise enough to tell the prediction from a constant a0."
+  },
+  "tier": "T4 (MOND-like phenomenology, THEORY.md §6.2)",
+  "title": "Milgrom's acceleration scale follows the dark-energy density: a0 at z = 3 is 0.74 (0.63-0.78) of today's",
+  "tool": "predictions_compute_P15.py",
+  "tool_version": "0.1"
+}

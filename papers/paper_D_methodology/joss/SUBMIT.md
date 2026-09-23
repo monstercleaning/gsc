@@ -18,7 +18,7 @@ python3 verification/retro_test.py
 bash pipelines/predictions_compute_all.sh --verify
 ```
 
-Confirm that all fourteen registered predictions reproduce their frozen outputs deterministically and that the nine scorers give the recorded verdicts (P1, P4, P5, P9, P11, P13 PASS; P3, P6 FAIL; P7 SUB-THRESHOLD).
+Confirm that all fifteen registered predictions reproduce their frozen outputs deterministically and that the nine scorers give the recorded verdicts (P1, P4, P5, P9, P11, P13 PASS; P3, P6 FAIL; P7 SUB-THRESHOLD).
 
 ## Word-count check
 
@@ -115,7 +115,7 @@ Based on the framework's nature, expect questions/requests on:
 
 3. **"Discuss limitations."** — be ready to point to the recorded corrections (CHANGELOG.md) as the discipline working: the retracted anomaly explanation, the withdrawn signing claim, and the withdrawn redshift-drift difference — errors caught, retracted, transparently documented. This is not a weakness — it is the central value claim.
 
-4. **"Why fourteen predictions and not three / twenty?"** — explain the layered tier coverage: each tier has at least one prediction, four are exact nulls guarding the framework's core, scoring infrastructure is per-prediction, and the choice was opportunistic on currently-available data.
+4. **"Why fifteen predictions and not three / twenty?"** — explain the layered tier coverage: each tier has at least one prediction, four are exact nulls guarding the framework's core, scoring infrastructure is per-prediction, and the choice was opportunistic on currently-available data.
 
 ## Post-acceptance
 

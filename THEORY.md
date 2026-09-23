@@ -21,7 +21,7 @@ are excluded by data or remain conjectures. The contribution that survives any p
 4. [T2 — the late-time ansatz](#4-t2--the-late-time-ansatz)
 5. [T3 — mechanism hypotheses](#5-t3--mechanism-hypotheses)
 6. [T4 — speculative extension modules](#6-t4--speculative-extension-modules)
-7. [The fourteen registered predictions](#7-the-fourteen-registered-predictions)
+7. [The fifteen registered predictions](#7-the-fifteen-registered-predictions)
 8. [Kill conditions (pre-committed)](#8-kill-conditions-pre-committed)
 9. [Limitations](#9-limitations)
 10. [References](#10-references)
@@ -273,7 +273,7 @@ dynamics. The registered test is P10 (energy-independent, structure-correlated T
 the scale, a0 proportional to the expansion rate H(z) as the coincidence a0 ≈ c H₀/2π suggests, is disfavoured by
 100 rotation curves at z = 0.6–2.5 (2.8–5.4σ; OPEN_PROBLEMS.md, problem 11). Tying a0 to the dark-energy density
 instead, with DESI DR2's evolving dark energy, fits the same galaxies slightly better than a constant a0 (about 2σ
-at most) and predicts a0 falling to 38–78% of today's at z ≈ 3–5.
+at most) and predicts a0 falling to 38–78% of today's at z ≈ 3–5; registered as P15.
 
 ### 6.3 Information-thermodynamic readings (conjectures)
 
@@ -301,7 +301,7 @@ points to a method-specific systematic in proton-counting beam experiments rathe
 
 ---
 
-## 7. The fourteen registered predictions
+## 7. The fifteen registered predictions
 
 Each prediction is a folder under [predictions/](predictions/) with its statement, frozen pipeline output,
 input data and scorecard. The live status table is [PREDICTIONS.md](PREDICTIONS.md), generated from the
@@ -369,6 +369,13 @@ T2, the coherent reading of the canonical exponent (registered in v20.1 under K0
 0.8% weaker than today's at recombination and 3.0% weaker at nucleosynthesis, exactly unchanged below z = 10, with
 ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Awaiting data precise enough to tell it from G = G₀. If it fails, K0.4 applies.
 [predictions/P14_early_gravity/](predictions/P14_early_gravity/)
+
+### Prediction P15 — Milgrom's acceleration scale follows the dark-energy density
+T4 (§6.2, registered in v20.2). The scale at which galaxies show dark matter follows the square root of the
+dark-energy density, with DESI DR2's dark energy: a0 at z = 3 is 0.74 (0.63–0.78) of today's, 0.57 (0.38–0.63) at
+z = 5. Suggested by the RC100 rotation curves, which cannot score it; contradicted by the one sample in which a0
+rises (OPEN_PROBLEMS.md, problem 11). Forward target: rotation curves at z ≥ 2.
+[predictions/P15_a0_dark_energy/](predictions/P15_a0_dark_energy/)
 
 ---
 

@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "predictions_p15_pipeline_output_v1.schema.json",
+  "title": "Pipeline output for prediction P15 (a0 follows the dark-energy density)",
+  "$comment": "The four DESI DR2 dark-energy histories and the central choice are registered constants. Changing any of them is a new prediction and must be registered as a superseding entry, not edited here. Every predicted ratio at z >= 2 is below 1, because DESI DR2's dark energy is thinner there than today.",
+  "type": "object",
+  "required": ["schema", "prediction_id", "title", "tier", "tool", "tool_version", "registered_parameters", "prediction", "scoring_rule"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {"type": "string", "const": "predictions_p15_pipeline_output_v1"},
+    "prediction_id": {"type": "string", "const": "P15"},
+    "title": {"type": "string"},
+    "tier": {"type": "string"},
+    "tool": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "physics_status": {"type": "string"},
+    "determinism_note": {"type": "string"},
+    "registered_parameters": {
+      "type": "object",
+      "required": ["relation", "dark_energy_histories", "central_history", "source"],
+      "properties": {
+        "relation": {"type": "string"},
+        "central_history": {"type": "string", "const": "DESI+CMB+DESY5"},
+        "source": {"type": "string"},
+        "dark_energy_histories": {
+          "type": "object",
+          "required": ["DESI+CMB", "DESI+CMB+Pantheon+", "DESI+CMB+Union3", "DESI+CMB+DESY5"],
+          "additionalProperties": false,
+          "properties": {
+            "DESI+CMB": {"type": "object", "required": ["w0", "wa"], "properties": {"w0": {"const": -0.42}, "wa": {"const": -1.75}}},
+            "DESI+CMB+Pantheon+": {"type": "object", "required": ["w0", "wa"], "properties": {"w0": {"const": -0.838}, "wa": {"const": -0.62}}},
+            "DESI+CMB+Union3": {"type": "object", "required": ["w0", "wa"], "properties": {"w0": {"const": -0.667}, "wa": {"const": -1.09}}},
+            "DESI+CMB+DESY5": {"type": "object", "required": ["w0", "wa"], "properties": {"w0": {"const": -0.752}, "wa": {"const": -0.86}}}
+          }
+        },
+        "a0_today_reference": {"type": "object", "required": ["value", "sigma"]}
+      }
+    },
+    "prediction": {
+      "type": "object",
+      "required": ["ratio_to_today", "same_survey_ratios", "comparison_at_z3"],
+      "properties": {
+        "ratio_to_today": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["z", "central", "band", "by_history"],
+            "properties": {
+              "z": {"type": "number", "minimum": 2.0},
+              "central": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.0},
+              "band": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.0}},
+              "by_history": {"type": "object", "required": ["DESI+CMB", "DESI+CMB+Pantheon+", "DESI+CMB+Union3", "DESI+CMB+DESY5"]}
+            }
+          }
+        },
+        "same_survey_ratios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["z_low", "z_high", "central", "band"],
+            "properties": {
+              "z_high": {"type": "number", "minimum": 2.0},
+              "central": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1.0},
+              "band": {"type": "array", "minItems": 2, "maxItems": 2}
+            }
+          }
+        },
+        "below_z_1_5": {"type": "object", "required": ["z_low", "z_high", "band"]},
+        "comparison_at_z3": {
+          "type": "object",
+          "required": ["constant_a0", "a0_proportional_to_H", "this_prediction_band"],
+          "properties": {"constant_a0": {"const": 1.0}, "a0_proportional_to_H": {"type": "number", "minimum": 4.0}}
+        },
+        "summary": {"type": "string"}
+      }
+    },
+    "scoring_rule": {
+      "type": "object",
+      "required": ["statistic", "fail", "pass", "sub_threshold", "scope"]
+    },
+    "framework_implications": {"type": "object"}
+  }
+}

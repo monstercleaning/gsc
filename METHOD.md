@@ -42,8 +42,9 @@ inputs never changes a file.
   that was already public when the pipelines were written. They exercise the tooling; they are not evidence that a
   prediction came before its data.
 - **Genuine forward registrations** target unreleased data: P2 (HERA / SKA-Low), P8 (ELT/ANDES), P10 (CTAO), P12
-  (the next nuclear-clock epoch), P1's full five-year DESI target and P14 (the next determinations of early-universe
-  G). The first five are the tests kill condition K0 counts; P14 carries its own clause (THEORY.md §8).
+  (the next nuclear-clock epoch), P1's full five-year DESI target, P14 (the next determinations of early-universe
+  G) and P15 (rotation curves at z ≥ 2). The first five are the tests kill condition K0 counts; P14 carries its own
+  clause (THEORY.md §8), and P15 tests a T4 module.
 - **Exact nulls** (P9, P11, P12, P13) predict what standard cosmology predicts. They do not distinguish GSC from
   ΛCDM; their value is that one robust violation would end the framework (kill conditions K1 and K2).
 

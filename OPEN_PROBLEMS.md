@@ -276,4 +276,6 @@ are not published, and beam smearing and pressure support grow with redshift. To
 dark-matter fraction at z ≈ 2.2 would have to be 0.55 instead of 0.26. What would revive the idea is a
 measurement at z ≥ 2 of the kind Ciocan et al. made below z = 1.5, finding a0 ≈ 1.2 H(z)/H₀, together with a
 reason why RC100's fractions are too low. A link to the cosmological constant instead, with a0 constant, is
-Milgrom's long-standing proposal, not a GSC prediction. Not registered.
+Milgrom's long-standing proposal, not a GSC prediction. The H(z) link is not registered. The dark-energy version
+above is registered as P15 (v20.2), a forward prediction for rotation curves at z ≥ 2; the RC100 data that
+suggested it cannot score it.

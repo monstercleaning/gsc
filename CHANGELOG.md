@@ -8,6 +8,11 @@
   curves it fits better than a constant a0 in every variant, weakly (about 2σ at most). It predicts a0 at 38–78% of
   today's at z ≈ 3–5. Recorded in problem 11. The idea was suggested by the same data, so this is a hint to test,
   not evidence.
+- **P15 registered** ([predictions/P15_a0_dark_energy/](predictions/P15_a0_dark_energy/)), T4: a0 follows the
+  square root of the dark-energy density, with DESI DR2's four dark-energy histories as the registered band. a0 at
+  z = 3 is 0.74 (0.63–0.78) of today's, and 0.57 (0.38–0.63) at z = 5. Only determinations published after the
+  registration count; RC100, which suggested it, is excluded, and the entry records that Ciocan et al.'s rising a0
+  contradicts it. The register now holds fifteen predictions (6 PASS, 2 FAIL, 1 SUB-THRESHOLD, 6 awaiting data).
 
 ## 20.1.0 — 2026-09-23 — open problems computed
 
