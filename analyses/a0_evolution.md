@@ -75,6 +75,51 @@ evolving, describes both samples at face value. A rise of about their size also 
 simulation (Mayer et al., arXiv:2206.04333: a factor of about 3 from z = 0 to 2), so a rising a0 would not by
 itself point to new physics.
 
+## A version that survives this test: a0 tied to the dark-energy density
+
+Milgrom's coincidence can also be read as a0 ≈ c √Λ instead of a0 ≈ c H0. With a true constant Λ that gives a
+constant a0, the usual MOND assumption. If dark energy evolves, as DESI DR2 suggests, a0 follows the square root
+of its density: a0(z) = a0(0) √(ρ_DE(z)/ρ_DE(0)). DESI's histories (w0, wa; arXiv:2503.14738) make dark energy
+denser than today around z ≈ 0.5–1 and thinner beyond z ≈ 1.5, so a0 would fall at high redshift, as RC100
+shows. The shape has no free parameter; only the normalisation is fitted.
+
+Δ(−2 ln L) against a constant a0, with the same galaxies and error weights (negative: the dark-energy shape fits
+better):
+
+| Variant | Galaxies | DESI+CMB | +Pantheon+ | +Union3 | +DESY5 |
+|---|---|---|---|---|---|
+| baseline: McGaugh relation, scatter free | 100 | -3.66 | -2.50 | -3.25 | -2.94 |
+| simple interpolating function | 100 | -4.38 | -2.67 | -3.61 | -3.20 |
+| standard interpolating function | 100 | -1.03 | -1.71 | -1.79 | -1.83 |
+| intrinsic scatter fixed at 0.11 dex (SPARC) | 100 | -1.41 | -1.07 | -1.34 | -1.23 |
+| intrinsic scatter fixed at 0.17 dex (Ciocan et al.) | 100 | -0.68 | -0.56 | -0.68 | -0.64 |
+| without f_DM <= 0.05 and the dispersion-dominated #83 | 93 | -5.23 | -3.13 | -4.26 | -3.77 |
+| only 0.1 <= f_DM <= 0.9 | 84 | -2.38 | -1.82 | -2.27 | -2.09 |
+| only sigma(f_DM) <= 0.13 | 70 | -4.34 | -2.64 | -3.58 | -3.17 |
+
+The fitted normalisation is 1.24–1.27 (a constant gives 1.18; nearby galaxies give 1.20).
+
+Predicted a0(z)/a0(0):
+
+| DESI history | z = 0.83 | z = 1.51 | z = 2.22 | z = 3 | z = 4 | z = 5 |
+|---|---|---|---|---|---|---|
+| DESI+CMB | 1.14 | 0.96 | 0.78 | 0.63 | 0.48 | 0.38 |
+| +Pantheon+ | 1.01 | 0.93 | 0.85 | 0.78 | 0.70 | 0.63 |
+| +Union3 | 1.06 | 0.94 | 0.82 | 0.71 | 0.59 | 0.51 |
+| +DESY5 | 1.03 | 0.93 | 0.83 | 0.74 | 0.64 | 0.57 |
+
+Within one survey, a0 at z ≈ 2.2 over a0 at z ≈ 0.8 is predicted at 0.69–0.84;
+RC100 gives 0.63 (0.51–0.77). A constant a0 gives 1, and a0 ∝ H(z) gives about 2.
+
+**How far this goes.** The preference over a constant is weak: Δ(−2 ln L) from -0.6 to -5.2
+across the variants, about 2σ at most, and smallest when the intrinsic scatter is fixed at a large value. The
+idea was suggested by the RC100 trend, so RC100 cannot confirm it. Over Ciocan et al.'s range, z = 0.33 to 1.44,
+it predicts a0 changing by a factor of 0.85–0.91, where their lines rise by 1.93–2.16 times;
+like every universal a0(z), it cannot fit both samples. DESI's evidence for evolving dark energy is itself
+2.8–4.2σ, and the CPL form is an extrapolation beyond z ≈ 2.3. The test is rotation curves at z ≈ 3–5, where it
+predicts a0 at 38–78% of today's, a constant a0 gives 100%, and ΛCDM simulations give a rise; or one
+survey measuring a0 at z ≈ 0.8 and z ≈ 2.2 with the same method.
+
 ## Checks
 
 Transcription (the statistics the RC100 text quotes for the dark-matter fractions and sizes, recomputed from

@@ -257,6 +257,18 @@ trend continued to z ≈ 2.2 gives 3.7–4.7 against RC100's 0.91. No single a0(
 at face value. ΛCDM allows that, because there the scale emerges from galaxy formation and can differ between
 populations. A universal constant does not, whether it is fixed or tied to the expansion.
 
+**A version that survives this test (v20.2).** The coincidence can also be read as a0 ≈ c √Λ, which ties a0 to the
+dark-energy density instead of the expansion rate. With a true constant Λ that gives a constant a0, the usual MOND
+assumption. If dark energy evolves, as DESI DR2 suggests, a0 follows the square root of its density, with no free
+shape parameter. DESI's histories make dark energy thinner beyond z ≈ 1.5, so a0 falls at high redshift, as RC100
+shows. On the same 100 galaxies this shape fits better than a constant in all eight variants (Δ(−2 ln L) from −0.6
+to −5.2, about 2σ at most), with a normalisation of 1.24–1.27 against today's 1.20. That is a hint, not evidence:
+the idea was suggested by the RC100 trend; Ciocan et al.'s rising a0 contradicts it, as it contradicts any
+universal a0(z); and DESI's evidence for evolving dark energy is itself 2.8–4.2σ. The prediction is sharp. At
+z ≈ 3–5, a0 should be 38–78% of today's, depending on the DESI data combination, where a constant a0 gives 100% and
+ΛCDM simulations a rise. Within one survey, a0 at z ≈ 2.2 over a0 at z ≈ 0.8 should be 0.69–0.84 (RC100: 0.63). If
+it held, dark energy would set the scale at which galaxies show dark matter.
+
 **What this does and does not show.** The simplest link between the dark-matter scale and the cosmic rate fails
 its strongest available test: at z ≈ 2, where it predicts the largest effect, the rotation curves show none. The
 caveats are real. The dark-matter fractions come from mass models with dark-matter halos, the error correlations

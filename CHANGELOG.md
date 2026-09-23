@@ -1,5 +1,14 @@
 # Changelog
 
+## 20.2.0 — in progress
+
+- **a0 tied to dark energy** ([analyses/a0_evolution.md](analyses/a0_evolution.md)): read as a0 ≈ c √Λ, Milgrom's
+  coincidence ties the scale at which galaxies show dark matter to the dark-energy density. With DESI DR2's evolving
+  dark energy it predicts a0 falling at high redshift, with no free shape parameter. On the 100 RC100 rotation
+  curves it fits better than a constant a0 in every variant, weakly (about 2σ at most). It predicts a0 at 38–78% of
+  today's at z ≈ 3–5. Recorded in problem 11. The idea was suggested by the same data, so this is a hint to test,
+  not evidence.
+
 ## 20.1.0 — 2026-09-23 — open problems computed
 
 Physics work on the open problems, starting with the computation that problem 1 called decisive. One forward

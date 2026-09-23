@@ -1,5 +1,262 @@
 {
   "question": "Does a0 follow the expansion rate, a0(z) = a0(0) H(z)/H0?",
+  "second_question": "Does a0 follow the dark-energy density, a0(z) = a0(0) sqrt(rho_DE(z)/rho_DE(0))?",
+  "dark_energy_tied": {
+    "desi_dr2_w0wa": {
+      "DESI+CMB": [
+        -0.42,
+        -1.75
+      ],
+      "DESI+CMB+Pantheon+": [
+        -0.838,
+        -0.62
+      ],
+      "DESI+CMB+Union3": [
+        -0.667,
+        -1.09
+      ],
+      "DESI+CMB+DESY5": [
+        -0.752,
+        -0.86
+      ]
+    },
+    "desi_source": "DESI DR2 Results II, arXiv:2503.14738 v3, eqs. 25-28 (CPL)",
+    "lambda_check_ratio_at_z3": 1.0,
+    "variants": {
+      "baseline: McGaugh relation, scatter free": {
+        "n": 100,
+        "constant_A": 1.17604,
+        "DESI+CMB": {
+          "A": 1.23945,
+          "delta_m2lnL_vs_constant": -3.6605
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.27274,
+          "delta_m2lnL_vs_constant": -2.49958
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.26431,
+          "delta_m2lnL_vs_constant": -3.24983
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.27081,
+          "delta_m2lnL_vs_constant": -2.9395
+        }
+      },
+      "simple interpolating function": {
+        "n": 100,
+        "constant_A": 1.00897,
+        "DESI+CMB": {
+          "A": 1.05774,
+          "delta_m2lnL_vs_constant": -4.38394
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.08965,
+          "delta_m2lnL_vs_constant": -2.66974
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.08103,
+          "delta_m2lnL_vs_constant": -3.60762
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.08728,
+          "delta_m2lnL_vs_constant": -3.19885
+        }
+      },
+      "standard interpolating function": {
+        "n": 100,
+        "constant_A": 2.5083,
+        "DESI+CMB": {
+          "A": 2.65023,
+          "delta_m2lnL_vs_constant": -1.02678
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 2.72204,
+          "delta_m2lnL_vs_constant": -1.71473
+        },
+        "DESI+CMB+Union3": {
+          "A": 2.70537,
+          "delta_m2lnL_vs_constant": -1.79357
+        },
+        "DESI+CMB+DESY5": {
+          "A": 2.7189,
+          "delta_m2lnL_vs_constant": -1.82616
+        }
+      },
+      "intrinsic scatter fixed at 0.11 dex (SPARC)": {
+        "n": 100,
+        "constant_A": 1.32324,
+        "DESI+CMB": {
+          "A": 1.39483,
+          "delta_m2lnL_vs_constant": -1.40505
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.43394,
+          "delta_m2lnL_vs_constant": -1.06974
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.42431,
+          "delta_m2lnL_vs_constant": -1.33685
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.4318,
+          "delta_m2lnL_vs_constant": -1.23318
+        }
+      },
+      "intrinsic scatter fixed at 0.17 dex (Ciocan et al.)": {
+        "n": 100,
+        "constant_A": 1.40386,
+        "DESI+CMB": {
+          "A": 1.47528,
+          "delta_m2lnL_vs_constant": -0.67783
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.51888,
+          "delta_m2lnL_vs_constant": -0.558507
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.50764,
+          "delta_m2lnL_vs_constant": -0.680653
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.51605,
+          "delta_m2lnL_vs_constant": -0.636085
+        }
+      },
+      "without f_DM <= 0.05 and the dispersion-dominated #83": {
+        "n": 93,
+        "constant_A": 1.26278,
+        "DESI+CMB": {
+          "A": 1.33362,
+          "delta_m2lnL_vs_constant": -5.22649
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.36793,
+          "delta_m2lnL_vs_constant": -3.12971
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.35953,
+          "delta_m2lnL_vs_constant": -4.26145
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.3662,
+          "delta_m2lnL_vs_constant": -3.76516
+        }
+      },
+      "only 0.1 <= f_DM <= 0.9": {
+        "n": 84,
+        "constant_A": 1.41479,
+        "DESI+CMB": {
+          "A": 1.47904,
+          "delta_m2lnL_vs_constant": -2.37846
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.52572,
+          "delta_m2lnL_vs_constant": -1.81577
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.51269,
+          "delta_m2lnL_vs_constant": -2.26614
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.52188,
+          "delta_m2lnL_vs_constant": -2.09166
+        }
+      },
+      "only sigma(f_DM) <= 0.13": {
+        "n": 70,
+        "constant_A": 1.15582,
+        "DESI+CMB": {
+          "A": 1.21097,
+          "delta_m2lnL_vs_constant": -4.34256
+        },
+        "DESI+CMB+Pantheon+": {
+          "A": 1.24753,
+          "delta_m2lnL_vs_constant": -2.64106
+        },
+        "DESI+CMB+Union3": {
+          "A": 1.23755,
+          "delta_m2lnL_vs_constant": -3.57916
+        },
+        "DESI+CMB+DESY5": {
+          "A": 1.24473,
+          "delta_m2lnL_vs_constant": -3.17059
+        }
+      }
+    },
+    "predicted_ratio_to_today": {
+      "DESI+CMB": {
+        "0.33": 1.1628,
+        "0.83": 1.13883,
+        "1": 1.10079,
+        "1.44": 0.983856,
+        "1.51": 0.964724,
+        "2.22": 0.784678,
+        "3": 0.62864,
+        "4": 0.484536,
+        "5": 0.384029
+      },
+      "DESI+CMB+Pantheon+": {
+        "0.33": 1.03545,
+        "0.83": 1.00666,
+        "1": 0.98887,
+        "1.44": 0.938052,
+        "1.51": 0.929831,
+        "2.22": 0.850284,
+        "3": 0.775006,
+        "4": 0.696503,
+        "5": 0.633853
+      },
+      "DESI+CMB+Union3": {
+        "0.33": 1.0853,
+        "0.83": 1.05692,
+        "1": 1.0309,
+        "1.44": 0.953186,
+        "1.51": 0.94047,
+        "2.22": 0.818243,
+        "3": 0.706178,
+        "4": 0.594808,
+        "5": 0.510664
+      },
+      "DESI+CMB+DESY5": {
+        "0.33": 1.06001,
+        "0.83": 1.03078,
+        "1": 1.00873,
+        "1.44": 0.944082,
+        "1.51": 0.933547,
+        "2.22": 0.831842,
+        "3": 0.737036,
+        "4": 0.640527,
+        "5": 0.565619
+      }
+    },
+    "predicted_ratio_z2.22_over_z0.83": {
+      "DESI+CMB": 0.689023,
+      "DESI+CMB+Pantheon+": 0.844658,
+      "DESI+CMB+Union3": 0.774178,
+      "DESI+CMB+DESY5": 0.806999
+    },
+    "rc100_ratio_z2.22_over_z0.83": {
+      "value": 0.629869,
+      "interval_1sigma": [
+        0.513237,
+        0.773006
+      ]
+    },
+    "ratio_z1.44_over_z0.33": {
+      "dark_energy_tied": {
+        "DESI+CMB": 0.846112,
+        "DESI+CMB+Pantheon+": 0.905938,
+        "DESI+CMB+Union3": 0.87827,
+        "DESI+CMB+DESY5": 0.890632
+      },
+      "ciocan_published_lines": {
+        "dc14_halos": 2.15754,
+        "preferred_halos": 2.13943,
+        "mond_framework": 1.93408
+      }
+    }
+  },
   "data": {
     "file": "data/rc100_table3.csv",
     "source": "Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199, Table 3"

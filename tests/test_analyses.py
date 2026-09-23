@@ -1,6 +1,7 @@
 """Diagnostic analyses are deterministic and reproduce their committed outputs."""
 
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -139,6 +140,17 @@ class TestA0Evolution(unittest.TestCase):
                 self.assertAlmostEqual(v["noise_free_mock_recovery"][name]["p_recovered"], p_true, delta=1e-4)
                 self.assertAlmostEqual(v["noise_free_mock_recovery"][name]["A_recovered"], a0_evolution.A0_LOCAL,
                                        delta=1e-4)
+
+    def test_dark_energy_density_matches_the_equation_of_state(self):
+        # d ln rho / d ln a = -3 (1 + w(a)), w(a) = w0 + wa (1 - a), integrated numerically from a = 1.
+        for w0, wa in a0_evolution.DESI_DR2_W0WA.values():
+            for z in (0.5, 2.22, 5.0):
+                n, lna_end = 4000, -math.log(1.0 + z)
+                h = lna_end / n
+                f = lambda x: -3.0 * (1.0 + w0 + wa * (1.0 - math.exp(x)))  # noqa: E731
+                ln_rho = h / 3.0 * sum((1 if i in (0, n) else 4 if i % 2 else 2) * f(i * h) for i in range(n + 1))
+                self.assertAlmostEqual(a0_evolution.rho_de_ratio(z, w0, wa), math.exp(ln_rho), places=9)
+        self.assertEqual(a0_evolution.rho_de_ratio(3.0, -1.0, 0.0), 1.0)
 
     def test_committed_report_is_the_rendering_of_the_committed_numbers(self):
         committed = json.loads((ROOT / "analyses" / "a0_evolution.json").read_text(encoding="utf-8"))

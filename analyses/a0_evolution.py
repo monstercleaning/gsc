@@ -24,6 +24,10 @@ reproduces). p = 1 is a0 proportional to H(z); p = 0 is a constant. The publishe
 fits of Ciocan et al. (A&A 709, L16, 2026; 79 lower-mass galaxies at
 z = 0.33-1.44) are compared through their quoted numbers only.
 
+Second model. Read as a0 ~ c sqrt(Lambda), the coincidence ties a0 to the
+dark-energy density: a0(z) = A sqrt(rho_DE(z)/rho_DE(0)), with the DESI DR2
+dark-energy histories (arXiv:2503.14738) and no free shape parameter.
+
 Deterministic, standard library only. Writes analyses/a0_evolution.json and
 analyses/a0_evolution.md; `--check` recomputes and compares with tolerance.
 """
@@ -79,6 +83,15 @@ CIOCAN = {
     "mond_per_galaxy_regression": {"a0_0": [1.11, 0.39, 0.51], "a1": [1.42, 0.94, 0.89]},
     "binned": "four equal-population redshift bins, a0 rising from about 1.99 to 2.71 (bin values not tabulated)",
 }
+
+# DESI DR2 dark-energy histories (w0, wa), CPL: DESI DR2 Results II, arXiv:2503.14738 v3, eqs. 25-28.
+DESI_DR2_W0WA = {
+    "DESI+CMB": (-0.42, -1.75),
+    "DESI+CMB+Pantheon+": (-0.838, -0.62),
+    "DESI+CMB+Union3": (-0.667, -1.09),
+    "DESI+CMB+DESY5": (-0.752, -0.86),
+}
+PREDICTION_Z = (0.33, 0.83, 1.0, 1.44, 1.51, 2.22, 3.0, 4.0, 5.0)
 
 
 def e_of_z(z, om=OMEGA_M):
@@ -366,6 +379,69 @@ def ciocan_comparison(rc100_bins):
     return out
 
 
+def rho_de_ratio(z, w0, wa):
+    """rho_DE(z) / rho_DE(0) for the CPL equation of state w(a) = w0 + wa (1 - a)."""
+    return (1.0 + z) ** (3.0 * (1.0 + w0 + wa)) * math.exp(-3.0 * wa * z / (1.0 + z))
+
+
+def fit_shape(galaxies, slopes, shape, *, nu=nu_rar, sigma_int=None):
+    """Maximum likelihood for a0(z) = A shape(z): the normalisation, and the intrinsic scatter unless fixed."""
+    def objective(x):
+        a = math.exp(x[0])
+        return m2lnl(galaxies, lambda z: a * shape(z), abs(x[1]) if sigma_int is None else sigma_int, slopes, nu)
+    x, val = jf.nelder_mead(objective, [math.log(A0_LOCAL), 0.05], [0.3, 0.05], tol=1e-10, max_iter=4000)
+    x, val = jf.nelder_mead(objective, x, [0.07, 0.01], tol=1e-10, max_iter=4000)
+    return {"A": math.exp(x[0]), "sigma_int_dex": abs(x[1]) if sigma_int is None else sigma_int, "m2lnL": val}
+
+
+def dark_energy_tied(galaxies):
+    """a0(z) = A sqrt(rho_DE(z) / rho_DE(0)) with DESI DR2's dark-energy histories: no free shape parameter.
+
+    Milgrom's coincidence can be read as a0 ~ c sqrt(Lambda) instead of a0 ~ c H0. With a true constant Lambda
+    that gives a constant a0; if dark energy evolves, as DESI DR2 suggests, a0 follows the square root of its
+    density. Each model is compared with a constant a0 fitted to the same galaxies with the same error weights.
+    """
+    cuts = {
+        "baseline: McGaugh relation, scatter free": (galaxies, nu_rar, None),
+        "simple interpolating function": (galaxies, nu_simple, None),
+        "standard interpolating function": (galaxies, nu_standard, None),
+        "intrinsic scatter fixed at 0.11 dex (SPARC)": (galaxies, nu_rar, 0.11),
+        "intrinsic scatter fixed at 0.17 dex (Ciocan et al.)": (galaxies, nu_rar, 0.17),
+        "without f_DM <= 0.05 and the dispersion-dominated #83": (
+            [g for g in galaxies if g["f"] > 0.05 and g["id"] != 83], nu_rar, None),
+        "only 0.1 <= f_DM <= 0.9": ([g for g in galaxies if 0.1 <= g["f"] <= 0.9], nu_rar, None),
+        "only sigma(f_DM) <= 0.13": ([g for g in galaxies if g["sf"] <= 0.13], nu_rar, None),
+    }
+    variants = {}
+    for name, (sample, nu, sint) in cuts.items():
+        _, slopes = fit_iterated(sample, nu=nu, sigma_int=sint)
+        const = fit_shape(sample, slopes, lambda z: 1.0, nu=nu, sigma_int=sint)
+        row = {"n": len(sample), "constant_A": const["A"]}
+        for key, (w0, wa) in DESI_DR2_W0WA.items():
+            r = fit_shape(sample, slopes, lambda z, w0=w0, wa=wa: math.sqrt(rho_de_ratio(z, w0, wa)),
+                          nu=nu, sigma_int=sint)
+            row[key] = {"A": r["A"], "delta_m2lnL_vs_constant": r["m2lnL"] - const["m2lnL"]}
+        variants[name] = row
+    predictions = {key: {f"{z:g}": math.sqrt(rho_de_ratio(z, w0, wa)) for z in PREDICTION_Z}
+                   for key, (w0, wa) in DESI_DR2_W0WA.items()}
+    same_method = {key: math.sqrt(rho_de_ratio(2.22, w0, wa) / rho_de_ratio(0.83, w0, wa))
+                   for key, (w0, wa) in DESI_DR2_W0WA.items()}
+    ciocan_range = {key: math.sqrt(rho_de_ratio(1.44, w0, wa) / rho_de_ratio(0.33, w0, wa))
+                    for key, (w0, wa) in DESI_DR2_W0WA.items()}
+    ciocan_lines = {k: (v["a0_0"][0] + v["a1"][0] * 1.44) / (v["a0_0"][0] + v["a1"][0] * 0.33)
+                    for k, v in CIOCAN["fits"].items()}
+    return {
+        "desi_dr2_w0wa": {k: list(v) for k, v in DESI_DR2_W0WA.items()},
+        "desi_source": "DESI DR2 Results II, arXiv:2503.14738 v3, eqs. 25-28 (CPL)",
+        "lambda_check_ratio_at_z3": math.sqrt(rho_de_ratio(3.0, -1.0, 0.0)),
+        "variants": variants,
+        "predicted_ratio_to_today": predictions,
+        "predicted_ratio_z2.22_over_z0.83": same_method,
+        "rc100_ratio_z2.22_over_z0.83": None,
+        "ratio_z1.44_over_z0.33": {"dark_energy_tied": ciocan_range, "ciocan_published_lines": ciocan_lines},
+    }
+
+
 def analyse():
     galaxies = load_galaxies()
     base = power_law_summary(galaxies)
@@ -381,8 +457,17 @@ def analyse():
     variants["only sigma(f_DM) <= 0.13"] = power_law_summary([g for g in galaxies if g["sf"] <= 0.13])
     variants["Omega_m = 0.30"] = power_law_summary(galaxies, om=0.30)
     bins = binned(galaxies)
+    de_tied = dark_energy_tied(galaxies)
+    # Ratio of the highest to the lowest redshift bin; the two bins' log half-widths are added in quadrature.
+    half = [0.5 * math.log(b["a0_interval_1sigma"][1] / b["a0_interval_1sigma"][0]) for b in (bins[0], bins[-1])]
+    ratio = bins[-1]["a0"] / bins[0]["a0"]
+    spread = math.hypot(*half)
+    de_tied["rc100_ratio_z2.22_over_z0.83"] = {
+        "value": ratio, "interval_1sigma": [ratio * math.exp(-spread), ratio * math.exp(spread)]}
     return {
         "question": "Does a0 follow the expansion rate, a0(z) = a0(0) H(z)/H0?",
+        "second_question": "Does a0 follow the dark-energy density, a0(z) = a0(0) sqrt(rho_DE(z)/rho_DE(0))?",
+        "dark_energy_tied": de_tied,
         "data": {"file": "data/rc100_table3.csv",
                  "source": "Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199, Table 3"},
         "constants": {"Omega_m": OMEGA_M, "a0_local": A0_LOCAL, "a0_coincidence_cH0_over_2pi": A0_COINCIDENCE,
@@ -504,6 +589,63 @@ def render_markdown(res):
         "evolving, describes both samples at face value. A rise of about their size also appears in a ΛCDM",
         "simulation (Mayer et al., arXiv:2206.04333: a factor of about 3 from z = 0 to 2), so a rising a0 would not by",
         "itself point to new physics.",
+    ]
+    de = res["dark_energy_tied"]
+    keys = list(de["desi_dr2_w0wa"])
+    short = {"DESI+CMB": "DESI+CMB", "DESI+CMB+Pantheon+": "+Pantheon+", "DESI+CMB+Union3": "+Union3",
+             "DESI+CMB+DESY5": "+DESY5"}
+    base_row = de["variants"]["baseline: McGaugh relation, scatter free"]
+    deltas = [v[k]["delta_m2lnL_vs_constant"] for v in de["variants"].values() for k in keys]
+    a_vals = [base_row[k]["A"] for k in keys]
+    rc = de["rc100_ratio_z2.22_over_z0.83"]
+    same = de["predicted_ratio_z2.22_over_z0.83"]
+    crange = de["ratio_z1.44_over_z0.33"]
+    far = [de["predicted_ratio_to_today"][k][z] for k in keys for z in ("3", "4", "5")]
+    lines += [
+        "",
+        "## A version that survives this test: a0 tied to the dark-energy density",
+        "",
+        "Milgrom's coincidence can also be read as a0 ≈ c √Λ instead of a0 ≈ c H0. With a true constant Λ that gives a",
+        "constant a0, the usual MOND assumption. If dark energy evolves, as DESI DR2 suggests, a0 follows the square root",
+        "of its density: a0(z) = a0(0) √(ρ_DE(z)/ρ_DE(0)). DESI's histories (w0, wa; arXiv:2503.14738) make dark energy",
+        "denser than today around z ≈ 0.5–1 and thinner beyond z ≈ 1.5, so a0 would fall at high redshift, as RC100",
+        "shows. The shape has no free parameter; only the normalisation is fitted.",
+        "",
+        "Δ(−2 ln L) against a constant a0, with the same galaxies and error weights (negative: the dark-energy shape fits",
+        "better):",
+        "",
+        "| Variant | Galaxies | " + " | ".join(short[k] for k in keys) + " |",
+        "|---|---|" + "---|" * len(keys),
+    ]
+    for name, row in de["variants"].items():
+        lines.append(f"| {name} | {row['n']} | " + " | ".join(f"{row[k]['delta_m2lnL_vs_constant']:+.2f}" for k in keys) + " |")
+    lines += [
+        "",
+        f"The fitted normalisation is {min(a_vals):.2f}–{max(a_vals):.2f} (a constant gives {base_row['constant_A']:.2f}; nearby "
+        "galaxies give 1.20).",
+        "",
+        "Predicted a0(z)/a0(0):",
+        "",
+        "| DESI history | " + " | ".join(f"z = {z}" for z in ("0.83", "1.51", "2.22", "3", "4", "5")) + " |",
+        "|---|" + "---|" * 6,
+    ]
+    for k in keys:
+        p = de["predicted_ratio_to_today"][k]
+        lines.append(f"| {short[k]} | " + " | ".join(f"{p[z]:.2f}" for z in ("0.83", "1.51", "2.22", "3", "4", "5")) + " |")
+    lines += [
+        "",
+        f"Within one survey, a0 at z ≈ 2.2 over a0 at z ≈ 0.8 is predicted at {min(same.values()):.2f}–{max(same.values()):.2f};",
+        f"RC100 gives {rc['value']:.2f} ({rc['interval_1sigma'][0]:.2f}–{rc['interval_1sigma'][1]:.2f}). A constant a0 gives 1, and a0 ∝ H(z) gives about 2.",
+        "",
+        f"**How far this goes.** The preference over a constant is weak: Δ(−2 ln L) from {max(deltas):+.1f} to {min(deltas):+.1f}",
+        "across the variants, about 2σ at most, and smallest when the intrinsic scatter is fixed at a large value. The",
+        "idea was suggested by the RC100 trend, so RC100 cannot confirm it. Over Ciocan et al.'s range, z = 0.33 to 1.44,",
+        f"it predicts a0 changing by a factor of {min(crange['dark_energy_tied'].values()):.2f}–{max(crange['dark_energy_tied'].values()):.2f}, where "
+        f"their lines rise by {min(crange['ciocan_published_lines'].values()):.2f}–{max(crange['ciocan_published_lines'].values()):.2f} times;",
+        "like every universal a0(z), it cannot fit both samples. DESI's evidence for evolving dark energy is itself",
+        "2.8–4.2σ, and the CPL form is an extrapolation beyond z ≈ 2.3. The test is rotation curves at z ≈ 3–5, where it",
+        f"predicts a0 at {100 * min(far):.0f}–{100 * max(far):.0f}% of today's, a constant a0 gives 100%, and ΛCDM simulations give a rise; or one",
+        "survey measuring a0 at z ≈ 0.8 and z ≈ 2.2 with the same method.",
         "",
         "## Checks",
         "",
