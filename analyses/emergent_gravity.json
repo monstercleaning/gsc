@@ -1,0 +1,179 @@
+{
+  "question": "Is the extra gravity in galaxies Verlinde's response to dark energy, and which H sets its scale?",
+  "data": {
+    "file": "data/rc100_table3.csv",
+    "galaxies": 100,
+    "mass_model": "exponential disc (R_e) + spherical Sersic n = 4 bulge (R_e = 1 kpc), as in RC100"
+  },
+  "validation": {
+    "k_point_mass_bulge_far_out": 1.00366,
+    "k_exponential_disc_at_R_e": 2.30304,
+    "a_M_planck_today": 1.09139,
+    "k_distribution": {
+      "min": 1.23507,
+      "median": 1.79006,
+      "max": 2.28977
+    },
+    "bt_distribution": {
+      "min": 0.01,
+      "median": 0.402744,
+      "max": 0.977237
+    }
+  },
+  "models": {
+    "expansion rate H(z) (Planck)": {
+      "a_M_today": 1.09139,
+      "a_M_at_z2.2": 3.62086,
+      "extended": {
+        "zero_parameter_m2lnL": -161.516,
+        "sigma_int_dex": 0.255851,
+        "preferred_scale_today": 0.0647338,
+        "free_scale_m2lnL": -332.452,
+        "preferred_over_verlinde_scale": 0.0593133,
+        "delta_vs_best_zero_parameter": 115.894,
+        "delta_free_vs_best_free": 16.292
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -213.018,
+        "sigma_int_dex": 0.192414,
+        "preferred_scale_today": 0.115441,
+        "free_scale_m2lnL": -334.214,
+        "preferred_over_verlinde_scale": 0.105774,
+        "delta_vs_best_zero_parameter": 106.723,
+        "delta_free_vs_best_free": 15.7041
+      }
+    },
+    "constant, c H0/6 (Planck)": {
+      "a_M_today": 1.09139,
+      "a_M_at_z2.2": 1.09139,
+      "extended": {
+        "zero_parameter_m2lnL": -246.532,
+        "sigma_int_dex": 0.157992,
+        "preferred_scale_today": 0.164888,
+        "free_scale_m2lnL": -344.69,
+        "preferred_over_verlinde_scale": 0.151081,
+        "delta_vs_best_zero_parameter": 30.8779,
+        "delta_free_vs_best_free": 4.05412
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -294.722,
+        "sigma_int_dex": 0.115201,
+        "preferred_scale_today": 0.29267,
+        "free_scale_m2lnL": -346.108,
+        "preferred_over_verlinde_scale": 0.268163,
+        "delta_vs_best_zero_parameter": 25.0192,
+        "delta_free_vs_best_free": 3.81007
+      }
+    },
+    "constant, dark-energy part today (Planck)": {
+      "a_M_today": 0.903284,
+      "a_M_at_z2.2": 0.903284,
+      "extended": {
+        "zero_parameter_m2lnL": -263.017,
+        "sigma_int_dex": 0.142609,
+        "preferred_scale_today": 0.164888,
+        "free_scale_m2lnL": -344.69,
+        "preferred_over_verlinde_scale": 0.182543,
+        "delta_vs_best_zero_parameter": 14.3925,
+        "delta_free_vs_best_free": 4.05412
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -307.896,
+        "sigma_int_dex": 0.103933,
+        "preferred_scale_today": 0.29267,
+        "free_scale_m2lnL": -346.108,
+        "preferred_over_verlinde_scale": 0.324006,
+        "delta_vs_best_zero_parameter": 11.8452,
+        "delta_free_vs_best_free": 3.81007
+      }
+    },
+    "dark-energy part H_DE(z), DESI+CMB": {
+      "a_M_today": 0.828377,
+      "a_M_at_z2.2": 0.653816,
+      "extended": {
+        "zero_parameter_m2lnL": -277.41,
+        "sigma_int_dex": 0.129818,
+        "preferred_scale_today": 0.175432,
+        "free_scale_m2lnL": -348.744,
+        "preferred_over_verlinde_scale": 0.211778,
+        "delta_vs_best_zero_parameter": 0.0,
+        "delta_free_vs_best_free": 0.0
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -319.741,
+        "sigma_int_dex": 0.0941109,
+        "preferred_scale_today": 0.310657,
+        "free_scale_m2lnL": -349.918,
+        "preferred_over_verlinde_scale": 0.375019,
+        "delta_vs_best_zero_parameter": 0.0,
+        "delta_free_vs_best_free": 0.0
+      }
+    },
+    "dark-energy part H_DE(z), DESI+CMB+Pantheon+": {
+      "a_M_today": 0.907132,
+      "a_M_at_z2.2": 0.773231,
+      "extended": {
+        "zero_parameter_m2lnL": -270.709,
+        "sigma_int_dex": 0.135744,
+        "preferred_scale_today": 0.179373,
+        "free_scale_m2lnL": -346.752,
+        "preferred_over_verlinde_scale": 0.197736,
+        "delta_vs_best_zero_parameter": 6.70053,
+        "delta_free_vs_best_free": 1.99206
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -314.293,
+        "sigma_int_dex": 0.0986714,
+        "preferred_scale_today": 0.318042,
+        "free_scale_m2lnL": -348.064,
+        "preferred_over_verlinde_scale": 0.350602,
+        "delta_vs_best_zero_parameter": 5.44816,
+        "delta_free_vs_best_free": 1.85412
+      }
+    },
+    "dark-energy part H_DE(z), DESI+CMB+Union3": {
+      "a_M_today": 0.875218,
+      "a_M_at_z2.2": 0.71894,
+      "extended": {
+        "zero_parameter_m2lnL": -273.766,
+        "sigma_int_dex": 0.13304,
+        "preferred_scale_today": 0.17855,
+        "free_scale_m2lnL": -347.671,
+        "preferred_over_verlinde_scale": 0.204007,
+        "delta_vs_best_zero_parameter": 3.64348,
+        "delta_free_vs_best_free": 1.07331
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -316.804,
+        "sigma_int_dex": 0.0965881,
+        "preferred_scale_today": 0.31641,
+        "free_scale_m2lnL": -348.925,
+        "preferred_over_verlinde_scale": 0.361521,
+        "delta_vs_best_zero_parameter": 2.93712,
+        "delta_free_vs_best_free": 0.993385
+      }
+    },
+    "dark-energy part H_DE(z), DESI+CMB+DESY5": {
+      "a_M_today": 0.891758,
+      "a_M_at_z2.2": 0.74419,
+      "extended": {
+        "zero_parameter_m2lnL": -272.345,
+        "sigma_int_dex": 0.134296,
+        "preferred_scale_today": 0.179301,
+        "free_scale_m2lnL": -347.246,
+        "preferred_over_verlinde_scale": 0.201064,
+        "delta_vs_best_zero_parameter": 5.06471,
+        "delta_free_vs_best_free": 1.49865
+      },
+      "point_mass": {
+        "zero_parameter_m2lnL": -315.641,
+        "sigma_int_dex": 0.0975557,
+        "preferred_scale_today": 0.317824,
+        "free_scale_m2lnL": -348.527,
+        "preferred_over_verlinde_scale": 0.356401,
+        "delta_vs_best_zero_parameter": 4.09951,
+        "delta_free_vs_best_free": 1.39086
+      }
+    }
+  }
+}

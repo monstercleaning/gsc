@@ -15,6 +15,7 @@ import timescape_fit  # noqa: E402
 import ccbh_fit  # noqa: E402
 import a0_evolution  # noqa: E402
 import a0_high_z  # noqa: E402
+import emergent_gravity  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -174,6 +175,22 @@ class TestA0HighZ(unittest.TestCase):
 
     def test_analysis_reproduces_its_committed_output(self):
         proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "a0_high_z.py"), "--check"],
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout)
+
+
+class TestEmergentGravity(unittest.TestCase):
+    """Verlinde's formula on RC100: the mass-distribution factor, the scale, and the committed output."""
+
+    def test_mass_distribution_factor_and_scale(self):
+        v = emergent_gravity.validate(emergent_gravity.load_galaxies())
+        self.assertAlmostEqual(v["k_point_mass_bulge_far_out"], 1.0, delta=0.01)
+        self.assertAlmostEqual(v["k_exponential_disc_at_R_e"], 2.30, delta=0.01)
+        self.assertAlmostEqual(v["a_M_planck_today"], 1.0914, delta=1e-3)
+        self.assertEqual(emergent_gravity.nu_verlinde(4.0, 1.0), 1.5)
+
+    def test_analysis_reproduces_its_committed_output(self):
+        proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "emergent_gravity.py"), "--check"],
                               capture_output=True, text=True)
         self.assertEqual(proc.returncode, 0, proc.stdout)
 

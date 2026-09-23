@@ -7,7 +7,7 @@
 | `planck2018_distance_priors.json` | Planck 2018 CMB distance priors (R, l_A, ω_b, n_s) with their correlation matrix | Chen, Huang & Wang, JCAP 02 (2019) 028, arXiv:1808.05724, Table 1 (flat ΛCDM, TT,TE,EE+lowE). Used by `analyses/joint_fit.py`, and through it by `analyses/ccbh_fit.py`. |
 | `desi_dr1_bao_baseline.csv` | A compact DR1-era table of BAO distance ratios, used only by `analyses/w0wa_rd_shift_diagnostic.py` | Described at creation as public DESI DR1 BAO summary values (arXiv:2404.03000). See the discrepancies below. |
 | `ro24_circular_speed/` | Circular speeds, corrected for pressure support, of four [CII] discs at z ≈ 4.5 (BRI1335-0417, J081740, SGP38326-1, SGP38326-2) | Roman-Oliveira, Fraternali & Rizzo, A&A 687, A35 (2024), arXiv:2403.00904; files as published on Zenodo, doi:10.5281/zenodo.10707348 (CC BY 4.0). Used by `analyses/a0_high_z.py`. |
-| `rc100_table3.csv` | RC100: redshift, baryonic mass, effective radius R_e, dark-matter fraction f_DM(R_e) and circular velocity V_c(R_e), each with its uncertainty, for 100 star-forming disks at z = 0.6–2.5 | Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199 v1, Table 3 (columns z, log M_baryon, R_e, f_DM, V_c). Used by `analyses/a0_evolution.py`. See the transcription note below. |
+| `rc100_table3.csv` | RC100: redshift, baryonic mass, effective radius R_e, dark-matter fraction f_DM(R_e) and circular velocity V_c(R_e), each with its uncertainty, for 100 star-forming disks at z = 0.6–2.5 | Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199 v1, Table 3 (columns z, log M_baryon, R_e, f_DM, V_c; log M_bulge added in v20.2). Used by `analyses/a0_evolution.py` and `analyses/emergent_gravity.py`. See the transcription note below. |
 
 **Known discrepancies in `desi_dr1_bao_baseline.csv`** (checked against DESI 2024 III, arXiv:2404.03000, at the 20.1
 review; the file is left unchanged because an existing diagnostic's recorded output depends on it):
@@ -40,3 +40,5 @@ found (none on VizieR), so the five columns were transcribed by hand from the ar
 - Two V_c uncertainties depart from the 20% pattern (#65: 313 ± 61; #96: 136 ± 26). Both are as printed.
 - The paper's median baryonic surface density (10^8.7 M_⊙/kpc²) depends on a definition it does not spell out;
   simple definitions give 10^8.57 to 10^8.87 from this table.
+- The bulge-mass column (log M_bulge, added in v20.2) was transcribed the same way. The machine reading agrees on all
+  100 values and all 100 uncertainties, and no bulge exceeds its galaxy's baryonic mass.

@@ -287,3 +287,13 @@ fit about equally well for any a0 from 0 to 8 × 10⁻¹⁰ m/s², and Newtonian
 These discs are compact and fast-rotating, and their stellar masses come only from the same rotation curves, so
 the data cannot measure a0: they neither support nor contradict P15. A real test needs rotation curves that reach
 accelerations near a0, with stellar masses from imaging.
+
+**Emergent gravity (v20.2).** Verlinde's emergent gravity (SciPost Phys. 2, 016, 2017) gives the link a physical
+form: the extra gravity of galaxies as the response of the dark-energy vacuum to ordinary matter, with a scale of
+c H/6 and no new substance ([analyses/emergent_gravity.md](analyses/emergent_gravity.md)). On the 100 RC100
+galaxies, with nothing fitted, setting H by the dark-energy part beats setting it by the expansion rate by
+Δ(−2 ln L) = 116. With the scale left free, the dark-energy shape again beats a constant (−4.1), and H(z) loses
+(+12.2). But Verlinde's own scale predicts far more extra gravity at the effective radius than the galaxies show:
+they prefer 0.06–0.21 of it. The pattern survives in his form of the relation; his formula with his scale does not
+describe these galaxies, as Lelli et al. (MNRAS 468, L68, 2017) found for nearby ones. Both uses extrapolate the
+theory beyond the regime it was derived for.
