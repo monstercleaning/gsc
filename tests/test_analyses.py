@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "analyses"))
 import joint_fit  # noqa: E402
 import timescape_fit  # noqa: E402
 import ccbh_fit  # noqa: E402
+import a0_evolution  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -107,6 +108,42 @@ class TestCCBHFit(unittest.TestCase):
         committed = json.loads((ROOT / "analyses" / "ccbh_fit.json").read_text(encoding="utf-8"))
         self.assertEqual((ROOT / "analyses" / "ccbh_fit.md").read_text(encoding="utf-8"),
                          ccbh_fit.render_markdown(committed))
+
+
+class TestA0Evolution(unittest.TestCase):
+    """Fast checks of analyses/a0_evolution.py; the full fit runs as a slow claim (a0-evolution-reproduces)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.galaxies = a0_evolution.load_galaxies()
+
+    def test_transcribed_table_reproduces_the_papers_statistics(self):
+        s = a0_evolution.paper_statistics(self.galaxies)
+        self.assertEqual(s["n_galaxies"], 100)
+        self.assertTrue(s["ids_in_order_and_redshift_sorted"])
+        for key in ("median_fdm_z_0.6_1.2", "median_fdm_z_1.2_2.5", "spread_fdm_z_0.6_1.2", "spread_fdm_z_1.2_2.5"):
+            with self.subTest(statistic=key):
+                self.assertEqual(round(s[key]["table"], 2), s[key]["paper"])
+        self.assertAlmostEqual(s["share_below_maximal_disk_z_0.6_1.2"]["table"], 0.33, delta=0.01)
+        self.assertAlmostEqual(s["share_below_maximal_disk_z_1.2_2.5"]["table"], 0.5, delta=0.05)
+        self.assertAlmostEqual(s["median_Re_kpc"]["table"], 5.5, delta=0.06)
+        self.assertEqual(s["mass_consistency_Vbar2_Re_over_G_Mbar"]["outside_0.15_to_1.2"], [83])
+
+    def test_relation_inverts_and_noise_free_mocks_are_recovered(self):
+        v = a0_evolution.validate(self.galaxies)
+        for row in v["inversion"]:
+            self.assertLess(abs(row["relative_error_closed_form"]), 1e-12)
+            self.assertLess(abs(row["relative_error_bisection"]), 1e-12)
+        for name, p_true in (("p_true_0", 0.0), ("p_true_1", 1.0)):
+            with self.subTest(mock=name):
+                self.assertAlmostEqual(v["noise_free_mock_recovery"][name]["p_recovered"], p_true, delta=1e-4)
+                self.assertAlmostEqual(v["noise_free_mock_recovery"][name]["A_recovered"], a0_evolution.A0_LOCAL,
+                                       delta=1e-4)
+
+    def test_committed_report_is_the_rendering_of_the_committed_numbers(self):
+        committed = json.loads((ROOT / "analyses" / "a0_evolution.json").read_text(encoding="utf-8"))
+        self.assertEqual((ROOT / "analyses" / "a0_evolution.md").read_text(encoding="utf-8"),
+                         a0_evolution.render_markdown(committed))
 
 
 if __name__ == "__main__":

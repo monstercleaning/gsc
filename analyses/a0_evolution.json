@@ -1,0 +1,568 @@
+{
+  "question": "Does a0 follow the expansion rate, a0(z) = a0(0) H(z)/H0?",
+  "data": {
+    "file": "data/rc100_table3.csv",
+    "source": "Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199, Table 3"
+  },
+  "constants": {
+    "Omega_m": 0.315,
+    "a0_local": 1.2,
+    "a0_coincidence_cH0_over_2pi": 1.0422,
+    "H0_for_coincidence": 67.4
+  },
+  "transcription_checks": {
+    "n_galaxies": 100,
+    "ids_in_order_and_redshift_sorted": true,
+    "median_fdm_z_0.6_1.2": {
+      "table": 0.38,
+      "paper": 0.38
+    },
+    "median_fdm_z_1.2_2.5": {
+      "table": 0.27,
+      "paper": 0.27
+    },
+    "spread_fdm_z_0.6_1.2": {
+      "table": 0.234223,
+      "paper": 0.23
+    },
+    "spread_fdm_z_1.2_2.5": {
+      "table": 0.184458,
+      "paper": 0.18
+    },
+    "share_below_maximal_disk_z_0.6_1.2": {
+      "table": 0.333333,
+      "paper": "roughly 33%"
+    },
+    "share_below_maximal_disk_z_1.2_2.5": {
+      "table": 0.537313,
+      "paper": "half"
+    },
+    "median_Re_kpc": {
+      "table": 5.555,
+      "paper": 5.5
+    },
+    "mass_consistency_Vbar2_Re_over_G_Mbar": {
+      "median": 0.595392,
+      "p10": 0.443565,
+      "p90": 0.763973,
+      "outside_0.15_to_1.2": [
+        83
+      ]
+    }
+  },
+  "validation": {
+    "inversion": [
+      {
+        "g_bar_over_a0": 0.1,
+        "relative_error_closed_form": 4.44089e-16,
+        "relative_error_bisection": 2.22045e-16
+      },
+      {
+        "g_bar_over_a0": 1.0,
+        "relative_error_closed_form": 0.0,
+        "relative_error_bisection": 2.22045e-16
+      },
+      {
+        "g_bar_over_a0": 10.0,
+        "relative_error_closed_form": 1.77636e-15,
+        "relative_error_bisection": -5.21805e-15
+      }
+    ],
+    "noise_free_mock_recovery": {
+      "p_true_0": {
+        "p_recovered": 4.77883e-08,
+        "A_recovered": 1.2,
+        "sigma_int_recovered": 3.36059e-08
+      },
+      "p_true_1": {
+        "p_recovered": 0.999999,
+        "A_recovered": 1.2,
+        "sigma_int_recovered": 1.42305e-08
+      }
+    },
+    "noisy_mocks": {
+      "p_true_0": {
+        "n": 12,
+        "mean_p": 0.0756352,
+        "scatter_p": 0.19862,
+        "median_sigma_from_p1": 3.51105,
+        "median_sigma_from_p0": 0.597374
+      },
+      "p_true_1": {
+        "n": 12,
+        "mean_p": 0.953722,
+        "scatter_p": 0.240152,
+        "median_sigma_from_p1": 0.826923,
+        "median_sigma_from_p0": 4.21961
+      }
+    }
+  },
+  "all_galaxies": {
+    "n": 100,
+    "constant": {
+      "A": 1.17604,
+      "sigma_int_dex": 0.0445628
+    },
+    "tracks_H": {
+      "A": 0.479169,
+      "sigma_int_dex": 0.0655695
+    },
+    "delta_m2lnL_tracks_H_minus_constant": 22.6685,
+    "p_best": -0.550039,
+    "p_interval_1sigma": [
+      -0.830586,
+      -0.270498
+    ],
+    "A_at_p_best": 1.88012,
+    "p1_sigma": 5.14588,
+    "p0_sigma": 1.95231
+  },
+  "zero_parameter_models": {
+    "local_1.20_constant": {
+      "a0_today": 1.2,
+      "p": 0.0,
+      "delta_m2lnL_vs_best": 3.85824
+    },
+    "local_1.20_tracks_H": {
+      "a0_today": 1.2,
+      "p": 1.0,
+      "delta_m2lnL_vs_best": 87.2469
+    },
+    "coincidence_cH0_over_2pi_constant": {
+      "a0_today": 1.0422,
+      "p": 0.0,
+      "delta_m2lnL_vs_best": 5.4987
+    },
+    "coincidence_cH0_over_2pi_tracks_H": {
+      "a0_today": 1.0422,
+      "p": 1.0,
+      "delta_m2lnL_vs_best": 72.3647
+    }
+  },
+  "bins": [
+    {
+      "z_range": [
+        0.6,
+        1.2
+      ],
+      "n": 33,
+      "z_median": 0.83,
+      "a0": 1.44842,
+      "a0_interval_1sigma": [
+        1.23995,
+        1.69795
+      ],
+      "sigma_int_dex": 0.0547277,
+      "median_single_galaxy_a0": 1.8409,
+      "median_g_obs": 2.30455,
+      "tracks_H_local_normalisation": 1.94069,
+      "tracks_H_coincidence_normalisation": 1.68549,
+      "median_fdm_observed": 0.38,
+      "median_fdm_if_tracks_H_local": 0.464585
+    },
+    {
+      "z_range": [
+        1.2,
+        1.9
+      ],
+      "n": 26,
+      "z_median": 1.51,
+      "a0": 1.16941,
+      "a0_interval_1sigma": [
+        0.965092,
+        1.40264
+      ],
+      "sigma_int_dex": 0.0511763,
+      "median_single_galaxy_a0": 1.62841,
+      "median_g_obs": 3.32047,
+      "tracks_H_local_normalisation": 2.85645,
+      "tracks_H_coincidence_normalisation": 2.48082,
+      "median_fdm_observed": 0.275,
+      "median_fdm_if_tracks_H_local": 0.447629
+    },
+    {
+      "z_range": [
+        1.9,
+        2.6
+      ],
+      "n": 41,
+      "z_median": 2.22,
+      "a0": 0.912314,
+      "a0_interval_1sigma": [
+        0.796965,
+        1.03621
+      ],
+      "sigma_int_dex": 1.38416e-08,
+      "median_single_galaxy_a0": 1.22972,
+      "median_g_obs": 3.2363,
+      "tracks_H_local_normalisation": 4.01627,
+      "tracks_H_coincidence_normalisation": 3.48812,
+      "median_fdm_observed": 0.26,
+      "median_fdm_if_tracks_H_local": 0.548788
+    }
+  ],
+  "robustness": {
+    "baseline: McGaugh relation, scatter free": {
+      "n": 100,
+      "constant": {
+        "A": 1.17604,
+        "sigma_int_dex": 0.0445628
+      },
+      "tracks_H": {
+        "A": 0.479169,
+        "sigma_int_dex": 0.0655695
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 22.6685,
+      "p_best": -0.550039,
+      "p_interval_1sigma": [
+        -0.830586,
+        -0.270498
+      ],
+      "A_at_p_best": 1.88012,
+      "p1_sigma": 5.14588,
+      "p0_sigma": 1.95231
+    },
+    "simple interpolating function": {
+      "n": 100,
+      "constant": {
+        "A": 1.00897,
+        "sigma_int_dex": 0.0473653
+      },
+      "tracks_H": {
+        "A": 0.412196,
+        "sigma_int_dex": 0.0650566
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 21.3088,
+      "p_best": -0.68899,
+      "p_interval_1sigma": [
+        -1.00196,
+        -0.378748
+      ],
+      "A_at_p_best": 1.79708,
+      "p1_sigma": 5.11567,
+      "p0_sigma": 2.20484
+    },
+    "standard interpolating function": {
+      "n": 100,
+      "constant": {
+        "A": 2.5083,
+        "sigma_int_dex": 0.0335219
+      },
+      "tracks_H": {
+        "A": 0.998323,
+        "sigma_int_dex": 0.0640955
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 25.3661,
+      "p_best": -0.315494,
+      "p_interval_1sigma": [
+        -0.54562,
+        -0.0844403
+      ],
+      "A_at_p_best": 3.29887,
+      "p1_sigma": 5.21698,
+      "p0_sigma": 1.36041
+    },
+    "intrinsic scatter fixed at 0.11 dex (SPARC)": {
+      "n": 100,
+      "constant": {
+        "A": 1.32324,
+        "sigma_int_dex": 0.11
+      },
+      "tracks_H": {
+        "A": 0.52552,
+        "sigma_int_dex": 0.11
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 12.4189,
+      "p_best": -0.494771,
+      "p_interval_1sigma": [
+        -0.900718,
+        -0.0949592
+      ],
+      "A_at_p_best": 2.01886,
+      "p1_sigma": 3.73538,
+      "p0_sigma": 1.23861
+    },
+    "intrinsic scatter fixed at 0.17 dex (Ciocan et al.)": {
+      "n": 100,
+      "constant": {
+        "A": 1.40386,
+        "sigma_int_dex": 0.17
+      },
+      "tracks_H": {
+        "A": 0.563273,
+        "sigma_int_dex": 0.17
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 6.97403,
+      "p_best": -0.463382,
+      "p_interval_1sigma": [
+        -0.998981,
+        0.0619107
+      ],
+      "A_at_p_best": 2.08014,
+      "p1_sigma": 2.78413,
+      "p0_sigma": 0.88167
+    },
+    "without f_DM <= 0.05 and the dispersion-dominated #83": {
+      "n": 93,
+      "constant": {
+        "A": 1.26278,
+        "sigma_int_dex": 0.0477395
+      },
+      "tracks_H": {
+        "A": 0.512681,
+        "sigma_int_dex": 0.0714282
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 23.6548,
+      "p_best": -0.688327,
+      "p_interval_1sigma": [
+        -0.971729,
+        -0.404568
+      ],
+      "A_at_p_best": 2.27095,
+      "p1_sigma": 5.41743,
+      "p0_sigma": 2.38617
+    },
+    "only 0.1 <= f_DM <= 0.9": {
+      "n": 84,
+      "constant": {
+        "A": 1.41479,
+        "sigma_int_dex": 0.0447997
+      },
+      "tracks_H": {
+        "A": 0.586568,
+        "sigma_int_dex": 0.067027
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 18.6862,
+      "p_best": -0.509517,
+      "p_interval_1sigma": [
+        -0.815806,
+        -0.204833
+      ],
+      "A_at_p_best": 2.17091,
+      "p1_sigma": 4.63194,
+      "p0_sigma": 1.66392
+    },
+    "only sigma(f_DM) <= 0.13": {
+      "n": 70,
+      "constant": {
+        "A": 1.15582,
+        "sigma_int_dex": 0.0390961
+      },
+      "tracks_H": {
+        "A": 0.476049,
+        "sigma_int_dex": 0.0619093
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 20.4348,
+      "p_best": -0.655164,
+      "p_interval_1sigma": [
+        -0.96669,
+        -0.349037
+      ],
+      "A_at_p_best": 2.00233,
+      "p1_sigma": 4.99384,
+      "p0_sigma": 2.12218
+    },
+    "Omega_m = 0.30": {
+      "n": 100,
+      "constant": {
+        "A": 1.17603,
+        "sigma_int_dex": 0.0445619
+      },
+      "tracks_H": {
+        "A": 0.488708,
+        "sigma_int_dex": 0.0653404
+      },
+      "delta_m2lnL_tracks_H_minus_constant": 22.3838,
+      "p_best": -0.555372,
+      "p_interval_1sigma": [
+        -0.838767,
+        -0.273032
+      ],
+      "A_at_p_best": 1.8689,
+      "p1_sigma": 5.11795,
+      "p0_sigma": 1.95182
+    }
+  },
+  "ciocan_2026": {
+    "published": {
+      "reference": "Ciocan et al., A&A 709, L16 (2026), arXiv:2604.22613",
+      "sample": "79 star-forming galaxies, 0.33 < z < 1.44, stellar masses 10^8.8-10^11 M_sun (MUSE Hubble Ultra Deep Field)",
+      "z_range": [
+        0.33,
+        1.44
+      ],
+      "fits": {
+        "dc14_halos": {
+          "label": "dark-matter halos (DC14), main result",
+          "a0_0": [
+            1.0,
+            0.04,
+            0.04
+          ],
+          "a1": [
+            1.59,
+            0.1,
+            0.1
+          ],
+          "a0_z1": [
+            2.38,
+            0.12,
+            0.1
+          ]
+        },
+        "preferred_halos": {
+          "label": "best halo profile per galaxy",
+          "a0_0": [
+            1.05,
+            0.05,
+            0.05
+          ],
+          "a1": [
+            1.63,
+            0.13,
+            0.12
+          ],
+          "a0_z1": [
+            2.61,
+            0.13,
+            0.09
+          ]
+        },
+        "mond_framework": {
+          "label": "MOND fits to the data cubes",
+          "a0_0": [
+            1.03,
+            0.05,
+            0.05
+          ],
+          "a1": [
+            1.2,
+            0.1,
+            0.1
+          ],
+          "a0_z1": [
+            2.19,
+            0.12,
+            0.1
+          ]
+        }
+      },
+      "mond_per_galaxy_regression": {
+        "a0_0": [
+          1.11,
+          0.39,
+          0.51
+        ],
+        "a1": [
+          1.42,
+          0.94,
+          0.89
+        ]
+      },
+      "binned": "four equal-population redshift bins, a0 rising from about 1.99 to 2.71 (bin values not tabulated)"
+    },
+    "comparison": {
+      "dc14_halos": {
+        "label": "dark-matter halos (DC14), main result",
+        "ratio_to_1.2E": [
+          {
+            "z": 0.33,
+            "published_line": 1.5247,
+            "tracks_H_local": 1.43302,
+            "ratio": 1.06397
+          },
+          {
+            "z": 0.885,
+            "published_line": 2.40715,
+            "tracks_H_local": 2.00612,
+            "ratio": 1.1999
+          },
+          {
+            "z": 1.44,
+            "published_line": 3.2896,
+            "tracks_H_local": 2.75241,
+            "ratio": 1.19517
+          }
+        ],
+        "max_abs_deviation_from_1.2E": 0.199901,
+        "effective_p": 1.17815
+      },
+      "preferred_halos": {
+        "label": "best halo profile per galaxy",
+        "ratio_to_1.2E": [
+          {
+            "z": 0.33,
+            "published_line": 1.5879,
+            "tracks_H_local": 1.43302,
+            "ratio": 1.10808
+          },
+          {
+            "z": 0.885,
+            "published_line": 2.49255,
+            "tracks_H_local": 2.00612,
+            "ratio": 1.24247
+          },
+          {
+            "z": 1.44,
+            "published_line": 3.3972,
+            "tracks_H_local": 2.75241,
+            "ratio": 1.23426
+          }
+        ],
+        "max_abs_deviation_from_1.2E": 0.24247,
+        "effective_p": 1.16524
+      },
+      "mond_framework": {
+        "label": "MOND fits to the data cubes",
+        "ratio_to_1.2E": [
+          {
+            "z": 0.33,
+            "published_line": 1.426,
+            "tracks_H_local": 1.43302,
+            "ratio": 0.995099
+          },
+          {
+            "z": 0.885,
+            "published_line": 2.092,
+            "tracks_H_local": 2.00612,
+            "ratio": 1.04281
+          },
+          {
+            "z": 1.44,
+            "published_line": 2.758,
+            "tracks_H_local": 2.75241,
+            "ratio": 1.00203
+          }
+        ],
+        "max_abs_deviation_from_1.2E": 0.0428067,
+        "effective_p": 1.01064
+      },
+      "overlap_with_rc100_lowest_bin": {
+        "z": 0.83,
+        "rc100_a0": 1.44842,
+        "rc100_interval_1sigma": [
+          1.23995,
+          1.69795
+        ],
+        "ciocan_lines_at_z": {
+          "dc14_halos": 2.3197,
+          "preferred_halos": 2.4029,
+          "mond_framework": 2.026
+        }
+      },
+      "extrapolated_to_rc100_highest_bin": {
+        "z": 2.22,
+        "rc100_a0": 0.912314,
+        "rc100_interval_1sigma": [
+          0.796965,
+          1.03621
+        ],
+        "ciocan_lines_at_z": {
+          "dc14_halos": 4.5298,
+          "preferred_halos": 4.6686,
+          "mond_framework": 3.694
+        }
+      }
+    }
+  }
+}

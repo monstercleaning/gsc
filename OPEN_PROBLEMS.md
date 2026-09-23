@@ -204,3 +204,54 @@ growth that dark energy requires conflicts with the black holes we can measure.
 **The same pattern as GSC.** The expansion history can be fitted; the local signature of the mechanism is the
 problem, as lunar laser ranging is for GSC's canonical parameter. Not registered.
 
+## 11. A cosmic origin for the dark-matter scale: does Milgrom's a0 follow the expansion rate?
+
+**The idea.** In galaxies, dark matter shows up only where the acceleration falls below about
+a0 = 1.2 × 10⁻¹⁰ m/s², the scale of the radial acceleration relation (Milgrom's constant). a0 is close to
+c H₀ / 2π, the speed of light times today's expansion rate, a coincidence noted since Milgrom's first papers. In
+GSC's reading H is the rate at which the matter-based standards shrink. If the coincidence is physical, the
+simplest link ties a0 to that rate at every epoch, a0(z) = a0(0) H(z)/H₀, three to four times today's value at
+z = 2–2.5, and the dark-matter phenomenon would be set by the shrinking itself. THEORY.md §6.2 proposes such an
+evolving scale.
+
+**What was already known.**
+
+- Milgrom (arXiv:1703.06110), from six rotation curves at z = 0.9–2.4: a value about four times today's at
+  z ≈ 2 is all but excluded.
+- Tully–Fisher data to z = 1.2 exclude, within their formal errors, both a0 ∝ c H(z) and a constant tied to dark
+  energy; allowing for systematics, they marginally favour the constant (Limbach, Psaltis & Özel,
+  arXiv:0809.2790).
+- Ciocan et al. (A&A 709, L16, 2026) find a0 rising over z = 0.33–1.44 in 79 lower-mass galaxies, to 2.2–2.6 at
+  z ≈ 1 depending on the mass model.
+- A ΛCDM simulation shows a rise of the same kind, a factor of about 3 from z = 0 to 2 (Mayer et al.,
+  arXiv:2206.04333), so a rise alone would not point to new physics.
+- Even the local value depends on the sample: 1.20 ± 0.24 from SPARC, 1.50 ± 0.05 from HI-selected galaxies out to
+  z = 0.09, with no evolution over that short range (Vărăşteanu et al., arXiv:2608.03576).
+
+**Our test (v20.1).** [analyses/a0_evolution.md](analyses/a0_evolution.md) fits the evolution to the 100 massive
+star-forming disks of RC100 (Nestor Shachar et al., ApJ 944, 78, 2023) at z = 0.6–2.5. For each galaxy, their
+Table 3 gives the circular velocity and the dark-matter fraction at the effective radius, from the authors' mass
+models, and the radial acceleration relation then fixes a0. The table was transcribed by hand and checked against
+the statistics the paper quotes and against an independent machine reading ([data/README.md](data/README.md)).
+For a0(z) = A (H/H₀)^p the fit gives p = −0.55 (1σ: −0.83 to −0.27). p = 1 is 5.1σ away, a constant is 2.0σ away,
+and a constant fits with a0 = 1.18, today's value. At z ≈ 2.2, 41 galaxies give a0 = 0.91 (0.80–1.04), where the
+link predicts 3.5–4.0. Across nine variants (interpolating function, fixed intrinsic scatter, data cuts) p = 1 is
+excluded at 2.8σ to 5.4σ; the weakest case fixes the intrinsic scatter at the large value Ciocan et al. find.
+Mocks with the table's errors show that the fit is unbiased and that a sample like this separates p = 0 from p = 1
+by about 3.5–4σ.
+
+**The data disagree with each other.** In Ciocan et al.'s own MOND fits, the rise follows H(z) almost exactly,
+within 4% of 1.20 H(z)/H₀ over their range; with dark-matter halos it is somewhat faster, which is what the
+authors report. But where the two samples overlap, at z ≈ 0.8, RC100 gives 1.45 against their 2.0–2.4, and their
+trend continued to z ≈ 2.2 gives 3.7–4.7 against RC100's 0.91. No single a0(z), constant or evolving, fits both
+at face value. ΛCDM allows that, because there the scale emerges from galaxy formation and can differ between
+populations. A universal constant does not, whether it is fixed or tied to the expansion.
+
+**What this does and does not show.** The simplest link between the dark-matter scale and the cosmic rate fails
+its strongest available test: at z ≈ 2, where it predicts the largest effect, the rotation curves show none. The
+caveats are real. The dark-matter fractions come from mass models with dark-matter halos, the error correlations
+are not published, and beam smearing and pressure support grow with redshift. To allow a0 ∝ H(z), the median
+dark-matter fraction at z ≈ 2.2 would have to be 0.55 instead of 0.26. What would revive the idea is a
+measurement at z ≥ 2 of the kind Ciocan et al. made below z = 1.5, finding a0 ≈ 1.2 H(z)/H₀, together with a
+reason why RC100's fractions are too low. A link to the cosmological constant instead, with a0 constant, is
+Milgrom's long-standing proposal, not a GSC prediction. Not registered.

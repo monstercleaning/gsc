@@ -30,6 +30,13 @@ Physics work on the open problems, starting with the computation that problem 1 
   (Δχ² = +1.7 and +2.6 for two star-formation histories; H₀ ≈ 70.3; about half the baryons converted), close to
   the published analysis, but the black-hole growth it needs conflicts with Gaia, globular-cluster and
   gravitational-wave measurements of black-hole masses. Recorded as problem 10; not registered.
+- **Milgrom's acceleration scale tested** ([analyses/a0_evolution.md](analyses/a0_evolution.md)): the scale below
+  which galaxies show dark matter, a0, is close to c H₀/2π, so tying it to the expansion rate at each epoch would
+  link dark matter to the shrinking itself. Fitted to the 100 rotation curves of RC100 at z = 0.6–2.5 (Table 3
+  transcribed and checked; new file [data/rc100_table3.csv](data/rc100_table3.csv)), a0 ∝ H(z) is disfavoured at
+  5.1σ (2.8–5.4σ across nine variants), and a constant a0 = 1.18 fits. The one sample in which a0 rises (Ciocan et
+  al. 2026, z < 1.44) follows H(z) in its MOND fits but disagrees with RC100 where the two overlap. Recorded as
+  problem 11; not registered.
 - The P8 r2 history at the canonical p fits the CMB + BAO data worse than ΛCDM (Δχ² = +2.5); added to problem 2.
 - New verified data files: DESI DR2 BAO (arXiv:2503.14738 v3) and the Planck 2018 distance priors (Chen, Huang &
   Wang 2019). The old compact DR1 table disagrees with the DESI DR1 paper in several places, including a quasar

@@ -268,7 +268,9 @@ pulsar-timing bounds exclude a crossing scale near the GUT scale (a TeV-scale cr
 Promoting σ to a spatial field with a kinetic term gives a fifth force from ∇σ, a coherence length acting as
 an effective MOND scale, cosmological evolution of that scale, and potential-depth-dependent cluster
 dynamics. The registered test is P10 (energy-independent, structure-correlated TeV arrival-time dispersion).
-**Status:** pending; the predicted amplitude is below current detector thresholds.
+**Status:** pending; the predicted amplitude is below current detector thresholds. The simplest evolution of
+the scale, a0 proportional to the expansion rate H(z) as the coincidence a0 ≈ c H₀/2π suggests, is disfavoured by
+100 rotation curves at z = 0.6–2.5 (2.8–5.4σ; OPEN_PROBLEMS.md, problem 11).
 
 ### 6.3 Information-thermodynamic readings (conjectures)
 

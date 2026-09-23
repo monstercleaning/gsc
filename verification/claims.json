@@ -508,6 +508,21 @@
       },
       "always": true,
       "note": "Slow (about half a minute): every fit is recomputed and compared with analyses/ccbh_fit.json within 0.2%. Requires --include-slow."
+    },
+    {
+      "id": "a0-evolution-reproduces",
+      "claim": "The fit of Milgrom's acceleration scale to the RC100 rotation curves behind OPEN_PROBLEMS.md problem 11 reproduces its committed numbers.",
+      "verify": {
+        "type": "command_exit_zero",
+        "cmd": [
+          "python3",
+          "analyses/a0_evolution.py",
+          "--check"
+        ],
+        "timeout": 1800
+      },
+      "always": true,
+      "note": "Slow (about a minute): every fit, including the noisy mocks, is recomputed and compared with analyses/a0_evolution.json within 0.2%, and analyses/a0_evolution.md must be the rendering of the committed numbers. Requires --include-slow."
     }
   ]
 }
