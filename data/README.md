@@ -2,9 +2,9 @@
 
 | File | Content | Source |
 |---|---|---|
-| `desi_dr2_bao.csv` | DESI DR2 BAO: D_V/r_d for BGS and correlated (D_M/r_d, D_H/r_d) pairs for six tracers | DESI DR2 Results II, arXiv:2503.14738 v3, Table IV (the combined LRG3+ELG1 bin, as in DESI's baseline). Used by `analyses/joint_fit.py`. |
+| `desi_dr2_bao.csv` | DESI DR2 BAO: D_V/r_d for BGS and correlated (D_M/r_d, D_H/r_d) pairs for six tracers | DESI DR2 Results II, arXiv:2503.14738 v3, Table IV (the combined LRG3+ELG1 bin, as in DESI's baseline). Used by `analyses/joint_fit.py` and `analyses/timescape_fit.py`, and through the joint fit by `analyses/ccbh_fit.py`. |
 | `desi_dr2_bao_dv_ap.csv` | DESI DR2 BAO in the other compression: D_V/r_d and the Alcock–Paczyński ratio D_M/D_H, with their correlation | Same table of arXiv:2503.14738 v3. Used by `analyses/timescape_fit.py`. |
-| `planck2018_distance_priors.json` | Planck 2018 CMB distance priors (R, l_A, ω_b, n_s) with their correlation matrix | Chen, Huang & Wang, JCAP 02 (2019) 028, arXiv:1808.05724, Table 1 (flat ΛCDM, TT,TE,EE+lowE). Used by `analyses/joint_fit.py`. |
+| `planck2018_distance_priors.json` | Planck 2018 CMB distance priors (R, l_A, ω_b, n_s) with their correlation matrix | Chen, Huang & Wang, JCAP 02 (2019) 028, arXiv:1808.05724, Table 1 (flat ΛCDM, TT,TE,EE+lowE). Used by `analyses/joint_fit.py`, and through it by `analyses/ccbh_fit.py`. |
 | `desi_dr1_bao_baseline.csv` | A compact DR1-era table of BAO distance ratios, used only by `analyses/w0wa_rd_shift_diagnostic.py` | Described at creation as public DESI DR1 BAO summary values (arXiv:2404.03000). See the discrepancies below. |
 | `rc100_table3.csv` | RC100: redshift, baryonic mass, effective radius R_e, dark-matter fraction f_DM(R_e) and circular velocity V_c(R_e), each with its uncertainty, for 100 star-forming disks at z = 0.6–2.5 | Nestor Shachar et al., ApJ 944, 78 (2023), arXiv:2209.12199 v1, Table 3 (columns z, log M_baryon, R_e, f_DM, V_c). Used by `analyses/a0_evolution.py`. See the transcription note below. |
 
@@ -17,7 +17,8 @@ review; the file is left unchanged because an existing diagnostic's recorded out
 - The paper gives the QSO bin only as D_V/r_d = 26.07 ± 0.67; the D_M/r_d, D_H/r_d pair listed here does not
   appear in it.
 - The LRG2 (z = 0.71) and ELG2 (z = 1.32) bins are missing.
-- The Lyα row comes from the companion paper (arXiv:2404.03001) and was not re-checked.
+- Lyα (z = 2.33): the D_M–D_H correlation is +0.36 here and −0.477 in DESI 2024 VI (arXiv:2404.03002, Table 1),
+  and D_M/r_d is 39.70 ± 0.95 here against 39.71 ± 0.94 there.
 
 New analyses use `desi_dr2_bao.csv`. The prediction pipelines themselves read only the `observed_data.json` file inside
 each register entry, where every number is quoted with its publication.

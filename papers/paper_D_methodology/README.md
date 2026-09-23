@@ -8,7 +8,7 @@
 
 **Venue target:** Journal of Open Source Software (JOSS); SoftwareX; Astronomy and Computing.
 
-**Status:** Deposited as a preprint on Zenodo and figshare; the JOSS checklist is in [joss/SUBMIT.md](joss/SUBMIT.md). Revised in the v12.3 honesty pass (corrected an overclaim that the register was cryptographically signed / predictions signed-before-data) and again for the 20.0 package, whose architecture, counts and case studies it now describes ([CHANGELOG.md](../../CHANGELOG.md)).
+**Status:** An earlier version (v12.2) is deposited as a preprint on Zenodo and figshare; the JOSS checklist is in [joss/SUBMIT.md](joss/SUBMIT.md). Revised in the v12.3 honesty pass (corrected an overclaim that the register was cryptographically signed / predictions signed-before-data) and again for the 20.0 package, whose architecture, counts and case studies it now describes ([CHANGELOG.md](../../CHANGELOG.md)).
 
 ## Scope
 

@@ -67,7 +67,7 @@ a0 rising with redshift. Their published linear fits, compared with a0 = 1.20 E(
 | best halo profile per galaxy | 1.05 ± 0.05 | 1.63 ± 0.13 | 1.11, 1.24, 1.23 | 1.17 |
 | MOND fits to the data cubes | 1.03 ± 0.05 | 1.20 ± 0.10 | 1.00, 1.04, 1.00 | 1.01 |
 
-In their MOND fits the rise follows H(z) almost exactly (effective p = 1.01, within 4% of 1.20 E(z));
+In their MOND fits the rise follows H(z) almost exactly (effective p = 1.01, within 4.3% of 1.20 E(z));
 with dark-matter halos it is somewhat faster, which is what the authors report. The two samples disagree
 where they overlap: at z = 0.83 RC100 gives 1.45 (1.24–1.70), their three lines give 2.32, 2.40, 2.03.
 Continued to z = 2.22, the lines give 4.53, 4.67, 3.69, where RC100 gives 0.91. No single a0(z), constant or

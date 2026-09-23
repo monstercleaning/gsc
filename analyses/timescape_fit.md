@@ -52,9 +52,10 @@ Pulls at the best fits, (model − data)/σ:
 | At the supernova void fraction, f_v0 = 0.737 | 99.00 | 10.54 | +88.46 |
 | At the CMB void fraction, f_v0 = 0.627 | 88.92 | 10.54 | +78.38 |
 
-The Alcock–Paczyński ratio at z = 0.934 barely depends on the void fraction: 1.348, 1.336 and
-1.375 for f_v0 = 0.60, 0.75 and 0.90. DESI measures 1.223 ± 0.019; ΛCDM at its best fit gives 1.240.
-So the mismatch is a property of the model's shape, not of a parameter choice.
+The Alcock–Paczyński ratio at z = 0.934 is at least 1.335 for every void fraction from 0.02 to 0.98 (the minimum
+is at f_v0 = 0.71); it is 1.348, 1.336 and 1.375 for f_v0 = 0.60, 0.75 and 0.90. DESI measures
+1.223 ± 0.019; ΛCDM at its best fit gives 1.240. So the mismatch is a property of the model's shape, not of a
+parameter choice.
 
 ## The void fraction from three probes
 

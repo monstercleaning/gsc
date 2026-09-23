@@ -6,10 +6,11 @@
 against a nearly static background, instead of space expanding. In its pure form (tier T1) this is a
 mathematically exact re-description of standard cosmology (ΛCDM): every dimensionless observable is the
 same. The framework's content beyond ΛCDM therefore lives in its higher tiers. Today that content is small:
-one registered deviation (a +0.417% shift of the BAO standard ruler, P1), whose physical coherence is under
-review (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md)), plus a package of exact null predictions that the
-framework pre-commits to die on. Most mechanism and extension modules (tiers T3 and T4) are excluded by data
-or remain conjectures. The contribution that survives any physics outcome is the method
+gravity slightly weaker, relative to atoms, in the early universe (P14). The registered late-time deviation, a
++0.417% shift of the BAO standard ruler (P1), turned out to have one coherent reading, which a joint CMB + BAO fit
+absorbs into H₀ (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md)). Beyond that there is a package of exact null
+predictions that the framework pre-commits to die on. Most mechanism and extension modules (tiers T3 and T4)
+are excluded by data or remain conjectures. The contribution that survives any physics outcome is the method
 ([METHOD.md](METHOD.md)).
 
 ## Contents
@@ -50,7 +51,7 @@ if it fails.
 | Tier | Type | Claim | Kill-test | If false, what survives | Current status |
 |---|---|---|---|---|---|
 | **T1** | Kinematic frame | Freeze-frame shrinkage is conformally equivalent to FLRW expansion; all local dimensionless physics is invariant (the *geometric lock*) | Mathematical inconsistency, or a robust detection of any exact-null violation (kill conditions K1, K2) | — | Alive; every null test so far passes |
-| **T2** | Phenomenological ansatz | A small late-time σ(t) evolution with one canonical parameter p | Registered observations outside the predicted band; DR1-era BAO sets p < 7.63×10⁻⁴ | T1 | Alive at p = 6×10⁻⁴, but its physical coherence is an open problem |
+| **T2** | Phenomenological ansatz | A small late-time σ(t) evolution with one canonical parameter p | Registered observations outside the predicted band; DR1-era BAO sets p < 7.63×10⁻⁴ | T1 | Alive at p = 6×10⁻⁴ in the registered heuristic. Its only coherent reading confines the drift to z > 10, where a CMB + BAO fit absorbs it into H₀ and leaves early-universe gravity (P14; OPEN_PROBLEMS.md problem 1) |
 | **T3** | Mechanism hypotheses | Renormalization-group running of G(σ); σ couplings to specific sectors | All viable profiles excluded by precision tests, or incompatible with a first-principles derivation | T1 + T2 | Largely excluded or conjectural (§5) |
 | **T4** | Speculative extensions | Defects, spatial σ(x), information-thermodynamic and quantum-reference-frame readings | Per-module observational tests | T1 + T2 + T3 | Mostly excluded or untested (§6) |
 

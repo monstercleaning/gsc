@@ -77,6 +77,12 @@ below it, local physics is exactly that of T1, so kill condition K2 is unaffecte
 No current measurement can distinguish the prediction from G = G0, so the entry is not scored: a PASS now would say
 nothing.
 
+> **Editorial flag (v20.1; the registered text is unchanged):** the sentence above is wrong about the rule. Applied
+> to the Alvey et al. determination (σ ≈ 0.025 on the side facing the prediction), the scoring rule below gives
+> SUB-THRESHOLD, not PASS: z ≈ −0.8, and a PASS needs σ ≤ 0.015. The conclusion stands: no current measurement can
+> tell the prediction from G = G0. The entry stays unscored as registered; its target is the next determinations of
+> early-universe G.
+
 ## Scoring algorithm
 
 For each epoch with a published determination r_obs ± σ of G/G0 (1σ; for asymmetric errors, the side facing the

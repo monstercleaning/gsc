@@ -78,8 +78,9 @@ Pre-registration must use the *next unreleased increment* — at registration ti
 > ([analyses/joint_fit.md](../../analyses/joint_fit.md); OPEN_PROBLEMS.md, problem 1) finds that once the
 > cosmological parameters are refitted the shift is absorbed into H₀, and D/r_d differs from ΛCDM by less than
 > 0.005%. The statistic below compares the fixed-cosmology shift with the precision of a ΛCDM-derived r_d, so it
-> can neither confirm nor refute the shift: it passes while that precision is coarser than the shift, and at finer
-> precision it would fail even though the reading fits the data as well as ΛCDM. The kill-condition count
+> can neither confirm nor refute the shift: it passes while that precision is coarser than a third of the shift
+> (about 0.14%, finer than the five-year DESI forecast of about 0.2%), and at finer precision it would fail even
+> though the reading fits the data as well as ΛCDM. The kill-condition count
 > (THEORY.md §8, K0) is left unchanged.
 
 For each registered sub-prediction (P1.a, P1.b, P1.c):

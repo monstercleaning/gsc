@@ -47,7 +47,7 @@ verification/  the claim checker, its manifest and its negative control
 analyses/      diagnostic studies (not registered predictions)
 papers/        papers A–E
 docs/          design notes and research notes
-data/          the one external dataset the analyses read
+data/          the external datasets the analyses read
 schemas/       JSON schemas of the pipeline outputs
 tests/         unit tests
 ```

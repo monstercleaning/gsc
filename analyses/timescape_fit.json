@@ -200,7 +200,9 @@
       "timescape_f_0.60": 1.34821,
       "timescape_f_0.75": 1.33611,
       "timescape_f_0.90": 1.37505,
-      "lcdm_best": 1.24023
+      "lcdm_best": 1.24023,
+      "timescape_min_over_f_v0_0.02_to_0.98": 1.3347,
+      "timescape_min_at_f_v0": 0.71
     }
   },
   "void_fraction_by_probe": {

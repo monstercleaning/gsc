@@ -3,8 +3,8 @@
 
 The official route is the `joss-paper-d` workflow (openjournals draft action),
 whose output carries a DRAFT watermark. This renderer produces the preprint
-deposited on Zenodo and figshare: standard-library Python plus xelatex, no
-pandoc or Docker.
+intended for deposit on Zenodo and figshare: standard-library Python plus
+xelatex, no pandoc or Docker.
 
 It handles the Markdown subset paper.md uses (headings, paragraphs, **bold**,
 *italic*, `code`, bullet and numbered lists, [@key; @key] citations, $math$).

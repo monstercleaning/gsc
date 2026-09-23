@@ -493,7 +493,7 @@ def render_markdown(res):
     lines += [
         "",
         f"In their MOND fits the rise follows H(z) almost exactly (effective p = {cc['mond_framework']['effective_p']:.2f}, "
-        f"within {100 * cc['mond_framework']['max_abs_deviation_from_1.2E']:.0f}% of 1.20 E(z));",
+        f"within {100 * cc['mond_framework']['max_abs_deviation_from_1.2E']:.1f}% of 1.20 E(z));",
         "with dark-matter halos it is somewhat faster, which is what the authors report. The two samples disagree",
         f"where they overlap: at z = {ov['z']:.2f} RC100 gives {ov['rc100_a0']:.2f} "
         f"({ov['rc100_interval_1sigma'][0]:.2f}–{ov['rc100_interval_1sigma'][1]:.2f}), their three lines give "

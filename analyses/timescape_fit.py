@@ -346,6 +346,8 @@ def analyse():
     ts_wo = best_of(Timescape, f_grid, lambda m: chi2_bao_scale_free(m, rows_wo)[0])
     lc_wo = best_of(FlatLCDM, om_grid, lambda m: chi2_bao_scale_free(m, rows_wo)[0])
     z_ap = 0.934
+    ap_scan = [(k / 100.0, Timescape(k / 100.0).h0_dm(z_ap) * Timescape(k / 100.0).e(z_ap)) for k in range(2, 99)]
+    ap_min = min(ap_scan, key=lambda fa: fa[1])
     robustness = {
         "dv_ap_compression": {"timescape_chi2": ts_dvap[0], "timescape_f_v0": ts_dvap[1],
                               "lcdm_chi2": lc_dvap[0], "lcdm_Omega_m": lc_dvap[1], "delta_chi2": ts_dvap[0] - lc_dvap[0]},
@@ -358,7 +360,9 @@ def analyse():
                                 "timescape_f_0.60": Timescape(0.60).h0_dm(z_ap) * Timescape(0.60).e(z_ap),
                                 "timescape_f_0.75": Timescape(0.75).h0_dm(z_ap) * Timescape(0.75).e(z_ap),
                                 "timescape_f_0.90": Timescape(0.90).h0_dm(z_ap) * Timescape(0.90).e(z_ap),
-                                "lcdm_best": lc_best.h0_dm(z_ap) * lc_best.e(z_ap)},
+                                "lcdm_best": lc_best.h0_dm(z_ap) * lc_best.e(z_ap),
+                                "timescape_min_over_f_v0_0.02_to_0.98": ap_min[1],
+                                "timescape_min_at_f_v0": ap_min[0]},
     }
 
     # The void fraction from three probes
@@ -462,9 +466,10 @@ def render_markdown(res):
               f"| At the supernova void fraction, f_v0 = 0.737 | {rb['bao_chi2_at_published_void_fractions']['supernovae_f_0.737']:.2f} | {lb['chi2_min']:.2f} | {rb['bao_chi2_at_published_void_fractions']['supernovae_f_0.737'] - lb['chi2_min']:+.2f} |",
               f"| At the CMB void fraction, f_v0 = 0.627 | {rb['bao_chi2_at_published_void_fractions']['cmb_f_0.627']:.2f} | {lb['chi2_min']:.2f} | {rb['bao_chi2_at_published_void_fractions']['cmb_f_0.627'] - lb['chi2_min']:+.2f} |",
               "",
-              f"The Alcock–Paczyński ratio at z = 0.934 barely depends on the void fraction: {apz['timescape_f_0.60']:.3f}, {apz['timescape_f_0.75']:.3f} and",
-              f"{apz['timescape_f_0.90']:.3f} for f_v0 = 0.60, 0.75 and 0.90. DESI measures {apz['desi']} ± {apz['desi_sigma']}; ΛCDM at its best fit gives {apz['lcdm_best']:.3f}.",
-              "So the mismatch is a property of the model's shape, not of a parameter choice."]
+              f"The Alcock–Paczyński ratio at z = 0.934 is at least {apz['timescape_min_over_f_v0_0.02_to_0.98']:.3f} for every void fraction from 0.02 to 0.98 (the minimum",
+              f"is at f_v0 = {apz['timescape_min_at_f_v0']:.2f}); it is {apz['timescape_f_0.60']:.3f}, {apz['timescape_f_0.75']:.3f} and {apz['timescape_f_0.90']:.3f} for f_v0 = 0.60, 0.75 and 0.90. DESI measures",
+              f"{apz['desi']} ± {apz['desi_sigma']}; ΛCDM at its best fit gives {apz['lcdm_best']:.3f}. So the mismatch is a property of the model's shape, not of a",
+              "parameter choice."]
     cmb = pr["cmb_2015"]
     lines += ["", "## The void fraction from three probes", "",
               "| Probe | f_v0 |", "|---|---|",

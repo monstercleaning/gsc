@@ -5,7 +5,7 @@
 - [x] **Fill in your ORCID** in `paper.md` — done: `0009-0009-7812-9203`
 - [x] **Affiliation review** — done: "Independent researcher; Founder, Monster Cleaning Ltd."
 - [x] **Repository public** on GitHub — verified 2026-09-22: `github.com/monstercleaning/gsc` clones anonymously, carries the MIT licence, and its root is this package
-- [ ] **Tag a release** at the public repository (e.g., `v20.0.0`) — JOSS requires a versioned release archived to a citable platform
+- [ ] **Tag a release** at the public repository (e.g., `v20.1.0`) — JOSS requires a versioned release archived to a citable platform
 - [ ] **Zenodo DOI** — link the GitHub release to Zenodo for permanent archival; copy the DOI into the JOSS submission form (not into paper.md itself)
 - [ ] **Cross-platform smoke test** — run the four checks on a fresh Python 3.9+ install:
 
@@ -60,7 +60,7 @@ This produces `paper.pdf` and `paper.crossref.xml`.
 
 ### Option 3: Local preprint render (no DRAFT watermark)
 
-The preprint deposited on Zenodo and figshare is built by a standard-library renderer that takes the citations and
+The preprint intended for deposit on Zenodo and figshare is built by a standard-library renderer that takes the citations and
 the reference list from `paper.bib` (an unknown citation key is an error). It needs xelatex:
 
 ```bash
@@ -90,7 +90,7 @@ print(f'word count: {len(body.split())} (limit 250-1000)')
 1. Visit https://joss.theoj.org/papers/new
 2. Fill in:
    - **Repository URL**: `https://github.com/monstercleaning/gsc`
-   - **Software version**: `v20.0.0` (or current release tag)
+   - **Software version**: `v20.1.0` (or the latest release tag)
    - **Branch**: `main` (or whichever contains the release)
    - **Submission target paper**: path `papers/paper_D_methodology/joss/paper.md`
 3. Submit. JOSS Editor-in-Chief will assign a topic editor within ~1 week.

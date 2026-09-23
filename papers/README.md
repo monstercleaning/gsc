@@ -5,7 +5,7 @@ invalidate the others. This is the five-paper publication strategy referred to i
 
 | Paper | Scope | Tier | Status |
 |---|---|---|---|
-| **[A](paper_A_late_time/)** | Late-time framework and its registered tests | T1 + T2 | Draft; carries flags for open problems 1 and 2 ([../OPEN_PROBLEMS.md](../OPEN_PROBLEMS.md)) |
+| **[A](paper_A_late_time/)** | Late-time framework and its registered tests | T1 + T2 | Draft; carries flags for open problems 1, 2 and 8 ([../OPEN_PROBLEMS.md](../OPEN_PROBLEMS.md)) |
 | **[B](paper_B_rg_mechanism/)** | Renormalization-group mechanism for G(σ) | T3 | Draft of an obstructed module; kept as the record of why it is obstructed |
 | **[C](paper_C_extensions/)** | Speculative extension modules | T4 | Outline |
 | **[D](paper_D_methodology/)** | The pre-registration and self-verification method | method | Draft plus a JOSS-format paper ([paper_D_methodology/joss/paper.md](paper_D_methodology/joss/paper.md)); independent of the physics outcome |

@@ -133,7 +133,7 @@
         "min_sites": 1
       },
       "always": true,
-      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim. Extended at the reorganization to also match 'N worked examples': the deposited methodology paper still said 'ten worked examples' when the register held thirteen, a count claim the earlier pattern could not see. Extended again before the 20.0 deposit: 'ten near-term cosmological predictions' (the long-form methodology paper's abstract) and 'all 10 predictions' (its JOSS submission guide) escaped the qualifier list."
+      "note": "Catches count drift as the register grows. The 8 -> 10 drift (v12.1/v12.2 added P9, P10) survived in fourteen places until the July 2026 audit found it by hand. v12.7 liveness fix: the number-word alternation stopped at 'twelve', so from the moment the register reached thirteen (P13, v12.6) this check matched zero prose sites and passed vacuously — a silently-dead check of exactly the class the retro-guard's MIN_SITES floor exists to catch. The alternation now runs to 'twenty' and `min_sites: 1` makes zero matched sites a FAILURE for every count claim. Extended at the reorganization to also match 'N worked examples': the deposited methodology paper still said 'ten worked examples' when the register held thirteen, a count claim the earlier pattern could not see. Extended again at the 20.0 deposit review: 'ten near-term cosmological predictions' (the long-form methodology paper's abstract) and 'all 10 predictions' (its JOSS submission guide) escaped the qualifier list."
     },
     {
       "id": "prose-verdicts-match-scorecards",
@@ -270,7 +270,7 @@
         "max": 0
       },
       "always": true,
-      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced. Broadened before the 20.0 deposit: the long-form methodology paper still said the P3 prediction 'explains the existing ~9-second beam-trap discrepancy', a phrasing the original pattern did not cover. tests/test_verification.py requires the pattern to catch that sentence in the historical fixture."
+      "note": "The v12.0 release claimed the neutron-lifetime anomaly was explained; v12.1 retracted it. This keeps the retraction enforced. Broadened at the 20.0 deposit review: the long-form methodology paper still said the P3 prediction 'explains the existing ~9-second beam-trap discrepancy', a phrasing the original pattern did not cover. tests/test_verification.py requires the pattern to catch that sentence in the historical fixture."
     },
     {
       "id": "canonical-repo-pointer",
@@ -448,7 +448,7 @@
         ]
       },
       "always": true,
-      "note": "The manifest is what gets quoted in each public deposit's description, so the deposit's date independently timestamps the exact register content."
+      "note": "The manifest digest is meant to be quoted in each public deposit's description, so that the deposit's date independently timestamps the exact register content. No deposit has quoted it yet: the public deposits (v12.2) predate the manifest."
     },
     {
       "id": "predictions-table-current",
@@ -481,7 +481,7 @@
     },
     {
       "id": "joint-fit-reproduces",
-      "claim": "The joint CMB + BAO fit behind OPEN_PROBLEMS.md problems 1, 4 and 5 reproduces its committed numbers.",
+      "claim": "The joint CMB + BAO fit behind OPEN_PROBLEMS.md problems 1, 4, 5 and 8 reproduces its committed numbers.",
       "verify": {
         "type": "command_exit_zero",
         "cmd": [

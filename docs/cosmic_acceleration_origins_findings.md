@@ -1,6 +1,9 @@
 # Where Does Cosmic Acceleration Come From? — Findings on a Microphysical Origin
 
 **Status:** research findings / honest map of the field, compiled 2026-05-29.
+**Update (v20.1, 2026-09-23):** timescape, described below as alive, was tested against DESI DR2 BAO in
+[OPEN_PROBLEMS.md](../OPEN_PROBLEMS.md) problem 9 and fits much worse than ΛCDM. The rows below record the state of
+the field on 2026-05-29.
 **Framing of the question (per the project's reframed goal):** *not* "get the acceleration for free by changing coordinates," but: **does the observed acceleration of the universe have a real, mechanistic origin rooted in microphysics — instead of being delegated to an unmeasurable "dark energy" fluid?**
 
 The honest headline: **this question is not naive — it is the [cosmological constant problem](https://en.wikipedia.org/wiki/Cosmological_constant_problem), widely regarded as the deepest unsolved problem in theoretical physics.** As of 2026, no one has solved it. But understanding *why* it is hard, and which living programs come closest to a genuine micro-origin, is worthwhile — and is the real version of the instinct behind this project.

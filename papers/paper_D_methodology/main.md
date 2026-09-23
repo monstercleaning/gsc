@@ -47,7 +47,7 @@ Pre-registration in a theory context requires three operational ingredients:
 
 1. **Deterministic prediction pipelines**: the same parameters and the same code must produce byte-identical numerical predictions, so that the prediction can be exactly reproduced from the registered inputs.
 
-2. **Cryptographic signing and time-stamping**: the prediction record must be unforgeable and dated, so that "we predicted X" claims can be distinguished from "we constructed the prediction after seeing the data." The present release implements the time-stamping half (public git history, and a register digest quoted in public deposits); the signing half is specified but not executed (Section 6).
+2. **Cryptographic signing and time-stamping**: the prediction record must be unforgeable and dated, so that "we predicted X" claims can be distinguished from "we constructed the prediction after seeing the data." The present release implements the time-stamping half (public git history, and a register digest meant to be quoted in the description of each public deposit, which no deposit has done yet); the signing half is specified but not executed (Section 6).
 
 3. **Per-prediction scoring algorithms**: the comparison between prediction and eventual data must itself be specified before the data arrive, including the confidence level at which "pass" and "fail" are defined.
 

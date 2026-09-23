@@ -1,8 +1,10 @@
 # Changelog
 
-## 20.1.0 — in progress
+## 20.1.0 — 2026-09-23 — open problems computed
 
-Physics work on the open problems, starting with the computation that problem 1 called decisive.
+Physics work on the open problems, starting with the computation that problem 1 called decisive. One forward
+prediction was added (P14; fourteen in total), and no registered output changed. Register manifest digest:
+`c578bbc1e67f4cdd0653bbfd94e7f7e48736d01a4a104d09c9736a1b4354694f`.
 
 - **Joint CMB + BAO fit** ([analyses/joint_fit.md](analyses/joint_fit.md)). The only coherent reading of P1's shift,
   particle masses drifting relative to the Planck mass before z ≈ 10, was fitted with the cosmological parameters
@@ -10,7 +12,7 @@ Physics work on the open problems, starting with the computation that problem 1 
   (Δχ² = −0.09), but the fit absorbs it into H₀ (−0.9%), after which its BAO signature is below 0.005%. P1's
   registered statistic therefore cannot distinguish GSC from ΛCDM. P1 carries an editorial flag, which changes the
   register manifest digest; the kill-condition count is unchanged. What remains distinct is early-universe gravity,
-  which no registered test probes (OPEN_PROBLEMS.md problems 1, 4 and 5).
+  which no registered test probed before P14, below (OPEN_PROBLEMS.md problems 1, 4 and 5).
 - The fit is validated against the priors themselves and against DESI's published ΛCDM results. The
   recombination-redshift formula as printed in the prior paper misses the priors' own central value by 1.8σ; it is
   rescaled once to Planck's z*, as documented in the code. A slow check recomputes every fit in CI.
@@ -27,8 +29,9 @@ Physics work on the open problems, starting with the computation that problem 1 
   redshift-drift prediction is documented but not registered, because existing data already disfavour the model.
 - **Coupled black holes tested** ([analyses/ccbh_fit.md](analyses/ccbh_fit.md)): black holes that grow with the
   expansion and act as dark energy (Ahlen et al., PRL 2025). The expansion history fits nearly as well as ΛCDM
-  (Δχ² = +1.7 and +2.6 for two star-formation histories; H₀ ≈ 70.3; about half the baryons converted), close to
-  the published analysis, but the black-hole growth it needs conflicts with Gaia, globular-cluster and
+  (Δχ² = +1.7 and +2.6 for two star-formation histories; H₀ ≈ 70.3; about half the baryons converted). H₀ and
+  the converted fraction are close to the published analysis, whose fit penalty is larger (Δχ² = +6.1, disfavoured
+  at about 2σ). The black-hole growth the model needs is in tension with Gaia, globular-cluster and
   gravitational-wave measurements of black-hole masses. Recorded as problem 10; not registered.
 - **Milgrom's acceleration scale tested** ([analyses/a0_evolution.md](analyses/a0_evolution.md)): the scale below
   which galaxies show dark matter, a0, is close to c H₀/2π, so tying it to the expansion rate at each epoch would
@@ -43,6 +46,22 @@ Physics work on the open problems, starting with the computation that problem 1 
   measurement the paper does not contain; it is flagged in [data/README.md](data/README.md), not changed.
 - Paper A cited the distance priors to a nonexistent "Chen-Howlett-Whitebook 2018" with "Reference TBD"; it now cites
   Chen, Huang & Wang (2019).
+- **Correction: v20.0.0 was not deposited.** The v20.0.0 tag message says the package was deposited on Zenodo and
+  figshare. It was not: the upload was postponed, and those records still hold the v12.2 upload. Tags are not
+  rewritten, so the correction is recorded here. Wording elsewhere that implied the deposit now calls it planned,
+  and the register digest is described as meant for a deposit description, not as already quoted in one.
+- **Pre-release review.** An independent review of every 20.1 change found the following, corrected here:
+  - P1's editorial flag put the scorer's failure point at the size of the shift instead of a third of it.
+  - P14 says that scoring it now would give a PASS; its rule gives SUB-THRESHOLD. An editorial flag records this,
+    and P14 stays unscored as registered.
+  - Problem 5 counted P5 as distinguishing content, contrary to P14's registration.
+  - The comparison with the published black-hole analysis called its fit penalty close.
+  - The timescape Alcock–Paczyński range held only for void fractions of 0.6–0.9; the ratio is at least 1.33 for
+    every void fraction.
+  - THEORY, Paper A, problem 8, the data notes and two planning documents still described the state before the
+    joint fit. The data notes also missed a sign error in the DR1 Lyα correlation.
+
+  The P1 and P14 flags change the register manifest digest; no registered text or output changed.
 
 ## 20.0.0 — 2026-09-22 — standalone reorganization
 
@@ -82,7 +101,7 @@ behind the P8 revision r2 moves the BAO ruler the opposite way to P1 (problem 2)
 factor (problem 3); the CMB acoustic-angle assumption (problem 4). The evidence is the deterministic diagnostic
 `analyses/p_role_consistency.py`.
 
-**Deposit review.** Checking the package before its public deposit found documents that still described an
+**Deposit review.** Checking the package before its planned public deposit found documents that still described an
 earlier release. Each finding was corrected and became a mechanical check:
 
 - The methodology papers described tooling this package does not contain (third-party dependencies, lineage

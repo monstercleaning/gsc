@@ -5,17 +5,19 @@ output is byte-identical to its registered version. Problems that are already kn
 of being silently fixed, because fixing them changes predictions — and a changed prediction must be registered
 as a new entry, not edited into an old one ([METHOD.md](METHOD.md)).
 
-The numbers below come from a deterministic diagnostic, [analyses/p_role_consistency.py](analyses/p_role_consistency.py)
-(output: [analyses/p_role_consistency.json](analyses/p_role_consistency.json)). It is evidence for this page,
-not a registered prediction.
+The numbers below come from deterministic diagnostics in [analyses/](analyses/), each linked where it is used; the
+first was [analyses/p_role_consistency.py](analyses/p_role_consistency.py) (output:
+[analyses/p_role_consistency.json](analyses/p_role_consistency.json)). They are evidence for this page, not
+registered predictions.
 
 ---
 
 ## 1. Which sector carries the canonical parameter?
 
 **In plain words.** If every scale in nature shrank together, nothing could ever be measured — that is exactly
-what tier T1 says. The one registered deviation from standard cosmology (the +0.417% BAO ruler shift, P1)
-therefore needs *something* that does not shrink along with everything else. The register never says what.
+what tier T1 says. The registered late-time deviation from standard cosmology (the +0.417% BAO ruler shift, P1)
+therefore needs *something* that does not shrink along with everything else. P1's registration never says what;
+the answer below led to P14.
 
 **What the diagnostic finds.**
 
@@ -39,7 +41,7 @@ now about a thousand times more precise.
 
 | Quantity | Value |
 |---|---|
-| BAO shift (P1) | −0.415% in D/r_d at every redshift — reproduced exactly |
+| BAO shift (P1) | −0.415% in D/r_d at every redshift — reproduced exactly (the joint fit's full calculation gives −0.421%) |
 | G drift today (lunar ranging, K2) | exactly 0 |
 | Exact nulls P9, P11, P12, P13 | all exact (P13 exact for sources below z = 10) |
 | G/G₀ in atomic units at recombination | 0.992 |
@@ -110,12 +112,13 @@ into H₀ once the cosmological parameters are refitted (the flag on P1 explains
 spuriously at fine enough precision). The kill-condition scope and threshold are left unchanged.
 
 What still distinguishes the GSC core from ΛCDM is therefore weaker gravity, relative to atoms, in the early
-universe (problem 1), plus the T3 θ-trajectory behind P5. None of K0's five forward tests probes the first; under
-K0.3 it counts only as a new forward prediction, and it was registered as P14 in v20.1, with the clause that its
-failure triggers K0.4. The registered late-time content of the core is observationally indistinguishable from
-ΛCDM, which is the situation the conformal-reduction clause K0.4 addresses. It does not fire, because P14 and the
-T3 and T4 modules remain testable. The earlier text of this problem recorded the possibility before the
-computation was done.
+universe (problem 1). The core's other content beyond ΛCDM, the T3 θ-trajectory behind P5, is registered only as a
+bound on the strong-CP parameter θ, which standard physics leaves free, so no measurement of it can favour GSC over
+ΛCDM. None of K0's five forward tests probes early gravity; under K0.3 it counts only as a new forward prediction,
+and it was registered as P14 in v20.1, with the clause that its failure triggers K0.4. The registered late-time
+content of the core is observationally indistinguishable from ΛCDM, which is the situation the conformal-reduction
+clause K0.4 addresses. It does not fire, because P14 remains testable, as does the T4 module behind P10. The
+earlier text of this problem recorded the possibility before the computation was done.
 
 ## 6. Registered pipeline descriptions name modules that were never built
 
@@ -141,14 +144,18 @@ illustrative and its Δχ² entries are placeholders, as the paper itself notes;
 of this package (it remains in the project's git history, tag `v12.7-final`). No registered prediction depends on
 the fit: the canonical parameter comes from the P1 pipeline's scan against the DESI DR1-era precision
 ([gsc/canonical_params.py](gsc/canonical_params.py)). What decides it: a refit of the three families with code
-shipped in the package, ideally together with the joint CMB + BAO fit that problem 1 calls for. Until then the
-statement is flagged in both papers.
+shipped in the package. The joint CMB + BAO fit of problem 1 ([analyses/joint_fit.md](analyses/joint_fit.md)) now
+covers the power-law family in its coherent reading: at the canonical p it fits CMB + BAO as well as ΛCDM
+(Δχ² = −1.27), though lunar ranging excludes that reading locally (problem 1). The transition family is already
+excluded by the DR1-era check (Paper A §5.1), and rg_profile matches the power law at leading order. Supernovae and
+fσ8 are still not refitted, so the statement remains flagged in both papers.
 
 ## 9. A gravitational cause for the changing standards: timescape tested against DESI
 
 **The idea.** GSC's intuition is that what changes is not space but the standards measured with matter. Problem 1
-showed that a universal change is only a change of units, so the change must differ from place to place, and a
-known force should cause it. The published theory that does exactly this is Wiltshire's timescape cosmology: in a
+showed that a universal change is only a change of units, so the change must be non-universal. Problem 1 followed
+one option, a difference between sectors of physics; the other is a difference from place to place, caused by a
+known force. The published theory that does exactly this is Wiltshire's timescape cosmology: in a
 lumpy universe, clocks and rulers in galaxies are calibrated differently from the volume average, which
 fast-expanding voids dominate, and reading the data with our local clocks mimics cosmic acceleration without dark
 energy. It uses ordinary general relativity only. With Pantheon+ supernovae it was reported to fit better than ΛCDM
@@ -159,8 +166,8 @@ solution from Wiltshire, PRD 80, 123512 (2009), reproduces the numbers published
 DR2 BAO data with the BAO scale left free, so that only the shape of the distance–redshift relation is tested.
 Timescape fits much worse than ΛCDM with the same number of parameters: χ² = 62.4 against 10.5 for 13 data points
 (Δχ² = +52). The calibration-free Alcock–Paczyński ratio alone gives Δχ² = +45, and the mismatch is a property of
-the model's shape rather than of its parameter: at z = 0.93 the ratio is 1.34–1.38 for any void fraction, where
-DESI measures 1.22 ± 0.02. The result holds with DESI's other compression (Δχ² = +57) and without the worst-fitting
+the model's shape rather than of its parameter: at z = 0.93 the ratio is at least 1.33 for every void fraction
+(1.34–1.38 for void fractions of 0.6–0.9), where DESI measures 1.22 ± 0.02. The result holds with DESI's other compression (Δχ² = +57) and without the worst-fitting
 bin (Δχ² = +16). At the void fractions preferred by supernovae (0.737) and by the CMB (0.627), the BAO fit is worse
 still.
 
@@ -182,12 +189,14 @@ Ahlen et al., PRL 135, 081003, 2025).
 **The expansion-history test (v20.1).** [analyses/ccbh_fit.md](analyses/ccbh_fit.md) implements Ahlen et al.'s
 equations with the Madau star-formation histories and fits the same CMB + BAO data as problem 1. With the same number
 of free parameters it fits almost as well as ΛCDM: Δχ² = +1.7 and +2.6 for the two star-formation histories, with
-H₀ ≈ 70.3 and about half the baryons converted. The published analysis, with the full Planck likelihood, finds
-H₀ = 70.03, half the baryons converted and Δχ² = +6.1 for the same histories, and no penalty with a JWST-based
-history. The model fits the CMB almost exactly and the BAO less well than ΛCDM.
+H₀ ≈ 70.3 and about half the baryons converted. The published analysis, with the full Planck likelihood, reports a
+single result for the Madau history (it cites both formulas): H₀ = 70.03, half the baryons converted and Δχ² = +6.1,
+which it calls disfavoured at about 2σ. Our fit penalty is smaller, so only H₀ and the converted fraction agree
+closely. With a JWST-based history the published fit is statistically indistinguishable from ΛCDM (Δχ² = +0.7). The
+model fits the CMB almost exactly and the BAO less well than ΛCDM.
 
 **The local tests are unfavourable.** Every black hole must have grown by (1+z)³ since it formed, which the black
-holes we can weigh contradict:
+holes we can weigh are in tension with:
 
 - Gaia BH1 and BH2 (Andrae & El-Badry, A&A 673, L10, 2023): 70% and 77% probability that they formed below
   2.2 M_⊙, the maximum neutron-star mass.
@@ -199,7 +208,7 @@ holes we can weigh contradict:
 - JWST quasars (Lei et al., Sci. China Phys. Mech. Astron. 67, 229811, 2024): about 2σ tension.
 
 Proponents argue that coupled black holes need not obey the neutron-star mass limit. Unless that is shown, the
-growth that dark energy requires conflicts with the black holes we can measure.
+growth that dark energy requires is in tension with the black holes we can measure.
 
 **The same pattern as GSC.** The expansion history can be fitted; the local signature of the mechanism is the
 problem, as lunar laser ranging is for GSC's canonical parameter. Not registered.
@@ -225,8 +234,9 @@ evolving scale.
   z ≈ 1 depending on the mass model.
 - A ΛCDM simulation shows a rise of the same kind, a factor of about 3 from z = 0 to 2 (Mayer et al.,
   arXiv:2206.04333), so a rise alone would not point to new physics.
-- Even the local value depends on the sample: 1.20 ± 0.24 from SPARC, 1.50 ± 0.05 from HI-selected galaxies out to
-  z = 0.09, with no evolution over that short range (Vărăşteanu et al., arXiv:2608.03576).
+- The local value itself is known only to about 20%: 1.20 ± 0.24 from SPARC, mostly systematic, and 1.50 ± 0.05
+  from HI-selected galaxies out to z = 0.09, which agree within that systematic and show no evolution over that
+  short range (Vărăşteanu et al., arXiv:2608.03576).
 
 **Our test (v20.1).** [analyses/a0_evolution.md](analyses/a0_evolution.md) fits the evolution to the 100 massive
 star-forming disks of RC100 (Nestor Shachar et al., ApJ 944, 78, 2023) at z = 0.6–2.5. For each galaxy, their
@@ -241,7 +251,7 @@ Mocks with the table's errors show that the fit is unbiased and that a sample li
 by about 3.5–4σ.
 
 **The data disagree with each other.** In Ciocan et al.'s own MOND fits, the rise follows H(z) almost exactly,
-within 4% of 1.20 H(z)/H₀ over their range; with dark-matter halos it is somewhat faster, which is what the
+within 4.3% of 1.20 H(z)/H₀ over their range; with dark-matter halos it is somewhat faster, which is what the
 authors report. But where the two samples overlap, at z ≈ 0.8, RC100 gives 1.45 against their 2.0–2.4, and their
 trend continued to z ≈ 2.2 gives 3.7–4.7 against RC100's 0.91. No single a0(z), constant or evolving, fits both
 at face value. ΛCDM allows that, because there the scale emerges from galaxy formation and can differ between
