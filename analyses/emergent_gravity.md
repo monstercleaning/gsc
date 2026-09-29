@@ -44,6 +44,9 @@ k = 1. "Preferred / Verlinde" is the scale the data prefer over Verlinde's value
   the universe is not dominated by dark energy, so both uses are extrapolations, as in the published tests.
 - At z ≈ 0, Lelli, McGaugh & Schombert (MNRAS 468, L68, 2017) found the formula fits nearby galaxies only with
   stellar masses lower than other estimates allow: the same excess of extra gravity seen here.
+- The formula holds for spherical mass distributions. Using M_B = r V_bar²/G for discs, as published tests also do,
+  is an approximation: a disc's enclosed mass differs from it by tens of percent, much less than the gap between
+  Verlinde's scale and the preferred one in the table above, but the fitted scale inherits that uncertainty.
 - The mass distribution enters through k, taken from RC100's model (exponential disc, n = 4 bulge of 1 kpc).
   Across the sample k runs from 1.24 to 2.29 (median 1.79); bulge fractions run from 0.01 to 0.98.
 - The dark-matter fractions come from the authors' mass models with dark-matter halos, as in

@@ -15,7 +15,9 @@ Method. During nucleosynthesis G enters only through the expansion rate, so the
 abundances follow the logarithmic sensitivities of Fields et al. (arXiv:1912.01132,
 eqs. 16-17): Y_p ~ G^0.357 eta^0.039 N_nu^0.163 and D/H ~ G^0.952 eta^-1.597.
 Each measurement gives ln(G/G0) = ln(X_obs / X_std) / alpha_G, with measurement
-and prediction errors added in quadrature. The standard deuterium prediction
+and prediction errors added in quadrature. Helium and deuterium are combined by
+generalised least squares, with the covariance their errors share through the
+CMB baryon density. The standard deuterium prediction
 X_std (G = G0) depends on how the measured deuterium-burning cross sections are
 fitted: with low-degree polynomials (Yeh, Olive & Fields 2021), with ab initio
 energy dependences (PRIMAT, Pitrou et al. 2021), or with Gaussian processes
@@ -150,9 +152,26 @@ def estimate(x_obs, s_obs, x_std, s_rel_std, alpha):
     return math.log(x_obs / x_std) / alpha, math.hypot(s_obs / x_obs, s_rel_std) / abs(alpha)
 
 
-def combine(estimates):
-    w = [1.0 / s ** 2 for _, s in estimates]
-    return sum(wi * e for wi, (e, _) in zip(w, estimates)) / sum(w), 1.0 / math.sqrt(sum(w))
+def combine(estimates, cov=0.0):
+    """Generalised least-squares mean of two estimates of ln G whose errors share a covariance `cov`."""
+    (e1, s1), (e2, s2) = estimates
+    v1, v2 = s1 ** 2, s2 ** 2
+    det = v1 * v2 - cov ** 2
+    w1, w2 = (v2 - cov) / det, (v1 - cov) / det
+    return (w1 * e1 + w2 * e2) / (w1 + w2), 1.0 / math.sqrt(w1 + w2)
+
+
+def baryon_cov(code, treatment):
+    """Covariance of the helium and deuterium ln G estimates through the shared CMB baryon density.
+    Both baryon densities come from the CMB (Planck, or a combination including it); they are taken as fully
+    correlated. Helium's weak dependence (+0.039) and deuterium's strong one (-1.597) make it negative."""
+    he_src = code if THEORY[code]["Y_p"] is not None else HELIUM_FROM
+    if treatment == "as published":
+        s_he = THEORY[he_src]["omega_b"][1] / THEORY[he_src]["omega_b"][0]
+        s_d = THEORY[code]["omega_b"][1] / THEORY[code]["omega_b"][0]
+    else:
+        s_he = s_d = BARYON_G_FREE[1] / BARYON_G_FREE[0]
+    return (SENS["Y_p"]["eta"] * s_he / SENS["Y_p"]["G"]) * (SENS["D/H"]["eta"] * s_d / SENS["D/H"]["G"])
 
 
 def rule_verdict(z, sigma, threshold):
@@ -227,11 +246,14 @@ def analyse():
                     if element == "D/H" or THEORY[code]["Y_p"] is not None:
                         single.append({"element": element, "measurement": name, "prediction": code,
                                        "baryon_density": treatment, **summary(*per[name], g_p14, threshold)})
+            cov = baryon_cov(code, treatment)
             for d_name in DEUTERIUM:
                 e_he, e_d = per[PRIMARY_HELIUM], per[d_name]
                 combined.append({"helium": PRIMARY_HELIUM, "deuterium": d_name, "prediction": code,
-                                 "baryon_density": treatment, **summary(*combine([e_he, e_d]), g_p14, threshold),
-                                 "helium_vs_deuterium_sigma": abs(e_he[0] - e_d[0]) / math.hypot(e_he[1], e_d[1])})
+                                 "baryon_density": treatment, "baryon_covariance": cov,
+                                 **summary(*combine([e_he, e_d], cov), g_p14, threshold),
+                                 "helium_vs_deuterium_sigma": abs(e_he[0] - e_d[0])
+                                 / math.sqrt(e_he[1] ** 2 + e_d[1] ** 2 - 2.0 * cov)})
 
     published = []
     for name, p in PUBLISHED.items():
@@ -519,6 +541,8 @@ def render_markdown(res):
         "## Limits",
         "",
         "- Linear in the logarithms: accurate for changes of a few percent, as here.",
+        "- Helium and deuterium share the baryon density's error; the combination includes that covariance. Nuclear-rate",
+        "  errors are taken as independent, since helium barely depends on the deuterium-burning rates.",
         "- The sensitivities to G come from one code (Fields et al.) and are applied to every prediction; the expansion-rate",
         "  physics is the same in all.",
         "- \"As published\" ignores P14's 0.8% change of G at recombination; \"widened\" covers any change there, so it",

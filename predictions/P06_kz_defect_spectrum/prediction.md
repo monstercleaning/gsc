@@ -48,6 +48,13 @@ To be implemented:
 
 ## Scoring algorithm
 
+> **Editorial flag (v20.2, external review; the registered text below is unchanged):** the pipeline converts Ω_GW to
+> strain as h_c = √Ω_GW. The correct relation is h_c = √(3/2π²) (H₀/f) √Ω_GW, so at 10⁻⁸ Hz the stored strain (0.82)
+> is too large by about ten orders of magnitude (≈ 7×10⁻¹¹), and the stored signal-to-noise ratios and detectability
+> flags are invalid. The FAIL compares Ω_GW with the PTA bound directly and stands at this order-of-magnitude level.
+> The scorer's remark that a TeV-scale crossing is required is wrong: with the pipeline's own Ω_GW = (M_*/M_Pl)² × 10⁶
+> and the bound 10⁻⁹, the requirement is M_* ≲ 4×10¹¹ GeV.
+
 For each released stochastic GW spectrum upper limit or detection at frequency band [f1, f2]:
 
 ```

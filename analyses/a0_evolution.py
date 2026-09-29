@@ -638,7 +638,8 @@ def render_markdown(res):
         f"RC100 gives {rc['value']:.2f} ({rc['interval_1sigma'][0]:.2f}–{rc['interval_1sigma'][1]:.2f}). A constant a0 gives 1, and a0 ∝ H(z) gives about 2.",
         "",
         f"**How far this goes.** The preference over a constant is weak: Δ(−2 ln L) from {max(deltas):+.1f} to {min(deltas):+.1f}",
-        "across the variants, about 2σ at most, and smallest when the intrinsic scatter is fixed at a large value. The",
+        "across the variants, smallest when the intrinsic scatter is fixed at a large value. The models are not nested, so",
+        "this has no calibrated significance; read naively, it is at most about 2σ. The",
         "idea was suggested by the RC100 trend, so RC100 cannot confirm it. Over Ciocan et al.'s range, z = 0.33 to 1.44,",
         f"it predicts a0 changing by a factor of {min(crange['dark_energy_tied'].values()):.2f}–{max(crange['dark_energy_tied'].values()):.2f}, where "
         f"their lines rise by {min(crange['ciocan_published_lines'].values()):.2f}–{max(crange['ciocan_published_lines'].values()):.2f} times;",

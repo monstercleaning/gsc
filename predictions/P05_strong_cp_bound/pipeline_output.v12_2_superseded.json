@@ -1,0 +1,97 @@
+{
+  "ansatz": "powerlaw",
+  "ansatz_parameters": {
+    "p": 0.001
+  },
+  "consistency_with_nedm": {
+    "consistent_with_nedm": true,
+    "fraction_of_current_bound": 0.5,
+    "nedm_bound_reference": "n2EDM 2024 (|d_n| < 1.8e-26 e\u00b7cm at 90% CL)",
+    "nedm_theta_bound_abs": 1e-10,
+    "registered_abs_theta_z0": 5e-11
+  },
+  "consistency_with_quasar_rough": {
+    "consistent_with_quasar_rough": false,
+    "predicted_abs_delta_theta_at_z2": 3.953e-05,
+    "quasar_caveat": "Order-of-magnitude only. Actual quasar bounds on \u03b8-evolution depend on assumed isospin structure and require a full nuclear-physics interpretation; this comparison is illustrative.",
+    "quasar_z_probe": 2.0,
+    "rough_quasar_bound_abs_delta_theta": 1e-05
+  },
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "joint_consistency_with_P4": {
+    "note": "P4 (CMB birefringence) and P5 (strong-CP \u03b8-bound) probe the same \u03c3-F\u0303F coupling. Joint consistency requires that the g_CS amplitude in P4 and the g_\u03b8/f_\u03c3 coupling here arise from the same FRG-derived f_\u03c3. Cross-check is implemented in the M201 joint scoring layer."
+  },
+  "physics_status": "Parametrized trajectory \u03b8_eff(z) under \u03c3-relaxation. The coupling g_\u03b8/f_\u03c3 is a free parameter; the FRG calculation in Paper B (joint with P4) is gating piece for narrowing it to a derived value.",
+  "prediction_id": "P5",
+  "registered_couplings": {
+    "g_theta_over_f_sigma": 0.036,
+    "theta_eff_z0": 5e-11
+  },
+  "schema": "predictions_p5_pipeline_output_v1",
+  "tier": "T3",
+  "title": "Strong-CP \u03b8-bound consistency with \u03c3-axion-equivalence",
+  "tool": "predictions_compute_P5",
+  "tool_version": "v0.1-parametrized-trajectory",
+  "trajectory": [
+    {
+      "delta_theta_vs_z0": -3.431e-06,
+      "sigma_over_sigma0": 0.999904694,
+      "theta_eff": -3.431e-06,
+      "z": 0.1
+    },
+    {
+      "delta_theta_vs_z0": -1.459e-05,
+      "sigma_over_sigma0": 0.999594617,
+      "theta_eff": -1.459e-05,
+      "z": 0.5
+    },
+    {
+      "delta_theta_vs_z0": -2.494e-05,
+      "sigma_over_sigma0": 0.999307093,
+      "theta_eff": -2.494e-05,
+      "z": 1.0
+    },
+    {
+      "delta_theta_vs_z0": -3.297e-05,
+      "sigma_over_sigma0": 0.999084129,
+      "theta_eff": -3.297e-05,
+      "z": 1.5
+    },
+    {
+      "delta_theta_vs_z0": -3.953e-05,
+      "sigma_over_sigma0": 0.998901991,
+      "theta_eff": -3.953e-05,
+      "z": 2.0
+    },
+    {
+      "delta_theta_vs_z0": -4.987e-05,
+      "sigma_over_sigma0": 0.998614666,
+      "theta_eff": -4.987e-05,
+      "z": 3.0
+    },
+    {
+      "delta_theta_vs_z0": -6.445e-05,
+      "sigma_over_sigma0": 0.998209845,
+      "theta_eff": -6.445e-05,
+      "z": 5.0
+    },
+    {
+      "delta_theta_vs_z0": -8.622e-05,
+      "sigma_over_sigma0": 0.997604977,
+      "theta_eff": -8.622e-05,
+      "z": 10.0
+    },
+    {
+      "delta_theta_vs_z0": -0.0001658,
+      "sigma_over_sigma0": 0.995395513,
+      "theta_eff": -0.0001658,
+      "z": 100.0
+    },
+    {
+      "delta_theta_vs_z0": -0.0002513,
+      "sigma_over_sigma0": 0.993020497,
+      "theta_eff": -0.0002513,
+      "z": 1100.0
+    }
+  ]
+}

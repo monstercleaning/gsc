@@ -55,6 +55,13 @@ Plan:
 
 ## Scoring algorithm
 
+> **Editorial flag (v20.2, external review; the registered text below is unchanged):** the rule cannot be applied as
+> registered. It gives no numerical confidence band, binning, covariance or statistic, and the integrals as written
+> keep units of frequency. The frozen output holds the profile at eight frequencies, 54.6–88.8 MHz, so the
+> 90–140 MHz and 140–200 MHz regions have no prediction at all. Scoring P2 needs a new revision with the full
+> 70–200 MHz spectrum, a sampling rule, a covariance treatment and numerical thresholds. Until then P2 is listed as
+> awaiting data but is not a complete forward test.
+
 Compare predicted δT_b(ν) profile to observed profile in three regions:
 
 ```

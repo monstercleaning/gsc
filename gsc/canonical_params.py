@@ -9,9 +9,11 @@ models. All pipelines import the canonical value from here.
 
 Provenance of the value
 -----------------------
-An earlier central value, p = 1.0e-3, fails the registered DESI Year-1
-relative-shift check at z = +3.93 (rule |z| < 3). A p-scan through the P1
-pipeline against the registered DESI Year-1 precision (0.26/147.09 Mpc) gives:
+An earlier central value, p = 1.0e-3, fails P1's worked relative-shift check
+at z = +3.93 (rule |z| < 3). That check's reference, r_d = 147.09 +- 0.26 Mpc,
+is labelled DESI Year-1 in the register but is Planck 2018's LCDM value, and
+its statistic differs from P1's registered formula (v20.2 flag on P1). A p-scan
+through the P1 pipeline against that precision (0.26/147.09) gives:
 
     survival boundary (|z| = 3):  p = 7.63e-4
     canonical choice:             p = 6.00e-4
@@ -43,7 +45,7 @@ from __future__ import annotations
 CANONICAL_P: float = 6.0e-4
 CANONICAL_P_ROLE: str = "sigma_metrology_exponent"  # not an expansion-history exponent
 
-# The earlier central value (fails the registered DESI Year-1 check); kept only
+# The earlier central value (fails P1's worked check); kept only
 # to reproduce that historical check. Do NOT use in new pipelines.
 V12_2_HISTORICAL_P: float = 1.0e-3
 

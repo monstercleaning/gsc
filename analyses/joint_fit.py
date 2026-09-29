@@ -603,15 +603,25 @@ def render_markdown(res):
     return "\n".join(lines)
 
 
+REL_TOL, ABS_TOL = 2e-3, 1e-9  # relative to each value, so small quantities (q ~ 1e-4) are checked too
+
+
 def _compare(a, b, path="$"):
+    """Differences between a recomputed result `a` and a committed one `b`: same structure both ways, numbers
+    within REL_TOL of each value (ABS_TOL only absorbs rounding noise around zero)."""
     if isinstance(b, dict):
-        return [e for k in b for e in _compare(a.get(k) if isinstance(a, dict) else None, b[k], f"{path}.{k}")]
+        if not isinstance(a, dict):
+            return [f"{path}: structure differs"]
+        extra = [f"{path}.{k}: not in the committed output" for k in a if k not in b]
+        return extra + [e for k in b for e in _compare(a.get(k), b[k], f"{path}.{k}")]
     if isinstance(b, list):
         if not isinstance(a, list) or len(a) != len(b):
             return [f"{path}: structure differs"]
         return [e for i, (x, y) in enumerate(zip(a, b)) for e in _compare(x, y, f"{path}[{i}]")]
-    if isinstance(b, float) and isinstance(a, (int, float)):
-        return [] if abs(a - b) <= 2e-3 * max(1.0, abs(b)) else [f"{path}: {a} != {b}"]
+    if isinstance(b, (int, float)) and not isinstance(b, bool) and isinstance(a, (int, float)) and not isinstance(a, bool):
+        if not (math.isfinite(a) and math.isfinite(b)):
+            return [] if a == b else [f"{path}: {a} != {b}"]
+        return [] if abs(a - b) <= max(REL_TOL * max(abs(a), abs(b)), ABS_TOL) else [f"{path}: {a} != {b}"]
     return [] if a == b else [f"{path}: {a!r} != {b!r}"]
 
 

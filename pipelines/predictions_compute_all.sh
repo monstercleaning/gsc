@@ -5,13 +5,14 @@
 # never overwrites them: it recomputes every pipeline into a temporary file and
 # checks that the result is byte-identical to the registered output. With
 # --verify it also recomputes a second time to confirm determinism. It then
-# runs every scorer (scorecards are deterministic) and prints the scoreboard.
+# reruns every scorer into a temporary folder, checks that each scorecard is
+# reproduced and that no scorer crashed, and prints the scoreboard.
 #
 # Usage:
 #   bash pipelines/predictions_compute_all.sh
 #   bash pipelines/predictions_compute_all.sh --verify
 #
-# Exit: 0 = every pipeline reproduces its registered output; 2 = mismatch.
+# Exit: 0 = every pipeline and scorecard reproduces; 2 = mismatch or scorer crash.
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -41,11 +42,26 @@ for entry in predictions/P*/; do
 done
 
 echo
-echo "=== Scoring (entries with observed data) ==="
+echo "=== Scoring (scorecards are recomputed in a temporary folder and compared, never overwritten) ==="
 for scorer in pipelines/predictions_score_P*.py; do
   pid="$(basename "${scorer}" .py | sed 's/predictions_score_//')"
-  set +e; out=$(python3 "${scorer}" 2>&1); set -e
-  echo "  ${pid}: $(echo "${out}" | grep -o 'outcome: .*' | sed 's/outcome: //')"
+  entry="$(ls -d predictions/P$(printf '%02d' "${pid#P}")_*/ | head -1)"
+  if grep -q -- '"--register-dir"' "${scorer}"; then
+    copy="${TMP}/register_${pid}"; mkdir -p "${copy}"; cp -R "${entry}." "${copy}/"
+    set +e; out=$(python3 "${scorer}" --register-dir "${copy}" 2>&1); rc=$?; set -e
+    card="${copy}/scorecard.md"
+  else
+    set +e; out=$(python3 "${scorer}" --output "${TMP}/${pid}_scorecard.md" 2>&1); rc=$?; set -e
+    card="${TMP}/${pid}_scorecard.md"
+  fi
+  outcome="$(echo "${out}" | grep -o 'outcome: .*' | head -1 | sed 's/outcome: //' || true)"
+  word="${outcome%% *}"
+  # Scorers exit 1 on a FAIL verdict; any other non-zero exit, or no outcome line, is a crash, not a verdict.
+  if [ -z "${word}" ] || [ "${rc}" -gt 1 ] || { [ "${rc}" = "1" ] && [ "${word}" != "FAIL" ]; }; then
+    echo "  ${pid}: SCORER ERROR (exit ${rc})"; echo "${out}" | tail -3 | sed 's/^/      /'; status=2; continue
+  fi
+  if cmp -s "${card}" "${entry}scorecard.md"; then note="scorecard reproduces"; else note="SCORECARD DIFFERS"; status=2; fi
+  echo "  ${pid}: ${outcome}; ${note}"
 done
 
 echo

@@ -71,7 +71,7 @@ OMEGA_M_H2_FID = 0.1430
 TCMB_K = 2.7255
 NEFF = 3.046
 Z_STAR = 1089.92
-R_D_STD_MPC = 147.09          # registered DESI-era standard calibration (P1 observed_data)
+R_D_STD_MPC = 147.09          # P1 observed_data value: Planck 2018 LCDM r_d (labelled DESI Year-1 there)
 C_KM_S = 299792.458
 
 SIGMA_OMEGA_M_H2 = 0.0011     # Planck-like

@@ -38,8 +38,11 @@ def verdict(entry: Path) -> str:
     card = entry / "scorecard.md"
     if not card.is_file():
         return "awaiting data"
-    m = re.search(r"\*\*Outcome:\*\*\s*(\S+)\s+([A-Z-]+)", card.read_text(encoding="utf-8"))
-    return f"{m.group(1)} {m.group(2)}" if m else "scored"
+    text = card.read_text(encoding="utf-8")
+    m = re.search(r"\*\*Outcome:\*\*\s*(\S+)\s+([A-Z-]+)", text)
+    if not m:
+        return "scored"
+    return f"{m.group(1)} {m.group(2)}" + (" (retrodictive)" if "RETRODICTIVE" in text else "")
 
 
 def build() -> str:
@@ -47,7 +50,7 @@ def build() -> str:
     for entry in sorted(p for p in REGISTER.iterdir() if p.is_dir()):
         fm = frontmatter((entry / "prediction.md").read_text(encoding="utf-8"))
         v = verdict(entry)
-        key = v.split()[-1] if v != "awaiting data" else "awaiting data"
+        key = v.split()[1] if v != "awaiting data" else "awaiting data"
         counts[key] = counts.get(key, 0) + 1
         tier = fm.get("tier", "").split(" (")[0]
         target = fm.get("target_dataset", "").split(";")[0].split(" (")[0]
@@ -68,7 +71,8 @@ def build() -> str:
         "[METHOD.md](METHOD.md) for what each kind of verdict does and does not show, and "
         "[OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) for flagged issues. Titles, targets and dates are the registered "
         "wording; later corrections (for example, P1's forward target is now the full five-year DESI release) are "
-        "recorded inside each entry.",
+        "recorded inside each entry. Six outputs were once regenerated in place, which turned P1's FAIL into a "
+        "retrodictive PASS; [predictions/HISTORY.md](predictions/HISTORY.md) records it.",
         "",
         "| ID | Prediction | Tier | Verdict | Target data | When |",
         "|---|---|---|---|---|---|",

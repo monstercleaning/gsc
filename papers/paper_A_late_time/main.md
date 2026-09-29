@@ -103,6 +103,8 @@ For each ansatz family, parameters are constrained by the joint fit against the 
 
 - **Type Ia supernovae:** Pantheon+SH0ES sample with full STAT+SYS covariance (Brout et al. 2022; Riess et al. 2022).
 - **BAO:** DESI Year-1 galaxy-clustering BAO peak positions (DESI Collaboration 2024), with anticipated Year-2 and Year-3 increments registered as future test data.
+
+> **Erratum (v20.2):** the worked P1 check does not use DESI peak positions. Its reference, r_d = 147.09 ± 0.26 Mpc, is Planck 2018's ΛCDM value, and its statistic differs from P1's registered formula (the v20.2 flag on P1). At registration (p = 10⁻³) the check failed; it passes only after p was lowered using the same data (predictions/HISTORY.md).
 - **Compressed CMB priors:** Planck 2018 distance priors on (R, ℓ_a, Ω_b h², n_s) (Chen, Huang & Wang 2019).
 - **Linear-growth fσ8:** Gold 2017 + Zhao 2018 compilation.
 

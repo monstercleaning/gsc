@@ -112,7 +112,8 @@ Within one survey, a0 at z ≈ 2.2 over a0 at z ≈ 0.8 is predicted at 0.69–0
 RC100 gives 0.63 (0.51–0.77). A constant a0 gives 1, and a0 ∝ H(z) gives about 2.
 
 **How far this goes.** The preference over a constant is weak: Δ(−2 ln L) from -0.6 to -5.2
-across the variants, about 2σ at most, and smallest when the intrinsic scatter is fixed at a large value. The
+across the variants, smallest when the intrinsic scatter is fixed at a large value. The models are not nested, so
+this has no calibrated significance; read naively, it is at most about 2σ. The
 idea was suggested by the RC100 trend, so RC100 cannot confirm it. Over Ciocan et al.'s range, z = 0.33 to 1.44,
 it predicts a0 changing by a factor of 0.85–0.91, where their lines rise by 1.93–2.16 times;
 like every universal a0(z), it cannot fit both samples. DESI's evidence for evolving dark energy is itself

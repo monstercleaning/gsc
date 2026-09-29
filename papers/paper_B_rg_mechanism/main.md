@@ -233,6 +233,14 @@ literature-grounded g_CS = 0.036) AND the DESI Y1 BAO measurement
 literature-grounded coupling, is not consistent with current data for any
 σ(z) powerlaw ansatz.
 
+> **Erratum (v20.2):** this conclusion does not hold under the registered rules. The scan scored P4 with the 2σ
+> threshold the scorers had drifted to; at the registered |z| < 3, P4 passes for small p (z = −2.49 at the canonical
+> p = 6×10⁻⁴), where P1 and P5 pass too, so the joint window is not empty. Two further corrections: the
+> r_s ≈ 147 Mpc attributed to DESI Y1 is Planck 2018's ΛCDM value, and P4's formula integrates σ over time instead
+> of taking its change between emission and today, so its β is not the rotation the stated coupling produces
+> (the v20.2 flags on P1 and P4). The scan tool itself had stopped working after a reorganization and reported an
+> empty window without scoring anything; it was repaired in v20.2.
+
 There are three possible reconciliations, each leading to a different research
 programme:
 

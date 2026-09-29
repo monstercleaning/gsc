@@ -219,5 +219,42 @@ class TestP14BBNStatus(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout)
 
 
+
+class TestComparator(unittest.TestCase):
+    """The --check comparator must catch small quantities and missing or extra fields (negative controls)."""
+
+    def test_negative_controls(self):
+        cmp = joint_fit._compare
+        self.assertTrue(cmp({"q": 0.0}, {"q": 0.000865}))
+        self.assertTrue(cmp({"s": 0.0019}, {"s": 0.0}))
+        self.assertTrue(cmp({"a": 1, "b": 2}, {}))
+        self.assertTrue(cmp({}, {"a": 1.0}))
+        self.assertTrue(cmp({"a": [1.0, 2.0]}, {"a": [1.0]}))
+        self.assertTrue(cmp({"a": float("nan")}, {"a": 1.0}))
+
+    def test_tolerates_rounding(self):
+        cmp = joint_fit._compare
+        self.assertEqual(cmp({"q": 0.000865001}, {"q": 0.000865}), [])
+        self.assertEqual(cmp({"x": 1.0e-12}, {"x": 0.0}), [])
+        self.assertEqual(cmp({"n": 3, "s": "a"}, {"n": 3, "s": "a"}), [])
+
+
+class TestJointScan(unittest.TestCase):
+    """The joint scan runs in a temporary folder and reports what it scored."""
+
+    def test_scan_scores_without_touching_the_register(self):
+        before = {p: p.read_bytes() for p in (ROOT / "predictions").rglob("*") if p.is_file()}
+        proc = subprocess.run([sys.executable, str(ROOT / "pipelines" / "predictions_joint_constraint_scan.py"),
+                               "--p-min", "6e-4", "--p-max", "6.0001e-4", "--n-points", "2", "--format", "json"],
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        out = json.loads(proc.stdout)
+        row = out["p_dependent_scan"][0]
+        self.assertEqual(row["outcomes"]["P8"], "UNSCORED")
+        self.assertEqual(row["joint"], "PASS-only")
+        after = {p: p.read_bytes() for p in (ROOT / "predictions").rglob("*") if p.is_file()}
+        self.assertEqual(before, after)
+
+
 if __name__ == "__main__":
     unittest.main()

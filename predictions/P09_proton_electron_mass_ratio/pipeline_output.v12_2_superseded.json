@@ -1,0 +1,46 @@
+{
+  "determinism_note": "This file intentionally contains no timestamp; SHA-256 is a function only of the registered inputs.",
+  "framework_implications": {
+    "universal_scaling_outcome": "Predicted \u03bc\u0307/\u03bc = 0 and \u0394\u03bc/\u03bc = 0 at all z. Any observed non-zero value at any significance falsifies the universal coherent-scaling assumption (T1) and propagates to all higher tiers."
+  },
+  "physics_status": "Under strict universal coherent scaling (geometric lock), \u03bc is \u03c3-invariant by construction; predicted \u03bc\u0307/\u03bc = 0 to all orders. The non-universal opt-in mode parametrises differential coupling \u03b7_QCD - \u03b7_Higgs to explore how detection of \u03bc\u0307/\u03bc would constrain the universality assumption.",
+  "prediction": {
+    "differential_coupling_eta_diff": 0.0,
+    "mu_dot_over_mu_z0_per_yr": -0.0,
+    "powerlaw_p": 0.001,
+    "trajectory": [
+      {
+        "delta_mu_over_mu_predicted": -0.0,
+        "sigma_ratio": 1.0,
+        "z": 0.0
+      },
+      {
+        "delta_mu_over_mu_predicted": -0.0,
+        "sigma_ratio": 0.9994695125,
+        "z": 0.7
+      },
+      {
+        "delta_mu_over_mu_predicted": -0.0,
+        "sigma_ratio": 0.999307093,
+        "z": 1.0
+      },
+      {
+        "delta_mu_over_mu_predicted": -0.0,
+        "sigma_ratio": 0.998901991,
+        "z": 2.0
+      },
+      {
+        "delta_mu_over_mu_predicted": -0.0,
+        "sigma_ratio": 0.9986146661,
+        "z": 3.0
+      }
+    ]
+  },
+  "prediction_id": "P9",
+  "scaling_mode": "universal coherent scaling (geometric-lock honoured)",
+  "schema": "predictions_p9_pipeline_output_v1",
+  "tier": "T1 (consistency check)",
+  "title": "Constancy of \u03bc = m_p/m_e under universal coherent scaling",
+  "tool": "predictions_compute_P9",
+  "tool_version": "v0.1"
+}

@@ -62,7 +62,7 @@ now about a thousand times more precise.
   G = G₀ 0.8σ. Deuterium is against the variant. A 2026 Gaussian-process fit to the nuclear data shows that the
   older polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT's ab initio
   rates. With these rates and the PDG 2025 average, deuterium alone puts the variant 2.8–3.2σ away. Helium and
-  deuterium together put it 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G₀ fits them about 17 times
+  deuterium together put it 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G₀ fits them about 18 times
   better. The P14 registration missed these results. They predate it and are not scored.
 
 **The joint fit (v20.1).** [analyses/joint_fit.md](analyses/joint_fit.md) fits the variant, with the cosmological
@@ -72,7 +72,7 @@ parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO dat
 The same degeneracy leaves the exponent almost unconstrained by these data. Nucleosynthesis bounds it to
 −1.4×10⁻³ < q < 1.8×10⁻³ (2σ), which caps the H₀ this variant can reach at 67.3–69.5 km/s/Mpc: it does not
 address the Hubble tension. The LBT helium alone narrows the bound to −0.49×10⁻³ < q < 1.10×10⁻³ (v20.2); with
-deuterium it becomes −0.66×10⁻³ < q < 0.73×10⁻³, which leaves the registered q = 0.865×10⁻³ outside. The H₀ cap
+deuterium it becomes −0.65×10⁻³ < q < 0.72×10⁻³, which leaves the registered q = 0.865×10⁻³ outside. The H₀ cap
 was not recomputed.
 
 **What remains distinct.** Only early-universe gravity. At the P1-tuned value, G in atomic units is 0.992 of
@@ -158,12 +158,12 @@ Paper A §4 states that the three σ(t) families fit the late-time data (superno
 fσ8) within ΔAIC < 4 of ΛCDM, and Paper B builds on that calibration. The values in Paper A's fit table are
 illustrative and its Δχ² entries are placeholders, as the paper itself notes; the earlier fitting code is not part
 of this package (it remains in the project's git history, tag `v12.7-final`). No registered prediction depends on
-the fit: the canonical parameter comes from the P1 pipeline's scan against the DESI DR1-era precision
+the fit: the canonical parameter comes from the P1 pipeline's scan against the precision of Planck's r_d
 ([gsc/canonical_params.py](gsc/canonical_params.py)). What decides it: a refit of the three families with code
 shipped in the package. The joint CMB + BAO fit of problem 1 ([analyses/joint_fit.md](analyses/joint_fit.md)) now
 covers the power-law family in its coherent reading: at the canonical p it fits CMB + BAO as well as ΛCDM
 (Δχ² = −1.27), though lunar ranging excludes that reading locally (problem 1). The transition family is already
-excluded by the DR1-era check (Paper A §5.1), and rg_profile matches the power law at leading order. Supernovae and
+excluded by P1's worked check (Paper A §5.1), and rg_profile matches the power law at leading order. Supernovae and
 fσ8 are still not refitted, so the statement remains flagged in both papers.
 
 ## 9. A gravitational cause for the changing standards: timescape tested against DESI
@@ -278,7 +278,8 @@ dark-energy density instead of the expansion rate. With a true constant Λ that 
 assumption. If dark energy evolves, as DESI DR2 suggests, a0 follows the square root of its density, with no free
 shape parameter. DESI's histories make dark energy thinner beyond z ≈ 1.5, so a0 falls at high redshift, as RC100
 shows. On the same 100 galaxies this shape fits better than a constant in all eight variants (Δ(−2 ln L) from −0.6
-to −5.2, about 2σ at most), with a normalisation of 1.24–1.27 against today's 1.20. That is a hint, not evidence:
+to −5.2; the models are not nested, so this has no calibrated significance, and read naively it is at most about
+2σ), with a normalisation of 1.24–1.27 against today's 1.20. That is a hint, not evidence:
 the idea was suggested by the RC100 trend; Ciocan et al.'s rising a0 contradicts it, as it contradicts any
 universal a0(z); and DESI's evidence for evolving dark energy is itself 2.8–4.2σ. The prediction is sharp. At
 z ≈ 3–5, a0 should be 38–78% of today's, depending on the DESI data combination, where a constant a0 gives 100% and
@@ -313,3 +314,50 @@ galaxies, with nothing fitted, setting H by the dark-energy part beats setting i
 they prefer 0.06–0.21 of it. The pattern survives in his form of the relation; his formula with his scale does not
 describe these galaxies, as Lelli et al. (MNRAS 468, L68, 2017) found for nearby ones. Both uses extrapolate the
 theory beyond the regime it was derived for.
+
+## 12. An external review of the register and its tools (v20.2)
+
+**In plain words.** An independent automated review (OpenAI Codex, 29 September 2026, read-only, on the public
+repository) looked for errors in the physics, the register's integrity, the documents and the tools. All sixteen of
+its findings were checked against the files, and all were real. None changes a registered prediction; each is
+recorded where a reader of the affected entry will see it.
+
+**The register.**
+
+- Six outputs (P1, P2, P4, P5, P8, P9) were regenerated in place in v12.5, after the canonical exponent was lowered.
+  It was disclosed at the time, but METHOD.md said registered records are never edited. The originals are now kept
+  as `pipeline_output.v12_2_superseded.json`, and [predictions/HISTORY.md](predictions/HISTORY.md) has the record.
+  P1 failed its worked check at registration (z = +3.93); its PASS is retrodictive, with p chosen from the same data.
+- P1's "DESI Year-1" reference value, r_d = 147.09 ± 0.26 Mpc, is Planck 2018's ΛCDM value, and its scorer runs a
+  statistic that differs from the registered formula.
+- P5's scorer never reads the observed bound; recomputed from it, the PASS holds.
+- P2's scoring rule has no numerical thresholds, and its prediction covers only 54.6–88.8 MHz of the 70–200 MHz it
+  is scored over.
+- P15's rule, like P14's, would give PASS to a measurement centred on the alternative it is meant to exclude.
+
+**The physics.**
+
+- P4 integrates σ over time; the stated coupling rotates polarization by the change of σ. Its PASS carries no
+  physical weight, though with the endpoint form the verdict would not change.
+- P6 converts Ω_GW to strain without the (H₀/f) factor, about ten orders of magnitude off. By its own formula the
+  pulsar-timing bound needs M_* ≲ 4×10¹¹ GeV, not the TeV scale THEORY.md stated.
+- THEORY.md §3.3 had an atomic-energy ratio upside down; the code was right.
+- Paper B's empty σ–axion window came from a 2σ threshold the scorers had drifted to. The repaired scan finds P1,
+  P4 and P5 passing together for p ≲ 3×10⁻⁴ and at the canonical 6×10⁻⁴.
+- The emergent-gravity test uses the spherical relation M = rV²/G for discs, now stated. The P14 abundance
+  analysis now includes the covariance helium and deuterium share through the baryon density; the conclusions did
+  not change. The a0 "about 2σ" is now described as a naive reading of models that are not nested.
+
+**The tools.**
+
+- The `--check` comparator allowed an absolute error of 0.002 on every small quantity, so q = 0 matched
+  q = 8.65×10⁻⁴, and it ignored extra or missing fields. It now compares each value relative to its size and
+  checks the structure both ways. Negative-control tests cover both failures.
+- `predictions_compute_all.sh` ignored scorer crashes and rewrote scorecards; it now reruns scorers in a
+  temporary folder, compares each scorecard, and fails on a crash (tested with a deliberately broken scorer).
+- The joint scan looked in a folder that no longer existed and reported an empty window after scoring nothing. It
+  now runs in a temporary folder, reports unscored entries as unscored, and stops on any failure.
+
+**What remains open.** P1, P2, P4 and P6 need new revisions before they can serve as tests: P1 a statistic built
+on BAO observables and their covariance, P2 a complete spectrum and thresholds, P4 and P6 corrected physics. None
+is registered here.

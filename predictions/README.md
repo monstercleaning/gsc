@@ -11,7 +11,8 @@ Each folder contains:
 - `scorecard.md` — the verdict at the registered rule, recording the SHA-256 of the scored output.
 
 `P08_redshift_drift/` also keeps `pipeline_output.r1_superseded.json`, the superseded first revision, because the
-register is append-only.
+register is append-only. Six entries keep `pipeline_output.v12_2_superseded.json`, their original output from before
+an in-place regeneration in v12.5; [HISTORY.md](HISTORY.md) records it.
 
 `MANIFEST.sha256` lists the SHA-256 of every statement, frozen output and input file here. It is regenerated with
 `python3 pipelines/make_register_manifest.py` and checked by `verification/verify_claims.py`.

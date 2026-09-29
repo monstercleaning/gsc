@@ -40,6 +40,12 @@ Shares the f_σ computation infrastructure with P4. Additional component:
 
 ## Scoring algorithm
 
+> **Editorial flag (v20.2, external review; the registered text below is unchanged):** the scorer takes the verdict
+> cached in the frozen output (`consistent_with_nedm`) and never reads the bound in `observed_data.json`, so a
+> tighter measurement could not change it. Recomputed from the observed file, |θ_eff| = 5×10⁻¹¹ is half the bound of
+> 1×10⁻¹⁰, and the PASS holds. The source labelled "n2EDM 2024" is Abel et al. 2020 (PRL 124, 081803), the PSI nEDM
+> measurement, as its date and link show.
+
 For each released bound B_θ on |θ_eff|:
 
 ```

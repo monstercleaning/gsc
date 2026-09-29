@@ -5,7 +5,8 @@
 - **a0 tied to dark energy** ([analyses/a0_evolution.md](analyses/a0_evolution.md)): read as a0 ≈ c √Λ, Milgrom's
   coincidence ties the scale at which galaxies show dark matter to the dark-energy density. With DESI DR2's evolving
   dark energy it predicts a0 falling at high redshift, with no free shape parameter. On the 100 RC100 rotation
-  curves it fits better than a constant a0 in every variant, weakly (about 2σ at most). It predicts a0 at 38–78% of
+  curves it fits better than a constant a0 in every variant, weakly (Δ(−2 ln L) up to 5.2, between models that are
+  not nested). It predicts a0 at 38–78% of
   today's at z ≈ 3–5. Recorded in problem 11. The idea was suggested by the same data, so this is a hint to test,
   not evidence.
 - **P15 registered** ([predictions/P15_a0_dark_energy/](predictions/P15_a0_dark_energy/)), T4: a0 follows the
@@ -32,12 +33,31 @@
     that the polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT. With
     these rates and the PDG 2025 average, deuterium alone puts P14 2.8–3.2σ away.
   - Helium and deuterium together put P14 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G0 fits them
-    about 17 times better.
+    about 18 times better.
   - P14's rule would score such a combined determination PASS, since it needs only |z| < 3 and σ ≤ 0.0149.
     Reports on P14 give both distances.
 
   None of this is scored, because all of it predates the registration. P14 carries a new editorial flag with a
   same-day addendum, which changes the register manifest digest. Recorded in problems 1 and 5.
+
+- **External review corrections** (OPEN_PROBLEMS.md, problem 12): an automated review of the public repository
+  (OpenAI Codex, read-only) reported sixteen findings, all confirmed against the files.
+  - Register: six outputs regenerated in place in v12.5 are now kept as `pipeline_output.v12_2_superseded.json`,
+    with [predictions/HISTORY.md](predictions/HISTORY.md). METHOD.md no longer claims the rule was never broken, and
+    PREDICTIONS.md marks P1's PASS as retrodictive (it failed at registration, z = +3.93).
+  - Editorial flags on P1 (its reference r_d is Planck's, not DESI's; its scorer runs a different statistic), P2
+    (incomplete scoring rule), P4 (integrates σ instead of taking its change), P5 (scorer ignores the observed
+    bound; the PASS holds), P6 (strain off by about ten orders of magnitude; M_* ≲ 4×10¹¹ GeV, not TeV) and P15 (PASS
+    means compatible, not preferred).
+  - Tools: the `--check` comparator now scales its tolerance with each value and checks structure both ways;
+    `predictions_compute_all.sh` recomputes scorecards in a temporary folder and fails on scorer crashes; the joint
+    scan works again, without touching the register. Negative-control tests added.
+  - Documents: the THEORY.md §3.3 energy ratio, the TeV claim, the σ–axion window (errata in Papers A, B and E; the
+    repaired scan finds P1, P4 and P5 passing together at small p), the spherical approximation in the
+    emergent-gravity test, the baryon-density covariance in the P14 abundance analysis, and the a0 significance
+    wording.
+
+  The register manifest digest changes (new files and flags); no registered output changed.
 
 ## 20.1.0 — 2026-09-23 — open problems computed
 

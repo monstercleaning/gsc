@@ -51,7 +51,7 @@ if it fails.
 | Tier | Type | Claim | Kill-test | If false, what survives | Current status |
 |---|---|---|---|---|---|
 | **T1** | Kinematic frame | Freeze-frame shrinkage is conformally equivalent to FLRW expansion; all local dimensionless physics is invariant (the *geometric lock*) | Mathematical inconsistency, or a robust detection of any exact-null violation (kill conditions K1, K2) | — | Alive; every null test so far passes |
-| **T2** | Phenomenological ansatz | A small late-time σ(t) evolution with one canonical parameter p | Registered observations outside the predicted band; DR1-era BAO sets p < 7.63×10⁻⁴ | T1 | Alive at p = 6×10⁻⁴ in the registered heuristic. Its only coherent reading confines the drift to z > 10, where a CMB + BAO fit absorbs it into H₀ and leaves early-universe gravity (P14; OPEN_PROBLEMS.md problem 1) |
+| **T2** | Phenomenological ansatz | A small late-time σ(t) evolution with one canonical parameter p | Registered observations outside the predicted band; P1's worked check sets p < 7.63×10⁻⁴ | T1 | Alive at p = 6×10⁻⁴ in the registered heuristic. Its only coherent reading confines the drift to z > 10, where a CMB + BAO fit absorbs it into H₀ and leaves early-universe gravity (P14; OPEN_PROBLEMS.md problem 1) |
 | **T3** | Mechanism hypotheses | Renormalization-group running of G(σ); σ couplings to specific sectors | All viable profiles excluded by precision tests, or incompatible with a first-principles derivation | T1 + T2 | Largely excluded or conjectural (§5) |
 | **T4** | Speculative extensions | Defects, spatial σ(x), information-thermodynamic and quantum-reference-frame readings | Per-module observational tests | T1 + T2 + T3 | Mostly excluded or untested (§6) |
 
@@ -97,7 +97,7 @@ Implemented in `gsc/measurement_model.py` and documented in [docs/measurement_mo
 Photons propagate in an approximately static background with constant energies along their paths; atomic
 transition energies at emitter and detector evolve with σ. The observed redshift is
 
-$$1 + z_{obs} = \frac{\Delta E_{atom}(t_{em})}{\Delta E_{atom}(t_{det})} = \frac{\sigma(t_{em})}{\sigma(t_{det})} \cdot R_{geom}$$
+$$1 + z_{obs} = \frac{\Delta E_{atom}(t_{det})}{\Delta E_{atom}(t_{em})} = \frac{\sigma(t_{em})}{\sigma(t_{det})} \cdot R_{geom}$$
 
 where R_geom captures geometric path effects. For background cosmology R_geom = 1: the entire redshift is
 metrology drift. Distance modulus, BAO ruler and growth rate are all expressible in this form.
@@ -133,8 +133,9 @@ T2 adds a small late-time σ evolution with one canonical parameter, defined in 
 
 $$\sigma(z)/\sigma(0) = (1+z)^{-p}, \qquad p = 6 \times 10^{-4}.$$
 
-The value was chosen inside the region allowed by already-public data: the registered DESI Year-1 check
-(|z| < 3) allows p < 7.63×10⁻⁴. It was deliberately taken near that boundary rather than near zero, because a
+The value was chosen inside the region allowed by already-public data: P1's worked check (|z| < 3) allows
+p < 7.63×10⁻⁴. That check is weaker than its label: its reference r_d, recorded as DESI Year-1, is Planck 2018's
+ΛCDM value, and its statistic differs from P1's registered formula (the v20.2 flag on P1). It was deliberately taken near that boundary rather than near zero, because a
 theory kept alive by shrinking its observables to zero is not alive.
 
 **Role of p.** p is a *metrology* exponent: a leading-order modulation of atomic units relative to a
@@ -155,13 +156,13 @@ but the growth they need conflicts with the black-hole masses measured locally (
 ### 4.2 Ansatz families
 
 Three families are implemented in the P1 pipeline: **powerlaw** (the canonical one), **transition** (a
-low-redshift leg p and a five-times-larger high-redshift leg; it fails the DR1-era check outright and is kept
+low-redshift leg p and a five-times-larger high-redshift leg; it fails P1's worked check outright and is kept
 only as a falsified comparison branch), and **rg_profile** (identical to powerlaw at leading order).
 
 ### 4.3 What T2 predicts
 
 - **BAO ruler shift (P1):** +0.417% relative to the ΛCDM expectation, from the drag-epoch σ ratio
-  (1+z_drag)^p. The worked DR1-era check passes at z = +2.36. Testability: DESI DR2 aggregate BAO precision
+  (1+z_drag)^p. P1's worked check passes at z = +2.36 (retrodictive; see the flag on P1). Testability: DESI DR2 aggregate BAO precision
   ~0.24% puts the shift at ~1.7σ; the full five-year release (~0.2%) at ~2.1σ — indicative alone, decisive
   only in combination. These estimates hold at fixed cosmological parameters. In the only coherent reading of
   the shift (masses drifting relative to the Planck mass before z ≈ 10), a joint CMB + BAO fit absorbs it into
@@ -238,8 +239,10 @@ point renormalizes the dimension-4 QCD topological term, σ-evolution induces a 
 separate axion field, and the photon-sector part of the same coupling predicts CMB cosmic birefringence.
 
 Status: a structural conjecture, not a derivation. It is obstructed by de Brito, Eichhorn & Lino dos Santos
-(2022) at the dimension-4 level, and the joint σ–axion window at literature couplings is excluded (Paper B
-§4). The registered birefringence test P4 passes at the registered rule against the current <3σ hint; the
+(2022) at the dimension-4 level. Paper B §4 reports the joint σ–axion window at literature couplings as empty, but
+that scan used the 2σ threshold the scorers had drifted to; at the registered |z| < 3, P1, P4 and P5 all pass at
+the canonical p (Paper B erratum). P4's formula also integrates σ over time instead of taking its change, so its β
+is not the rotation this coupling produces (the v20.2 flag on P4). The registered birefringence test P4 passes at the registered rule against the current <3σ hint; the
 strong-CP bound test P5 passes. ACT DR6 reports β = 0.215° ± 0.074° (2.9σ from zero), which continues to
 squeeze this module.
 
@@ -262,7 +265,9 @@ If the evolution of σ crosses σ_* at a finite rate, the crossing can act as a 
 defects with Kibble–Zurek density n ~ τ_quench^(−dν/(1+νz)). Proposed consequences: a cosmic-string network
 with a stochastic gravitational-wave background, a distinct CMB B-mode contribution, and a dark-matter
 reading of the defect tangle. **Status:** the registered spectrum test (P6) fails at the default parameters —
-pulsar-timing bounds exclude a crossing scale near the GUT scale (a TeV-scale crossing is required).
+pulsar-timing bounds exclude a crossing scale near the GUT scale. With the pipeline's own order-of-magnitude
+Ω_GW, the bound requires M_* ≲ 4×10¹¹ GeV, not the TeV scale stated earlier; its strain conversion is also wrong
+(the v20.2 flag on P6).
 
 ### 6.2 Spatial σ(x, t) and MOND-like phenomenology
 
@@ -272,8 +277,8 @@ dynamics. The registered test is P10 (energy-independent, structure-correlated T
 **Status:** pending; the predicted amplitude is below current detector thresholds. The simplest evolution of
 the scale, a0 proportional to the expansion rate H(z) as the coincidence a0 ≈ c H₀/2π suggests, is disfavoured by
 100 rotation curves at z = 0.6–2.5 (2.8–5.4σ; OPEN_PROBLEMS.md, problem 11). Tying a0 to the dark-energy density
-instead, with DESI DR2's evolving dark energy, fits the same galaxies slightly better than a constant a0 (about 2σ
-at most) and predicts a0 falling to 38–78% of today's at z ≈ 3–5; registered as P15. The rotation curves published
+instead, with DESI DR2's evolving dark energy, fits the same galaxies slightly better than a constant a0 (Δ(−2 ln L)
+up to 5.2, a comparison of models that are not nested, with no calibrated significance) and predicts a0 falling to 38–78% of today's at z ≈ 3–5; registered as P15. The rotation curves published
 so far at z ≈ 4.5 cannot measure a0 (analyses/a0_high_z.md). Verlinde's emergent gravity, where the extra
 gravity is the dark-energy vacuum's response to matter, shows the same dark-energy pattern, but with its own scale
 it predicts far more extra gravity than these galaxies show (analyses/emergent_gravity.md).
@@ -312,7 +317,7 @@ register itself. The register currently has 9 active scorers.
 
 ### Prediction P1 — BAO standard-ruler shift
 T2. The apparent BAO ruler is +0.417% larger than the ΛCDM expectation at the canonical p. Retrodictive
-DR1-era check: PASS (z = +2.36). Forward target: the full five-year DESI release. Its only coherent reading is
+Worked check: PASS (z = +2.36), retrodictive, with p chosen from the same data (predictions/HISTORY.md). Forward target: the full five-year DESI release. Its only coherent reading is
 absorbed into H₀ in a joint CMB + BAO fit, so the registered statistic cannot distinguish it (open problem 1).
 [predictions/P01_bao_ruler_shift/](predictions/P01_bao_ruler_shift/)
 
@@ -372,7 +377,7 @@ T2, the coherent reading of the canonical exponent (registered in v20.1 under K0
 0.8% weaker than today's at recombination and 3.0% weaker at nucleosynthesis, exactly unchanged below z = 10, with
 ln(G_BBN/G₀) = 3.80 × ln(G_rec/G₀). Awaiting data precise enough to tell it from G = G₀. If it fails, K0.4 applies.
 Data published before the registration (not scored): helium puts it 1.4σ away and G = G₀ 0.8σ. With deuterium and the
-nuclear rates now favoured, P14 is 2.4–2.7σ away, and G = G₀ fits about 17 times better
+nuclear rates now favoured, P14 is 2.4–2.7σ away, and G = G₀ fits about 18 times better
 ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)).
 [predictions/P14_early_gravity/](predictions/P14_early_gravity/)
 

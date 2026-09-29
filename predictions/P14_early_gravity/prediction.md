@@ -103,7 +103,7 @@ nothing.
 > (Launders, Giovanetti & Liu, arXiv:2604.16600) shows that the polynomial fits behind the first rate set over-predict
 > deuterium; its unbiased fit agrees with PRIMAT. With these rates and the PDG 2025 deuterium average
 > (2.508 ± 0.029), deuterium alone puts the prediction 2.8–3.2σ away, and helium and deuterium together 2.4–2.7σ,
-> where G = G0 fits them about 17 times better. Such a combined determination, published after the registration,
+> where G = G0 fits them about 18 times better. Such a combined determination, published after the registration,
 > would still score PASS under the rule (σ ≈ 0.012, |z| < 3), which is why reports give both distances.
 
 ## Scoring algorithm

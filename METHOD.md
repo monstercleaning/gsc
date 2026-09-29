@@ -17,12 +17,17 @@ Every prediction lives in one folder under [predictions/](predictions/):
 The pipelines are in [pipelines/](pipelines/) (`predictions_compute_P<N>.py` and `predictions_score_P<N>.py`),
 and [PREDICTIONS.md](PREDICTIONS.md) is the status table generated from the register.
 
-**Append-only.** A registered prediction is never edited into a different prediction. A correction becomes a
+**Append-only.** A registered prediction is not to be edited into a different prediction. A correction becomes a
 new revision: when the P8 pipeline was found to use a history the package's own data exclude, the old output was
-kept as `pipeline_output.r1_superseded.json`, a revision r2 was registered, and both are in the entry.
+kept as `pipeline_output.r1_superseded.json`, a revision r2 was registered, and both are in the entry. The rule was
+broken once. In v12.5 (27 July 2026) six outputs (P1, P2, P4, P5, P8, P9) were regenerated in place after the
+canonical exponent was lowered, and P1's verdict went from FAIL to a retrodictive PASS. The change was disclosed, and
+the original outputs are now kept as `pipeline_output.v12_2_superseded.json`;
+[predictions/HISTORY.md](predictions/HISTORY.md) has the full record. No registered output has been edited in place
+since.
 
-**Frozen records.** Registered pipelines and their outputs are records, not documentation. They are never edited,
-and a reorganization must reproduce them byte for byte (it did: every output is byte-identical after the move to
+**Frozen records.** Registered pipelines and their outputs are records, not documentation. They are not edited
+(the one exception is recorded above), and a reorganization must reproduce them byte for byte (it did: every output is byte-identical after the move to
 this layout). Document names inside frozen records therefore use the names from the time of registration:
 
 | Name in a frozen record | Current name |
@@ -38,10 +43,12 @@ inputs never changes a file.
 
 ## 2. What the verdicts do and do not show
 
-- **Retrodictive checks** (P1's worked DESI Year-1 check, P3, P4, P5, P6, P7, P9, P11, P13) were scored against data
-  that was already public when the pipelines were written. They exercise the tooling; they are not evidence that a
-  prediction came before its data.
-- **Genuine forward registrations** target unreleased data: P2 (HERA / SKA-Low), P8 (ELT/ANDES), P10 (CTAO), P12
+- **Retrodictive checks** (P1's worked check, P3, P4, P5, P6, P7, P9, P11, P13) were scored against data that was
+  already public when the pipelines were written. They exercise the tooling; they are not evidence that a prediction
+  came before its data. P1's check is weaker still: its exponent was chosen from the data it is checked against, and
+  its reference value is Planck's r_d, not a DESI measurement (see the flag in the entry).
+- **Genuine forward registrations** target unreleased data: P2 (HERA / SKA-Low; its scoring rule is incomplete, see
+  the flag in the entry), P8 (ELT/ANDES), P10 (CTAO), P12
   (the next nuclear-clock epoch), P1's full five-year DESI target, P14 (the next determinations of early-universe
   G) and P15 (rotation curves at z ≥ 2). The first five are the tests kill condition K0 counts; P14 carries its own
   clause (THEORY.md §8), and P15 tests a T4 module.

@@ -77,6 +77,14 @@ library only.
 
 ## Scoring algorithm
 
+> **Editorial flag (v20.2, external review; the registered text below is unchanged):** PASS under this rule means
+> "not excluded by a measurement precise enough to tell the prediction from a constant a0", not "preferred". A
+> determination centred on a constant a0 can pass: at z = 3 the band is 0.63–0.78, and r_obs = 1.00 ± 0.10 lies 2.2σ
+> from it with σ ≤ 0.11, so it scores PASS. The Significance section's "if it passes, dark energy sets the scale" is
+> therefore too strong. Reports on P15 give the distance from a constant a0 and the likelihood ratio as well. The
+> "about 2σ at most" quoted above is a rough reading of Δ(−2 ln L) between models that are not nested, not a
+> calibrated significance.
+
 For each published determination of the relation's acceleration scale from rotation curves of at least 10 galaxies
 with median redshift z ≥ 2:
 

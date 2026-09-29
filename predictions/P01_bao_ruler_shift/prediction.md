@@ -83,6 +83,20 @@ Pre-registration must use the *next unreleased increment* — at registration ti
 > though the reading fits the data as well as ΛCDM. The kill-condition count
 > (THEORY.md §8, K0) is left unchanged.
 
+> **Editorial flag (v20.2, external review; the registered text is unchanged):** three corrections to the worked
+> check and to the flag above.
+>
+> - The value in `observed_data.json` labelled DESI Year-1, r_d = 147.09 ± 0.26 Mpc, is the Planck 2018 ΛCDM value
+>   (TT,TE,EE+lowE+lensing). BAO data measure distances in units of r_d, not r_d itself. The worked check compares the
+>   predicted shift with the precision of a CMB-derived r_d.
+> - The scorer does not run the formula below. It computes z = (Δr_d/r_d)_predicted / (σ/r_d)_observed, which weighs
+>   the size of the shift against a precision instead of comparing prediction with observation. The flag above calls
+>   that "the statistic below"; it is not. The recorded PASS comes from the executed statistic, not the written rule.
+> - At registration (v12.2, p = 1.0×10⁻³) the check failed, z = +3.93. The PASS follows the v12.5 lowering of p,
+>   chosen from the data it is checked against ([HISTORY.md](../HISTORY.md)). The forward target is the full
+>   five-year DESI release (the Year-3 target named above was already public), and no statistic for it is
+>   registered: scoring it needs a new revision built on the BAO observables and their covariance.
+
 For each registered sub-prediction (P1.a, P1.b, P1.c):
 
 ```

@@ -10,8 +10,10 @@ dark-energy vacuum, and the response is an apparent dark matter
 
     M_D(r)^2 = (a_M r^2 / G) d(M_B(r) r)/dr,     a_M = c H0 / 6,
 
-derived for a de Sitter universe (his eq. 7.40). With M_B(r) = r V_bar(r)^2 / G,
-the observed acceleration at radius r is
+derived for a de Sitter universe (his eq. 7.40), for spherical mass
+distributions. With M_B(r) = r V_bar(r)^2 / G, the spherical identity, applied
+here to discs as in the published tests of the formula, the observed
+acceleration at radius r is
 
     g_obs = g_bar + sqrt(k a_M g_bar),    k = 2 + d ln V_bar^2 / d ln r,
 
@@ -260,6 +262,9 @@ def render_markdown(res):
         "  the universe is not dominated by dark energy, so both uses are extrapolations, as in the published tests.",
         "- At z ≈ 0, Lelli, McGaugh & Schombert (MNRAS 468, L68, 2017) found the formula fits nearby galaxies only with",
         "  stellar masses lower than other estimates allow: the same excess of extra gravity seen here.",
+        "- The formula holds for spherical mass distributions. Using M_B = r V_bar²/G for discs, as published tests also do,",
+        "  is an approximation: a disc's enclosed mass differs from it by tens of percent, much less than the gap between",
+        "  Verlinde's scale and the preferred one in the table above, but the fitted scale inherits that uncertainty.",
         "- The mass distribution enters through k, taken from RC100's model (exponential disc, n = 4 bulge of 1 kpc).",
         f"  Across the sample k runs from {v['k_distribution']['min']:.2f} to {v['k_distribution']['max']:.2f} (median {v['k_distribution']['median']:.2f}); "
         f"bulge fractions run from {v['bt_distribution']['min']:.2f} to {v['bt_distribution']['max']:.2f}.",
