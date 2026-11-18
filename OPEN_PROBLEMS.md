@@ -58,12 +58,12 @@ now about a thousand times more precise.
   (95%). This variant sits at that edge.
 - Alvey et al. 2020 (arXiv:1910.10730): G_BBN/G₀ = 0.99 +0.06/−0.05 (2σ). Compatible.
 - The LBT helium abundance (Aver et al. 2026, arXiv:2601.22238), read as G during nucleosynthesis (v20.2,
-  [analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)): G_BBN/G₀ = 0.989 ± 0.014. The variant is 1.4σ away,
+  [analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)): G_BBN/G₀ = 0.989 ± 0.014. The variant is 1.5σ away,
   G = G₀ 0.8σ. Deuterium is against the variant. A 2026 Gaussian-process fit to the nuclear data shows that the
   older polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT's ab initio
-  rates. With these rates and the PDG 2025 average, deuterium alone puts the variant 2.8–3.2σ away. Helium and
-  deuterium together put it 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G₀ fits them about 18 times
-  better. The P14 registration missed these results. They predate it and are not scored.
+  rates. With these rates and the PDG 2025 average, deuterium alone puts the variant 2.68–3.08σ away. Helium and
+  deuterium together put it 2.38–2.67σ away (1.4σ with the polynomial fits), and G = G₀ fits them 16.5 times
+  better with the Planck Gaussian-process rates. The P14 registration missed these results. They predate it and are not scored.
 
 **The joint fit (v20.1).** [analyses/joint_fit.md](analyses/joint_fit.md) fits the variant, with the cosmological
 parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO data. The variant survives:
@@ -71,8 +71,8 @@ parameters free, to the Planck 2018 CMB distance priors and the DESI DR2 BAO dat
 68.5 to 67.9 km/s/Mpc, and after the refit D/r_d differs from ΛCDM by less than 0.005% at every DESI redshift.
 The same degeneracy leaves the exponent almost unconstrained by these data. Nucleosynthesis bounds it to
 −1.4×10⁻³ < q < 1.8×10⁻³ (2σ), which caps the H₀ this variant can reach at 67.3–69.5 km/s/Mpc: it does not
-address the Hubble tension. The LBT helium alone narrows the bound to −0.49×10⁻³ < q < 1.10×10⁻³ (v20.2); with
-deuterium it becomes −0.65×10⁻³ < q < 0.72×10⁻³, which leaves the registered q = 0.865×10⁻³ outside. The H₀ cap
+address the Hubble tension. The LBT helium alone narrows the bound to −0.46×10⁻³ < q < 1.04×10⁻³ (v20.2); with
+deuterium it becomes −0.61×10⁻³ < q < 0.74×10⁻³, which leaves the registered q = 0.865×10⁻³ outside. The H₀ cap
 was not recomputed.
 
 **What remains distinct.** Only early-universe gravity. At the P1-tuned value, G in atomic units is 0.992 of
@@ -126,13 +126,13 @@ bound on the strong-CP parameter θ, which standard physics leaves free, so no m
 ΛCDM. None of K0's five forward tests probes early gravity; under K0.3 it counts only as a new forward prediction,
 and it was registered as P14 in v20.1, with the clause that its failure triggers K0.4. The registered late-time
 content of the core is observationally indistinguishable from ΛCDM, which is the situation the conformal-reduction
-clause K0.4 addresses. It does not fire, because P14 remains testable, as does the T4 module behind P10. The
+clause K0.4 addresses. It does not fire, because P14 remains testable, although P10 lacks a scoreable statistic (problem 13). The
 earlier text of this problem recorded the possibility before the computation was done.
 
 **Current pressure on P14 (v20.2).** Nucleosynthesis data published before the registration already press on it.
-With the deuterium-burning rates now favoured, helium and deuterium put P14 2.4–2.7σ from the data, and deuterium
-alone 2.8–3.2σ. A fit of the model that reached 3σ would fail P14 by its own rule, and K0.4 would then fire. Only
-the older polynomial rate fits, which a 2026 analysis shows over-predict deuterium, leave P14 at 1.3σ
+With the deuterium-burning rates now favoured, helium and deuterium put P14 2.38–2.67σ from the data, and deuterium
+alone 2.68–3.08σ. A fit of the model that reached 3σ would fail P14 by its own rule, and K0.4 would then fire. Only
+the older polynomial rate fits, which a 2026 analysis shows over-predict deuterium, leave P14 at 1.4σ
 ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md); problem 1). New laboratory measurements of the
 deuterium-burning reactions at 0.1–0.6 MeV, or a CMB fit of the model, would settle it.
 
@@ -361,3 +361,46 @@ recorded where a reader of the affected entry will see it.
 **What remains open.** P1, P2, P4 and P6 need new revisions before they can serve as tests: P1 a statistic built
 on BAO observables and their covariance, P2 a complete spectrum and thresholds, P4 and P6 corrected physics. None
 is registered here.
+
+## 13. A second external review (v20.2)
+
+**What the registered observations can test.**
+
+- P2 predicts a sky mean. HERA Phase II's cosmic-dawn fluctuation power spectrum cannot score it.
+- P5 passes today's nEDM bound. If θ_eff is the QCD angle, the registered excursion costs 9.1×10⁻¹⁵ GeV⁴
+  at z = 2, about 2.7×10³¹ times the total density. The QCD potential is missing from the field and Friedmann
+  equations. Hadron masses also change at order θ², in tension with P9's exact μ null.
+- P7's universal clock shift cancels in a clock ratio at any precision.
+- P8's flat ΛCDM drift changes sign at z = 2 as Ω_m crosses 4/13. Its χ²/dof band has no stated endpoints.
+- P10's stationary delay shifts a flare intact, and its ε is identical across sources. Neither registered
+  statistic can be scored.
+- P12's anchor has fractional uncertainty 3.8×10⁻¹². Both epochs still have to meet the 10⁻¹³ precision cut.
+- P15 takes the pointwise envelope of four histories. Two determinations can lie on opposite edges at different
+  redshifts even if no single history fits both.
+
+**What the fits measure.** Each black-hole fit removes more mass than its entire star-formation history supplies,
+before stellar mass return. The removed/formed ratios are 4.10 and 6.02. No stellar-collapse population can supply
+this, including in the published Madau model the fits reproduce. The fast-radio-burst baryon census supplies
+independent context. [Stellar budget](analyses/ccbh_fit.md) and [Connor et al.](https://arxiv.org/abs/2409.16952).
+
+P14's squared expansion-rate ratio is (1 + q)² G/G₀. Using separate epochs for helium and deuterium puts the
+Planck Gaussian-process deuterium result 2.68σ from P14. Standard expansion has 16.5 times its joint likelihood.
+The background uses matter density ∝ g a⁻³ without compensating energy. It is a kinematic history pending a
+conserving model. [Abundance calculation](analyses/p14_bbn_status.md).
+
+In the high-redshift refits, two of four galaxies (BRI1335-0417 and J081740) prefer zero gas mass despite
+measured CO emission. This limits what the fits say about a₀. In RC100, the quoted 5.1σ against a₀ ∝ H(z)
+comes from the likelihood profile. The mocks test recovery and typical scatter, without calibrating that tail.
+[High-redshift fits](analyses/a0_high_z.md) and [RC100 mocks](analyses/a0_evolution.md).
+
+**Changing mass standards in galaxies.** For 153 SPARC galaxies the median required Δln A is
+1.14e-07, or 1.68 times the baryonic potential difference in units of c². A purely conformal force
+leaves light sensitive only to the baryonic metric if the field's own gravity is negligible. At the last measured
+radius that supplies a median 23.4% of the dynamical acceleration. Galaxy and cluster lensing require extra
+gravity. A field that supplies that gravity through its own energy serves as dark matter. Solar-system screening
+is a separate, untested requirement. [SPARC mass budget](analyses/sparc_mass_budget.md).
+
+**Repeated tests.** For N independent qualifying determinations with a two-sided 3σ failure threshold, the chance of at least one
+false FAIL is 1 − (1 − 0.0027)ᴺ under the prediction. It reaches 5.3% at N = 20 and 23.7% at N = 100. Shared data
+or systematics change this calculation. For future registrations, specify one primary joint likelihood per data
+release and require independent confirmation before a core kill, as K1 and K2 already require.

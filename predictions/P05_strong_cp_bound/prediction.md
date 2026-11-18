@@ -16,6 +16,13 @@ pipeline_output_hash: —
 
 ## Statement
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** If θ_eff is the physical
+> QCD angle, |θ| = 2.372×10⁻⁵ at z = 2 costs ΔV = ½χ_QCD Δ(θ²) ≈ 9.1×10⁻¹⁵ GeV⁴ for χ_QCD^(1/4) = 75.5 MeV (Grilli di
+> Cortona et al., arXiv:1511.02867). This is 2.7×10³¹ times the total density at that redshift (≈ 3.4×10⁻⁴⁶ GeV⁴ for H₀
+> = 67.4 km/s/Mpc and Ω_m = 0.315 in flat ΛCDM). The nEDM PASS tests only today's angle. The trajectory has no physical
+> interpretation until the QCD potential enters both the field and Friedmann equations. Hadron masses shift at order θ²,
+> in tension with P9's exact μ null.
+
 The σ-θ coupling (Section 5.5 of THEORY.md) drives θ_eff(z) along a calculable cosmological trajectory. The current limit |θ_eff(z=0)| ≲ 10^{-10} (from |d_n| < 1.8 × 10^{-26} e·cm, n2EDM 2024) constrains the σ-coupling parameter f_σ.
 
 The prediction is a *trajectory* θ_eff(z) for the registered σ(t) ansatz and σ-θ coupling f_σ, with the present-day endpoint θ_eff(z=0) consistent with current nEDM bounds. Future tighter nEDM bounds will then test the relaxation efficacy of the σ-mechanism.

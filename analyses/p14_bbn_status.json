@@ -4,7 +4,14 @@
     "G_over_G0_nucleosynthesis": 0.970235,
     "G_over_G0_weak_freeze_out": 0.966983,
     "q_registered": 0.000865,
-    "pass_needs_sigma_at_most": 0.0148825
+    "squared_expansion_rate_ratio": {
+      "Y_p": 0.968657,
+      "D/H": 0.971914
+    },
+    "pass_needs_sigma_at_most": {
+      "Y_p": 0.0165085,
+      "D/H": 0.0148825
+    }
   },
   "inputs": {
     "sensitivities": {
@@ -155,10 +162,9 @@
       "omega_b": 0.02239,
       "helium_from": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "standard_Y_p": 0.24693,
-      "p14_Y_p": 0.244281,
-      "p14_Y_p_freeze_out_G": 0.243988,
+      "p14_Y_p": 0.244139,
       "standard_D_H": 2.51,
-      "p14_D_H": 2.43882
+      "p14_D_H": 2.44284
     },
     {
       "prediction": "PRIMAT (Pitrou et al. 2021)",
@@ -167,10 +173,9 @@
       "omega_b": 0.02242,
       "helium_from": "PRIMAT (Pitrou et al. 2021)",
       "standard_Y_p": 0.24721,
-      "p14_Y_p": 0.244558,
-      "p14_Y_p_freeze_out_G": 0.244265,
+      "p14_Y_p": 0.244415,
       "standard_D_H": 2.439,
-      "p14_D_H": 2.36984
+      "p14_D_H": 2.37374
     },
     {
       "prediction": "Gaussian processes (Launders et al. 2026)",
@@ -179,10 +184,9 @@
       "omega_b": 0.02237,
       "helium_from": "PRIMAT (Pitrou et al. 2021)",
       "standard_Y_p": 0.24721,
-      "p14_Y_p": 0.244558,
-      "p14_Y_p_freeze_out_G": 0.244265,
+      "p14_Y_p": 0.244415,
       "standard_D_H": 2.442,
-      "p14_D_H": 2.37275
+      "p14_D_H": 2.37666
     },
     {
       "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
@@ -191,10 +195,9 @@
       "omega_b": 0.022398,
       "helium_from": "PRIMAT (Pitrou et al. 2021)",
       "standard_Y_p": 0.24721,
-      "p14_Y_p": 0.244558,
-      "p14_Y_p_freeze_out_G": 0.244265,
+      "p14_Y_p": 0.244415,
       "standard_D_H": 2.437,
-      "p14_D_H": 2.36789
+      "p14_D_H": 2.3718
     }
   ],
   "single_measurements": [
@@ -203,11 +206,11 @@
       "measurement": "LBT (Aver et al. 2026)",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.987234,
+      "rate_squared_ratio": 0.987234,
       "sigma": 0.0147639,
-      "p14_sigma_away": -1.16144,
+      "p14_sigma_away": -1.27031,
       "standard_sigma_away": 0.859117,
-      "likelihood_standard_over_p14": 1.35721,
+      "likelihood_standard_over_p14": 1.5493,
       "rule_if_it_counted": "PASS"
     },
     {
@@ -215,11 +218,11 @@
       "measurement": "Kurichin et al. 2021",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.991741,
+      "rate_squared_ratio": 0.991741,
       "sigma": 0.0249061,
-      "p14_sigma_away": -0.872987,
+      "p14_sigma_away": -0.937819,
       "standard_sigma_away": 0.33023,
-      "likelihood_standard_over_p14": 1.38615,
+      "likelihood_standard_over_p14": 1.46995,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -227,11 +230,11 @@
       "measurement": "Aver et al. 2021",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.981619,
+      "rate_squared_ratio": 0.981619,
       "sigma": 0.0381642,
-      "p14_sigma_away": -0.300043,
+      "p14_sigma_away": -0.34192,
       "standard_sigma_away": 0.477167,
-      "likelihood_standard_over_p14": 0.933484,
+      "likelihood_standard_over_p14": 0.946117,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -239,11 +242,11 @@
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.891392,
+      "rate_squared_ratio": 0.891392,
       "sigma": 0.0358667,
-      "p14_sigma_away": 2.10639,
+      "p14_sigma_away": 2.06593,
       "standard_sigma_away": 2.85737,
-      "likelihood_standard_over_p14": 0.155075,
+      "likelihood_standard_over_p14": 0.142522,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -251,11 +254,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.999163,
+      "rate_squared_ratio": 0.999163,
       "sigma": 0.0475699,
-      "p14_sigma_away": -0.617093,
+      "p14_sigma_away": -0.580772,
       "standard_sigma_away": 0.0175872,
-      "likelihood_standard_over_p14": 1.20955,
+      "likelihood_standard_over_p14": 1.18352,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -263,11 +266,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 1.00712,
+      "rate_squared_ratio": 1.00712,
       "sigma": 0.0480329,
-      "p14_sigma_away": -0.782232,
+      "p14_sigma_away": -0.745974,
       "standard_sigma_away": -0.148666,
-      "likelihood_standard_over_p14": 1.34298,
+      "likelihood_standard_over_p14": 1.30629,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -275,11 +278,11 @@
       "measurement": "LBT (Aver et al. 2026)",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.987379,
+      "rate_squared_ratio": 0.987379,
       "sigma": 0.0148214,
-      "p14_sigma_away": -1.16686,
+      "p14_sigma_away": -1.27532,
       "standard_sigma_away": 0.84615,
-      "likelihood_standard_over_p14": 1.38098,
+      "likelihood_standard_over_p14": 1.57655,
       "rule_if_it_counted": "PASS"
     },
     {
@@ -287,11 +290,11 @@
       "measurement": "Kurichin et al. 2021",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.991886,
+      "rate_squared_ratio": 0.991886,
       "sigma": 0.0249429,
-      "p14_sigma_away": -0.877651,
+      "p14_sigma_away": -0.942397,
       "standard_sigma_away": 0.323967,
-      "likelihood_standard_over_p14": 1.39467,
+      "likelihood_standard_over_p14": 1.47931,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -299,11 +302,11 @@
       "measurement": "Aver et al. 2021",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.981763,
+      "rate_squared_ratio": 0.981763,
       "sigma": 0.038191,
-      "p14_sigma_away": -0.303641,
+      "p14_sigma_away": -0.345496,
       "standard_sigma_away": 0.473136,
-      "likelihood_standard_over_p14": 0.93629,
+      "likelihood_standard_over_p14": 0.949096,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -311,11 +314,11 @@
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.891522,
+      "rate_squared_ratio": 0.891522,
       "sigma": 0.0358905,
-      "p14_sigma_away": 2.10166,
+      "p14_sigma_away": 2.06122,
       "standard_sigma_away": 2.85225,
-      "likelihood_standard_over_p14": 0.1558,
+      "likelihood_standard_over_p14": 0.143221,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -323,11 +326,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.996918,
+      "rate_squared_ratio": 0.996918,
       "sigma": 0.0514446,
-      "p14_sigma_away": -0.525747,
+      "p14_sigma_away": -0.492237,
       "standard_sigma_away": 0.0598119,
-      "likelihood_standard_over_p14": 1.14616,
+      "likelihood_standard_over_p14": 1.12678,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -335,11 +338,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 1.00485,
+      "rate_squared_ratio": 1.00485,
       "sigma": 0.0519317,
-      "p14_sigma_away": -0.678359,
+      "p14_sigma_away": -0.644898,
       "standard_sigma_away": -0.0936753,
-      "likelihood_standard_over_p14": 1.2532,
+      "likelihood_standard_over_p14": 1.22576,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -347,11 +350,11 @@
       "measurement": "LBT (Aver et al. 2026)",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.984105,
+      "rate_squared_ratio": 0.984105,
       "sigma": 0.0146626,
-      "p14_sigma_away": -0.952697,
+      "p14_sigma_away": -1.06197,
       "standard_sigma_away": 1.07537,
-      "likelihood_standard_over_p14": 0.883032,
+      "likelihood_standard_over_p14": 0.985786,
       "rule_if_it_counted": "PASS"
     },
     {
@@ -359,11 +362,11 @@
       "measurement": "Kurichin et al. 2021",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.988598,
+      "rate_squared_ratio": 0.988598,
       "sigma": 0.0247946,
-      "p14_sigma_away": -0.747563,
+      "p14_sigma_away": -0.81248,
       "standard_sigma_away": 0.457234,
-      "likelihood_standard_over_p14": 1.19112,
+      "likelihood_standard_over_p14": 1.25299,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -371,11 +374,11 @@
       "measurement": "Aver et al. 2021",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.978508,
+      "rate_squared_ratio": 0.978508,
       "sigma": 0.0380224,
-      "p14_sigma_away": -0.218512,
+      "p14_sigma_away": -0.260412,
       "standard_sigma_away": 0.559122,
-      "likelihood_standard_over_p14": 0.87596,
+      "likelihood_standard_over_p14": 0.884793,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -383,11 +386,11 @@
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 0.888567,
+      "rate_squared_ratio": 0.888567,
       "sigma": 0.0357347,
-      "p14_sigma_away": 2.18641,
+      "p14_sigma_away": 2.14592,
       "standard_sigma_away": 2.93777,
-      "likelihood_standard_over_p14": 0.145867,
+      "likelihood_standard_over_p14": 0.13362,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -395,11 +398,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 1.02974,
+      "rate_squared_ratio": 1.02974,
       "sigma": 0.0206321,
-      "p14_sigma_away": -2.97067,
+      "p14_sigma_away": -2.88436,
       "standard_sigma_away": -1.46256,
-      "likelihood_standard_over_p14": 28.3014,
+      "likelihood_standard_over_p14": 21.9825,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -407,11 +410,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
-      "G_over_G0": 1.03793,
+      "rate_squared_ratio": 1.03793,
       "sigma": 0.0210021,
-      "p14_sigma_away": -3.33336,
+      "p14_sigma_away": -3.2479,
       "standard_sigma_away": -1.84002,
-      "likelihood_standard_over_p14": 47.5984,
+      "likelihood_standard_over_p14": 35.9303,
       "rule_if_it_counted": "FAIL"
     },
     {
@@ -419,11 +422,11 @@
       "measurement": "LBT (Aver et al. 2026)",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.984393,
+      "rate_squared_ratio": 0.984393,
       "sigma": 0.0147223,
-      "p14_sigma_away": -0.968686,
+      "p14_sigma_away": -1.07755,
       "standard_sigma_away": 1.05175,
-      "likelihood_standard_over_p14": 0.919514,
+      "likelihood_standard_over_p14": 1.02785,
       "rule_if_it_counted": "PASS"
     },
     {
@@ -431,11 +434,11 @@
       "measurement": "Kurichin et al. 2021",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.988887,
+      "rate_squared_ratio": 0.988887,
       "sigma": 0.0248349,
-      "p14_sigma_away": -0.758223,
+      "p14_sigma_away": -0.823053,
       "standard_sigma_away": 0.444968,
-      "likelihood_standard_over_p14": 1.20738,
+      "likelihood_standard_over_p14": 1.27088,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -443,11 +446,11 @@
       "measurement": "Aver et al. 2021",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.978795,
+      "rate_squared_ratio": 0.978795,
       "sigma": 0.0380547,
-      "p14_sigma_away": -0.22592,
+      "p14_sigma_away": -0.267797,
       "standard_sigma_away": 0.551282,
-      "likelihood_standard_over_p14": 0.881231,
+      "likelihood_standard_over_p14": 0.890388,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -455,11 +458,11 @@
       "measurement": "EMPRESS (Matsumoto et al. 2022)",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 0.888827,
+      "rate_squared_ratio": 0.888827,
       "sigma": 0.0357638,
-      "p14_sigma_away": 2.17799,
+      "p14_sigma_away": 2.13753,
       "standard_sigma_away": 2.92897,
-      "likelihood_standard_over_p14": 0.146959,
+      "likelihood_standard_over_p14": 0.134672,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -467,11 +470,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 1.02512,
+      "rate_squared_ratio": 1.02512,
       "sigma": 0.028953,
-      "p14_sigma_away": -1.94826,
+      "p14_sigma_away": -1.88703,
       "standard_sigma_away": -0.878386,
-      "likelihood_standard_over_p14": 4.53613,
+      "likelihood_standard_over_p14": 4.03362,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -479,11 +482,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
-      "G_over_G0": 1.03328,
+      "rate_squared_ratio": 1.03328,
       "sigma": 0.0293291,
-      "p14_sigma_away": -2.21788,
+      "p14_sigma_away": -2.15696,
       "standard_sigma_away": -1.15332,
-      "likelihood_standard_over_p14": 6.01598,
+      "likelihood_standard_over_p14": 5.26539,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -491,11 +494,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "as published",
-      "G_over_G0": 1.02841,
+      "rate_squared_ratio": 1.02841,
       "sigma": 0.0216594,
-      "p14_sigma_away": -2.76481,
+      "p14_sigma_away": -2.6827,
       "standard_sigma_away": -1.33008,
-      "likelihood_standard_over_p14": 18.8692,
+      "likelihood_standard_over_p14": 15.0879,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -503,11 +506,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "as published",
-      "G_over_G0": 1.03659,
+      "rate_squared_ratio": 1.03659,
       "sigma": 0.0220274,
-      "p14_sigma_away": -3.11333,
+      "p14_sigma_away": -3.03195,
       "standard_sigma_away": -1.69134,
-      "likelihood_standard_over_p14": 30.4503,
+      "likelihood_standard_over_p14": 23.7137,
       "rule_if_it_counted": "FAIL"
     },
     {
@@ -515,11 +518,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
-      "G_over_G0": 1.02764,
+      "rate_squared_ratio": 1.02764,
       "sigma": 0.0294897,
-      "p14_sigma_away": -2.00302,
+      "p14_sigma_away": -1.94276,
       "standard_sigma_away": -0.950038,
-      "likelihood_standard_over_p14": 4.73395,
+      "likelihood_standard_over_p14": 4.20331,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -527,11 +530,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
-      "G_over_G0": 1.03582,
+      "rate_squared_ratio": 1.03582,
       "sigma": 0.0298681,
-      "p14_sigma_away": -2.26831,
+      "p14_sigma_away": -2.20834,
       "standard_sigma_away": -1.2204,
-      "likelihood_standard_over_p14": 6.22102,
+      "likelihood_standard_over_p14": 5.43958,
       "rule_if_it_counted": "SUB-THRESHOLD"
     },
     {
@@ -539,11 +542,11 @@
       "measurement": "PDG 2025, mean of 12 systems",
       "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
       "baryon_density": "as published",
-      "G_over_G0": 1.03063,
+      "rate_squared_ratio": 1.03063,
       "sigma": 0.019617,
-      "p14_sigma_away": -3.17236,
+      "p14_sigma_away": -3.0815,
       "standard_sigma_away": -1.58483,
-      "likelihood_standard_over_p14": 43.6442,
+      "likelihood_standard_over_p14": 32.8512,
       "rule_if_it_counted": "FAIL"
     },
     {
@@ -551,11 +554,11 @@
       "measurement": "Cooke, Pettini & Steidel 2018",
       "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
       "baryon_density": "as published",
-      "G_over_G0": 1.03883,
+      "rate_squared_ratio": 1.03883,
       "sigma": 0.0199898,
-      "p14_sigma_away": -3.54995,
+      "p14_sigma_away": -3.46009,
       "standard_sigma_away": -1.97964,
-      "likelihood_standard_over_p14": 76.83,
+      "likelihood_standard_over_p14": 56.0708,
       "rule_if_it_counted": "FAIL"
     }
   ],
@@ -566,11 +569,11 @@
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
       "baryon_covariance": -7.16493e-06,
-      "G_over_G0": 0.988328,
-      "sigma": 0.0140598,
-      "p14_sigma_away": -1.29875,
-      "standard_sigma_away": 0.825334,
-      "likelihood_standard_over_p14": 1.65333,
+      "rate_squared_ratio": 0.989367,
+      "sigma": 0.0127084,
+      "p14_sigma_away": -1.38559,
+      "standard_sigma_away": 0.832216,
+      "likelihood_standard_over_p14": 1.84713,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.239988
     },
@@ -580,11 +583,11 @@
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "as published",
       "baryon_covariance": -7.16493e-06,
-      "G_over_G0": 0.989044,
-      "sigma": 0.0140724,
-      "p14_sigma_away": -1.34947,
-      "standard_sigma_away": 0.774261,
-      "likelihood_standard_over_p14": 1.84189,
+      "rate_squared_ratio": 0.989954,
+      "sigma": 0.0127177,
+      "p14_sigma_away": -1.43158,
+      "standard_sigma_away": 0.785922,
+      "likelihood_standard_over_p14": 2.04596,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.397761
     },
@@ -594,11 +597,11 @@
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.988209,
-      "sigma": 0.0140708,
-      "p14_sigma_away": -1.28919,
-      "standard_sigma_away": 0.832995,
-      "likelihood_standard_over_p14": 1.62265,
+      "rate_squared_ratio": 0.989294,
+      "sigma": 0.0127134,
+      "p14_sigma_away": -1.37917,
+      "standard_sigma_away": 0.8376,
+      "likelihood_standard_over_p14": 1.82261,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.176898
     },
@@ -608,11 +611,11 @@
       "prediction": "Polynomial fits (Yeh, Olive & Fields 2021)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.988891,
-      "sigma": 0.0140826,
-      "p14_sigma_away": -1.33738,
-      "standard_sigma_away": 0.784483,
-      "likelihood_standard_over_p14": 1.79784,
+      "rate_squared_ratio": 0.989858,
+      "sigma": 0.0127223,
+      "p14_sigma_away": -1.42334,
+      "standard_sigma_away": 0.79315,
+      "likelihood_standard_over_p14": 2.01055,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 0.322319
     },
@@ -622,11 +625,11 @@
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
       "baryon_covariance": -7.14577e-06,
-      "G_over_G0": 1.00026,
-      "sigma": 0.011821,
-      "p14_sigma_away": -2.57917,
-      "standard_sigma_away": -0.0222913,
-      "likelihood_standard_over_p14": 27.8216,
+      "rate_squared_ratio": 0.999236,
+      "sigma": 0.0109654,
+      "p14_sigma_away": -2.52632,
+      "standard_sigma_away": 0.0696585,
+      "likelihood_standard_over_p14": 24.2575,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.79487
     },
@@ -636,11 +639,11 @@
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "as published",
       "baryon_covariance": -7.14577e-06,
-      "G_over_G0": 1.00288,
-      "sigma": 0.0118951,
-      "p14_sigma_away": -2.79003,
-      "standard_sigma_away": -0.242416,
-      "likelihood_standard_over_p14": 47.5958,
+      "rate_squared_ratio": 1.00149,
+      "sigma": 0.0110248,
+      "p14_sigma_away": -2.72291,
+      "standard_sigma_away": -0.135101,
+      "likelihood_standard_over_p14": 40.3662,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 2.09571
     },
@@ -650,11 +653,11 @@
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.993858,
-      "sigma": 0.0126922,
-      "p14_sigma_away": -1.88371,
-      "standard_sigma_away": 0.482418,
-      "likelihood_standard_over_p14": 5.24783,
+      "rate_squared_ratio": 0.993775,
+      "sigma": 0.0116327,
+      "p14_sigma_away": -1.90026,
+      "standard_sigma_away": 0.533428,
+      "likelihood_standard_over_p14": 5.27633,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.22937
     },
@@ -664,11 +667,11 @@
       "prediction": "PRIMAT (Pitrou et al. 2021)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.995637,
-      "sigma": 0.0127321,
-      "p14_sigma_away": -2.02097,
-      "standard_sigma_away": 0.341955,
-      "likelihood_standard_over_p14": 7.26961,
+      "rate_squared_ratio": 0.995291,
+      "sigma": 0.0116641,
+      "p14_sigma_away": -2.02808,
+      "standard_sigma_away": 0.402771,
+      "likelihood_standard_over_p14": 7.20974,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.46442
     },
@@ -678,11 +681,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "as published",
       "baryon_covariance": -7.6733e-06,
-      "G_over_G0": 0.998831,
-      "sigma": 0.0120079,
-      "p14_sigma_away": -2.41619,
-      "standard_sigma_away": 0.097286,
-      "likelihood_standard_over_p14": 18.4353,
+      "rate_squared_ratio": 0.997975,
+      "sigma": 0.0111144,
+      "p14_sigma_away": -2.37591,
+      "standard_sigma_away": 0.182046,
+      "likelihood_standard_over_p14": 16.5419,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.68755
     },
@@ -692,11 +695,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "as published",
       "baryon_covariance": -7.6733e-06,
-      "G_over_G0": 1.0013,
-      "sigma": 0.0120749,
-      "p14_sigma_away": -2.61362,
-      "standard_sigma_away": -0.107906,
-      "likelihood_standard_over_p14": 30.2553,
+      "rate_squared_ratio": 1.00009,
+      "sigma": 0.0111678,
+      "p14_sigma_away": -2.55961,
+      "standard_sigma_away": -0.00850081,
+      "likelihood_standard_over_p14": 26.4638,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.97979
     },
@@ -706,11 +709,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.9942,
-      "sigma": 0.0127511,
-      "p14_sigma_away": -1.90248,
-      "standard_sigma_away": 0.453526,
-      "likelihood_standard_over_p14": 5.51172,
+      "rate_squared_ratio": 0.994065,
+      "sigma": 0.0116793,
+      "p14_sigma_away": -1.91807,
+      "standard_sigma_away": 0.506614,
+      "likelihood_standard_over_p14": 5.53542,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.2886
     },
@@ -720,11 +723,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026)",
       "baryon_density": "widened",
       "baryon_covariance": -3.29886e-05,
-      "G_over_G0": 0.995936,
-      "sigma": 0.0127897,
-      "p14_sigma_away": -2.03588,
-      "standard_sigma_away": 0.317116,
-      "likelihood_standard_over_p14": 7.55433,
+      "rate_squared_ratio": 0.995543,
+      "sigma": 0.0117096,
+      "p14_sigma_away": -2.0422,
+      "standard_sigma_away": 0.379804,
+      "likelihood_standard_over_p14": 7.48697,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.52077
     },
@@ -734,11 +737,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
       "baryon_density": "as published",
       "baryon_covariance": -4.85368e-06,
-      "G_over_G0": 1.00162,
-      "sigma": 0.0116533,
-      "p14_sigma_away": -2.73617,
-      "standard_sigma_away": -0.138971,
-      "likelihood_standard_over_p14": 41.8321,
+      "rate_squared_ratio": 1.00043,
+      "sigma": 0.0108342,
+      "p14_sigma_away": -2.67008,
+      "standard_sigma_away": -0.0395364,
+      "likelihood_standard_over_p14": 35.3003,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 1.89513
     },
@@ -748,11 +751,11 @@
       "prediction": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
       "baryon_density": "as published",
       "baryon_covariance": -4.85368e-06,
-      "G_over_G0": 1.00438,
-      "sigma": 0.0117349,
-      "p14_sigma_away": -2.9603,
-      "standard_sigma_away": -0.374053,
-      "likelihood_standard_over_p14": 74.5696,
+      "rate_squared_ratio": 1.00281,
+      "sigma": 0.0109001,
+      "p14_sigma_away": -2.87927,
+      "standard_sigma_away": -0.258384,
+      "likelihood_standard_over_p14": 61.0518,
       "rule_if_it_counted": "PASS",
       "helium_vs_deuterium_sigma": 2.20564
     }
@@ -764,10 +767,12 @@
       "n_eff_bbn": 2.974,
       "n_eff_sigma": 0.091,
       "G_over_G0": 0.989403,
-      "sigma_toward_p14": 0.0137029,
-      "p14_sigma_away": -1.39882,
+      "sigma_up": 0.0137029,
+      "sigma_down": 0.0137029,
       "standard_sigma_away": 0.773343,
-      "likelihood_standard_over_p14": 1.97254,
+      "p14_sigma_away": -1.51401,
+      "sigma_toward_p14": 0.0137029,
+      "likelihood_standard_over_p14": 2.33284,
       "rule_if_it_counted": "PASS"
     },
     {
@@ -776,11 +781,9 @@
       "n_eff_bbn": 2.964,
       "n_eff_sigma": 0.096,
       "G_over_G0": 0.987898,
-      "sigma_toward_p14": 0.0144338,
-      "p14_sigma_away": -1.22374,
-      "standard_sigma_away": 0.838427,
-      "likelihood_standard_over_p14": 1.48779,
-      "rule_if_it_counted": "PASS"
+      "sigma_up": 0.0144338,
+      "sigma_down": 0.0144338,
+      "standard_sigma_away": 0.838427
     },
     {
       "result": "Goldstein & Hill 2026, LBT helium + deuterium",
@@ -788,48 +791,42 @@
       "n_eff_bbn": 2.976,
       "n_eff_sigma": 0.093,
       "G_over_G0": 0.989704,
-      "sigma_toward_p14": 0.0140083,
-      "p14_sigma_away": -1.38983,
-      "standard_sigma_away": 0.734979,
-      "likelihood_standard_over_p14": 2.00514,
-      "rule_if_it_counted": "PASS"
+      "sigma_up": 0.0140083,
+      "sigma_down": 0.0140083,
+      "standard_sigma_away": 0.734979
     },
     {
       "result": "Alvey et al. 2020",
       "ref": "arXiv:1910.10730; 2σ interval halved",
       "G_over_G0": 0.99,
-      "sigma_toward_p14": 0.025,
-      "p14_sigma_away": -0.7906,
-      "standard_sigma_away": 0.333333,
-      "likelihood_standard_over_p14": 1.293,
-      "rule_if_it_counted": "SUB-THRESHOLD"
+      "sigma_up": 0.03,
+      "sigma_down": 0.025,
+      "standard_sigma_away": 0.333333
     },
     {
       "result": "Kohri & Maeda 2022, EMPRESS helium",
       "ref": "arXiv:2206.11257",
       "G_over_G0": 0.915,
-      "sigma_toward_p14": 0.026,
-      "p14_sigma_away": 2.12442,
-      "standard_sigma_away": 3.26923,
-      "likelihood_standard_over_p14": 0.0456228,
-      "rule_if_it_counted": "SUB-THRESHOLD"
+      "sigma_up": 0.026,
+      "sigma_down": 0.028,
+      "standard_sigma_away": 3.26923
     }
   ],
   "q": {
     "from_lbt_helium": {
-      "q": 0.000304973,
-      "sigma": 0.000396465,
+      "q": 0.000289381,
+      "sigma": 0.000376195,
       "two_sigma_range": [
-        -0.000487957,
-        0.0010979
+        -0.000463009,
+        0.00104177
       ]
     },
     "from_helium_and_deuterium": {
-      "q": 3.34804e-05,
-      "sigma": 0.000344144,
+      "q": 6.15609e-05,
+      "sigma": 0.000338161,
       "two_sigma_range": [
-        -0.000654808,
-        0.000721769
+        -0.000614761,
+        0.000737883
       ]
     },
     "registration_quoted_two_sigma_range": [
@@ -838,13 +835,13 @@
     ]
   },
   "what_would_decide": {
-    "p14_helium_shift": 0.00264943,
+    "p14_helium_shift": 0.00279138,
     "helium_prediction_error": 0.000179176,
-    "helium_error_for_rule_precision": 0.0012936,
-    "helium_error_for_3sigma_separation": 0.0008655,
+    "helium_error_for_rule_precision": 0.00143751,
+    "helium_error_for_3sigma_separation": 0.000914081,
     "lbt_helium_error": 0.0013,
     "lbt_over_empress_precision": 2.61538,
-    "p14_deuterium_shift_percent": 2.83567,
+    "p14_deuterium_shift_percent": 2.67559,
     "polynomial_over_gp_percent": 2.88925,
     "gp_nuclear_error_percent": 1.18755
   },

@@ -85,6 +85,11 @@ kinematics fail — in which case it falsifies T1/T2 exactly as it falsifies
 
 ## Scoring algorithm (registered)
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** At z = 2 the flat ΛCDM
+> drift is positive for Ω_m < 4/13 ≈ 0.308. The frozen output uses Ω_m = 0.315, while the DESI DR2 BAO-only fit gives
+> about 0.2975 (arXiv:2503.14738). The sign at this redshift depends on the matter density. The registered χ²/dof band
+> has no stated endpoints.
+
 When ELT/ANDES delivers Δv(z) measurements:
 
 ```

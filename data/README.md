@@ -2,6 +2,7 @@
 
 | File | Content | Source |
 |---|---|---|
+| `sparc/SPARC_Lelli2016c.mrt` and `sparc/rotmod/` | SPARC galaxy catalogue and resolved rotation-curve mass models | [SPARC](https://astroweb.case.edu/SPARC/), downloaded 2026-11-18. Freely available for research with citation of [Lelli, McGaugh & Schombert 2016, AJ 152, 157](https://arxiv.org/abs/1606.09251). |
 | `desi_dr2_bao.csv` | DESI DR2 BAO: D_V/r_d for BGS and correlated (D_M/r_d, D_H/r_d) pairs for six tracers | DESI DR2 Results II, arXiv:2503.14738 v3, Table IV (the combined LRG3+ELG1 bin, as in DESI's baseline). Used by `analyses/joint_fit.py` and `analyses/timescape_fit.py`, and through the joint fit by `analyses/ccbh_fit.py`. |
 | `desi_dr2_bao_dv_ap.csv` | DESI DR2 BAO in the other compression: D_V/r_d and the Alcock–Paczyński ratio D_M/D_H, with their correlation | Same table of arXiv:2503.14738 v3. Used by `analyses/timescape_fit.py`. |
 | `planck2018_distance_priors.json` | Planck 2018 CMB distance priors (R, l_A, ω_b, n_s) with their correlation matrix | Chen, Huang & Wang, JCAP 02 (2019) 028, arXiv:1808.05724, Table 1 (flat ΛCDM, TT,TE,EE+lowE). Used by `analyses/joint_fit.py`, and through it by `analyses/ccbh_fit.py`. |

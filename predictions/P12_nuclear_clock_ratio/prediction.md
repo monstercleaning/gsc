@@ -36,6 +36,10 @@ has this reach. GSC predicts zero in every sector at once.
 
 ## Anchor (first-epoch measurement, already public)
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** The uncertainty in the
+> last two digits gives a fractional uncertainty of 18×10⁻¹²/4.707072615078 ≈ 3.8×10⁻¹². This exceeds the registered
+> 10⁻¹³ limit per epoch. Two qualifying epochs are still needed.
+
 ν(²²⁹ᵐTh)/ν(⁸⁷Sr) = **4.707072615078(18)** — first direct nuclear–electronic
 frequency ratio, JILA VUV frequency comb (Zhang et al., Nature 633, 63 (2024),
 arXiv:2406.18719); fractional uncertainty ~4×10⁻¹².

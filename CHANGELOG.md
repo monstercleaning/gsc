@@ -2,6 +2,10 @@
 
 ## 20.2.0 — in progress
 
+- **Second external review.** Added flags on P2, P5, P7, P8, P10 and P12, corrected the two-epoch P14 abundance
+  comparison, and computed the stellar mass missing from the black-hole model. Recorded the limits of the P15
+  envelope and galaxy fits, and guidance on repeated tests in future registrations. The new SPARC diagnostic
+  measures the required particle-mass change and the lensing shortfall. [Problem 13](OPEN_PROBLEMS.md#13-a-second-external-review-v202).
 - **a0 tied to dark energy** ([analyses/a0_evolution.md](analyses/a0_evolution.md)): read as a0 ≈ c √Λ, Milgrom's
   coincidence ties the scale at which galaxies show dark matter to the dark-energy density. With DESI DR2's evolving
   dark energy it predicts a0 falling at high redshift, with no free shape parameter. On the 100 RC100 rotation
@@ -28,12 +32,12 @@
 - **P14 against nucleosynthesis** ([analyses/p14_bbn_status.md](analyses/p14_bbn_status.md)): the P14 registration
   missed results published before it, namely the LBT helium abundance (Aver et al. 2026) and two readings of it as
   the expansion rate during nucleosynthesis.
-  - Helium gives G/G0 = 0.989 ± 0.014: P14 is 1.4σ away, G = G0 0.8σ.
+  - Helium gives G/G0 = 0.989 ± 0.014: P14 is 1.5σ away, G = G0 0.8σ.
   - Deuterium is against P14. A 2026 Gaussian-process fit to the nuclear data (Launders, Giovanetti & Liu) shows
     that the polynomial fits of the deuterium-burning rates over-predict deuterium, and agrees with PRIMAT. With
-    these rates and the PDG 2025 average, deuterium alone puts P14 2.8–3.2σ away.
-  - Helium and deuterium together put P14 2.4–2.7σ away (1.3σ with the polynomial fits), and G = G0 fits them
-    about 18 times better.
+    these rates and the PDG 2025 average, deuterium alone puts P14 2.68–3.08σ away.
+  - Helium and deuterium together put P14 2.38–2.67σ away (1.4σ with the polynomial fits), and G = G0 fits them
+    16.5 times better with the Planck Gaussian-process rates.
   - P14's rule would score such a combined determination PASS, since it needs only |z| < 3 and σ ≤ 0.0149.
     Reports on P14 give both distances.
 

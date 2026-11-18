@@ -58,6 +58,11 @@ To be implemented as `pipelines/predictions_compute_P10.py`. Outputs:
 
 ## Scoring algorithm
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** A stationary achromatic
+> delay along one sightline shifts the whole light curve and preserves the flare width. The pipeline gives the same ε
+> for every source. Neither the within-flare variance nor its correlation with intervening structure can be scored from
+> these predictions.
+
 Two-channel test:
 
 1. **Direct dispersion bound:** for each blazar with TeV time-resolved data, fit Δt vs E. GSC predicts no E-dependence, but excess energy-flat variance σ²_t > 0. Compare to fit residuals.

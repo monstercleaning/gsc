@@ -43,6 +43,10 @@ To be implemented:
 
 ## Target observation
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** A permanent fractional
+> shift common to every atomic transition cancels in the frequency ratio of two clocks. The stated observable cannot
+> reveal it at any precision. SUB-THRESHOLD understates this limitation.
+
 - **Existing data:** ITOC, BACON, NICT-PTB-NIST clock comparisons during 2017–2025 covering O1–O3.
 - **Future:** BACON-II, post-O5 data with improved clock stability.
 

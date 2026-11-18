@@ -47,13 +47,19 @@ inputs never changes a file.
   already public when the pipelines were written. They exercise the tooling; they are not evidence that a prediction
   came before its data. P1's check is weaker still: its exponent was chosen from the data it is checked against, and
   its reference value is Planck's r_d, not a DESI measurement (see the flag in the entry).
-- **Genuine forward registrations** target unreleased data: P2 (HERA / SKA-Low; its scoring rule is incomplete, see
-  the flag in the entry), P8 (ELT/ANDES), P10 (CTAO), P12
-  (the next nuclear-clock epoch), P1's full five-year DESI target, P14 (the next determinations of early-universe
-  G) and P15 (rotation curves at z ≥ 2). The first five are the tests kill condition K0 counts; P14 carries its own
+- **Genuine forward registrations** target unreleased data: P2 (a sky-mean 21 cm spectrum), P8 (ELT/ANDES), P10
+  (CTAO) and P12 (two qualifying nuclear-clock epochs). The entries flag limits on these tests. Other targets are
+  P1's full five-year DESI target, P14 (the next determinations of early-universe G) and P15 (rotation curves at z ≥ 2). The first five are the tests kill condition K0 counts; P14 carries its own
   clause (THEORY.md §8), and P15 tests a T4 module.
 - **Exact nulls** (P9, P11, P12, P13) predict what standard cosmology predicts. They do not distinguish GSC from
   ΛCDM; their value is that one robust violation would end the framework (kill conditions K1 and K2).
+
+### Repeated tests
+
+For N independent qualifying determinations with a two-sided 3σ failure threshold, the chance of at least one
+false FAIL is 1 − (1 − 0.0027)ᴺ under the prediction. It reaches 5.3% at N = 20 and 23.7% at N = 100. Shared data
+or systematics change this calculation. For future registrations, specify one primary joint likelihood per data
+release and require independent confirmation before a core kill, as K1 and K2 already require.
 
 ## 3. Timestamping and signing — honest status
 

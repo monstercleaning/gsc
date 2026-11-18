@@ -49,6 +49,10 @@ Plan:
 
 ## Target observation
 
+> **Editorial flag (v20.2, second external review; the registered text below is unchanged):** HERA Phase II sets upper
+> limits on the cosmic-dawn fluctuation power spectrum in mK². P2 predicts the sky-mean brightness temperature in mK.
+> That HERA product cannot score P2. [HERA Phase II results](https://arxiv.org/abs/2511.21289).
+
 - **Dataset:** HERA Phase-II globally-averaged 21cm spectrum;
 - **Instrument:** HERA, then SKA-Low for precision improvement;
 - **Expected release:** 2027 (HERA Phase-II preliminary), 2030 (SKA-Low precision).

@@ -106,6 +106,17 @@ nothing.
 > where G = G0 fits them about 18 times better. Such a combined determination, published after the registration,
 > would still score PASS under the rule (σ ≈ 0.012, |z| < 3), which is why reports give both distances.
 
+> **Correction (v20.2, second external review; the registered text and the flags above are unchanged):** the two
+> v20.2 notes above used G/G0 as the expansion-rate change. The distance model implies
+> (H_atomic/H_standard)² = (1 + q)² G/G0 at fixed atomic temperature, evaluated at weak freeze-out for helium and at
+> deuterium formation for D/H. Recomputed that way ([analyses/p14_bbn_status.md](../../analyses/p14_bbn_status.md)):
+> helium puts the prediction 1.5σ away; with the Gaussian-process rates and the PDG deuterium average, deuterium
+> alone puts it 2.68–3.08σ away and helium and deuterium together 2.38–2.67σ, and standard expansion has 16.5 times
+> the joint likelihood (not 18). With PRIMAT's rates and the Planck baryon density, deuterium alone gives 2.88σ for
+> the PDG average and 3.25σ for Cooke et al. None of this is scored. The early-transition background behind these
+> numbers does not conserve energy as implemented, so it is a kinematic history, not yet a physical model
+> (OPEN_PROBLEMS.md, problem 13).
+
 ## Scoring algorithm
 
 For each epoch with a published determination r_obs ± σ of G/G0 (1σ; for asymmetric errors, the side facing the

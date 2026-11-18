@@ -17,6 +17,7 @@ import a0_evolution  # noqa: E402
 import a0_high_z  # noqa: E402
 import emergent_gravity  # noqa: E402
 import p14_bbn_status  # noqa: E402
+import sparc_mass_budget as sparc  # noqa: E402
 
 
 class TestAnalyses(unittest.TestCase):
@@ -107,6 +108,26 @@ class TestCCBHFit(unittest.TestCase):
         self.assertGreater(v["dark_energy_density_today_over_baryon_loss_comoving"], 1.0)
         self.assertLess(v["w_eff_during_production_z3"], -1.0)
         self.assertLess(abs(v["step_convergence_H_at_z1"]), 1e-3)
+
+    def test_stellar_budget_against_independent_time_integral(self):
+        fits = json.loads(ccbh_fit.OUT_JSON.read_text())["fits"]
+        for cls in (ccbh_fit.CCBH, ccbh_fit.CCBH_MF17):
+            with self.subTest(history=cls.name):
+                fit = fits[cls.name]
+                model = cls(fit["H0"] / 100, fit["omega_b_early"], fit["omega_c"])
+                # Integrate psi dz / [(1+z) H(z)] with midpoint bins in z.
+                dz = (1 / ccbh_fit.A_I - 1) / 4000
+                formed = 0.0
+                for i in range(4000):
+                    z = (i + 0.5) * dz
+                    formed += dz * model.SFRD(z) / ((1 + z) * model.HE(z) / 100)
+                formed *= 9.77792e9  # 1/H100 in years
+                removed = 2.77537e11 * fit["omega_b_early"] * (1 - fit["baryon_survival_fraction"])
+                budget = fit["stellar_mass_budget"]
+                for key, expected in [("formed_Msun_per_Mpc3", formed), ("removed_Msun_per_Mpc3", removed),
+                                      ("removed_over_formed", removed / formed)]:
+                    self.assertAlmostEqual(budget[key] / expected, 1, delta=2e-5)
+                self.assertGreater(removed, formed)
 
     def test_committed_report_is_the_rendering_of_the_committed_numbers(self):
         committed = json.loads((ROOT / "analyses" / "ccbh_fit.json").read_text(encoding="utf-8"))
@@ -213,11 +234,63 @@ class TestP14BBNStatus(unittest.TestCase):
         self.assertEqual(p14_bbn_status.rule_verdict(-0.8, 0.025, 0.0149), "SUB-THRESHOLD")
         self.assertEqual(p14_bbn_status.rule_verdict(-3.3, 0.021, 0.0149), "FAIL")
 
+    def test_two_epoch_vector_likelihood(self):
+        b = p14_bbn_status
+        result = b.analyse()
+        frozen = json.loads(b.P14_OUTPUT.read_text())
+        q = frozen["registered_parameters"]["q"]
+        epochs = {e["epoch"]: e["G_over_G0"] for e in frozen["prediction"]["epochs"]}
+        rates = [(1 + q)**2 * epochs[e] for e in ("weak_freeze_out", "nucleosynthesis")]
+        prediction = next(r for r in result["predicted_abundances"] if r["prediction"] == b.GP)
+        estimates = []
+        for el, key, rate, obs in zip(("Y_p", "D/H"), ("Y_p", "D_H"), rates,
+                                      (b.HELIUM[b.PRIMARY_HELIUM], b.DEUTERIUM[b.PRIMARY_DEUTERIUM])):
+            std, err = b.standard(b.GP, el, "as published")
+            self.assertAlmostEqual(prediction["p14_" + key], std * rate**b.SENS[el]["G"])
+            v, s, _ = obs["value"]
+            estimates.append(b.estimate(v, s, std, err, b.SENS[el]["G"]))
+        (y, sy), (d, sd) = estimates
+        cov = b.baryon_cov(b.GP, "as published")
+
+        def chi2(x, t):
+            return ((sd*x)**2 - 2*cov*x*t + (sy*t)**2) / ((sy*sd)**2 - cov**2)
+
+        delta = chi2(y - math.log(rates[0]), d - math.log(rates[1])) - chi2(y, d)
+        joint = next(r for r in result["combined"] if r["prediction"] == b.GP
+                     and r["deuterium"] == b.PRIMARY_DEUTERIUM and r["baryon_density"] == "as published")
+        self.assertAlmostEqual(joint["likelihood_standard_over_p14"], math.exp(delta / 2))
+
     def test_analysis_reproduces_its_committed_output(self):
         proc = subprocess.run([sys.executable, str(ROOT / "analyses" / "p14_bbn_status.py"), "--check"],
                               capture_output=True, text=True)
         self.assertEqual(proc.returncode, 0, proc.stdout)
 
+
+
+class TestSPARCMassBudget(unittest.TestCase):
+    def test_signed_forces_and_errors_with_a_shared_interior_point(self):
+        # Unequal log-radius intervals. Negative gas V², positive disk and bulge.
+        points = [(r, 10., e, -2., 4., 2.) for r, e in ((1., 1.), (2., 3.), (8., 1.))]
+        row = sparc.measure(points, 10.)
+        bar2 = -4 + 0.5 * 16 + 0.7 * 4
+        self.assertAlmostEqual(row["outer_g_lens_over_g_obs"], bar2 / 100)
+        self.assertAlmostEqual(row["delta_ln_A_over_baryon_potential"], (100 - bar2) / bar2)
+        self.assertAlmostEqual(row["delta_ln_A_over_vflat2_c2"], (1 - bar2/100) * math.log(8))
+        self.assertIsNone(sparc.measure(points, 0.)["delta_ln_A_over_vflat2_c2"])
+        weights = [math.log(2)/2, math.log(8)/2, math.log(4)/2]
+        sigma = 20 * math.sqrt(sum((w*p[2])**2 for w, p in zip(weights, points)))
+        self.assertAlmostEqual(row["sigma_delta_ln_A_errV"] * joint_fit.C**2, sigma)
+        for key, shift in (("delta_ln_A", 0), ("delta_ln_A_at_low_disk_ML", -0.1),
+                           ("delta_ln_A_at_high_disk_ML", 0.1)):
+            expected = (100 - bar2 - 8*(10**shift - 1)) * math.log(8)
+            self.assertAlmostEqual(row[key] * joint_fit.C**2, expected)
+
+    def test_catalogue_selection_and_reproduction(self):
+        rows = sparc.catalogue()
+        self.assertEqual(len({r["galaxy"] for r in rows}), 175)
+        self.assertIn({"galaxy": "F571-V1", "inc_deg": 30, "v_flat_km_s": 83.6, "quality": 2}, rows)
+        self.assertEqual(sum(r["inc_deg"] >= 30 and r["quality"] <= 2 for r in rows), 153)
+        self.assertEqual(sparc.main(["--check"]), 0)
 
 
 class TestComparator(unittest.TestCase):

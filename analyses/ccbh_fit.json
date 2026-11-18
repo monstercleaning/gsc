@@ -29,6 +29,11 @@
       "chi2_cmb": 0.0352933,
       "chi2_bao": 17.4171,
       "baryon_survival_fraction": 0.465238,
+      "stellar_mass_budget": {
+        "formed_Msun_per_Mpc3": 808218000.0,
+        "removed_Msun_per_Mpc3": 3315270000.0,
+        "removed_over_formed": 4.10195
+      },
       "w_eff": [
         {
           "z": 0.0,
@@ -66,6 +71,11 @@
       "chi2_cmb": 0.126553,
       "chi2_bao": 18.2397,
       "baryon_survival_fraction": 0.441506,
+      "stellar_mass_budget": {
+        "formed_Msun_per_Mpc3": 574905000.0,
+        "removed_Msun_per_Mpc3": 3459130000.0,
+        "removed_over_formed": 6.01687
+      },
       "w_eff": [
         {
           "z": 0.0,

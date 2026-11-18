@@ -14,10 +14,13 @@ G itself. This diagnostic records what they imply.
 Method. During nucleosynthesis G enters only through the expansion rate, so the
 abundances follow the logarithmic sensitivities of Fields et al. (arXiv:1912.01132,
 eqs. 16-17): Y_p ~ G^0.357 eta^0.039 N_nu^0.163 and D/H ~ G^0.952 eta^-1.597.
-Each measurement gives ln(G/G0) = ln(X_obs / X_std) / alpha_G, with measurement
+Each measurement gives the effective ln(H_atomic²/H_standard²) = ln(X_obs / X_std) / alpha_G, with measurement
 and prediction errors added in quadrature. Helium and deuterium are combined by
 generalised least squares, with the covariance their errors share through the
-CMB baryon density. The standard deuterium prediction
+CMB baryon density. Above the transition the distance model gives H_atomic/H_standard
+= (1+q) g at fixed atomic temperature in radiation domination. Use the two
+epochs separately and fit the amplitude of their predicted log-rate vector.
+The standard deuterium prediction
 X_std (G = G0) depends on how the measured deuterium-burning cross sections are
 fitted: with low-degree polynomials (Yeh, Olive & Fields 2021), with ab initio
 energy dependences (PRIMAT, Pitrou et al. 2021), or with Gaussian processes
@@ -181,11 +184,11 @@ def rule_verdict(z, sigma, threshold):
     return "PASS" if sigma <= threshold else "SUB-THRESHOLD"
 
 
-def summary(ln_g, s_ln, g_p14, threshold):
-    z_p14 = (math.log(g_p14) - ln_g) / s_ln
+def summary(ln_g, s_ln, rate_p14, threshold):
+    z_p14 = (math.log(rate_p14) - ln_g) / s_ln
     z_std = -ln_g / s_ln
     g = math.exp(ln_g)
-    return {"G_over_G0": g, "sigma": g * s_ln, "p14_sigma_away": z_p14, "standard_sigma_away": z_std,
+    return {"rate_squared_ratio": g, "sigma": g * s_ln, "p14_sigma_away": z_p14, "standard_sigma_away": z_std,
             "likelihood_standard_over_p14": math.exp((z_p14 ** 2 - z_std ** 2) / 2.0),
             "rule_if_it_counted": rule_verdict(z_p14, g * s_ln, threshold)}
 
@@ -223,16 +226,19 @@ def analyse():
     epochs = {e["epoch"]: e["G_over_G0"] for e in p14["prediction"]["epochs"]}
     g_p14, g_fo = epochs["nucleosynthesis"], epochs["weak_freeze_out"]
     q_reg = p14["registered_parameters"]["q"]
-    threshold = abs(g_p14 - 1.0) / 2.0
+    threshold = {"Y_p": abs(g_fo - 1.0) / 2, "D/H": abs(g_p14 - 1.0) / 2}
+
+    rate = {"Y_p": (1 + q_reg)**2 * g_fo, "D/H": (1 + q_reg)**2 * g_p14}
+    # Express each log-rate estimate in deuterium-epoch units along the predicted vector.
+    he_to_d = math.log(rate["D/H"]) / math.log(rate["Y_p"])
 
     predicted = []
     for code, th in THEORY.items():
         y = th["Y_p"] or THEORY[HELIUM_FROM]["Y_p"]
         predicted.append({"prediction": code, "ref": th["ref"], "cmb": th["cmb"], "omega_b": th["omega_b"][0],
                           "helium_from": code if th["Y_p"] else HELIUM_FROM,
-                          "standard_Y_p": y[0], "p14_Y_p": y[0] * g_p14 ** SENS["Y_p"]["G"],
-                          "p14_Y_p_freeze_out_G": y[0] * g_fo ** SENS["Y_p"]["G"],
-                          "standard_D_H": th["D/H"][0], "p14_D_H": th["D/H"][0] * g_p14 ** SENS["D/H"]["G"]})
+                          "standard_Y_p": y[0], "p14_Y_p": y[0] * rate["Y_p"] ** SENS["Y_p"]["G"],
+                          "standard_D_H": th["D/H"][0], "p14_D_H": th["D/H"][0] * rate["D/H"] ** SENS["D/H"]["G"]})
 
     single, combined = [], []
     for code in THEORY:
@@ -245,13 +251,15 @@ def analyse():
                     per[name] = estimate(v[0], side(v, x_std), x_std, s_rel, SENS[element]["G"])
                     if element == "D/H" or THEORY[code]["Y_p"] is not None:
                         single.append({"element": element, "measurement": name, "prediction": code,
-                                       "baryon_density": treatment, **summary(*per[name], g_p14, threshold)})
+                                       "baryon_density": treatment, **summary(*per[name], rate[element], threshold[element])})
             cov = baryon_cov(code, treatment)
             for d_name in DEUTERIUM:
                 e_he, e_d = per[PRIMARY_HELIUM], per[d_name]
+                he_scaled = (he_to_d * e_he[0], he_to_d * e_he[1])
+                ln_rate, sigma = combine([he_scaled, e_d], cov * he_to_d)
                 combined.append({"helium": PRIMARY_HELIUM, "deuterium": d_name, "prediction": code,
                                  "baryon_density": treatment, "baryon_covariance": cov,
-                                 **summary(*combine([e_he, e_d], cov), g_p14, threshold),
+                                 **summary(ln_rate, sigma, rate["D/H"], threshold["D/H"]),
                                  "helium_vs_deuterium_sigma": abs(e_he[0] - e_d[0])
                                  / math.sqrt(e_he[1] ** 2 + e_d[1] ** 2 - 2.0 * cov)})
 
@@ -260,21 +268,28 @@ def analyse():
         if "n_eff_bbn" in p:
             v = p["n_eff_bbn"]
             g = g_from_n_eff(v[0])
-            s_p14 = s_std = g * G_PER_N_EFF * v[1]
+            up, down = (g * G_PER_N_EFF * e for e in v[1:])
             quoted = {"n_eff_bbn": v[0], "n_eff_sigma": v[1]}
         else:
             v = p["g"]
-            g, s_p14, s_std = v[0], side(v, g_p14), side(v, 1.0)
+            g, up, down = v
             quoted = {}
-        z = (g_p14 - g) / s_p14
-        published.append({"result": name, "ref": p["ref"], **quoted, "G_over_G0": g, "sigma_toward_p14": s_p14,
-                          "p14_sigma_away": z, "standard_sigma_away": (1.0 - g) / s_std,
-                          "likelihood_standard_over_p14": math.exp((z ** 2 - ((1.0 - g) / s_std) ** 2) / 2.0),
-                          "rule_if_it_counted": rule_verdict(z, s_p14, threshold)})
+        errors = (g, up, down)
+        s_std = side(errors, 1.0)
+        row = {"result": name, "ref": p["ref"], **quoted, "G_over_G0": g,
+               "sigma_up": up, "sigma_down": down,
+               "standard_sigma_away": (1.0 - g) / s_std}
+        if name == HEADLINE:
+            s_p14 = side(errors, rate["Y_p"])
+            z = (rate["Y_p"] - g) / s_p14
+            row.update(p14_sigma_away=z, sigma_toward_p14=s_p14,
+                       likelihood_standard_over_p14=math.exp((z**2 - row["standard_sigma_away"]**2) / 2),
+                       rule_if_it_counted=rule_verdict(z, s_p14, threshold["Y_p"]))
+        published.append(row)
 
-    k_q = math.log(g_p14) / q_reg  # ln(G_BBN/G0) per unit q, fixed by the transition shape
-
-    def q_from(g, s):
+    def q_from(g, s, registered_rate):
+        # Linear in the log-rate displacement over this small q interval.
+        k_q = math.log(registered_rate) / q_reg
         q, sq = math.log(g) / k_q, s / g / abs(k_q)
         return {"q": q, "sigma": sq, "two_sigma_range": [q - 2 * sq, q + 2 * sq]}
 
@@ -285,15 +300,15 @@ def analyse():
     # What a new measurement would need, with the larger of the two helium prediction errors.
     y_obs = HELIUM[PRIMARY_HELIUM]["value"][0]
     s_theory = max(standard(c, "Y_p", "as published")[1] for c in (POLY, PRIMAT)) * y_obs
-    need_rule = y_obs * SENS["Y_p"]["G"] * threshold
-    need_3sigma = y_obs * SENS["Y_p"]["G"] * abs(math.log(g_p14)) / 3.0
+    need_rule = y_obs * SENS["Y_p"]["G"] * threshold["Y_p"]
+    need_3sigma = y_obs * SENS["Y_p"]["G"] * abs(math.log(rate["Y_p"])) / 3.0
     d_poly = standard(POLY, "D/H", "widened")[0]  # both at omega_b = 0.02236
     d_gp = standard(GP, "D/H", "widened")[0]
 
     return {
         "question": "Where does P14 stand against the primordial helium and deuterium measured so far?",
         "p14": {"G_over_G0_nucleosynthesis": g_p14, "G_over_G0_weak_freeze_out": g_fo, "q_registered": q_reg,
-                "pass_needs_sigma_at_most": threshold},
+                "squared_expansion_rate_ratio": rate, "pass_needs_sigma_at_most": threshold},
         "inputs": {"sensitivities": SENS, "g_per_n_eff": G_PER_N_EFF, "baryon_density_g_free": BARYON_G_FREE,
                    "theory": THEORY, "helium_from": HELIUM_FROM, "helium": HELIUM, "deuterium": DEUTERIUM,
                    "poulin_2026": POULIN_2026},
@@ -301,17 +316,17 @@ def analyse():
         "single_measurements": single,
         "combined": combined,
         "published": published,
-        "q": {"from_lbt_helium": q_from(head["G_over_G0"], head["sigma_toward_p14"]),
-              "from_helium_and_deuterium": q_from(both["G_over_G0"], both["sigma"]),
+        "q": {"from_lbt_helium": q_from(head["G_over_G0"], head["sigma_toward_p14"], rate["Y_p"]),
+              "from_helium_and_deuterium": q_from(both["rate_squared_ratio"], both["sigma"], rate["D/H"]),
               "registration_quoted_two_sigma_range": [-1.4e-3, 1.8e-3]},
         "what_would_decide": {
-            "p14_helium_shift": abs(THEORY[POLY]["Y_p"][0] * (1.0 - g_p14 ** SENS["Y_p"]["G"])),
+            "p14_helium_shift": abs(THEORY[POLY]["Y_p"][0] * (1.0 - rate["Y_p"] ** SENS["Y_p"]["G"])),
             "helium_prediction_error": s_theory,
             "helium_error_for_rule_precision": math.sqrt(max(need_rule ** 2 - s_theory ** 2, 0.0)),
             "helium_error_for_3sigma_separation": math.sqrt(max(need_3sigma ** 2 - s_theory ** 2, 0.0)),
             "lbt_helium_error": HELIUM[PRIMARY_HELIUM]["value"][1],
             "lbt_over_empress_precision": HELIUM["EMPRESS (Matsumoto et al. 2022)"]["value"][1] / HELIUM[PRIMARY_HELIUM]["value"][1],
-            "p14_deuterium_shift_percent": 100.0 * (1.0 - g_p14 ** SENS["D/H"]["G"]),
+            "p14_deuterium_shift_percent": 100.0 * (1.0 - rate["D/H"] ** SENS["D/H"]["G"]),
             "polynomial_over_gp_percent": 100.0 * math.log(d_poly / d_gp),
             "gp_nuclear_error_percent": 100.0 * GP_NUCLEAR_ONLY[1] / GP_NUCLEAR_ONLY[0],
         },
@@ -332,8 +347,9 @@ def _away(r):
 
 
 def _range(rows):
-    lo, hi = sorted(abs(r["p14_sigma_away"]) for r in rows)[:: len(rows) - 1] if len(rows) > 1 else [abs(rows[0]["p14_sigma_away"])] * 2
-    return f"{lo:.1f}σ" if f"{lo:.1f}" == f"{hi:.1f}" else f"{lo:.1f}–{hi:.1f}σ"
+    values = [abs(r["p14_sigma_away"]) for r in rows]
+    lo, hi = f"{min(values):.2f}", f"{max(values):.2f}"
+    return f"{lo}σ" if lo == hi else f"{lo}–{hi}σ"
 
 
 def _range_std(rows):
@@ -376,22 +392,26 @@ def render_markdown(res):
     c_gp = c1(GP)
     po = res["inputs"]["poulin_2026"]
     lines = [
-        "# P14 against primordial helium and deuterium",
-        "",
         "<!-- GENERATED by analyses/p14_bbn_status.py from analyses/p14_bbn_status.json. Do not edit by hand. -->",
+        "",
+        "# P14 against primordial helium and deuterium",
         "",
         "Diagnostic, not a scoring: every result here was published before P14 was registered, and none is a",
         f"determination of G itself. P14 predicts G/G0 = {p['G_over_G0_nucleosynthesis']:.4f} during nucleosynthesis "
         f"({p['G_over_G0_weak_freeze_out']:.4f} at the neutron–proton freeze-out); its",
-        f"rule needs σ ≤ {thr:.4f} to tell it from G = G0. Code: [p14_bbn_status.py](p14_bbn_status.py); numbers:",
+        f"deuterium-epoch rule needs σ ≤ {thr['D/H']:.4f} to tell it from G = G0. Code: [p14_bbn_status.py](p14_bbn_status.py); numbers:",
         "[p14_bbn_status.json](p14_bbn_status.json).",
+        "",
+        "At fixed atomic temperature during radiation domination above the transition, R = (H_atomic/H_standard)² = (1 + q)² G/G0.",
+        f"With q = {p['q_registered']}, R is {p['squared_expansion_rate_ratio']['Y_p']:.6f} at weak freeze-out (helium)",
+        f"and {p['squared_expansion_rate_ratio']['D/H']:.6f} at deuterium formation. The abundances constrain R.",
         "",
         "## Answer",
         "",
         "**Helium: consistent with P14, a little closer to G = G0.** The LBT measurement (Aver et al. 2026), read as the",
-        f"expansion rate during nucleosynthesis by Loverde, Saravanan & Weiner (2026), gives G/G0 = {_pm(head['G_over_G0'], head['sigma_toward_p14'])}: P14",
+        f"expansion rate during nucleosynthesis by Loverde, Saravanan & Weiner (2026), gives an equivalent constant G/G0 = {_pm(head['G_over_G0'], head['sigma_toward_p14'])}: P14",
         f"is {_away(head)} away, G = G0 {abs(head['standard_sigma_away']):.1f}σ. Goldstein & Hill (2026), from helium and deuterium without the CMB,",
-        f"find {_pm(gh['G_over_G0'], gh['sigma_toward_p14'])}. The EMPRESS helium, which favoured much weaker gravity, is not confirmed by LBT,",
+        f"find {_pm(gh['G_over_G0'], gh['sigma_up'])}. The EMPRESS helium, which favoured much weaker gravity, is not confirmed by LBT,",
         f"which is {wd['lbt_over_empress_precision']:.1f} times more precise.",
         "",
         f"**Deuterium: against P14.** P14 lowers D/H by {wd['p14_deuterium_shift_percent']:.1f}%. The standard prediction depends on how the",
@@ -408,14 +428,14 @@ def render_markdown(res):
         "",
         f"**Together**, helium and deuterium put P14 {_range(c_mod)} away with the modern rates ({_range(c_mod_cooke)} with Cooke et al.'s",
         f"deuterium instead of the PDG average; {_range(c_mod_w)} widened), and {_away(c_poly)} with the polynomial fits. Nothing",
-        f"prefers P14: with the Gaussian-process rates, G = G0 fits the combined data {c_gp['likelihood_standard_over_p14']:.0f} times better. Poulin, Froustey, Pitrou",
+        f"prefers P14: with the Gaussian-process rates, G = G0 fits the combined data {c_gp['likelihood_standard_over_p14']:.1f} times better. Poulin, Froustey, Pitrou",
         f"& Smith (2026) read the same deuterium as asking for a faster expansion while deuterium burns (ΔH/H = +{po['delta_H_over_H'][0]:.3f}),",
         "the opposite of P14's slower one.",
         "",
         "**What this means for P14.** Nothing here is scored: every result predates the registration, and none is a",
         "determination of G. P14's rule also fails it if a fit of its model to CMB, BAO and abundance data excludes the",
-        f"registered q at 3σ or more. This diagnostic is not that fit, but it shows where such a fit would land today:",
-        f"{_range(c_mod)} ({_range(c_mod_cooke)} with Cooke et al.'s deuterium), below the line but close to it. No new laboratory measurement of the deuterium-burning reactions",
+        f"registered q at 3σ or more. This diagnostic is not that fit, but the abundance-only distances along the predicted vector are",
+        f"{_range(c_mod)} ({_range(c_mod_cooke)} with Cooke et al.'s deuterium), with the inputs above. No new laboratory measurement of the deuterium-burning reactions",
         "has settled the rates; Launders et al. ask for d(d,n)³He and d(d,p)³H at 0.1–0.6 MeV. The registration missed these",
         "results; editorial flags on P14 record them.",
         "",
@@ -428,49 +448,48 @@ def render_markdown(res):
         y_note = "" if r["helium_from"] == r["prediction"] else "*"
         lines.append(f"| {r['prediction']} | {r['cmb']} ({r['omega_b']}) | {r['standard_Y_p']:.4f}{y_note} | {r['p14_Y_p']:.4f}{y_note} | "
                      f"{r['standard_D_H']:.3f} | {r['p14_D_H']:.3f} |")
-    pr0 = res["predicted_abundances"][0]
     lines += [
         "",
         f"\\* Helium from {res['inputs']['helium_from']}: the Gaussian-process fits change only the deuterium-burning rates, to",
         "which helium is insensitive. All four use LUNA's d(p,γ)³He data. Slower expansion leaves more time: neutrons decay",
-        "longer before they are locked into helium, and deuterium burns longer. With G at the freeze-out value for the whole",
-        f"of helium's history, P14's Y_p would be lower by a further {abs(pr0['p14_Y_p'] - pr0['p14_Y_p_freeze_out_G']):.5f}.",
+        "longer before they are locked into helium, and deuterium burns longer.",
         "",
         "## Each measurement",
         "",
-        "G/G0 and the signed distance in σ, with each prediction's published baryon density. Positive: the measurement",
-        "lies below that value of G.",
+        "Effective squared expansion-rate ratio R and the signed distance in σ, with each prediction's published baryon density. Positive: the measurement",
+        "lies below the predicted R.",
         "",
-        "| Measurement | Prediction | G/G0 | From P14 | From G = G0 |",
+        "| Measurement | Prediction | R | From P14 | From G = G0 |",
         "|---|---|---|---|---|",
     ]
     for r in single:
         if r["baryon_density"] == "as published":
-            lines.append(f"| {r['element']}: {r['measurement']} | {r['prediction']} | {_pm(r['G_over_G0'], r['sigma'])} | "
+            lines.append(f"| {r['element']}: {r['measurement']} | {r['prediction']} | {_pm(r['rate_squared_ratio'], r['sigma'])} | "
                          f"{r['p14_sigma_away']:+.1f} | {r['standard_sigma_away']:+.1f} |")
     lines += [
         "",
         f"With the widened baryon density ({BARYON_G_FREE[0]} ± {BARYON_G_FREE[1]:.5f}), helium barely changes; deuterium loosens:",
         "",
-        "| Deuterium measurement | Prediction | G/G0 | From P14 | From G = G0 |",
+        "| Deuterium measurement | Prediction | R | From P14 | From G = G0 |",
         "|---|---|---|---|---|",
     ]
     for r in single:
         if r["baryon_density"] == "widened" and r["element"] == "D/H":
-            lines.append(f"| {r['measurement']} | {r['prediction']} | {_pm(r['G_over_G0'], r['sigma'])} | "
+            lines.append(f"| {r['measurement']} | {r['prediction']} | {_pm(r['rate_squared_ratio'], r['sigma'])} | "
                          f"{r['p14_sigma_away']:+.1f} | {r['standard_sigma_away']:+.1f} |")
     lines += [
         "",
         "## Helium and deuterium together",
         "",
         "LBT helium with each deuterium measurement. \"He vs D\" is the tension between the helium and the deuterium values",
-        "of G. The last column is P14's rule applied as if the result were a post-registration determination of G.",
+        "of a common R. For the joint distances we fit the amplitude of the two predicted ln R values with their covariance.",
+        "The table gives that fit in deuterium-epoch units. The rule column illustrates treating it as a determination of G.",
         "",
-        "| Deuterium | Prediction | Baryon density | G/G0 | From P14 | From G = G0 | He vs D | Rule |",
+        "| Deuterium | Prediction | Baryon density | R at deuterium formation | From P14 | From G = G0 | He vs D | Rule |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for r in comb:
-        lines.append(f"| {r['deuterium']} | {r['prediction']} | {r['baryon_density']} | {_pm(r['G_over_G0'], r['sigma'])} | "
+        lines.append(f"| {r['deuterium']} | {r['prediction']} | {r['baryon_density']} | {_pm(r['rate_squared_ratio'], r['sigma'])} | "
                      f"{r['p14_sigma_away']:+.1f} | {r['standard_sigma_away']:+.1f} | {r['helium_vs_deuterium_sigma']:.1f}σ | "
                      f"{r['rule_if_it_counted']} |")
     lines += [
@@ -480,32 +499,36 @@ def render_markdown(res):
         "N_eff during nucleosynthesis is converted to G through the helium sensitivities "
         f"(ln G/G0 = {res['inputs']['g_per_n_eff']:.4f} × (N_eff − 3.044)).",
         "",
-        "| Result | G/G0 | From P14 | From G = G0 | P14's rule, if it counted |",
-        "|---|---|---|---|---|",
+        "The joint literature summaries assume a single expansion-rate shift. Comparing the two-epoch prediction",
+        "requires the abundance likelihood above. The helium-only comparison uses the weak-freeze-out epoch.",
+        "",
+        "| Result | Equivalent constant G/G0 | From G = G0 |",
+        "|---|---|---|",
     ]
     for r in pub:
-        lines.append(f"| {r['result']} ({r['ref']}) | {_pm(r['G_over_G0'], r['sigma_toward_p14'])} | {r['p14_sigma_away']:+.1f} | "
-                     f"{r['standard_sigma_away']:+.1f} | {r['rule_if_it_counted']} |")
+        lines.append(f"| {r['result']} ({r['ref']}) | {r['G_over_G0']:.3f} "
+                     f"+{r['sigma_up']:.3f}/−{r['sigma_down']:.3f} | {r['standard_sigma_away']:+.1f} |")
     d_gp = d1(GP)
     lines += [
         "",
         "## What the rule would say",
         "",
-        "None of these results is scored: all predate the registration. They show how P14's rule reads evidence. PASS",
-        "needs |z| < 3 and σ ≤ " f"{thr:.4f}, so it means \"not excluded by a measurement able to tell the two apart\", not \"preferred\":",
+        "These expansion constraints predate registration. As an illustration, treating their errors as errors on G",
+        f"would require |z| < 3 and σ ≤ {thr['D/H']:.4f} at deuterium formation or {thr['Y_p']:.4f} at freeze-out for PASS.",
+        "Such a PASS can still favour standard expansion.",
         "",
         f"- The LBT helium reading would score {head['rule_if_it_counted']} (|z| = {abs(head['p14_sigma_away']):.1f}, σ = {head['sigma_toward_p14']:.4f}), "
         f"although G = G0 fits it {head['likelihood_standard_over_p14']:.1f} times better.",
         f"- Helium and deuterium together, with the Gaussian-process rates, would score {c_gp['rule_if_it_counted']} "
         f"(|z| = {abs(c_gp['p14_sigma_away']):.1f}, σ = {c_gp['sigma']:.4f}), although",
-        f"  G = G0 fits them {c_gp['likelihood_standard_over_p14']:.0f} times better.",
-        f"- Deuterium alone, with the same rates, would score {d_gp['rule_if_it_counted']} (|z| = {abs(d_gp['p14_sigma_away']):.1f}); "
+        f"  G = G0 fits them {c_gp['likelihood_standard_over_p14']:.1f} times better.",
+        f"- Deuterium alone, with the same rates, would score {d_gp['rule_if_it_counted']} (|z| = {abs(d_gp['p14_sigma_away']):.2f}); "
         f"with PRIMAT's, {d1(PRIMAT)['rule_if_it_counted']} (|z| = {abs(d1(PRIMAT)['p14_sigma_away']):.2f});",
         f"  with the Planck+ACT+SPT baryon density, {d1(GP_SPA)['rule_if_it_counted']} (|z| = {abs(d1(GP_SPA)['p14_sigma_away']):.1f}).",
         "",
         "Reports on P14 therefore give both distances.",
         "",
-        f"In terms of P14's parameter, the LBT helium alone gives q = {_q(res['q']['from_lbt_helium'])}; with deuterium",
+        f"In terms of P14's parameter, the LBT helium alone gives approximately q = {_q(res['q']['from_lbt_helium'])}; with deuterium",
         f"(Gaussian-process rates, PDG average), q = {_q(res['q']['from_helium_and_deuterium'])}. The registration quoted",
         f"−1.4×10⁻³ < q < 1.8×10⁻³. The registered q = {p['q_registered'] * 1e3:.3f}×10⁻³ is "
         f"{_inside(p['q_registered'], res['q']['from_lbt_helium'])} the first range and "
@@ -540,6 +563,9 @@ def render_markdown(res):
         "",
         "## Limits",
         "",
+        "- The early-transition background uses matter density ∝ g a⁻³ without a compensating energy term. It does",
+        "  not conserve energy as implemented. It supplies a kinematic history. A physical model is still needed.",
+        "- Each element uses one representative epoch. A reaction network would follow the rate throughout BBN.",
         "- Linear in the logarithms: accurate for changes of a few percent, as here.",
         "- Helium and deuterium share the baryon density's error; the combination includes that covariance. Nuclear-rate",
         "  errors are taken as independent, since helium barely depends on the deuterium-burning rates.",
