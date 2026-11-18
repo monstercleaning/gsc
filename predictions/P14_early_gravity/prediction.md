@@ -117,6 +117,14 @@ nothing.
 > numbers does not conserve energy as implemented, so it is a kinematic history, not yet a physical model
 > (OPEN_PROBLEMS.md, problem 13).
 
+> **Editorial flag (v20.2, physical model; the registered text and the flags above are unchanged):** a scalar field
+> coupled to particle masses reproduces the registered drift and conserves energy
+> ([analyses/p14_physical_model.md](../../analyses/p14_physical_model.md)). The registration does not fix the field's
+> coupling β, and the nucleosynthesis signature depends on it. With unit coupling, standard expansion fits LBT
+> helium and PDG deuterium 15.5 times better. Near β ≈ 0.0026 the field's own energy cancels the slower expansion,
+> and the abundances become standard to 0.1%. Nucleosynthesis therefore cannot score this entry unambiguously until
+> β is fixed by something else (OPEN_PROBLEMS.md, problem 1).
+
 ## Scoring algorithm
 
 For each epoch with a published determination r_obs ± σ of G/G0 (1σ; for asymmetric errors, the side facing the

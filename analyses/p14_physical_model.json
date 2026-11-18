@@ -1,0 +1,3267 @@
+{
+  "status": "Diagnostic abundance calculation",
+  "q": 0.000865,
+  "z_transition": 10.0,
+  "early_abs_beta": 1.0,
+  "unscreened_force_over_tensor_early": 3.0,
+  "N_eff": 3.044,
+  "omega_b": 0.02237,
+  "eta": 6.1244586e-10,
+  "tau_n_s": 878.4,
+  "T0_K": 2.7255,
+  "h_today": 0.6727,
+  "omega_m": 0.14257,
+  "steps": 4800,
+  "T_bounds_MeV": [
+    0.001,
+    10.0
+  ],
+  "recombination_G_shift_percent": -0.7914,
+  "validation": {
+    "bare_Born_Y_p": 0.2429424734,
+    "elements": {
+      "Y_p": {
+        "standard": 0.2454958023,
+        "reference": 0.24721,
+        "relative_error": -0.006934176242,
+        "G_slope": 0.3583527275,
+        "reference_slope": 0.357,
+        "relative_slope_error": 0.003789152703
+      },
+      "D/H": {
+        "standard": 2.519614046e-05,
+        "reference": 2.442e-05,
+        "relative_error": 0.03178298346,
+        "G_slope": 0.9713220579,
+        "reference_slope": 0.952,
+        "relative_slope_error": 0.02029627932
+      }
+    },
+    "log_G_half_step": 0.01,
+    "baryon_residual": 2.886579864e-15,
+    "step_halving_relative_change_in_ratio": {
+      "Y_p": -1.195160486e-07,
+      "D/H": 1.104675014e-05
+    },
+    "physical_baryon_residual": 7.993605777e-15,
+    "direct_delta_chi2_at_GP_limits": [
+      3.999999989,
+      3.999999981
+    ]
+  },
+  "conservation": {
+    "max_cell": 1.108220421e-08,
+    "adjacent_to_transition": 7.248085312e-12
+  },
+  "expansion": [
+    {
+      "T_MeV": 10.0,
+      "H_atomic_over_standard": 0.9816637248,
+      "G_over_G0": 0.9619984608,
+      "kinematic_H_squared": 0.9636634379,
+      "physical_H_squared": 0.9636636685,
+      "field_over_radiation": 2.393051387e-07,
+      "kinetic_over_radiation": 1.247042051e-07,
+      "potential_over_radiation": 1.146009337e-07
+    },
+    {
+      "T_MeV": 7.943282347,
+      "H_atomic_over_standard": 0.9818591414,
+      "G_over_G0": 0.9623814737,
+      "kinematic_H_squared": 0.9640471137,
+      "physical_H_squared": 0.9640473735,
+      "field_over_radiation": 2.694220558e-07,
+      "kinetic_over_radiation": 1.247042111e-07,
+      "potential_over_radiation": 1.447178447e-07
+    },
+    {
+      "T_MeV": 6.309573445,
+      "H_atomic_over_standard": 0.9820546227,
+      "G_over_G0": 0.9627646733,
+      "kinematic_H_squared": 0.9644309766,
+      "physical_H_squared": 0.9644312819,
+      "field_over_radiation": 3.166328143e-07,
+      "kinetic_over_radiation": 1.247042197e-07,
+      "potential_over_radiation": 1.919285945e-07
+    },
+    {
+      "T_MeV": 5.011872336,
+      "H_atomic_over_standard": 0.9822501836,
+      "G_over_G0": 0.9631480797,
+      "kinematic_H_squared": 0.9648150466,
+      "physical_H_squared": 0.9648154232,
+      "field_over_radiation": 3.903377846e-07,
+      "kinetic_over_radiation": 1.247042325e-07,
+      "potential_over_radiation": 2.656335521e-07
+    },
+    {
+      "T_MeV": 3.981071706,
+      "H_atomic_over_standard": 0.9824458472,
+      "G_over_G0": 0.9635317247,
+      "kinematic_H_squared": 0.9651993556,
+      "physical_H_squared": 0.9651998428,
+      "field_over_radiation": 5.047796766e-07,
+      "kinetic_over_radiation": 1.247042512e-07,
+      "potential_over_radiation": 3.800754254e-07
+    },
+    {
+      "T_MeV": 3.16227766,
+      "H_atomic_over_standard": 0.9826416497,
+      "G_over_G0": 0.9639156586,
+      "kinematic_H_squared": 0.9655839539,
+      "physical_H_squared": 0.9655846117,
+      "field_over_radiation": 6.811957281e-07,
+      "kinetic_over_radiation": 1.247042787e-07,
+      "potential_over_radiation": 5.564914494e-07
+    },
+    {
+      "T_MeV": 2.511886432,
+      "H_atomic_over_standard": 0.9828376465,
+      "G_over_G0": 0.9642999608,
+      "kinematic_H_squared": 0.9659689212,
+      "physical_H_squared": 0.9659698395,
+      "field_over_radiation": 9.505784294e-07,
+      "kinetic_over_radiation": 1.247043194e-07,
+      "potential_over_radiation": 8.258741101e-07
+    },
+    {
+      "T_MeV": 1.995262315,
+      "H_atomic_over_standard": 0.9830339233,
+      "G_over_G0": 0.9646847567,
+      "kinematic_H_squared": 0.9663543832,
+      "physical_H_squared": 0.9663556944,
+      "field_over_radiation": 1.356860095e-06,
+      "kinetic_over_radiation": 1.247043789e-07,
+      "potential_over_radiation": 1.232155716e-06
+    },
+    {
+      "T_MeV": 1.584893192,
+      "H_atomic_over_standard": 0.9832306099,
+      "G_over_G0": 0.9650702439,
+      "kinematic_H_squared": 0.9667405375,
+      "physical_H_squared": 0.9667424322,
+      "field_over_radiation": 1.959885016e-06,
+      "kinetic_over_radiation": 1.247044652e-07,
+      "potential_over_radiation": 1.835180551e-06
+    },
+    {
+      "T_MeV": 1.258925412,
+      "H_atomic_over_standard": 0.9834279017,
+      "G_over_G0": 0.9654567318,
+      "kinematic_H_squared": 0.9671276943,
+      "physical_H_squared": 0.9671304378,
+      "field_over_radiation": 2.836722749e-06,
+      "kinetic_over_radiation": 1.247045886e-07,
+      "potential_over_radiation": 2.712018161e-06
+    },
+    {
+      "T_MeV": 1.0,
+      "H_atomic_over_standard": 0.9836260891,
+      "G_over_G0": 0.965844703,
+      "kinematic_H_squared": 0.967516337,
+      "physical_H_squared": 0.9675202832,
+      "field_over_radiation": 4.078649782e-06,
+      "kinetic_over_radiation": 1.247047611e-07,
+      "potential_over_radiation": 3.953945021e-06
+    },
+    {
+      "T_MeV": 0.7943282347,
+      "H_atomic_over_standard": 0.9838255968,
+      "G_over_G0": 0.9662349014,
+      "kinematic_H_squared": 0.9679072108,
+      "physical_H_squared": 0.967912805,
+      "field_over_radiation": 5.779661345e-06,
+      "kinetic_over_radiation": 1.247049955e-07,
+      "potential_over_radiation": 5.65495635e-06
+    },
+    {
+      "T_MeV": 0.6309573445,
+      "H_atomic_over_standard": 0.9840270341,
+      "G_over_G0": 0.966628456,
+      "kinematic_H_squared": 0.9683014465,
+      "physical_H_squared": 0.9683092038,
+      "field_over_radiation": 8.011277857e-06,
+      "kinetic_over_radiation": 1.247053018e-07,
+      "potential_over_radiation": 7.886572555e-06
+    },
+    {
+      "T_MeV": 0.5011872336,
+      "H_atomic_over_standard": 0.9842312516,
+      "G_over_G0": 0.9670270349,
+      "kinematic_H_squared": 0.9687007153,
+      "physical_H_squared": 0.9687111567,
+      "field_over_radiation": 1.077878545e-05,
+      "kinetic_over_radiation": 1.247056824e-07,
+      "potential_over_radiation": 1.065407977e-05
+    },
+    {
+      "T_MeV": 0.3981071706,
+      "H_atomic_over_standard": 0.9844393878,
+      "G_over_G0": 0.9674329994,
+      "kinematic_H_squared": 0.9691073823,
+      "physical_H_squared": 0.9691209083,
+      "field_over_radiation": 1.395713446e-05,
+      "kinetic_over_radiation": 1.247061238e-07,
+      "potential_over_radiation": 1.383242833e-05
+    },
+    {
+      "T_MeV": 0.316227766,
+      "H_atomic_over_standard": 0.9846528552,
+      "G_over_G0": 0.9678494547,
+      "kinematic_H_squared": 0.9695245585,
+      "physical_H_squared": 0.9695412452,
+      "field_over_radiation": 1.721131792e-05,
+      "kinetic_over_radiation": 1.247065871e-07,
+      "potential_over_radiation": 1.708661134e-05
+    },
+    {
+      "T_MeV": 0.2511886432,
+      "H_atomic_over_standard": 0.9848731576,
+      "G_over_G0": 0.9682799673,
+      "kinematic_H_squared": 0.9699558161,
+      "physical_H_squared": 0.9699751366,
+      "field_over_radiation": 1.991901129e-05,
+      "kinetic_over_radiation": 1.247069987e-07,
+      "potential_over_radiation": 1.979430429e-05
+    },
+    {
+      "T_MeV": 0.1995262315,
+      "H_atomic_over_standard": 0.9851013511,
+      "G_over_G0": 0.9687275249,
+      "kinematic_H_squared": 0.9704041483,
+      "physical_H_squared": 0.9704246719,
+      "field_over_radiation": 2.114956127e-05,
+      "kinetic_over_radiation": 1.247072483e-07,
+      "potential_over_radiation": 2.102485402e-05
+    },
+    {
+      "T_MeV": 0.1584893192,
+      "H_atomic_over_standard": 0.9853369643,
+      "G_over_G0": 0.9691922288,
+      "kinematic_H_squared": 0.9708696566,
+      "physical_H_squared": 0.9708889331,
+      "field_over_radiation": 1.985505899e-05,
+      "kinetic_over_radiation": 1.247072131e-07,
+      "potential_over_radiation": 1.973035177e-05
+    },
+    {
+      "T_MeV": 0.1258925412,
+      "H_atomic_over_standard": 0.9855765598,
+      "G_over_G0": 0.9696677923,
+      "kinematic_H_squared": 0.9713460432,
+      "physical_H_squared": 0.9713611552,
+      "field_over_radiation": 1.555795006e-05,
+      "kinetic_over_radiation": 1.247068438e-07,
+      "potential_over_radiation": 1.543324322e-05
+    },
+    {
+      "T_MeV": 0.1,
+      "H_atomic_over_standard": 0.9858131953,
+      "G_over_G0": 0.9701394243,
+      "kinematic_H_squared": 0.9718184914,
+      "physical_H_squared": 0.9718276559,
+      "field_over_radiation": 9.430366648e-06,
+      "kinetic_over_radiation": 1.24706297e-07,
+      "potential_over_radiation": 9.305660351e-06
+    },
+    {
+      "T_MeV": 0.07943282347,
+      "H_atomic_over_standard": 0.9860390762,
+      "G_over_G0": 0.9705891965,
+      "kinematic_H_squared": 0.972269042,
+      "physical_H_squared": 0.9722730598,
+      "field_over_radiation": 4.132339292e-06,
+      "kinetic_over_radiation": 1.247059125e-07,
+      "potential_over_radiation": 4.00763338e-06
+    },
+    {
+      "T_MeV": 0.06309573445,
+      "H_atomic_over_standard": 0.9862511245,
+      "G_over_G0": 0.9710094293,
+      "kinematic_H_squared": 0.9726900021,
+      "physical_H_squared": 0.9726912806,
+      "field_over_radiation": 1.314363265e-06,
+      "kinetic_over_radiation": 1.247059019e-07,
+      "potential_over_radiation": 1.189657363e-06
+    },
+    {
+      "T_MeV": 0.05011872336,
+      "H_atomic_over_standard": 0.9864530648,
+      "G_over_G0": 0.9714080031,
+      "kinematic_H_squared": 0.9730892658,
+      "physical_H_squared": 0.9730896491,
+      "field_over_radiation": 3.93925828e-07,
+      "kinetic_over_radiation": 1.247062049e-07,
+      "potential_over_radiation": 2.692196231e-07
+    },
+    {
+      "T_MeV": 0.03981071706,
+      "H_atomic_over_standard": 0.9866506502,
+      "G_over_G0": 0.9717973608,
+      "kinematic_H_squared": 0.9734792973,
+      "physical_H_squared": 0.9734795055,
+      "field_over_radiation": 2.138504342e-07,
+      "kinetic_over_radiation": 1.247067006e-07,
+      "potential_over_radiation": 8.914373358e-08
+    },
+    {
+      "T_MeV": 0.0316227766,
+      "H_atomic_over_standard": 0.9868471743,
+      "G_over_G0": 0.9721845483,
+      "kinematic_H_squared": 0.973867155,
+      "physical_H_squared": 0.9738673453,
+      "field_over_radiation": 1.954598771e-07,
+      "kinetic_over_radiation": 1.247073481e-07,
+      "potential_over_radiation": 7.075252903e-08
+    },
+    {
+      "T_MeV": 0.03,
+      "H_atomic_over_standard": 0.9868921111,
+      "G_over_G0": 0.9722730889,
+      "kinematic_H_squared": 0.9739558488,
+      "physical_H_squared": 0.973956039,
+      "field_over_radiation": 1.952569204e-07,
+      "kinetic_over_radiation": 1.247075188e-07,
+      "potential_over_radiation": 7.054940159e-08
+    },
+    {
+      "T_MeV": 0.02511886432,
+      "H_atomic_over_standard": 0.9870435888,
+      "G_over_G0": 0.9725715783,
+      "kinematic_H_squared": 0.9742548549,
+      "physical_H_squared": 0.9742550461,
+      "field_over_radiation": 1.962806069e-07,
+      "kinetic_over_radiation": 1.247081657e-07,
+      "potential_over_radiation": 7.157244124e-08
+    },
+    {
+      "T_MeV": 0.01995262315,
+      "H_atomic_over_standard": 0.9872400329,
+      "G_over_G0": 0.9729587423,
+      "kinematic_H_squared": 0.9746426889,
+      "physical_H_squared": 0.9746428825,
+      "field_over_radiation": 1.986388657e-07,
+      "kinetic_over_radiation": 1.247091951e-07,
+      "potential_over_radiation": 7.392967063e-08
+    },
+    {
+      "T_MeV": 0.01584893192,
+      "H_atomic_over_standard": 0.9874365161,
+      "G_over_G0": 0.9733460598,
+      "kinematic_H_squared": 0.9750306768,
+      "physical_H_squared": 0.9750308734,
+      "field_over_radiation": 2.016376656e-07,
+      "kinetic_over_radiation": 1.24710491e-07,
+      "potential_over_radiation": 7.692717459e-08
+    },
+    {
+      "T_MeV": 0.01258925412,
+      "H_atomic_over_standard": 0.9876330389,
+      "G_over_G0": 0.9737335315,
+      "kinematic_H_squared": 0.9754188191,
+      "physical_H_squared": 0.9754190194,
+      "field_over_radiation": 2.054131551e-07,
+      "kinetic_over_radiation": 1.247121225e-07,
+      "potential_over_radiation": 8.070103265e-08
+    },
+    {
+      "T_MeV": 0.01,
+      "H_atomic_over_standard": 0.9878296012,
+      "G_over_G0": 0.9741211575,
+      "kinematic_H_squared": 0.9758071159,
+      "physical_H_squared": 0.975807321,
+      "field_over_radiation": 2.101662153e-07,
+      "kinetic_over_radiation": 1.247141764e-07,
+      "potential_over_radiation": 8.545203889e-08
+    }
+  ],
+  "peak_field": {
+    "T_MeV": 0.1972422736,
+    "field_over_radiation": 2.115278889e-05
+  },
+  "network_physical": {
+    "Y_p": 0.2427878151,
+    "D/H": 2.452321352e-05,
+    "baryon_residual": 7.993605777e-15
+  },
+  "abundance_ratios": {
+    "standard": {
+      "Y_p": 1.0,
+      "D/H": 1.0
+    },
+    "physical": {
+      "Y_p": 0.9889693137,
+      "D/H": 0.9732924598
+    },
+    "kinematic network": {
+      "Y_p": 0.9889656577,
+      "D/H": 0.9732900752
+    },
+    "G/G0": {
+      "Y_p": 0.9880854986,
+      "D/H": 0.971643264
+    },
+    "(1+q)^2 G/G0": {
+      "Y_p": 0.9886956747,
+      "D/H": 0.9732441472
+    }
+  },
+  "comparisons": [
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.330078255
+          },
+          "chi2": 2.857283549,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -2.680227174
+          },
+          "chi2": 8.340981107,
+          "likelihood_standard_over_model": 15.51564359
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -2.680349373
+          },
+          "chi2": 8.343138894,
+          "likelihood_standard_over_model": 15.53239235
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -2.764809536
+          },
+          "chi2": 9.196725241,
+          "likelihood_standard_over_model": 23.80083933
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -2.682702948
+          },
+          "chi2": 8.469076323,
+          "likelihood_standard_over_model": 16.54189721
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.691340387
+          },
+          "chi2": 3.931198677,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -3.029499261
+          },
+          "chi2": 10.35224496,
+          "likelihood_standard_over_model": 24.79205259
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -3.029620375
+          },
+          "chi2": 10.35449241,
+          "likelihood_standard_over_model": 24.81992773
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -3.113330487
+          },
+          "chi2": 11.26498427,
+          "likelihood_standard_over_model": 39.13013147
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -3.031953048
+          },
+          "chi2": 10.48275431,
+          "likelihood_standard_over_model": 26.46380142
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.330078255
+          },
+          "chi2": 1.960916356,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -2.680227174
+          },
+          "chi2": 7.856992709,
+          "likelihood_standard_over_model": 19.06850797
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -2.680349373
+          },
+          "chi2": 7.858328522,
+          "likelihood_standard_over_model": 19.0812482
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -2.764809536
+          },
+          "chi2": 8.493680839,
+          "likelihood_standard_over_model": 26.21632325
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -2.682702948
+          },
+          "chi2": 7.922015574,
+          "likelihood_standard_over_model": 19.69864022
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.691340387
+          },
+          "chi2": 3.048059001,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -3.029499261
+          },
+          "chi2": 9.85894655,
+          "likelihood_standard_over_model": 30.12766266
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -3.029620375
+          },
+          "chi2": 9.860364978,
+          "likelihood_standard_over_model": 30.14903719
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -3.113330487
+          },
+          "chi2": 10.55094757,
+          "likelihood_standard_over_model": 42.58253895
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -3.031953048
+          },
+          "chi2": 9.92585411,
+          "likelihood_standard_over_model": 31.15259519
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.330078255
+          },
+          "chi2": 2.06796215,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -2.680227174
+          },
+          "chi2": 7.254164164,
+          "likelihood_standard_over_model": 13.37117147
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -2.680349373
+          },
+          "chi2": 7.254961467,
+          "likelihood_standard_over_model": 13.37650298
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -2.764809536
+          },
+          "chi2": 7.75363527,
+          "likelihood_standard_over_model": 17.16438435
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -2.682702948
+          },
+          "chi2": 7.278450179,
+          "likelihood_standard_over_model": 13.53452752
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.691340387
+          },
+          "chi2": 3.155946726,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -3.029499261
+          },
+          "chi2": 9.250026962,
+          "likelihood_standard_over_model": 21.0529379
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -3.029620375
+          },
+          "chi2": 9.250904658,
+          "likelihood_standard_over_model": 21.06217897
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -3.113330487
+          },
+          "chi2": 9.804289968,
+          "likelihood_standard_over_model": 27.77598007
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -3.031953048
+          },
+          "chi2": 9.276029581,
+          "likelihood_standard_over_model": 21.32844073
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.330078255
+          },
+          "chi2": 10.32964458,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -2.680227174
+          },
+          "chi2": 11.76750486,
+          "likelihood_standard_over_model": 2.052236428
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -2.680349373
+          },
+          "chi2": 11.76705265,
+          "likelihood_standard_over_model": 2.051772458
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -2.764809536
+          },
+          "chi2": 11.96208528,
+          "likelihood_standard_over_model": 2.261934339
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -2.682702948
+          },
+          "chi2": 11.69852111,
+          "likelihood_standard_over_model": 1.982657791
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.442
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.691340387
+          },
+          "chi2": 11.40281011,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.376780187
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -3.029499261
+          },
+          "chi2": 13.74924882,
+          "likelihood_standard_over_model": 3.232382097
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.376774364
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -3.029620375
+          },
+          "chi2": 13.74887699,
+          "likelihood_standard_over_model": 3.231781205
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.372752851
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -3.113330487
+          },
+          "chi2": 13.99866098,
+          "likelihood_standard_over_model": 3.661692374
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.376662207
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -3.031953048
+          },
+          "chi2": 13.68197571,
+          "likelihood_standard_over_model": 3.125464149
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 1.051747436,
+            "D/H": -0.9500375603
+          },
+          "chi2": 1.866163241,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -1.025720231,
+            "D/H": -1.940943271
+          },
+          "chi2": 5.155879309,
+          "likelihood_standard_over_model": 5.180274433
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -1.026412612,
+            "D/H": -1.941032956
+          },
+          "chi2": 5.157880889,
+          "likelihood_standard_over_model": 5.185461393
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -1.193175215,
+            "D/H": -2.003020235
+          },
+          "chi2": 5.837653539,
+          "likelihood_standard_over_model": 7.284473381
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -1.077550167,
+            "D/H": -1.942760299
+          },
+          "chi2": 5.288498032,
+          "likelihood_standard_over_model": 5.53541973
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 1.051747436,
+            "D/H": -1.220396434
+          },
+          "chi2": 2.413291776,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -1.025720231,
+            "D/H": -2.206532963
+          },
+          "chi2": 6.304036626,
+          "likelihood_standard_over_model": 6.996236944
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -1.026412612,
+            "D/H": -2.206622216
+          },
+          "chi2": 6.306111256,
+          "likelihood_standard_over_model": 7.003498011
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -1.193175215,
+            "D/H": -2.268311153
+          },
+          "chi2": 7.024068817,
+          "likelihood_standard_over_model": 10.02807361
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -1.077550167,
+            "D/H": -2.208341245
+          },
+          "chi2": 6.439620371,
+          "likelihood_standard_over_model": 7.486970909
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 0.4449681899,
+            "D/H": -0.9500375603
+          },
+          "chi2": 1.064097049,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -0.7921879153,
+            "D/H": -1.940943271
+          },
+          "chi2": 4.545108576,
+          "likelihood_standard_over_model": 5.700225662
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -0.7926002359,
+            "D/H": -1.941032956
+          },
+          "chi2": 4.546192213,
+          "likelihood_standard_over_model": 5.703314986
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -0.8919093016,
+            "D/H": -2.003020235
+          },
+          "chi2": 4.981580987,
+          "likelihood_standard_over_model": 7.090401508
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -0.8230532434,
+            "D/H": -1.942760299
+          },
+          "chi2": 4.607772955,
+          "likelihood_standard_over_model": 5.881653636
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 0.4449681899,
+            "D/H": -1.220396434
+          },
+          "chi2": 1.64129547,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -0.7921879153,
+            "D/H": -2.206532963
+          },
+          "chi2": 5.667364049,
+          "likelihood_standard_over_model": 7.485997604
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -0.7926002359,
+            "D/H": -2.206622216
+          },
+          "chi2": 5.668503075,
+          "likelihood_standard_over_model": 7.490262189
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -0.8919093016,
+            "D/H": -2.268311153
+          },
+          "chi2": 6.137795651,
+          "likelihood_standard_over_model": 9.471147676
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -0.8230532434,
+            "D/H": -2.208341245
+          },
+          "chi2": 5.731676269,
+          "likelihood_standard_over_model": 7.730630304
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "Aver et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 0.5512818674,
+            "D/H": -0.9500375603
+          },
+          "chi2": 1.176540224,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -0.2478598264,
+            "D/H": -1.940943271
+          },
+          "chi2": 3.86051923,
+          "likelihood_standard_over_model": 3.826649068
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -0.2481261651,
+            "D/H": -1.941032956
+          },
+          "chi2": 3.861031817,
+          "likelihood_standard_over_model": 3.827629939
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -0.3122749129,
+            "D/H": -2.003020235
+          },
+          "chi2": 4.150222702,
+          "likelihood_standard_over_model": 4.423101907
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -0.2677973027,
+            "D/H": -1.942760299
+          },
+          "chi2": 3.88019129,
+          "likelihood_standard_over_model": 3.86447382
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "Aver et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 0.5512818674,
+            "D/H": -1.220396434
+          },
+          "chi2": 1.755205202,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": -0.2478598264,
+            "D/H": -2.206532963
+          },
+          "chi2": 4.966708708,
+          "likelihood_standard_over_model": 4.98160313
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": -0.2481261651,
+            "D/H": -2.206622216
+          },
+          "chi2": 4.967271071,
+          "likelihood_standard_over_model": 4.983004062
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": -0.3122749129,
+            "D/H": -2.268311153
+          },
+          "chi2": 5.289016694,
+          "likelihood_standard_over_model": 5.852715525
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": -0.2677973027,
+            "D/H": -2.208341245
+          },
+          "chi2": 4.987608543,
+          "likelihood_standard_over_model": 5.03393342
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 2.928968546,
+            "D/H": -0.9500375603
+          },
+          "chi2": 9.330045092,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": 2.156795387,
+            "D/H": -1.940943271
+          },
+          "chi2": 8.186510219,
+          "likelihood_standard_over_model": 0.5645267912
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": 2.156538037,
+            "D/H": -1.941032956
+          },
+          "chi2": 8.185765215,
+          "likelihood_standard_over_model": 0.5643165431
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": 2.094554109,
+            "D/H": -2.003020235
+          },
+          "chi2": 8.166186839,
+          "likelihood_standard_over_model": 0.558819293
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": 2.137530739,
+            "D/H": -1.942760299
+          },
+          "chi2": 8.112692693,
+          "likelihood_standard_over_model": 0.5440706337
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.443744363
+          },
+          "signed_sigma": {
+            "Y_p": 2.928968546,
+            "D/H": -1.220396434
+          },
+          "chi2": 9.872942626,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.378477962
+          },
+          "signed_sigma": {
+            "Y_p": 2.156795387,
+            "D/H": -2.206532963
+          },
+          "chi2": 9.257416603,
+          "likelihood_standard_over_model": 0.7350895053
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.378472134
+          },
+          "signed_sigma": {
+            "Y_p": 2.156538037,
+            "D/H": -2.206622216
+          },
+          "chi2": 9.256721234,
+          "likelihood_standard_over_model": 0.7348339706
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.374447749
+          },
+          "signed_sigma": {
+            "Y_p": 2.094554109,
+            "D/H": -2.268311153
+          },
+          "chi2": 9.269716376,
+          "likelihood_standard_over_model": 0.7396241518
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.378359898
+          },
+          "signed_sigma": {
+            "Y_p": 2.137530739,
+            "D/H": -2.208341245
+          },
+          "chi2": 9.184809973,
+          "likelihood_standard_over_model": 0.708881909
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.462555137
+          },
+          "chi2": 3.222037478,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -2.881762503
+          },
+          "chi2": 9.469305385,
+          "likelihood_standard_over_model": 22.72882524
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -2.881890952
+          },
+          "chi2": 9.471553407,
+          "likelihood_standard_over_model": 22.75438705
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -2.970671148
+          },
+          "chi2": 10.38613861,
+          "likelihood_standard_over_model": 35.94717735
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -2.884364909
+          },
+          "chi2": 9.59948868,
+          "likelihood_standard_over_model": 24.25749401
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.840017151
+          },
+          "chi2": 4.450783217,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -3.245318309
+          },
+          "chi2": 11.71403673,
+          "likelihood_standard_over_model": 37.77421617
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -3.245445499
+          },
+          "chi2": 11.71638093,
+          "likelihood_standard_over_model": 37.81851719
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -3.333355776
+          },
+          "chi2": 12.69230392,
+          "likelihood_standard_over_model": 61.6060667
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -3.247895215
+          },
+          "chi2": 11.84677031,
+          "likelihood_standard_over_model": 40.36623013
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.462555137
+          },
+          "chi2": 2.329583388,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -2.881762503
+          },
+          "chi2": 8.981282745,
+          "likelihood_standard_over_model": 27.8226289
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -2.881890952
+          },
+          "chi2": 8.982705611,
+          "likelihood_standard_over_model": 27.84242988
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -2.970671148
+          },
+          "chi2": 9.678226177,
+          "likelihood_standard_over_model": 39.42189588
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -2.884364909
+          },
+          "chi2": 9.048161835,
+          "likelihood_standard_over_model": 28.76873547
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.840017151
+          },
+          "chi2": 3.571742128,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -3.245318309
+          },
+          "chi2": 11.21660051,
+          "likelihood_standard_over_model": 45.71512433
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -3.245445499
+          },
+          "chi2": 11.21811246,
+          "likelihood_standard_over_model": 45.74969678
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -3.333355776
+          },
+          "chi2": 11.97328957,
+          "likelihood_standard_over_model": 66.73794762
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -3.247895215
+          },
+          "chi2": 11.28549677,
+          "likelihood_standard_over_model": 47.31736341
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.462555137
+          },
+          "chi2": 2.436879797,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -2.881762503
+          },
+          "chi2": 8.375803804,
+          "likelihood_standard_over_model": 19.48143583
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -2.881890952
+          },
+          "chi2": 8.376687111,
+          "likelihood_standard_over_model": 19.49004178
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -2.970671148
+          },
+          "chi2": 8.935240042,
+          "likelihood_standard_over_model": 25.76920367
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -2.884364909
+          },
+          "chi2": 8.401871263,
+          "likelihood_standard_over_model": 19.73701355
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.840017151
+          },
+          "chi2": 3.67988502,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -3.245318309
+          },
+          "chi2": 10.60497436,
+          "likelihood_standard_over_model": 31.89804328
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -3.245445499
+          },
+          "chi2": 10.60594451,
+          "likelihood_standard_over_model": 31.91352
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -3.333355776
+          },
+          "chi2": 11.22363522,
+          "likelihood_standard_over_model": 43.46148306
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -3.247895215
+          },
+          "chi2": 10.63288977,
+          "likelihood_standard_over_model": 32.34638837
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.462555137
+          },
+          "chi2": 10.69418944,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -2.881762503
+          },
+          "chi2": 12.88297046,
+          "likelihood_standard_over_model": 2.987361355
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -2.881890952
+          },
+          "chi2": 12.88260405,
+          "likelihood_standard_over_model": 2.986814112
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -2.970671148
+          },
+          "chi2": 13.13739823,
+          "likelihood_standard_over_model": 3.392626474
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -2.884364909
+          },
+          "chi2": 12.81576183,
+          "likelihood_standard_over_model": 2.888641134
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.439
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.840017151
+          },
+          "chi2": 11.92213505,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.37386031
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -3.245318309
+          },
+          "chi2": 15.09791702,
+          "likelihood_standard_over_model": 4.893417752
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.373854493
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -3.245445499
+          },
+          "chi2": 15.09763746,
+          "likelihood_standard_over_model": 4.892733799
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.369837921
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -3.333355776
+          },
+          "chi2": 15.41161792,
+          "likelihood_standard_over_model": 5.724421158
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.373742475
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -3.247895215
+          },
+          "chi2": 15.03255059,
+          "likelihood_standard_over_model": 4.736070428
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 1.051747436,
+            "D/H": -0.8783864095
+          },
+          "chi2": 1.744073326,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -1.025720231,
+            "D/H": -1.885186069
+          },
+          "chi2": 4.938178328,
+          "likelihood_standard_over_model": 4.93845486
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -1.026412612,
+            "D/H": -1.885277192
+          },
+          "chi2": 4.940173415,
+          "likelihood_standard_over_model": 4.943383641
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -1.193175215,
+            "D/H": -1.948258736
+          },
+          "chi2": 5.616730742,
+          "likelihood_standard_over_model": 6.933250202
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -1.077550167,
+            "D/H": -1.887032242
+          },
+          "chi2": 5.070534557,
+          "likelihood_standard_over_model": 5.27632913
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 1.051747436,
+            "D/H": -1.153320934
+          },
+          "chi2": 2.261454222,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -1.025720231,
+            "D/H": -2.155119386
+          },
+          "chi2": 6.076901003,
+          "likelihood_standard_over_model": 6.737732142
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -1.026412612,
+            "D/H": -2.155210056
+          },
+          "chi2": 6.078971558,
+          "likelihood_standard_over_model": 6.744711175
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -1.193175215,
+            "D/H": -2.217878744
+          },
+          "chi2": 6.794975827,
+          "likelihood_standard_over_model": 9.648098052
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -1.077550167,
+            "D/H": -2.156956388
+          },
+          "chi2": 6.212320379,
+          "likelihood_standard_over_model": 7.209741361
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 0.4449681899,
+            "D/H": -0.8783864095
+          },
+          "chi2": 0.9352265513,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -0.7921879153,
+            "D/H": -1.885186069
+          },
+          "chi2": 4.329765747,
+          "likelihood_standard_over_model": 5.4590217
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -0.7926002359,
+            "D/H": -1.885277192
+          },
+          "chi2": 4.330844116,
+          "likelihood_standard_over_model": 5.461965914
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -0.8919093016,
+            "D/H": -1.948258736
+          },
+          "chi2": 4.763148291,
+          "likelihood_standard_over_model": 6.779889948
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -0.8230532434,
+            "D/H": -1.887032242
+          },
+          "chi2": 4.392273721,
+          "likelihood_standard_over_model": 5.632332105
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 0.4449681899,
+            "D/H": -1.153320934
+          },
+          "chi2": 1.483825654,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -0.7921879153,
+            "D/H": -2.155119386
+          },
+          "chi2": 5.441768942,
+          "likelihood_standard_over_model": 7.235298693
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -0.7926002359,
+            "D/H": -2.155210056
+          },
+          "chi2": 5.442904529,
+          "likelihood_standard_over_model": 7.239408015
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -0.8919093016,
+            "D/H": -2.217878744
+          },
+          "chi2": 5.91023095,
+          "likelihood_standard_over_model": 9.144957624
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -0.8230532434,
+            "D/H": -2.156956388
+          },
+          "chi2": 5.505979181,
+          "likelihood_standard_over_model": 7.471357903
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "Aver et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 0.5512818674,
+            "D/H": -0.8783864095
+          },
+          "chi2": 1.047324717,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -0.2478598264,
+            "D/H": -1.885186069
+          },
+          "chi2": 3.646727111,
+          "likelihood_standard_over_model": 3.668200434
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -0.2481261651,
+            "D/H": -1.885277192
+          },
+          "chi2": 3.647234772,
+          "likelihood_standard_over_model": 3.669131653
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -0.3122749129,
+            "D/H": -1.948258736
+          },
+          "chi2": 3.933332146,
+          "likelihood_standard_over_model": 4.233392641
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -0.2677973027,
+            "D/H": -1.887032242
+          },
+          "chi2": 3.666277829,
+          "likelihood_standard_over_model": 3.704234245
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "Aver et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 0.5512818674,
+            "D/H": -1.153320934
+          },
+          "chi2": 1.597476519,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": -0.2478598264,
+            "D/H": -2.155119386
+          },
+          "chi2": 4.742146899,
+          "likelihood_standard_over_model": 4.817885747
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": -0.2481261651,
+            "D/H": -2.155210056
+          },
+          "chi2": 4.742705979,
+          "likelihood_standard_over_model": 4.819232728
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": -0.3122749129,
+            "D/H": -2.217878744
+          },
+          "chi2": 5.062431996,
+          "likelihood_standard_over_model": 5.654647304
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": -0.2677973027,
+            "D/H": -2.156956388
+          },
+          "chi2": 4.76296594,
+          "likelihood_standard_over_model": 4.868299565
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 2.928968546,
+            "D/H": -0.8783864095
+          },
+          "chi2": 9.208814109,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": 2.156795387,
+            "D/H": -1.885186069
+          },
+          "chi2": 7.976359897,
+          "likelihood_standard_over_model": 0.5399778785
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": 2.156538037,
+            "D/H": -1.885277192
+          },
+          "chi2": 7.975609559,
+          "likelihood_standard_over_model": 0.5397753337
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": 2.094554109,
+            "D/H": -1.948258736
+          },
+          "chi2": 7.952658438,
+          "likelihood_standard_over_model": 0.5336165146
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": 2.137530739,
+            "D/H": -1.887032242
+          },
+          "chi2": 7.902412415,
+          "likelihood_standard_over_model": 0.5203774596
+        }
+      }
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.2471841652,
+            "D/H": 2.449460291
+          },
+          "signed_sigma": {
+            "Y_p": 2.928968546,
+            "D/H": -1.153320934
+          },
+          "chi2": 9.721974861,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.2444575542,
+            "D/H": 2.384041232
+          },
+          "signed_sigma": {
+            "Y_p": 2.156795387,
+            "D/H": -2.155119386
+          },
+          "chi2": 9.035330527,
+          "likelihood_standard_over_model": 0.7094096264
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444566505,
+            "D/H": 2.384035391
+          },
+          "signed_sigma": {
+            "Y_p": 2.156538037,
+            "D/H": -2.155210056
+          },
+          "chi2": 9.034631467,
+          "likelihood_standard_over_model": 0.70916171
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442390891,
+            "D/H": 2.380001592
+          },
+          "signed_sigma": {
+            "Y_p": 2.094554109,
+            "D/H": -2.217878744
+          },
+          "chi2": 9.045331075,
+          "likelihood_standard_over_model": 0.7129657526
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.244389915,
+            "D/H": 2.383922892
+          },
+          "signed_sigma": {
+            "Y_p": 2.137530739,
+            "D/H": -2.156956388
+          },
+          "chi2": 8.96263403,
+          "likelihood_standard_over_model": 0.6840868366
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.584833736
+          },
+          "chi2": 3.610837341,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -3.078765505
+          },
+          "chi2": 10.60833001,
+          "likelihood_standard_over_model": 33.07396232
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -3.078900718
+          },
+          "chi2": 10.6106455,
+          "likelihood_standard_over_model": 33.11227572
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -3.172355387
+          },
+          "chi2": 11.5829174,
+          "likelihood_standard_over_model": 53.84125679
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -3.081504934
+          },
+          "chi2": 10.73861923,
+          "likelihood_standard_over_model": 35.30028173
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 1.075368987,
+            "D/H": -1.979641294
+          },
+          "chi2": 5.004753021,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -1.009946859,
+            "D/H": -3.45737823
+          },
+          "chi2": 13.09543598,
+          "likelihood_standard_over_model": 57.13069177
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -1.010641855,
+            "D/H": -3.457511976
+          },
+          "chi2": 13.09785175,
+          "likelihood_standard_over_model": 57.19974076
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -1.178034448,
+            "D/H": -3.549953559
+          },
+          "chi2": 14.13558174,
+          "likelihood_standard_over_model": 96.10240653
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -1.061972595,
+            "D/H": -3.460087962
+          },
+          "chi2": 13.2281993,
+          "likelihood_standard_over_model": 61.05182765
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.584833736
+          },
+          "chi2": 2.706305894,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -3.078765505
+          },
+          "chi2": 10.13963207,
+          "likelihood_standard_over_model": 41.12692804
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -3.078900718
+          },
+          "chi2": 10.14113837,
+          "likelihood_standard_over_model": 41.15791432
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -3.172355387
+          },
+          "chi2": 10.89873915,
+          "likelihood_standard_over_model": 60.11242907
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -3.081504934
+          },
+          "chi2": 10.20776153,
+          "likelihood_standard_over_model": 42.55204097
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "Kurichin et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 0.4572344638,
+            "D/H": -1.979641294
+          },
+          "chi2": 4.110252299,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -0.7815730437,
+            "D/H": -3.45737823
+          },
+          "chi2": 12.61994912,
+          "likelihood_standard_over_model": 70.44613751
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -0.7819859146,
+            "D/H": -3.457511976
+          },
+          "chi2": 12.62155049,
+          "likelihood_standard_over_model": 70.50256518
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -0.8814275418,
+            "D/H": -3.549953559
+          },
+          "chi2": 13.44338188,
+          "likelihood_standard_over_model": 106.3318424
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -0.8124795719,
+            "D/H": -3.460087962
+          },
+          "chi2": 12.69016091,
+          "likelihood_standard_over_model": 72.96313453
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.584833736
+          },
+          "chi2": 2.812806849,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -3.078765505
+          },
+          "chi2": 9.546747778,
+          "likelihood_standard_over_model": 28.99056593
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -3.078900718
+          },
+          "chi2": 9.547719839,
+          "likelihood_standard_over_model": 29.00465966
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -3.172355387
+          },
+          "chi2": 10.16994533,
+          "likelihood_standard_over_model": 39.58971027
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -3.081504934
+          },
+          "chi2": 9.574431806,
+          "likelihood_standard_over_model": 29.39464392
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "Aver et al. 2021",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 0.5591224292,
+            "D/H": -1.979641294
+          },
+          "chi2": 4.217405331,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": -0.2404638387,
+            "D/H": -3.45737823
+          },
+          "chi2": 12.02258706,
+          "likelihood_standard_over_model": 49.5306101
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": -0.2407303256,
+            "D/H": -3.457511976
+          },
+          "chi2": 12.02365256,
+          "likelihood_standard_over_model": 49.55700453
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": -0.3049147602,
+            "D/H": -3.549953559
+          },
+          "chi2": 12.7097316,
+          "likelihood_standard_over_model": 69.83694284
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": -0.2604124065,
+            "D/H": -3.460087962
+          },
+          "chi2": 12.05222912,
+          "likelihood_standard_over_model": 50.27017169
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.584833736
+          },
+          "chi2": 11.08358772,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -3.078765505
+          },
+          "chi2": 14.08289605,
+          "likelihood_standard_over_model": 4.480139406
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -3.078900718
+          },
+          "chi2": 14.08262003,
+          "likelihood_standard_over_model": 4.479521146
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -3.172355387
+          },
+          "chi2": 14.40209506,
+          "likelihood_standard_over_model": 5.255387125
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -3.081504934
+          },
+          "chi2": 14.01735178,
+          "likelihood_standard_over_model": 4.335695459
+        }
+      }
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "EMPRESS (Matsumoto et al. 2022)",
+      "deuterium": "Cooke, Pettini & Steidel 2018",
+      "cases": {
+        "standard": {
+          "prediction": {
+            "Y_p": 0.24721,
+            "D/H": 2.437
+          },
+          "signed_sigma": {
+            "Y_p": 2.937769131,
+            "D/H": -1.979641294
+          },
+          "chi2": 12.47700547,
+          "likelihood_standard_over_model": 1.0
+        },
+        "physical": {
+          "prediction": {
+            "Y_p": 0.244483104,
+            "D/H": 2.371913725
+          },
+          "signed_sigma": {
+            "Y_p": 2.165194928,
+            "D/H": -3.45737823
+          },
+          "chi2": 16.54828123,
+          "likelihood_standard_over_model": 7.657134885
+        },
+        "kinematic network": {
+          "prediction": {
+            "Y_p": 0.2444822002,
+            "D/H": 2.371907913
+          },
+          "signed_sigma": {
+            "Y_p": 2.164937443,
+            "D/H": -3.457511976
+          },
+          "chi2": 16.54809866,
+          "likelihood_standard_over_model": 7.65643593
+        },
+        "G/G0": {
+          "prediction": {
+            "Y_p": 0.2442646161,
+            "D/H": 2.367894634
+          },
+          "signed_sigma": {
+            "Y_p": 2.102921323,
+            "D/H": -3.549953559
+          },
+          "chi2": 16.93147008,
+          "likelihood_standard_over_model": 9.274162466
+        },
+        "(1+q)^2 G/G0": {
+          "prediction": {
+            "Y_p": 0.2444154577,
+            "D/H": 2.371795987
+          },
+          "signed_sigma": {
+            "Y_p": 2.145920273,
+            "D/H": -3.460087962
+          },
+          "chi2": 16.48469094,
+          "likelihood_standard_over_model": 7.41750489
+        }
+      }
+    }
+  ],
+  "q_profiles": [
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "best": 5.606051045e-05,
+      "chi2_min": 2.830950601,
+      "two_sigma": [
+        -0.0006361154239,
+        0.000745533285
+      ]
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "best": 0.0001805888624,
+      "chi2_min": 1.621482245,
+      "two_sigma": [
+        -0.0005508893652,
+        0.0009085817869
+      ]
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "best": 1.633205168e-05,
+      "chi2_min": 3.219733963,
+      "two_sigma": [
+        -0.0006654781335,
+        0.0006956072665
+      ]
+    },
+    {
+      "rates": "PRIMAT (Pitrou et al. 2021)",
+      "baryon_density": "widened",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "best": 0.0001898153338,
+      "chi2_min": 1.471634887,
+      "two_sigma": [
+        -0.0005387778376,
+        0.0009149745476
+      ]
+    },
+    {
+      "rates": "Gaussian processes (Launders et al. 2026), Planck+ACT+SPT",
+      "baryon_density": "as published",
+      "helium": "LBT (Aver et al. 2026)",
+      "deuterium": "PDG 2025, mean of 12 systems",
+      "best": -2.121069741e-05,
+      "chi2_min": 3.606844962,
+      "two_sigma": [
+        -0.0006938171547,
+        0.0006490161969
+      ]
+    }
+  ],
+  "q_grid": [
+    {
+      "q": -0.002,
+      "abundance_ratios": {
+        "Y_p": 1.025664513,
+        "D/H": 1.064664745
+      }
+    },
+    {
+      "q": -0.0015,
+      "abundance_ratios": {
+        "Y_p": 1.019227778,
+        "D/H": 1.048105549
+      }
+    },
+    {
+      "q": -0.001,
+      "abundance_ratios": {
+        "Y_p": 1.012804685,
+        "D/H": 1.031811733
+      }
+    },
+    {
+      "q": -0.0005,
+      "abundance_ratios": {
+        "Y_p": 1.006395377,
+        "D/H": 1.015778205
+      }
+    },
+    {
+      "q": 0.0,
+      "abundance_ratios": {
+        "Y_p": 1.0,
+        "D/H": 1.0
+      }
+    },
+    {
+      "q": 0.0005,
+      "abundance_ratios": {
+        "Y_p": 0.9936186963,
+        "D/H": 0.9844722675
+      }
+    },
+    {
+      "q": 0.001,
+      "abundance_ratios": {
+        "Y_p": 0.9872516094,
+        "D/H": 0.9691902749
+      }
+    },
+    {
+      "q": 0.0015,
+      "abundance_ratios": {
+        "Y_p": 0.9808988819,
+        "D/H": 0.954149402
+      }
+    },
+    {
+      "q": 0.002,
+      "abundance_ratios": {
+        "Y_p": 0.9745606559,
+        "D/H": 0.9393451376
+      }
+    }
+  ],
+  "alternative_coupling": {
+    "beta": 0.002576344844,
+    "field_over_radiation_at_0.1_MeV": 0.02932341068,
+    "H_ratio_at_0.1_MeV": 1.000157641,
+    "abundance_ratios": {
+      "Y_p": 0.9993224037,
+      "D/H": 1.000788493
+    }
+  }
+}

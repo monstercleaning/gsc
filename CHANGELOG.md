@@ -2,6 +2,11 @@
 
 ## 20.2.0 — in progress
 
+- Added a conserving scalar completion of P14 and validated a compact nucleosynthesis network. For unit early
+  coupling, LBT helium and PDG deuterium favor standard expansion by a likelihood ratio of 15.5 with the
+  Planck baryon density and Gaussian-process rates. [Diagnostic](analyses/p14_physical_model.md). The
+  registration leaves the coupling free, and near β ≈ 0.0026 the field's energy erases the nucleosynthesis
+  signature, so abundances alone cannot test P14 until the coupling is fixed; P14 carries a flag saying so.
 - **Second external review.** Added flags on P2, P5, P7, P8, P10 and P12, corrected the two-epoch P14 abundance
   comparison, and computed the stellar mass missing from the black-hole model. Recorded the limits of the P15
   envelope and galaxy fits, and guidance on repeated tests in future registrations. The new SPARC diagnostic

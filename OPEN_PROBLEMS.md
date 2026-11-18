@@ -84,6 +84,26 @@ laboratory value. The variant's shifts are of the same order, so current data do
 few-fold improvement would. The comparison is indicative only: that analysis assumes one G at all epochs, while
 the variant's G changes with time. This content is registered as P14 (v20.1, problem 5).
 
+### A conserving model for P14 (v20.2)
+
+A canonical scalar coupled to particle masses can reproduce the registered drift and freeze while conserving
+total energy. With a unit early coupling in reduced Planck units, the scalar carries too little energy during
+nucleosynthesis to offset the slower expansion. The compact network puts helium 1.01σ below the LBT measurement
+and deuterium 2.68σ below the PDG average with the Planck Gaussian-process prediction. Standard expansion fits
+the pair 15.5 times better. The abundance-only 2σ range is −0.636×10⁻³ < q < 0.746×10⁻³ with the published
+baryon density. This bound depends on the coupling. A smaller coupling can require enough field energy to
+bring the expansion back near standard. A full CMB fit would determine the baryon density for each completion.
+[Physical model and validations](analyses/p14_physical_model.md).
+
+**The consequence for P14.** The registration fixes the mass drift q but not the coupling β that produces it, and the
+nucleosynthesis signature depends on β. The field's energy adds to the expansion rate (U/B = k²/(4−k²) with
+k = q/β), while the drift slows it. At β ≈ 0.0026 the two cancel: the expansion rate during nucleosynthesis is
+standard to 0.02%, and helium and deuterium change by less than 0.1%. So nucleosynthesis alone cannot test P14 as
+registered: any abundance result can be absorbed by choosing β. P14 keeps its recombination content (G 0.8% weaker
+in atomic units) and the fixed relation between the two epochs only for the completion with unit coupling. A test
+of the core needs β fixed in advance, for example from a separate observable of the same field, together with a
+full CMB fit.
+
 ## 2. The P8 revision r2 history is not "the same p as P1"
 
 The P8 r2 pipeline uses the history H(z) = H_ΛCDM(z)·(1+z)^p and its texts call this "the same metrology
