@@ -1,0 +1,924 @@
+{
+  "q": 0.000865,
+  "z_transition": 10.0,
+  "z_recombination": 1089.95,
+  "cancelling_beta": 0.002576344844,
+  "temperature_MeV": [
+    1.0,
+    0.1,
+    0.03
+  ],
+  "N_eff_standard": 3.044,
+  "network_steps": 4800,
+  "omega_b": 0.02237,
+  "rates": "Gaussian processes (Launders et al. 2026)",
+  "baryon_density": "as published",
+  "helium": "LBT (Aver et al. 2026)",
+  "deuterium": "PDG 2025, mean of 12 systems",
+  "standard_abundance_chi2": 2.857283549,
+  "bao_k0": {
+    "C_m": 0.29734518,
+    "H0_rd_km_s": 10154.97828,
+    "chi2": 10.53863057
+  },
+  "smooth_fraction_translations": [
+    {
+      "omega_phi_max": 0.006,
+      "beta_min": 0.00636616295,
+      "likelihood_range": [
+        6.477420162,
+        15.51564359
+      ]
+    },
+    {
+      "omega_phi_max": 0.004,
+      "beta_min": 0.007871529097,
+      "likelihood_range": [
+        8.613272673,
+        15.51564359
+      ]
+    }
+  ],
+  "external_comparisons": {
+    "da_fonseca_k_68": 0.056,
+    "goh_beta_68": 0.026,
+    "spt_free_helium_N_eff": [
+      2.96,
+      0.21,
+      0.24
+    ],
+    "spt_energy_only_beta_min": 0.002081592423
+  },
+  "rows": [
+    {
+      "beta": 0.001,
+      "k": 0.865,
+      "H_atomic_over_standard": {
+        "1": 1.091576561,
+        "0.1": 1.094582186,
+        "0.03": 1.094560811
+      },
+      "omega_phi_recombination": 0.235412737,
+      "omega_phi_radiation": 0.18705625,
+      "delta_N_eff_energy": 1.713582492,
+      "w_phi_today": -0.6358222813,
+      "network_ratios": {
+        "Y_p": 1.064304499,
+        "D/H": 1.190011653
+      },
+      "signed_sigma": {
+        "Y_p": 12.79195476,
+        "D/H": 7.346327604
+      },
+      "abundance_chi2": 222.3314741,
+      "likelihood_standard_over_model": 4.552132964e+47,
+      "bao": {
+        "C_m": 0.290490592,
+        "H0_rd_km_s": 9651.606645,
+        "chi2": 14.44639509,
+        "delta_chi2_vs_k0": 3.907764518
+      }
+    },
+    {
+      "beta": 0.001333521432,
+      "k": 0.6486584911,
+      "H_atomic_over_standard": {
+        "1": 1.040128436,
+        "0.1": 1.042769404,
+        "0.03": 1.04328831
+      },
+      "omega_phi_recombination": 0.1322288444,
+      "omega_phi_radiation": 0.1051894595,
+      "delta_N_eff_energy": 0.8754561976,
+      "w_phi_today": -0.7952078191,
+      "network_ratios": {
+        "Y_p": 1.029308767,
+        "D/H": 1.084395998
+      },
+      "signed_sigma": {
+        "Y_p": 6.506278342,
+        "D/H": 2.710949552
+      },
+      "abundance_chi2": 50.57376089,
+      "likelihood_standard_over_model": 22988011350.0,
+      "bao": {
+        "C_m": 0.296481162,
+        "H0_rd_km_s": 9869.561597,
+        "chi2": 9.864243983,
+        "delta_chi2_vs_k0": -0.6743865912
+      }
+    },
+    {
+      "beta": 0.00177827941,
+      "k": 0.4864252463,
+      "H_atomic_over_standard": {
+        "1": 1.014224226,
+        "0.1": 1.016662707,
+        "0.03": 1.017443082
+      },
+      "omega_phi_recombination": 0.07438622545,
+      "omega_phi_radiation": 0.05915238006,
+      "delta_N_eff_energy": 0.4682159695,
+      "w_phi_today": -0.8848368936,
+      "network_ratios": {
+        "Y_p": 1.011071485,
+        "D/H": 1.032828844
+      },
+      "signed_sigma": {
+        "Y_p": 3.145394462,
+        "D/H": 0.2809577953
+      },
+      "abundance_chi2": 10.0216555,
+      "likelihood_standard_over_model": 35.95204532,
+      "bao": {
+        "C_m": 0.2975834047,
+        "H0_rd_km_s": 9993.88138,
+        "chi2": 9.331914389,
+        "delta_chi2_vs_k0": -1.206716185
+      }
+    },
+    {
+      "beta": 0.002371373706,
+      "k": 0.3647674755,
+      "H_atomic_over_standard": {
+        "1": 1.000484358,
+        "0.1": 1.002811397,
+        "0.03": 1.003727271
+      },
+      "omega_phi_recombination": 0.04190653832,
+      "omega_phi_radiation": 0.03326382779,
+      "delta_N_eff_energy": 0.256246265,
+      "w_phi_today": -0.9352390261,
+      "network_ratios": {
+        "Y_p": 1.001223166,
+        "D/H": 1.005910931
+      },
+      "signed_sigma": {
+        "Y_p": 1.30518638,
+        "D/H": -1.036138576
+      },
+      "abundance_chi2": 2.712578288,
+      "likelihood_standard_over_model": 0.9302028204,
+      "bao": {
+        "C_m": 0.2976777812,
+        "H0_rd_km_s": 10064.22113,
+        "chi2": 9.613205518,
+        "delta_chi2_vs_k0": -0.9254250566
+      }
+    },
+    {
+      "beta": 0.002576344844,
+      "k": 0.3357469797,
+      "H_atomic_over_standard": {
+        "1": 0.9978522305,
+        "0.1": 1.000157641,
+        "0.03": 1.001099208
+      },
+      "omega_phi_recombination": 0.03553395721,
+      "omega_phi_radiation": 0.02818150859,
+      "delta_N_eff_energy": 0.2159595275,
+      "w_phi_today": -0.9451337365,
+      "network_ratios": {
+        "Y_p": 0.9993224037,
+        "D/H": 1.000788493
+      },
+      "signed_sigma": {
+        "Y_p": 0.9479362031,
+        "D/H": -1.29076767
+      },
+      "abundance_chi2": 2.506323089,
+      "likelihood_standard_over_model": 0.8390539851,
+      "bao": {
+        "C_m": 0.297658015,
+        "H0_rd_km_s": 10078.06218,
+        "chi2": 9.714615166,
+        "delta_chi2_vs_k0": -0.8240154083
+      }
+    },
+    {
+      "beta": 0.00316227766,
+      "k": 0.2735370176,
+      "H_atomic_over_standard": {
+        "1": 0.9929998476,
+        "0.1": 0.9952651643,
+        "0.03": 0.9962538702
+      },
+      "omega_phi_recombination": 0.02365548608,
+      "omega_phi_radiation": 0.018705625,
+      "delta_N_eff_energy": 0.1419600695,
+      "w_phi_today": -0.9635822281,
+      "network_ratios": {
+        "Y_p": 0.9958062729,
+        "D/H": 0.9913739281
+      },
+      "signed_sigma": {
+        "Y_p": 0.2852811847,
+        "D/H": -1.762169723
+      },
+      "abundance_chi2": 3.163933598,
+      "likelihood_standard_over_model": 1.1657038,
+      "bao": {
+        "C_m": 0.2975903241,
+        "H0_rd_km_s": 10103.8931,
+        "chi2": 9.942826346,
+        "delta_chi2_vs_k0": -0.5958042283
+      }
+    },
+    {
+      "beta": 0.004216965034,
+      "k": 0.2051238255,
+      "H_atomic_over_standard": {
+        "1": 0.988864337,
+        "0.1": 0.991095268,
+        "0.03": 0.9921239123
+      },
+      "omega_phi_recombination": 0.01339624255,
+      "omega_phi_radiation": 0.01051894595,
+      "delta_N_eff_energy": 0.07916952327,
+      "w_phi_today": -0.9795207819,
+      "network_ratios": {
+        "Y_p": 0.9927972154,
+        "D/H": 0.9833796382
+      },
+      "signed_sigma": {
+        "Y_p": -0.283670731,
+        "D/H": -2.16598438
+      },
+      "abundance_chi2": 4.80487969,
+      "likelihood_standard_over_model": 2.647982609,
+      "bao": {
+        "C_m": 0.2975006403,
+        "H0_rd_km_s": 10126.23616,
+        "chi2": 10.18021497,
+        "delta_chi2_vs_k0": -0.3584156034
+      }
+    },
+    {
+      "beta": 0.005623413252,
+      "k": 0.153821169,
+      "H_atomic_over_standard": {
+        "1": 0.9865614212,
+        "0.1": 0.9887731215,
+        "0.03": 0.9898239108
+      },
+      "omega_phi_recombination": 0.00762829697,
+      "omega_phi_radiation": 0.005915238006,
+      "delta_N_eff_energy": 0.0443141166,
+      "w_phi_today": -0.9884836894,
+      "network_ratios": {
+        "Y_p": 0.9911166122,
+        "D/H": 0.9789396259
+      },
+      "signed_sigma": {
+        "Y_p": -0.6021897985,
+        "D/H": -2.391682512
+      },
+      "abundance_chi2": 6.156896149,
+      "likelihood_standard_over_model": 5.205971333,
+      "bao": {
+        "C_m": 0.2974380436,
+        "H0_rd_km_s": 10138.81077,
+        "chi2": 10.32977245,
+        "delta_chi2_vs_k0": -0.20885812
+      }
+    },
+    {
+      "beta": 0.00636616295,
+      "k": 0.1358746244,
+      "H_atomic_over_standard": {
+        "1": 0.9859141582,
+        "0.1": 0.9881204431,
+        "0.03": 0.9891774442
+      },
+      "omega_phi_recombination": 0.005999999996,
+      "omega_phi_radiation": 0.004615478392,
+      "delta_N_eff_energy": 0.03453179294,
+      "w_phi_today": -0.9910141768,
+      "network_ratios": {
+        "Y_p": 0.9906436158,
+        "D/H": 0.9776932137
+      },
+      "signed_sigma": {
+        "Y_p": -0.6919326098,
+        "D/H": -2.455225135
+      },
+      "abundance_chi2": 6.593928165,
+      "likelihood_standard_over_model": 6.477420162,
+      "bao": {
+        "C_m": 0.2974188263,
+        "H0_rd_km_s": 10142.36224,
+        "chi2": 10.37406405,
+        "delta_chi2_vs_k0": -0.1645665268
+      }
+    },
+    {
+      "beta": 0.007498942093,
+      "k": 0.1153496039,
+      "H_atomic_over_standard": {
+        "1": 0.9852734665,
+        "0.1": 0.9874743867,
+        "0.03": 0.9885375311
+      },
+      "omega_phi_recombination": 0.004385131811,
+      "omega_phi_radiation": 0.003326382779,
+      "delta_N_eff_energy": 0.02485493035,
+      "w_phi_today": -0.9935239026,
+      "network_ratios": {
+        "Y_p": 0.9901751435,
+        "D/H": 0.9764601072
+      },
+      "signed_sigma": {
+        "Y_p": -0.780859288,
+        "D/H": -2.51816919
+      },
+      "abundance_chi2": 7.051299414,
+      "likelihood_standard_over_model": 8.141772699,
+      "bao": {
+        "C_m": 0.297399034,
+        "H0_rd_km_s": 10145.88568,
+        "chi2": 10.41888554,
+        "delta_chi2_vs_k0": -0.1197450293
+      }
+    },
+    {
+      "beta": 0.007871529097,
+      "k": 0.1098897037,
+      "H_atomic_over_standard": {
+        "1": 0.9851208481,
+        "0.1": 0.9873204897,
+        "0.03": 0.9883850967
+      },
+      "omega_phi_recombination": 0.004,
+      "omega_phi_radiation": 0.003018936744,
+      "delta_N_eff_energy": 0.02255071899,
+      "w_phi_today": -0.9941224659,
+      "network_ratios": {
+        "Y_p": 0.9900635085,
+        "D/H": 0.9761664661
+      },
+      "signed_sigma": {
+        "Y_p": -0.8020563536,
+        "D/H": -2.533169852
+      },
+      "abundance_chi2": 7.163892244,
+      "likelihood_standard_over_model": 8.613272673,
+      "bao": {
+        "C_m": 0.2973942879,
+        "H0_rd_km_s": 10146.72554,
+        "chi2": 10.4297064,
+        "delta_chi2_vs_k0": -0.1089241716
+      }
+    },
+    {
+      "beta": 0.008,
+      "k": 0.108125,
+      "H_atomic_over_standard": {
+        "1": 0.9850731169,
+        "0.1": 0.9872723586,
+        "0.03": 0.988337423
+      },
+      "omega_phi_recombination": 0.003879514388,
+      "omega_phi_radiation": 0.002922753906,
+      "delta_N_eff_energy": 0.02183015068,
+      "w_phi_today": -0.9943097231,
+      "network_ratios": {
+        "Y_p": 0.9900285916,
+        "D/H": 0.9760746377
+      },
+      "signed_sigma": {
+        "Y_p": -0.8086868152,
+        "D/H": -2.537861834
+      },
+      "abundance_chi2": 7.199393625,
+      "likelihood_standard_over_model": 8.76752924,
+      "bao": {
+        "C_m": 0.2973927661,
+        "H0_rd_km_s": 10146.98852,
+        "chi2": 10.433102,
+        "delta_chi2_vs_k0": -0.1055285759
+      }
+    },
+    {
+      "beta": 0.01,
+      "k": 0.0865,
+      "H_atomic_over_standard": {
+        "1": 0.9845514157,
+        "0.1": 0.9867462847,
+        "0.03": 0.9878163461
+      },
+      "omega_phi_recombination": 0.002561487879,
+      "omega_phi_radiation": 0.0018705625,
+      "delta_N_eff_energy": 0.0139565684,
+      "w_phi_today": -0.9963582228,
+      "network_ratios": {
+        "Y_p": 0.98964685,
+        "D/H": 0.9750711899
+      },
+      "signed_sigma": {
+        "Y_p": -0.8811918973,
+        "D/H": -2.589161884
+      },
+      "abundance_chi2": 7.596382287,
+      "likelihood_standard_over_model": 10.6925728,
+      "bao": {
+        "C_m": 0.2973759807,
+        "H0_rd_km_s": 10149.86481,
+        "chi2": 10.47056976,
+        "delta_chi2_vs_k0": -0.06806081443
+      }
+    },
+    {
+      "beta": 0.01333521432,
+      "k": 0.06486584911,
+      "H_atomic_over_standard": {
+        "1": 0.9841460757,
+        "0.1": 0.9863375453,
+        "0.03": 0.9874114868
+      },
+      "omega_phi_recombination": 0.001536015867,
+      "omega_phi_radiation": 0.001051894595,
+      "delta_N_eff_energy": 0.00784192321,
+      "w_phi_today": -0.9979520782,
+      "network_ratios": {
+        "Y_p": 0.9893501259,
+        "D/H": 0.9742918495
+      },
+      "signed_sigma": {
+        "Y_p": -0.9375687244,
+        "D/H": -2.629041153
+      },
+      "abundance_chi2": 7.916174923,
+      "likelihood_standard_over_model": 12.5465495,
+      "bao": {
+        "C_m": 0.2973626552,
+        "H0_rd_km_s": 10152.10273,
+        "chi2": 10.50012893,
+        "delta_chi2_vs_k0": -0.03850164331
+      }
+    },
+    {
+      "beta": 0.0177827941,
+      "k": 0.04864252463,
+      "H_atomic_over_standard": {
+        "1": 0.9839183568,
+        "0.1": 0.9861079158,
+        "0.03": 0.9871840362
+      },
+      "omega_phi_recombination": 0.0009593626633,
+      "omega_phi_radiation": 0.0005915238006,
+      "delta_N_eff_energy": 0.004407806128,
+      "w_phi_today": -0.9988483689,
+      "network_ratios": {
+        "Y_p": 0.9891833784,
+        "D/H": 0.973854132
+      },
+      "signed_sigma": {
+        "Y_p": -0.969257743,
+        "D/H": -2.651453389
+      },
+      "abundance_chi2": 8.100194954,
+      "likelihood_standard_over_model": 13.75573327,
+      "bao": {
+        "C_m": 0.2973550658,
+        "H0_rd_km_s": 10153.36115,
+        "chi2": 10.51690742,
+        "delta_chi2_vs_k0": -0.02172315525
+      }
+    },
+    {
+      "beta": 0.02,
+      "k": 0.04325,
+      "H_atomic_over_standard": {
+        "1": 0.983857106,
+        "0.1": 0.986046151,
+        "0.03": 0.9871228574
+      },
+      "omega_phi_recombination": 0.0008041900328,
+      "omega_phi_radiation": 0.000467640625,
+      "delta_N_eff_energy": 0.003484244817,
+      "w_phi_today": -0.9990895557,
+      "network_ratios": {
+        "Y_p": 0.9891385215,
+        "D/H": 0.9737364107
+      },
+      "signed_sigma": {
+        "Y_p": -0.977783359,
+        "D/H": -2.657482734
+      },
+      "abundance_chi2": 8.150227858,
+      "likelihood_standard_over_model": 14.10419336,
+      "bao": {
+        "C_m": 0.2973529683,
+        "H0_rd_km_s": 10153.70012,
+        "chi2": 10.52144158,
+        "delta_chi2_vs_k0": -0.01718899028
+      }
+    },
+    {
+      "beta": 0.02371373706,
+      "k": 0.03647674755,
+      "H_atomic_over_standard": {
+        "1": 0.9837903707,
+        "0.1": 0.9859788557,
+        "0.03": 0.9870562003
+      },
+      "omega_phi_recombination": 0.000635090552,
+      "omega_phi_radiation": 0.0003326382779,
+      "delta_N_eff_energy": 0.002478049628,
+      "w_phi_today": -0.9993523903,
+      "network_ratios": {
+        "Y_p": 0.989089645,
+        "D/H": 0.9736081551
+      },
+      "signed_sigma": {
+        "Y_p": -0.9870733641,
+        "D/H": -2.664052443
+      },
+      "abundance_chi2": 8.204999615,
+      "likelihood_standard_over_model": 14.49578668,
+      "bao": {
+        "C_m": 0.2973507867,
+        "H0_rd_km_s": 10154.06864,
+        "chi2": 10.52639196,
+        "delta_chi2_vs_k0": -0.01223860987
+      }
+    },
+    {
+      "beta": 0.0316227766,
+      "k": 0.02735370176,
+      "H_atomic_over_standard": {
+        "1": 0.9837184208,
+        "0.1": 0.985906302,
+        "0.03": 0.9869843348
+      },
+      "omega_phi_recombination": 0.0004527401487,
+      "omega_phi_radiation": 0.00018705625,
+      "delta_N_eff_energy": 0.001393306804,
+      "w_phi_today": -0.9996358223,
+      "network_ratios": {
+        "Y_p": 0.9890369462,
+        "D/H": 0.9734698858
+      },
+      "signed_sigma": {
+        "Y_p": -0.9970904259,
+        "D/H": -2.671136061
+      },
+      "abundance_chi2": 8.264353566,
+      "likelihood_standard_over_model": 14.93242479,
+      "bao": {
+        "C_m": 0.2973482914,
+        "H0_rd_km_s": 10154.46712,
+        "chi2": 10.5317411,
+        "delta_chi2_vs_k0": -0.006889477751
+      }
+    },
+    {
+      "beta": 0.04216965034,
+      "k": 0.02051238255,
+      "H_atomic_over_standard": {
+        "1": 0.9836779674,
+        "0.1": 0.985865509,
+        "0.03": 0.9869439287
+      },
+      "omega_phi_recombination": 0.0003501973622,
+      "omega_phi_radiation": 0.0001051894595,
+      "delta_N_eff_energy": 0.000783449844,
+      "w_phi_today": -0.9997952078,
+      "network_ratios": {
+        "Y_p": 0.9890073149,
+        "D/H": 0.9733921482
+      },
+      "signed_sigma": {
+        "Y_p": -1.002722992,
+        "D/H": -2.675119045
+      },
+      "abundance_chi2": 8.297862867,
+      "likelihood_standard_over_model": 15.18472,
+      "bao": {
+        "C_m": 0.2973468925,
+        "H0_rd_km_s": 10154.69114,
+        "chi2": 10.53475406,
+        "delta_chi2_vs_k0": -0.003876514995
+      }
+    },
+    {
+      "beta": 0.05623413252,
+      "k": 0.0153821169,
+      "H_atomic_over_standard": {
+        "1": 0.9836552209,
+        "0.1": 0.9858425716,
+        "0.03": 0.9869212089
+      },
+      "omega_phi_recombination": 0.0002925334363,
+      "omega_phi_radiation": 5.915238006e-05,
+      "delta_N_eff_energy": 0.0004405459399,
+      "w_phi_today": -0.9998848369,
+      "network_ratios": {
+        "Y_p": 0.9889906532,
+        "D/H": 0.9733484386
+      },
+      "signed_sigma": {
+        "Y_p": -1.005890276,
+        "D/H": -2.677358707
+      },
+      "abundance_chi2": 8.316748302,
+      "likelihood_standard_over_model": 15.32878413,
+      "bao": {
+        "C_m": 0.2973461146,
+        "H0_rd_km_s": 10154.81704,
+        "chi2": 10.53644993,
+        "delta_chi2_vs_k0": -0.002180644427
+      }
+    },
+    {
+      "beta": 0.07498942093,
+      "k": 0.01153496039,
+      "H_atomic_over_standard": {
+        "1": 0.9836424304,
+        "0.1": 0.9858296737,
+        "0.03": 0.9869084333
+      },
+      "omega_phi_recombination": 0.0002601066658,
+      "omega_phi_radiation": 3.326382779e-05,
+      "delta_N_eff_energy": 0.0002477307739,
+      "w_phi_today": -0.999935239,
+      "network_ratios": {
+        "Y_p": 0.988981284,
+        "D/H": 0.9733238605
+      },
+      "signed_sigma": {
+        "Y_p": -1.007671327,
+        "D/H": -2.678618119
+      },
+      "abundance_chi2": 8.327381571,
+      "likelihood_standard_over_model": 15.4104987,
+      "bao": {
+        "C_m": 0.2973457209,
+        "H0_rd_km_s": 10154.88749,
+        "chi2": 10.53740408,
+        "delta_chi2_vs_k0": -0.001226494031
+      }
+    },
+    {
+      "beta": 0.1,
+      "k": 0.00865,
+      "H_atomic_over_standard": {
+        "1": 0.9836352379,
+        "0.1": 0.9858224209,
+        "0.03": 0.9869012492
+      },
+      "omega_phi_recombination": 0.0002418717648,
+      "omega_phi_radiation": 1.8705625e-05,
+      "delta_N_eff_energy": 0.0001393072235,
+      "w_phi_today": -0.9999635822,
+      "network_ratios": {
+        "Y_p": 0.9889760154,
+        "D/H": 0.9733100397
+      },
+      "signed_sigma": {
+        "Y_p": -1.008672872,
+        "D/H": -2.679326325
+      },
+      "abundance_chi2": 8.333365273,
+      "likelihood_standard_over_model": 15.45667366,
+      "bao": {
+        "C_m": 0.2973454378,
+        "H0_rd_km_s": 10154.92759,
+        "chi2": 10.53794079,
+        "delta_chi2_vs_k0": -0.0006897803105
+      }
+    },
+    {
+      "beta": 0.1333521432,
+      "k": 0.006486584911,
+      "H_atomic_over_standard": {
+        "1": 0.9836311934,
+        "0.1": 0.9858183424,
+        "0.03": 0.9868972094
+      },
+      "omega_phi_recombination": 0.0002316175302,
+      "omega_phi_radiation": 1.051894595e-05,
+      "delta_N_eff_energy": 7.833756736e-05,
+      "w_phi_today": -0.9999795208,
+      "network_ratios": {
+        "Y_p": 0.9889730527,
+        "D/H": 0.9733022679
+      },
+      "signed_sigma": {
+        "Y_p": -1.009236077,
+        "D/H": -2.679724574
+      },
+      "abundance_chi2": 8.336731477,
+      "likelihood_standard_over_model": 15.48271072,
+      "bao": {
+        "C_m": 0.2973453025,
+        "H0_rd_km_s": 10154.94995,
+        "chi2": 10.53824266,
+        "delta_chi2_vs_k0": -0.0003879147989
+      }
+    },
+    {
+      "beta": 0.177827941,
+      "k": 0.004864252463,
+      "H_atomic_over_standard": {
+        "1": 0.983628919,
+        "0.1": 0.9858160489,
+        "0.03": 0.9868949377
+      },
+      "omega_phi_recombination": 0.0002258511515,
+      "omega_phi_radiation": 5.915238006e-06,
+      "delta_N_eff_energy": 4.405224864e-05,
+      "w_phi_today": -0.9999884837,
+      "network_ratios": {
+        "Y_p": 0.9889713867,
+        "D/H": 0.9732978976
+      },
+      "signed_sigma": {
+        "Y_p": -1.00955279,
+        "D/H": -2.679948524
+      },
+      "abundance_chi2": 8.33862485,
+      "likelihood_standard_over_model": 15.49737494,
+      "bao": {
+        "C_m": 0.297345304,
+        "H0_rd_km_s": 10154.96192,
+        "chi2": 10.53841243,
+        "delta_chi2_vs_k0": -0.0002181476448
+      }
+    },
+    {
+      "beta": 0.2371373706,
+      "k": 0.003647674755,
+      "H_atomic_over_standard": {
+        "1": 0.98362764,
+        "0.1": 0.9858147592,
+        "0.03": 0.9868936602
+      },
+      "omega_phi_recombination": 0.0002226084788,
+      "omega_phi_radiation": 3.326382779e-06,
+      "delta_N_eff_energy": 2.477233574e-05,
+      "w_phi_today": -0.9999935239,
+      "network_ratios": {
+        "Y_p": 0.9889704498,
+        "D/H": 0.97329544
+      },
+      "signed_sigma": {
+        "Y_p": -1.00973089,
+        "D/H": -2.68007446
+      },
+      "abundance_chi2": 8.339689704,
+      "likelihood_standard_over_model": 15.50562836,
+      "bao": {
+        "C_m": 0.2973451535,
+        "H0_rd_km_s": 10154.96984,
+        "chi2": 10.5385079,
+        "delta_chi2_vs_k0": -0.0001226757013
+      }
+    },
+    {
+      "beta": 0.316227766,
+      "k": 0.002735370176,
+      "H_atomic_over_standard": {
+        "1": 0.9836269208,
+        "0.1": 0.9858140339,
+        "0.03": 0.9868929418
+      },
+      "omega_phi_recombination": 0.0002207849901,
+      "omega_phi_radiation": 1.8705625e-06,
+      "delta_N_eff_energy": 1.393048783e-05,
+      "w_phi_today": -0.9999963582,
+      "network_ratios": {
+        "Y_p": 0.9889699229,
+        "D/H": 0.973294058
+      },
+      "signed_sigma": {
+        "Y_p": -1.009831043,
+        "D/H": -2.68014528
+      },
+      "abundance_chi2": 8.340288557,
+      "likelihood_standard_over_model": 15.51027185,
+      "bao": {
+        "C_m": 0.2973452147,
+        "H0_rd_km_s": 10154.97314,
+        "chi2": 10.53856159,
+        "delta_chi2_vs_k0": -6.898635183e-05
+      }
+    },
+    {
+      "beta": 0.4216965034,
+      "k": 0.002051238255,
+      "H_atomic_over_standard": {
+        "1": 0.9836265164,
+        "0.1": 0.9858136261,
+        "0.03": 0.9868925379
+      },
+      "omega_phi_recombination": 0.0002197595671,
+      "omega_phi_radiation": 1.051894595e-06,
+      "delta_N_eff_energy": 7.833682573e-06,
+      "w_phi_today": -0.9999979521,
+      "network_ratios": {
+        "Y_p": 0.9889696267,
+        "D/H": 0.9732932808
+      },
+      "signed_sigma": {
+        "Y_p": -1.009887363,
+        "D/H": -2.680185104
+      },
+      "abundance_chi2": 8.340625331,
+      "likelihood_standard_over_model": 15.51288379,
+      "bao": {
+        "C_m": 0.2973451561,
+        "H0_rd_km_s": 10154.97573,
+        "chi2": 10.53859178,
+        "delta_chi2_vs_k0": -3.879418364e-05
+      }
+    },
+    {
+      "beta": 0.5623413252,
+      "k": 0.00153821169,
+      "H_atomic_over_standard": {
+        "1": 0.9836262889,
+        "0.1": 0.9858133967,
+        "0.03": 0.9868923107
+      },
+      "omega_phi_recombination": 0.0002191829294,
+      "omega_phi_radiation": 5.915238006e-07,
+      "delta_N_eff_energy": 4.405201411e-06,
+      "w_phi_today": -0.9999988484,
+      "network_ratios": {
+        "Y_p": 0.9889694601,
+        "D/H": 0.9732928438
+      },
+      "signed_sigma": {
+        "Y_p": -1.009919034,
+        "D/H": -2.680207499
+      },
+      "abundance_chi2": 8.340814716,
+      "likelihood_standard_over_model": 15.51435282,
+      "bao": {
+        "C_m": 0.2973451446,
+        "H0_rd_km_s": 10154.97702,
+        "chi2": 10.53860876,
+        "delta_chi2_vs_k0": -2.181559103e-05
+      }
+    },
+    {
+      "beta": 0.7498942093,
+      "k": 0.001153496039,
+      "H_atomic_over_standard": {
+        "1": 0.983626161,
+        "0.1": 0.9858132678,
+        "0.03": 0.9868921829
+      },
+      "omega_phi_recombination": 0.0002188586622,
+      "omega_phi_radiation": 3.326382779e-07,
+      "delta_N_eff_energy": 2.477226158e-06,
+      "w_phi_today": -0.9999993524,
+      "network_ratios": {
+        "Y_p": 0.9889693664,
+        "D/H": 0.973292598
+      },
+      "signed_sigma": {
+        "Y_p": -1.009936844,
+        "D/H": -2.680220092
+      },
+      "abundance_chi2": 8.340921217,
+      "likelihood_standard_over_model": 15.51517898,
+      "bao": {
+        "C_m": 0.2973451017,
+        "H0_rd_km_s": 10154.97803,
+        "chi2": 10.53861831,
+        "delta_chi2_vs_k0": -1.226781751e-05
+      }
+    },
+    {
+      "beta": 1.0,
+      "k": 0.000865,
+      "H_atomic_over_standard": {
+        "1": 0.9836260891,
+        "0.1": 0.9858131953,
+        "0.03": 0.9868921111
+      },
+      "omega_phi_recombination": 0.0002186763133,
+      "omega_phi_radiation": 1.8705625e-07,
+      "delta_N_eff_energy": 1.393046438e-06,
+      "w_phi_today": -0.9999996358,
+      "network_ratios": {
+        "Y_p": 0.9889693137,
+        "D/H": 0.9732924598
+      },
+      "signed_sigma": {
+        "Y_p": -1.009946859,
+        "D/H": -2.680227174
+      },
+      "abundance_chi2": 8.340981107,
+      "likelihood_standard_over_model": 15.51564359,
+      "bao": {
+        "C_m": 0.2973452096,
+        "H0_rd_km_s": 10154.97756,
+        "chi2": 10.53862368,
+        "delta_chi2_vs_k0": -6.898713764e-06
+      }
+    }
+  ]
+}

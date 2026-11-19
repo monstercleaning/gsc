@@ -2,6 +2,10 @@
 
 ## 20.2.0 — in progress
 
+- Scanned the P14 coupling at fixed mass drift. The coupling that cancels the expansion shift at 0.1 MeV
+  leaves 3.55% scalar energy at recombination. Translating a 0.6% CMB limit from related models gives
+  β ≳ 0.00637, where the abundance likelihood favors standard expansion by 6.5–15.5 across the scan.
+  DESI DR2 BAO alone admits cancellation. [Coupling scan](analyses/p14_beta_scan.md).
 - Added a conserving scalar completion of P14 and validated a compact nucleosynthesis network. For unit early
   coupling, LBT helium and PDG deuterium favor standard expansion by a likelihood ratio of 15.5 with the
   Planck baryon density and Gaussian-process rates. [Diagnostic](analyses/p14_physical_model.md). The

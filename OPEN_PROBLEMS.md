@@ -104,6 +104,19 @@ in atomic units) and the fixed relation between the two epochs only for the comp
 of the core needs β fixed in advance, for example from a separate observable of the same field, together with a
 full CMB fit.
 
+### What fixes the coupling (v20.2)
+
+At β = 0.00257634 the expansion at 0.1 MeV nearly matches standard expansion, but the scalar still carries
+3.55% of the energy at recombination. DESI DR2 BAO alone admits this cancellation (Δχ² = −0.82 against k = 0).
+Published CMB limits for related smooth components give an independent comparison. A 0.6% cap on the
+recombination fraction translates to β ≳ 0.00637. Across the scan from there to β = 1, LBT helium and PDG
+deuterium favor standard expansion by likelihood ratios of 6.5–15.5 at the published Planck baryon density.
+A 0.4% cap gives β ≳ 0.00787 and ratios of 8.6–15.5. These translations do not establish a P14 confidence interval.
+
+Choosing β from deuterium would use up deuterium as a test. The decisive calculation is a CLASS/Cobaya fit
+of the coupled scalar perturbations to Planck/ACT spectra and lensing plus DESI, profiling β with free ω_b.
+[Coupling scan and published comparisons](analyses/p14_beta_scan.md).
+
 ## 2. The P8 revision r2 history is not "the same p as P1"
 
 The P8 r2 pipeline uses the history H(z) = H_ΛCDM(z)·(1+z)^p and its texts call this "the same metrology
